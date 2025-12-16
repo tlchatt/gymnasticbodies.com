@@ -9,13 +9,19 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "better-auth": "^1.4.6",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
     "next": "16.0.8",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
   "devDependencies": {
     "babel-plugin-react-compiler": "1.0.0",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9",
-    "eslint-config-next": "16.0.8"
+    "eslint-config-next": "16.0.8",
+    "tsx": "^4.21.0"
   }
 }
