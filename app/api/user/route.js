@@ -1,6 +1,7 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user_setting } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
+
 export async function POST(request) {
     const json = await request.json()
     console.log('user json', json)
@@ -18,7 +19,7 @@ export async function POST(request) {
                         userId: json.userId
                     }
                 ).where(eq(user_setting.id, existing.id)).returning();
-              console.log('updateQuery return', updateQuery)
+            console.log('updateQuery return', updateQuery)
             return Response.json(updateQuery)
         }
         else {
@@ -66,6 +67,9 @@ export async function POST(request) {
 }
 // GET just to return 200 status for preflight to work
 export async function GET() {
+    // console.log("user_setting:",user_setting)
+    // let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId));
+    // console.log("queryExisting in GET:",queryExisting)
     return new Response('Success!', {
         status: 200,
         headers: {
