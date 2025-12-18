@@ -1,42 +1,38 @@
-import { auth } from "@/lib/auth"; // path to your auth file
-import { headers } from "next/headers"
+import { db } from "@/Drizzle/index.ts"; // your drizzle instance
+import { user_setting } from "@/Drizzle/db/schema"
+import { eq } from 'drizzle-orm';
 export async function POST(request) {
-    try {
-        const json = await request.json()
-        console.log('signIn json', json)
-        /*
-        let data = await auth.api.signUpEmail({//https://www.better-auth.com/docs/authentication/email-password#sign-up
-            body: {
-                name: json.username, // required
-                email: json.username, // required
-                password: json.password, // required
-                //image: "https://example.com/image.png",
-                // callbackURL: "https://example.com/callback",
-            },
-        })
-            */
-        const data = await auth.api.signInEmail({
-            body: {
-                email: json.username, // required
-                password: json.password, // required
-                rememberMe: true,
-                //callbackURL: "https://example.com/callback",
-            },
-            // This endpoint requires session cookies.
-            headers: await headers(),
-        });
-        console.log('signIn data', data)
-        /*
-        let session = await auth.api.getSession({
-            headers: await headers()
-        })
-        console.log('session data', session)
-        if (!session) {
-            console.log('!session')
-        }
-            */
-        return Response.json(data)
+    const json = await request.json()
+    console.log('user json', json)
 
+    try {
+        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
+        let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
+        if (existing) {
+            console.log('existing', existing)
+            let updateQuery = await db.update(user_setting)
+                .set(
+                    {
+                        type: json.type,
+                        data: json.data,
+                        userId: json.userId
+                    }
+                ).where(eq(user_setting.id, existing.id)).returning();
+              console.log('updateQuery return', updateQuery)
+            return Response.json(updateQuery)
+        }
+        else {
+            console.log('Not existing', existing)
+            let insertQuery = await db.insert(user_setting).values(
+                {
+                    type: json.type,
+                    data: json.data,
+                    userId: json.userId
+                }
+            ).returning();
+            console.log('insertQuery return', insertQuery)
+            return Response.json(insertQuery)
+        }
     }
     catch (error) {
         return new Response(`Webhook error: ${error.message}`, {

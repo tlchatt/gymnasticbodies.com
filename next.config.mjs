@@ -2,8 +2,8 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
-    crossOrigin: 'anonymous',
-    async headers() {
+  crossOrigin: 'anonymous',
+  async headers() {
     return [
       {
         source: "/api/authentication",
@@ -22,8 +22,25 @@ const nextConfig = {
           },
         ],
       },
-            {
+      {
         source: "/api/authentication/session",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*", // Set your origin
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, POST, PUT, DELETE, OPTIONS",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "Content-Type, Authorization",
+          },
+        ],
+      },
+            {
+        source: "/api/user",
         headers: [
           {
             key: "Access-Control-Allow-Origin",
