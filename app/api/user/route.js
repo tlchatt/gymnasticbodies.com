@@ -163,7 +163,7 @@ export async function POST(request) {
         console.log('user json', json)
         if (json.status) {
             //write settings, user_setting table
-            const formData = await request.formData();
+            // const formData = await request.formData();
             // const data = Object.fromEntries(formData);
             let subscriptionData = {
                 status: json.status,
