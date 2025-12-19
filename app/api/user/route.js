@@ -171,30 +171,30 @@ export async function POST(request) {
                 startdate: json.start_date_gmt
             }
             console.log('subscriptionData data:', subscriptionData);
-            try {
-                const newUser = await db.insert(user).values({
-                    name: json.billing.first_name,
-                    email: json.billing.email,
-                }).returning({ id: user.id });
-                console.log("newUser:", newUser)
-                const attachSetting = await db.insert(user_setting).values({
-                    type: 'subscription',
-                    data: subscriptionData,
-                    user_id: newUser[0].id
-                }).returning();
-                console.log("attachSetting:", attachSetting)
-            }
-            catch (error) {
-                return new Response(`Subscription Webhook error: ${error.message}`, {
 
-                    status: 400,
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                    },
-                })
-            }
+            const newUser = await db.insert(user).values({
+                name: json.billing.first_name,
+                email: json.billing.email,
+            }).returning({ id: user.id });
+            console.log("newUser:", newUser)
+            const attachSetting = await db.insert(user_setting).values({
+                type: 'subscription',
+                data: subscriptionData,
+                user_id: newUser[0].id
+            }).returning();
+            console.log("attachSetting:", attachSetting)
+
+            // catch (error) {
+            //     return new Response(`Subscription Webhook error: ${error.message}`, {
+
+            //         status: 400,
+            //         headers: {
+            //             'Access-Control-Allow-Origin': '*',
+            //             'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            //             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            //         },
+            //     })
+            // }
 
             return new Response('OK', { status: 200 });
         }
