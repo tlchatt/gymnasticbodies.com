@@ -161,7 +161,7 @@ export async function POST(request) {
     } else {
         const json = await request.json()
         console.log('user json', json)
-        if (json.status) {
+        if (json.status == "active") {
             //write settings, user_setting table
             // const formData = await request.formData();
             // const data = Object.fromEntries(formData);
@@ -176,13 +176,13 @@ export async function POST(request) {
                     name: json.billing.first_name,
                     email: json.billing.email,
                 }).returning({ id: user.id });
-                console.log("newUser:",newUser)
+                console.log("newUser:", newUser)
                 const attachSetting = await db.insert(user_setting).values({
                     type: 'subscription',
                     data: subscriptionData,
                     user_id: newUser[0].id
                 }).returning();
-                console.log("attachSetting:",attachSetting)
+                console.log("attachSetting:", attachSetting)
             }
             catch (error) {
                 return new Response(`Subscription Webhook error: ${error.message}`, {
@@ -197,51 +197,48 @@ export async function POST(request) {
             }
 
             return new Response('OK', { status: 200 });
-        } else {
-            try {
-                let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
-                let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
-                if (existing) {
-                    console.log('existing', existing)
-                    let updateQuery = await db.update(user_setting)
-                        .set(
-                            {
-                                type: json.type,
-                                data: json.data,
-                                userId: json.userId
-                            }
-                        ).where(eq(user_setting.id, existing.id)).returning();
-                    console.log('updateQuery return', updateQuery)
-                    return Response.json(updateQuery)
-                }
-                else {
-                    console.log('Not existing', existing)
-                    let insertQuery = await db.insert(user_setting).values(
-                        {
-                            type: json.type,
-                            data: json.data,
-                            userId: json.userId
-                        }
-                    ).returning();
-                    console.log('insertQuery return', insertQuery)
-                    return Response.json(insertQuery)
-                }
-            }
-            catch (error) {
-                return new Response(`Webhook error: ${error.message}`, {
-
-                    status: 400,
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                    },
-                })
-            }
         }
-
     }
+    try {
+        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
+        let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
+        if (existing) {
+            console.log('existing', existing)
+            let updateQuery = await db.update(user_setting)
+                .set(
+                    {
+                        type: json.type,
+                        data: json.data,
+                        userId: json.userId
+                    }
+                ).where(eq(user_setting.id, existing.id)).returning();
+            console.log('updateQuery return', updateQuery)
+            return Response.json(updateQuery)
+        }
+        else {
+            console.log('Not existing', existing)
+            let insertQuery = await db.insert(user_setting).values(
+                {
+                    type: json.type,
+                    data: json.data,
+                    userId: json.userId
+                }
+            ).returning();
+            console.log('insertQuery return', insertQuery)
+            return Response.json(insertQuery)
+        }
+    }
+    catch (error) {
+        return new Response(`Webhook error: ${error.message}`, {
 
+            status: 400,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
+        })
+    }
     /*
     return new Response('Success!', {
         status: 200,
