@@ -16,7 +16,7 @@ export const user = pgTable("user", {
 
 export const user_setting = pgTable("user_setting", {
   id: serial("id").primaryKey(),
-  type: text("type").notNull().unique(),
+  type: text("type").notNull(),
   data: text("data"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   status: text("status"),
