@@ -10,6 +10,7 @@ export async function POST(request) {
         const formData = await request.formData();
         const data = Object.fromEntries(formData);
         console.log('Form data:', data);
+        return new Response('OK', { status: 200 });
     } else {
         const json = await request.json()
         console.log('user json', json)
