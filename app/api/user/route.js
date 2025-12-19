@@ -3,49 +3,59 @@ import { user_setting } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
 
 export async function POST(request) {
-    const json = await request.json()
-    console.log('user json', json)
+    const contentType = request.headers.get('Content-Type');
+    console.log('Content-Type:', contentType);
 
-    try {
-        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
-        let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
-        if (existing) {
-            console.log('existing', existing)
-            let updateQuery = await db.update(user_setting)
-                .set(
+    if (contentType.includes('application/x-www-form-urlencoded')) {
+        const formData = await request.formData();
+        const data = Object.fromEntries(formData);
+        console.log('Form data:', data);
+    } else {
+        const json = await request.json()
+        console.log('user json', json)
+
+        try {
+            let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
+            let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
+            if (existing) {
+                console.log('existing', existing)
+                let updateQuery = await db.update(user_setting)
+                    .set(
+                        {
+                            type: json.type,
+                            data: json.data,
+                            userId: json.userId
+                        }
+                    ).where(eq(user_setting.id, existing.id)).returning();
+                console.log('updateQuery return', updateQuery)
+                return Response.json(updateQuery)
+            }
+            else {
+                console.log('Not existing', existing)
+                let insertQuery = await db.insert(user_setting).values(
                     {
                         type: json.type,
                         data: json.data,
                         userId: json.userId
                     }
-                ).where(eq(user_setting.id, existing.id)).returning();
-            console.log('updateQuery return', updateQuery)
-            return Response.json(updateQuery)
+                ).returning();
+                console.log('insertQuery return', insertQuery)
+                return Response.json(insertQuery)
+            }
         }
-        else {
-            console.log('Not existing', existing)
-            let insertQuery = await db.insert(user_setting).values(
-                {
-                    type: json.type,
-                    data: json.data,
-                    userId: json.userId
-                }
-            ).returning();
-            console.log('insertQuery return', insertQuery)
-            return Response.json(insertQuery)
-        }
-    }
-    catch (error) {
-        return new Response(`Webhook error: ${error.message}`, {
+        catch (error) {
+            return new Response(`Webhook error: ${error.message}`, {
 
-            status: 400,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            },
-        })
+                status: 400,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                },
+            })
+        }
     }
+
     /*
     return new Response('Success!', {
         status: 200,
