@@ -13,15 +13,19 @@ export const user = pgTable("user", {
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
+
 export const user_setting = pgTable("user_setting", {
   id: serial("id").primaryKey(),
   type: text("type").notNull().unique(),
   data: text("data"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  status: text("status"),
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
+  startDate: timestamp("start_date"),
+  endDate: timestamp("end_date"),
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
