@@ -161,7 +161,8 @@ export async function POST(request) {
     } else {
         const json = await request.json()
         console.log('user json', json)
-        if (json.status == "active") {
+        //status : on-hold / active / cancelled
+        if (json.status == "active" || json.status == "on-hold") {
             //write settings, user_setting table
             // const formData = await request.formData();
             // const data = Object.fromEntries(formData);
