@@ -1,11 +1,7 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_setting, user, account } from "@/Drizzle/db/schema"
+import { user } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
-import { v4 as uuidv4 } from 'uuid';
-import { auth } from "@/lib/auth"; // path to your auth file
-import { headers } from "next/headers"
-import generatePassword from 'generate-password';
-import { sendCodeEmailSG, sendCredentialsEmailSG, sendResetLinkEmailSG } from "@/lib/sendgrid";
+import { sendResetLinkEmailSG } from "@/lib/sendgrid";
 
 export async function POST(request) {
 
@@ -17,11 +13,11 @@ export async function POST(request) {
     }
 
     const json = await request.json()
+    console.warn(json)
 
     //check if email in incoming data exists in user table, if it does, send email (the link to reset password page)
     let userExist = await doesUserExist()
-    console.log("userExist is:", userExist?.userInfo)
-
+    console.warn(userExist)
     if (userExist.status) {//send the reset link email
         let emailSent = await sendEmail(userExist)
         if (emailSent) {
@@ -46,7 +42,6 @@ export async function POST(request) {
             .select()
             .from(user)
             .where(eq(user.email, json.email));
-        console.log("userExistsQuery is:", userExistsQuery)
         if (userExistsQuery.length > 0) {
             return { status: true, userInfo: userExistsQuery[0] }
         } else {
@@ -63,12 +58,8 @@ export async function POST(request) {
             userId: userExist.userInfo.id
         }
 
-        console.log("email data is:", data)
-
         emailSent = await sendResetLinkEmailSG(data)
-
-        console.log("emailSent:", emailSent)
-
+        console.warn(emailSent)
         return emailSent;
     }
 

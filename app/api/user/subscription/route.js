@@ -1,13 +1,10 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_setting, user, account } from "@/Drizzle/db/schema"
-import { eq } from 'drizzle-orm';
-import { v4 as uuidv4 } from 'uuid';
+import { user_setting } from "@/Drizzle/db/schema"
 import { auth } from "@/lib/auth"; // path to your auth file
-import { headers } from "next/headers"
 import generatePassword from 'generate-password';
-import { sendCodeEmailSG, sendCredentialsEmailSG, sendResetLinkEmailSG } from "@/lib/sendgrid";
+import { sendCredentialsEmailSG } from "@/lib/sendgrid";
 
-export async function POST(request) {
+export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     //cmd for curl request to test this endpoint:
     //curl -X POST \  http://localhost:3001/api/user/subscription \  -H 'Content-Type: application/json' \  -d '{"status": "active", "next_payment_date_gmt": "2025-12-26T17:22:53", "start_date_gmt": "2025-12-19T17:22:53", "billing": {"first_name": "PC", "email": "pc@tlchatt.com"}}'
 
@@ -22,17 +19,21 @@ export async function POST(request) {
     }
 
     const json = await request.json()
-    //when subscription webhook is triggered -> status : on-hold / active / cancelled
+    console.warn(json)
+
     const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
         length: 10,//for better auth 8 is min characters required
         numbers: true,
         symbols: true,
         strict: true
     });
+    console.warn(password)
 
     let newAccountInfo = await createAccountForUser()
+    console.warn(newAccountInfo)
 
     let accountSetting = await createAccountSettingsForUser(newAccountInfo)
+    console.warn(accountSetting)
 
     if (accountSetting) {
         await sendEmail()
@@ -49,7 +50,7 @@ export async function POST(request) {
                 password: password, // required
             },
         });
-        console.log("signUpData is:", signUpData)
+
         return signUpData
     }
     async function createAccountSettingsForUser(newAccountInfo) {
@@ -66,7 +67,7 @@ export async function POST(request) {
             data: subscriptionData,
             userId: newAccountInfo.user.id
         }).returning();
-        console.log("attachSetting:", attachedSettingInfo)
+
         return attachedSettingInfo;
     }
     async function sendEmail() {
@@ -77,12 +78,8 @@ export async function POST(request) {
             password: password
         }
         emailSent = await sendCredentialsEmailSG(data)
-
-        console.log("email data is:", data)
-
-        console.log("emailSent:", emailSent)
+        console.warn(emailSent)
         return emailSent;
-
     }
 
     /*

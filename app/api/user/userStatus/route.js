@@ -1,20 +1,15 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_setting, user, account } from "@/Drizzle/db/schema"
+import { user_setting } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
-import { v4 as uuidv4 } from 'uuid';
-import { auth } from "@/lib/auth"; // path to your auth file
-import { headers } from "next/headers"
-import generatePassword from 'generate-password';
-import { sendCodeEmailSG, sendCredentialsEmailSG, sendResetLinkEmailSG } from "@/lib/sendgrid";
 
 export async function POST(request) {
     const json = await request.json()
-
+    console.warn(json)
     try {
         let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
         let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
         if (existing) {
-            console.log('existing', existing)
+            console.warn(existing)
             let updateQuery = await db.update(user_setting)
                 .set(
                     {
@@ -23,11 +18,11 @@ export async function POST(request) {
                         userId: json.userId
                     }
                 ).where(eq(user_setting.id, existing.id)).returning();
-            console.log('updateQuery return', updateQuery)
+            console.warn(updateQuery)
             return Response.json(updateQuery)
         }
         else {
-            console.log('Not existing', existing)
+
             let insertQuery = await db.insert(user_setting).values(
                 {
                     type: json.type,
@@ -35,7 +30,7 @@ export async function POST(request) {
                     userId: json.userId
                 }
             ).returning();
-            console.log('insertQuery return', insertQuery)
+            console.warn(insertQuery)
             return Response.json(insertQuery)
         }
     }

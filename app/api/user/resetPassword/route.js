@@ -1,11 +1,6 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_setting, user, account } from "@/Drizzle/db/schema"
+import { account } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
-import { v4 as uuidv4 } from 'uuid';
-import { auth } from "@/lib/auth"; // path to your auth file
-import { headers } from "next/headers"
-import generatePassword from 'generate-password';
-import { sendCodeEmailSG, sendCredentialsEmailSG, sendResetLinkEmailSG } from "@/lib/sendgrid";
 
 export async function POST(request) {
 
@@ -20,13 +15,15 @@ export async function POST(request) {
     }
 
     const json = await request.json()
-
+    console.warn(json)
+    
     let updateQuery = await db.update(account)
         .set(
             {
                 password: json.confirmPassword,
             }
         ).where(eq(account.userId, json.userId)).returning();
+    console.warn(updateQuery)
 
     if (updateQuery) {
         return new Response('OK', { status: 200 });
