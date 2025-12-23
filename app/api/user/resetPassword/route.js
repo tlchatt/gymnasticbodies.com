@@ -5,7 +5,13 @@ import { eq } from 'drizzle-orm';
 export async function POST(request) {
 
     //cmd for curl request to test this endpoint:
-    // curl -X POST \ -H "Content-Type: application/json" \ -d '{"userId":"rILmdmIYSI2bvapSfWWrqfRLzuHPYRjR","password":"prachi!!!123","confirmPassword":"prachi!!!123","token":"none"}' \ http://localhost:3001/api/user/resetPassword
+    /* 
+        curl -X POST \
+        "http://localhost:3001/api/user/resetPassword" \
+        -H "Content-Type: application/json" \
+        -d '{"userId":"TufkirhwrYmEEDUfnxDtTGVpIhdgUzQv","password":"prachi!!!123","confirmPassword":"prachi!!!123","token":"none"}'
+    */
+
 
     let testJson = {
         userId: "rILmdmIYSI2bvapSfWWrqfRLzuHPYRjR",
@@ -16,7 +22,7 @@ export async function POST(request) {
 
     const json = await request.json()
     console.warn(json)
-    
+
     let updateQuery = await db.update(account)
         .set(
             {
