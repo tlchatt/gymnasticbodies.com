@@ -18,7 +18,7 @@ export async function POST(request) {
         const data = await auth.api.signInEmail({
             body: {
                 email: json.username, // required
-                password: json.password, // required
+                password: await bcrypt.hash(json.password, 10), // required
                 rememberMe: true,
                 //callbackURL: "https://example.com/callback",
             },

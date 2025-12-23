@@ -1,6 +1,8 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { account } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
+import bcrypt from 'bcrypt';
+import { auth } from "@/lib/auth"; // path to your auth file
 
 export async function POST(request) {
 
@@ -9,7 +11,7 @@ export async function POST(request) {
         curl -X POST \
         "http://localhost:3001/api/user/resetPassword" \
         -H "Content-Type: application/json" \
-        -d '{"userId":"CC50ehagdZAIaqm0pBTW2Jsdq1kixIW6","password":"prachi!!!123","confirmPassword":"prachi!!!123","token":"none"}'
+        -d '{"userId":"TufkirhwrYmEEDUfnxDtTGVpIhdgUzQv","password":"prachi!!!123","confirmPassword":"prachi!!!123","token":"none"}'
     */
 
 
@@ -22,11 +24,14 @@ export async function POST(request) {
 
     const json = await request.json()
     console.warn(json)
+    let password = await bcrypt.hash(json.confirmPassword, 10);// 10 - Recommended value for security and performance balance
 
+
+    
     let updateQuery = await db.update(account)
         .set(
             {
-                password: json.confirmPassword,
+                password: password,
             }
         ).where(eq(account.userId, json.userId)).returning();
     console.warn(updateQuery)
