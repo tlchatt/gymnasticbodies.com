@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@better-auth/utils": "^0.3.0",
     "@neondatabase/serverless": "^1.0.2",
+    "@node-rs/argon2": "^2.0.2",
     "@sendgrid/mail": "^8.1.6",
     "bcrypt": "^6.0.0",
     "better-auth": "^1.4.6",

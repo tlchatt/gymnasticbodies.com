@@ -2,7 +2,7 @@ import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { account } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcrypt';
-import { auth } from "@/lib/auth"; // path to your auth file
+import { hashPassword } from "@/lib/password";
 
 export async function POST(request) {
 
@@ -24,16 +24,15 @@ export async function POST(request) {
 
     const json = await request.json()
     console.warn(json)
-    let password = await bcrypt.hash(json.confirmPassword, 10);// 10 - Recommended value for security and performance balance
+    let password = await hashPassword(json.confirmPassword)
 
-
-    
     let updateQuery = await db.update(account)
         .set(
             {
                 password: password,
             }
         ).where(eq(account.userId, json.userId)).returning();
+        
     console.warn(updateQuery)
 
     if (updateQuery) {

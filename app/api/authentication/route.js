@@ -1,9 +1,21 @@
 import { auth } from "@/lib/auth"; // path to your auth file
 import { headers } from "next/headers"
+import bcrypt from 'bcrypt';
+import { hashPassword } from "@/lib/password";
 export async function POST(request) {
     try {
         const json = await request.json()
         console.log('signIn json', json)
+        let p = await hashPassword(json.password)
+        console.log("password is:",p)
+
+        /* 
+        curl -X POST \
+        "http://localhost:3001/api/authentication" \
+        -H "Content-Type: application/json" \
+        -d '{"username":"pc@tlchatt.com","password":"prachi!!!123"}'
+    */
+
         /*
         let data = await auth.api.signUpEmail({//https://www.better-auth.com/docs/authentication/email-password#sign-up
             body: {
@@ -18,7 +30,7 @@ export async function POST(request) {
         const data = await auth.api.signInEmail({
             body: {
                 email: json.username, // required
-                password: await bcrypt.hash(json.password, 10), // required
+                password: json.password, // required
                 rememberMe: true,
                 //callbackURL: "https://example.com/callback",
             },
