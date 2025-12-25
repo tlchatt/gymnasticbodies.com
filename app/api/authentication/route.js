@@ -6,8 +6,8 @@ export async function POST(request) {
     try {
         const json = await request.json()
         console.log('signIn json', json)
-        let p = await hashPassword(json.password)
-        console.log("password is:",p)
+        //let p = await hashPassword(json.password)
+        //console.log("password is:", p)
 
         /* 
         curl -X POST \

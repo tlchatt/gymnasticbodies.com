@@ -4,10 +4,12 @@ import { eq } from 'drizzle-orm';
 
 export async function POST(request) {
     const json = await request.json()
+    console.log("json in userStatus:",json)
     console.warn(json)
     try {
-        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId));
+        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId)).where(eq(user_setting.type, json.type));
         let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
+        
         if (existing) {
             console.warn(existing)
             let updateQuery = await db.update(user_setting)
@@ -22,7 +24,6 @@ export async function POST(request) {
             return Response.json(updateQuery)
         }
         else {
-
             let insertQuery = await db.insert(user_setting).values(
                 {
                     type: json.type,
@@ -67,10 +68,24 @@ export async function POST(request) {
     */
 }
 // GET just to return 200 status for preflight to work
-export async function GET() {
-    // console.log("user_setting:",user_setting)
-    // let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId));
-    // console.log("queryExisting in GET:",queryExisting)
+export async function GET(request) {
+    const searchParams = request.nextUrl.searchParams;
+    const userData = Object.fromEntries(searchParams);
+
+    if(userData?.userId){
+        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, userData.userId)).where(eq(user_setting.type, userData.type));
+
+        return new Response(JSON.stringify(queryExisting[0]), {
+            status: 200,
+
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
+        })
+    }
+    
     return new Response('Success!', {
         status: 200,
         headers: {

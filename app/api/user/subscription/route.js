@@ -6,7 +6,7 @@ import { sendCredentialsEmailSG } from "@/lib/sendgrid";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     //cmd for curl request to test this endpoint:
-    //curl -X POST \  http://localhost:3001/api/user/subscription \  -H 'Content-Type: application/json' \  -d '{"status": "active", "next_payment_date_gmt": "2025-12-26T17:22:53", "start_date_gmt": "2025-12-19T17:22:53", "billing": {"first_name": "PC", "email": "pc@tlchatt.com"}}'
+    //curl -X POST \  http://localhost:3001/api/user/subscription \  -H 'Content-Type: application/json' \  -d '{"status": "active", "next_payment_date_gmt": "2026-01-01T17:22:53", "start_date_gmt": "2025-12-25T17:22:53", "billing": {"first_name": "PC", "email": "pc@tlchatt.com"}}'
 
     let testJson = {
         status: "active",
