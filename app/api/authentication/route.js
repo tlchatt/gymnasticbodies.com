@@ -11,7 +11,7 @@ export async function POST(request) {
 
         /* 
         curl -X POST \
-        "http://localhost:3001/api/authentication" \
+        "https://gymnasticbodies-com.vercel.app/api/authentication" \
         -H "Content-Type: application/json" \
         -d '{"username":"pc@tlchatt.com","password":"prachi!!!123"}'
     */

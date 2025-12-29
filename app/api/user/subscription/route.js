@@ -6,8 +6,12 @@ import { sendCredentialsEmailSG } from "@/lib/sendgrid";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     //cmd for curl request to test this endpoint:
-    //curl -X POST \  http://localhost:3001/api/user/subscription \  -H 'Content-Type: application/json' \  -d '{"status": "active", "next_payment_date_gmt": "2026-01-01T17:22:53", "start_date_gmt": "2025-12-25T17:22:53", "billing": {"first_name": "PC", "email": "pc@tlchatt.com"}}'
-
+    /* 
+            curl -X POST \
+            "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
+            -H "Content-Type: application/json" \
+            -d '{"status": "active","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "David Wolynski", "email": "davedecatur1803@gmail.com"}}'
+        */
     let testJson = {
         status: "active",
         next_payment_date_gmt: "2025-12-26T17:22:53",
@@ -17,29 +21,33 @@ export async function POST(request) {//when subscription webhook is triggered ->
             email: 'greggorywiley@tlchatt.com'
         }
     }
+    try {
+        const json = await request.json()
+        console.warn(json)
 
-    const json = await request.json()
-    console.warn(json)
+        const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
+            length: 10,//for better auth 8 is min characters required
+            numbers: true,
+            symbols: true,
+            strict: true
+        });
+        console.warn(password)
 
-    const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
-        length: 10,//for better auth 8 is min characters required
-        numbers: true,
-        symbols: true,
-        strict: true
-    });
-    console.warn(password)
+        let newAccountInfo = await createAccountForUser()
+        console.warn(newAccountInfo)
 
-    let newAccountInfo = await createAccountForUser()
-    console.warn(newAccountInfo)
+        let accountSetting = await createAccountSettingsForUser(newAccountInfo)
+        console.warn(accountSetting)
 
-    let accountSetting = await createAccountSettingsForUser(newAccountInfo)
-    console.warn(accountSetting)
+        if (accountSetting) {
+            await sendEmail()
+        }
 
-    if (accountSetting) {
-        await sendEmail()
+        return new Response('OK', { status: 200 });
+    } catch (error) {
+        console.error(error);
+        return new Response('Error processing request', { status: 200 });//so that webhook doesn't deactivate
     }
-
-    return new Response('OK', { status: 200 });
 
     async function createAccountForUser() {
         //create account field, which will create the user too.
