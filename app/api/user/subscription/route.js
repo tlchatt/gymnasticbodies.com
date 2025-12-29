@@ -6,11 +6,26 @@ import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid
 import { getUserWithEmail, queryUserSetting } from "@/lib/userSettings";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
-    
+    /* 
+               curl -X POST \
+               "http://localhost:3001/api/user/subscription" \
+               -H "Content-Type: application/json" \
+               -d '{"status": "active","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "DGWTest", "email": "gw846@tlchatt.com"}}'
+           */
+    let testJson = {
+        status: "active",
+        next_payment_date_gmt: "2025-12-26T17:22:53",
+        start_date_gmt: "2025-12-19T17:22:53",
+        billing: {
+            first_name: 'GWTest',
+            email: 'gw846@tlchatt.com'
+        }
+    }
+
     let dbUser, isExistingUser
     let json = await request.json()
     console.log("POST /api/user/subscription, JSON:", json)
-    
+
     const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
         length: 10,//for better auth 8 is min characters required
         numbers: true,
@@ -19,22 +34,8 @@ export async function POST(request) {//when subscription webhook is triggered ->
     });
     console.log("password:", password)
 
-    
-    /* 
-            curl -X POST \
-            "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
-            -H "Content-Type: application/json" \
-            -d '{"status": "active","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "David Wolynski", "email": "davedecatur1803@gmail.com"}}'
-        */
-    let testJson = {
-        status: "active",
-        next_payment_date_gmt: "2025-12-26T17:22:53",
-        start_date_gmt: "2025-12-19T17:22:53",
-        billing: {
-            first_name: 'Greggory Wiley',
-            email: 'greggorywiley@tlchatt.com'
-        }
-    }
+
+
     try {
 
         dbUser = await getUserWithEmail(json.billing.email)
@@ -102,7 +103,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
             },
         });
         console.log("new user data for subscription:", signUpData)
-        return signUpData
+        return signUpData.user
     }
     async function sendEmail() {
         let data = {}
@@ -115,19 +116,19 @@ export async function POST(request) {//when subscription webhook is triggered ->
                     password: password
                 }
                 emailSent = await sendCredentialsEmailSG(data)
-                
-            }else{//existing user in woocommerce cancelled pre new DB
+
+            } else {//existing user in woocommerce cancelled pre new DB
                 console.warn("POST /api/user/subscription sendEmail !isExistingUser && !active UNHANDLED")
             }
         } else {
             if (json.status == "cancelled") {
                 emailSent = await sendSubsCancelledEmailSG(json.billing.email)
-            }else{//trial ended primary subscription began
+            } else {//trial ended primary subscription began
                 console.warn("POST /api/user/subscription sendEmail isExistingUser && !cancelled UNHANDLED")
             }
         }
-                
-        console.log("emailSent:",emailSent)
+
+        console.log("emailSent:", emailSent)
         return emailSent;
     }
 
