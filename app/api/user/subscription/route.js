@@ -8,6 +8,13 @@ export async function POST(request) {//when subscription webhook is triggered ->
     //cmd for curl request to test this endpoint:
     const json = await request.json()
     console.warn(json)
+    const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
+        length: 10,//for better auth 8 is min characters required
+        numbers: true,
+        symbols: true,
+        strict: true
+    });
+    console.warn(password)
     /* 
             curl -X POST \
             "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
@@ -24,25 +31,21 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
     }
     try {
+        if (json.status == "cancelled") {
 
-
-        const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
-            length: 10,//for better auth 8 is min characters required
-            numbers: true,
-            symbols: true,
-            strict: true
-        });
-        console.warn(password)
-
-        let newAccountInfo = await createAccountForUser()
-        console.warn(newAccountInfo)
-
-        let accountSetting = await createAccountSettingsForUser(newAccountInfo)
-        console.warn(accountSetting)
-
-        if (accountSetting) {
-            await sendEmail()
         }
+        if (json.status == "active") {
+            let newAccountInfo = await createAccountForUser()
+            console.warn(newAccountInfo)
+
+            let accountSetting = await createAccountSettingsForUser(newAccountInfo)
+            console.warn(accountSetting)
+
+            if (accountSetting) {
+                await sendEmail()
+            }
+        }
+
 
         return new Response('OK', { status: 200 });
     } catch (error) {
