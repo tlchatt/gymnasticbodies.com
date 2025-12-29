@@ -1,39 +1,31 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user_setting } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
+import { queryUserSetting } from "@/lib/userSettings";
 
 export async function POST(request) {
     const json = await request.json()
-    console.log("json in userStatus:",json)
-    console.warn(json)
+    console.log("json in userStatus:", json)
     try {
-        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, json.userId)).where(eq(user_setting.type, json.type));
-        let existing = queryExisting ? queryExisting?.filter(item => item.data.type === json.data.type)[0] : null
-        
-        if (existing) {
-            console.warn(existing)
-            let updateQuery = await db.update(user_setting)
-                .set(
-                    {
-                        type: json.type,
-                        data: json.data,
-                        userId: json.userId
-                    }
-                ).where(eq(user_setting.id, existing.id)).returning();
-            console.warn(updateQuery)
-            return Response.json(updateQuery)
+        let userSetting
+        let matching = await queryUserSetting(json.userId, json.type)
+        let settingsRecord = {
+            type: json.type,
+            data: json.data,
+            userId: json.userId
+        }
+        if (matching) {
+
+            userSetting = await db.update(user_setting)
+                .set({
+                    data: settingsRecord.data
+                }).where(eq(user_setting.id, matching.id)).returning();
         }
         else {
-            let insertQuery = await db.insert(user_setting).values(
-                {
-                    type: json.type,
-                    data: json.data,
-                    userId: json.userId
-                }
-            ).returning();
-            console.warn(insertQuery)
-            return Response.json(insertQuery)
+            userSetting = await db.insert(user_setting).values(settingsRecord).returning();
         }
+        console.log("userSetting in POST api/user/userStatus:",userSetting)
+        return Response.json(userSetting)
     }
     catch (error) {
         return new Response(`Webhook error: ${error.message}`, {
@@ -72,7 +64,7 @@ export async function GET(request) {
     const searchParams = request.nextUrl.searchParams;
     const userData = Object.fromEntries(searchParams);
 
-    if(userData?.userId){
+    if (userData?.userId) {
         let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, userData.userId)).where(eq(user_setting.type, userData.type));
 
         return new Response(JSON.stringify(queryExisting[0]), {
@@ -85,7 +77,7 @@ export async function GET(request) {
             },
         })
     }
-    
+
     return new Response('Success!', {
         status: 200,
         headers: {

@@ -1,20 +1,22 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_setting } from "@/Drizzle/db/schema"
+import { user, user_setting } from "@/Drizzle/db/schema"
 import { auth } from "@/lib/auth"; // path to your auth file
 import generatePassword from 'generate-password';
-import { sendCredentialsEmailSG } from "@/lib/sendgrid";
+import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid";
+import { getUserWithEmail, queryUserSetting } from "@/lib/userSettings";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     //cmd for curl request to test this endpoint:
+
     const json = await request.json()
-    console.warn(json)
+    console.log("POST /api/user/subscription, JSON:", json)
     const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
         length: 10,//for better auth 8 is min characters required
         numbers: true,
         symbols: true,
         strict: true
     });
-    console.warn(password)
+    console.log("password:", password)
     /* 
             curl -X POST \
             "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
@@ -31,28 +33,62 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
     }
     try {
-        if (json.status == "cancelled") {
 
+        let dbUser = await getUserWithEmail(json.billing.email)
+        let isExistingUser = dbUser?.id ? true : false
+
+        if (!isExistingUser) {
+            dbUser = await createAccountForUser()
         }
-        if (json.status == "active") {
-            let newAccountInfo = await createAccountForUser()
-            console.warn(newAccountInfo)
 
-            let accountSetting = await createAccountSettingsForUser(newAccountInfo)
-            console.warn(accountSetting)
-
-            if (accountSetting) {
-                await sendEmail()
-            }
+        await updateUserSubscriptionStatus()
+        if (!isExistingUser) {
+            await sendEmail()
         }
 
 
         return new Response('OK', { status: 200 });
+
     } catch (error) {
         console.error(error);
         return new Response('Error processing request', { status: 200 });//so that webhook doesn't deactivate in wordpress
     }
+    // async function getUserWithEmail() {
+    //     //get user based on the email address
+    //     let returnUser = await db.select().from(user).where(eq(user.email, json.billing.email));
+    //     console.log("user in getUserWithEmail:", returnUser)
+    //     if (returnUser.length > 1) {
+    //         console.warn("warning multiple users in getUserWithEmail:", returnUser)
+    //     }
+    //     return returnUser[0]
+    // }
+    async function updateUserSubscriptionStatus() {
+        let userSetting
+        let settingsRecord = {
+            type: 'subscription',
+            data: {
+                status: json?.status,
+                renewaldate: json?.next_payment_date_gmt,
+                startdate: json?.start_date_gmt
+            },
+            userId: dbUser.id
+        }
 
+        let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
+
+        if (matching) {
+            userSetting = await db.update(user_setting)
+                .set({
+                    data: settingsRecord.data,
+                }).where(eq(user_setting.id, matching.id)).returning();
+        } else {
+            userSetting = await db.insert(user_setting).values(settingsRecord).returning();
+        }
+
+        console.log("userSetting:", userSetting)
+
+        return userSetting
+    }
     async function createAccountForUser() {
         //create account field, which will create the user too.
         const signUpData = await auth.api.signUpEmail({
@@ -62,35 +98,33 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 password: password, // required
             },
         });
-
+        console.log("new user data for subscription:", signUpData)
         return signUpData
-    }
-    async function createAccountSettingsForUser(newAccountInfo) {
-        //write settings, for the user_setting table
-        let subscriptionData = {
-            status: json.status,
-            renewaldate: json.next_payment_date_gmt,
-            startdate: json.start_date_gmt
-        }
-
-        //attach the new user to user_setting table with subscription data
-        const attachedSettingInfo = await db.insert(user_setting).values({
-            type: 'subscription',
-            data: subscriptionData,
-            userId: newAccountInfo.user.id
-        }).returning();
-
-        return attachedSettingInfo;
     }
     async function sendEmail() {
         let data = {}
         let emailSent
-        data = {
-            email: json.billing.email,
-            password: password
+
+        if (!isExistingUser) {
+            if (json.status == "active") {
+                data = {
+                    email: json.billing.email,
+                    password: password
+                }
+                emailSent = await sendCredentialsEmailSG(data)
+                
+            }else{//existing user in woocommerce cancelled pre new DB
+                console.warn("POST /api/user/subscription sendEmail !isExistingUser && !active UNHANDLED")
+            }
+        } else {
+            if (json.status == "cancelled") {
+                emailSent = await sendSubsCancelledEmailSG(json.billing.email)
+            }else{//trial ended primary subscription began
+                console.warn("POST /api/user/subscription sendEmail isExistingUser && !cancelled UNHANDLED")
+            }
         }
-        emailSent = await sendCredentialsEmailSG(data)
-        console.warn(emailSent)
+                
+        console.log("emailSent:",emailSent)
         return emailSent;
     }
 
