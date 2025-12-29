@@ -4,16 +4,17 @@ import { auth } from "@/lib/auth"; // path to your auth file
 import generatePassword from 'generate-password';
 import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid";
 import { getUserWithEmail, queryUserSetting } from "@/lib/userSettings";
+import { eq } from 'drizzle-orm';
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     /* 
                curl -X POST \
                "http://localhost:3001/api/user/subscription" \
                -H "Content-Type: application/json" \
-               -d '{"status": "active","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "DGWTest", "email": "gw846@tlchatt.com"}}'
+               -d '{"status": "cancel","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "DGWTests", "email": "gw555284@tlchatt.com"}}'
            */
     let testJson = {
-        status: "active",
+        status: "cancelled",
         next_payment_date_gmt: "2025-12-26T17:22:53",
         start_date_gmt: "2025-12-19T17:22:53",
         billing: {
@@ -22,19 +23,9 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
     }
 
-    let dbUser, isExistingUser
+    let dbUser, isExistingUser, password
     let json = await request.json()
     console.log("POST /api/user/subscription, JSON:", json)
-
-    const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
-        length: 10,//for better auth 8 is min characters required
-        numbers: true,
-        symbols: true,
-        strict: true
-    });
-    console.log("password:", password)
-
-
 
     try {
 
@@ -42,6 +33,13 @@ export async function POST(request) {//when subscription webhook is triggered ->
         isExistingUser = dbUser?.id ? true : false
 
         if (!isExistingUser) {
+            password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
+                length: 10,//for better auth 8 is min characters required
+                numbers: true,
+                symbols: true,
+                strict: true
+            });
+            console.log("password in !isExistingUser:", password)
             dbUser = await createAccountForUser()
         }
 
@@ -49,7 +47,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
         if (!isExistingUser) {
             await sendEmail()
         }
-
 
         return new Response('OK', { status: 200 });
 
@@ -67,6 +64,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
     //     return returnUser[0]
     // }
     async function updateUserSubscriptionStatus() {
+        console.log("POST /api/user/subscription, updateUserSubscriptionStatus")
         let userSetting
         let settingsRecord = {
             type: 'subscription',
@@ -89,12 +87,13 @@ export async function POST(request) {//when subscription webhook is triggered ->
             userSetting = await db.insert(user_setting).values(settingsRecord).returning();
         }
 
-        console.log("userSetting:", userSetting)
+        console.log(" userSetting:", userSetting)
 
         return userSetting
     }
     async function createAccountForUser() {
         //create account field, which will create the user too.
+        console.log("POST /api/user/subscription, createAccountForUser")
         const signUpData = await auth.api.signUpEmail({
             body: {
                 name: json.billing.first_name, // required
@@ -106,6 +105,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         return signUpData.user
     }
     async function sendEmail() {
+        console.log("POST /api/user/subscription, sendEmail")
         let data = {}
         let emailSent
 
