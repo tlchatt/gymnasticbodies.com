@@ -6,6 +6,8 @@ import { sendCredentialsEmailSG } from "@/lib/sendgrid";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     //cmd for curl request to test this endpoint:
+    const json = await request.json()
+    console.warn(json)
     /* 
             curl -X POST \
             "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
@@ -22,8 +24,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
     }
     try {
-        const json = await request.json()
-        console.warn(json)
+
 
         const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
             length: 10,//for better auth 8 is min characters required
@@ -46,7 +47,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         return new Response('OK', { status: 200 });
     } catch (error) {
         console.error(error);
-        return new Response('Error processing request', { status: 200 });//so that webhook doesn't deactivate
+        return new Response('Error processing request', { status: 200 });//so that webhook doesn't deactivate in wordpress
     }
 
     async function createAccountForUser() {
