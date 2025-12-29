@@ -11,7 +11,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
                curl -X POST \
                "http://localhost:3001/api/user/subscription" \
                -H "Content-Type: application/json" \
-               -d '{"status": "cancel","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "DGWTests", "email": "gw555284@tlchatt.com"}}'
+               -d '{"status": "cancel","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "GW1", "email": "gw555284@tlchatt.com"},"date_created_gmt":"2024-12-22T17:58:41"}'
            */
     let testJson = {
         status: "cancelled",
@@ -33,6 +33,19 @@ export async function POST(request) {//when subscription webhook is triggered ->
         isExistingUser = dbUser?.id ? true : false
 
         if (!isExistingUser) {
+            //current date in GMT format
+            const today = new Date();
+            const isoformat = today.toISOString();
+            let newDate = isoformat.split("T")[0]
+            console.log(" newDate:",newDate)
+            //if date_created_gmt: '2024-12-22T17:58:41', contains current date
+            //if deos not match return 200 OK
+            if(!json?.date_created_gmt?.includes(newDate)){
+                console.log("incoming date created does not include todays date")
+                return new Response('OK', { status: 200 });
+            }
+            
+
             password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
                 length: 10,//for better auth 8 is min characters required
                 numbers: true,
@@ -44,9 +57,9 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
 
         await updateUserSubscriptionStatus()
-        if (!isExistingUser) {
-            await sendEmail()
-        }
+
+        await sendEmail()
+
 
         return new Response('OK', { status: 200 });
 
