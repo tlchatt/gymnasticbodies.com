@@ -6,10 +6,11 @@ import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid
 import { getUserWithEmail, queryUserSetting } from "@/lib/userSettings";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
-    //cmd for curl request to test this endpoint:
-
-    const json = await request.json()
+    
+    let dbUser, isExistingUser
+    let json = await request.json()
     console.log("POST /api/user/subscription, JSON:", json)
+    
     const password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
         length: 10,//for better auth 8 is min characters required
         numbers: true,
@@ -17,6 +18,8 @@ export async function POST(request) {//when subscription webhook is triggered ->
         strict: true
     });
     console.log("password:", password)
+
+    
     /* 
             curl -X POST \
             "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
@@ -34,8 +37,8 @@ export async function POST(request) {//when subscription webhook is triggered ->
     }
     try {
 
-        let dbUser = await getUserWithEmail(json.billing.email)
-        let isExistingUser = dbUser?.id ? true : false
+        dbUser = await getUserWithEmail(json.billing.email)
+        isExistingUser = dbUser?.id ? true : false
 
         if (!isExistingUser) {
             dbUser = await createAccountForUser()
