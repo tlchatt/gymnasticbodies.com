@@ -1,31 +1,34 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_logs, user_setting } from "@/Drizzle/db/schema"
+import { user_setting,user_logs } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
-import { queryUserSetting } from "@/lib/userSettings";
+import { queryUserLogsForDate } from "@/lib/userSettings";
 
 export async function POST(request) {
     const json = await request.json()
-    console.log("json in userStatus:", json)
+    console.log("POST /api/user/log, JSON:", json)
+    //check if user with userId has same userScheduleDate log
+    //if yes, merge the incoming data in that log,
+    //if no, create a new log
     try {
-        let userSetting
-        let matching = await queryUserSetting(json.userId, json.type)
-        let settingsRecord = {
-            type: json.type,
-            data: json.data,
+        let userLog
+        let matching = await queryUserLogsForDate(json.userId, json.userScheduleDate)
+        
+        let logRecord = {
+            userScheduleDate: json.userScheduleDate,
+            data: json.updatedData,
             userId: json.userId
         }
         if (matching) {
-
-            userSetting = await db.update(user_setting)
+            userLog = await db.update(user_logs)
                 .set({
-                    data: settingsRecord.data
-                }).where(eq(user_setting.id, matching.id)).returning();
+                    data: json.updatedData
+                }).where(eq(user_logs.id, matching.id)).returning();
         }
         else {
-            userSetting = await db.insert(user_setting).values(settingsRecord).returning();
+            userLog = await db.insert(user_logs).values(logRecord).returning();
         }
-        console.log("userSetting in POST api/user/userStatus:", userSetting)
-        return Response.json(userSetting)
+        
+        return Response.json({status:200})
     }
     catch (error) {
         return new Response(`Webhook error: ${error.message}`, {
@@ -59,21 +62,39 @@ export async function POST(request) {
     })
     */
 }
-// GET just to return 200 status for preflight to work
-export async function GET(request) {
-    const searchParams = request.nextUrl.searchParams;
-    const userData = Object.fromEntries(searchParams);
 
-    if (userData?.userId) {
-        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, userData.userId)).where(eq(user_setting.type, userData.type));
-        console.log("queryExisting:",queryExisting[0])
-        let userWithLogs = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId))
-        console.log("userWithLogs:", userWithLogs)
-        let returnData = [{settings:queryExisting[0]},{logs:userWithLogs}]
-        console.log("returnData:",returnData)
-        return new Response(JSON.stringify(returnData), {
-            status: 200,
+export async function DELETE(request) {
+    const json = await request.json()
+    console.log("DELETE /api/user/log, JSON:", json)
+    //check if user with userId has same userScheduleDate log
+    //if yes, merge the incoming data in that log,
+    //if no, create a new log
+    try {
+        let userLog
+        let matching = await queryUserLogsForDate(json.userId, json.userScheduleDate)
+        
+        let logRecord = {
+            userScheduleDate: json.userScheduleDate,
+            data: json.updatedData,
+            userId: json.userId
+        }
+        console.log("logRecord:",logRecord)
+        if (matching) {
+            userLog = await db.update(user_logs)
+                .set({
+                    data: json.updatedData
+                }).where(eq(user_logs.id, matching.id)).returning();
+        }
+        else {
+            userLog = await db.insert(user_logs).values(logRecord).returning();
+        }
+        
+        return Response.json({status:200})
+    }
+    catch (error) {
+        return new Response(`Webhook error: ${error.message}`, {
 
+            status: 400,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
@@ -81,6 +102,10 @@ export async function GET(request) {
             },
         })
     }
+
+}
+// GET just to return 200 status for preflight to work
+export async function GET(request) {
 
     return new Response('Success!', {
         status: 200,

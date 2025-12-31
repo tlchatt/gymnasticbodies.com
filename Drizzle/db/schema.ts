@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index, serial } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, serial,json } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -9,8 +9,8 @@ export const user = pgTable("user", {
   image: text("image"),
   role: text("role"),
   banned: boolean("banned"),
-  banReason:text("banReason"),
-  banExpires:timestamp("banExpires"),
+  banReason: text("banReason"),
+  banExpires: timestamp("banExpires"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
@@ -27,6 +27,19 @@ export const user_setting = pgTable("user_setting", {
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+});
+export const user_logs = pgTable("user_logs", {
+  id: serial("id").primaryKey(),
+  data: json("data"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .$onUpdate(() => /* @__PURE__ */ new Date())
+    .notNull(),
+  userScheduleDate: text("user_schedule_date"),
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
@@ -112,6 +125,12 @@ export const accountRelations = relations(account, ({ one }) => ({
 export const userSettingRelations = relations(user_setting, ({ one }) => ({
   user: one(user, {
     fields: [user_setting.userId],
+    references: [user.id],
+  }),
+}));
+export const userLogsRelations = relations(user_logs, ({ one }) => ({
+  user: one(user, {
+    fields: [user_logs.userId],
     references: [user.id],
   }),
 }));
