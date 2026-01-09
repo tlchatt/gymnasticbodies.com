@@ -73,7 +73,6 @@ export async function GET(request) {
         console.log("returnData:",returnData)
         return new Response(JSON.stringify(returnData), {
             status: 200,
-
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',

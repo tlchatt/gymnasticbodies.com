@@ -9,9 +9,9 @@ import { eq } from 'drizzle-orm';
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     /* 
                curl -X POST \
-               "http://localhost:3001/api/user/subscription" \
+               "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
                -H "Content-Type: application/json" \
-               -d '{"status": "cancel","next_payment_date_gmt" : "2026-01-04T08:47:59", "start_date_gmt":"2025-12-26T08:47:59", "billing": {"first_name": "GW1", "email": "gw555284@tlchatt.com"},"date_created_gmt":"2024-12-22T17:58:41"}'
+               -d '{"status": "active","next_payment_date_gmt" : "2026-03-22T22:16:00", "start_date_gmt":"2025-12-15T09:45:00", "billing": {"first_name": "Aleksandar Jovic", "email": "aleksandarjovic@protonmail.com"},"date_created_gmt":"2026-01-07T09:45:00","date_created_gmt":"2026-01-07T09:45:00"}'
            */
     let testJson = {
         status: "cancelled",
