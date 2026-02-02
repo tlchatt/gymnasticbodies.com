@@ -11,15 +11,15 @@ export async function POST(request) {//when subscription webhook is triggered ->
                curl -X POST \
                "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
                -H "Content-Type: application/json" \
-               -d '{"status": "active","next_payment_date_gmt" : "2026-03-22T22:16:00", "start_date_gmt":"2025-12-15T09:45:00", "billing": {"first_name": "Aleksandar Jovic", "email": "aleksandarjovic@protonmail.com"},"date_created_gmt":"2026-01-07T09:45:00","date_created_gmt":"2026-01-07T09:45:00"}'
+               -d '{"status": "active","next_payment_date_gmt" : "2027-01-30T19:40:53", "start_date_gmt":"2026-01-30T12:22:53","end_date_gmt":"", "billing": {"first_name": "Yousef ElDaour ElDaour", "email": "yeldaour@gmail.com"},"date_created_gmt":"2026-01-30T12:22:53"}'
            */
     let testJson = {
-        status: "cancelled",
-        next_payment_date_gmt: "2025-12-26T17:22:53",
-        start_date_gmt: "2025-12-19T17:22:53",
+        status: "active",
+        next_payment_date_gmt: "2027-01-30T19:40:53",
+        start_date_gmt: "2026-01-01T12:22:53",
         billing: {
-            first_name: 'GWTest',
-            email: 'gw846@tlchatt.com'
+            first_name: 'Yousef ElDaour ElDaour',
+            email: 'yeldaour@gmail.com'
         }
     }
 

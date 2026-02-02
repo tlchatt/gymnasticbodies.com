@@ -9,11 +9,10 @@ export async function POST(request) {
     //cmd for curl request to test this endpoint:
     /* 
         curl -X POST \
-        "http://localhost:3001/api/user/resetPassword" \
+        "https://gymnasticbodies-com.vercel.app/api/user/resetPassword" \
         -H "Content-Type: application/json" \
-        -d '{"userId":"Etz1pjG6kIODJatu4JBJFu0RXLIo2vja","password":"prachi!!!123","confirmPassword":"prachi!!!123","token":"none"}'
+        -d '{"userId":"EsQnjfDHFIrp4ngwdFZIncC0Va8RNKOV","password":"KzGbwqKTUW","confirmPassword":"KzGbwqKTUW","token":"none"}'
     */
-
 
     let testJson = {
         userId: "rILmdmIYSI2bvapSfWWrqfRLzuHPYRjR",
