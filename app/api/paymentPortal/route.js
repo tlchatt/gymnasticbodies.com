@@ -155,24 +155,27 @@ export async function POST(request) {
         const apiResponse = ctrl.getResponse();
         if (apiResponse !== null) {
             const response = new ApiContracts.CreateTransactionResponse(apiResponse);
-            
+
             if (response !== null) {
                 if (response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
                     if (response.getTransactionResponse().getMessages() !== null) {
-                        resolve(NextResponse.json({
+                        console.log("response 1:", response.getTransactionResponse().getMessages().getMessage()[0].getDescription())
+                        return resolve(NextResponse.json({
                             success: true,
                             transactionId: response.getTransactionResponse().getTransId(),
                             responseCode: response.getTransactionResponse().getResponseCode(),
                             message: response.getTransactionResponse().getMessages().getMessage()[0].getDescription(),
                         }));
                     } else {
-                        resolve(NextResponse.json({
+                        console.log("response 2:", response.getTransactionResponse().getErrors().getError()[0].getErrorText())
+                        return resolve(NextResponse.json({
                             success: false,
                             error: response.getTransactionResponse().getErrors().getError()[0].getErrorText(),
                         }, { status: 400 }));
                     }
                 } else {
-                    resolve(NextResponse.json({
+                    console.log("response 3:", response.getMessages().getMessage()[0].getText())
+                    return resolve(NextResponse.json({
                         success: false,
                         error: response.getMessages().getMessage()[0].getText(),
                     }, { status: 400 }));
@@ -180,18 +183,18 @@ export async function POST(request) {
             } else {
                 const apiError = ctrl.getError();
                 console.error(apiError);
-                resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
+                console.log("response 4:", apiError)
+                return resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
             }
-            console.log("response:",response)
-            return Response.json(response)
+
         } else {
             const apiError = ctrl.getError();
             console.error(apiError);
-            console.log("apiError:",apiError)
-            resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
+            console.log("apiError:", apiError)
+            return resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
         }
     });
-    
+
     /*try {
         const apiResponse = await new Promise((resolve, reject) => {
             // Use the sandbox endpoint if in development
