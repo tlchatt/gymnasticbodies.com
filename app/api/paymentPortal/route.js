@@ -1,6 +1,6 @@
 // import { ApiContracts } from "authorizenet";
 import { APIContracts as ApiContracts, APIControllers as ApiControllers } from 'authorizenet';
-
+import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     const apiLoginId = process.env.AUTHORIZE_NET_API_LOGIN_ID;
@@ -151,52 +151,43 @@ export async function POST(request) {
     console.log("JSON.stringify(createRequest.getJSON(), null, 2)", JSON.stringify(createRequest.getJSON(), null, 2));
     // Execute the request using a promise-based approach
     const ctrl = new ApiControllers.CreateTransactionController(createRequest.getJSON());
-    ctrl.execute(function () {
-
-        var apiResponse = ctrl.getResponse();
-        
-        if (apiResponse != null) var response = new ApiContracts.CreateTransactionResponse(apiResponse);
-
-        //pretty print response
-        console.log(JSON.stringify(response, null, 2));
-
-        if (response != null) {
-            if (response.getMessages().getResultCode() == ApiContracts.MessageTypeEnum.OK) {
-                if (response.getTransactionResponse().getMessages() != null) {
-                    console.log('Successfully created transaction with Transaction ID: ' + response.getTransactionResponse().getTransId());
-                    console.log('Response Code: ' + response.getTransactionResponse().getResponseCode());
-                    console.log('Message Code: ' + response.getTransactionResponse().getMessages().getMessage()[0].getCode());
-                    console.log('Description: ' + response.getTransactionResponse().getMessages().getMessage()[0].getDescription());
-                }
-                else {
-                    console.log('Failed Transaction.');
-                    if (response.getTransactionResponse().getErrors() != null) {
-                        console.log('Error Code: ' + response.getTransactionResponse().getErrors().getError()[0].getErrorCode());
-                        console.log('Error message: ' + response.getTransactionResponse().getErrors().getError()[0].getErrorText());
+    ctrl.execute(() => {
+        const apiResponse = ctrl.getResponse();
+        if (apiResponse !== null) {
+            const response = new ApiContracts.CreateTransactionResponse(apiResponse);
+            if (response !== null) {
+                if (response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
+                    if (response.getTransactionResponse().getMessages() !== null) {
+                        resolve(NextResponse.json({
+                            success: true,
+                            transactionId: response.getTransactionResponse().getTransId(),
+                            responseCode: response.getTransactionResponse().getResponseCode(),
+                            message: response.getTransactionResponse().getMessages().getMessage()[0].getDescription(),
+                        }));
+                    } else {
+                        resolve(NextResponse.json({
+                            success: false,
+                            error: response.getTransactionResponse().getErrors().getError()[0].getErrorText(),
+                        }, { status: 400 }));
                     }
+                } else {
+                    resolve(NextResponse.json({
+                        success: false,
+                        error: response.getMessages().getMessage()[0].getText(),
+                    }, { status: 400 }));
                 }
+            } else {
+                const apiError = ctrl.getError();
+                console.error(apiError);
+                resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
             }
-            else {
-                console.log('Failed Transaction. ');
-                if (response.getTransactionResponse() != null && response.getTransactionResponse().getErrors() != null) {
-
-                    console.log('Error Code: ' + response.getTransactionResponse().getErrors().getError()[0].getErrorCode());
-                    console.log('Error message: ' + response.getTransactionResponse().getErrors().getError()[0].getErrorText());
-                }
-                else {
-                    console.log('Error Code: ' + response.getMessages().getMessage()[0].getCode());
-                    console.log('Error message: ' + response.getMessages().getMessage()[0].getText());
-                }
-            }
+        } else {
+            const apiError = ctrl.getError();
+            console.error(apiError);
+            resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
         }
-        else {
-            var apiError = ctrl.getError();
-            console.log(apiError);
-            console.log('Null Response.');
-        }
-
-        callback(response);
     });
+
     /*try {
         const apiResponse = await new Promise((resolve, reject) => {
             // Use the sandbox endpoint if in development
