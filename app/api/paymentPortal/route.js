@@ -151,50 +151,18 @@ export async function POST(request) {
     console.log("JSON.stringify(createRequest.getJSON(), null, 2)", JSON.stringify(createRequest.getJSON(), null, 2));
     // Execute the request using a promise-based approach
     const ctrl = new ApiControllers.CreateTransactionController(createRequest.getJSON());
-    console.log("ctrl:",ctrl)
-    ctrl.execute(() => {
-        const apiResponse = ctrl.getResponse();
-        console.log("apiResponse:",apiResponse)
-        if (apiResponse !== null) {
-            const response = new ApiContracts.CreateTransactionResponse(apiResponse);
-            console.log("response:",response)
-            if (response !== null) {
-                if (response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
-                    if (response.getTransactionResponse().getMessages() !== null) {
-                        console.log("response 1:", response.getTransactionResponse().getMessages().getMessage()[0].getDescription())
-                        return resolve(NextResponse.json({
-                            success: true,
-                            transactionId: response.getTransactionResponse().getTransId(),
-                            responseCode: response.getTransactionResponse().getResponseCode(),
-                            message: response.getTransactionResponse().getMessages().getMessage()[0].getDescription(),
-                        }));
-                    } else {
-                        console.log("response 2:", response.getTransactionResponse().getErrors().getError()[0].getErrorText())
-                        return resolve(NextResponse.json({
-                            success: false,
-                            error: response.getTransactionResponse().getErrors().getError()[0].getErrorText(),
-                        }, { status: 400 }));
-                    }
-                } else {
-                    console.log("response 3:", response.getMessages().getMessage()[0].getText())
-                    return resolve(NextResponse.json({
-                        success: false,
-                        error: response.getMessages().getMessage()[0].getText(),
-                    }, { status: 400 }));
-                }
-            } else {
-                const apiError = ctrl.getError();
-                console.error(apiError);
-                console.log("response 4:", apiError)
-                return resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
+    console.log("ctrl:", ctrl)
+    return new Promise((resolve, reject) => {
+        ctrl.execute(function () {
+            try {
+                var apiResponse = ctrl.getResponse();
+                console.log("apiResponse:",apiResponse)
+                resolve(apiResponse);
+            } catch (error) {
+                console.log("error:",error)
+                reject(error);
             }
-
-        } else {
-            const apiError = ctrl.getError();
-            console.error(apiError);
-            console.log("apiError:", apiError)
-            return resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
-        }
+        });
     });
 
     /*try {
