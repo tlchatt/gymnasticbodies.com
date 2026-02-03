@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { hashPassword } from "@/lib/password";
 export async function POST(request) {
     try {
+        console.log("request is:",request)
         const json = await request.json()
         console.log('paymentPortal json', json)
 
