@@ -156,11 +156,13 @@ export async function POST(request) {
         ctrl.execute(function () {
             try {
                 var apiResponse = ctrl.getResponse();
-                console.log("apiResponse:",apiResponse)
+                console.log("apiResponse:",apiResponse.messages.message)
                 resolve(apiResponse);
+                return apiResponse
             } catch (error) {
                 console.log("error:",error)
                 reject(error);
+                return error
             }
         });
     });
