@@ -2,15 +2,16 @@ import { ApiContracts } from "authorizenet";
 
 
 export async function POST(request) {
-    
-    const { opaqueData, customerInformation, amount = "10" } = request.body;
+
+
 
     const body = await request.text();
     console.log("body is:", body)
     const params = new URLSearchParams(body);
     console.log("params is:", params)
     const dataValue = params.get('dataValue');
-    console.log("dataValue:", dataValue);
+    const dataDescriptor = params.get('dataDescriptor');
+
     // handle the data
 
     let data =
@@ -119,21 +120,34 @@ export async function POST(request) {
     merchantAuthenticationType.setTransactionKey(transactionKey);
 
     // Set up the payment object
+    var opaqueData = new ApiContracts.OpaqueDataType();
+    opaqueData.setDataDescriptor(dataDescriptor);
+    opaqueData.setDataValue(dataValue);
+
+
     const paymentType = new ApiContracts.PaymentType();
     paymentType.setOpaqueData(opaqueData);
 
-    // Set up the transaction request
-    const transactionRequestType = new ApiContracts.TransactionRequestType();
-    transactionRequestType.setTransactionType(ApiContracts.TransactionTypeEnum.AUTHCAPTURETRANSACTION); // Auth and capture in one go
-    transactionRequestType.setPayment(paymentType);
-    transactionRequestType.setAmount(amount);
+    var transactionRequestType = new ApiContracts.TransactionRequestType();
+	transactionRequestType.setTransactionType(ApiContracts.TransactionTypeEnum.AUTHCAPTURETRANSACTION);
+	transactionRequestType.setPayment(paymentType);
+	// transactionRequestType.setAmount(utils.getRandomAmount());
+	// transactionRequestType.setLineItems(lineItems);
+	// transactionRequestType.setUserFields(userFields);
+	// transactionRequestType.setOrder(orderDetails);
+	// transactionRequestType.setTax(tax);
+	// transactionRequestType.setDuty(duty);
+	// transactionRequestType.setShipping(shipping);
+	// transactionRequestType.setBillTo(billTo);
+	// transactionRequestType.setShipTo(shipTo);
+	// transactionRequestType.setTransactionSettings(transactionSettings);
 
     // Build the full request
     const createRequest = new ApiContracts.CreateTransactionRequest();
     createRequest.setMerchantAuthentication(merchantAuthenticationType);
     createRequest.setTransactionRequest(transactionRequestType);
 
-
+    console.log("JSON.stringify(createRequest.getJSON(), null, 2)",JSON.stringify(createRequest.getJSON(), null, 2));
     // Execute the request using a promise-based approach
     const ctrl = new ApiControllers.CreateTransactionController(createRequest.toJSON());
 

@@ -36,7 +36,7 @@ export default function paymentPortal() {
             document.getElementById("routingNumber").value = "";
             document.getElementById("nameOnAccount").value = "";
             document.getElementById("accountType").value = "";*/
-            // document.getElementById("paymentForm").submit();
+            document.getElementById("paymentForm").submit();
         }
     }, []);
 
