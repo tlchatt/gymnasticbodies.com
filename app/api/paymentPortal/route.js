@@ -2,11 +2,13 @@ import { ApiContracts } from "authorizenet";
 
 
 export async function POST(request) {
-    console.log("request is:", request.body)
+    
     const { opaqueData, customerInformation, amount = "10" } = request.body;
 
     const body = await request.text();
+    console.log("body is:", body)
     const params = new URLSearchParams(body);
+    console.log("params is:", params)
     const dataValue = params.get('dataValue');
     console.log("dataValue:", dataValue);
     // handle the data
