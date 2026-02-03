@@ -151,11 +151,13 @@ export async function POST(request) {
     console.log("JSON.stringify(createRequest.getJSON(), null, 2)", JSON.stringify(createRequest.getJSON(), null, 2));
     // Execute the request using a promise-based approach
     const ctrl = new ApiControllers.CreateTransactionController(createRequest.getJSON());
+    console.log("ctrl:",ctrl)
     ctrl.execute(() => {
         const apiResponse = ctrl.getResponse();
+        console.log("apiResponse:",apiResponse)
         if (apiResponse !== null) {
             const response = new ApiContracts.CreateTransactionResponse(apiResponse);
-
+            console.log("response:",response)
             if (response !== null) {
                 if (response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
                     if (response.getTransactionResponse().getMessages() !== null) {
