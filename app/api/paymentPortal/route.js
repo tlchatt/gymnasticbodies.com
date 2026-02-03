@@ -13,7 +13,8 @@ export async function POST(request) {
     console.log("params is:", params)
     const dataValue = params.get('dataValue');
     const dataDescriptor = params.get('dataDescriptor');
-
+    console.log("dataValue:",dataValue)
+    console.log("dataDescriptor:",dataDescriptor)
     // handle the data
 
     let data =
@@ -118,8 +119,8 @@ export async function POST(request) {
 
     // Set up the merchant authentication
     const merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
-    merchantAuthenticationType.setName('7F57wRjv');
-    merchantAuthenticationType.setTransactionKey('7k884WqLj96E36jy');
+    merchantAuthenticationType.setName(apiLoginId);
+    merchantAuthenticationType.setTransactionKey(transactionKey);
 
     // Set up the payment object
     var opaqueData = new ApiContracts.OpaqueDataType();

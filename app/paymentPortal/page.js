@@ -36,22 +36,22 @@ export default function paymentPortal() {
             document.getElementById("routingNumber").value = "";
             document.getElementById("nameOnAccount").value = "";
             document.getElementById("accountType").value = "";*/
-            document.getElementById("paymentForm").submit();
+            // document.getElementById("paymentForm").submit();
         }
     }, []);
 
     return (
         <div>
             <Script src="https://js.authorize.net/v3/AcceptUI.js
-  " strategy="beforeInteractive" />
+  " strategy="afterInteractive" />
             <div>Payment Portal</div>
             <form id="paymentForm"
                 method="POST"
-                action="https://gymnasticbodies-com.vercel.app/api/paymentPortal">
+                action="https://gymnasticbodies-com.vercel.app/api/paymentPortals">
                 <input type="hidden" name="dataValue" id="dataValue" />
                 <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
                 <button type="button"
-                    className="AcceptUI"
+                    className="AcceptUI"x   
                     data-billingaddressoptions='{"show":true, "required":false}'
                     data-apiloginid="7F57wRjv"
                     data-clientkey="6vPVd2WmeVmz24UB5qkm8Avr3w5yxpAVW6c5MdkWT3kJ2E5U38A2Z5E2LZvdz9Qb"
