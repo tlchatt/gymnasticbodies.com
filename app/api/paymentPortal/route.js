@@ -118,8 +118,8 @@ export async function POST(request) {
 
     // Set up the merchant authentication
     const merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
-    merchantAuthenticationType.setName(apiLoginId);
-    merchantAuthenticationType.setTransactionKey(transactionKey);
+    merchantAuthenticationType.setName('7F57wRjv');
+    merchantAuthenticationType.setTransactionKey('7k884WqLj96E36jy');
 
     // Set up the payment object
     var opaqueData = new ApiContracts.OpaqueDataType();
