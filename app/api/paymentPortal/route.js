@@ -1,10 +1,8 @@
-import { ApiContracts } from "authorizenet";
+// import { ApiContracts } from "authorizenet";
+import { APIContracts as ApiContracts, APIControllers as ApiControllers } from 'authorizenet';
 
 
 export async function POST(request) {
-
-
-
     const body = await request.text();
     console.log("body is:", body)
     const params = new URLSearchParams(body);
