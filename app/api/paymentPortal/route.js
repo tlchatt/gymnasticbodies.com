@@ -5,7 +5,8 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
     const apiLoginId = process.env.AUTHORIZE_NET_API_LOGIN_ID;
     const transactionKey = process.env.AUTHORIZE_NET_TRANSACTION_KEY;
-
+    console.log("apiLoginId:",apiLoginId)
+    console.log("transactionKey:",transactionKey)
     const body = await request.text();
     console.log("body is:", body)
     const params = new URLSearchParams(body);
@@ -154,18 +155,16 @@ export async function POST(request) {
     console.log("ctrl:", ctrl)
     return new Promise((resolve, reject) => {
         ctrl.execute(function () {
-            try {
-                var apiResponse = ctrl.getResponse();
-                console.log("apiResponse:",apiResponse.messages.message)
-                resolve(apiResponse);
-                return apiResponse
-            } catch (error) {
-                console.log("error:",error)
-                reject(error);
-                return error
-            }
+          try {
+            var apiResponse = ctrl.getResponse();
+            console.log("apiResponse:", apiResponse.messages.message)
+            resolve(apiResponse);
+          } catch (error) {
+            console.log("error:", error)
+            reject(error);
+          }
         });
-    });
+      });
 
     /*try {
         const apiResponse = await new Promise((resolve, reject) => {
