@@ -150,7 +150,7 @@ export async function POST(request) {
 
     console.log("JSON.stringify(createRequest.getJSON(), null, 2)", JSON.stringify(createRequest.getJSON(), null, 2));
     // Execute the request using a promise-based approach
-    const ctrl = new ApiControllers.CreateTransactionController(createRequest.toJSON());
+    const ctrl = new ApiControllers.CreateTransactionController(createRequest.getJSON());
 
     try {
         const apiResponse = await new Promise((resolve, reject) => {
