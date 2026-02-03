@@ -1,9 +1,5 @@
-import { auth } from "@/lib/auth"; // path to your auth file
-import { headers } from "next/headers"
-import bcrypt from 'bcrypt';
-import ApiContracts from 'authorizenet/lib/api/contracts';
-import ApiControllers from 'authorizenet/lib/api/controllers';
-import { hashPassword } from "@/lib/password";
+import { ApiContracts } from "authorizenet";
+
 
 export async function POST(request) {
     console.log("request is:", request.body)
@@ -138,7 +134,7 @@ export async function POST(request) {
 
     // Execute the request using a promise-based approach
     const ctrl = new ApiControllers.CreateTransactionController(createRequest.toJSON());
-    
+
     try {
         const apiResponse = await new Promise((resolve, reject) => {
             // Use the sandbox endpoint if in development
