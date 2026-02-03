@@ -155,6 +155,7 @@ export async function POST(request) {
         const apiResponse = ctrl.getResponse();
         if (apiResponse !== null) {
             const response = new ApiContracts.CreateTransactionResponse(apiResponse);
+            
             if (response !== null) {
                 if (response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
                     if (response.getTransactionResponse().getMessages() !== null) {
@@ -181,13 +182,16 @@ export async function POST(request) {
                 console.error(apiError);
                 resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
             }
+            console.log("response:",response)
+            return Response.json(response)
         } else {
             const apiError = ctrl.getError();
             console.error(apiError);
+            console.log("apiError:",apiError)
             resolve(NextResponse.json({ error: 'Null Response' }, { status: 500 }));
         }
     });
-
+    
     /*try {
         const apiResponse = await new Promise((resolve, reject) => {
             // Use the sandbox endpoint if in development
