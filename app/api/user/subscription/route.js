@@ -45,7 +45,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
             console.log(" tomorrowIso:", tomorrowIso)
             //if date_created_gmt: '2024-12-22T17:58:41', contains current date
             //if deos not match return 200 OK
-            if (!(json?.date_created_gmt?.includes(newDate)) || !(json?.date_created_gmt?.includes(tomorrowIso))) {
+            if (!(json?.date_created_gmt?.includes(newDate)) && !(json?.date_created_gmt?.includes(tomorrowIso))) {
                 console.log("incoming date created does not include todays date")
                 return new Response('OK', { status: 200 });
             }
