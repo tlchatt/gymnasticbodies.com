@@ -11,15 +11,16 @@ export async function POST(request) {//when subscription webhook is triggered ->
                curl -X POST \
                "https://gymnasticbodies-com.vercel.app/api/user/subscription" \
                -H "Content-Type: application/json" \
-               -d '{"status": "active","next_payment_date_gmt" : "2027-01-30T19:40:53", "start_date_gmt":"2026-01-30T12:22:53","end_date_gmt":"", "billing": {"first_name": "Yousef ElDaour ElDaour", "email": "yeldaour@gmail.com"},"date_created_gmt":"2026-01-30T12:22:53"}'
+               -d '{"status": "active","next_payment_date_gmt" : "2027-08-13T12:00:00", "start_date_gmt":"2026-02-13T12:00:00","end_date_gmt":"2027-08-13T12:00:00", "billing": {"first_name": "Andrew Pagels", "email": "andrew.pagels@gmail.com"},"date_created_gmt":"2026-02-13T12:00:00"}'
            */
     let testJson = {
         status: "active",
-        next_payment_date_gmt: "2027-01-30T19:40:53",
-        start_date_gmt: "2026-01-01T12:22:53",
+        next_payment_date_gmt: "2027-08-13T12:00:00",
+        start_date_gmt: "2026-02-13T12:00:00",
+        end_date_gmt: "",
         billing: {
-            first_name: 'Yousef ElDaour ElDaour',
-            email: 'yeldaour@gmail.com'
+            first_name: 'Andrew Pagels',
+            email: 'andrew.pagels@gmail.com'
         }
     }
 
@@ -37,14 +38,18 @@ export async function POST(request) {//when subscription webhook is triggered ->
             const today = new Date();
             const isoformat = today.toISOString();
             let newDate = isoformat.split("T")[0]
-            console.log(" newDate:",newDate)
+            let tomorrowDate = new Date();
+            tomorrowDate.setDate(new Date().getDate() + 1);
+            let tomorrowIso = tomorrowDate.toISOString().split("T")[0];
+            console.log(" newDate:", newDate)
+            console.log(" tomorrowIso:", tomorrowIso)
             //if date_created_gmt: '2024-12-22T17:58:41', contains current date
             //if deos not match return 200 OK
-            if(!json?.date_created_gmt?.includes(newDate)){
+            if (!(json?.date_created_gmt?.includes(newDate)) || !(json?.date_created_gmt?.includes(tomorrowIso))) {
                 console.log("incoming date created does not include todays date")
                 return new Response('OK', { status: 200 });
             }
-            
+
 
             password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
                 length: 10,//for better auth 8 is min characters required
@@ -84,9 +89,16 @@ export async function POST(request) {//when subscription webhook is triggered ->
             data: {
                 status: json?.status,
                 renewaldate: json?.next_payment_date_gmt,
-                startdate: json?.start_date_gmt
+                startdate: json?.start_date_gmt,
+                phone: json?.phone ? json.phone : null,
+                country: json?.country ? json.country : null,
+                email: json?.billing?.email ? json.billing.email : null,
+                term: json?.term ? json.term : null,
+                first_name: json?.billing?.first_name ? json.billing.first_name : null,
+                last_name: json?.billing?.last_name ? json.billing.last_name : null,
             },
-            userId: dbUser.id
+            userId: dbUser.id,
+
         }
 
         let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
