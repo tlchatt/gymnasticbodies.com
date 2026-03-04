@@ -51,15 +51,17 @@ export async function POST(request) {
 
     }
     catch (error) {
-        return new Response(`Webhook error: ${error.message}`, {
+        console.log("error is:", error)
+        return Response.json(error)
+        // return new Response(`Webhook error: ${error.message}`, {
 
-            status: 400,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            },
-        })
+        //     status: 400,
+        //     headers: {
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        //         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        //     },
+        // })
     }
     /*
     return new Response('Success!', {
@@ -81,13 +83,29 @@ export async function POST(request) {
     */
 }
 // GET just to return 200 status for preflight to work
-export async function GET() {
-    return new Response('Success!', {
-        status: 200,
+export async function GET(request) {
+    const url = new URL(request.url);
+    console.log("uel is:", url)
+    const token = url.searchParams.get("authToken");
+    console.log("token is:", token)
+    const session = await auth.api.getSession({
         headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        },
-    })
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    if (!session) {
+        return new Response("Unauthorized", { status: 401 });
+    }
+    // User is now authenticated for this request
+    console.log("session is:", session)
+    return new Response(`Hello, ${session.user.name}`);
+    // return new Response('Success!', {
+    //     status: 200,
+    //     headers: {
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    //         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    //     },
+    // })
 }
