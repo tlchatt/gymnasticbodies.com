@@ -170,7 +170,7 @@ export default function Home() {
       localStorage.setItem('postAWS', postAWS);
       // router.push(`${appUrl}?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&authExpireTime=${expirationDate}&timezone=${timezone}`)
       setLoading(false);
-      router.push(`http://localhost:3001/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${email}&name=${name}`)
+      router.push(`https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${email}&name=${name}`)
 
     }
   }

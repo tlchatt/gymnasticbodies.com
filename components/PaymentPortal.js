@@ -148,7 +148,7 @@ export function PaymentPortal(props) {
                         localStorage.setItem('timezone', timezone);
                         localStorage.setItem('postAWS', postAWS);
                         // router.push('https://my.gymnasticbodies.com/')
-                        router.push(`http://localhost:3001/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${userEmail}&name=${name}`)
+                        router.push(`https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${userEmail}&name=${name}`)
                     }
                     else {
                         setError(true)
