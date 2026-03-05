@@ -1,0 +1,191 @@
+[
+  {
+    "result": {
+      "profile": {
+        "paymentProfiles": [
+          {
+            "customerPaymentProfileId": "546369472",
+            "payment": {
+              "creditCard": {
+                "cardNumber": "XXXX1996",
+                "expirationDate": "XXXX",
+                "cardType": "MasterCard"
+              }
+            },
+            "billTo": {
+              "firstName": "Scott Malinoski",
+              "zip": "85249",
+              "country": "USA"
+            }
+          }
+        ],
+        "shipToList": [
+          {
+            "customerAddressId": "590249597",
+            "firstName": "Scott Malinoski"
+          }
+        ],
+        "profileType": "regular",
+        "customerProfileId": "547491009",
+        "merchantCustomerId": "28769",
+        "email": "makeoneup@gmail.com"
+      },
+      "messages": {
+        "resultCode": "Ok",
+        "message": [
+          {
+            "code": "I00001",
+            "text": "Successful."
+          }
+        ]
+      }
+    },
+    "transactionHistory": {
+      "status": true,
+      "data": {
+        "totalNumInResultSet": 1,
+        "messages": {
+          "resultCode": "Ok",
+          "message": [
+            {
+              "code": "I00004",
+              "text": "No records found."
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "result": {
+      "profile": {
+        "shipToList": [
+          {
+            "customerAddressId": "591623409",
+            "firstName": "Timothy Myers"
+          }
+        ],
+        "profileType": "regular",
+        "customerProfileId": "547573861",
+        "merchantCustomerId": "28770",
+        "email": "tmyers3223@gmail.com"
+      },
+      "messages": {
+        "resultCode": "Ok",
+        "message": [
+          {
+            "code": "I00001",
+            "text": "Successful."
+          }
+        ]
+      }
+    },
+    "transactionHistory": {
+      "status": true,
+      "data": {
+        "totalNumInResultSet": 1,
+        "messages": {
+          "resultCode": "Ok",
+          "message": [
+            {
+              "code": "I00004",
+              "text": "No records found."
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "result": {
+      "profile": {
+        "paymentProfiles": [
+          {
+            "customerPaymentProfileId": "546470881",
+            "payment": {
+              "creditCard": {
+                "cardNumber": "XXXX3196",
+                "expirationDate": "XXXX",
+                "cardType": "Visa"
+              }
+            },
+            "billTo": {
+              "firstName": "Natasha",
+              "country": "USA"
+            }
+          }
+        ],
+        "shipToList": [
+          {
+            "customerAddressId": "591640475",
+            "firstName": "Natasha"
+          }
+        ],
+        "profileType": "regular",
+        "customerProfileId": "547588897",
+        "merchantCustomerId": "28771",
+        "email": "bhoopsbanks@gmail.com"
+      },
+      "messages": {
+        "resultCode": "Ok",
+        "message": [
+          {
+            "code": "I00001",
+            "text": "Successful."
+          }
+        ]
+      }
+    },
+    "transactionHistory": {
+      "status": true,
+      "data": {
+        "transactions": [
+          {
+            "transId": "44039437298",
+            "submitTimeUTC": "2023-04-04T14:10:04.64Z",
+            "submitTimeLocal": "2023-04-04T07:10:04.64",
+            "transactionStatus": "declined",
+            "invoiceNumber": "GB408646",
+            "firstName": "Natasha",
+            "accountType": "Visa",
+            "accountNumber": "XXXX3196",
+            "settleAmount": 29.99,
+            "marketType": "eCommerce",
+            "product": "Card Not Present",
+            "profile": {
+              "customerProfileId": "547588897",
+              "customerPaymentProfileId": "546470881"
+            }
+          },
+          {
+            "transId": "44033904508",
+            "submitTimeUTC": "2023-04-01T14:09:05.55Z",
+            "submitTimeLocal": "2023-04-01T07:09:05.55",
+            "transactionStatus": "declined",
+            "invoiceNumber": "GB408646",
+            "firstName": "Natasha",
+            "accountType": "Visa",
+            "accountNumber": "XXXX3196",
+            "settleAmount": 29.99,
+            "marketType": "eCommerce",
+            "product": "Card Not Present",
+            "profile": {
+              "customerProfileId": "547588897",
+              "customerPaymentProfileId": "546470881"
+            }
+          }
+        ],
+        "totalNumInResultSet": 5,
+        "messages": {
+          "resultCode": "Ok",
+          "message": [
+            {
+              "code": "I00001",
+              "text": "Successful."
+            }
+          ]
+        }
+      }
+    }
+  }
+]

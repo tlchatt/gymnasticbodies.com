@@ -1,0 +1,52 @@
+ .TextBlock p, .TextBlock li  {
+     font-style: normal;
+     font-weight: 570 !important;
+     font-size: 16px !important;
+     line-height: 150% !important;
+ }
+ .TextBlock h1, .TextBlock h2, .TextBlock h3, .TextBlock h4, .TextBlock h5 {
+     padding-inline-start: 0;
+     list-style-position: inside;
+ }
+
+ .TextBlock ul {
+     padding-inline-start: 0;
+     list-style-position: inside;
+ }
+
+ @media (min-width: 400px) {
+     .TextBlock p {
+         font-size: 17px !important;
+
+     }
+
+ }
+
+ @media (min-width: 640px) {
+     .TextBlock p {
+         font-size: 17px !important;
+
+     }
+ }
+
+ @media (min-width: 1024px) {
+     .TextBlock p {
+         font-size: 18px !important;
+
+     }
+ }
+
+ @media (min-width: 1536px) {
+     .TextBlock p {
+         font-size: 18px !important;
+
+     }
+ }
+
+ @media (min-width: 1920px) {
+     .TextBlock p {
+         font-size: 19px !important;
+
+     }
+
+ }

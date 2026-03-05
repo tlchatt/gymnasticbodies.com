@@ -29,11 +29,10 @@ export async function POST(request) {//when subscription webhook is triggered ->
     console.log("POST /api/user/subscription, JSON:", json)
 
     try {
-
-        dbUser = await getUserWithEmail(json.billing.email)
-        isExistingUser = dbUser?.id ? true : false
-
-        if (!isExistingUser) {
+        if (json.reason == "checkUserInNeon") {// create an account on login (old user, not in neon)
+            dbUser = await getUserWithEmail(json.email)
+        }
+        else if (json.reason == "registerWPass") {
             //current date in GMT format
             const today = new Date();
             const isoformat = today.toISOString();
@@ -45,47 +44,90 @@ export async function POST(request) {//when subscription webhook is triggered ->
             console.log(" tomorrowIso:", tomorrowIso)
             //if date_created_gmt: '2024-12-22T17:58:41', contains current date
             //if deos not match return 200 OK
-            if (!(json?.date_created_gmt?.includes(newDate)) && !(json?.date_created_gmt?.includes(tomorrowIso))) {
-                console.log("incoming date created does not include todays date")
-                return new Response('OK', { status: 200 });
+            // if (!(json?.date_created_gmt?.includes(newDate)) && !(json?.date_created_gmt?.includes(tomorrowIso))) {
+            //     console.log("incoming date created does not include todays date")
+            //     return new Response('OK', { status: 200 });
+            // }
+
+            password = json?.password
+
+            console.log("password in registerWPass:", password)
+            dbUser = await createAccountForUser()
+        }
+        else {
+            dbUser = await getUserWithEmail(json.billing.email)
+            isExistingUser = dbUser?.user?.id ? true : false
+
+            if (!isExistingUser) {
+                //current date in GMT format
+                const today = new Date();
+                const isoformat = today.toISOString();
+                let newDate = isoformat.split("T")[0]
+                let tomorrowDate = new Date();
+                tomorrowDate.setDate(new Date().getDate() + 1);
+                let tomorrowIso = tomorrowDate.toISOString().split("T")[0];
+                console.log(" newDate:", newDate)
+                console.log(" tomorrowIso:", tomorrowIso)
+                //if date_created_gmt: '2024-12-22T17:58:41', contains current date
+                //if deos not match return 200 OK
+                // if (!(json?.date_created_gmt?.includes(newDate)) && !(json?.date_created_gmt?.includes(tomorrowIso))) {
+                //     console.log("incoming date created does not include todays date")
+                //     return new Response('OK', { status: 200 });
+                // }
+
+                if (json?.password) {
+                    password = json?.password
+                } else {
+                    password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
+                        length: 10,//for better auth 8 is min characters required
+                        numbers: true,
+                        symbols: true,
+                        strict: true
+                    });
+                }
+
+                console.log("password in !isExistingUser:", password)
+                dbUser = await createAccountForUser()
             }
 
 
-            password = generatePassword.generate({//https://www.npmjs.com/package/generate-password
-                length: 10,//for better auth 8 is min characters required
-                numbers: true,
-                symbols: true,
-                strict: true
-            });
-            console.log("password in !isExistingUser:", password)
-            dbUser = await createAccountForUser()
+            await updateUserSubscriptionStatus()
+
+            if (!json?.password) {//only send email if password is not provided by the user 
+                await sendEmail()
+            }
         }
 
-        await updateUserSubscriptionStatus()
-
-        await sendEmail()
-
-
-        return new Response('OK', { status: 200 });
+        console.log("dbUser:", dbUser)
+        // return new Response('OK', { status: 200, data: dbUser });
+        return new Response(JSON.stringify({ message: 'OK', data: dbUser }), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
     } catch (error) {
         console.error(error);
         return new Response('Error processing request', { status: 200 });//so that webhook doesn't deactivate in wordpress
     }
-    // async function getUserWithEmail() {
-    //     //get user based on the email address
-    //     let returnUser = await db.select().from(user).where(eq(user.email, json.billing.email));
-    //     console.log("user in getUserWithEmail:", returnUser)
-    //     if (returnUser.length > 1) {
-    //         console.warn("warning multiple users in getUserWithEmail:", returnUser)
-    //     }
-    //     return returnUser[0]
-    // }
+
+    /*async function getUserWithEmail() {
+        //get user based on the email address
+        let returnUser = await db.select().from(user).where(eq(user.email, json.billing.email));
+        console.log("user in getUserWithEmail:", returnUser)
+        if (returnUser.length > 1) {
+            console.warn("warning multiple users in getUserWithEmail:", returnUser)
+        }
+        return returnUser[0]
+    }*/
+
     async function updateUserSubscriptionStatus() {
         console.log("POST /api/user/subscription, updateUserSubscriptionStatus")
         let userSetting
         let settingsRecord = {
             type: 'subscription',
+            status: json?.status,
             data: {
                 status: json?.status,
                 renewaldate: json?.next_payment_date_gmt,
@@ -96,11 +138,16 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 term: json?.term ? json.term : null,
                 first_name: json?.billing?.first_name ? json.billing.first_name : null,
                 last_name: json?.billing?.last_name ? json.billing.last_name : null,
+                authorizeCustomer: json?.profile,
+                authorizeSubscription: json?.subscriptionId,
+
             },
-            userId: dbUser.id,
+            userId: dbUser.user.id,
+            authorizeNextImport: json?.authorizeNextImport,
+            authorizeCustomerId: json?.authorizeCustomerId,
 
         }
-
+        console.log("settingsRecord:", settingsRecord)
         let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
 
         if (matching) {
@@ -119,15 +166,18 @@ export async function POST(request) {//when subscription webhook is triggered ->
     async function createAccountForUser() {
         //create account field, which will create the user too.
         console.log("POST /api/user/subscription, createAccountForUser")
+        let first_name = json.billing ? json.billing.first_name : json.first_name
+        let email = json.billing ? json.billing.email : json.email
         const signUpData = await auth.api.signUpEmail({
             body: {
-                name: json.billing.first_name, // required
-                email: json.billing.email, // required
+                name: first_name, // required
+                email: email, // required
                 password: password, // required
             },
         });
         console.log("new user data for subscription:", signUpData)
-        return signUpData.user
+        // return signUpData.user
+        return signUpData
     }
     async function sendEmail() {
         console.log("POST /api/user/subscription, sendEmail")

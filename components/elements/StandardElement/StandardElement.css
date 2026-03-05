@@ -1,0 +1,247 @@
+/*
+@media (min-width: 640px) {
+xs; extra-small: 0px
+sm; small: 640px
+md; medium: 1024px
+lg; large: 1536px
+xl; extra-large: 1920px
+sm and md share settigs due to addition of side nav subracting 300px from overall 1024 - 1536.
+https://docs.google.com/spreadsheets/d/19T5Ns6KfzR0LRQYH7nW5SZZqLessOPNvgXMoFrPEpn8/edit?usp=sharing
+*/
+
+.H1 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px !important;
+
+    @media (min-width: 640px) {
+        font-size: 33px;
+        line-Height: 41px !important;
+    }
+
+    @media (min-width: 1536px) {
+        font-size: 36px;
+        line-height: 45px !important;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 40px;
+        line-height: 50px !important;
+    }
+
+    margin-block-start: .35em;
+    margin-block-end: .25em;
+}
+
+.H2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px !important;
+
+    @media (min-width: 640px) {
+        font-size: 26px;
+        line-Height: 40px !important;
+    }
+
+    @media (min-width: 1536px) {
+        font-size: 29px;
+        line-height: 44px !important;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 32px;
+        line-height: 48px !important;
+    }
+
+    margin-block-start: .35em;
+    margin-block-end: .25em;
+}
+
+.H3 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px !important;
+
+    @media (min-width: 640px) {
+        font-size: 24px;
+        line-Height: 36px !important;
+    }
+
+    @media (min-width: 1536px) {
+        font-size: 26px;
+        line-height: 39px !important;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 29px;
+        line-height: 43px !important;
+    }
+
+    margin-block-start: .35em;
+    margin-block-end: .25em;
+}
+
+.H4 {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 29px !important;
+
+    @media (min-width: 640px) {
+        font-size: 21px;
+        line-Height: 32px !important;
+    }
+
+    @media (min-width: 1536px) {
+        font-size: 24px;
+        line-height: 35px !important;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 26px;
+        line-height: 39px !important;
+    }
+
+    margin-block-start: .35em;
+    margin-block-end: .25em;
+}
+
+.H5 {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 26px !important;
+
+    @media (min-width: 640px) {
+        font-size: 19px;
+        line-Height: 29px !important;
+    }
+
+    @media (min-width: 1536px) {
+        font-size: 21px;
+        line-height: 32px !important;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 23px;
+        line-height: 35px !important;
+    }
+
+    margin-block-start: .35em;
+    margin-block-end: .25em;
+}
+
+.P {
+    font-size: 16px;
+    line-height: 24px !important;
+
+    @media (min-width: 640px) {
+        font-size: 17px;
+        line-Height: 26px !important;
+    }
+
+    @media (min-width: 1536px) {
+        font-size: 19px;
+        line-height: 29px !important;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 21px;
+        line-height: 31px !important;
+    }
+
+    margin-block-start: .35em;
+    margin-block-end: .25em;
+}
+
+.Button {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 8px 32px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    width: 75%;
+
+    @media (min-width: 640px) {
+        font-size: 24px;
+        width: 55%;
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+}
+
+.ButtonA {
+    text-decoration: none;
+    width: inherit;
+}
+
+.HR {
+    margin: 24px;
+
+    @media (min-width: 640px) {
+        margin: 32px;
+    }
+}
+
+.imageStyle {
+    width: 100%;
+    margin: 16px auto;
+
+    @media (min-width: 640px) {
+        width: 80%;
+        margin: 32px auto;
+    }
+
+    @media (min-width: 1536px) {
+
+        width: 90%;
+        margin: 48px auto;
+    }
+
+    @media (min-width: 1920px) {
+        width: 75%;
+        margin: 64px auto;
+    }
+
+    @media (min-width: 1920px) {
+        width: 75%;
+        margin: 64px auto;
+    }
+
+}
+
+.UL {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 30px;
+
+    @media (min-width: 640px) {
+        padding-inline-start: 40px;
+    }
+
+    @media (min-width: 1536px) {
+        padding-inline-start: 80px;
+    }
+
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+}
+
+.LI {
+    font-size: '18px!important';
+    line-height: '27px!important';
+    letter-spacing: '0.25px';
+}
+
+.link {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    cursor: pointer;
+}

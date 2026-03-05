@@ -1,0 +1,364 @@
+.ContactForm {
+    overflow: hidden;
+    display: grid;
+    padding: 1em;
+
+}
+
+.Form {
+    display: grid;
+    position: relative;
+    align-self: start;
+    // min-height: 385px;
+    min-width: 100%;
+    gap:10px;
+
+}
+
+.FormSent {
+    display: grid;
+    height: 250px;
+    align-items: center;
+    justify-items: center;
+}
+
+.Title {
+    padding: 0 8px;
+}
+
+.Item {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    align-items: center;
+    margin: 8px;
+}
+
+.SVG {
+    justify-self: center;
+    height: 28px !important;
+
+    @media (min-width: 640px) {
+        height: 32px !important;
+    }
+
+    border-radius: 50%;
+    margin: 7px;
+}
+
+.SVGClose {
+    justify-self: end;
+    padding: 0 !important;
+
+}
+
+.CloseDiv {
+    display: grid;
+    justify-self: end;
+}
+
+.Label {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    margin: 0 16px;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.P {
+    position: absolute;
+    margin: 8px 0px;
+    padding: 0 16px;
+    animation-name: fade-in;
+    animation-duration: .5s;
+}
+
+.note {
+    animation-name: fade-in;
+    animation-duration: 3s;
+    place-self: center;
+}
+
+.fadeOut {
+    opacity: 0;
+    animation-name: fade-out;
+    animation-duration: .5s;
+}
+
+.Input {
+    margin: 8px 0px;
+    padding: 0 16px;
+    background: none;
+    width: 100%;
+    // height: 70%;
+    min-width: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    outline: unset;
+    font-size: 18px;
+    line-Height: 27px;
+
+    @media (min-width: 640px) {
+        font-size: 20px;
+        line-Height: 28px
+    }
+
+    line-Height: 28px;
+    font-weight: 300;
+    
+    
+}
+
+.TextArea {
+    margin: 8px 0px;
+    padding: 0 16px;
+    background: none;
+    display: block;
+    color: currentColor;
+    width: 100%;
+    min-width: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    outline: unset;
+    font-size: 18px;
+    line-Height: 25px;
+
+    @media (min-width: 640px) {
+        font-size: 20px;
+        line-Height: 28px
+    }
+}
+
+.CheckBox {
+    margin: 8px 0px;
+    vertical-align: middle;
+    border: 1px solid;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    min-width: 0;
+    line-Height: 27px;
+    float: right;
+
+    @media (min-width: 640px) {
+        height: 20px;
+        width: 20px;
+        min-width: 0;
+        font-size: 20px;
+        line-Height: 28px
+    }
+
+    line-Height: 28px;
+    font-weight: 500
+}
+
+.CheckBox:checked {
+    appearance: auto;
+}
+
+.sendIt {
+    display: grid;
+    grid-auto-flow: row;
+    align-items: center;
+    margin: 8px;
+}
+
+.status {
+    height: 32px;
+    position: relative;
+}
+
+@keyframes fly {
+    11.1% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    22.2% {
+        bottom: 10%;
+        left: 80%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    33.3% {
+        bottom: 10%;
+        left: 80%;
+        transform: rotate(-90deg);
+        opacity: 1;
+
+    }
+
+    44.4% {
+        bottom: 90%;
+        left: 80%;
+        transform: rotate(-90deg);
+        opacity: 1;
+    }
+
+    55.5% {
+        bottom: 90%;
+        left: 80%;
+        transform: rotate(-180deg);
+        opacity: 1;
+    }
+
+    66.6% {
+        bottom: 90%;
+        left: 10%;
+        transform: rotate(-180deg);
+        opacity: 1;
+    }
+
+    77.7% {
+        bottom: 90%;
+        left: 10%;
+        transform: rotate(-270deg);
+        opacity: 1;
+    }
+
+    88.8% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(-270deg);
+        opacity: 0;
+    }
+
+    99.9% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+
+    100% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+.StatusSVG {
+    position: absolute;
+    height: 48px !important;
+    border-radius: 50%;
+    padding: 7px;
+    bottom: 10%;
+    left: 10%;
+    margin: 0;
+    opacity: 0;
+}
+
+@keyframes bounce {
+    from {
+        bottom: 50%;
+        left: 50%;
+        transform: rotate(-20deg);
+
+        opacity: 1;
+    }
+
+    to {
+        bottom: 50%;
+        left: 50%;
+        transform: rotate(10deg);
+        opacity: 1;
+    }
+}
+
+.StatusSVGSending {
+    animation: fly 5.5s infinite;
+}
+
+.StatusSVGSent {
+    animation: bounce 1s infinite;
+    animation-direction: alternate;
+}
+
+.SuccessSVG {
+    position: absolute;
+    height: 64px !important;
+    border-radius: 50%;
+    padding: 7px;
+    bottom: 10%;
+    left: 10%;
+    margin: 0;
+    animation: bounce 4s;
+    animation-direction: repeat;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
+}
+
+.optionStyles {
+    display: grid;
+    grid-auto-flow: row;
+    padding: 0px;
+
+    @media (min-width: 640px) {
+
+        grid-auto-flow: column;
+        padding: 0 50px;
+    }
+}
+
+.options {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+
+.iframeStyle {
+    height: 60vh;
+    width:110vw;
+    margin-left:-40px;
+    margin-right:-40px;
+    
+    @media (min-width: 640px) {
+        
+        width:75vw;
+        margin-left:0px;
+        margin-right:0px;
+    }
+
+    @media (min-width: 1536px) {
+        
+        width:45vw;
+    }
+
+    @media (min-width: 1920px) {
+        
+        width:38vw;
+    }
+}
+

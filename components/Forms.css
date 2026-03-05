@@ -1,0 +1,334 @@
+#Form {
+    width: 100%
+}
+
+
+option {
+    width: 100%;
+    display: grid;
+    word-break: break-word;
+    /* or break-all */
+    overflow-wrap: break-word;
+    /* or anywhere */
+    white-space: normal;
+    /* Ensures text wraps, overriding potential no-wrap defaults */
+
+}
+
+.FormSent {
+    display: grid;
+    height: 250px;
+    align-items: center;
+    justify-items: center;
+}
+
+.Title {
+    padding: 0 8px;
+}
+
+.Item {
+    display: grid;
+    grid-template-columns: auto 11fr auto;
+    /* align-items: center; */
+    align-items: start;
+    /* margin: 8px 8px 8px 0; */
+}
+
+.SVG {
+    justify-self: center;
+    height: 28px !important;
+
+    @media (min-width: 640px) {
+        height: 32px !important;
+    }
+
+    border-radius: 50%;
+    margin: 4px 7px 7px 0px;
+}
+
+.SVGClose {
+    justify-self: end;
+    padding: 0 !important;
+
+}
+
+.CloseDiv {
+    display: grid;
+    justify-self: end;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.P {
+    position: absolute;
+    margin: 15px 60px 0 0;
+    padding: 0 .75rem;
+    animation-name: fade-in;
+    animation-duration: .5s;
+}
+
+.note {
+    animation-name: fade-in;
+    animation-duration: 3s;
+    place-self: center;
+}
+
+.fadeOut {
+    opacity: 0;
+    animation-name: fade-out;
+    animation-duration: .5s;
+}
+
+.Input {}
+
+.CheckBox {
+    margin: 8px 0px;
+    vertical-align: middle;
+    border: 1px solid;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    min-width: 0;
+    line-Height: 27px;
+    float: right;
+
+    @media (min-width: 640px) {
+        height: 20px;
+        width: 20px;
+        min-width: 0;
+        font-size: 20px;
+        line-Height: 28px
+    }
+
+    line-Height: 28px;
+    font-weight: 500
+}
+
+.CheckBox:checked {
+    appearance: auto;
+}
+
+.sendIt {
+    display: grid;
+    grid-auto-flow: row;
+    align-items: center;
+    margin: 8px;
+}
+
+.status {
+    height: 32px;
+    position: relative;
+}
+
+@keyframes fly {
+    11.1% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    22.2% {
+        bottom: 10%;
+        left: 80%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    33.3% {
+        bottom: 10%;
+        left: 80%;
+        transform: rotate(-90deg);
+        opacity: 1;
+
+    }
+
+    44.4% {
+        bottom: 90%;
+        left: 80%;
+        transform: rotate(-90deg);
+        opacity: 1;
+    }
+
+    55.5% {
+        bottom: 90%;
+        left: 80%;
+        transform: rotate(-180deg);
+        opacity: 1;
+    }
+
+    66.6% {
+        bottom: 90%;
+        left: 10%;
+        transform: rotate(-180deg);
+        opacity: 1;
+    }
+
+    77.7% {
+        bottom: 90%;
+        left: 10%;
+        transform: rotate(-270deg);
+        opacity: 1;
+    }
+
+    88.8% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(-270deg);
+        opacity: 0;
+    }
+
+    99.9% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+
+    100% {
+        bottom: 10%;
+        left: 10%;
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+.StatusSVG {
+    position: absolute;
+    height: 48px !important;
+    border-radius: 50%;
+    padding: 7px;
+    bottom: 10%;
+    left: 10%;
+    margin: 0;
+    opacity: 0;
+}
+
+@keyframes bounce {
+    from {
+        bottom: 50%;
+        left: 50%;
+        transform: rotate(-20deg);
+
+        opacity: 1;
+    }
+
+    to {
+        bottom: 50%;
+        left: 50%;
+        transform: rotate(10deg);
+        opacity: 1;
+    }
+}
+
+.StatusSVGSending {
+    animation: fly 5.5s infinite;
+}
+
+.StatusSVGSent {
+    animation: bounce 1s infinite;
+    animation-direction: alternate;
+}
+
+.SuccessSVG {
+    position: absolute;
+    height: 64px !important;
+    border-radius: 50%;
+    padding: 7px;
+    bottom: 10%;
+    left: 10%;
+    margin: 0;
+    animation: bounce 4s;
+    animation-direction: repeat;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
+}
+
+.optionStyles {
+
+
+    @media (min-width: 640px) {
+
+        grid-auto-flow: column;
+        padding: 0 50px;
+    }
+}
+
+.options {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+
+.iframeStyle {
+    height: 60vh;
+    width: 110vw;
+    margin-left: -40px;
+    margin-right: -40px;
+
+    @media (min-width: 640px) {
+
+        width: 75vw;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    @media (min-width: 1536px) {
+
+        width: 45vw;
+    }
+
+    @media (min-width: 1920px) {
+
+        width: 38vw;
+    }
+}
+
+.processSVG {
+    animation: tilt 2s infinite;
+    transform-origin: center;
+}
+
+@keyframes tilt {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(10deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }

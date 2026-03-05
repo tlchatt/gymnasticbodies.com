@@ -21,6 +21,9 @@ export const user = pgTable("user", {
 export const user_setting = pgTable("user_setting", {
   id: serial("id").primaryKey(),
   type: text("type").notNull(),
+  status:text("status"),
+  authorizeNextImport: boolean("autorize_next_import").default(false),
+  authorizeCustomerId:text("autorize_customer_id"),
   data: text("data"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
