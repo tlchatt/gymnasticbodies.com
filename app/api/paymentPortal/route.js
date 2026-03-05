@@ -212,7 +212,6 @@ export async function POST(request) {
         }
 
     }
-
     async function authorizePaymentAuthentication() {
         // Set up the merchant authentication
         const apiLoginId = process.env.AUTHORIZE_NET_API_LOGIN_ID;
@@ -224,7 +223,6 @@ export async function POST(request) {
 
         return merchantAuthenticationType
     }
-
     async function createAuthorizeTransaction() {
         var opaqueData = new ApiContracts.OpaqueDataType();
         opaqueData.setDataDescriptor(authData.dataDescriptor);
@@ -262,12 +260,15 @@ export async function POST(request) {
                     reject(error);
                 });
             });
+            const message = apiResponse.messages.message[0];
             if (apiResponse.messages.resultCode === "Error") {
-                const message = apiResponse.messages.message[0];
+                
                 console.log("message in createAuthorizeTransaction:", message);
                 // return { status: false, data: apiResponse }
                 result = { status: false, data: apiResponse }
             } else {
+                
+                console.log("message when transaction resultCode is OK:",message)
                 result = { status: true, data: apiResponse }
                 // return { status: true, data: apiResponse }
             }
@@ -278,7 +279,6 @@ export async function POST(request) {
         }
         return result
     }
-
     async function createCustomerInAuthorize(authorizationTransactionIs) {
         const clientId = process.env.AUTHORIZE_NET_API_CLIENT_ID;
         var createRequestForCustomer = new ApiContracts.CreateCustomerProfileFromTransactionRequest();
@@ -323,7 +323,6 @@ export async function POST(request) {
         }
         return result
     }
-
     async function getFlagAndSubscriptionInfo(customerData) {
         console.log("customerData:", customerData)
         let priceMap = [
