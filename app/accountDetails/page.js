@@ -52,7 +52,7 @@ export default function AccountDetails(props) {
         },
         body: JSON.stringify({ id: customerId, singleUser: true })
     }).then((res) => res.json())
-    const { data, error, isLoading } = useSWR(`${testUrl}/api/user/authorizePlatform`, fetcher)
+    const { data, error, isLoading } = useSWR(`https://gymnasticbodies-com.vercel.app/api/user/authorizePlatform`, fetcher)
     console.log("data is:", data)
     console.log("error is:",error)
 
