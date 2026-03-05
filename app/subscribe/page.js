@@ -68,7 +68,7 @@ export default function Subscribe(props) {
                                     type="button"
                                     variant="contained"
                                     color="primary"
-                                    href={"/checkout?amount=0.02&term=monthly"}
+                                    href={"/checkout?amount=75&term=monthly"}
                                     style={{ fontSize: "1rem", letterSpacing: 1, background: "linear-gradient(18deg, #fcb14e 0%, #f05621 100%) !important", }}
                                 // onClick={() => handleContactForm()}
                                 >
@@ -97,7 +97,7 @@ export default function Subscribe(props) {
                                     type="button"
                                     variant="contained"
                                     color="primary"
-                                    href={"/checkout?amount=0.01&term=anually"}
+                                    href={"/checkout?amount=60&term=anually"}
                                     style={{ fontSize: "1rem", letterSpacing: 1, background: "linear-gradient(18deg, #fcb14e 0%, #f05621 100%) !important", }}
                                 // onClick={() => handleContactForm()}
                                 >
