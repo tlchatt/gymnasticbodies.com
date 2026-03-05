@@ -243,7 +243,7 @@ export async function POST(request) {
         let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
         let firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
         let lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
-        let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : incomingData.amount.toString();
+        let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : '0'
         let matchedTerm = priceMap.find(item => item.price === lastTransactionPrice)?.term;
         console.log("matchedTerm:",matchedTerm)
         let nextPaymentDate
