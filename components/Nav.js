@@ -50,7 +50,7 @@ function ResponsiveAppBar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-                    <a href="/">
+                    <a href="https://my.gymnasticbodies.com/">
                     <Image
                         src="/images/GFmarkandName.webp"
                         fill
