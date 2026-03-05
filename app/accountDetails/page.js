@@ -50,9 +50,9 @@ export default function AccountDetails(props) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: '803483776', singleUser: true })
+        body: JSON.stringify({ id: customerId, singleUser: true })
     }).then((res) => res.json())
-    const { data, error, isLoading } = useSWR(`https://8eb1-2405-201-680f-589d-5a51-1d08-52a3-f8cb.ngrok-free.app/api/user/authorizePlatform`, fetcher)
+    const { data, error, isLoading } = useSWR(`${testUrl}/api/user/authorizePlatform`, fetcher)
     console.log("data is:", data)
     console.log("error is:",error)
 
