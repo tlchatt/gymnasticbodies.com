@@ -126,10 +126,10 @@ export default function AccountDetails(props) {
     /* data */
 
     if (isLoading) return <CircularIndeterminate />
-    if (error) return <div>
-        <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>Failed To Load, Try Again Later!
-        </Typography>
-    </div>
+    // if (error) return <div>
+    //     <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>Failed To Load, Try Again Later!
+    //     </Typography>
+    // </div>
 
     //status: "generalError", "settledSuccessfully"
 
