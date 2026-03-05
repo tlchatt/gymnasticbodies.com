@@ -248,7 +248,7 @@ export async function POST(request) {
         console.log("matchedTerm:",matchedTerm)
         let nextPaymentDate
         let status
-        let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId ? customerData?.result?.profile?.customerProfileId : authorizeCustomerIs?.data?.customerProfileId
+        let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId 
         if (matchedTerm) {
             if (matchedTerm == "monthly") {
                 nextPaymentDate = new Date(lastTransactionDate);
