@@ -54,6 +54,7 @@ export default function AccountDetails(props) {
     }).then((res) => res.json())
     const { data, error, isLoading } = useSWR(`${testUrl}/api/user/authorizePlatform`, fetcher)
     console.log("data is:", data)
+    console.log("error is:",error)
 
 
     let {
@@ -126,35 +127,38 @@ export default function AccountDetails(props) {
     /* data */
 
     if (isLoading) return <CircularIndeterminate />
-    // if (error) return <div>
-    //     <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>Failed To Load, Try Again Later!
-    //     </Typography>
-    // </div>
+    if (error) return <div>
+        <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>Failed To Load, Try Again Later!
+        </Typography>
+    </div>
 
     //status: "generalError", "settledSuccessfully"
 
     // let orderAmount = lastTransactionAmount ? lastTransactionAmount : subscriptionAmount
 
 
-    if (transactionHistory != "N/A") {
-        transactionHistory.map(transaction => {
+    // if (transactionHistory != "N/A") {
+    //     transactionHistory.map(transaction => {
 
-            if (transaction?.transactionStatus == "settledSuccessfully") {
-                console.log("transaction:", transaction)
-            }
-        })
-    }
+    //         if (transaction?.transactionStatus == "settledSuccessfully") {
+    //             console.log("transaction:", transaction)
+    //         }
+    //     })
+    // }
 
 
     let startDate = "N/A", interval, endDate = "N/A", plan = "N/A"
-    if (data?.subscriptionProfile?.paymentSchedule?.startDate) {
-        startDate = DateTime.fromISO(data?.subscriptionProfile?.paymentSchedule?.startDate);
-        interval = data?.subscriptionProfile?.paymentSchedule?.interval?.length
-        console.log("interval:", interval)
-        plan = interval == "365" ? "yearly" : interval == "1" ? "monthly" : "N/A"
-        endDate = startDate.plus({ days: interval }).toISO().split('T')[0]
-        startDate = data?.subscriptionProfile?.paymentSchedule?.startDate.split('T')[0]
+    if (data) {
+        if (data?.subscriptionProfile?.paymentSchedule?.startDate) {
+            startDate = DateTime.fromISO(data?.subscriptionProfile?.paymentSchedule?.startDate);
+            interval = data?.subscriptionProfile?.paymentSchedule?.interval?.length
+            console.log("interval:", interval)
+            plan = interval == "365" ? "yearly" : interval == "1" ? "monthly" : "N/A"
+            endDate = startDate.plus({ days: interval }).toISO().split('T')[0]
+            startDate = data?.subscriptionProfile?.paymentSchedule?.startDate.split('T')[0]
+        }
     }
+
     function createSubscription() {
         //$75 per month, $225 billed quarterly
         //$60 per month, $720 billed annually
@@ -190,6 +194,7 @@ export default function AccountDetails(props) {
 
     }
     if (data) {
+        console.log("data is:", data)
         return (
             <>
                 {/* <CircularIndeterminate /> */}
