@@ -144,6 +144,7 @@ export default function Checkout(props) {
                         Privacy Policy .
                     </Link>
                 </Typography>
+                <Script src="https://js.authorize.net/v3/AcceptUI.js" strategy="beforeInteractive" />
                 <Suspense>
                     <PaymentPortal />
                 </Suspense>

@@ -220,7 +220,6 @@ export function PaymentPortal(props) {
         <>
             {/* {!customerData && */}
             <div>
-                <Script src="https://js.authorize.net/v3/AcceptUI.js" strategy="beforeInteractive" />
                 {/* <div>Payment Portal</div> */}
                 <form id="paymentForm"
                     method="POST"
