@@ -6,7 +6,6 @@ import { GetSettings } from "@/lib/GetSettings.js";
 import { DateTime } from 'luxon';
 import { useSearchParams } from 'next/navigation';
 import { StandardContainer } from '@/components/StandardContainer/StandardContainer';
-import { useEffect, useState } from 'react';
 import { getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { user } from "@/app/context/stateContext";
 import useSWR from 'swr'
@@ -83,7 +82,8 @@ export default function AccountDetails(props) {
         subscriptionEndDate,
         subscriptionEndDateDisplay,
         hasSubscription,
-        term } = data ?? {}
+        term,
+        impInfo } = data ?? {}
 
 
 
@@ -126,7 +126,10 @@ export default function AccountDetails(props) {
     /* data */
 
     if (isLoading) return <CircularIndeterminate />
-    if (error) return <div>Error: {error.message}</div>
+    if (error) return <div>
+        <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>Failed To Load, Try Again Later!
+        </Typography>
+    </div>
 
     //status: "generalError", "settledSuccessfully"
 
@@ -257,7 +260,7 @@ export default function AccountDetails(props) {
 
                             </Stack>
                             <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                {merchantCustomerId && email!="lukesearra@icloud.com" &&
+                                {merchantCustomerId && email != "lukesearra@icloud.com" &&
 
                                     <>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
@@ -269,9 +272,9 @@ export default function AccountDetails(props) {
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
                                         </Stack>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionStatus}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionDate}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{nextTransactionDate}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.status}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.lastTransactionDate.split('T')[0]}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.nextPaymentDate.split('T')[0]}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionInvoiceNumber}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>${lastTransactionAmount} {term}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
@@ -281,7 +284,7 @@ export default function AccountDetails(props) {
 
 
                                 }
-                                {!merchantCustomerId || email=="lukesearra@icloud.com" &&
+                                {!merchantCustomerId || email == "lukesearra@icloud.com" &&
                                     <>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>No Order Found</Typography>
@@ -312,11 +315,11 @@ export default function AccountDetails(props) {
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
                                         </Stack>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionStatus}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.status}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionName}</Typography>
                                             {/* <Typography variant="h5" component="h2" sx={valueFontSize}>{plan ?? "N/A"}</Typography> */}
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${subscriptionAmount} {term}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionEndDateDisplay}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.lastTransactionPrice} </Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate.split('T')[0]}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
                                         </Stack>
                                     </>

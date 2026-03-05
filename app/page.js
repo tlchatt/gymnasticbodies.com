@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import CircularIndeterminate from '@/components/CircularLoading';
 import Image from 'next/image';
 import Link from 'next/link';
 import Grid from '@mui/material/Grid';
@@ -22,6 +23,7 @@ export default function Home() {
   const router = useRouter();
   let testUrl = process.env.NEXT_PUBLIC_API_URL
   let appUrl = process.env.NEXT_PUBLIC_APP_URL
+  let [loading, setLoading] = useState(false)
   let commonGap = {
     gap: "10px",
     display: "flex",
@@ -71,7 +73,7 @@ export default function Home() {
     }
   }
   async function handleLogin(e) {
-
+    setLoading(true);
     const form = document.querySelectorAll('#loginForm')[0];
     const formData = new FormData(form);
     const values = Object.fromEntries(formData);
@@ -89,6 +91,7 @@ export default function Home() {
       }
 
       //check if the email is in the neon database
+
       let response = await fetch(`${testUrl}/api/authentication`, {
         method: 'POST',
         config,
@@ -166,6 +169,7 @@ export default function Home() {
       localStorage.setItem('timezone', timezone);
       localStorage.setItem('postAWS', postAWS);
       // router.push(`${appUrl}?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&authExpireTime=${expirationDate}&timezone=${timezone}`)
+      setLoading(false);
       router.push(`http://localhost:3001/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${email}&name=${name}`)
 
     }
@@ -173,13 +177,15 @@ export default function Home() {
 
   return (
     <>
-      <a href={"/subscribe"}>
+      {/* <a href={"/subscribe"}>
         <Button variant="contained" style={subscribeStyle} >
           Get Started
         </Button>
 
-      </a>
-
+      </a> */}
+      {loading &&
+        <CircularIndeterminate incomingStyle={{ width: "100%", height: "100%", top: "0", left: "0", background: "#FAFAFA", opacity: "0.3", zIndex: "5" }} />
+      }
       <Grid container spacing={1} style={containerStyle}>
         <Grid size={{ xs: 0, sm: 7 }}>
           <RandomImages />
@@ -293,6 +299,7 @@ export default function Home() {
           </Grid>
         </Grid>
       </form>
+
     )
   }
 }

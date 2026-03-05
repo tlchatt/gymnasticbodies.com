@@ -47,7 +47,7 @@ export async function POST(request) {
     */
 
     //define variables
-    let customerSubscriptionStatus, authorizationTransactionIs, authorizeCustomerIs, subscriptionForCustomer, userInNeon, impInfo, customerData, customerSubscription
+    let customerSubscriptionStatus, authorizationTransactionIs, authorizeCustomerIs, subscriptionForCustomer, userInNeon, impInfo, customerData, customerSubscription, customerInfoFromAuthorize
 
     if (reason == "createSubscription") {
         let authorizeCustomerIs = {
@@ -145,7 +145,9 @@ export async function POST(request) {
                     if (subscriptionForCustomer.status) {
                         //store info in neon database for future fetch frontend
                         userInNeon = await createUserInDB(subscriptionForCustomer, authorizeCustomerIs, impInfo)
+                        customerInfoFromAuthorize = await getCustomerFromAuthorize(impInfo.authorizenetCustomerId);
                         console.log("userInNeon:", userInNeon)
+                        let billTo = customerInfoFromAuthorize?.data?.profile?.paymentProfiles?.[0]?.billTo
                         return NextResponse.json({
                             message: 'Transaction successful, customer created, subscription created',
                             data: {
@@ -156,8 +158,10 @@ export async function POST(request) {
                                 subscriptionId: subscriptionForCustomer,
                                 customerCreated: true,
                                 subscriptionCreated: true,
-                                token: userInNeon?.data?.token,
-                                impInfo: impInfo
+                                userInNeon:userInNeon,
+                                token: userInNeon?.data?.data?.token,
+                                impInfo: impInfo,
+                                firstName: billTo?.firstName ?? "N/A"
                             }
                         }, { status: 200 });
                     } else {
@@ -168,7 +172,7 @@ export async function POST(request) {
                             customerId: authorizeCustomerIs,
                             subscriptionCreated: false,
                             message: 'Transaction successful, customer created, but subscription creation failed',
-                            error: authorizationTransactionIs.data,
+                            error: subscriptionForCustomer,
                             impInfo: impInfo
                         }, { status: 200 });
                     }
@@ -179,6 +183,7 @@ export async function POST(request) {
                         transactionId: authorizationTransactionIs.data.transId,
                         customerCreated: false,
                         subscriptionCreated: false,
+                        error: authorizeCustomerIs,
                         data: authorizationTransactionIs.data
                     }, { status: 200 });
                 }
@@ -371,7 +376,7 @@ export async function POST(request) {
         let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
         let firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
         let lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
-        let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount : incomingData.amount
+        let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : incomingData.amount.toString();
         let matchedTerm = priceMap.find(item => item.price === lastTransactionPrice)?.term;
         let nextPaymentDate
         let status
@@ -385,7 +390,7 @@ export async function POST(request) {
                 nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 3);
             } else if (matchedTerm == "annually") {
                 nextPaymentDate = new Date(lastTransactionDate);
-                nextPaymentDate.setMonth(nextPaymentDate.getFullYear() + 1);
+                nextPaymentDate.setFullYear(nextPaymentDate.getFullYear() + 1);
             } else {
                 //return new amount found, contact admin
             }
@@ -414,7 +419,51 @@ export async function POST(request) {
         )
 
     }
+    async function getCustomerFromAuthorize(customerProfileId) {
+        console.log("inside getCustomerFromAuthorize")
+        var getRequest = new ApiContracts.GetCustomerProfileRequest();
 
+        getRequest.setCustomerProfileId(customerProfileId);
+        let merchantAuth = await authorizePaymentAuthentication()
+        getRequest.setMerchantAuthentication(merchantAuth);
+
+        var ctrl = new ApiControllers.GetCustomerProfileController(getRequest.getJSON());
+        ctrl.setEnvironment(SDKConstants.endpoint.production);
+
+        try {
+            const apiResponse = await new Promise((resolve, reject) => {
+                ctrl.execute(() => {
+                    resolve(ctrl.getResponse());
+                }, (error) => {
+                    console.log("error for transaction:", error)
+                    reject(error);
+                });
+            });
+            if (apiResponse.messages.resultCode === "Error") {
+                const message = apiResponse.messages.message[0];
+                // console.log("message in createAuthorizeTransaction:", message);
+                return { status: false, data: apiResponse }
+            } else {
+                // console.log("apiResponse in getCustomerFromAuthorize:", apiResponse)
+                let sampleResponse = {
+                    profile: {
+                        paymentProfiles: [[Object]],
+                        shipToList: [[Object]],
+                        profileType: 'regular',
+                        customerProfileId: '719388555',
+                        merchantCustomerId: '33764',
+                        email: 'mecheye357@gmail.com'
+                    },
+                    messages: { resultCode: 'Ok', message: [[Object]] }
+                }
+                return { status: true, data: apiResponse }
+
+            }
+
+        } catch (error) {
+            return { status: false, data: error }
+        }
+    }
     async function createSubscriptionInAuthorize(authorizeCustomerIs, impInfo) {
         console.log("impInfo:", impInfo)
         console.log("authorizeCustomerIs.data.customerProfileId:", authorizeCustomerIs.data.customerProfileId)

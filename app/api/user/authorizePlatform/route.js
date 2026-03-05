@@ -7,18 +7,27 @@ import { writeQueue } from '@/lib/writeFile';
 export async function POST(request) {
     let json = await request.json()
     console.log("json is:", json)
-    let result = {}, customerSubscription = {}, allIds, transactionHistory
+    let result = {}, customerSubscription = {}, allIds, transactionHistory, impInfo
     if (json.singleUser) {
         result = await getCustomerFromAuthorize(json.id);
-        console.log("result is:", result)
+        
         if (result.data.subscriptionIds) {
             customerSubscription = await getCustomerSubscriptionFromAuthorize(result.data.subscriptionIds[0]);
-            console.log("customerSubscription is:", customerSubscription)
+            // console.log("customerSubscription is:", customerSubscription)
         }
         if (result?.data?.profile?.customerProfileId) {
             transactionHistory = await getTransactionHistory(result)
-            console.log("transactionHistory is:", transactionHistory)
+            // console.log("transactionHistory is:", transactionHistory)
         }
+        let finalObj = {
+            result:result.data,
+            transactionHistory:transactionHistory
+        }
+        console.log("result is:", result)
+        console.log("customerSubscription is:", customerSubscription)
+        console.log("transactionHistory is:", transactionHistory)
+        impInfo = await getFlagAndSubscriptionInfo(finalObj)
+        console.log("impInfo:",impInfo)
     } else {
         allIds = await getAllCustomerIdsFromAuthorize();
         console.log("allIds:", allIds)
@@ -112,7 +121,8 @@ export async function POST(request) {
             subscriptionEndDate: endDate,
             subscriptionEndDateDisplay: endDate != "Invalid Date" ? endDate?.toISOString().split('T')[0] : "N/A",
             term: term,
-            hasSubscription : hasSubscription
+            hasSubscription : hasSubscription,
+            impInfo:impInfo
         });
     }
     // else {
@@ -180,6 +190,102 @@ export async function POST(request) {
         } catch (error) {
             return { status: false, data: error }
         }
+    }
+    async function getFlagAndSubscriptionInfo(customerData) {
+        console.log("customerData:", customerData)
+        let priceMap = [
+            {
+                price: "720",
+                term: "annually"
+            },
+            {
+                price: "239.88",
+                term: "annually"
+            },
+            {
+                price: "225",
+                term: "quarterly"
+            },
+            {
+                price: "179.88",
+                term: "annually"
+            },
+            {
+                price: "0.01",
+                term: "annually"
+            },
+            {
+                price: "30",
+                term: "monthly"
+            },
+            {
+                price: "29.99",
+                term: "monthly"
+            },
+            {
+                price: "75",
+                term: "monthly"
+            },
+            {
+                price: "0.02",
+                term: "monthly"
+            }
+        ]
+        let todaysDate = new Date();
+        let todaysIsoDate = todaysDate.toISOString()
+        if (customerData) {
+
+        }
+        let merchantid = customerData?.result?.profile?.merchantCustomerId ? customerData?.result?.profile?.merchantCustomerId : null //for new users no merchant id
+        let AuthorizeNextImport = merchantid ? true : false
+        let transactions = customerData?.transactionHistory?.data?.transactions
+        let lastTransactions = transactions ? transactions[0] : null // most recent transaction
+        let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
+        let firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
+        let lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
+        let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : incomingData.amount.toString();
+        let matchedTerm = priceMap.find(item => item.price === lastTransactionPrice)?.term;
+        console.log("matchedTerm:",matchedTerm)
+        let nextPaymentDate
+        let status
+        let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId ? customerData?.result?.profile?.customerProfileId : authorizeCustomerIs?.data?.customerProfileId
+        if (matchedTerm) {
+            if (matchedTerm == "monthly") {
+                nextPaymentDate = new Date(lastTransactionDate);
+                nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 1);
+            } else if (matchedTerm == "quarterly") {
+                nextPaymentDate = new Date(lastTransactionDate);
+                nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 3);
+            } else if (matchedTerm == "annually") {
+                nextPaymentDate = new Date(lastTransactionDate);
+                nextPaymentDate.setMonth(nextPaymentDate.getFullYear() + 1);
+            } else {
+                //return new amount found, contact admin
+            }
+        }
+
+        if (nextPaymentDate < todaysIsoDate) {
+            //don't create a subscription
+            status = "inactive"
+        } else {
+            //create a subscription
+            status = "active"
+        }
+        return (
+            {
+                merchantid: merchantid,
+                AuthorizeNextImport: AuthorizeNextImport,
+                lastTransactionDate: lastTransactionDate,
+                lastTransactionPrice: lastTransactionPrice,
+                matchedTerm: matchedTerm,
+                nextPaymentDate: nextPaymentDate,
+                status: status,
+                authorizenetCustomerId: authorizenetCustomerId,
+                todaysIsoDate: todaysIsoDate,
+                firstTransactionDate: firstTransactionDate
+            }
+        )
+
     }
     async function getCustomerSubscriptionFromAuthorize(subscriptionId) {
         console.log("inside getCustomerSubscriptionFromAuthorize")

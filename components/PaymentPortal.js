@@ -9,6 +9,8 @@ import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { user } from "@/app/context/stateContext";
 import Alert from '@mui/material/Alert';
+import moment from 'moment-timezone'
+import CircularIndeterminate from '@/components/CircularLoading';
 
 export function PaymentPortal(props) {
     let testUrl = process.env.NEXT_PUBLIC_API_URL
@@ -16,6 +18,7 @@ export function PaymentPortal(props) {
 
     const { email, setEmail, setCustomerId } = user()
     let [error, setError] = useState(false)
+    let [loading, setLoading] = useState(false)
     let [errorMessage, setErrorMessage] = useState("")
     let { Settings, Style, Media } = GetSettings(props, "PaymentPortal");
     let { isActive, isLargeMobile, isSmall, isLarge, isXLarge, isHD } = Media;
@@ -69,8 +72,10 @@ export function PaymentPortal(props) {
             //     method: 'POST',
             //     body: formData,
             // })
+            setLoading(true);
             axios.post(`${testUrl}/api/paymentPortal`, formData)
                 .then(response => {
+                    setLoading(false);
                     console.log("response is:", response.data)
                     let testResponse = {
                         "message": "Transaction successful, but customer creation failed",
@@ -113,25 +118,46 @@ export function PaymentPortal(props) {
                     let transaction = response?.data?.data ? response?.data?.data.transaction : response?.data?.transaction
                     let customerCreated = response?.data?.data ? response?.data?.data.customerCreated : response?.data?.customerCreated
                     let subscriptionCreated = response?.data?.data ? response?.data?.data.subscriptionCreated : response?.data?.subscriptionCreated
-                    console.log("transaction:",transaction)
-                    console.log("customerCreated:",customerCreated)
-                    console.log("subscriptionCreated:",subscriptionCreated)
+                    console.log("transaction:", transaction)
+                    console.log("customerCreated:", customerCreated)
+                    console.log("subscriptionCreated:", subscriptionCreated)
                     //session token is: HNE8u0JV2oICvU0IpDaboMIG3Z7FlAeE
                     if (transaction && customerCreated && !subscriptionCreated) {//doesn't matter since card is being charged anyway - fix that
                         setError(true)
-                        setErrorMessage("Your already have an active subscription,  directly!")
+                        //useCase: Credit Card expires before the start of the subscription.
+                        console.log("response.error:", response.data.error.data.messages.message[0].text)
+                        setErrorMessage(response.data.error.data.messages ? response.data.error.data.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
                     } else if (transaction && customerCreated) {
                         // router.push('/accountDetails')
-                        localStorage.setItem('authToken', newAuthToken);
-                        router.push('https://my.gymnasticbodies.com/')
+                        const today = new Date();
+                        const expirationDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+                        const refreshExpireTime = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+                        let name = response.data?.data?.firstName
+                        let id = response.data?.data?.userInNeon?.data?.data?.user?.id
+                        let userEmail = response.data?.data?.userInNeon?.data?.data?.user?.email
+                        let token = response.data?.data?.token
+                        let postAWS = response?.data?.impInfo?.AuthorizeNextImport
+                        const timezone = moment.tz.guess();
+                        localStorage.setItem('name', name);
+                        localStorage.setItem('userId', id);
+                        localStorage.setItem('username', userEmail);
+                        localStorage.setItem('authToken', token);
+                        localStorage.setItem('AuthExpirationDate', expirationDate);
+                        localStorage.setItem('refreshToken', token);
+                        localStorage.setItem('refreshExpireTime', refreshExpireTime);
+                        localStorage.setItem('timezone', timezone);
+                        localStorage.setItem('postAWS', postAWS);
+                        // router.push('https://my.gymnasticbodies.com/')
+                        router.push(`http://localhost:3001/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${userEmail}&name=${name}`)
                     }
                     else {
                         setError(true)
-                        setErrorMessage("Transaction Failed, Try Again !")
+                        setErrorMessage(response.data.error.data.messages ? response.data.error.data.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
                     }
 
                 })
                 .then(data => {
+                    setLoading(false);
                     console.log("data is:", data)
                     let customerProfileId = data?.customerId?.data?.customerProfileId ? data?.customerId?.data?.customerProfileId : '803450130'
                     console.log("customerProfileId:", customerProfileId)
@@ -140,9 +166,10 @@ export function PaymentPortal(props) {
                     // router.push('/accountDetails');
                 })
                 .catch(error => {
+                    setLoading(false);
                     console.error("error is", error)
                     setError(true)
-                    setErrorMessage("Transaction Failed, Try Again !")
+                    setErrorMessage("Transaction Failed, Try Again ! Contact Admin at admin@gymnasticbodies.com")
 
                 });
 
@@ -204,9 +231,12 @@ export function PaymentPortal(props) {
             </div>
             {/* } */}
             {error &&
-                <Alert variant="filled" severity="error">
-                    Transaction Failed, Try Again !
+                <Alert variant="filled" severity="error" style={{ marginTop: "20px" }}>
+                    {errorMessage}
                 </Alert>
+            }
+            {loading &&
+                <CircularIndeterminate  incomingStyle={{width:"100%", height:"100%",top:"0",left:"0",background:"#FAFAFA",opacity:"0.3",zIndex:"5"}}/>
             }
 
         </>
