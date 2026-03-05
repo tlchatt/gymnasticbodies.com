@@ -409,12 +409,13 @@ export async function POST(request) {
                 AuthorizeNextImport: AuthorizeNextImport,
                 lastTransactionDate: lastTransactionDate,
                 lastTransactionPrice: lastTransactionPrice,
+                firstTransactionDate: firstTransactionDate,
+                todaysIsoDate: todaysIsoDate,
                 matchedTerm: matchedTerm,
                 nextPaymentDate: nextPaymentDate,
                 status: status,
                 authorizenetCustomerId: authorizenetCustomerId,
-                todaysIsoDate: todaysIsoDate,
-                firstTransactionDate: firstTransactionDate
+                
             }
         )
 

@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { GetSettings } from "@/lib/GetSettings.js";
 import { DateTime } from 'luxon';
-import { useSearchParams } from 'next/navigation';
 import { StandardContainer } from '@/components/StandardContainer/StandardContainer';
 import { getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { user } from "@/app/context/stateContext";
@@ -15,16 +14,12 @@ import { Button, Stack } from '@mui/material';
 import Link from 'next/link';
 import Alert from '@mui/material/Alert';
 import allAuthorizeData from '../../data/allAuthorizeData.json'
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export default function AccountDetails(props) {
-    let { customerId, setCustomerId } = user()
-    const router = useRouter();
-    // const [data, setUserData] = useState()
-    // console.log("email inside accountdetails is:", email)
-    let testUrl = process.env.NEXT_PUBLIC_API_URL
-    let appUrl = process.env.NEXT_PUBLIC_APP_URL
-    //customer profile id
+    // let { customerId, setCustomerId } = user()
+    /*//customer profile id
     //555933485 - for transaction history
     //803450130 - for subscription history
     //719388555 - with order id but no subscription
@@ -32,29 +27,35 @@ export default function AccountDetails(props) {
     //779397289 - GW in woo commerce order but not in authorize subscription
     //657944831 - Dmitriy Akatkin - active subscription in woo commerce
 
-    if (customerId == "") {
-        const searchParams = useSearchParams();
-        const emailFromUrl = searchParams.get('email')
-        console.log("email in accountdetail page:", emailFromUrl)
-        //get customerid from all customer authorize data using the email
-        let customerData = allAuthorizeData.find(data => data.result.profile.email === emailFromUrl);
-        console.log("customerData:", customerData)
-        customerId = customerData?.result?.profile?.customerProfileId;
 
-    }
+    */
+
+    let [authorizeCustomerId, setAuthorizeCustomerId] = useState(null)
+    let testUrl = process.env.NEXT_PUBLIC_API_URL
+    let appUrl = process.env.NEXT_PUBLIC_APP_URL
+    let emailFromUrl, customerId
+
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
+    const userId = searchParams.get('userId');
 
 
-    console.log("customerId in accountdetail page:", customerId)
-    const fetcher = (url) => fetch(url, {
+    let userIdFetch = (url) => fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: customerId, singleUser: true })
+        body: JSON.stringify({
+            userId: userId,
+            type: 'subscription'
+        })
     }).then((res) => res.json())
-    const { data, error, isLoading } = useSWR(`${testUrl}/api/user/authorizePlatform`, fetcher)
-    console.log("data is:", data)
-    console.log("error is:",error)
+    const { data, error, isLoading } = useSWR(`/api/user/accountInformation`, userIdFetch)
+    console.log("data in useSWR is:", data)
+
+
+
+
 
 
     let {
@@ -132,32 +133,17 @@ export default function AccountDetails(props) {
         </Typography>
     </div>
 
-    //status: "generalError", "settledSuccessfully"
-
-    // let orderAmount = lastTransactionAmount ? lastTransactionAmount : subscriptionAmount
-
-
-    // if (transactionHistory != "N/A") {
-    //     transactionHistory.map(transaction => {
-
-    //         if (transaction?.transactionStatus == "settledSuccessfully") {
-    //             console.log("transaction:", transaction)
-    //         }
-    //     })
+    // let startDate = "N/A", interval, endDate = "N/A", plan = "N/A"
+    // if (data) {
+    //     if (data?.subscriptionProfile?.paymentSchedule?.startDate) {
+    //         startDate = DateTime.fromISO(data?.subscriptionProfile?.paymentSchedule?.startDate);
+    //         interval = data?.subscriptionProfile?.paymentSchedule?.interval?.length
+    //         console.log("interval:", interval)
+    //         plan = interval == "365" ? "yearly" : interval == "1" ? "monthly" : "N/A"
+    //         endDate = startDate.plus({ days: interval }).toISO().split('T')[0]
+    //         startDate = data?.subscriptionProfile?.paymentSchedule?.startDate.split('T')[0]
+    //     }
     // }
-
-
-    let startDate = "N/A", interval, endDate = "N/A", plan = "N/A"
-    if (data) {
-        if (data?.subscriptionProfile?.paymentSchedule?.startDate) {
-            startDate = DateTime.fromISO(data?.subscriptionProfile?.paymentSchedule?.startDate);
-            interval = data?.subscriptionProfile?.paymentSchedule?.interval?.length
-            console.log("interval:", interval)
-            plan = interval == "365" ? "yearly" : interval == "1" ? "monthly" : "N/A"
-            endDate = startDate.plus({ days: interval }).toISO().split('T')[0]
-            startDate = data?.subscriptionProfile?.paymentSchedule?.startDate.split('T')[0]
-        }
-    }
 
     function createSubscription() {
         //$75 per month, $225 billed quarterly
@@ -194,9 +180,10 @@ export default function AccountDetails(props) {
 
     }
     if (data) {
-        console.log("data is:", data)
         return (
             <>
+
+
                 {/* <CircularIndeterminate /> */}
                 <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>ACCOUNT
                 </Typography>
@@ -352,6 +339,7 @@ export default function AccountDetails(props) {
 
         );
     }
+
 
 
 

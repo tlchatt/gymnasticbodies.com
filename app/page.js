@@ -168,6 +168,28 @@ export default function Home() {
       localStorage.setItem('refreshExpireTime', refreshExpireTime);
       localStorage.setItem('timezone', timezone);
       localStorage.setItem('postAWS', postAWS);
+
+      /**TODO - store entire user object in localhost - reusable function */
+      let user = {
+        ...userInfo,
+        expirationDate:expirationDate,
+        refreshExpireTime:refreshExpireTime,
+        timezone:timezone,
+        postAWS:postAWS,
+        
+      }
+      localStorage.setItem('user', JSON.stringify(user));
+
+      /*var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+
+      // Put the object into storage
+      localStorage.setItem('testObject', JSON.stringify(testObject));
+
+      // Retrieve the object from storage
+      var retrievedObject = localStorage.getItem('testObject');
+
+      console.log('retrievedObject: ', JSON.parse(retrievedObject));*/
+
       // router.push(`${appUrl}?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&authExpireTime=${expirationDate}&timezone=${timezone}`)
       setLoading(false);
       router.push(`https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${email}&name=${name}`)

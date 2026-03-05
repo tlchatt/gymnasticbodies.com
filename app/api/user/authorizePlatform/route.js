@@ -10,7 +10,7 @@ export async function POST(request) {
     let result = {}, customerSubscription = {}, allIds, transactionHistory, impInfo
     if (json.singleUser) {
         result = await getCustomerFromAuthorize(json.id);
-        
+
         if (result.data.subscriptionIds) {
             customerSubscription = await getCustomerSubscriptionFromAuthorize(result.data.subscriptionIds[0]);
             // console.log("customerSubscription is:", customerSubscription)
@@ -20,14 +20,15 @@ export async function POST(request) {
             // console.log("transactionHistory is:", transactionHistory)
         }
         let finalObj = {
-            result:result.data,
-            transactionHistory:transactionHistory
+            result: result.data,
+            transactionHistory: transactionHistory,
+            customerSubscription: customerSubscription
         }
-        console.log("result is:", result)
+        console.log("result is:", result.data.messages.message)
         console.log("customerSubscription is:", customerSubscription)
         console.log("transactionHistory is:", transactionHistory)
         impInfo = await getFlagAndSubscriptionInfo(finalObj)
-        console.log("impInfo:",impInfo)
+        console.log("impInfo:", impInfo)
     } else {
         allIds = await getAllCustomerIdsFromAuthorize();
         console.log("allIds:", allIds)
@@ -59,7 +60,7 @@ export async function POST(request) {
         await storeInFile(finalArray)
         // await getAllCustomerSubscriptionFromAuthorize(result.data.subscriptionIds[0]);
     }
-    console.log("result is:",result)
+    console.log("result is:", result)
     if (result) {
         let billTo = result?.data?.profile?.paymentProfiles?.[0]?.billTo
         let paymentProfile = result?.data?.profile?.paymentProfiles?.[0]?.payment
@@ -71,13 +72,13 @@ export async function POST(request) {
         let transactionProfile = transactionHistory?.data?.transactions
         let subscriptionProfile = customerSubscription?.data?.subscription//would be {} if not subscription info present which would be case for old customers from woo commerce.
         console.log("subscriptionProfile:", subscriptionProfile)
-        console.log("merchantCustomerId:",merchantCustomerId)
+        console.log("merchantCustomerId:", merchantCustomerId)
         let subscriptionStartDate = new Date(subscriptionProfile?.paymentSchedule?.startDate) ?? "N/A"
 
         let intervalLength = subscriptionProfile?.paymentSchedule?.interval?.length ?? "N/A";
         let intervalUnit = subscriptionProfile?.paymentSchedule?.interval?.unit ?? "N/A";
         let term = "N/A"
-        console.log("data is::",subscriptionProfile?.amount)
+        console.log("data is::", subscriptionProfile?.amount)
         if (subscriptionProfile?.amount == "0.02") {//225, 75 per month billed quarterly
             term = "quarterly"
         }
@@ -121,8 +122,8 @@ export async function POST(request) {
             subscriptionEndDate: endDate,
             subscriptionEndDateDisplay: endDate != "Invalid Date" ? endDate?.toISOString().split('T')[0] : "N/A",
             term: term,
-            hasSubscription : hasSubscription,
-            impInfo:impInfo
+            hasSubscription: hasSubscription,
+            impInfo: impInfo
         });
     }
     // else {
@@ -233,37 +234,61 @@ export async function POST(request) {
         ]
         let todaysDate = new Date();
         let todaysIsoDate = todaysDate.toISOString()
-        if (customerData) {
 
-        }
         let merchantid = customerData?.result?.profile?.merchantCustomerId ? customerData?.result?.profile?.merchantCustomerId : null //for new users no merchant id
         let AuthorizeNextImport = merchantid ? true : false
         let transactions = customerData?.transactionHistory?.data?.transactions
-        let lastTransactions = transactions ? transactions[0] : null // most recent transaction
-        let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
-        let firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
-        let lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
-        let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : '0'
+        console.log("customerData:", customerData)
+        let subscription = customerData?.customerSubscription?.data?.subscription
+        let lastTransactionPrice, firstTransactionDate, lastTransactionDate, nextPaymentDate
+        if (subscription) {
+            console.log("subscription:", subscription)
+            lastTransactionPrice = subscription.amount.toString()
+            nextPaymentDate = new Date(subscription.paymentSchedule.startDate) ?? todaysIsoDate
+        } else {
+            let lastTransactions = transactions ? transactions[0] : null // most recent transaction
+            let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
+            firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
+            lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
+            lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : '0'
+        }
         let matchedTerm = priceMap.find(item => item.price === lastTransactionPrice)?.term;
-        console.log("matchedTerm:",matchedTerm)
-        let nextPaymentDate
+        
         let status
-        let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId 
-        if (matchedTerm) {
-            if (matchedTerm == "monthly") {
-                nextPaymentDate = new Date(lastTransactionDate);
-                nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 1);
-            } else if (matchedTerm == "quarterly") {
-                nextPaymentDate = new Date(lastTransactionDate);
-                nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 3);
-            } else if (matchedTerm == "annually") {
-                nextPaymentDate = new Date(lastTransactionDate);
-                nextPaymentDate.setMonth(nextPaymentDate.getFullYear() + 1);
-            } else {
-                //return new amount found, contact admin
+        let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId
+        if (subscription) {
+            if (matchedTerm) {
+                if (matchedTerm == "monthly") {
+                    lastTransactionDate = new Date(nextPaymentDate);
+                    lastTransactionDate.setMonth(nextPaymentDate.getMonth() - 1);
+                } else if (matchedTerm == "quarterly") {
+                    lastTransactionDate = new Date(nextPaymentDate);
+                    lastTransactionDate.setMonth(nextPaymentDate.getMonth() - 3);
+                } else if (matchedTerm == "annually") {
+                    lastTransactionDate = new Date(nextPaymentDate);
+                    lastTransactionDate.setMonth(nextPaymentDate.getFullYear() - 1);
+                } else {
+                    //return new amount found, contact admin
+                }
+            }
+        } else {
+            if (matchedTerm) {
+                if (matchedTerm == "monthly") {
+                    nextPaymentDate = new Date(lastTransactionDate);
+                    nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 1);
+                } else if (matchedTerm == "quarterly") {
+                    nextPaymentDate = new Date(lastTransactionDate);
+                    nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 3);
+                } else if (matchedTerm == "annually") {
+                    nextPaymentDate = new Date(lastTransactionDate);
+                    nextPaymentDate.setMonth(nextPaymentDate.getFullYear() + 1);
+                } else {
+                    //return new amount found, contact admin
+                }
             }
         }
 
+        console.log("nextPaymentDate:", nextPaymentDate)
         if (nextPaymentDate < todaysIsoDate) {
             //don't create a subscription
             status = "inactive"
@@ -271,6 +296,18 @@ export async function POST(request) {
             //create a subscription
             status = "active"
         }
+        console.log("??????", {
+            merchantid: merchantid,
+            AuthorizeNextImport: AuthorizeNextImport,
+            lastTransactionDate: lastTransactionDate,
+            lastTransactionPrice: lastTransactionPrice,
+            matchedTerm: matchedTerm,
+            nextPaymentDate: nextPaymentDate,
+            status: status,
+            authorizenetCustomerId: authorizenetCustomerId,
+            todaysIsoDate: todaysIsoDate,
+            firstTransactionDate: firstTransactionDate
+        })
         return (
             {
                 merchantid: merchantid,

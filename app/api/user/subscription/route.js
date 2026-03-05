@@ -32,6 +32,10 @@ export async function POST(request) {//when subscription webhook is triggered ->
         if (json.reason == "checkUserInNeon") {// create an account on login (old user, not in neon)
             dbUser = await getUserWithEmail(json.email)
         }
+        else if(json.reason == "getUserSettingInNeon"){
+            dbUser = await queryUserSetting(json.userId,json.type)
+            console.log("dbUser on server:",dbUser)
+        }
         else if (json.reason == "registerWPass") {
             //current date in GMT format
             const today = new Date();

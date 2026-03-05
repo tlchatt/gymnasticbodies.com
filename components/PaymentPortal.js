@@ -129,26 +129,51 @@ export function PaymentPortal(props) {
                         setErrorMessage(response.data.error.data.messages ? response.data.error.data.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
                     } else if (transaction && customerCreated) {
                         // router.push('/accountDetails')
+                        // let name = response.data?.data?.firstName
+                        // let id = response.data?.data?.userInNeon?.data?.data?.user?.id
+                        // let userEmail = response.data?.data?.userInNeon?.data?.data?.user?.email
+                        // let token = response.data?.data?.token
+                        // localStorage.setItem('name', name);
+                        // localStorage.setItem('userId', id);
+                        // localStorage.setItem('username', userEmail);
+                        // localStorage.setItem('authToken', token);
+                        // localStorage.setItem('AuthExpirationDate', expirationDate);
+                        // localStorage.setItem('refreshToken', token);
+                        // localStorage.setItem('refreshExpireTime', refreshExpireTime);
+                        // localStorage.setItem('timezone', timezone);
+                        // localStorage.setItem('postAWS', postAWS);
+
                         const today = new Date();
                         const expirationDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
                         const refreshExpireTime = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-                        let name = response.data?.data?.firstName
-                        let id = response.data?.data?.userInNeon?.data?.data?.user?.id
-                        let userEmail = response.data?.data?.userInNeon?.data?.data?.user?.email
-                        let token = response.data?.data?.token
                         let postAWS = response?.data?.impInfo?.AuthorizeNextImport
                         const timezone = moment.tz.guess();
-                        localStorage.setItem('name', name);
-                        localStorage.setItem('userId', id);
-                        localStorage.setItem('username', userEmail);
-                        localStorage.setItem('authToken', token);
-                        localStorage.setItem('AuthExpirationDate', expirationDate);
-                        localStorage.setItem('refreshToken', token);
-                        localStorage.setItem('refreshExpireTime', refreshExpireTime);
-                        localStorage.setItem('timezone', timezone);
-                        localStorage.setItem('postAWS', postAWS);
-                        // router.push('https://my.gymnasticbodies.com/')
-                        router.push(`https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${userEmail}&name=${name}`)
+
+                        let user = {
+                            ...response.data?.data?.userInNeon?.data?.data?.user,
+                            token: response.data?.data?.token,
+                            refreshToken: response.data?.data?.token,
+                            expirationDate: expirationDate,
+                            refreshExpireTime: refreshExpireTime,
+                            timezone: timezone,
+                            postAWS: postAWS,
+
+                        }
+                        console.log("user from localstorage in payment portal is:", user)
+                        localStorage.setItem('user', JSON.stringify(user));
+
+                        // //generate the url params using user object
+                        // let paramsString = getParamStringUser(user)
+
+                        // function getParamStringUser(user){
+                        //     let finalString
+                        //     for(let [key, value] of Object.entries(user)){
+
+                        //         finalString = `${key}=${value}`
+                        //     }
+                        // }
+
+                        router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
                     }
                     else {
                         setError(true)
@@ -236,7 +261,7 @@ export function PaymentPortal(props) {
                 </Alert>
             }
             {loading &&
-                <CircularIndeterminate  incomingStyle={{width:"100%", height:"100%",top:"0",left:"0",background:"#FAFAFA",opacity:"0.3",zIndex:"5"}}/>
+                <CircularIndeterminate incomingStyle={{ width: "100%", height: "100%", top: "0", left: "0", background: "#FAFAFA", opacity: "0.3", zIndex: "5" }} />
             }
 
         </>
