@@ -3,8 +3,7 @@
 import { APIContracts as ApiContracts, APIControllers as ApiControllers, Constants as SDKConstants } from 'authorizenet';
 import Axios from 'axios'
 import { NextResponse } from 'next/server';
-import allAuthorizeData from '../../../../data/allAuthorizeData.json'
-
+import allAuthorizeData from '../../../data/allAuthorizeData.json'
 // const NEWAPI = process.env.REACT_APP_API_NEW
 let testUrl = process.env.NEXT_PUBLIC_API_URL
 
