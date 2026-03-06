@@ -11,7 +11,7 @@ import useSWR from 'swr'
 import axios from "axios";
 import CircularIndeterminate from '@/components/CircularLoading';
 import { Button, Stack } from '@mui/material';
-import {  useState } from 'react';
+import { useState } from 'react';
 export default function AccountDetailsComp(props) {
     // let { customerId, setCustomerId } = user()
     /*//customer profile id
@@ -29,7 +29,7 @@ export default function AccountDetailsComp(props) {
     let testUrl = process.env.NEXT_PUBLIC_API_URL
     let appUrl = process.env.NEXT_PUBLIC_APP_URL
 
-    
+
     // const token = searchParams.get('token');
     // const userId = searchParams.get('userId');
     let userIdFetch = (url) => fetch(url, {
@@ -55,7 +55,7 @@ export default function AccountDetailsComp(props) {
         cardType,
         cardNumber,
         customerAddressId,
-        merchantCustomerId,
+        merchantCustomerId,//needs to have a transaction
         customerPaymentProfileId,
         customerProfileId,
         recentTransaction,
@@ -154,15 +154,9 @@ export default function AccountDetailsComp(props) {
     if (data) {
         return (
             <>
-                {/* <CircularIndeterminate /> */}
                 <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>ACCOUNT
                 </Typography>
-                {/* <StandardContainer style={ContainerStyle} innerStyle={ContainerInnerStyle} innerClassName="StandardContainerInnerMargin"
-                       id={Settings.id} innerID={Settings.innerID} {...props}> */}
                 <Stack direction="column" spacing={2} style={{ margin: "20px" }}>
-                    {/* <Alert variant="filled" severity="success" style={{ width: "fit-content", margin: "auto" }}>
-                           Subscription Created Successfully, Credentials sent to your email. {email}
-                       </Alert> */}
                     <Grid size={6} style={{
                     }}>
                         <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
@@ -222,8 +216,7 @@ export default function AccountDetailsComp(props) {
 
                             </Stack>
                             <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                {merchantCustomerId && email != "lukesearra@icloud.com" &&
-
+                                {merchantCustomerId &&
                                     <>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
@@ -238,27 +231,23 @@ export default function AccountDetailsComp(props) {
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.lastTransactionDate.split('T')[0]}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.nextPaymentDate.split('T')[0]}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionInvoiceNumber}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${lastTransactionAmount} {term}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${lastTransactionAmount} {impInfo.matchedTerm}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
 
                                         </Stack>
                                     </>
-
-
                                 }
-                                {!merchantCustomerId || email == "lukesearra@icloud.com" &&
-                                    <>
-                                        <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>No Order Found</Typography>
+                                {!merchantCustomerId  &&
 
-                                        </Stack>
-                                    </>
+                                    <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                        <Typography variant="h5" component="h2" sx={headlineFontSize}>No Order Found</Typography>
+                                    </Stack>
+
                                 }
 
                             </Stack>
                         </Box>
                     </Grid>
-
 
                     <Grid size={6} style={{}}>
                         <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>

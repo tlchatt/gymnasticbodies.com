@@ -194,6 +194,19 @@ export async function POST(request) {
     }
     async function getFlagAndSubscriptionInfo(customerData) {
         console.log("customerData:", customerData)
+        let envoronment = process.env.NEXT_PUBLIC_ENVIRONMENT
+        console.log("envoronment:", envoronment)
+        let testPrices = []
+        if (envoronment == 'development') {
+            testPrices = [{
+                price: "0.02",
+                term: "monthly"
+            },
+            {
+                price: "0.01",
+                term: "annually"
+            }]
+        }
         let priceMap = [
             {
                 price: "720",
@@ -212,10 +225,6 @@ export async function POST(request) {
                 term: "annually"
             },
             {
-                price: "0.01",
-                term: "annually"
-            },
-            {
                 price: "30",
                 term: "monthly"
             },
@@ -227,35 +236,35 @@ export async function POST(request) {
                 price: "75",
                 term: "monthly"
             },
-            {
-                price: "0.02",
-                term: "monthly"
-            }
         ]
+        priceMap.push(...testPrices)
+
+        let lastPrice, firstTransactionDate, lastTransactionDate, nextPaymentDate
         let todaysDate = new Date();
         let todaysIsoDate = todaysDate.toISOString()
 
-        let merchantid = customerData?.result?.profile?.merchantCustomerId ? customerData?.result?.profile?.merchantCustomerId : null //for new users no merchant id
+        let merchantid = customerData?.result?.profile?.merchantCustomerId ?? null //for new users and old users with no transactions no merchant id
         let AuthorizeNextImport = merchantid ? true : false
-        let transactions = customerData?.transactionHistory?.data?.transactions
-        console.log("customerData:", customerData)
-        let subscription = customerData?.customerSubscription?.data?.subscription
-        let lastTransactionPrice, firstTransactionDate, lastTransactionDate, nextPaymentDate
+        let transactions = customerData?.transactionHistory?.data?.transactions ?? null
+        let subscription = customerData?.customerSubscription?.data?.subscription ?? null
+
         if (subscription) {
             console.log("subscription:", subscription)
-            lastTransactionPrice = subscription.amount.toString()
-            nextPaymentDate = new Date(subscription.paymentSchedule.startDate) ?? todaysIsoDate
+            lastPrice = subscription.amount.toString()
+            nextPaymentDate = new Date(subscription.paymentSchedule.startDate) ?? null
         } else {
             let lastTransactions = transactions ? transactions[0] : null // most recent transaction
             let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
-            firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
-            lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
-            lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : '0'
+            firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : null
+            lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : null
+            lastPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : null
         }
-        let matchedTerm = priceMap.find(item => item.price === lastTransactionPrice)?.term;
-        
+
+        let matchedTerm = lastPrice ? priceMap.find(item => item.price === lastPrice)?.term : null;
+
         let status
         let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId
+
         if (subscription) {
             if (matchedTerm) {
                 if (matchedTerm == "monthly") {
@@ -289,18 +298,23 @@ export async function POST(request) {
         }
 
         console.log("nextPaymentDate:", nextPaymentDate)
-        if (nextPaymentDate < todaysIsoDate) {
-            //don't create a subscription
+        if (nextPaymentDate) {
+            if (nextPaymentDate < todaysIsoDate) {
+                //don't create a subscription
+                status = "inactive"
+            } else {
+                //create a subscription
+                status = "active"
+            }
+        }else{
             status = "inactive"
-        } else {
-            //create a subscription
-            status = "active"
         }
-        console.log("??????", {
+
+        console.log("retuned data from getFlagAndSubscriptionInfo", {
             merchantid: merchantid,
             AuthorizeNextImport: AuthorizeNextImport,
             lastTransactionDate: lastTransactionDate,
-            lastTransactionPrice: lastTransactionPrice,
+            lastTransactionPrice: lastPrice,
             matchedTerm: matchedTerm,
             nextPaymentDate: nextPaymentDate,
             status: status,
@@ -313,7 +327,7 @@ export async function POST(request) {
                 merchantid: merchantid,
                 AuthorizeNextImport: AuthorizeNextImport,
                 lastTransactionDate: lastTransactionDate,
-                lastTransactionPrice: lastTransactionPrice,
+                lastTransactionPrice: lastPrice,
                 matchedTerm: matchedTerm,
                 nextPaymentDate: nextPaymentDate,
                 status: status,
