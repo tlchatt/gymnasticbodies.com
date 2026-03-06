@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   let analytics_tag = process.env.NEXT_PUBLIC_ANALYTICS_TAG
-
+  let hot_jar = process.env.NEXT_PUBLIC_HOTJAR_ID
   return (
     <html lang="en">
       {analytics_tag &&
@@ -33,12 +33,32 @@ export default function RootLayout({ children }) {
           />
         </>
       }
+      {hot_jar &&
+        <>
+          <Script
+            async
+            id="Hotjar Tag"
+          >
+            {`
+             (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:${hot_jar},hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            `}
+          </Script>
+        </>
+      }
+
       <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ height: "100vh" }}>
         <UserProvider>
-          
-            <ResponsiveAppBar />
-            {children}
-          
+
+          <ResponsiveAppBar />
+          {children}
+
         </UserProvider>
       </body>
     </html >

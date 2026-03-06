@@ -94,7 +94,7 @@ export default function Home() {
 
       //check if the email is in the neon database
 
-      let response = await fetch(`${testUrl}/api/authentication`, {
+     /* let response = await fetch(`${testUrl}/api/authentication`, {
         method: 'POST',
         config,
         body: JSON.stringify(data)
@@ -172,10 +172,10 @@ export default function Home() {
       localStorage.setItem('refreshToken', token);
       localStorage.setItem('refreshExpireTime', refreshExpireTime);
       localStorage.setItem('timezone', timezone);
-      localStorage.setItem('postAWS', postAWS);
+      localStorage.setItem('postAWS', postAWS);*/
 
       /**TODO - store entire user object in localhost - reusable function */
-      let user = {
+      /*let user = {
         ...userInfo,
         expirationDate: expirationDate,
         refreshExpireTime: refreshExpireTime,
@@ -183,7 +183,7 @@ export default function Home() {
         postAWS: postAWS,
 
       }
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));*/
 
       /*var testObject = { 'one': 1, 'two': 2, 'three': 3 };
 
@@ -196,9 +196,9 @@ export default function Home() {
       console.log('retrievedObject: ', JSON.parse(retrievedObject));*/
 
       // router.push(`${appUrl}?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&authExpireTime=${expirationDate}&timezone=${timezone}`)
-      setLoading(false);
+      /*setLoading(false);
       router.push(`https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&refreshExpireTime=${refreshExpireTime}&AuthExpirationDate=${expirationDate}&timezone=${timezone}&postAWS=${postAWS}&userId=${id}&username=${email}&name=${name}`)
-
+*/
     }
   }
 

@@ -39,6 +39,7 @@ export default function AccountDetailsComp(props) {
         },
         body: JSON.stringify({
             userId: props.userId,
+            username:props.username,
             type: 'subscription'
         })
     }).then((res) => res.json())
@@ -228,8 +229,8 @@ export default function AccountDetailsComp(props) {
                                         </Stack>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.status}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.lastTransactionDate.split('T')[0]}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.nextPaymentDate.split('T')[0]}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.lastTransactionDate?.split('T')[0] ?? "N/A"}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate?.split('T')[0] ?? "N/A"}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionInvoiceNumber}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>${lastTransactionAmount} {impInfo.matchedTerm}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>

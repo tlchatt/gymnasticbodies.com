@@ -8,10 +8,11 @@ export default async function page({ searchParams }) {
     
     const token = params.token
     const userId = params.userId
+    const username = params.username
 
 
     return (
-        <AccountDetailsComp userId={userId} />
+        <AccountDetailsComp userId={userId} username={username}/>
     );
 
 

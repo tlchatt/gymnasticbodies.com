@@ -12,13 +12,16 @@ export async function POST(request) {
     let usersettingInfo = await queryUserSetting(json.userId, json.type)
     console.log("usersettingInfo:", usersettingInfo)
 
-    let userEmail = JSON.parse(usersettingInfo?.data).email//has email
+    let userEmail = usersettingInfo ? JSON.parse(usersettingInfo?.data).email : null//has email
     let customerId = usersettingInfo?.authorizeCustomerId
     
     if(!userEmail){//if user doesn't have email in userSetting
         let userInfo = await getUserWithId(json.userId)//to get Email
         console.log("userInfo:", userInfo)
-        userEmail = userInfo.email
+        userEmail = userInfo ? userInfo.email : null
+        if(!userInfo){
+            userEmail = json.username
+        }
     }
     console.log("userEmail:", userEmail)
 
@@ -43,9 +46,10 @@ export async function POST(request) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ id: id, singleUser: true }),
-            });
+            })
+            console.log("response:", response.data)
             const data = await response.json();
-            console.log("response:", data)
+            
             // Process the response
             return data
         } catch (error) {
