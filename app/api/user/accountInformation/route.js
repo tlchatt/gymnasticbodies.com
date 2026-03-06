@@ -14,18 +14,19 @@ export async function POST(request) {
 
     let userEmail = usersettingInfo ? JSON.parse(usersettingInfo?.data).email : null//has email
     let customerId = usersettingInfo?.authorizeCustomerId
-    
-    if(!userEmail){//if user doesn't have email in userSetting
+
+    if (!userEmail) {//if user doesn't have email in userSetting
         let userInfo = await getUserWithId(json.userId)//to get Email
         console.log("userInfo:", userInfo)
         userEmail = userInfo ? userInfo.email : null
-        if(!userInfo){
+        if (!userInfo) {
             userEmail = json.username
         }
     }
     console.log("userEmail:", userEmail)
 
     if (!customerId) {
+        userEmail = userEmail.toLowerCase()
         let customerData = await getAllDataFromFile(userEmail)
         // let customerData = allAuthorizeData.find(data => data.result.profile.email === userEmail);
         customerId = customerData?.result?.profile?.customerProfileId;
@@ -37,7 +38,7 @@ export async function POST(request) {
     console.log("authorizeData:", authorizeData)
 
     return NextResponse.json(authorizeData);
-    
+
     async function fetchCustomerFromAuthorize(id) {
         try {
             let response = await fetch(`${testUrl}/api/user/authorizePlatform`, {
@@ -47,11 +48,20 @@ export async function POST(request) {
                 },
                 body: JSON.stringify({ id: id, singleUser: true }),
             })
-            console.log("response:", response.data)
-            const data = await response.json();
-            
+                .then(response => response.json())
+                .then(data => {
+                    console.log("response:", data);
+                    // Process the response
+                    return data;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    return error;
+                });
+
+            return response
             // Process the response
-            return data
+
         } catch (error) {
             return error
         }
