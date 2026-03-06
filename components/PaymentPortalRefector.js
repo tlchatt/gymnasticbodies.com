@@ -13,21 +13,16 @@ import moment from 'moment-timezone'
 import CircularIndeterminate from '@/components/CircularLoading';
 
 export function PaymentPortal(props) {
-    let testUrl = process.env.NEXT_PUBLIC_API_URL
+    let url = process.env.NEXT_PUBLIC_API_URL
     const router = useRouter();
-
     const { email, setEmail, setCustomerId } = user()
     let [error, setError] = useState(false)
     let [loading, setLoading] = useState(false)
     let [errorMessage, setErrorMessage] = useState("")
-    let { Settings, Style, Media } = GetSettings(props, "PaymentPortal");
-    let { isActive, isLargeMobile, isSmall, isLarge, isXLarge, isHD } = Media;
     const searchParams = useSearchParams();
+
     const amount = searchParams.get('amount');
     const term = searchParams.get('term');
-
-    //set customer data above in global state
-
 
     useEffect(() => {
         window.responseHandler = function (response) {
@@ -48,32 +43,28 @@ export function PaymentPortal(props) {
         }
         function paymentFormUpdate(response) {
             //create variables
+            let email = document.querySelector("#email").value;
+            let phone = document.querySelector("#phone").value;
+            let password = document.querySelector("#password").value;
+            let country = document.querySelector("#search_country").value;
+
             document.getElementById("dataDescriptor").value = response.opaqueData.dataDescriptor;
             document.getElementById("dataValue").value = response.opaqueData.dataValue;
             document.getElementById("billToFirstName").value = response.customerInformation.firstName;
             document.getElementById("billToLastName").value = response.customerInformation.lastName;
             document.getElementById("billAmount").value = amount;
-            let email = document.querySelector("#email").value;
             document.getElementById("billEmail").value = email;
-            let phone = document.querySelector("#phone").value;
             document.getElementById("billPhone").value = phone;
-            let country = document.querySelector("#search_country").value;
             document.getElementById("billCountry").value = country;
-            let password = document.querySelector("#password").value;
             document.getElementById("userPassword").value = password;
             document.getElementById("billTerm").value = term;
 
             //set global state email
             setEmail(email)
-
-            const formData = new FormData(document.getElementById("paymentForm"));
-
-            // fetch(`${testUrl}/api/paymentPortal`, {
-            //     method: 'POST',
-            //     body: formData,
-            // })
             setLoading(true);
-            axios.post(`${testUrl}/api/paymentPortal`, formData)
+            
+            const formData = new FormData(document.getElementById("paymentForm"));
+            axios.post(`${url}/api/user/paymentPortal`, formData)
                 .then(response => {
                     setLoading(false);
                     console.log("response is:", response.data)
@@ -224,7 +215,7 @@ export function PaymentPortal(props) {
                 <form id="paymentForm"
                     method="POST"
                     style={FormInnerStyle}
-                    action={`${testUrl}/api/paymentPortal`}>
+                    action={`${url}/api/paymentPortal`}>
                     <input type="hidden" name="dataValue" id="dataValue" />
                     <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
                     <input type="hidden" name="billToFirstName" id="billToFirstName" />

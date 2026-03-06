@@ -3,6 +3,7 @@ import "./globals.css";
 import { UserProvider } from "./context/stateContext";
 import ResponsiveAppBar from "@/components/Nav";
 import { Suspense } from 'react';
+import Script from "next/script";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,10 +20,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
+  let analytics_tag = process.env.NEXT_PUBLIC_ANALYTICS_TAG
 
   return (
     <html lang="en">
+      {analytics_tag &&
+        <>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${analytics_tag}`}
+            id="Google-Analytics-gymnasticbodies"
+          />
+        </>
+      }
       <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ height: "100vh" }}>
         <UserProvider>
           
