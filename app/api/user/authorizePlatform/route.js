@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { writeQueue } from '@/lib/writeFile';
+import { getCustomerFromAuthorize } from '@/lib/commonServerFunction';
 
 export async function POST(request) {
     let json = await request.json()
@@ -147,7 +148,7 @@ export async function POST(request) {
 
         return merchantAuthenticationType
     }
-    async function getCustomerFromAuthorize(customerProfileId) {
+    /*async function getCustomerFromAuthorize(customerProfileId) {
         console.log("inside getCustomerFromAuthorize")
         var getRequest = new ApiContracts.GetCustomerProfileRequest();
 
@@ -191,7 +192,8 @@ export async function POST(request) {
         } catch (error) {
             return { status: false, data: error }
         }
-    }
+    }*/
+
     async function getFlagAndSubscriptionInfo(customerData) {
         console.log("customerData:", customerData)
         let envoronment = process.env.NEXT_PUBLIC_ENVIRONMENT
@@ -306,7 +308,7 @@ export async function POST(request) {
                 //create a subscription
                 status = "active"
             }
-        }else{
+        } else {
             status = "inactive"
         }
 

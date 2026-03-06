@@ -32,9 +32,9 @@ export async function POST(request) {//when subscription webhook is triggered ->
         if (json.reason == "checkUserInNeon") {// create an account on login (old user, not in neon)
             dbUser = await getUserWithEmail(json.email)
         }
-        else if(json.reason == "getUserSettingInNeon"){
-            dbUser = await queryUserSetting(json.userId,json.type)
-            console.log("dbUser on server:",dbUser)
+        else if (json.reason == "getUserSettingInNeon") {
+            dbUser = await queryUserSetting(json.userId, json.type)
+            console.log("dbUser on server:", dbUser)
         }
         else if (json.reason == "registerWPass") {
             //current date in GMT format
@@ -64,21 +64,14 @@ export async function POST(request) {//when subscription webhook is triggered ->
 
             if (!isExistingUser) {
                 //current date in GMT format
-                const today = new Date();
-                const isoformat = today.toISOString();
-                let newDate = isoformat.split("T")[0]
-                let tomorrowDate = new Date();
-                tomorrowDate.setDate(new Date().getDate() + 1);
-                let tomorrowIso = tomorrowDate.toISOString().split("T")[0];
-                console.log(" newDate:", newDate)
-                console.log(" tomorrowIso:", tomorrowIso)
-                //if date_created_gmt: '2024-12-22T17:58:41', contains current date
-                //if deos not match return 200 OK
-                // if (!(json?.date_created_gmt?.includes(newDate)) && !(json?.date_created_gmt?.includes(tomorrowIso))) {
-                //     console.log("incoming date created does not include todays date")
-                //     return new Response('OK', { status: 200 });
-                // }
-
+                // const today = new Date();
+                // const isoformat = today.toISOString();
+                // let newDate = isoformat.split("T")[0]
+                // let tomorrowDate = new Date();
+                // tomorrowDate.setDate(new Date().getDate() + 1);
+                // let tomorrowIso = tomorrowDate.toISOString().split("T")[0];
+                // console.log(" newDate:", newDate)
+                // console.log(" tomorrowIso:", tomorrowIso)
                 if (json?.password) {
                     password = json?.password
                 } else {
@@ -89,11 +82,9 @@ export async function POST(request) {//when subscription webhook is triggered ->
                         strict: true
                     });
                 }
-
                 console.log("password in !isExistingUser:", password)
                 dbUser = await createAccountForUser()
             }
-
 
             await updateUserSubscriptionStatus()
 

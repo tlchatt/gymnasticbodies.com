@@ -1,33 +1,27 @@
 'use client';
-import Script from "next/script";
 import { useEffect } from "react";
 import Button from '@mui/material/Button';
-import { GetSettings } from "@/lib/GetSettings";
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { user } from "@/app/context/stateContext";
 import Alert from '@mui/material/Alert';
-import moment from 'moment-timezone'
+
 import CircularIndeterminate from '@/components/CircularLoading';
+import { storeInLocalStorage } from "@/lib/commonFunctions";
 
 export function PaymentPortal(props) {
-    let testUrl = process.env.NEXT_PUBLIC_API_URL
+    let url = process.env.NEXT_PUBLIC_API_URL
     const router = useRouter();
-
     const { email, setEmail, setCustomerId } = user()
     let [error, setError] = useState(false)
     let [loading, setLoading] = useState(false)
     let [errorMessage, setErrorMessage] = useState("")
-    let { Settings, Style, Media } = GetSettings(props, "PaymentPortal");
-    let { isActive, isLargeMobile, isSmall, isLarge, isXLarge, isHD } = Media;
     const searchParams = useSearchParams();
+
     const amount = searchParams.get('amount');
     const term = searchParams.get('term');
-
-    //set customer data above in global state
-
 
     useEffect(() => {
         window.responseHandler = function (response) {
@@ -46,164 +40,118 @@ export function PaymentPortal(props) {
                 paymentFormUpdate(response);
             }
         }
-        function paymentFormUpdate(response) {
+        async function paymentFormUpdate(response) {
             //create variables
+            let email = document.querySelector("#email").value;
+            let phone = document.querySelector("#phone").value;
+            let password = document.querySelector("#password").value;
+            let country = document.querySelector("#search_country").value;
+
             document.getElementById("dataDescriptor").value = response.opaqueData.dataDescriptor;
             document.getElementById("dataValue").value = response.opaqueData.dataValue;
             document.getElementById("billToFirstName").value = response.customerInformation.firstName;
             document.getElementById("billToLastName").value = response.customerInformation.lastName;
             document.getElementById("billAmount").value = amount;
-            let email = document.querySelector("#email").value;
             document.getElementById("billEmail").value = email;
-            let phone = document.querySelector("#phone").value;
             document.getElementById("billPhone").value = phone;
-            let country = document.querySelector("#search_country").value;
             document.getElementById("billCountry").value = country;
-            let password = document.querySelector("#password").value;
             document.getElementById("userPassword").value = password;
             document.getElementById("billTerm").value = term;
 
             //set global state email
             setEmail(email)
+            setLoading(true);
 
             const formData = new FormData(document.getElementById("paymentForm"));
-
-            // fetch(`${testUrl}/api/paymentPortal`, {
-            //     method: 'POST',
-            //     body: formData,
-            // })
-            setLoading(true);
-            axios.post(`${testUrl}/api/paymentPortal`, formData)
-                .then(response => {
-                    setLoading(false);
-                    console.log("response is:", response.data)
-                    let testResponse = {
-                        "message": "Transaction successful, but customer creation failed",
-                        "transaction": true,
-                        "customerCreated": false,
-                        "subscriptionCreated": false,
-                        "error": {
-                            "transactionResponse": {
-                                "responseCode": "2",
-                                "authCode": "",
-                                "avsResultCode": "B",
-                                "cvvResultCode": "",
-                                "cavvResultCode": "",
-                                "transId": "81491921659",
-                                "refTransID": "",
-                                "transHash": "",
-                                "testRequest": "0",
-                                "accountNumber": "XXXX0002",
-                                "accountType": "AmericanExpress",
-                                "errors": [
-                                    {
-                                        "errorCode": "37",
-                                        "errorText": "The credit card number is invalid."
-                                    }
-                                ],
-                                "transHashSha2": "",
-                                "SupplementalDataQualificationIndicator": 0
-                            },
-                            "messages": {
-                                "resultCode": "Ok",
-                                "message": [
-                                    {
-                                        "code": "I00001",
-                                        "text": "Successful."
-                                    }
-                                ]
+            try {
+                let response = await axios.post(`${url}/api/paymentPortal`, formData)
+                    .then(async response => {
+                        setLoading(false);
+                        console.log("response from /api/paymentPortal is:", JSON.stringify(response.data))
+                        let testResponse = {
+                            "message": "Transaction successful, but customer creation failed",
+                            "transaction": true,
+                            "customerCreated": false,
+                            "subscriptionCreated": false,
+                            "error": {
+                                "transactionResponse": {
+                                    "responseCode": "2",
+                                    "authCode": "",
+                                    "avsResultCode": "B",
+                                    "cvvResultCode": "",
+                                    "cavvResultCode": "",
+                                    "transId": "81491921659",
+                                    "refTransID": "",
+                                    "transHash": "",
+                                    "testRequest": "0",
+                                    "accountNumber": "XXXX0002",
+                                    "accountType": "AmericanExpress",
+                                    "errors": [
+                                        {
+                                            "errorCode": "37",
+                                            "errorText": "The credit card number is invalid."
+                                        }
+                                    ],
+                                    "transHashSha2": "",
+                                    "SupplementalDataQualificationIndicator": 0
+                                },
+                                "messages": {
+                                    "resultCode": "Ok",
+                                    "message": [
+                                        {
+                                            "code": "I00001",
+                                            "text": "Successful."
+                                        }
+                                    ]
+                                }
                             }
                         }
-                    }
-                    let transaction = response?.data?.data ? response?.data?.data.transaction : response?.data?.transaction
-                    let customerCreated = response?.data?.data ? response?.data?.data.customerCreated : response?.data?.customerCreated
-                    let subscriptionCreated = response?.data?.data ? response?.data?.data.subscriptionCreated : response?.data?.subscriptionCreated
-                    console.log("transaction:", transaction)
-                    console.log("customerCreated:", customerCreated)
-                    console.log("subscriptionCreated:", subscriptionCreated)
-                    //session token is: HNE8u0JV2oICvU0IpDaboMIG3Z7FlAeE
-                    if (transaction && customerCreated && !subscriptionCreated) {//doesn't matter since card is being charged anyway - fix that
-                        setError(true)
-                        //useCase: Credit Card expires before the start of the subscription.
-                        console.log("response.error:", response.data.error.data.messages.message[0].text)
-                        setErrorMessage(response.data.error.data.messages ? response.data.error.data.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
-                    } else if (transaction && customerCreated) {
-                        // router.push('/accountDetails')
-                        // let name = response.data?.data?.firstName
-                        // let id = response.data?.data?.userInNeon?.data?.data?.user?.id
-                        // let userEmail = response.data?.data?.userInNeon?.data?.data?.user?.email
-                        // let token = response.data?.data?.token
-                        // localStorage.setItem('name', name);
-                        // localStorage.setItem('userId', id);
-                        // localStorage.setItem('username', userEmail);
-                        // localStorage.setItem('authToken', token);
-                        // localStorage.setItem('AuthExpirationDate', expirationDate);
-                        // localStorage.setItem('refreshToken', token);
-                        // localStorage.setItem('refreshExpireTime', refreshExpireTime);
-                        // localStorage.setItem('timezone', timezone);
-                        // localStorage.setItem('postAWS', postAWS);
+                        let responseData = response?.data?.data
+                        let transaction = responseData ? responseData.transaction : response?.data?.transaction
+                        let customerCreated = responseData ? responseData.customerCreated : response?.data?.customerCreated
+                        let subscriptionCreated = responseData ? responseData.subscriptionCreated : response?.data?.subscriptionCreated
+                        
+                        console.log("transaction: ", transaction, "\n customerCreated value:",customerCreated, "\n subscriptionCreated value:",subscriptionCreated)
 
-                        const today = new Date();
-                        const expirationDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-                        const refreshExpireTime = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-                        let postAWS = response?.data?.impInfo?.AuthorizeNextImport
-                        const timezone = moment.tz.guess();
+                        if (transaction && customerCreated && !subscriptionCreated) {//doesn't matter since card is being charged anyway - fix that
+                            setError(true)
+                            //useCase: Credit Card expires before the start of the subscription.
+                            console.log("response.error:", response?.data?.error?.data?.messages?.message[0]?.text)
+                            setErrorMessage(response?.data?.error?.data?.messages ? response?.data?.error?.data?.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
+                        } else if (transaction && customerCreated) {
+                            let user = await storeInLocalStorage(response)
+                            console.log("user in paymentFormUpdate is:", JSON.stringify(user))
 
-                        let user = {
-                            ...response.data?.data?.userInNeon?.data?.data?.user,
-                            token: response.data?.data?.token,
-                            refreshToken: response.data?.data?.token,
-                            expirationDate: expirationDate,
-                            refreshExpireTime: refreshExpireTime,
-                            timezone: timezone,
-                            postAWS: postAWS,
-
+                            router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
                         }
-                        console.log("user from localstorage in payment portal is:", user)
-                        localStorage.setItem('user', JSON.stringify(user));
-
-                        // //generate the url params using user object
-                        // let paramsString = getParamStringUser(user)
-
-                        // function getParamStringUser(user){
-                        //     let finalString
-                        //     for(let [key, value] of Object.entries(user)){
-
-                        //         finalString = `${key}=${value}`
-                        //     }
-                        // }
-
-                        router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
-                    }
-                    else {
+                        else {
+                            setError(true)
+                            setErrorMessage(response?.data?.error?.data?.messages ? response?.data?.error?.data?.messages.message[0]?.text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
+                        }
+                    })
+                    .then(data => {
+                        setLoading(false);
+                        console.log("data in paymentFormUpdate is:", data)
+                        let customerProfileId = data?.customerId?.data?.customerProfileId
+                        console.log("customerProfileId:", customerProfileId)
+                        setCustomerId(customerProfileId)
+                        /*if(customerProfileId){
+                            router.push('/accountDetails')
+                        }*/
+                    })
+                    .catch(error => {
+                        setLoading(false);
+                        console.error("error is", error)
                         setError(true)
-                        setErrorMessage(response.data.error.data.messages ? response.data.error.data.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
-                    }
+                        setErrorMessage("Transaction Failed, Try Again ! Contact Admin at admin@gymnasticbodies.com")
 
-                })
-                .then(data => {
-                    setLoading(false);
-                    console.log("data is:", data)
-                    let customerProfileId = data?.customerId?.data?.customerProfileId ? data?.customerId?.data?.customerProfileId : '803450130'
-                    console.log("customerProfileId:", customerProfileId)
-                    setCustomerId(customerProfileId)
-                    // if()
-                    // router.push('/accountDetails');
-                })
-                .catch(error => {
-                    setLoading(false);
-                    console.error("error is", error)
-                    setError(true)
-                    setErrorMessage("Transaction Failed, Try Again ! Contact Admin at admin@gymnasticbodies.com")
+                    });
+            } catch (error) {
+                console.log("outer catch block:", error)
+            }
 
-                });
-
-            // document.getElementById("paymentForm").submit();
         }
     }, []);
-
-
-    console.log("email:", email)
 
     let FormInnerStyle = {
         display: 'grid',
@@ -224,7 +172,7 @@ export function PaymentPortal(props) {
                 <form id="paymentForm"
                     method="POST"
                     style={FormInnerStyle}
-                    action={`${testUrl}/api/paymentPortal`}>
+                    action={`${url}/api/paymentPortal`}>
                     <input type="hidden" name="dataValue" id="dataValue" />
                     <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
                     <input type="hidden" name="billToFirstName" id="billToFirstName" />

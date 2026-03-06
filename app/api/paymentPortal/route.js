@@ -1,24 +1,22 @@
-// import { ApiContracts } from "authorizenet";
-
-import { APIContracts as ApiContracts, APIControllers as ApiControllers, Constants as SDKConstants } from 'authorizenet';
-import Axios from 'axios'
 import { NextResponse } from 'next/server';
-import allAuthorizeData from '../../../data/allAuthorizeData.json'
-// const NEWAPI = process.env.REACT_APP_API_NEW
+import { authorizePaymentAuthentication, createAuthorizeTransaction, createCustomerInAuthorize, createSubscriptionInAuthorize, getAllDataFromFile, getCustomerFromAuthorize } from '@/lib/commonServerFunction';
+import { getFlagAndSubscriptionInfo } from '@/lib/commonFunctions';
+import { createAccountForUser, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting } from '@/lib/userSettings';
+
 let testUrl = process.env.NEXT_PUBLIC_API_URL
 
 
 export async function POST(request) {
     // const data = await request.text();
     const params = await request.formData()
-    console.log("params is:", params)
     let reason = params.get('reason')
-    console.log("reason:", reason)
+    console.log("params:", params, "\nreason:", reason)
 
     const authData = {
         dataValue: params.get('dataValue'),
         dataDescriptor: params.get('dataDescriptor')
     }
+
     const incomingData = {
         firstName: params.get('billToFirstName'),
         lastName: params.get('billToLastName'),
@@ -51,7 +49,7 @@ export async function POST(request) {
     //define variables
     let customerSubscriptionStatus, authorizationTransactionIs, authorizeCustomerIs, subscriptionForCustomer, userInNeon, impInfo, customerData, customerSubscription, customerInfoFromAuthorize
 
-    if (reason == "createSubscription") {
+    if (reason == "createSubscription") {//review again, might error
         let authorizeCustomerIs = {
             data: {
                 customerProfileId: params.get('customerProfileId'),
@@ -118,7 +116,9 @@ export async function POST(request) {
         //---- (flag) add status - active
         //---- (flag) add authorizenetCustomerId - "authorize customerId"
 
-        customerData = allAuthorizeData.find(data => data.result.profile.email === incomingData.email);
+        customerData = await getAllDataFromFile(incomingData.email)
+
+        // customerData = allAuthorizeData.find(data => data.result.profile.email === incomingData.email);
         console.log("customerData from allAuthorizeData:", customerData)
 
         customerSubscription = customerData?.customerSubscription
@@ -127,26 +127,26 @@ export async function POST(request) {
         if (customerSubscription) {
             customerSubscriptionStatus = customerData?.customerSubscription?.data?.subscription?.status
         }
-        if (customerSubscriptionStatus != "active") {
-            authorizationTransactionIs = await createAuthorizeTransaction()
+        if (customerSubscriptionStatus != "active") {//previous status of last subscription
+            authorizationTransactionIs = await createAuthorizeTransaction(authData, incomingData, merchantAuth)
             console.log("authorizationTransactionIs:", authorizationTransactionIs)
             if (authorizationTransactionIs.status) {
-                authorizeCustomerIs = await createCustomerInAuthorize(authorizationTransactionIs) //takes transactionId from authorizationTransactionIs
+                authorizeCustomerIs = await createCustomerInAuthorize(merchantAuth, authorizationTransactionIs, incomingData) //takes transactionId from authorizationTransactionIs
                 console.log("authorizeCustomerIs:", authorizeCustomerIs)
                 if (authorizeCustomerIs.status) {
                     //get flag and subscription info for later
-                    impInfo = await getFlagAndSubscriptionInfo(authorizeCustomerIs)
-                    console.log("impInfo:", impInfo)
+                    impInfo = await getFlagAndSubscriptionInfo(customerData, authorizeCustomerIs, incomingData)
+                    console.log("impInfo from customerSubscription not active:", impInfo)
                     if (impInfo.status == "active") {
                         subscriptionForCustomer = await createSubscriptionInAuthorize(authorizeCustomerIs, impInfo)
                         console.log("subscriptionForCustomer:", subscriptionForCustomer)
                     } else {
-                        console.log("inacitve customer impInfo:", impInfo)
+                        console.log("inacitve customer authorizenetCustomerId", impInfo.authorizenetCustomerId)
                     }
 
                     if (subscriptionForCustomer.status) {
                         //store info in neon database for future fetch frontend
-                        userInNeon = await createUserInDB(subscriptionForCustomer, authorizeCustomerIs, impInfo)
+                        userInNeon = await createUserInDB(subscriptionForCustomer, incomingData, impInfo)
                         customerInfoFromAuthorize = await getCustomerFromAuthorize(impInfo.authorizenetCustomerId);
                         console.log("userInNeon:", userInNeon)
                         let billTo = customerInfoFromAuthorize?.data?.profile?.paymentProfiles?.[0]?.billTo
@@ -160,7 +160,7 @@ export async function POST(request) {
                                 subscriptionId: subscriptionForCustomer,
                                 customerCreated: true,
                                 subscriptionCreated: true,
-                                userInNeon:userInNeon,
+                                userInNeon: userInNeon,
                                 token: userInNeon?.data?.data?.token,
                                 impInfo: impInfo,
                                 firstName: billTo?.firstName ?? "N/A"
@@ -201,7 +201,7 @@ export async function POST(request) {
             }
         }
         if (customerSubscriptionStatus == "active") {
-            impInfo = await getFlagAndSubscriptionInfo(customerData)
+            impInfo = await getFlagAndSubscriptionInfo(customerData, authorizeCustomerIs, incomingData)
             //return message "Already have a Subscription"
             return NextResponse.json({
                 message: 'You have an Active Subscription!',
@@ -214,7 +214,7 @@ export async function POST(request) {
         }
 
     }
-    async function authorizePaymentAuthentication() {
+    /*async function authorizePaymentAuthentication() {
         // Set up the merchant authentication
         const apiLoginId = process.env.AUTHORIZE_NET_API_LOGIN_ID;
         const transactionKey = process.env.AUTHORIZE_NET_TRANSACTION_KEY;
@@ -224,8 +224,8 @@ export async function POST(request) {
         merchantAuthenticationType.setTransactionKey(transactionKey);
 
         return merchantAuthenticationType
-    }
-    async function createAuthorizeTransaction() {
+    }*/
+    /*async function createAuthorizeTransaction() {
         var opaqueData = new ApiContracts.OpaqueDataType();
         opaqueData.setDataDescriptor(authData.dataDescriptor);
         opaqueData.setDataValue(authData.dataValue);
@@ -264,13 +264,13 @@ export async function POST(request) {
             });
             const message = apiResponse.messages.message[0];
             if (apiResponse.messages.resultCode === "Error") {
-                
+
                 console.log("message in createAuthorizeTransaction:", message);
                 // return { status: false, data: apiResponse }
                 result = { status: false, data: apiResponse }
             } else {
-                
-                console.log("message when transaction resultCode is OK:",message)
+
+                console.log("message when transaction resultCode is OK:", message)
                 result = { status: true, data: apiResponse }
                 // return { status: true, data: apiResponse }
             }
@@ -280,8 +280,8 @@ export async function POST(request) {
             result = { status: false, data: error }
         }
         return result
-    }
-    async function createCustomerInAuthorize(authorizationTransactionIs) {
+    }*/
+    /*async function createCustomerInAuthorize(authorizationTransactionIs) {
         const clientId = process.env.AUTHORIZE_NET_API_CLIENT_ID;
         var createRequestForCustomer = new ApiContracts.CreateCustomerProfileFromTransactionRequest();
         createRequestForCustomer.setMerchantAuthentication(merchantAuth);
@@ -302,14 +302,6 @@ export async function POST(request) {
                     reject(error);
                 });
             });
-            /*apiResponse in customer: {
-                customerProfileId: '803396740',
-                customerPaymentProfileIdList: [ '1356475745' ],
-                customerShippingAddressIdList: [ '1349925379' ],
-                validationDirectResponseList: [],
-                messages: { resultCode: 'Ok', message: [ [Object] ] }
-              }*/
-
             if (apiResponse.messages.resultCode === "Error") {
                 const message = apiResponse.messages.message[0];
                 console.log("message in createCustomerInAuthorize:", message);
@@ -324,8 +316,8 @@ export async function POST(request) {
             // return { status: false, data: error }
         }
         return result
-    }
-    async function getFlagAndSubscriptionInfo(customerData) {
+    }*/
+    /*async function getFlagAndSubscriptionInfo(customerData) {
         console.log("customerData:", customerData)
         let priceMap = [
             {
@@ -367,18 +359,20 @@ export async function POST(request) {
         ]
         let todaysDate = new Date();
         let todaysIsoDate = todaysDate.toISOString()
-        if (customerData) {
-
-        }
+        //has no merchantID
         let merchantid = customerData?.result?.profile?.merchantCustomerId ? customerData?.result?.profile?.merchantCustomerId : null //for new users no merchant id
         let AuthorizeNextImport = merchantid ? true : false
+        //no transactions
         let transactions = customerData?.transactionHistory?.data?.transactions
         let lastTransactions = transactions ? transactions[0] : null // most recent transaction
         let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
         let firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : todaysIsoDate
         let lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : todaysIsoDate
+        //price will come from incoming data
         let lastTransactionPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : incomingData.amount.toString();
+        //matched term will be there
         let matchedTerm = priceMap.find(item => item.price === lastTransactionPrice)?.term;
+        //next payment date will be todays date + 1 / 3 / 1
         let nextPaymentDate
         let status
         let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId ? customerData?.result?.profile?.customerProfileId : authorizeCustomerIs?.data?.customerProfileId
@@ -416,12 +410,12 @@ export async function POST(request) {
                 nextPaymentDate: nextPaymentDate,
                 status: status,
                 authorizenetCustomerId: authorizenetCustomerId,
-                
+
             }
         )
 
-    }
-    async function getCustomerFromAuthorize(customerProfileId) {
+    }*/
+    /*async function getCustomerFromAuthorize(customerProfileId) {
         console.log("inside getCustomerFromAuthorize")
         var getRequest = new ApiContracts.GetCustomerProfileRequest();
 
@@ -465,8 +459,8 @@ export async function POST(request) {
         } catch (error) {
             return { status: false, data: error }
         }
-    }
-    async function createSubscriptionInAuthorize(authorizeCustomerIs, impInfo) {
+    }*/
+    /*async function createSubscriptionInAuthorize(authorizeCustomerIs, impInfo) {
         console.log("impInfo:", impInfo)
         console.log("authorizeCustomerIs.data.customerProfileId:", authorizeCustomerIs.data.customerProfileId)
 
@@ -485,11 +479,6 @@ export async function POST(request) {
         console.log("incomingData.startDate:", incomingData.startDate)
         console.log("termLength:", termLength)
         let xmlDate
-        // if (incomingData.startDate) {
-        //     xmlDate = incomingData.startDate.split('T')[0]//start date already exists
-        // } else {
-        //     xmlDate = new Date().toISOString().split('T')[0]; //todays date
-        // }
         if (impInfo.nextPaymentDate) {
             xmlDate = impInfo.nextPaymentDate.toISOString().split('T')[0]//start date is in the future
         } else {
@@ -513,9 +502,7 @@ export async function POST(request) {
         if (shippingId != "N/A") {
             customerProfileIdType.setCustomerAddressId(shippingId);
         }
-        // var billTo = new ApiContracts.CustomerAddressType();
-        // billTo.setLastName(incomingData.lastName);
-
+       
         var arbSubscription = new ApiContracts.ARBSubscriptionType();
 
         let subscriptionName = "GymFit TV - $" + impInfo?.lastTransactionPrice + " / " + impInfo?.matchedTerm
@@ -524,8 +511,7 @@ export async function POST(request) {
         arbSubscription.setAmount(impInfo?.lastTransactionPrice);
         arbSubscription.setTrialAmount('0');
         arbSubscription.setProfile(customerProfileIdType);
-        // arbSubscription.setBillTo(billTo);
-
+        
         var createRequest = new ApiContracts.ARBCreateSubscriptionRequest();
         createRequest.setMerchantAuthentication(merchantAuth);
         createRequest.setSubscription(arbSubscription);
@@ -546,54 +532,29 @@ export async function POST(request) {
 
             var response = new ApiContracts.ARBCreateSubscriptionResponse(apiResponse);
 
-            /*apiResponse in customer: {
-                customerProfileId: '803396740',
-                customerPaymentProfileIdList: [ '1356475745' ],
-                customerShippingAddressIdList: [ '1349925379' ],
-                validationDirectResponseList: [],
-                messages: { resultCode: 'Ok', message: [ [Object] ] }
-              }*/
-            if (apiResponse.messages.resultCode === "Error") {
-                const message = response.messages.message[0];
-                console.log("message:", message);
-                // return { status: false, data: response }
-                result = { status: false, data: response }
-            } else {
-                // return { status: true, data: response }
-                result = { status: true, data: response }
-            }
-        } catch (error) {
-            // return { status: false, data: error }
-            result = { status: false, data: error }
-        }
-        return result;
+    if (apiResponse.messages.resultCode === "Error") {
+        const message = response.messages.message[0];
+        console.log("message:", message);
+        // return { status: false, data: response }
+        result = { status: false, data: response }
+    } else {
+        // return { status: true, data: response }
+        result = { status: true, data: response }
     }
+} catch (error) {
+    
+    result = { status: false, data: error }
+}
+return result;
+    }*/
 
-    async function createUserInDB(subscriptionForCustomer, authorizeCustomerIs, impInfo) {
-        const config = {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        // const currentDate = new Date();
-        // let nextPaymentDate;
-
-        // if (incomingData.term === 'monthly') {
-        //     nextPaymentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate()).toISOString();
-        // } else if (incomingData.term === 'yearly') {
-        //     nextPaymentDate = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), currentDate.getDate()).toISOString();
-        // }
-        // console.log("subscriptionForCustomer.data[profile]:", subscriptionForCustomer.data["profile"])
-        // console.log("subscriptionForCustomer:", subscriptionForCustomer)
-        // console.log("authorizeCustomerIs:", authorizeCustomerIs)
-        let data = {
+    async function createUserInDB(subscriptionForCustomer, incomingData, impInfo) {
+        let finalData = {
             status: impInfo.status,
             password: incomingData.password,
             next_payment_date_gmt: impInfo.nextPaymentDate,
             date_created_gmt: impInfo.firstTransactionDate,
             start_date_gmt: impInfo.firstTransactionDate,
-            // date_created_gmt: new Date().toLocaleString('en-CA', { hour12: false }).replace(', ', 'T'),
-            // start_date_gmt: new Date().toLocaleString('en-US', { hour12: false, timeZone: 'America/New_York' }).replace(', ', 'T'),
             end_date_gmt: impInfo.nextPaymentDate,
             billing: {
                 first_name: incomingData.firstName,
@@ -608,36 +569,47 @@ export async function POST(request) {
             authorizeNextImport: impInfo.AuthorizeNextImport,
             authorizeCustomerId: impInfo.authorizenetCustomerId
         }
-        let result = null
-        try {
-            // const response = await Axios.post(NEWAPI + '/api/user/subscription', data, config);
-            const response = await fetch(testUrl + '/api/user/subscription', {
-                method: 'POST',
-                config,
-                body: JSON.stringify(data)
-            })
-            console.log("res is:", response.status)
-            console.log("res status:", response.statusText)
-            // return { status: true, data: response };
-            const responseData = await response.json();
-            console.log("response data is:", responseData);
-            result = { status: true, data: responseData };
-        } catch (error) {
-            console.error("Error:", error);
-            // return { status: false, data: error };
-            result = { status: false, data: error }
+        console.log("finalData in createUserInDB:",finalData)
+        let dbUser = await getUserWithEmail(finalData.billing.email)
+        let isExistingUser = dbUser?.user?.id ? true : false
+        if (!isExistingUser) {
+            dbUser = await createAccountForUser(finalData)
         }
-        return result
-        // const dbresponse = Axios.post(NEWAPI + '/api/user/subscription', data, config).then((res) => {
-        //     console.log("res is:", res.status)
-        //     console.log("res status:", res.statusText)
-        //     return { status: true, data: res }
-        //     // return NextResponse.json({ message: 'Success', data: dbresponse.data });
-        // })
-        //     .catch((error) => {
-        //         // return NextResponse.json({ message: 'Error', error }, { status: 500 });
-        //         return { status: false, data: error }
-        //     });
+        let settingsRecord = {
+            type: 'subscription',
+            status: impInfo.status,
+            data: {
+                status: finalData?.status,
+                renewaldate: finalData?.next_payment_date_gmt,
+                startdate: finalData?.start_date_gmt,
+                phone: finalData?.phone ? finalData.phone : null,
+                country: finalData?.country ? finalData.country : null,
+                email: finalData?.billing?.email ? finalData.billing.email : null,
+                term: finalData?.term ? finalData.term : null,
+                first_name: finalData?.billing?.first_name ? finalData.billing.first_name : null,
+                last_name: finalData?.billing?.last_name ? finalData.billing.last_name : null,
+                authorizeCustomer: finalData?.profile,
+                authorizeSubscription: finalData?.subscriptionId,
+
+            },
+            userId: dbUser.user.id,
+            authorizeNextImport: finalData?.authorizeNextImport,
+            authorizeCustomerId: finalData?.authorizeCustomerId,
+
+        }
+
+        console.log("settingsRecord:", settingsRecord)
+
+        let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
+        let userSetting
+        if (matching) {
+            userSetting = await updateUserSetting(matching)
+        } else {
+            userSetting = await insertIntoUserSetting(settingsRecord)
+        }
+        console.log("userSetting:", userSetting)
+        console.log("dbUser:",dbUser)
+        return dbUser
     }
 
 }

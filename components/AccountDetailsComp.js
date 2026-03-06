@@ -270,7 +270,7 @@ export default function AccountDetailsComp(props) {
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionName}</Typography>
                                             {/* <Typography variant="h5" component="h2" sx={valueFontSize}>{plan ?? "N/A"}</Typography> */}
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.lastTransactionPrice} </Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate.split('T')[0]}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionEndDateDisplay}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
                                         </Stack>
                                     </>

@@ -17,7 +17,9 @@ import { ContactUs } from '@/components/ContactUs';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import moment from 'moment-timezone'
-import allAuthorizeData from '../data/allAuthorizeData.json'
+import { getAllDataFromFile } from '@/lib/commonServerFunction';
+// import allAuthorizeData from '../data/allAuthorizeData.json'
+
 
 export default function Home() {
   const router = useRouter();
@@ -98,8 +100,13 @@ export default function Home() {
         body: JSON.stringify(data)
       })
       let userInfo = await response.json()
-      let merchantId
-      console.log("userInfo 1:", userInfo)
+
+      let customerData = await getAllDataFromFile(values.email)
+      let merchantId = customerData?.result?.profile?.merchantCustomerId;
+      let customerId = customerData?.result?.profile?.customerProfileId;
+
+      console.log("customerId:", customerId, "\nerchantId:", merchantId, "\customerData:", customerData)
+
       if (userInfo.status == "UNAUTHORIZED") {
         //check if users email is in neon db
         let checkNeonDB = {
@@ -113,13 +120,11 @@ export default function Home() {
         })
         let userInNeon = await response.json()
         console.log("userInNeon:", userInNeon)
-        //check if the user is in authorize
-        let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
-        console.log("customerData:", customerData)
-        let customerId = customerData?.result?.profile?.customerProfileId;
-        merchantId = customerData?.result?.profile?.merchantCustomerId;
-        console.log("customerId:", customerId)
-        console.log("userInNeon.data:", userInNeon)
+
+        // let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
+        // console.log("customerData:", customerData)
+        // merchantId = customerData?.result?.profile?.merchantCustomerId;
+
         if (!customerId && !userInNeon.data) {
           router.push(`${testUrl}/subscribe`)//customer is neither in authorize nor in db (email check)
         }
@@ -142,9 +147,9 @@ export default function Home() {
 
         }
       }
-      let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
-      console.log("customerData:", customerData)
-      merchantId = customerData?.result?.profile?.merchantCustomerId;
+      // let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
+
+
       console.log("userInfo:", userInfo)
 
       const today = new Date();
@@ -172,11 +177,11 @@ export default function Home() {
       /**TODO - store entire user object in localhost - reusable function */
       let user = {
         ...userInfo,
-        expirationDate:expirationDate,
-        refreshExpireTime:refreshExpireTime,
-        timezone:timezone,
-        postAWS:postAWS,
-        
+        expirationDate: expirationDate,
+        refreshExpireTime: refreshExpireTime,
+        timezone: timezone,
+        postAWS: postAWS,
+
       }
       localStorage.setItem('user', JSON.stringify(user));
 

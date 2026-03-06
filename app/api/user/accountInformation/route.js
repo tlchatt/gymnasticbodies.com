@@ -2,17 +2,10 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { getUserWithId, queryUserSetting } from '@/lib/userSettings';
+import { getAllDataFromFile } from '@/lib/commonServerFunction';
 
 export async function POST(request) {
     let testUrl = process.env.NEXT_PUBLIC_API_URL
-
-    console.log("process.cwd():",process.cwd())
-    const filePath = path.join(process.cwd(), 'data', 'allAuthorizeData.json');
-    const fileContents = await fs.readFile(filePath, 'utf8');
-    const allAuthorizeData = JSON.parse(fileContents);
-
-    console.log("allAuthorizeData length:",allAuthorizeData.length)
-
     let json = await request.json()
     console.log("json in accountInformation post is:", json)
 
@@ -30,8 +23,8 @@ export async function POST(request) {
     console.log("userEmail:", userEmail)
 
     if (!customerId) {
-        console.log("??",allAuthorizeData[0])
-        let customerData = allAuthorizeData.find(data => data.result.profile.email === userEmail);
+        let customerData = await getAllDataFromFile(userEmail)
+        // let customerData = allAuthorizeData.find(data => data.result.profile.email === userEmail);
         customerId = customerData?.result?.profile?.customerProfileId;
     }
 
