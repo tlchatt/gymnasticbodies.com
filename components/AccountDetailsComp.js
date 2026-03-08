@@ -25,6 +25,7 @@ export default function AccountDetailsComp(props) {
 
     */
     let appUrl = process.env.NEXT_PUBLIC_API_URL
+    console.log("appUrl:",appUrl)
     // const token = searchParams.get('token');
     // const userId = searchParams.get('userId');
     let userInfoFetch = (url) => fetch(url, {
@@ -38,11 +39,10 @@ export default function AccountDetailsComp(props) {
             type: 'subscription'
         })
     }).then((res) => res.json())
-    const { data, error, isLoading } = useSWR(`${appUrl}/api/user/accountInformation`, userInfoFetch)
+    const { data, error, isLoading } = useSWR(`https://gymnasticbodies-com.vercel.app/api/user/accountInformation`, userInfoFetch)
     // console.log("data in useSWR is:", data)
     // console.log("error in useSWR is:", error)
     // console.log("isLoading in useSWR is:", isLoading)
-
 
     let {
         cardType,
@@ -81,7 +81,6 @@ export default function AccountDetailsComp(props) {
         <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>Failed To Load, Try Again Later!
         </Typography>
     </div>
-
 
     /*function createSubscription() {
         //$75 per month, $225 billed quarterly
