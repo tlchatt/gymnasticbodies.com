@@ -58,7 +58,7 @@ export default function AccountDetailsComp(props) {
         transactionHistory
     } = data ?? {}
 
-    console.log("data is:",data)
+    console.log("data is:", data)
     /* style */
 
     let titleStyle = {
@@ -124,17 +124,34 @@ export default function AccountDetailsComp(props) {
             <>
                 <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>ACCOUNT
                 </Typography>
-                <Stack direction="column" spacing={2} style={{ margin: "20px" }}>
-                    <Grid size={6} style={{
-                    }}>
-                        <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
-                            <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                <Stack direction="column" spacing={2} style={{ width: "100%" }}>
-                                    <Typography id="modal-modal-title" variant="h4" component="h2">
-                                        User Information
-                                    </Typography>
+                {(!(impInfo.AuthorizeNextImport) && !(impInfo.postAWS)) &&
+                    <Stack direction="column" spacing={2} style={{ margin: "20px" }}>
+                        <Grid size={6} style={{}}>
+                            <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
+                                <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
+                                    <Stack direction="column" spacing={2} style={{ width: "100%" }}>
+                                        <Typography id="modal-modal-title" variant="h4" component="h2">
+                                            No Subscriptions or Order Information Found.
+                                        </Typography>
+                                    </Stack>
                                 </Stack>
-                                {/* <Stack direction="column" spacing={2} style={{ width: "100%", display: "flex", alignItems: "flex-end" }}>
+                            </Box>
+                        </Grid>
+                    </Stack>
+                }
+                {(impInfo.AuthorizeNextImport || impInfo.postAWS) &&
+
+                    <Stack direction="column" spacing={2} style={{ margin: "20px" }}>
+                        <Grid size={6} style={{
+                        }}>
+                            <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
+                                <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
+                                    <Stack direction="column" spacing={2} style={{ width: "100%" }}>
+                                        <Typography id="modal-modal-title" variant="h4" component="h2">
+                                            User Information
+                                        </Typography>
+                                    </Stack>
+                                    {/* <Stack direction="column" spacing={2} style={{ width: "100%", display: "flex", alignItems: "flex-end" }}>
                                        <a href={"https://my.gymnasticbodies.com/"}>
                                            <Button size='large' autoFocus variant='contained' >
                                                See Workout
@@ -144,37 +161,37 @@ export default function AccountDetailsComp(props) {
 
 
 
-                            </Stack>
+                                </Stack>
 
-                            <Stack direction="row" spacing={2} style={{ margin: "20px" }}
-                            >
-                                <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                    <Typography variant="h5" component="h2" sx={headlineFontSize}>First Name</Typography>
-                                    <Typography variant="h5" component="h2" sx={headlineFontSize} >Last Name</Typography>
-                                    <Typography variant="h5" component="h2" sx={headlineFontSize} >Email</Typography>
-                                    <Typography variant="h5" component="h2" sx={headlineFontSize} >Country</Typography>
-                                    <Typography variant="h5" component="h2" sx={headlineFontSize} >Phone</Typography>
+                                <Stack direction="row" spacing={2} style={{ margin: "20px" }}
+                                >
+                                    <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                        <Typography variant="h5" component="h2" sx={headlineFontSize}>First Name</Typography>
+                                        <Typography variant="h5" component="h2" sx={headlineFontSize} >Last Name</Typography>
+                                        <Typography variant="h5" component="h2" sx={headlineFontSize} >Email</Typography>
+                                        <Typography variant="h5" component="h2" sx={headlineFontSize} >Country</Typography>
+                                        <Typography variant="h5" component="h2" sx={headlineFontSize} >Phone</Typography>
+                                    </Stack>
+                                    <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                        <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.firstName}</Typography>
+                                        <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.lastName}</Typography>
+                                        <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.email}</Typography>
+                                        <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.country}</Typography>
+                                        <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.phoneNumber}</Typography>
+                                    </Stack>
                                 </Stack>
-                                <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.firstName}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.lastName}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.email}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.country}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.phoneNumber}</Typography>
-                                </Stack>
-                            </Stack>
-                        </Box>
-                    </Grid>
+                            </Box>
+                        </Grid>
 
-                    <Grid size={6} style={{}}>
-                        <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
-                            <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                <Stack direction="column" spacing={2} style={{ width: "100%" }}>
-                                    <Typography id="modal-modal-title" variant="h4" component="h2">
-                                        Order Information
-                                    </Typography>
-                                </Stack>
-                                {/* <Stack direction="column" spacing={2} style={{ width: "100%", display: "flex", alignItems: "flex-end" }}>
+                        <Grid size={6} style={{}}>
+                            <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
+                                <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
+                                    <Stack direction="column" spacing={2} style={{ width: "100%" }}>
+                                        <Typography id="modal-modal-title" variant="h4" component="h2">
+                                            Order Information
+                                        </Typography>
+                                    </Stack>
+                                    {/* <Stack direction="column" spacing={2} style={{ width: "100%", display: "flex", alignItems: "flex-end" }}>
                                            <Button size='large' autoFocus onClick={createSubscription} variant='contained'>
                                                Create Subscription
                                            </Button>
@@ -182,86 +199,85 @@ export default function AccountDetailsComp(props) {
 
 
 
-                            </Stack>
-                            <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                {impInfo?.merchantid &&
-                                    <>
+                                </Stack>
+                                <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
+                                    {impInfo?.merchantid &&
+                                        <>
+                                            <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Last Order Date</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Invoice</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Amount</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Next Payment Date</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
+                                            </Stack>
+                                            <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.status}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.redableRecentTransactionDate}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionInvoiceNumber}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.price} {impInfo.matchedTerm}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.redableNextPaymentDate}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{cardType != "N/A" ? `${cardType} ending in ${cardNumber}` : 'No Payment Info Added'}</Typography>
+
+                                            </Stack>
+                                        </>
+                                    }
+                                    {!impInfo?.merchantid &&
+
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Last Order Date</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Invoice</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Amount</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Next Payment Date</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
+                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>No Order Found</Typography>
                                         </Stack>
-                                        <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.status}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.redableRecentTransactionDate}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionInvoiceNumber}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.price} {impInfo.matchedTerm}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.redableNextPaymentDate}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{cardType!="N/A" ? `${cardType} ending in ${cardNumber}` : 'No Payment Info Added'}</Typography>
 
-                                        </Stack>
-                                    </>
-                                }
-                                {!impInfo?.merchantid &&
-
-                                    <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                        <Typography variant="h5" component="h2" sx={headlineFontSize}>No Order Found</Typography>
-                                    </Stack>
-
-                                }
+                                    }
 
 
 
-                            </Stack>
-                        </Box>
-                    </Grid>
+                                </Stack>
+                            </Box>
+                        </Grid>
 
-                    <Grid size={6} style={{}}>
-                        <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
-                            <Typography id="modal-modal-title" variant="h4" component="h2">
-                                Manage Subscription
-                            </Typography>
-                            <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                {impInfo?.hasSubscription &&
-                                    <>
-                                        <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Name</Typography>
-                                            {/* <Typography variant="h5" component="h2" sx={headlineFontSize}>Current Plan</Typography> */}
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Amount</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Next Payment Date</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
-                                        </Stack>
-                                        <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.status}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.subscriptionName}</Typography>
-                                            {/* <Typography variant="h5" component="h2" sx={valueFontSize}>{plan ?? "N/A"}</Typography> */}
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.price} </Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
-                                        </Stack>
-                                    </>
-                                }
-                                {!impInfo?.hasSubscription &&
-                                    <>
-                                        <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>No Subscription Found</Typography>
+                        <Grid size={6} style={{}}>
+                            <Box style={{ width: "100%", boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)", padding: "20px" }}>
+                                <Typography id="modal-modal-title" variant="h4" component="h2">
+                                    Manage Subscription
+                                </Typography>
+                                <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
+                                    {impInfo?.hasSubscription &&
+                                        <>
+                                            <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Name</Typography>
+                                                {/* <Typography variant="h5" component="h2" sx={headlineFontSize}>Current Plan</Typography> */}
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Amount</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Next Payment Date</Typography>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
+                                            </Stack>
+                                            <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.status}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.subscriptionName}</Typography>
+                                                {/* <Typography variant="h5" component="h2" sx={valueFontSize}>{plan ?? "N/A"}</Typography> */}
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.price} </Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate}</Typography>
+                                                <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
+                                            </Stack>
+                                        </>
+                                    }
+                                    {!impInfo?.hasSubscription &&
+                                        <>
+                                            <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
+                                                <Typography variant="h5" component="h2" sx={headlineFontSize}>No Subscription Found</Typography>
 
-                                        </Stack>
-                                    </>
-                                }
+                                            </Stack>
+                                        </>
+                                    }
 
-                            </Stack>
-                        </Box>
+                                </Stack>
+                            </Box>
 
-                    </Grid>
+                        </Grid>
+                    </Stack >
+                }
 
-
-
-                </Stack >
 
                 {/* </StandardContainer> */}
             </>

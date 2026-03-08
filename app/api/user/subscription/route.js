@@ -45,15 +45,19 @@ export async function POST(request) {//when subscription webhook is triggered ->
             customerId = customerData?.result?.profile?.customerProfileId;
 
             console.log("customerId is:", customerId)
+            if (customerId) {
+                let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
+                console.log("authorizeData:", authorizeData)
 
-            let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
-            console.log("authorizeData:", authorizeData)
+                impInfo = await getFlagAndSubscriptionInfo(authorizeData)
+                console.log("impInfo:", impInfo)
 
-            impInfo = await getFlagAndSubscriptionInfo(authorizeData)
-            console.log("impInfo:", impInfo)
+                dbUser = await createAndModifyUserInNeon(json, impInfo)
+                console.log("dbUser after createAndModifyUserInNeon:", dbUser)
+            }else{
+                console.error("customer not in authorize. email:",username)
+            }
 
-            dbUser = await createAndModifyUserInNeon(json, impInfo)
-            console.log("dbUser after createAndModifyUserInNeon:", dbUser)
 
         }
         else {
@@ -135,7 +139,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
 
         if (matching) {
-            userSetting = await updateUserSetting(matching,settingsRecord)
+            userSetting = await updateUserSetting(matching, settingsRecord)
         } else {
             userSetting = await insertIntoUserSetting(settingsRecord)
         }

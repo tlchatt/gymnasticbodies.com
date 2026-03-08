@@ -14,6 +14,9 @@ export async function POST(request) {
     let usersettingInfo = await queryUserSetting(json.userId, json.type)//get User Setting from neon db
     console.log("usersettingInfo:", usersettingInfo)
 
+    let postAWS = usersettingInfo?.postAWS
+
+    console.log("postAWS:",postAWS)
     let userEmail = usersettingInfo ? JSON.parse(usersettingInfo?.data).email : null//has email
     let customerId = usersettingInfo?.authorizeCustomerId
 
@@ -61,6 +64,7 @@ export async function POST(request) {
     console.log("authorizeData:",authorizeData)
     impInfo = await getFlagAndSubscriptionInfo(authorizeData)
     console.log("impInfo:", impInfo)
+    impInfo.postAWS = postAWS
 
     if (authorizeData?.result) {
         let paymentProfile = authorizeData?.result?.profile?.paymentProfiles?.[0]?.payment
