@@ -46,6 +46,7 @@ export function PaymentPortal(props) {
             let phone = document.querySelector("#phone").value;
             let password = document.querySelector("#password").value;
             let country = document.querySelector("#search_country").value;
+            let postAWS = true
 
             document.getElementById("dataDescriptor").value = response.opaqueData.dataDescriptor;
             document.getElementById("dataValue").value = response.opaqueData.dataValue;
@@ -57,6 +58,7 @@ export function PaymentPortal(props) {
             document.getElementById("billCountry").value = country;
             document.getElementById("userPassword").value = password;
             document.getElementById("billTerm").value = term;
+            document.getElementById("postAWS").value = postAWS;
 
             //set global state email
             setEmail(email)
@@ -183,6 +185,7 @@ export function PaymentPortal(props) {
                     <input type="hidden" name="billCountry" id="billCountry" />
                     <input type="hidden" name="billTerm" id="billTerm" />
                     <input type="hidden" name="userPassword" id="userPassword" />
+                    <input type="hidden" name="postAWS" id="postAWS" />
                     <Button
                         type="button"
                         variant="contained"

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { authorizePaymentAuthentication, createAuthorizeTransaction, createCustomerInAuthorize, createSubscriptionInAuthorize, getAllDataFromFile, getCustomerFromAuthorize } from '@/lib/commonServerFunction';
 import { getFlagAndSubscriptionInfo } from '@/lib/commonFunctions';
-import { createAccountForUser, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting } from '@/lib/userSettings';
+import { createAccountForUser, createAndModifyUserInNeon, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting } from '@/lib/userSettings';
 
 let testUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -26,7 +26,8 @@ export async function POST(request) {
         country: params.get('billCountry'),
         term: params.get('billTerm'),
         startDate: params.get('billStartDate'),
-        password: params.get('userPassword')
+        password: params.get('userPassword'),
+        postAWS: params.get('postAWS')
     };
 
     let merchantAuth = await authorizePaymentAuthentication();
@@ -146,7 +147,8 @@ export async function POST(request) {
 
                     if (subscriptionForCustomer.status) {
                         //store info in neon database for future fetch frontend
-                        userInNeon = await createUserInDB(subscriptionForCustomer, incomingData, impInfo)
+                        userInNeon = await createAndModifyUserInNeon(incomingData, impInfo,subscriptionForCustomer)
+                        
                         customerInfoFromAuthorize = await getCustomerFromAuthorize(impInfo.authorizenetCustomerId);
                         console.log("userInNeon:", userInNeon)
                         let billTo = customerInfoFromAuthorize?.data?.profile?.paymentProfiles?.[0]?.billTo
@@ -547,8 +549,7 @@ export async function POST(request) {
 }
 return result;
     }*/
-
-    async function createUserInDB(subscriptionForCustomer, incomingData, impInfo) {
+    /*async function createUserInDB(subscriptionForCustomer, incomingData, impInfo) {
         let finalData = {
             status: impInfo.status,
             password: incomingData.password,
@@ -603,14 +604,14 @@ return result;
         let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
         let userSetting
         if (matching) {
-            userSetting = await updateUserSetting(matching)
+            userSetting = await updateUserSetting(matching,settingsRecord)
         } else {
             userSetting = await insertIntoUserSetting(settingsRecord)
         }
         console.log("userSetting:", userSetting)
         console.log("dbUser:",dbUser)
         return dbUser
-    }
+    }*/
 
 }
 // GET just to return 200 status for preflight to work

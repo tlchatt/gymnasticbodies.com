@@ -3,7 +3,8 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { writeQueue } from '@/lib/writeFile';
-import { getCustomerFromAuthorize } from '@/lib/commonServerFunction';
+import { getCustomerFromAuthorize, getCustomerSubscriptionFromAuthorize, getTransactionHistory } from '@/lib/commonServerFunction';
+import { getFlagAndSubscriptionInfo } from '@/lib/commonFunctions';
 
 export async function POST(request) {
     let json = await request.json()
@@ -137,262 +138,7 @@ export async function POST(request) {
     //     }, { status: 500 });
     // }
     // res.json(result);
-    async function authorizePaymentAuthentication() {
-        // Set up the merchant authentication
-        const apiLoginId = process.env.AUTHORIZE_NET_API_LOGIN_ID;
-        const transactionKey = process.env.AUTHORIZE_NET_TRANSACTION_KEY;
 
-        const merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
-        merchantAuthenticationType.setName(apiLoginId);
-        merchantAuthenticationType.setTransactionKey(transactionKey);
-
-        return merchantAuthenticationType
-    }
-    /*async function getCustomerFromAuthorize(customerProfileId) {
-        console.log("inside getCustomerFromAuthorize")
-        var getRequest = new ApiContracts.GetCustomerProfileRequest();
-
-        getRequest.setCustomerProfileId(customerProfileId);
-        let merchantAuth = await authorizePaymentAuthentication()
-        getRequest.setMerchantAuthentication(merchantAuth);
-
-        var ctrl = new ApiControllers.GetCustomerProfileController(getRequest.getJSON());
-        ctrl.setEnvironment(SDKConstants.endpoint.production);
-
-        try {
-            const apiResponse = await new Promise((resolve, reject) => {
-                ctrl.execute(() => {
-                    resolve(ctrl.getResponse());
-                }, (error) => {
-                    console.log("error for transaction:", error)
-                    reject(error);
-                });
-            });
-            if (apiResponse.messages.resultCode === "Error") {
-                const message = apiResponse.messages.message[0];
-                // console.log("message in createAuthorizeTransaction:", message);
-                return { status: false, data: apiResponse }
-            } else {
-                // console.log("apiResponse in getCustomerFromAuthorize:", apiResponse)
-                let sampleResponse = {
-                    profile: {
-                        paymentProfiles: [[Object]],
-                        shipToList: [[Object]],
-                        profileType: 'regular',
-                        customerProfileId: '719388555',
-                        merchantCustomerId: '33764',
-                        email: 'mecheye357@gmail.com'
-                    },
-                    messages: { resultCode: 'Ok', message: [[Object]] }
-                }
-                return { status: true, data: apiResponse }
-
-            }
-
-        } catch (error) {
-            return { status: false, data: error }
-        }
-    }*/
-
-    async function getFlagAndSubscriptionInfo(customerData) {
-        console.log("customerData:", customerData)
-        let envoronment = process.env.NEXT_PUBLIC_ENVIRONMENT
-        console.log("envoronment:", envoronment)
-        let testPrices = []
-        if (envoronment == 'development') {
-            testPrices = [{
-                price: "0.02",
-                term: "monthly"
-            },
-            {
-                price: "0.01",
-                term: "annually"
-            }]
-        }
-        let priceMap = [
-            {
-                price: "720",
-                term: "annually"
-            },
-            {
-                price: "239.88",
-                term: "annually"
-            },
-            {
-                price: "225",
-                term: "quarterly"
-            },
-            {
-                price: "179.88",
-                term: "annually"
-            },
-            {
-                price: "30",
-                term: "monthly"
-            },
-            {
-                price: "29.99",
-                term: "monthly"
-            },
-            {
-                price: "75",
-                term: "monthly"
-            },
-        ]
-        priceMap.push(...testPrices)
-
-        let lastPrice, firstTransactionDate, lastTransactionDate, nextPaymentDate
-        let todaysDate = new Date();
-        let todaysIsoDate = todaysDate.toISOString()
-
-        let merchantid = customerData?.result?.profile?.merchantCustomerId ?? null //for new users and old users with no transactions no merchant id
-        let AuthorizeNextImport = merchantid ? true : false
-        let transactions = customerData?.transactionHistory?.data?.transactions ?? null
-        let subscription = customerData?.customerSubscription?.data?.subscription ?? null
-
-        if (subscription) {
-            console.log("subscription:", subscription)
-            lastPrice = subscription.amount.toString()
-            nextPaymentDate = new Date(subscription.paymentSchedule.startDate) ?? null
-        } else {
-            let lastTransactions = transactions ? transactions[0] : null // most recent transaction
-            let firstTransaction = transactions ? transactions[transactions.length - 1] : null //oldest transaction
-            firstTransactionDate = firstTransaction ? new Date(firstTransaction?.submitTimeLocal) : null
-            lastTransactionDate = lastTransactions ? new Date(lastTransactions?.submitTimeLocal) : null
-            lastPrice = lastTransactions ? lastTransactions?.settleAmount.toString() : null
-        }
-
-        let matchedTerm = lastPrice ? priceMap.find(item => item.price === lastPrice)?.term : null;
-
-        let status
-        let authorizenetCustomerId = customerData?.result?.profile?.customerProfileId
-
-        if (subscription) {
-            if (matchedTerm) {
-                if (matchedTerm == "monthly") {
-                    lastTransactionDate = new Date(nextPaymentDate);
-                    lastTransactionDate.setMonth(nextPaymentDate.getMonth() - 1);
-                } else if (matchedTerm == "quarterly") {
-                    lastTransactionDate = new Date(nextPaymentDate);
-                    lastTransactionDate.setMonth(nextPaymentDate.getMonth() - 3);
-                } else if (matchedTerm == "annually") {
-                    lastTransactionDate = new Date(nextPaymentDate);
-                    lastTransactionDate.setMonth(nextPaymentDate.getFullYear() - 1);
-                } else {
-                    //return new amount found, contact admin
-                }
-            }
-        } else {
-            if (matchedTerm) {
-                if (matchedTerm == "monthly") {
-                    nextPaymentDate = new Date(lastTransactionDate);
-                    nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 1);
-                } else if (matchedTerm == "quarterly") {
-                    nextPaymentDate = new Date(lastTransactionDate);
-                    nextPaymentDate.setMonth(nextPaymentDate.getMonth() + 3);
-                } else if (matchedTerm == "annually") {
-                    nextPaymentDate = new Date(lastTransactionDate);
-                    nextPaymentDate.setMonth(nextPaymentDate.getFullYear() + 1);
-                } else {
-                    //return new amount found, contact admin
-                }
-            }
-        }
-
-        console.log("nextPaymentDate:", nextPaymentDate)
-        if (nextPaymentDate) {
-            if (nextPaymentDate < todaysIsoDate) {
-                //don't create a subscription
-                status = "inactive"
-            } else {
-                //create a subscription
-                status = "active"
-            }
-        } else {
-            status = "inactive"
-        }
-
-        console.log("retuned data from getFlagAndSubscriptionInfo", {
-            merchantid: merchantid,
-            AuthorizeNextImport: AuthorizeNextImport,
-            lastTransactionDate: lastTransactionDate,
-            lastTransactionPrice: lastPrice,
-            matchedTerm: matchedTerm,
-            nextPaymentDate: nextPaymentDate,
-            status: status,
-            authorizenetCustomerId: authorizenetCustomerId,
-            todaysIsoDate: todaysIsoDate,
-            firstTransactionDate: firstTransactionDate
-        })
-        return (
-            {
-                merchantid: merchantid,
-                AuthorizeNextImport: AuthorizeNextImport,
-                lastTransactionDate: lastTransactionDate,
-                lastTransactionPrice: lastPrice,
-                matchedTerm: matchedTerm,
-                nextPaymentDate: nextPaymentDate,
-                status: status,
-                authorizenetCustomerId: authorizenetCustomerId,
-                todaysIsoDate: todaysIsoDate,
-                firstTransactionDate: firstTransactionDate
-            }
-        )
-
-    }
-    async function getCustomerSubscriptionFromAuthorize(subscriptionId) {
-        console.log("inside getCustomerSubscriptionFromAuthorize")
-        let merchantAuth = await authorizePaymentAuthentication()
-        var getRequest = new ApiContracts.ARBGetSubscriptionRequest();
-        getRequest.setMerchantAuthentication(merchantAuth);
-        getRequest.setSubscriptionId(subscriptionId);
-
-        var ctrl = new ApiControllers.ARBGetSubscriptionController(getRequest.getJSON());
-        ctrl.setEnvironment(SDKConstants.endpoint.production);
-
-        try {
-            const apiResponse = await new Promise((resolve, reject) => {
-                ctrl.execute(() => {
-                    resolve(ctrl.getResponse());
-                }, (error) => {
-                    console.log("error for transaction:", error)
-                    reject(error);
-                });
-            });
-            if (apiResponse.messages.resultCode === "Error") {
-                const message = apiResponse.messages.message[0];
-                // console.log("message in createAuthorizeTransaction:", message);
-                return { status: false, data: apiResponse }
-            } else {
-                // console.log("apiResponse in getCustomerSubscriptionFromAuthorize:", apiResponse)
-                let sampleResponse = {
-                    subscription: {
-                        name: 'test',
-                        paymentSchedule: {
-                            interval: [Object],
-                            startDate: '2026-02-19T00:00:00',
-                            totalOccurrences: 9999,
-                            trialOccurrences: 0
-                        },
-                        amount: 0.02,
-                        trialAmount: 0,
-                        status: 'active',
-                        profile: {
-                            paymentProfile: [Object],
-                            shippingProfile: [Object],
-                            customerProfileId: '803450130',
-                            email: 'gw3789456@tlchatt.com'
-                        }
-                    },
-                    messages: { resultCode: 'Ok', message: [[Object]] }
-                }
-                return { status: true, data: apiResponse }
-            }
-
-        } catch (error) {
-            return { status: false, data: error }
-        }
-    }
     async function getAllCustomerIdsFromAuthorize() {
         var getRequest = new ApiContracts.GetCustomerProfileIdsRequest();
         let merchantAuth = await authorizePaymentAuthentication()
@@ -423,6 +169,18 @@ export async function POST(request) {
 
         } catch (error) {
             return { status: false, data: error }
+        }
+
+        async function authorizePaymentAuthentication() {
+            // Set up the merchant authentication
+            const apiLoginId = process.env.AUTHORIZE_NET_API_LOGIN_ID;
+            const transactionKey = process.env.AUTHORIZE_NET_TRANSACTION_KEY;
+
+            const merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
+            merchantAuthenticationType.setName(apiLoginId);
+            merchantAuthenticationType.setTransactionKey(transactionKey);
+
+            return merchantAuthenticationType
         }
     }
     async function getAllCustomerSubscriptionFromAuthorize(subscriptionId) {
@@ -503,127 +261,6 @@ export async function POST(request) {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-    }
-    async function getTransactionHistory(result) {
-        console.log("inside getTransactionHistory", result?.data?.profile?.customerProfileId)
-        var paging = new ApiContracts.Paging();
-        paging.setLimit(10);
-        paging.setOffset(1);
-
-        var sorting = new ApiContracts.TransactionListSorting();
-        sorting.setOrderBy(ApiContracts.TransactionListOrderFieldEnum.ID);
-        sorting.setOrderDescending(true);
-
-        var getRequest = new ApiContracts.GetTransactionListForCustomerRequest();
-        let merchantAuth = await authorizePaymentAuthentication()
-        getRequest.setMerchantAuthentication(merchantAuth);
-        getRequest.setCustomerProfileId(result?.data?.profile?.customerProfileId);
-        getRequest.setPaging(paging);
-        getRequest.setSorting(sorting);
-
-        var ctrl = new ApiControllers.GetTransactionDetailsController(getRequest.getJSON());
-        ctrl.setEnvironment(SDKConstants.endpoint.production);
-        try {
-            const apiResponse = await new Promise((resolve, reject) => {
-                ctrl.execute(() => {
-                    resolve(ctrl.getResponse());
-                }, (error) => {
-                    console.log("error for transaction:", error)
-                    reject(error);
-                });
-            });
-            if (apiResponse.messages.resultCode === "Error") {
-                const message = apiResponse.messages.message[0];
-                // console.log("message in createAuthorizeTransaction:", message);
-                return { status: false, data: apiResponse }
-            } else {
-                // console.log("apiResponse in getTransactionHistory:", apiResponse)
-                let sampleResponse = {
-                    transactions: [
-                        {
-                            transId: '81011742389',
-                            submitTimeUTC: '2025-04-25T20:16:04.667Z',
-                            submitTimeLocal: '2025-04-25T13:16:04.667',
-                            transactionStatus: 'generalError',
-                            invoiceNumber: 'GB429362',
-                            firstName: 'Ellis',
-                            lastName: 'Carpenter',
-                            accountType: 'Visa',
-                            accountNumber: 'XXXX6384',
-                            settleAmount: 179.88,
-                            marketType: 'eCommerce',
-                            product: 'Card Not Present',
-                            profile: [Object]
-                        },
-                        {
-                            transId: '81006716988',
-                            submitTimeUTC: '2025-04-22T20:15:05.517Z',
-                            submitTimeLocal: '2025-04-22T13:15:05.517',
-                            transactionStatus: 'generalError',
-                            invoiceNumber: 'GB429362',
-                            firstName: 'Ellis',
-                            lastName: 'Carpenter',
-                            accountType: 'Visa',
-                            accountNumber: 'XXXX6384',
-                            settleAmount: 179.88,
-                            marketType: 'eCommerce',
-                            product: 'Card Not Present',
-                            profile: [Object]
-                        },
-                        {
-                            transId: '80406964637',
-                            submitTimeUTC: '2024-04-22T20:14:47.51Z',
-                            submitTimeLocal: '2024-04-22T13:14:47.51',
-                            transactionStatus: 'settledSuccessfully',
-                            invoiceNumber: 'GB409166',
-                            firstName: 'Ellis',
-                            lastName: 'Carpenter',
-                            accountType: 'Visa',
-                            accountNumber: 'XXXX6384',
-                            settleAmount: 179.88,
-                            marketType: 'eCommerce',
-                            product: 'Card Not Present',
-                            profile: [Object]
-                        },
-                        {
-                            transId: '44063156914',
-                            submitTimeUTC: '2023-04-18T23:02:05.037Z',
-                            submitTimeLocal: '2023-04-18T16:02:05.037',
-                            transactionStatus: 'generalError',
-                            invoiceNumber: 'GB409166',
-                            firstName: 'Ellis W Carpenter',
-                            accountType: 'Visa',
-                            accountNumber: 'XXXX6879',
-                            settleAmount: 179.88,
-                            marketType: 'eCommerce',
-                            product: 'Card Not Present',
-                            profile: [Object]
-                        },
-                        {
-                            transId: '44058020765',
-                            submitTimeUTC: '2023-04-15T23:01:05.523Z',
-                            submitTimeLocal: '2023-04-15T16:01:05.523',
-                            transactionStatus: 'generalError',
-                            invoiceNumber: 'GB409166',
-                            firstName: 'Ellis W Carpenter',
-                            accountType: 'Visa',
-                            accountNumber: 'XXXX6879',
-                            settleAmount: 179.88,
-                            marketType: 'eCommerce',
-                            product: 'Card Not Present',
-                            profile: [Object]
-                        }
-                    ],
-                    totalNumInResultSet: 6,
-                    messages: { resultCode: 'Ok', message: [[Object]] }
-                }
-                return { status: true, data: apiResponse }
-
-            }
-        } catch (error) {
-            return { status: false, data: error }
-        }
-
     }
 }
 

@@ -22,6 +22,7 @@ export const user_setting = pgTable("user_setting", {
   id: serial("id").primaryKey(),
   type: text("type").notNull(),
   status:text("status"),
+  postAWS:boolean("postAWS"),
   authorizeNextImport: boolean("autorize_next_import").default(false),
   authorizeCustomerId:text("autorize_customer_id"),
   data: text("data"),

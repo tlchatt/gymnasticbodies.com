@@ -32,68 +32,38 @@ export default function AccountDetailsComp(props) {
 
     // const token = searchParams.get('token');
     // const userId = searchParams.get('userId');
-    let userIdFetch = (url) => fetch(url, {
+    let userInfoFetch = (url) => fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             userId: props.userId,
-            username:props.username,
+            // username: props.username,
             type: 'subscription'
         })
     }).then((res) => res.json())
-    const { data, error, isLoading } = useSWR(`/api/user/accountInformation`, userIdFetch)
-    console.log("data in useSWR is:", data)
+    const { data, error, isLoading } = useSWR(`/api/user/accountInformation`, userInfoFetch)
+    // console.log("data in useSWR is:", data)
+    // console.log("error in useSWR is:", error)
+    // console.log("isLoading in useSWR is:", isLoading)
 
 
     let {
-        firstName,
-        lastName,
-        email,
-        country,
-        phoneNumber,
         cardType,
         cardNumber,
-        customerAddressId,
-        merchantCustomerId,//needs to have a transaction
-        customerPaymentProfileId,
-        customerProfileId,
-        recentTransaction,
-        transactionHistory,
-        lastTransactionStatus,
+        impInfo,
         lastTransactionInvoiceNumber,
-        lastTransactionAmount,
-        lastTransactionDate,
-        nextTransactionDate,
-        subscriptionName,
-        subscriptionAmount,
-        subscriptionStatus,
-        subscriptionStartDate,
-        subscriptionEndDate,
-        subscriptionEndDateDisplay,
-        hasSubscription,
-        term,
-        impInfo } = data ?? {}
+        lastTransactionStatus,
+        transactionHistory
+    } = data ?? {}
 
+    console.log("data is:",data)
     /* style */
-    let { Settings, Style, Media } = GetSettings(props, "Checkout");
-    let commonGap = {
-        gap: "10px",
-        display: "flex",
-        flexFlow: "column"
-    }
+
     let titleStyle = {
         color: "#656464",
         padding: "24px 0 0",
-    }
-    let ContainerStyle = {
-        ...Style,
-    }
-    let ContainerInnerStyle = {
-        ...Style,
-        placeContent: 'unset',
-        // gap: Settings.lowestGap,
     }
     let headlineFontSize = {
         fontWeight: 'bold',
@@ -118,7 +88,7 @@ export default function AccountDetailsComp(props) {
     </div>
 
 
-    function createSubscription() {
+    /*function createSubscription() {
         //$75 per month, $225 billed quarterly
         //$60 per month, $720 billed annually
         if (term != "N/A") {
@@ -148,10 +118,7 @@ export default function AccountDetailsComp(props) {
                     console.log(error);
                 });
         }
-
-
-
-    }
+    }*/
     if (data) {
         return (
             <>
@@ -189,11 +156,11 @@ export default function AccountDetailsComp(props) {
                                     <Typography variant="h5" component="h2" sx={headlineFontSize} >Phone</Typography>
                                 </Stack>
                                 <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{firstName}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{lastName}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{email}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{country}</Typography>
-                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{phoneNumber}</Typography>
+                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.firstName}</Typography>
+                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.lastName}</Typography>
+                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.email}</Typography>
+                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.country}</Typography>
+                                    <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.phoneNumber}</Typography>
                                 </Stack>
                             </Stack>
                         </Box>
@@ -217,34 +184,36 @@ export default function AccountDetailsComp(props) {
 
                             </Stack>
                             <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                {merchantCustomerId &&
+                                {impInfo?.merchantid &&
                                     <>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Last Order Date</Typography>
-                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Next Payment Date</Typography>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Invoice</Typography>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Amount</Typography>
+                                            <Typography variant="h5" component="h2" sx={headlineFontSize}>Next Payment Date</Typography>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Payment Method</Typography>
                                         </Stack>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo.status}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.lastTransactionDate?.split('T')[0] ?? "N/A"}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate?.split('T')[0] ?? "N/A"}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.redableRecentTransactionDate}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{lastTransactionInvoiceNumber}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${lastTransactionAmount} {impInfo.matchedTerm}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.price} {impInfo.matchedTerm}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.redableNextPaymentDate}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{cardType!="N/A" ? `${cardType} ending in ${cardNumber}` : 'No Payment Info Added'}</Typography>
 
                                         </Stack>
                                     </>
                                 }
-                                {!merchantCustomerId  &&
+                                {!impInfo?.merchantid &&
 
                                     <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                         <Typography variant="h5" component="h2" sx={headlineFontSize}>No Order Found</Typography>
                                     </Stack>
 
                                 }
+
+
 
                             </Stack>
                         </Box>
@@ -256,7 +225,7 @@ export default function AccountDetailsComp(props) {
                                 Manage Subscription
                             </Typography>
                             <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
-                                {hasSubscription &&
+                                {impInfo?.hasSubscription &&
                                     <>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>Status</Typography>
@@ -268,15 +237,15 @@ export default function AccountDetailsComp(props) {
                                         </Stack>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.status}</Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionName}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.subscriptionName}</Typography>
                                             {/* <Typography variant="h5" component="h2" sx={valueFontSize}>{plan ?? "N/A"}</Typography> */}
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.lastTransactionPrice} </Typography>
-                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{subscriptionEndDateDisplay}</Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>${impInfo?.price} </Typography>
+                                            <Typography variant="h5" component="h2" sx={valueFontSize}>{impInfo?.nextPaymentDate}</Typography>
                                             <Typography variant="h5" component="h2" sx={valueFontSize}>{`${cardType} ending in ${cardNumber}`}</Typography>
                                         </Stack>
                                     </>
                                 }
-                                {!hasSubscription &&
+                                {!impInfo?.hasSubscription &&
                                     <>
                                         <Stack direction="column" spacing={2} style={{ justifyContent: "space-between", display: "flex" }}>
                                             <Typography variant="h5" component="h2" sx={headlineFontSize}>No Subscription Found</Typography>

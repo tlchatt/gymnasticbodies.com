@@ -3,8 +3,10 @@ import { user, user_setting } from "@/Drizzle/db/schema"
 import { auth } from "@/lib/auth"; // path to your auth file
 import generatePassword from 'generate-password';
 import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid";
-import { getUserWithEmail, queryUserSetting } from "@/lib/userSettings";
+import { createAccountForUser, createAndModifyUserInNeon, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting } from "@/lib/userSettings";
 import { eq } from 'drizzle-orm';
+import { getAllCustomerDataFromAuthorize, getAllDataFromFile } from "@/lib/commonServerFunction";
+import { getFlagAndSubscriptionInfo } from "@/lib/commonFunctions";
 
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
     /* 
@@ -32,46 +34,32 @@ export async function POST(request) {//when subscription webhook is triggered ->
         if (json.reason == "checkUserInNeon") {// create an account on login (old user, not in neon)
             dbUser = await getUserWithEmail(json.email)
         }
-        else if (json.reason == "getUserSettingInNeon") {
-            dbUser = await queryUserSetting(json.userId, json.type)
-            console.log("dbUser on server:", dbUser)
-        }
         else if (json.reason == "registerWPass") {
-            //current date in GMT format
-            const today = new Date();
-            const isoformat = today.toISOString();
-            let newDate = isoformat.split("T")[0]
-            let tomorrowDate = new Date();
-            tomorrowDate.setDate(new Date().getDate() + 1);
-            let tomorrowIso = tomorrowDate.toISOString().split("T")[0];
-            console.log(" newDate:", newDate)
-            console.log(" tomorrowIso:", tomorrowIso)
-            //if date_created_gmt: '2024-12-22T17:58:41', contains current date
-            //if deos not match return 200 OK
-            // if (!(json?.date_created_gmt?.includes(newDate)) && !(json?.date_created_gmt?.includes(tomorrowIso))) {
-            //     console.log("incoming date created does not include todays date")
-            //     return new Response('OK', { status: 200 });
-            // }
-
             password = json?.password
-
+            let username = json?.email?.toLowerCase()
+            let customerId, impInfo, userInNeon
             console.log("password in registerWPass:", password)
-            dbUser = await createAccountForUser()
+
+            let customerData = await getAllDataFromFile(username)//getting authorizeCustomerData from file
+            customerId = customerData?.result?.profile?.customerProfileId;
+
+            console.log("customerId is:", customerId)
+
+            let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
+            console.log("authorizeData:", authorizeData)
+
+            impInfo = await getFlagAndSubscriptionInfo(authorizeData)
+            console.log("impInfo:", impInfo)
+
+            dbUser = await createAndModifyUserInNeon(json, impInfo)
+            console.log("dbUser after createAndModifyUserInNeon:", dbUser)
+
         }
         else {
             dbUser = await getUserWithEmail(json.billing.email)
             isExistingUser = dbUser?.user?.id ? true : false
 
             if (!isExistingUser) {
-                //current date in GMT format
-                // const today = new Date();
-                // const isoformat = today.toISOString();
-                // let newDate = isoformat.split("T")[0]
-                // let tomorrowDate = new Date();
-                // tomorrowDate.setDate(new Date().getDate() + 1);
-                // let tomorrowIso = tomorrowDate.toISOString().split("T")[0];
-                // console.log(" newDate:", newDate)
-                // console.log(" tomorrowIso:", tomorrowIso)
                 if (json?.password) {
                     password = json?.password
                 } else {
@@ -146,33 +134,14 @@ export async function POST(request) {//when subscription webhook is triggered ->
         let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
 
         if (matching) {
-            userSetting = await db.update(user_setting)
-                .set({
-                    data: settingsRecord.data,
-                }).where(eq(user_setting.id, matching.id)).returning();
+            userSetting = await updateUserSetting(matching,settingsRecord)
         } else {
-            userSetting = await db.insert(user_setting).values(settingsRecord).returning();
+            userSetting = await insertIntoUserSetting(settingsRecord)
         }
 
         console.log(" userSetting:", userSetting)
 
         return userSetting
-    }
-    async function createAccountForUser() {
-        //create account field, which will create the user too.
-        console.log("POST /api/user/subscription, createAccountForUser")
-        let first_name = json.billing ? json.billing.first_name : json.first_name
-        let email = json.billing ? json.billing.email : json.email
-        const signUpData = await auth.api.signUpEmail({
-            body: {
-                name: first_name, // required
-                email: email, // required
-                password: password, // required
-            },
-        });
-        console.log("new user data for subscription:", signUpData)
-        // return signUpData.user
-        return signUpData
     }
     async function sendEmail() {
         console.log("POST /api/user/subscription, sendEmail")
