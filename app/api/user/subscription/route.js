@@ -37,6 +37,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         else if (json.reason == "registerWPass") {
             password = json?.password
             let username = json?.email?.toLowerCase()
+            json.email = username //lowercase email updated in json
             let customerId, impInfo, userInNeon
             console.log("password in registerWPass:", password)
 
