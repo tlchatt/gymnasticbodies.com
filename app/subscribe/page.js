@@ -60,7 +60,7 @@ export default function Subscribe(props) {
                                 <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
                                     MONTHLY
                                 </Typography>
-                                <Typography id="modal-modal-description" variant="h6" component="h2" sx={{ mt: 2 }}>
+                                <Typography id="modal-modal-description" variant="h4" component="h2">
                                     $75 / month
                                 </Typography>
 
@@ -74,18 +74,17 @@ export default function Subscribe(props) {
                                 >
                                     SUBSCRIBE
                                 </Button>
-                                <Typography id="modal-modal-description" variant="p" component="p" >
-                                    ($75 billed monthly)
+                                <Typography id="modal-modal-description" variant="p" component="h3" >
+                                    (Billed Monthly)
                                 </Typography>
                             </Grid>
                         </Box>
                     </Grid>
                 </Paper>
-                <Paper elevation={3} rounded="true">
+                {/* <Paper elevation={3} rounded="true">
                     <Grid size={6} style={blockStyle} elevation={3}>
                         <Box>
                             <Grid size={6} style={{ display: "grid", justifyItems: "center", gap: Settings.lowGap, padding: Settings.highPadding }} >
-                                {/* <Item>size=4</Item> */}
                                 <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
                                     ANNUALLY
                                 </Typography>
@@ -109,11 +108,11 @@ export default function Subscribe(props) {
                             </Grid>
                         </Box>
                     </Grid>
-                </Paper>
+                </Paper> */}
             </Grid>
 
 
-            <Grid size={6} style={{ display: "grid", marginTop: "20px", justifyItems: "center" }} elevation={24}>
+            <Grid size={6} style={{ display: "grid", padding:"10px", justifyItems: "center" }} elevation={24}>
                 <Box >
 
                     {/* <Item>size=8</Item> */}
