@@ -39,12 +39,27 @@ export async function POST(request) {
     if (isExistingUser && (postAWS || postAWS === null)) {//if user exists in the db and has postAWS true
         //return true, and show the password reset screen
         // return new Response('OK', { status: 200 });
-        return new Response(JSON.stringify({ id: dbUser?.id }), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        let emailSent = await sendEmail(dbUser)
+        if (emailSent) {
+            return new Response('OK', { status: 200 });
+        } else {
+            //return false and show error to contact admin.
+            return new Response(`Password Reset Failed, Email not sent.`, {
+
+                status: 400,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                },
+            })
+        }
+        // return new Response(JSON.stringify({ id: dbUser?.id }), {
+        //     status: 200,
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
     } else {
         //return false and show error to contact admin.
         return new Response(`New user in password reset, not present in the neon DB`, {
@@ -90,17 +105,17 @@ export async function POST(request) {
         }
 
     }
-    async function sendEmail(userExist) {
+    async function sendEmail(dbUser) {
         let data = {}
         let emailSent
 
         data = {
             email: json.email,
-            userId: userExist.userInfo.id
+            userId: dbUser.id
         }
 
-        // emailSent = await sendResetLinkEmailSG(data)
-        // console.warn(emailSent)
+        emailSent = await sendResetLinkEmailSG(data)
+        console.warn(emailSent)
         return true
         // return emailSent;
     }
