@@ -1,5 +1,5 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { user_setting,user_logs } from "@/Drizzle/db/schema"
+import { user_setting, user_logs } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
 import { queryUserLogsForDate } from "@/lib/userSettings";
 
@@ -12,23 +12,25 @@ export async function POST(request) {
     try {
         let userLog
         let matching = await queryUserLogsForDate(json.userId, json.userScheduleDate)
-        
+
         let logRecord = {
             userScheduleDate: json.userScheduleDate,
             data: json.updatedData,
-            userId: json.userId
+            userId: json.userId,
+            progressions: json?.progressions ? json?.progressions : {}
         }
         if (matching) {
             userLog = await db.update(user_logs)
                 .set({
-                    data: json.updatedData
+                    data: json.updatedData,
+                    progressions: json?.progressions ? json?.progressions : {}
                 }).where(eq(user_logs.id, matching.id)).returning();
         }
         else {
             userLog = await db.insert(user_logs).values(logRecord).returning();
         }
-        
-        return Response.json({status:200})
+
+        return Response.json({ status: 200 })
     }
     catch (error) {
         return new Response(`Webhook error: ${error.message}`, {
@@ -72,13 +74,13 @@ export async function DELETE(request) {
     try {
         let userLog
         let matching = await queryUserLogsForDate(json.userId, json.userScheduleDate)
-        
+
         let logRecord = {
             userScheduleDate: json.userScheduleDate,
             data: json.updatedData,
             userId: json.userId
         }
-        console.log("logRecord:",logRecord)
+        console.log("logRecord:", logRecord)
         if (matching) {
             userLog = await db.update(user_logs)
                 .set({
@@ -88,8 +90,8 @@ export async function DELETE(request) {
         else {
             userLog = await db.insert(user_logs).values(logRecord).returning();
         }
-        
-        return Response.json({status:200})
+
+        return Response.json({ status: 200 })
     }
     catch (error) {
         return new Response(`Webhook error: ${error.message}`, {
@@ -106,7 +108,26 @@ export async function DELETE(request) {
 }
 // GET just to return 200 status for preflight to work
 export async function GET(request) {
-
+    const searchParams = request.nextUrl.searchParams;
+    const userData = Object.fromEntries(searchParams);
+    console.log("userData:", userData)
+    if (userData?.userId) {
+        let queryExisting = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId));
+        console.log("queryExqueryExistingTestisting:", queryExisting)
+        
+        // let queryExisting = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId)).where(eq(user_logs.userScheduleDate, userData?.userScheduleDate));
+        // console.log("queryExisting:", queryExisting[0])
+        let returnData = [{ logs: queryExisting }]
+        console.log("returnData:", returnData)
+        return new Response(JSON.stringify(returnData), {
+            status: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
+        })
+    }
     return new Response('Success!', {
         status: 200,
         headers: {

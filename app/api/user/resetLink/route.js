@@ -2,6 +2,7 @@ import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user } from "@/Drizzle/db/schema"
 import { eq } from 'drizzle-orm';
 import { sendResetLinkEmailSG } from "@/lib/sendgrid";
+import { getUserWithEmail, queryUserSetting } from "@/lib/userSettings";
 
 export async function POST(request) {
 
@@ -13,19 +14,40 @@ export async function POST(request) {
     }
 
     const json = await request.json()
-    console.warn(json)
+    console.log("json in resetLink route", json)
 
+
+    json.email = json.email.toLowerCase()
+    let dbUser, isExistingUser, userSettings, postAWS
     //check if email in incoming data exists in user table, if it does, send email (the link to reset password page)
-    let userExist = await doesUserExist()
-    console.warn(userExist)
-    if (userExist.status) {//send the reset link email
-        let emailSent = await sendEmail(userExist)
-        if (emailSent) {
-            return new Response('OK', { status: 200 });
-        }
+    // let userExist = await doesUserExist()
+    dbUser = await getUserWithEmail(json.email)
+    console.log("dbUser:", dbUser)
+
+    isExistingUser = dbUser?.id ? true : false
+
+    if (isExistingUser) {
+        //get userSetting with the userId
+        userSettings = await queryUserSetting(dbUser?.id, "subscription")
+        console.log("userSettings:", userSettings)
+        postAWS = userSettings.postAWS
+
+    }
+    console.log("isExistingUser:", isExistingUser)
+    console.log("postAWS is:", postAWS)
+
+    if (isExistingUser && (postAWS || postAWS === null)) {//if user exists in the db and has postAWS true
+        //return true, and show the password reset screen
+        // return new Response('OK', { status: 200 });
+        return new Response(JSON.stringify({ id: dbUser?.id }), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     } else {
-        //do registration first -> send unsuccessful status. 
-        return new Response(`New user in password reset, so error: ${error.message}`, {
+        //return false and show error to contact admin.
+        return new Response(`New user in password reset, not present in the neon DB`, {
 
             status: 400,
             headers: {
@@ -35,6 +57,25 @@ export async function POST(request) {
             },
         })
     }
+    // console.log("userExist", userExist)
+    //get user settings
+    /*if (userExist.status) {//send the reset link email
+        let emailSent = await sendEmail(userExist)
+        if (emailSent) {
+            return new Response('OK', { status: 200 });
+        }
+    } else {
+        //do registration first -> send unsuccessful status. 
+        return new Response(`New user in password reset, not present in the neon DB`, {
+
+            status: 400,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
+        })
+    }*/
 
 
     async function doesUserExist() {
@@ -58,9 +99,10 @@ export async function POST(request) {
             userId: userExist.userInfo.id
         }
 
-        emailSent = await sendResetLinkEmailSG(data)
-        console.warn(emailSent)
-        return emailSent;
+        // emailSent = await sendResetLinkEmailSG(data)
+        // console.warn(emailSent)
+        return true
+        // return emailSent;
     }
 
     /*

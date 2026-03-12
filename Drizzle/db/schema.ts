@@ -25,6 +25,7 @@ export const user_setting = pgTable("user_setting", {
   postAWS:boolean("postAWS"),
   authorizeNextImport: boolean("autorize_next_import").default(false),
   authorizeCustomerId:text("autorize_customer_id"),
+  awsCustomerId:text("aws_customer_id"),
   data: text("data"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
@@ -38,6 +39,7 @@ export const user_setting = pgTable("user_setting", {
 export const user_logs = pgTable("user_logs", {
   id: serial("id").primaryKey(),
   data: json("data"),
+  progressions:json("progressions"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
