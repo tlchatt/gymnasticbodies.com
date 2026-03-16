@@ -76,7 +76,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
                     });
                 }
                 console.log("password in !isExistingUser:", password)
-                dbUser = await createAccountForUser()
+                dbUser = await createAccountForUser(json)
             }
 
             await updateUserSubscriptionStatus()
