@@ -1,0 +1,3707 @@
+[
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:25:18+00:00",
+        "default": true,
+        "id": "XN8Ydocl",
+        "last_modified": "2019-10-03T18:25:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2019-03-07T18:23:34+00:00",
+        "default": false,
+        "id": "KWnhXawG",
+        "last_modified": "2019-03-07T18:26:12+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Thoracic Bridge"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2019-03-07T18:08:13+00:00",
+        "default": false,
+        "id": "aH1k32u9",
+        "last_modified": "2019-03-07T18:12:09+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Front Split"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2019-02-08T14:08:57+00:00",
+        "default": false,
+        "id": "CkK0NH7p",
+        "last_modified": "2019-02-08T14:11:34+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Slate-E-1-1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2019-01-18T14:01:17+00:00",
+        "default": false,
+        "id": "JatJjiFp",
+        "last_modified": "2019-03-07T18:02:39+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Middle Split"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-12-04T16:55:17+00:00",
+        "default": false,
+        "id": "rO28rOxV",
+        "last_modified": "2018-12-04T16:56:25+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Stretch Series"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-12-04T16:50:59+00:00",
+        "default": false,
+        "id": "f6oPMJ8F",
+        "last_modified": "2018-12-04T16:54:37+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "HS Challenge Series"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-12-04T16:47:22+00:00",
+        "default": false,
+        "id": "4EApv0Cj",
+        "last_modified": "2018-12-04T16:50:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Restore Series"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-11-28T05:24:07+00:00",
+        "default": false,
+        "id": "pdyJ4xkv",
+        "last_modified": "2018-11-28T05:29:34+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Elements 2"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-11-25T00:34:04+00:00",
+        "default": false,
+        "id": "NJZzbgni",
+        "last_modified": "2018-11-25T00:34:36+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": "",
+          "title": "HS Challenge"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-11-14T16:43:43+00:00",
+        "default": false,
+        "id": "2NGoP9G6",
+        "last_modified": "2018-11-14T16:47:59+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Elements 1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:23:00+00:00",
+        "default": false,
+        "id": "k4fQ2qYO",
+        "last_modified": "2018-10-29T16:23:10+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 20"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:22:46+00:00",
+        "default": false,
+        "id": "uW0JoScv",
+        "last_modified": "2018-10-29T16:22:56+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 19"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:22:31+00:00",
+        "default": false,
+        "id": "PlUVIsGG",
+        "last_modified": "2018-10-29T16:22:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 18"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:21:55+00:00",
+        "default": false,
+        "id": "Kv5oI7iA",
+        "last_modified": "2018-10-29T16:22:27+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 17"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:21:35+00:00",
+        "default": false,
+        "id": "GxvSh2dG",
+        "last_modified": "2018-10-29T16:21:51+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 16"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:21:21+00:00",
+        "default": false,
+        "id": "eUFyipH2",
+        "last_modified": "2018-10-29T16:21:31+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 15"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:21:01+00:00",
+        "default": false,
+        "id": "FuJl1kvb",
+        "last_modified": "2018-10-29T16:21:12+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 14"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:20:46+00:00",
+        "default": false,
+        "id": "1tHr32W2",
+        "last_modified": "2018-10-29T16:20:56+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 13"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:20:32+00:00",
+        "default": false,
+        "id": "reNYsx4d",
+        "last_modified": "2018-10-29T16:20:42+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 12"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:20:14+00:00",
+        "default": false,
+        "id": "QYztY1Aj",
+        "last_modified": "2018-10-29T16:20:28+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:19:58+00:00",
+        "default": false,
+        "id": "D6R5HZMV",
+        "last_modified": "2018-10-29T16:20:09+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 10"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:19:40+00:00",
+        "default": false,
+        "id": "GXBvNcj9",
+        "last_modified": "2018-10-29T16:19:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:19:23+00:00",
+        "default": false,
+        "id": "P1ktgs4Y",
+        "last_modified": "2018-10-29T16:19:36+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:19:09+00:00",
+        "default": false,
+        "id": "XBIu8eBB",
+        "last_modified": "2018-10-29T16:19:20+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 7"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:18:44+00:00",
+        "default": false,
+        "id": "3Mg80uM9",
+        "last_modified": "2018-10-29T16:19:02+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:18:27+00:00",
+        "default": false,
+        "id": "b7lfsraU",
+        "last_modified": "2018-10-29T16:18:37+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 5"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:18:09+00:00",
+        "default": false,
+        "id": "k1xXCy7m",
+        "last_modified": "2018-10-29T16:18:22+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 4"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:17:55+00:00",
+        "default": false,
+        "id": "eOShr9iP",
+        "last_modified": "2018-10-29T16:18:06+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:17:36+00:00",
+        "default": false,
+        "id": "8lDymhoA",
+        "last_modified": "2018-10-29T16:17:49+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 2"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-29T16:06:30+00:00",
+        "default": false,
+        "id": "grf4gFpG",
+        "last_modified": "2018-10-29T16:06:51+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Fundamentals Day 1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-08-06T20:57:22+00:00",
+        "default": false,
+        "id": "AF3yd5yJ",
+        "last_modified": "2021-11-22T19:19:43+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Hip Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-08-06T20:57:13+00:00",
+        "default": false,
+        "id": "XfFTWgh1",
+        "last_modified": "2018-08-07T19:31:26+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Hamstring Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-08-06T20:57:00+00:00",
+        "default": false,
+        "id": "OghGnJuz",
+        "last_modified": "2018-08-07T19:49:34+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Quad Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-06-29T18:14:32+00:00",
+        "default": false,
+        "id": "4hoH3sAq",
+        "last_modified": "2018-07-02T14:26:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Thoracic Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-06-29T18:11:09+00:00",
+        "default": false,
+        "id": "8bIcBhwX",
+        "last_modified": "2018-09-12T11:47:47+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Scapula Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-06-29T12:47:29+00:00",
+        "default": false,
+        "id": "bAwt8Hc1",
+        "last_modified": "2018-07-02T14:21:02+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Shoulder Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-05-17T02:49:30+00:00",
+        "default": false,
+        "id": "ti9rOyVr",
+        "last_modified": "2018-08-06T20:56:49+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Ankle & Knee Restore"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-09-07T16:49:27+00:00",
+        "default": true,
+        "id": "B73usLq7",
+        "last_modified": "2016-09-07T16:49:27+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-07-03T22:13:02+00:00",
+        "default": false,
+        "id": "VEjz4BSz",
+        "last_modified": "2016-09-19T05:29:11+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Intro to Foundation Playlist"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 40
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:26:29+00:00",
+        "default": true,
+        "id": "1fHJDDGO",
+        "last_modified": "2019-10-03T18:26:29+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-12-20T22:50:15+00:00",
+        "default": true,
+        "id": "Ybbtr6NT",
+        "last_modified": "2016-12-20T22:50:15+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:25:40+00:00",
+        "default": true,
+        "id": "tiGtkQul",
+        "last_modified": "2019-10-03T18:25:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-09-07T18:01:48+00:00",
+        "default": true,
+        "id": "CdExSuWN",
+        "last_modified": "2016-09-07T18:01:48+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:25:40+00:00",
+        "default": true,
+        "id": "GvQ8eCNu",
+        "last_modified": "2019-10-03T18:25:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-10-03T13:49:18+00:00",
+        "default": false,
+        "id": "aMe7Zjtk",
+        "last_modified": "2017-02-02T23:56:04+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Total Body"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-10-03T13:48:37+00:00",
+        "default": false,
+        "id": "2asuFYxF",
+        "last_modified": "2017-02-05T16:40:09+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Shoulder Flexibility"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-10-03T13:47:55+00:00",
+        "default": false,
+        "id": "KEiUwLTe",
+        "last_modified": "2017-02-05T16:08:05+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Lower Body Flexibility"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-10-03T13:47:35+00:00",
+        "default": false,
+        "id": "7W0Tlpfg",
+        "last_modified": "2017-02-05T15:04:59+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Legs"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-10-03T13:47:04+00:00",
+        "default": false,
+        "id": "DEBmEL6g",
+        "last_modified": "2017-12-17T16:39:49+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Handstand"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-10-03T13:28:12+00:00",
+        "default": false,
+        "id": "Tf3rUw5A",
+        "last_modified": "2017-12-17T16:39:58+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Core"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-09-07T18:01:53+00:00",
+        "default": true,
+        "id": "uvOJa1kx",
+        "last_modified": "2016-09-07T18:01:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 8
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2020-12-10T14:55:08+00:00",
+        "default": false,
+        "id": "ZFD5nyYP",
+        "last_modified": "2020-12-10T14:55:08+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Untitled Dynamic Playlist"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2020-12-09T18:02:22+00:00",
+        "default": false,
+        "id": "Uu2c2i0o",
+        "last_modified": "2020-12-09T18:02:22+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Untitled Dynamic Playlist"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2020-12-09T16:52:11+00:00",
+        "default": false,
+        "id": "sMjDUxNz",
+        "last_modified": "2020-12-09T18:36:11+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "",
+          "link": "",
+          "title": "Moving Data"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2020-12-04T19:27:03+00:00",
+        "default": false,
+        "id": "RBOFhMtj",
+        "last_modified": "2020-12-04T19:27:03+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Untitled Manual Playlist"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2020-12-04T18:11:02+00:00",
+        "default": false,
+        "id": "hfOdKYOh",
+        "last_modified": "2020-12-04T18:11:02+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Untitled Dynamic Playlist"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2019-10-03T18:25:43+00:00",
+        "default": true,
+        "id": "jqPxGyfI",
+        "last_modified": "2019-10-03T18:25:43+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-03T13:48:02+00:00",
+        "default": false,
+        "id": "BTM8YJVk",
+        "last_modified": "2018-10-03T13:48:15+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Upper Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-03T13:47:37+00:00",
+        "default": false,
+        "id": "yRq65Acj",
+        "last_modified": "2018-10-03T13:47:56+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Upper Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-03T13:47:20+00:00",
+        "default": false,
+        "id": "WVdjFLWV",
+        "last_modified": "2018-10-03T13:47:32+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Upper Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-03T13:47:05+00:00",
+        "default": false,
+        "id": "4Dos1KNQ",
+        "last_modified": "2018-10-03T13:47:17+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Upper Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-03T13:46:45+00:00",
+        "default": false,
+        "id": "Vz4XdRbK",
+        "last_modified": "2018-10-03T13:47:00+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Upper Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-03T13:46:23+00:00",
+        "default": false,
+        "id": "lQAh81hD",
+        "last_modified": "2018-10-03T13:46:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Upper Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:12:02+00:00",
+        "default": false,
+        "id": "vgXzHnCr",
+        "last_modified": "2018-10-02T21:12:20+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Core - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:08:20+00:00",
+        "default": false,
+        "id": "x6eRrDjC",
+        "last_modified": "2018-10-02T21:11:51+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Core - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:08:03+00:00",
+        "default": false,
+        "id": "rHDWSLM0",
+        "last_modified": "2018-10-02T21:08:15+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Core - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:07:48+00:00",
+        "default": false,
+        "id": "OWwwtOGC",
+        "last_modified": "2018-10-02T21:07:59+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Core - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:07:30+00:00",
+        "default": false,
+        "id": "Xet25qWN",
+        "last_modified": "2018-10-02T21:07:44+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Core - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:07:07+00:00",
+        "default": false,
+        "id": "LFAU2HP2",
+        "last_modified": "2018-10-02T21:07:27+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Core - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:06:43+00:00",
+        "default": false,
+        "id": "yQ7317V9",
+        "last_modified": "2018-10-02T21:07:03+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Full Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:06:17+00:00",
+        "default": false,
+        "id": "mXh1ebvY",
+        "last_modified": "2018-10-02T21:06:39+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Full Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:05:48+00:00",
+        "default": false,
+        "id": "fZ5KlDUF",
+        "last_modified": "2018-10-02T21:06:12+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Full Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:05:23+00:00",
+        "default": false,
+        "id": "ykIrQ2Hq",
+        "last_modified": "2018-10-02T21:05:44+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Full Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:04:51+00:00",
+        "default": false,
+        "id": "i4SPD37p",
+        "last_modified": "2018-10-02T21:05:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Full Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:04:15+00:00",
+        "default": false,
+        "id": "PPsCZg4m",
+        "last_modified": "2018-10-02T21:04:43+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE6 - Full Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:03:44+00:00",
+        "default": false,
+        "id": "SDgwnh1l",
+        "last_modified": "2018-10-02T21:04:08+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Full Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:03:12+00:00",
+        "default": false,
+        "id": "Oci6Wj0s",
+        "last_modified": "2018-10-02T21:03:39+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Full Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:01:42+00:00",
+        "default": false,
+        "id": "jbcDDSNc",
+        "last_modified": "2018-10-02T21:02:09+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Full Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:00:59+00:00",
+        "default": false,
+        "id": "4WW3g5NO",
+        "last_modified": "2018-10-02T21:01:37+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Full Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T21:00:28+00:00",
+        "default": false,
+        "id": "3o3cQ0Xp",
+        "last_modified": "2018-10-02T21:00:54+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Full Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:59:54+00:00",
+        "default": false,
+        "id": "ISZa1HNG",
+        "last_modified": "2018-10-02T21:00:21+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Full Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:59:29+00:00",
+        "default": false,
+        "id": "14gAJ8Qu",
+        "last_modified": "2018-10-02T20:59:48+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Upper Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:59:05+00:00",
+        "default": false,
+        "id": "TF0rJKhs",
+        "last_modified": "2018-10-02T20:59:25+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Upper Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:58:37+00:00",
+        "default": false,
+        "id": "TqUJfP9n",
+        "last_modified": "2018-10-02T20:58:56+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Upper Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:56:17+00:00",
+        "default": false,
+        "id": "mJgfDswE",
+        "last_modified": "2018-10-02T20:56:38+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Upper Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:55:04+00:00",
+        "default": false,
+        "id": "wvHY6keY",
+        "last_modified": "2018-10-02T20:56:11+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Upper Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:54:15+00:00",
+        "default": false,
+        "id": "fJn8tWgm",
+        "last_modified": "2018-10-02T20:54:54+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Upper Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:53:27+00:00",
+        "default": false,
+        "id": "9v9rw90a",
+        "last_modified": "2018-10-02T20:54:10+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Lower Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:52:51+00:00",
+        "default": false,
+        "id": "Xzi0T2oA",
+        "last_modified": "2018-10-02T20:53:22+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Lower Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:52:33+00:00",
+        "default": false,
+        "id": "SwQ6bn6V",
+        "last_modified": "2018-10-02T20:52:47+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Lower Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:52:18+00:00",
+        "default": false,
+        "id": "7O08jboU",
+        "last_modified": "2018-10-02T20:52:30+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Lower Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:51:58+00:00",
+        "default": false,
+        "id": "8sejXGxm",
+        "last_modified": "2018-10-02T20:52:12+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Lower Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:51:36+00:00",
+        "default": false,
+        "id": "XkJ6mVSx",
+        "last_modified": "2018-10-02T20:51:52+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Lower Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:33:52+00:00",
+        "default": false,
+        "id": "kRx3a4AE",
+        "last_modified": "2018-10-02T20:34:10+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Core - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:33:10+00:00",
+        "default": false,
+        "id": "6bypkRxH",
+        "last_modified": "2018-10-02T20:33:46+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Core - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:32:26+00:00",
+        "default": false,
+        "id": "ZpVmPBTh",
+        "last_modified": "2018-10-02T20:33:06+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Core - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:32:00+00:00",
+        "default": false,
+        "id": "KksJgnxB",
+        "last_modified": "2018-10-02T20:32:21+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Core - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:31:37+00:00",
+        "default": false,
+        "id": "Pk2xBBTP",
+        "last_modified": "2018-10-02T20:31:56+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Core - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:31:15+00:00",
+        "default": false,
+        "id": "ybjRpj7r",
+        "last_modified": "2018-10-02T20:31:33+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE5 - Core - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:30:34+00:00",
+        "default": false,
+        "id": "r40A0dia",
+        "last_modified": "2018-10-02T20:30:49+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Core - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:30:09+00:00",
+        "default": false,
+        "id": "3eeUT8Yx",
+        "last_modified": "2018-10-02T20:30:28+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Core - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:29:47+00:00",
+        "default": false,
+        "id": "WlzrQN7L",
+        "last_modified": "2018-10-02T20:30:05+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Core - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:25:55+00:00",
+        "default": false,
+        "id": "1lR8YnxK",
+        "last_modified": "2018-10-02T20:28:41+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Core - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:23:39+00:00",
+        "default": false,
+        "id": "4ti1gyJO",
+        "last_modified": "2018-10-02T20:29:35+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Core - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:22:52+00:00",
+        "default": false,
+        "id": "bdoJuJOb",
+        "last_modified": "2018-10-02T20:29:02+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Core - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:22:21+00:00",
+        "default": false,
+        "id": "AP0tIx3T",
+        "last_modified": "2018-10-02T20:22:32+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Upper Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:19:14+00:00",
+        "default": false,
+        "id": "MAp3U5sL",
+        "last_modified": "2018-10-02T20:19:26+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Upper Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:18:37+00:00",
+        "default": false,
+        "id": "Tem0UHku",
+        "last_modified": "2018-10-02T20:19:08+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Upper Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:18:12+00:00",
+        "default": false,
+        "id": "zMG3Q77q",
+        "last_modified": "2018-10-02T20:18:31+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Upper Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:17:27+00:00",
+        "default": false,
+        "id": "8y59HrMQ",
+        "last_modified": "2018-10-02T20:18:06+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Upper Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:16:52+00:00",
+        "default": false,
+        "id": "k7JmFFmG",
+        "last_modified": "2018-10-02T20:17:17+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:16:23+00:00",
+        "default": false,
+        "id": "TZrWToOA",
+        "last_modified": "2018-10-02T20:16:45+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Upper Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:16:00+00:00",
+        "default": false,
+        "id": "5fnFoeqx",
+        "last_modified": "2018-10-02T20:16:08+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:15:47+00:00",
+        "default": false,
+        "id": "UvvkFS8p",
+        "last_modified": "2018-10-02T20:15:55+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:13:45+00:00",
+        "default": false,
+        "id": "Uvgtvu7H",
+        "last_modified": "2018-10-02T20:13:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:13:33+00:00",
+        "default": false,
+        "id": "P7GGF3c7",
+        "last_modified": "2018-10-02T20:13:41+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:13:22+00:00",
+        "default": false,
+        "id": "7q70W9ib",
+        "last_modified": "2018-10-02T20:13:29+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:13:05+00:00",
+        "default": false,
+        "id": "QhX8ZKuV",
+        "last_modified": "2018-10-02T20:13:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Lower Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:08:41+00:00",
+        "default": false,
+        "id": "RwXqgPqc",
+        "last_modified": "2018-10-02T20:09:28+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Full Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:08:15+00:00",
+        "default": false,
+        "id": "q5KyxNY7",
+        "last_modified": "2018-10-02T20:10:20+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Full Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:07:50+00:00",
+        "default": false,
+        "id": "rtFxmdRT",
+        "last_modified": "2018-10-02T20:11:25+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Full Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:07:24+00:00",
+        "default": false,
+        "id": "LAHUn7et",
+        "last_modified": "2018-10-02T20:12:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Full Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:05:57+00:00",
+        "default": false,
+        "id": "1A6ymrlW",
+        "last_modified": "2018-10-02T20:12:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Full Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:05:26+00:00",
+        "default": false,
+        "id": "DiELvuig",
+        "last_modified": "2018-10-02T20:05:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE4 - Full Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:05:02+00:00",
+        "default": false,
+        "id": "POcTkBdZ",
+        "last_modified": "2018-10-02T20:05:22+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Full Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:04:36+00:00",
+        "default": false,
+        "id": "Z8XxJmAT",
+        "last_modified": "2018-10-02T20:04:57+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Full Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:04:08+00:00",
+        "default": false,
+        "id": "pZeo18ur",
+        "last_modified": "2018-10-02T20:04:32+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Full Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:03:36+00:00",
+        "default": false,
+        "id": "BCwVEASH",
+        "last_modified": "2018-10-02T20:04:03+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Full Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T20:01:30+00:00",
+        "default": false,
+        "id": "TWsnlP6E",
+        "last_modified": "2018-10-02T20:02:17+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Full Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:49:05+00:00",
+        "default": false,
+        "id": "0n4gfdHW",
+        "last_modified": "2018-10-02T19:49:34+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Full Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:48:32+00:00",
+        "default": false,
+        "id": "NH0WYAK8",
+        "last_modified": "2018-10-02T19:48:51+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Lower Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:48:16+00:00",
+        "default": false,
+        "id": "5MV2aELp",
+        "last_modified": "2018-10-02T19:48:28+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Lower Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:48:01+00:00",
+        "default": false,
+        "id": "ptC9elEZ",
+        "last_modified": "2018-10-02T19:48:12+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Lower Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:47:27+00:00",
+        "default": false,
+        "id": "lLUqNVmI",
+        "last_modified": "2018-10-02T19:47:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Lower Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:45:26+00:00",
+        "default": false,
+        "id": "SLQyNHIC",
+        "last_modified": "2018-10-02T19:47:11+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Lower Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:44:41+00:00",
+        "default": false,
+        "id": "qnVFQxGq",
+        "last_modified": "2018-10-02T19:45:20+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Lower Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:44:17+00:00",
+        "default": false,
+        "id": "yWYbNb9K",
+        "last_modified": "2018-10-02T19:44:31+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Upper Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:43:49+00:00",
+        "default": false,
+        "id": "F6eV4FAp",
+        "last_modified": "2018-10-02T19:44:13+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Upper Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:37:32+00:00",
+        "default": false,
+        "id": "fjrMFS2E",
+        "last_modified": "2018-10-02T19:43:40+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Upper Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:36:56+00:00",
+        "default": false,
+        "id": "SRARVA1v",
+        "last_modified": "2018-10-02T19:37:19+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Upper Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:35:31+00:00",
+        "default": false,
+        "id": "ckAdWGLI",
+        "last_modified": "2018-10-02T19:35:47+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Core - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:34:57+00:00",
+        "default": false,
+        "id": "Q5bzFQSG",
+        "last_modified": "2018-10-02T19:36:47+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Upper Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:34:30+00:00",
+        "default": false,
+        "id": "sbvvmXi7",
+        "last_modified": "2018-10-02T19:34:47+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Core - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:34:10+00:00",
+        "default": false,
+        "id": "OSHOChi1",
+        "last_modified": "2018-10-02T19:34:26+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Core - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:33:49+00:00",
+        "default": false,
+        "id": "NxVJM2ve",
+        "last_modified": "2018-10-02T19:34:06+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Core - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:33:28+00:00",
+        "default": false,
+        "id": "IjR6IGFy",
+        "last_modified": "2018-10-02T19:33:45+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Core - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:31:30+00:00",
+        "default": false,
+        "id": "6KQaZvmp",
+        "last_modified": "2018-10-02T19:31:54+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE3 - Core - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:28:47+00:00",
+        "default": false,
+        "id": "ov5kqkcP",
+        "last_modified": "2018-10-02T19:29:26+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Full Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:28:04+00:00",
+        "default": false,
+        "id": "7yDNchIy",
+        "last_modified": "2018-10-02T19:28:38+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Full Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:23:13+00:00",
+        "default": false,
+        "id": "jjO6lsBo",
+        "last_modified": "2018-10-02T19:27:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Full Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:21:49+00:00",
+        "default": false,
+        "id": "G2zj4oP0",
+        "last_modified": "2018-10-02T19:22:45+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Full Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:21:12+00:00",
+        "default": false,
+        "id": "oyjWHsWN",
+        "last_modified": "2018-10-02T19:27:04+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Full Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T19:20:24+00:00",
+        "default": false,
+        "id": "VsAsc55i",
+        "last_modified": "2018-10-02T19:21:02+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Full Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:35:06+00:00",
+        "default": false,
+        "id": "h0RRBUc3",
+        "last_modified": "2018-10-02T18:35:26+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Upper Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:33:57+00:00",
+        "default": false,
+        "id": "SZObYF0L",
+        "last_modified": "2018-10-02T18:35:01+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Upper Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:33:16+00:00",
+        "default": false,
+        "id": "oaWCm4IZ",
+        "last_modified": "2018-10-02T18:33:52+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Upper Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:32:51+00:00",
+        "default": false,
+        "id": "hIoaviFZ",
+        "last_modified": "2018-10-02T18:33:11+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Upper Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:32:15+00:00",
+        "default": false,
+        "id": "fsfspjlD",
+        "last_modified": "2018-10-02T18:32:32+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Upper Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:31:45+00:00",
+        "default": false,
+        "id": "O7F1RZCn",
+        "last_modified": "2018-10-02T18:32:08+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Upper Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T18:31:18+00:00",
+        "default": false,
+        "id": "6kawEZlb",
+        "last_modified": "2018-10-02T18:31:27+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Lower Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T15:14:32+00:00",
+        "default": false,
+        "id": "eHdGbBZA",
+        "last_modified": "2018-10-02T15:14:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Lower Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T15:14:13+00:00",
+        "default": false,
+        "id": "qYZRPokL",
+        "last_modified": "2018-10-02T15:14:23+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Lower Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-02T15:13:31+00:00",
+        "default": false,
+        "id": "11X43BUL",
+        "last_modified": "2018-10-02T15:14:00+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Lower Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T20:01:35+00:00",
+        "default": false,
+        "id": "uldOsvvL",
+        "last_modified": "2018-10-01T20:04:03+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Lower Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T20:01:20+00:00",
+        "default": false,
+        "id": "othQvecA",
+        "last_modified": "2018-10-01T20:03:49+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Lower Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T20:01:02+00:00",
+        "default": false,
+        "id": "kfLIljXK",
+        "last_modified": "2018-10-01T20:02:10+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Core - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T20:00:41+00:00",
+        "default": false,
+        "id": "fWrcuGWG",
+        "last_modified": "2018-10-01T20:02:49+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Core - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T20:00:20+00:00",
+        "default": false,
+        "id": "evkFmgnM",
+        "last_modified": "2018-10-01T20:02:39+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Core - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T20:00:01+00:00",
+        "default": false,
+        "id": "qZuHKViW",
+        "last_modified": "2018-10-01T20:02:27+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Core - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:59:40+00:00",
+        "default": false,
+        "id": "2L3awAJ0",
+        "last_modified": "2018-10-01T20:02:19+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Core - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:58:20+00:00",
+        "default": false,
+        "id": "7UczfFay",
+        "last_modified": "2018-10-01T19:59:30+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE2 - Core - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:58:01+00:00",
+        "default": false,
+        "id": "hNivhTmA",
+        "last_modified": "2018-10-01T19:58:16+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Core - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:57:42+00:00",
+        "default": false,
+        "id": "2VYd0ZNP",
+        "last_modified": "2018-10-01T19:57:56+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Core - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:57:24+00:00",
+        "default": false,
+        "id": "ic7Hrbom",
+        "last_modified": "2018-10-01T19:57:38+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Core - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:57:01+00:00",
+        "default": false,
+        "id": "gqvkRlGO",
+        "last_modified": "2018-10-01T19:57:19+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Core - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T19:56:38+00:00",
+        "default": false,
+        "id": "YK4VUTKj",
+        "last_modified": "2018-10-01T19:56:55+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Core - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:57:19+00:00",
+        "default": false,
+        "id": "G7zAUsgT",
+        "last_modified": "2018-10-01T19:56:26+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Core - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:57:08+00:00",
+        "default": false,
+        "id": "CKMWCOlL",
+        "last_modified": "2018-10-01T18:57:15+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Lower Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:56:57+00:00",
+        "default": false,
+        "id": "XyVb7H0b",
+        "last_modified": "2018-10-01T18:57:04+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Lower Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:56:44+00:00",
+        "default": false,
+        "id": "ZnK2OLGo",
+        "last_modified": "2018-10-01T18:56:53+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Lower Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:56:27+00:00",
+        "default": false,
+        "id": "IgHwtmA1",
+        "last_modified": "2018-10-01T18:56:38+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Lower Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:56:14+00:00",
+        "default": false,
+        "id": "Gb3bYBpZ",
+        "last_modified": "2018-10-01T18:56:22+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Lower Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:55:51+00:00",
+        "default": false,
+        "id": "6KNOjvyO",
+        "last_modified": "2018-10-01T18:56:07+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Lower Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:54:54+00:00",
+        "default": false,
+        "id": "SrTPNJhV",
+        "last_modified": "2018-10-01T18:55:16+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Upper Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:54:28+00:00",
+        "default": false,
+        "id": "73StdFJb",
+        "last_modified": "2018-10-01T18:54:48+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Upper Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:53:44+00:00",
+        "default": false,
+        "id": "9HoRsFkY",
+        "last_modified": "2018-10-01T18:54:15+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Upper Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:53:16+00:00",
+        "default": false,
+        "id": "fodmEZl4",
+        "last_modified": "2018-10-01T18:53:36+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Upper Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:52:51+00:00",
+        "default": false,
+        "id": "EmgD4eLx",
+        "last_modified": "2018-10-01T18:53:10+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Upper Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:52:20+00:00",
+        "default": false,
+        "id": "w0J8JOle",
+        "last_modified": "2018-10-01T18:52:43+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Upper Body - Wk1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:50:47+00:00",
+        "default": false,
+        "id": "WoyFuxUf",
+        "last_modified": "2018-10-01T18:51:17+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Full Body - Wk9"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:50:10+00:00",
+        "default": false,
+        "id": "lvQJDOc7",
+        "last_modified": "2018-10-01T18:50:42+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Full Body - Wk8"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:49:09+00:00",
+        "default": false,
+        "id": "mt6f2LSO",
+        "last_modified": "2018-10-01T18:52:08+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Full Body - Wk11"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:48:17+00:00",
+        "default": false,
+        "id": "haVek2Yj",
+        "last_modified": "2018-10-01T18:48:58+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Full Body - Wk6"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-10-01T18:46:18+00:00",
+        "default": false,
+        "id": "P68rwUyd",
+        "last_modified": "2018-10-01T18:47:51+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Full Body - Wk3"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-09-27T19:35:12+00:00",
+        "default": false,
+        "id": "6g9HDPqS",
+        "last_modified": "2018-09-27T19:37:59+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": "None",
+          "link": null,
+          "title": "Foundation One - PE1 - Full Body - Wk 1"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-09-07T18:11:15+00:00",
+        "default": true,
+        "id": "b6Jzl95r",
+        "last_modified": "2016-09-07T18:11:16+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 145
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:25:47+00:00",
+        "default": true,
+        "id": "EF1RZGH4",
+        "last_modified": "2019-10-03T18:25:47+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-09-07T20:55:25+00:00",
+        "default": true,
+        "id": "ZKUAvctl",
+        "last_modified": "2016-09-07T20:55:25+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-08-18T14:40:07+00:00",
+        "default": false,
+        "id": "PWZHMdHS",
+        "last_modified": "2016-08-18T15:04:52+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Ferriss Exercises"
+        },
+        "playlist_type": "manual",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-08-18T14:23:37+00:00",
+        "default": false,
+        "id": "xVWChGR8",
+        "last_modified": "2017-06-10T21:21:54+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Tim Ferriss Exercises"
+        },
+        "playlist_type": "dynamic",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 4
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:26:02+00:00",
+        "default": true,
+        "id": "Z8UrYZIm",
+        "last_modified": "2019-10-03T18:26:02+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-08-27T02:41:45+00:00",
+        "default": true,
+        "id": "ko1hTN6O",
+        "last_modified": "2016-08-27T02:41:45+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:26:03+00:00",
+        "default": true,
+        "id": "KlP9nU4D",
+        "last_modified": "2019-10-03T18:26:03+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-08-30T05:41:20+00:00",
+        "default": true,
+        "id": "CVlvymBd",
+        "last_modified": "2016-08-30T05:41:20+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:26:30+00:00",
+        "default": true,
+        "id": "R2Aw0ffb",
+        "last_modified": "2019-10-03T18:26:30+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2016-12-26T20:58:18+00:00",
+        "default": true,
+        "id": "WIhOdT2U",
+        "last_modified": "2016-12-26T20:58:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Feed"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:27:24+00:00",
+        "default": true,
+        "id": "PFuzXh0N",
+        "last_modified": "2019-10-03T18:27:24+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2017-08-23T07:36:01+00:00",
+        "default": true,
+        "id": "TzGlSWHO",
+        "last_modified": "2017-08-23T07:36:01+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Playlist"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2019-10-03T18:28:30+00:00",
+        "default": true,
+        "id": "KYU6LKFm",
+        "last_modified": "2019-10-03T18:28:30+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2018-02-25T16:02:19+00:00",
+        "default": true,
+        "id": "s4YurTaJ",
+        "last_modified": "2018-02-25T16:02:19+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Playlist"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "page": 1,
+    "page_length": 1000,
+    "playlists": [
+      {
+        "created": "2020-12-10T16:50:18+00:00",
+        "default": true,
+        "id": "DGSfFapC",
+        "last_modified": "2020-12-10T16:50:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Recommendations Playlist"
+        },
+        "playlist_type": "recommendations",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      },
+      {
+        "created": "2020-12-10T16:50:18+00:00",
+        "default": true,
+        "id": "fZ4qPAT6",
+        "last_modified": "2020-12-10T16:50:18+00:00",
+        "metadata": {
+          "author": null,
+          "custom_params": {},
+          "description": null,
+          "link": null,
+          "title": "Default Article Matching Playlist"
+        },
+        "playlist_type": "article_matching",
+        "relationships": {},
+        "schema": null,
+        "type": "playlist"
+      }
+    ],
+    "total": 2
+  }
+]

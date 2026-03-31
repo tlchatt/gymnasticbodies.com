@@ -1,0 +1,1256 @@
+siteId is: S41JwTap
+Media found for: h3Sc0VEL  header:  video/mp4
+Media found for: lEpdF9T1  header:  video/mp4
+Media found for: xhQuK0ev  header:  video/mp4
+Media found for: jzslQ46J  header:  video/mp4
+Media found for: dpOFRuNM  header:  video/mp4
+Media found for: CJth4c2S  header:  video/mp4
+Media found for: ghJltwWu  header:  video/mp4
+Media found for: nQ4JPAcU  header:  video/mp4
+Media found for: QrU9t9HQ  header:  video/mp4
+Media found for: WmtaKIax  header:  video/mp4
+Media found for: H1As0qwL  header:  video/mp4
+Media found for: fv67Yl5s  header:  video/mp4
+Media found for: s6d4xTER  header:  video/mp4
+Media found for: TBJbNBo5  header:  video/mp4
+Media found for: U35N7YCo  header:  video/mp4
+Media found for: QzUSz44J  header:  video/mp4
+Media found for: cWx1qdFY  header:  video/mp4
+Media found for: 6adhPfwZ  header:  video/mp4
+Media found for: SXNNvZar  header:  video/mp4
+Media found for: UTAlbToL  header:  video/mp4
+Media found for: 156UeOLR  header:  video/mp4
+Media found for: JpRFcMHq  header:  video/mp4
+Media found for: isE1bk1O  header:  video/mp4
+Media found for: 8IecLqo0  header:  video/mp4
+Media found for: ZBeJuRik  header:  video/mp4
+Media found for: kvYezKvq  header:  video/mp4
+Media found for: GPofehKa  header:  video/mp4
+Media found for: A85KuEwA  header:  video/mp4
+Media found for: t7qWOdx6  header:  video/mp4
+Media found for: rTPDuSjl  header:  video/mp4
+Media found for: klLZbTza  header:  video/mp4
+Media found for: rxlKfm45  header:  video/mp4
+Media found for: NLhdEB1A  header:  video/mp4
+Media found for: T2hKqJ2G  header:  video/mp4
+Media found for: bnNzJ3sV  header:  video/mp4
+Media found for: q8Zt9clJ  header:  video/mp4
+Media found for: tr3pxxGv  header:  video/mp4
+Media found for: va71bsri  header:  video/mp4
+Media found for: 4jHgAny4  header:  video/mp4
+Media found for: rVo79CNf  header:  video/mp4
+Media found for: qgmxUDwH  header:  video/mp4
+Media found for: bM4Fj9Ss  header:  video/mp4
+Media found for: MS7IrFgl  header:  video/mp4
+Media found for: psKRAYmq  header:  video/mp4
+Media found for: XFXNdkax  header:  video/mp4
+Media found for: F1VP73ZQ  header:  video/mp4
+Media NOT FOUND FOR ID: DYUJhD7F
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/DYUJhD7F/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9EWVVKaEQ3Ri9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.q9m7OZamqA0dVAjUzP9Tf-4Edjk3wh7kg8cLmzeIHbI
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media found for: Z80gE2bq  header:  video/mp4
+Media found for: aUiqdrqK  header:  video/mp4
+Media found for: 8kWi3Sl8  header:  video/mp4
+Media found for: xajA0Qda  header:  video/mp4
+Media found for: BSvROnIi  header:  video/mp4
+Media found for: nDMSaXVK  header:  video/mp4
+Media found for: Uh6YTJUH  header:  video/mp4
+Media found for: TYXgvYb6  header:  video/mp4
+Media found for: MEu8ISKG  header:  video/mp4
+Media found for: VKqDTTsU  header:  video/mp4
+Media found for: gWB3WXUt  header:  video/mp4
+Media found for: VdqSHPmq  header:  video/mp4
+Media found for: gdqqYEAF  header:  video/mp4
+Media found for: AfD2esUM  header:  video/mp4
+Media found for: zbPSYLen  header:  video/mp4
+Media found for: Hl0Fcx36  header:  video/mp4
+Media found for: tVUCSLRb  header:  video/mp4
+Media found for: 1UGskhJn  header:  video/mp4
+Media found for: IWkuGGCx  header:  video/mp4
+Media found for: AV63FUWa  header:  video/mp4
+Media found for: VQ3ERslW  header:  video/mp4
+Media found for: Qi53pWwE  header:  video/mp4
+Media found for: 4D6t50zX  header:  video/mp4
+Media found for: rlevrkkV  header:  video/mp4
+Media found for: AoUjnoA3  header:  video/mp4
+Media found for: xp9XXXWP  header:  video/mp4
+Media found for: vyxiSCGh  header:  video/mp4
+Media found for: cYqicxkj  header:  video/mp4
+Media found for: ekUeseRh  header:  video/mp4
+Media found for: flw85eqy  header:  video/mp4
+Media found for: ZYSFeCPw  header:  video/mp4
+Media found for: C1NGJsGQ  header:  video/mp4
+Media found for: 5OifMkMv  header:  video/mp4
+Media found for: A7qp0NRZ  header:  video/mp4
+Media found for: hKIsynDd  header:  video/mp4
+Media found for: HEgPHks7  header:  video/mp4
+Media found for: DTFWjqIn  header:  video/mp4
+Media found for: tenjRsvj  header:  video/mp4
+Media found for: P7BXb23K  header:  video/mp4
+Media found for: 5aVRW4zb  header:  video/mp4
+Media found for: VTfnpDkS  header:  video/mp4
+Media found for: 8DzSEYis  header:  video/mp4
+Media found for: rC44dmRZ  header:  video/mp4
+Media found for: g79KqIB3  header:  video/mp4
+Media found for: m676XH6q  header:  video/mp4
+Media found for: hyNbSn78  header:  video/mp4
+Media found for: fYzzVGPc  header:  video/mp4
+Media found for: gRiOGGnX  header:  video/mp4
+Media found for: W9YpM98O  header:  video/mp4
+Media found for: 4Jur0Wkl  header:  video/mp4
+Media found for: 2qwIX8tN  header:  video/mp4
+Media found for: UZHdeBly  header:  video/mp4
+Media found for: vSlnBYcR  header:  video/mp4
+Media found for: m6H9WPem  header:  video/mp4
+Media found for: brFENVkt  header:  video/mp4
+Media found for: r2azEHVu  header:  video/mp4
+Media found for: QDYPh21T  header:  video/mp4
+Media found for: v2zJrizQ  header:  video/mp4
+Media found for: goJNHkr0  header:  video/mp4
+Media found for: LiDw16wq  header:  video/mp4
+Media found for: PC6Ixm86  header:  video/mp4
+Media found for: LUj5IonK  header:  video/mp4
+Media found for: qa2ZgxDo  header:  video/mp4
+Media found for: D2pQJLND  header:  video/mp4
+Media found for: GsmaZ940  header:  video/mp4
+Media found for: lH8t7I65  header:  video/mp4
+Media found for: Azp0nIb5  header:  video/mp4
+Media found for: xqJe9Dkl  header:  video/mp4
+Media found for: YMMmePLI  header:  video/mp4
+Media found for: wxckEPnI  header:  video/mp4
+Media found for: XEEiguB4  header:  video/mp4
+Media found for: Vo5tWwI4  header:  video/mp4
+Media found for: oAHUCna1  header:  video/mp4
+Media found for: WlwUMh9K  header:  video/mp4
+Media found for: vDCUX0eu  header:  video/mp4
+Media found for: hDKgpLgx  header:  video/mp4
+Media found for: 7v4X1JAJ  header:  video/mp4
+Media found for: TPrMnuNb  header:  video/mp4
+Media found for: 1qduNWBe  header:  video/mp4
+Media found for: I43CmeF8  header:  video/mp4
+Media found for: n63Ptmhy  header:  video/mp4
+Media found for: JWL3OOYz  header:  video/mp4
+Media found for: sFihnMH7  header:  video/mp4
+Media found for: DCcwynIP  header:  video/mp4
+Media found for: x43ZN6SJ  header:  video/mp4
+Media found for: PyCdb62U  header:  video/mp4
+Media found for: PbYGi5Gh  header:  video/mp4
+Media found for: UyW1gUQy  header:  video/mp4
+Media found for: jewLWhu4  header:  video/mp4
+Media found for: MDvq7fG2  header:  video/mp4
+Media found for: NBiNI9hO  header:  video/mp4
+Media found for: nEWFEMbn  header:  video/mp4
+Media found for: IH0GvG4N  header:  video/mp4
+Media found for: kNwIezqE  header:  video/mp4
+Media found for: 2GVbR0g5  header:  video/mp4
+Media found for: y2rBQkD3  header:  video/mp4
+Media found for: ABZjrUtj  header:  video/mp4
+Media found for: DbtgEuGF  header:  video/mp4
+Media found for: b6qWHxCT  header:  video/mp4
+Media found for: jajDLo7t  header:  video/mp4
+Media found for: ctJTY1CN  header:  video/mp4
+Media found for: lGUXtcuT  header:  video/mp4
+Media found for: 0XHWPpgC  header:  video/mp4
+Media found for: WbeMEHZx  header:  video/mp4
+Media found for: 7ooQbjx9  header:  video/mp4
+Media found for: z3z9D4Hc  header:  video/mp4
+Media found for: oewYNHJQ  header:  video/mp4
+Media found for: nbT37QaT  header:  video/mp4
+Media found for: V7IqkwRK  header:  video/mp4
+Media found for: Gq0UHsel  header:  video/mp4
+Media found for: lBVtcuW4  header:  video/mp4
+Media found for: U6V7Tv2E  header:  video/mp4
+Media found for: l5sG0Mxh  header:  video/mp4
+Media found for: pKNMIe6R  header:  video/mp4
+Media found for: NtQ981M5  header:  video/mp4
+Media found for: tbVALbcp  header:  video/mp4
+Media found for: 4jhDZIwh  header:  video/mp4
+Media found for: TFn7aZ3Y  header:  video/mp4
+Media found for: npx5JB8c  header:  video/mp4
+Media found for: Qg27sbgn  header:  video/mp4
+Media found for: BYxT9y5t  header:  video/mp4
+Media found for: mdNEbUWx  header:  video/mp4
+Media found for: hWrzFDU4  header:  video/mp4
+Media found for: mWPdt5Bh  header:  video/mp4
+Media found for: RTQmsKj3  header:  video/mp4
+Media found for: InUwaeNZ  header:  video/mp4
+Media found for: V0ghPWij  header:  video/mp4
+Media found for: lfq6XIPO  header:  video/mp4
+Media found for: 5sMy4afH  header:  video/mp4
+Media found for: YGSX1HTx  header:  video/mp4
+Media found for: 7PD8liog  header:  video/mp4
+Media found for: nulkCt70  header:  video/mp4
+Media found for: 70ePO0pZ  header:  video/mp4
+Media found for: EJDZPgXA  header:  video/mp4
+Media found for: pzaooQNg  header:  video/mp4
+Media found for: J9JHQo4h  header:  video/mp4
+Media found for: u1iIjPxy  header:  video/mp4
+Media found for: hISWJ71Y  header:  video/mp4
+Media found for: qROMsmnv  header:  video/mp4
+Media found for: qndrGMA9  header:  video/mp4
+Media found for: cHm7uIsG  header:  video/mp4
+Media found for: z2ypZXCX  header:  video/mp4
+Media found for: Bq8XWSMG  header:  video/mp4
+Media found for: kbASJKW3  header:  video/mp4
+Media found for: 9MLJPgFY  header:  video/mp4
+Media NOT FOUND FOR ID: bod8mAkv
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/bod8mAkv/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9ib2Q4bUFrdi9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.7W-T4A73zBAmEal59lua6hPo2zKKsuI2SZqr12fWDPc
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media found for: glTOhbMB  header:  video/mp4
+Media found for: kJUHJUEr  header:  video/mp4
+Media found for: v3n2qNWu  header:  video/mp4
+Media found for: Vgkstlrd  header:  video/mp4
+Media found for: 3zMcNL0E  header:  video/mp4
+Media found for: ysLEBYq0  header:  video/mp4
+Media found for: vD8vWUQl  header:  video/mp4
+Media found for: 6n6pEVIk  header:  video/mp4
+Media found for: XGmMAzuj  header:  video/mp4
+Media found for: EUY4cRQw  header:  video/mp4
+Media found for: a3MfEvC0  header:  video/mp4
+Media found for: q20ZPPTF  header:  video/mp4
+Media found for: vUdjkVou  header:  video/mp4
+Media found for: hItlltph  header:  video/mp4
+Media found for: JfdrtrZo  header:  video/mp4
+Media found for: 6TMHUU9O  header:  video/mp4
+Media found for: Btt6U29m  header:  video/mp4
+Media found for: 2EvupAmn  header:  video/mp4
+Media found for: vufShdIJ  header:  video/mp4
+Media NOT FOUND FOR ID: 2HsT9fSG
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/2HsT9fSG/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS8ySHNUOWZTRy9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.LpF714R3HhvEtJzlmx78--UPCSJwnmRif2vYtmpKsHU
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: tc4bzvGZ
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/tc4bzvGZ/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS90YzRienZHWi9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.cd2ZR4Mu7fnH4IkUK6qWgXeaqVp2_QFqpSor30b9l14
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: VTuIj5pK
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/VTuIj5pK/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9WVHVJajVwSy9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.hgrNsjVUS90vvnAvvGCDe-io4Pofk8jvJjl6HOEO254
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: 4VMfdw1q
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/4VMfdw1q/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS80Vk1mZHcxcS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.SKg0aYSTeD3ecba15MD6B3PBUXow78ws_rG8ABR2xJA
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: OKJipv3l
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/OKJipv3l/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9PS0ppcHYzbC9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.UwExA4w-BX14M5D7PjusAkrMu3_iB4vf149Q7VIjCDY
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: JfGsFNu6
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/JfGsFNu6/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9KZkdzRk51Ni9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.cfwIvj2dZvrMlC1muZsXPCtoAotLMyXrYlVUUP0xl4E
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: 49O6BNJj
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/49O6BNJj/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS80OU82Qk5Kai9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.7jqnpwwH5o4GZ2RXqtNzxcKfSeLVcEkR2UK59n7yrlU
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: sYKHJmj7
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/sYKHJmj7/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9zWUtISm1qNy9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.EdY5ycCqTdY6_Pbc8y1-971gp4qck_juPlT0M8T5XL4
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: 5qX8ngcZ
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/5qX8ngcZ/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS81cVg4bmdjWi9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.vFX89TA1rlWsY5i244lrDx4lYaVRHth6XiaKKlECsUI
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: ZM8SmX1B
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/ZM8SmX1B/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9aTThTbVgxQi9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.257BS0aotePwxWHA2cXyfPIAL6zh3Hf9wjWt97YG98U
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: P8pDTaVi
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/P8pDTaVi/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9QOHBEVGFWaS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.Gn6fHnsW0H6z4a09WqZjTGz2h0O3-wikT2_EF0cUOxE
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: 6z7XmOrQ
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/6z7XmOrQ/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS82ejdYbU9yUS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.L87thychcetw7wF90QVncJvfA1qQn-DZbq8LiR-wnUo
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: dDB0AS9E
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/dDB0AS9E/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9kREIwQVM5RS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.Waf3pA0BlUvmYl0EfSzX9l2vni4j_hm3UiS3lC6sRpM
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: GPgSt7oU
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/GPgSt7oU/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9HUGdTdDdvVS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.PHLvGYHpLE_v_39dPwCW2lhuD0n0I1lYrYE2zwrcuhE
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: 2dpxOqKI
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/2dpxOqKI/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS8yZHB4T3FLSS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.sy81jzcbk2Oyiad4zOp_q0ncR-q3rcC7OFEjfz0UyAQ
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: DLFGqSPX
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/DLFGqSPX/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9ETEZHcVNQWC9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.ryrqJtDyPC4j6VZByOuEdA9sEvwB97ouQ-X6MiuNVCE
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: zbV74qG3
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/zbV74qG3/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS96YlY3NHFHMy9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.lNQsUTml3Wd6fwYf68e0CrSsuc2JW1Qli7MsJ18OOjY
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: bBLo1ZsU
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/bBLo1ZsU/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9iQkxvMVpzVS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.cQicvnLPP3JL8cEPe4Y-_TOJrSaIC4sUjSqV-uEoHuQ
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: UqWLRCb0
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/UqWLRCb0/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9VcVdMUkNiMC9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.R27aE-VOvwUs8JT1-9Nji2d2ngb98idBCrXECDrGFjk
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: JzqcBK5z
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/JzqcBK5z/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9KenFjQks1ei9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.sx-CQhHubx-Pl_ym_cwA_rkQs2pmV2neW8-bUYjdhbM
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: gdcSXDHO
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/gdcSXDHO/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9nZGNTWERITy9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.fw-gfqc-QrN35cL1zrySj9KDXVAPqpVmg8DkuSzXLwo
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: D5HP00Z3
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/D5HP00Z3/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9ENUhQMDBaMy9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.7fg3LUta87teINw5t8E8T_UFEGl73Jb4HkfIsDXxj6Q
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media found for: SfYIkGMp  header:  video/mp4
+Media found for: 28YGmV7s  header:  video/mp4
+Media found for: 4OfTbha6  header:  video/mp4
+Media found for: 7f1hSsIU  header:  video/mp4
+Media found for: v0p4YJGX  header:  video/mp4
+Media found for: vVG0oUT2  header:  video/mp4
+Media found for: FZAOaHq6  header:  video/mp4
+Media found for: RhPoKPbH  header:  video/mp4
+Media found for: re7c9Koo  header:  video/mp4
+Media found for: j0i5b1eA  header:  video/mp4
+Media found for: hpTV1rSv  header:  video/mp4
+Media found for: 30zI3wHz  header:  video/mp4
+Media found for: khzF6aT2  header:  video/mp4
+Media found for: EZhXixU1  header:  video/mp4
+Media found for: Gt6thYBr  header:  video/mp4
+Media found for: Xf3SjwKM  header:  video/mp4
+Media found for: Iw7tU0Ti  header:  video/mp4
+Media found for: ySZCK9ww  header:  video/mp4
+Media found for: LmAWgziS  header:  video/mp4
+Media found for: AeOdchC8  header:  video/mp4
+Media found for: d85IhzGm  header:  video/mp4
+Media found for: PsFWOlvB  header:  video/mp4
+Media found for: 6O9KGd2L  header:  video/mp4
+Media found for: txSHgSMB  header:  video/mp4
+Media found for: zBvUqvjH  header:  video/mp4
+Media found for: 61Ma59Rs  header:  video/mp4
+Media found for: NLDDaoUY  header:  video/mp4
+Media found for: HC5hWsIy  header:  video/mp4
+Media found for: xAwywYD5  header:  video/mp4
+Media found for: Yu0KIuY7  header:  video/mp4
+Media found for: DOcjcJjW  header:  video/mp4
+Media found for: 9vBiSsCm  header:  video/mp4
+Media found for: v9PxKiWB  header:  video/mp4
+Media found for: 7skOtffR  header:  video/mp4
+Media found for: 7LJNYVet  header:  video/mp4
+Media found for: YbihlbMV  header:  video/mp4
+Media found for: Ia3IgiQU  header:  video/mp4
+Media found for: keX0wya3  header:  video/mp4
+Media found for: cR6BRWvJ  header:  video/mp4
+Media found for: nWdOknW1  header:  video/mp4
+Media found for: PDeJIUF5  header:  video/mp4
+Media found for: l76aq09Z  header:  video/mp4
+Media found for: j6TkMYS0  header:  video/mp4
+Media found for: 5IGVwVnm  header:  video/mp4
+Media found for: 0HurgQzQ  header:  video/mp4
+Media found for: cJEIaYcX  header:  video/mp4
+Media found for: 0sXVPqSl  header:  video/mp4
+Media found for: fGiLAnSc  header:  video/mp4
+Media found for: HCwMi7Lq  header:  video/mp4
+Media found for: UWfhjT8c  header:  video/mp4
+Media found for: 7rHnbimy  header:  video/mp4
+Media found for: n9GPMEO9  header:  video/mp4
+Media found for: 3xZiqtOb  header:  video/mp4
+Media found for: hTGa5V64  header:  video/mp4
+Media found for: bplx5G0c  header:  video/mp4
+Media found for: wJZMsSWc  header:  video/mp4
+Media found for: dlrDuj6a  header:  video/mp4
+Media found for: ejAjf2JP  header:  video/mp4
+Media found for: uMB4w4vk  header:  video/mp4
+Media found for: yxIkrX1J  header:  video/mp4
+Media found for: pauPCnkX  header:  video/mp4
+Media found for: btGpDcDO  header:  video/mp4
+Media found for: obflcqPI  header:  video/mp4
+Media found for: XX0hhHRr  header:  video/mp4
+Media found for: JxEN2ZZ4  header:  video/mp4
+Media found for: RZsxMm5v  header:  video/mp4
+Media found for: aU07GqSC  header:  video/mp4
+Media found for: EBRsurVd  header:  video/mp4
+Media found for: z3ljcAze  header:  video/mp4
+Media found for: ZoNKDKGw  header:  video/mp4
+Media found for: bkZW34FX  header:  video/mp4
+Media found for: NJOUzrLd  header:  video/mp4
+Media found for: T8cfHnfV  header:  video/mp4
+Media found for: QrP4c2Pv  header:  video/mp4
+Media found for: KstOgoiC  header:  video/mp4
+Media found for: 9qq3jf7Y  header:  video/mp4
+Media found for: CMdXTFYq  header:  video/mp4
+Media found for: 5hO6E5X1  header:  video/mp4
+Media found for: HINuAUiv  header:  video/mp4
+Media found for: jT1lwkPx  header:  video/mp4
+Media found for: jsYcYGt1  header:  video/mp4
+Media found for: RnXulJAp  header:  video/mp4
+Media found for: J4fHhcs7  header:  video/mp4
+Media found for: xqrkooKT  header:  video/mp4
+Media found for: uqrJ3QMi  header:  video/mp4
+Media found for: OZdSmjH2  header:  video/mp4
+Media found for: 7uV4hGoY  header:  video/mp4
+Media found for: 5LAPbvWR  header:  video/mp4
+Media found for: qBi0bZlb  header:  video/mp4
+Media found for: Oz5ZIFhX  header:  video/mp4
+Media found for: CWpj3gba  header:  video/mp4
+Media found for: 7BTwHuu8  header:  video/mp4
+Media found for: tnSMve1W  header:  video/mp4
+Media found for: rC4EZPhg  header:  video/mp4
+Media found for: ns39Vba4  header:  video/mp4
+Media found for: zak9hUm8  header:  video/mp4
+Media found for: lD7X8lnp  header:  video/mp4
+Media found for: oCDljZAH  header:  video/mp4
+Media found for: ne3tIGH7  header:  video/mp4
+Media found for: PtaWb40B  header:  video/mp4
+Media found for: oWkJJvcg  header:  video/mp4
+Media found for: polYOqG3  header:  video/mp4
+Media found for: enWCvgRr  header:  video/mp4
+Media found for: JX6iZyuy  header:  video/mp4
+Media found for: xrl3BcVW  header:  video/mp4
+Media found for: GXeYBMzU  header:  video/mp4
+Media found for: aiEQsTid  header:  video/mp4
+Media found for: n1CI1j7Q  header:  video/mp4
+Media found for: woQHDvsZ  header:  video/mp4
+Media found for: piuSJ30e  header:  video/mp4
+Media found for: qXLkVsoA  header:  video/mp4
+Media found for: z5UXhWlL  header:  video/mp4
+Media found for: f197k7uo  header:  video/mp4
+Media found for: YAKHBPbf  header:  video/mp4
+Media found for: FTklMN6h  header:  video/mp4
+Media found for: fqDfa1KQ  header:  video/mp4
+Media found for: n0Tg10yS  header:  video/mp4
+Media found for: AAC1r85O  header:  video/mp4
+Media found for: XZGVXiMz  header:  video/mp4
+Media found for: yBss0IgR  header:  video/mp4
+Media found for: PI2u3ZRj  header:  video/mp4
+Media found for: l0v60MLP  header:  video/mp4
+Media found for: pxU8ylk0  header:  video/mp4
+Media found for: Pg8OcyLd  header:  video/mp4
+Media found for: 3d7yD9Kb  header:  video/mp4
+Media found for: Ry3NH8Q7  header:  video/mp4
+Media found for: RsEkc0Ui  header:  video/mp4
+Media found for: nv8r6wRd  header:  video/mp4
+Media found for: El0Y42HK  header:  video/mp4
+Media found for: Uiwbad3i  header:  video/mp4
+Media found for: eGCdOWPk  header:  video/mp4
+Media found for: 8ges4Als  header:  video/mp4
+Media found for: 1VzoQekj  header:  video/mp4
+Media found for: jqxRlI6k  header:  video/mp4
+Media found for: Guu9HvG5  header:  video/mp4
+Media found for: TxVdq9sX  header:  video/mp4
+Media found for: H8a35hgQ  header:  video/mp4
+Media found for: 69HvM6Sk  header:  video/mp4
+Media found for: VIs48Xxc  header:  video/mp4
+Media found for: SqEQFC5I  header:  video/mp4
+Media found for: 3SgazeBx  header:  video/mp4
+Media found for: ztIx83O7  header:  video/mp4
+Media found for: bK6bnZvY  header:  video/mp4
+Media found for: OnlvHgck  header:  video/mp4
+Media found for: NdYVLbbQ  header:  video/mp4
+Media found for: 1CH5wWBb  header:  video/mp4
+Media found for: dIaIKWy5  header:  video/mp4
+Media found for: MQQJLIVe  header:  video/mp4
+Media found for: 4NlJaMuH  header:  video/mp4
+Media found for: 2VDe88fb  header:  video/mp4
+Media found for: IbLwOuof  header:  video/mp4
+Media found for: UE2wBWAP  header:  video/mp4
+Media found for: jCy7XArB  header:  video/mp4
+Media found for: bitaVATq  header:  video/mp4
+Media found for: 8WSwDfGo  header:  video/mp4
+Media found for: uUE47RpM  header:  video/mp4
+Media found for: 0b2o2DpP  header:  video/mp4
+Media found for: Hudg9vma  header:  video/mp4
+Media found for: cMVFl4Hi  header:  video/mp4
+Media found for: 0IqCKSVl  header:  video/mp4
+Media found for: 3pPN4dZ5  header:  video/mp4
+Media found for: 3VIlCBJG  header:  video/mp4
+Media found for: 4oRrTb6B  header:  video/mp4
+Media found for: dW7alpgY  header:  video/mp4
+Media found for: 9Kyj7dkO  header:  video/mp4
+Media found for: goJc2mnR  header:  video/mp4
+Media found for: NFoXgvEl  header:  video/mp4
+Media found for: ayuekJZ3  header:  video/mp4
+Media found for: uXw6xUaA  header:  video/mp4
+Media found for: dXeNz0Ui  header:  video/mp4
+Media found for: ePc5TUac  header:  video/mp4
+Media found for: 9m4iKcsy  header:  video/mp4
+Media found for: X5djIHSD  header:  video/mp4
+Media found for: nt9JmNPy  header:  video/mp4
+Media found for: XvSqD0hz  header:  video/mp4
+Media found for: vSzCE2hF  header:  video/mp4
+Media found for: PIdSis5a  header:  video/mp4
+Media found for: clquf0u8  header:  video/mp4
+Media found for: AA81nPKw  header:  video/mp4
+Media found for: hR53CV52  header:  video/mp4
+Media found for: CpCjoYwm  header:  video/mp4
+Media found for: lpkneAMR  header:  video/mp4
+Media found for: gVrcCLq2  header:  video/mp4
+Media found for: i7Wg7uOS  header:  video/mp4
+Media found for: Rmk1mDwl  header:  video/mp4
+Media found for: ENG3ZbB7  header:  video/mp4
+Media found for: 2AD6g6ZJ  header:  video/mp4
+Media found for: oMRyqeX6  header:  video/mp4
+Media found for: rc0YRnRL  header:  video/mp4
+Media found for: uwVm3QLk  header:  video/mp4
+Media found for: VOMqmJk3  header:  video/mp4
+Media found for: zC0GgpNe  header:  video/mp4
+Media found for: F49x4nCz  header:  video/mp4
+Media found for: KrOHaZIA  header:  video/mp4
+Media found for: C39PIPiF  header:  video/mp4
+Media found for: EUkYT2vZ  header:  video/mp4
+Media found for: 2AwE8X25  header:  video/mp4
+Media found for: EJjLS6Z0  header:  video/mp4
+Media found for: 4qRDqBf1  header:  video/mp4
+Media found for: UO9ruyUP  header:  video/mp4
+Media found for: WnC4ZDKd  header:  video/mp4
+Media found for: OjmipcpF  header:  video/mp4
+Media found for: 0bjia0UZ  header:  video/mp4
+Media found for: DQWPAebX  header:  video/mp4
+Media found for: s8EHcZjf  header:  video/mp4
+Media found for: MDUSudOo  header:  video/mp4
+Media found for: WRQV0hlS  header:  video/mp4
+Media found for: TAex8Ikw  header:  video/mp4
+Media found for: qYxbw3bB  header:  video/mp4
+Media found for: 0QdYf55y  header:  video/mp4
+Media found for: iPB2a9MQ  header:  video/mp4
+Media found for: GXKHfnCw  header:  video/mp4
+Media found for: XwZxcLRW  header:  video/mp4
+Media found for: st3e9M7X  header:  video/mp4
+Media found for: DO4uPcDd  header:  video/mp4
+Media found for: nSWOLBob  header:  video/mp4
+Media found for: LrukYPgL  header:  video/mp4
+Media found for: GqDb3Muu  header:  video/mp4
+Media found for: GHbfpwa1  header:  video/mp4
+Media found for: gy0BuCUu  header:  video/mp4
+Media found for: xiHtOUaB  header:  video/mp4
+Media found for: THQqolFx  header:  video/mp4
+Media found for: kQS19rdM  header:  video/mp4
+Media found for: i4vdUpbV  header:  video/mp4
+Media found for: Tv4pEcpo  header:  video/mp4
+Media found for: eTPHreVc  header:  video/mp4
+Media found for: aIKI57h1  header:  video/mp4
+Media found for: Qkda1BMH  header:  video/mp4
+Media found for: EfSga3xq  header:  video/mp4
+Media found for: QmlRHqpi  header:  video/mp4
+Media found for: kRxMeOxP  header:  video/mp4
+Media found for: ICJmsaC5  header:  video/mp4
+Media found for: 506gHJ14  header:  video/mp4
+Media found for: gRkENzWA  header:  video/mp4
+Media found for: n5yTqUT9  header:  video/mp4
+Media found for: 1GWp7H3X  header:  video/mp4
+Media found for: mvoyDfSq  header:  video/mp4
+Media found for: L7kE1U5p  header:  video/mp4
+Media found for: 9pwCK5Xn  header:  video/mp4
+Media found for: 3h40jc5V  header:  video/mp4
+Media found for: MaAUOcab  header:  video/mp4
+Media found for: 2gtkHlMN  header:  video/mp4
+Media found for: yDBIdtL2  header:  video/mp4
+Media found for: uyBUdmBj  header:  video/mp4
+Media found for: y62M4EU6  header:  video/mp4
+Media found for: CWuJTwbd  header:  video/mp4
+Media found for: 3S0rM2Pf  header:  video/mp4
+Media found for: NQWo2jg3  header:  video/mp4
+Media NOT FOUND FOR ID: HpSC7cBA
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/HpSC7cBA/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9IcFNDN2NCQS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.15e8vvNkOfVjgSza6Cnzj7bNCbqlp5AaXA8CxWU6OAM
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media NOT FOUND FOR ID: Zr4lMYDU
+url: https://cdn.jwplayer.com/v2/sites/S41JwTap/media/Zr4lMYDU/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9TNDFKd1RhcC9tZWRpYS9acjRsTVlEVS9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.0KMoDq0GAVD8ZXWRjvEe5YJmESjsxzLwGlgVOPiBJog
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media found for: J387Yocm  header:  video/mp4
+Media found for: NTf2UFOa  header:  video/mp4
+Media found for: YlWiULMX  header:  video/mp4
+Media found for: tqyBx1cu  header:  video/mp4
+Media found for: 0rg5dUBF  header:  video/mp4
+Media found for: PNDKYLJg  header:  video/mp4
+Media found for: jWdWh47P  header:  video/mp4
+Media found for: yAYcFPqi  header:  video/mp4
+Media found for: v76b4ehG  header:  video/mp4
+Media found for: SXdyioN7  header:  video/mp4
+Media found for: uOzecOqJ  header:  video/mp4
+Media found for: c97MXOuz  header:  video/mp4
+Media found for: snPE5o8G  header:  video/mp4
+Media found for: wcjLvV0U  header:  video/mp4
+Media found for: bCvTrlao  header:  video/mp4
+Media found for: bWFaSIYK  header:  video/mp4
+Media found for: btWbgL1G  header:  video/mp4
+Media found for: sdX74kPK  header:  video/mp4
+Media found for: RXZ3DQWQ  header:  video/mp4
+Media found for: HWfoAQ1F  header:  video/mp4
+Media found for: UaZ2IxSB  header:  video/mp4
+Media found for: 2PPVS2ob  header:  video/mp4
+Media found for: iEJUumKY  header:  video/mp4
+Media found for: pwSbcKdT  header:  video/mp4
+Media found for: KVYTKkR1  header:  video/mp4
+Media found for: rmWe3NPK  header:  video/mp4
+Media found for: jAqmuFEh  header:  video/mp4
+Media found for: UA5VNXDk  header:  video/mp4
+Media found for: okkAyNRv  header:  video/mp4
+Media found for: lQ6qAfd6  header:  video/mp4
+Media found for: 4LjAHEgh  header:  video/mp4
+Media found for: IcrmDot8  header:  video/mp4
+Media found for: 4eJp2Vtw  header:  video/mp4
+Media found for: xQQFnwRZ  header:  video/mp4
+Media found for: ZZADV52K  header:  video/mp4
+Media found for: CqS4bDng  header:  video/mp4
+Media found for: o4rHZbOC  header:  video/mp4
+Media found for: 48mcwklu  header:  video/mp4
+Media found for: wPl4u5Lq  header:  video/mp4
+Media found for: kzR4I6JU  header:  video/mp4
+Media found for: 1CALM1Cm  header:  video/mp4
+Media found for: wOFl1oEm  header:  video/mp4
+Media found for: Fn3w5v2J  header:  video/mp4
+Media found for: 835DwjmZ  header:  video/mp4
+Media found for: fXzunOFa  header:  video/mp4
+Media found for: efgaVwh9  header:  video/mp4
+Media found for: pQGDyEGa  header:  video/mp4
+Media found for: I11DufiS  header:  video/mp4
+Media found for: SWTcpQbW  header:  video/mp4
+Media found for: WsaTn2Cr  header:  video/mp4
+Media found for: 6k2y0KEQ  header:  video/mp4
+Media found for: fnxw4Vra  header:  video/mp4
+Media found for: oVyX4kyz  header:  video/mp4
+Media found for: JgYZEGIN  header:  video/mp4
+Media found for: dGCUINEb  header:  video/mp4
+Media found for: 34NBeOOc  header:  video/mp4
+Media found for: BTdkhkVL  header:  video/mp4
+Media found for: UmuEIETv  header:  video/mp4
+Media found for: 3ykWRomn  header:  video/mp4
+Media found for: fe04m1Wp  header:  video/mp4
+Media found for: tbq01Vgu  header:  video/mp4
+Media found for: DbmjaGPr  header:  video/mp4
+Media found for: dpxpouzN  header:  video/mp4
+Media found for: fGh3nwBu  header:  video/mp4
+Media found for: KCWBz0hs  header:  video/mp4
+Media found for: LC0WCIoC  header:  video/mp4
+Media found for: upxAdMlN  header:  video/mp4
+Media found for: O6TjcVlO  header:  video/mp4
+Media found for: 06TXfHSS  header:  video/mp4
+Media found for: f2waH6qJ  header:  video/mp4
+siteId is: ct3h32mJ
+Media found for: B1x2s1z9  header:  video/mp4
+Media found for: 2wB9azqx  header:  video/mp4
+Media found for: g0sM2Nic  header:  video/mp4
+Media found for: 7BhEYSsQ  header:  video/mp4
+Media found for: 2dFYiWbP  header:  video/mp4
+Media found for: xtBSdVrk  header:  video/mp4
+Media found for: RXhncROW  header:  video/mp4
+Media found for: ApjiLMRn  header:  video/mp4
+Media found for: g1T6pln7  header:  video/mp4
+Media found for: jfS3papz  header:  video/mp4
+Media found for: n9yEP2Yp  header:  video/mp4
+Media found for: BqEKrsre  header:  video/mp4
+Media found for: KV9C4Zhn  header:  video/mp4
+Media found for: GhaLBRIG  header:  video/mp4
+Media found for: 7mS0uSqO  header:  video/mp4
+Media found for: aiycVkfF  header:  video/mp4
+Media found for: 96wKldZN  header:  video/mp4
+Media found for: XOtFcWnO  header:  video/mp4
+Media found for: 8NC6D9je  header:  video/mp4
+Media found for: LYFr8noA  header:  video/mp4
+Media found for: PdLfR9zQ  header:  video/mp4
+Media found for: p7gdrC8t  header:  video/mp4
+Media found for: JeBXMCaq  header:  video/mp4
+Media found for: DpBAZ3nG  header:  video/mp4
+Media found for: UFJRoYKF  header:  video/mp4
+Media found for: LTMl1bmP  header:  video/mp4
+Media found for: yj5CcgN6  header:  video/mp4
+Media found for: OLHS1wLm  header:  video/mp4
+Media found for: CJXPgpZd  header:  video/mp4
+Media found for: d4b21plI  header:  video/mp4
+Media found for: SC6UE9hf  header:  video/mp4
+Media found for: RCQIFjsz  header:  video/mp4
+Media found for: gggtcW1e  header:  video/mp4
+Media found for: YnWJXN0m  header:  video/mp4
+Media found for: Bf1nU3bQ  header:  video/mp4
+siteId is: lMcJkJek
+Media found for: AjiT6vSp  header:  video/mp4
+Media found for: wcMOEVwY  header:  video/mp4
+Media found for: aHQvY7vz  header:  video/mp4
+Media found for: VJIuRuFu  header:  video/mp4
+Media found for: lloWGTyZ  header:  video/mp4
+Media found for: 5OvSUAMY  header:  video/mp4
+Media found for: 0Pv0TwUZ  header:  video/mp4
+Media found for: YktNSBWe  header:  video/mp4
+Media found for: aYhYU1oC  header:  video/mp4
+Media found for: 89ZWASw5  header:  video/mp4
+Media found for: 43Tx6KBc  header:  video/mp4
+Media found for: tHE5Ke7f  header:  video/mp4
+Media found for: su6UiDI0  header:  video/mp4
+Media found for: cLE8fiXO  header:  video/mp4
+Media found for: GgbVUoxC  header:  video/mp4
+Media found for: Mgt1d2ju  header:  video/mp4
+Media found for: I1pTHzU2  header:  video/mp4
+Media found for: rvEcdnCB  header:  video/mp4
+Media found for: pL6lOxBu  header:  video/mp4
+Media found for: hfeglq2V  header:  video/mp4
+Media found for: PdGCBzgO  header:  video/mp4
+Media found for: sOVHENPV  header:  video/mp4
+Media found for: CcAQ1FXM  header:  video/mp4
+Media found for: x3NL8IBX  header:  video/mp4
+Media found for: fQuk1jAj  header:  video/mp4
+Media found for: 8kAxPiKl  header:  video/mp4
+Media found for: 1o9TLHOq  header:  video/mp4
+Media found for: F9dkVCwf  header:  video/mp4
+Media found for: tfCOVyvf  header:  video/mp4
+Media found for: p6nQgbHA  header:  video/mp4
+Media found for: e4U3fweE  header:  video/mp4
+Media found for: DyFT4bAu  header:  video/mp4
+Media found for: pntMaunx  header:  video/mp4
+Media found for: dC8anXd3  header:  video/mp4
+Media found for: QkoV6u2b  header:  video/mp4
+Media found for: oogqT2aG  header:  video/mp4
+Media found for: tVpg6kNZ  header:  video/mp4
+Media found for: VPTMJqXG  header:  video/mp4
+Media found for: Ak2sNLG5  header:  video/mp4
+Media found for: k2AOrXQK  header:  video/mp4
+Media found for: sgKmoXcJ  header:  video/mp4
+Media found for: 7lAkEDN0  header:  video/mp4
+Media found for: NeYi61aC  header:  video/mp4
+Media found for: X31Ogim7  header:  video/mp4
+Media found for: 6VZ6o7gK  header:  video/mp4
+Media found for: nH4sr6Zb  header:  video/mp4
+Media found for: eL2A0Xgq  header:  video/mp4
+Media found for: dPwp4ahr  header:  video/mp4
+Media found for: 34v6gt1V  header:  video/mp4
+Media found for: D2g31xQA  header:  video/mp4
+Media found for: jQvJhV1Z  header:  video/mp4
+Media found for: JRqphF3z  header:  video/mp4
+Media found for: I6X4jQjW  header:  video/mp4
+Media found for: bObNe5E2  header:  video/mp4
+Media found for: kWwyeKAZ  header:  video/mp4
+Media found for: HuyvcxMa  header:  video/mp4
+Media found for: petdskVv  header:  video/mp4
+Media found for: 3hj7z1Cd  header:  video/mp4
+Media found for: DKAMoF8i  header:  video/mp4
+Media found for: DkXHq8xN  header:  video/mp4
+Media found for: twfH8pQ4  header:  video/mp4
+Media found for: 2Gak0fGV  header:  video/mp4
+Media found for: UqrTOskq  header:  video/mp4
+Media found for: cOVHNm0w  header:  video/mp4
+Media found for: 0J7M3hAC  header:  video/mp4
+Media found for: h15sQJKh  header:  video/mp4
+Media found for: tbxNV6sH  header:  video/mp4
+Media found for: 4RtfA2HL  header:  video/mp4
+Media found for: TjcBT4RD  header:  video/mp4
+Media found for: yGWF5WuS  header:  video/mp4
+Media found for: 164gj6X1  header:  video/mp4
+Media found for: 2nE3cmk9  header:  video/mp4
+Media found for: jo4YvYcv  header:  video/mp4
+Media found for: AoO4Mo4u  header:  video/mp4
+Media found for: 9S25r6CD  header:  video/mp4
+Media found for: ZA1H2sU8  header:  video/mp4
+Media NOT FOUND FOR ID: PxSHdy7J
+url: https://cdn.jwplayer.com/v2/sites/lMcJkJek/media/PxSHdy7J/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9sTWNKa0play9tZWRpYS9QeFNIZHk3Si9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.UpWvRr_OWjC7YcXCVQTUYDYUi87PYA0cQtH-JnHLzXg
+res error in fownloadMedia is: Not Found
+err is: Error: Failed to fetch data
+    at downloadMediaWorkflowForLeftOverIds (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:212:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkForMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:133:45)
+    at async getAndCheckMedia (file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:106:28)
+    at async file:///var/www/Gymnastic_Bodies/gymnasticbodies.com/mediaScript.js:35:27
+notFoundMediaUrls: undefined
+Media found for: IYx2OrCu  header:  video/mp4
+Media found for: ZXzg4S3k  header:  video/mp4
+Media found for: DPqUQyKj  header:  video/mp4
+Media found for: 2YXYJjzG  header:  video/mp4
+Media found for: jy5oKmnB  header:  video/mp4
+Media found for: 9OA1H0Rn  header:  video/mp4
+Media found for: T9LwBUFX  header:  video/mp4
+Media found for: YECx6n9A  header:  video/mp4
+Media found for: SAtTmnW0  header:  video/mp4
+Media found for: tA8kmlDY  header:  video/mp4
+Media found for: y0DfDnaO  header:  video/mp4
+Media found for: hbfxjsiM  header:  video/mp4
+Media found for: 5VXfxegc  header:  video/mp4
+Media found for: E1YvXX2i  header:  video/mp4
+Media found for: fQhEON26  header:  video/mp4
+Media found for: XUTtNbkZ  header:  video/mp4
+Media found for: xNAdQHV1  header:  video/mp4
+Media found for: EwrMyxGJ  header:  video/mp4
+Media found for: rpRnUD4r  header:  video/mp4
+Media found for: wIRwm2kx  header:  video/mp4
+Media found for: s6F7hRdE  header:  video/mp4
+Media found for: CKzgFpGv  header:  video/mp4
+Media found for: Mq6wOzuI  header:  video/mp4
+Media found for: HMeZ9gSg  header:  video/mp4
+Media found for: TlJdmxx6  header:  video/mp4
+Media found for: 8PL4MuUQ  header:  video/mp4
+Media found for: uNosEhg2  header:  video/mp4
+Media found for: JcOyU58Z  header:  video/mp4
+Media found for: Ark7uf4i  header:  video/mp4
+Media found for: ykGH7XCL  header:  video/mp4
+Media found for: HYyxgUKd  header:  video/mp4
+Media found for: Apy7dPBB  header:  video/mp4
+Media found for: 3CiZ7pSp  header:  video/mp4
+Media found for: W0m5x5X0  header:  video/mp4
+Media found for: P7UwHj0h  header:  video/mp4
+Media found for: wfvAGT2N  header:  video/mp4
+Media found for: QqOiTu34  header:  video/mp4
+Media found for: HzHS3mJ3  header:  video/mp4
+Media found for: zsSAuhNC  header:  video/mp4
+Media found for: kEWo39Qr  header:  video/mp4
+Media found for: p9Oh7N6t  header:  video/mp4
+Media found for: 68T5Kz07  header:  video/mp4
+Media found for: i1u6YLKS  header:  video/mp4
+Media found for: E15Mcvcp  header:  video/mp4
+Media found for: nbPgi33U  header:  video/mp4
+Media found for: YhV0dIpy  header:  video/mp4
+Media found for: LZqIpYuu  header:  video/mp4
+Media found for: spGEkuI7  header:  video/mp4
+Media found for: b9qezR7O  header:  video/mp4
+Media found for: 3ckwxNKO  header:  video/mp4
+Media found for: vHQ7ojXX  header:  video/mp4
+siteId is: NPYshimq
+Media found for: rLicwBAT  header:  video/mp4
+Media found for: 1Z1FuLrN  header:  video/mp4
+Media found for: GorrHou3  header:  video/mp4
+Media found for: eJNI9aEg  header:  video/mp4
+Media found for: FqMGBYV9  header:  video/mp4
+Media found for: 3iau34GX  header:  video/mp4
+Media found for: rpGorbf5  header:  video/mp4
+Media found for: hFZZyqrp  header:  video/mp4
+Media found for: iJo7hzVS  header:  video/mp4
+Media found for: 0GVLG3DR  header:  video/mp4
+Media found for: hBapiyvl  header:  video/mp4
+Media found for: mj0650wj  header:  video/mp4
+Media found for: nZpaBeUO  header:  video/mp4
+Media found for: fhmDjb8h  header:  video/mp4
+Media found for: 0Jrhq0zj  header:  video/mp4
+Media found for: 1bhdkRsP  header:  video/mp4
+Media found for: aS97btkS  header:  video/mp4
+Media found for: Y2ANSmkl  header:  video/mp4
+Media found for: B3m8V3kk  header:  video/mp4
+Media found for: h8iHr9i6  header:  video/mp4
+Media found for: 4lAsLxi4  header:  video/mp4
+Media found for: SzVUQgqx  header:  video/mp4
+Media found for: alBci7lJ  header:  video/mp4
+Media found for: PHWWIawE  header:  video/mp4
+Media found for: 1fzxSXDL  header:  video/mp4
+Media found for: ykTodjCl  header:  video/mp4
+Media found for: QW3etTsp  header:  video/mp4
+Media found for: oNa2SuJM  header:  video/mp4
+Media found for: QrHO997N  header:  video/mp4
+Media found for: PpQIEeQe  header:  video/mp4
+Media found for: Ni2Klzrc  header:  video/mp4
+Media found for: ZhRtadbD  header:  video/mp4
+Media found for: ejgFTx7D  header:  video/mp4
+Media found for: IZvyBz1Y  header:  video/mp4
+Media found for: vxdIRDOl  header:  video/mp4
+Media found for: 9eTWXV8y  header:  video/mp4
+Media found for: XU1c8z5Y  header:  video/mp4
+Media found for: Z84VzzFq  header:  video/mp4
+Media found for: 2ZZJZykT  header:  video/mp4
+Media found for: WCxuQq75  header:  video/mp4
+Media found for: vmcCeFts  header:  video/mp4
+Media found for: x4fFlrlb  header:  video/mp4
+Media found for: awm0qgEb  header:  video/mp4
+Media found for: q4kYwb9F  header:  video/mp4
+Media found for: lqt6LDU8  header:  video/mp4
+Media found for: AK5PuRzW  header:  video/mp4
+Media found for: hq7S9Tkq  header:  video/mp4
+Media found for: zIHz2sYY  header:  video/mp4
+Media found for: kKnXBoLj  header:  video/mp4
+Media found for: FPPj2WlI  header:  video/mp4
+Media found for: xzOkwwnY  header:  video/mp4
+Media found for: YjEeo42G  header:  video/mp4
+Media found for: ksKJdRAo  header:  video/mp4
+Media found for: NgdQu0aX  header:  video/mp4
+Media found for: bQyydIbM  header:  video/mp4
+Media found for: vwxs5Gto  header:  video/mp4
+Media found for: XVMh9iR1  header:  video/mp4
+Media found for: GUdA65Xn  header:  video/mp4
+Media found for: w9jj5kv1  header:  video/mp4
+Media found for: rJz9g1bD  header:  video/mp4
+Media found for: oYw0C5ER  header:  video/mp4
+siteId is: a7WRo0m6
+Media found for: kBF6Wip8  header:  video/mp4
+Media found for: pfseBw3X  header:  video/mp4
+Media found for: rqza4qPT  header:  video/mp4
+Media found for: kBD8zVWJ  header:  video/mp4
+Media found for: UV7joxxD  header:  video/mp4
+Media found for: hOEizHXS  header:  video/mp4
+Media found for: lPrZTV99  header:  video/mp4
+Media found for: MZwcPuld  header:  video/mp4
+Media found for: JUVHEgYG  header:  video/mp4
+Media found for: tJZwEr86  header:  video/mp4
+Media found for: JmepvtMz  header:  video/mp4
+Media found for: xo6fHfqe  header:  video/mp4
+Media found for: yItn1AEY  header:  video/mp4
+Media found for: wRCpFstp  header:  video/mp4
+Media found for: 0L2B37dF  header:  video/mp4
+Media found for: djVkoiv6  header:  video/mp4
+Media found for: 9M7jDBSL  header:  video/mp4
+Media found for: 4I9VEJ6V  header:  video/mp4
+Media found for: ueRVzVLJ  header:  video/mp4
+Media found for: BofCWEaN  header:  video/mp4
+Media found for: 9MDhByqn  header:  video/mp4
+Media found for: g3Ae48Fv  header:  video/mp4
+Media found for: rPhV5vVH  header:  video/mp4
+Media found for: XULZgZYH  header:  video/mp4
+Media found for: hVIn37oT  header:  video/mp4
+Media found for: beKuCoMk  header:  video/mp4
+Media found for: f0DwNKdm  header:  video/mp4
+Media found for: iSgYaA5s  header:  video/mp4
+Media found for: jFSS8Bkj  header:  video/mp4
+Media found for: GtZ7qR1d  header:  video/mp4
+Media found for: v3fgeXmU  header:  video/mp4
+Media found for: X9cvxUYD  header:  video/mp4
+Media found for: K7gZj2wt  header:  video/mp4
+Media found for: 28cfBvUy  header:  video/mp4
+Media found for: U4U0dZYk  header:  video/mp4
+Media found for: A93RCXRN  header:  video/mp4
+Media found for: NX8YzrB5  header:  video/mp4
+Media found for: VjRPqOLP  header:  video/mp4
+Media found for: lrSMKbs1  header:  video/mp4
+Media found for: rQZkx2na  header:  video/mp4
+Media found for: mecsE1fh  header:  video/mp4
+Media found for: BcO9MWAZ  header:  video/mp4
+Media found for: Xn41h3nq  header:  video/mp4
+Media found for: kIjDTT1Y  header:  video/mp4
+Media found for: 6mDxDymE  header:  video/mp4
+Media found for: b1jrBF20  header:  video/mp4
+Media found for: ud5UKp2K  header:  video/mp4
+Media found for: kqR84wsh  header:  video/mp4
+Media found for: cGWIsIbX  header:  video/mp4
+Media found for: OqhTstA1  header:  video/mp4
+Media found for: rLcMZfrD  header:  video/mp4
+Media found for: eBt4nayb  header:  video/mp4
+Media found for: sfqY7zzL  header:  video/mp4
+Media found for: rnJlKdLX  header:  video/mp4
+Media found for: EmeuTCty  header:  video/mp4
+Media found for: XHZGoe49  header:  video/mp4
+Media found for: rwblAEo3  header:  video/mp4
+Media found for: juFZdDGL  header:  video/mp4
+Media found for: WbELAXab  header:  video/mp4
+Media found for: 9bs6ZW4W  header:  video/mp4
+Media found for: 6M5Sux2m  header:  video/mp4
+Media found for: CjjsSScz  header:  video/mp4
+Media found for: yVSDZlPF  header:  video/mp4
+Media found for: yZDT12qw  header:  video/mp4
+Media found for: YuJVbjFj  header:  video/mp4
+Media found for: 3veqUIGM  header:  video/mp4
+Media found for: vlFt5TVK  header:  video/mp4
+Media found for: I4As5cPJ  header:  video/mp4
+Media found for: FLKtdz5h  header:  video/mp4
+Media found for: NW9JTCSp  header:  video/mp4
+Media found for: wajReJRU  header:  video/mp4
+Media found for: aoPGzvUd  header:  video/mp4
+Media found for: u0Lv7He0  header:  video/mp4
+Media found for: Z2aGxs1d  header:  video/mp4
+Media found for: x7j1qIo8  header:  video/mp4
+Media found for: hGFZcDey  header:  video/mp4
+Media found for: 14j30Ymr  header:  video/mp4
+Media found for: 3UHA1dfl  header:  video/mp4
+Media found for: qc5tKPY3  header:  video/mp4
+Media found for: F3EdEZ1g  header:  video/mp4
+Media found for: MkklJ06m  header:  video/mp4
+Media found for: WwqXVolm  header:  video/mp4
+Media found for: QZQKPulO  header:  video/mp4
+Media found for: hnDohbMt  header:  video/mp4
+Media found for: St0MKADw  header:  video/mp4
+Media found for: jJU7W69Y  header:  video/mp4
+Media found for: JVtevPZK  header:  video/mp4
+Media found for: PHQuac6g  header:  video/mp4
+Media found for: Z9bpK39p  header:  video/mp4
+Media found for: sKb2FOFc  header:  video/mp4
+Media found for: 1j9KQIHR  header:  video/mp4
+Media found for: q2YJSX4o  header:  video/mp4
+Media found for: r7PJmvp9  header:  video/mp4
+Media found for: 2QGTkVBn  header:  video/mp4
+Media found for: xAfByM31  header:  video/mp4
+Media found for: S7jgSIrV  header:  video/mp4
+Media found for: Eq5IYlQN  header:  video/mp4
+Media found for: UlotcFJo  header:  video/mp4
+Media found for: s3nsWRch  header:  video/mp4
+Media found for: 2U99XNcM  header:  video/mp4
+Media found for: xJjh3Bsl  header:  video/mp4
+Media found for: EJNvskh4  header:  video/mp4
+Media found for: 64hL1j4q  header:  video/mp4
+Media found for: 7GtI18rk  header:  video/mp4
+Media found for: VK2C0Sm6  header:  video/mp4
+Media found for: 8EZRvuXn  header:  video/mp4
+Media found for: eTLYexr9  header:  video/mp4
+Media found for: UfqpZePu  header:  video/mp4
+Media found for: XgJpDBU0  header:  video/mp4
+Media found for: XqNWPclG  header:  video/mp4
+Media NOT FOUND FOR ID: JEPqgW0k
+url: https://cdn.jwplayer.com/v2/sites/a7WRo0m6/media/JEPqgW0k/playback.json?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9zaXRlcy9hN1dSbzBtNi9tZWRpYS9KRVBxZ1cway9wbGF5YmFjay5qc29uIiwiZXhwIjoxNzc0NjY3NDAwfQ.gMpVAda59Vlox-KDDNgsEvpE2xXVarpSKxLx5kjtk-Y
+videoUrl:: https://videos-cloudfront.jwpsrv.com/69c7e130_70b971768b747d72b10168aeed5f31baccafeb17/content/conversions/a7WRo0m6/videos/JEPqgW0k-26910838.mp4
+imageUrl:: https://assets-jpcust.jwpsrv.com/thumbnails/dfbeox1r-1920.jpg
+notFoundMediaUrls: [
+  {
+    id: 'JEPqgW0k',
+    videoUrl: 'https://videos-cloudfront.jwpsrv.com/69c7e130_70b971768b747d72b10168aeed5f31baccafeb17/content/conversions/a7WRo0m6/videos/JEPqgW0k-26910838.mp4'
+  },
+  {
+    id: 'JEPqgW0k',
+    imageUrl: 'https://assets-jpcust.jwpsrv.com/thumbnails/dfbeox1r-1920.jpg'
+  }
+]
+Media found for: qQkH6IL0  header:  video/mp4
+Media found for: NX4iVNcl  header:  video/mp4
+Media found for: IBuhEOYa  header:  video/mp4
+Media found for: 5gV48jkB  header:  video/mp4
+Media found for: pz6lgx4x  header:  video/mp4
+Media found for: U8INIHMV  header:  video/mp4
+Media found for: HkAJnicx  header:  video/mp4
+Media found for: CMcTH8wM  header:  video/mp4
+Media found for: SrDRivxF  header:  video/mp4
+Media found for: QclX9PbH  header:  video/mp4
+Media found for: MfCJ1DKp  header:  video/mp4
+Media found for: ZPaWDMKp  header:  video/mp4
+Media found for: Ys6xlWwb  header:  video/mp4
+Media found for: f6e0pvHJ  header:  video/mp4
+Media found for: 99SDx7vm  header:  video/mp4
+Media found for: 8JhP9KyQ  header:  video/mp4
+Media found for: EfcKMywq  header:  video/mp4
+Media found for: OV8iwPMv  header:  video/mp4
+Media found for: WJqN03fY  header:  video/mp4
+Media found for: 4dARfMXc  header:  video/mp4
+Media found for: 38mdDkV4  header:  video/mp4
+Media found for: a1m8ix9D  header:  video/mp4
+Media found for: EdRmQZBW  header:  video/mp4
+Media found for: jKXGQCuw  header:  video/mp4
+Media found for: aoXnGnSr  header:  video/mp4
+Media found for: iqu2J5Ko  header:  video/mp4
+Media found for: AcrLpK2D  header:  video/mp4
+Media found for: NoJaO1Ir  header:  video/mp4
+Media found for: h9AmZgJP  header:  video/mp4
+Media found for: H5wY88cw  header:  video/mp4
+Media found for: B7263jSg  header:  video/mp4
+Media found for: JkGg3SpF  header:  video/mp4
+Media found for: WcanRwlg  header:  video/mp4
+Media found for: yBxJmXXq  header:  video/mp4
+Media found for: LtoDQvGo  header:  video/mp4
+Media found for: D8LG8fxq  header:  video/mp4
+Media found for: Buvu1UnV  header:  video/mp4
+Media found for: qPudqff3  header:  video/mp4
+Media found for: tws92Q7O  header:  video/mp4
+Media found for: H1fcG9L1  header:  video/mp4
+Media found for: NUEIBKtA  header:  video/mp4
+Media found for: zFx6W5dI  header:  video/mp4
+Media found for: tVaDnAc7  header:  video/mp4
+Media found for: OVJHALjw  header:  video/mp4
+Media found for: Skfpdnm1  header:  video/mp4
+Media found for: W1jdZy6O  header:  video/mp4
+Media found for: zvhs52ZT  header:  video/mp4
+Media found for: fozaJ0HG  header:  video/mp4
+Media found for: arz1JTGk  header:  video/mp4
+Media found for: mRSPatHt  header:  video/mp4
+Media found for: V51ejnFx  header:  video/mp4
+Media found for: xInWskk8  header:  video/mp4
+Media found for: VOedWXjF  header:  video/mp4
+Media found for: Bq8QiOWl  header:  video/mp4
+Media found for: X7QPrCVx  header:  video/mp4
+Media found for: LnpbBVLD  header:  video/mp4
+Media found for: pbJHFPa3  header:  video/mp4
+Media found for: 2aAbDQCc  header:  video/mp4
+Media found for: 0d7n6mxb  header:  video/mp4
+Media found for: 1yVrIrky  header:  video/mp4
+Media found for: CkU4PguJ  header:  video/mp4
+Media found for: bmppdR29  header:  video/mp4
+Media found for: i4EXk57O  header:  video/mp4
+Media found for: UJdf6pH6  header:  video/mp4
+Media found for: tytCN1PN  header:  video/mp4
+Media found for: Z5i5eRmj  header:  video/mp4
+Media found for: 42JiOVYN  header:  video/mp4
+Media found for: eDNURMOR  header:  video/mp4
+Media found for: cNd3kqMh  header:  video/mp4
+Media found for: ee0xthFN  header:  video/mp4
+Media found for: IMJpitXd  header:  video/mp4
+Media found for: YS8XmF47  header:  video/mp4
+Media found for: PONo0xPC  header:  video/mp4
+Media found for: 4bzw99W2  header:  video/mp4
+Media found for: npOqPsdF  header:  video/mp4
+Media found for: fanN2Err  header:  video/mp4
+Media found for: tPwWacCO  header:  video/mp4
+Media found for: 5v57vNrF  header:  video/mp4
+Media found for: bIydsiQH  header:  video/mp4
+Media found for: LSyL5xuQ  header:  video/mp4
+Media found for: w2qO1zFg  header:  video/mp4
+Media found for: ypu5FIsc  header:  video/mp4
+Media found for: 3GNKADwG  header:  video/mp4
+Media found for: mlgZRbJG  header:  video/mp4
+Media found for: S3nenw8k  header:  video/mp4
+Media found for: FYjV1kHr  header:  video/mp4
+Media found for: qBowbkKF  header:  video/mp4
+Media found for: 7Tk5oKGy  header:  video/mp4
+Media found for: uUbhJsks  header:  video/mp4
+Media found for: fxcu9BtJ  header:  video/mp4
+Media found for: qfdA8Dv4  header:  video/mp4
+Media found for: m6RnGL0f  header:  video/mp4
+Media found for: vQkklZ2q  header:  video/mp4
+Media found for: Ta8C2SNE  header:  video/mp4
+Media found for: ldfkdeYw  header:  video/mp4
+Media found for: aiNqV0QF  header:  video/mp4
+Media found for: fndop8e8  header:  video/mp4
+Media found for: zhJUp8Xj  header:  video/mp4
+Media found for: Sl8bJHzG  header:  video/mp4
+Media found for: rYfISfzw  header:  video/mp4
+Media found for: axEfvo5t  header:  video/mp4
+Media found for: IbSBYiE3  header:  video/mp4
+Media found for: x05kXhQW  header:  video/mp4
+Media found for: fsJ7bhrM  header:  video/mp4
+Media found for: rIaxd2YT  header:  video/mp4
+Media found for: vNanWWI1  header:  video/mp4

@@ -1,0 +1,4487 @@
+[
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/m4G6ceFw/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE1-Tech.mov",
+        "mediaid": "m4G6ceFw",
+        "link": null,
+        "duration": 80.9142,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/m4G6ceFw.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/m4G6ceFw-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 237832,
+            "framerate": 24,
+            "filesize": 2409579
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/m4G6ceFw-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 334112,
+            "framerate": 24,
+            "filesize": 3384990
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/m4G6ceFw-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 461688,
+            "framerate": 24,
+            "filesize": 4677537
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/m4G6ceFw-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1149192,
+            "framerate": 24,
+            "filesize": 11642773
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/m4G6ceFw-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113464,
+            "filesize": 1149579
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/m4G6ceFw-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3279632,
+            "framerate": 24,
+            "filesize": 33226830
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/m4G6ceFw-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/1IzvhWMT/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE2-Tech.mov",
+        "mediaid": "1IzvhWMT",
+        "link": null,
+        "duration": 100.475,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/1IzvhWMT.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/1IzvhWMT-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 240968,
+            "framerate": 24,
+            "filesize": 3029361
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/1IzvhWMT-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 338696,
+            "framerate": 24,
+            "filesize": 4257851
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/1IzvhWMT-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 464408,
+            "framerate": 24,
+            "filesize": 5838209
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/1IzvhWMT-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1112792,
+            "framerate": 24,
+            "filesize": 13989206
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/1IzvhWMT-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113456,
+            "filesize": 1426334
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/1IzvhWMT-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3051752,
+            "framerate": 24,
+            "filesize": 38364347
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/1IzvhWMT-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/GC4lnrua/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE4-Tech.mov",
+        "mediaid": "GC4lnrua",
+        "link": null,
+        "duration": 102.394,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/GC4lnrua.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/GC4lnrua-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 203960,
+            "framerate": 24,
+            "filesize": 2613583
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/GC4lnrua-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 274616,
+            "framerate": 24,
+            "filesize": 3518970
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/GC4lnrua-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 381240,
+            "framerate": 24,
+            "filesize": 4885236
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/GC4lnrua-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 938056,
+            "framerate": 24,
+            "filesize": 12020147
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/GC4lnrua-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1453648
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/GC4lnrua-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2756688,
+            "framerate": 24,
+            "filesize": 35323936
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/GC4lnrua-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/PRmZEddJ/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE5-Tech.mov",
+        "mediaid": "PRmZEddJ",
+        "link": null,
+        "duration": 55.8058,
+        "pubdate": 1471905590,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/PRmZEddJ.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/PRmZEddJ-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 206320,
+            "framerate": 24,
+            "filesize": 1441661
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/PRmZEddJ-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 285280,
+            "framerate": 24,
+            "filesize": 1993372
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/PRmZEddJ-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 400504,
+            "framerate": 24,
+            "filesize": 2798464
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/PRmZEddJ-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1021448,
+            "framerate": 24,
+            "filesize": 7137159
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/PRmZEddJ-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113512,
+            "filesize": 793170
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/PRmZEddJ-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3129880,
+            "framerate": 24,
+            "filesize": 21869296
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/PRmZEddJ-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ErCBQBdA/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE6-Tech.mov",
+        "mediaid": "ErCBQBdA",
+        "link": null,
+        "duration": 139.139,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/ErCBQBdA.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ErCBQBdA-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 225688,
+            "framerate": 24,
+            "filesize": 3928352
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ErCBQBdA-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 312560,
+            "framerate": 24,
+            "filesize": 5440483
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ErCBQBdA-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 429040,
+            "framerate": 24,
+            "filesize": 7467943
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ErCBQBdA-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1041080,
+            "framerate": 24,
+            "filesize": 18121035
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ErCBQBdA-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113424,
+            "filesize": 1974251
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ErCBQBdA-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2927784,
+            "framerate": 24,
+            "filesize": 50960778
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/ErCBQBdA-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6XMvq4m6/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE8-Tech.mov",
+        "mediaid": "6XMvq4m6",
+        "link": null,
+        "duration": 52.2605,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/6XMvq4m6.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6XMvq4m6-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 250432,
+            "framerate": 24,
+            "filesize": 1638999
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6XMvq4m6-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 363088,
+            "framerate": 24,
+            "filesize": 2376259
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6XMvq4m6-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 498064,
+            "framerate": 24,
+            "filesize": 3259620
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6XMvq4m6-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1254872,
+            "framerate": 24,
+            "filesize": 8212513
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6XMvq4m6-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113496,
+            "filesize": 742820
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6XMvq4m6-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3511016,
+            "framerate": 24,
+            "filesize": 22977848
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/6XMvq4m6-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/EpgsvjRM/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE10-Tech.mov",
+        "mediaid": "EpgsvjRM",
+        "link": null,
+        "duration": 145.979,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/EpgsvjRM.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/EpgsvjRM-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 232456,
+            "framerate": 24,
+            "filesize": 4244483
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/EpgsvjRM-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 321976,
+            "framerate": 24,
+            "filesize": 5879181
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/EpgsvjRM-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 445680,
+            "framerate": 24,
+            "filesize": 8137815
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/EpgsvjRM-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1194256,
+            "framerate": 24,
+            "filesize": 21806293
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/EpgsvjRM-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113416,
+            "filesize": 2071001
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/EpgsvjRM-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3758448,
+            "framerate": 24,
+            "filesize": 68626453
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/EpgsvjRM-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7z5CciPK/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE11-Tech.mov",
+        "mediaid": "7z5CciPK",
+        "link": null,
+        "duration": 83.5418,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/7z5CciPK.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7z5CciPK-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 224600,
+            "framerate": 24,
+            "filesize": 2348587
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7z5CciPK-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 314784,
+            "framerate": 24,
+            "filesize": 3291615
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7z5CciPK-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 438704,
+            "framerate": 24,
+            "filesize": 4587392
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7z5CciPK-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1166584,
+            "framerate": 24,
+            "filesize": 12198458
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7z5CciPK-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113456,
+            "filesize": 1186435
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7z5CciPK-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3715448,
+            "framerate": 24,
+            "filesize": 38850590
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/7z5CciPK-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/IcZIQPtz/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE12-Tech.mov",
+        "mediaid": "IcZIQPtz",
+        "link": null,
+        "duration": 58.0163,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/IcZIQPtz.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/IcZIQPtz-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 215568,
+            "framerate": 24,
+            "filesize": 1566603
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/IcZIQPtz-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 295848,
+            "framerate": 24,
+            "filesize": 2150043
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/IcZIQPtz-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 431144,
+            "framerate": 24,
+            "filesize": 3133262
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/IcZIQPtz-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1138728,
+            "framerate": 24,
+            "filesize": 8275447
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/IcZIQPtz-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113488,
+            "filesize": 824761
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/IcZIQPtz-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3613800,
+            "framerate": 24,
+            "filesize": 26262418
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/IcZIQPtz-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/rwYUWj05/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE16-Tech.mov",
+        "mediaid": "rwYUWj05",
+        "link": null,
+        "duration": 107.649,
+        "pubdate": 1471905590,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/rwYUWj05.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/rwYUWj05-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 191888,
+            "framerate": 24,
+            "filesize": 2585227
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/rwYUWj05-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 256912,
+            "framerate": 24,
+            "filesize": 3461262
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/rwYUWj05-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 364600,
+            "framerate": 24,
+            "filesize": 4912131
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/rwYUWj05-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 905776,
+            "framerate": 24,
+            "filesize": 12203101
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/rwYUWj05-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1528349
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/rwYUWj05-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2734200,
+            "framerate": 24,
+            "filesize": 36836568
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/rwYUWj05-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/F5qs7wb7/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE17-Tech.mov",
+        "mediaid": "F5qs7wb7",
+        "link": null,
+        "duration": 111.111,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/F5qs7wb7.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/F5qs7wb7-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 226416,
+            "framerate": 24,
+            "filesize": 3147672
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/F5qs7wb7-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 319104,
+            "framerate": 24,
+            "filesize": 4436231
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/F5qs7wb7-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 463984,
+            "framerate": 24,
+            "filesize": 6450304
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/F5qs7wb7-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1267720,
+            "framerate": 24,
+            "filesize": 17623783
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/F5qs7wb7-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1577053
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/F5qs7wb7-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3840760,
+            "framerate": 24,
+            "filesize": 53393815
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/F5qs7wb7-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xkgxlY1s/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE19-Tech.mov",
+        "mediaid": "xkgxlY1s",
+        "link": null,
+        "duration": 127.586,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/xkgxlY1s.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xkgxlY1s-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 214840,
+            "framerate": 24,
+            "filesize": 3429655
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xkgxlY1s-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 293096,
+            "framerate": 24,
+            "filesize": 4678777
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xkgxlY1s-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 426000,
+            "framerate": 24,
+            "filesize": 6800462
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xkgxlY1s-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1115704,
+            "framerate": 24,
+            "filesize": 17810322
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xkgxlY1s-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113424,
+            "filesize": 1810699
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xkgxlY1s-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3550184,
+            "framerate": 24,
+            "filesize": 56672557
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/xkgxlY1s-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9bqmDdjH/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "TBSSE21-Tech.mov",
+        "mediaid": "9bqmDdjH",
+        "link": null,
+        "duration": 88.7553,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/9bqmDdjH.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9bqmDdjH-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 235528,
+            "framerate": 24,
+            "filesize": 2616150
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9bqmDdjH-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 327856,
+            "framerate": 24,
+            "filesize": 3641653
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9bqmDdjH-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 469368,
+            "framerate": 24,
+            "filesize": 5213401
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9bqmDdjH-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1237760,
+            "framerate": 24,
+            "filesize": 13748193
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9bqmDdjH-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113448,
+            "filesize": 1260149
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9bqmDdjH-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3762848,
+            "framerate": 24,
+            "filesize": 41794948
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/9bqmDdjH-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/fEUvHS01/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE2-Tech.mov",
+        "mediaid": "fEUvHS01",
+        "link": null,
+        "duration": 82.5825,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/fEUvHS01.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/fEUvHS01-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 232088,
+            "framerate": 24,
+            "filesize": 2399041
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/fEUvHS01-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 327744,
+            "framerate": 24,
+            "filesize": 3387751
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/fEUvHS01-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 471328,
+            "framerate": 24,
+            "filesize": 4871961
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/fEUvHS01-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1168632,
+            "framerate": 24,
+            "filesize": 12079624
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/fEUvHS01-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113472,
+            "filesize": 1172943
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/fEUvHS01-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3350768,
+            "framerate": 24,
+            "filesize": 34635291
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/fEUvHS01-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/55fWSFZl/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE4-Tech.mov",
+        "mediaid": "55fWSFZl",
+        "link": null,
+        "duration": 74.1991,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/55fWSFZl.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/55fWSFZl-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 228568,
+            "framerate": 24,
+            "filesize": 2123090
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/55fWSFZl-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 318392,
+            "framerate": 24,
+            "filesize": 2957388
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/55fWSFZl-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 442896,
+            "framerate": 24,
+            "filesize": 4113878
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/55fWSFZl-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1101824,
+            "framerate": 24,
+            "filesize": 10234352
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/55fWSFZl-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113480,
+            "filesize": 1054130
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/55fWSFZl-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3191800,
+            "framerate": 24,
+            "filesize": 29647095
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/55fWSFZl-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/vbBfA4Pd/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE6-Tech.mov",
+        "mediaid": "vbBfA4Pd",
+        "link": null,
+        "duration": 65.6906,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/vbBfA4Pd.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/vbBfA4Pd-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 225112,
+            "framerate": 24,
+            "filesize": 1851436
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/vbBfA4Pd-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 312112,
+            "framerate": 24,
+            "filesize": 2566989
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/vbBfA4Pd-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 448368,
+            "framerate": 24,
+            "filesize": 3687640
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/vbBfA4Pd-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1128904,
+            "framerate": 24,
+            "filesize": 9284731
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/vbBfA4Pd-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113480,
+            "filesize": 933357
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/vbBfA4Pd-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3275328,
+            "framerate": 24,
+            "filesize": 26937974
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/vbBfA4Pd-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/9tcIgshf/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE8-Tech.mov",
+        "mediaid": "9tcIgshf",
+        "link": null,
+        "duration": 95.5121,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/9tcIgshf.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9tcIgshf-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 183752,
+            "framerate": 24,
+            "filesize": 2196346
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9tcIgshf-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 239544,
+            "framerate": 24,
+            "filesize": 2863178
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9tcIgshf-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 341904,
+            "framerate": 24,
+            "filesize": 4086638
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9tcIgshf-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 854640,
+            "framerate": 24,
+            "filesize": 10215126
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9tcIgshf-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1355903
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/9tcIgshf-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2662624,
+            "framerate": 24,
+            "filesize": 31825076
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/9tcIgshf-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/mSO67f60/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE9-Tech.mov",
+        "mediaid": "mSO67f60",
+        "link": null,
+        "duration": 112.571,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/mSO67f60.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/mSO67f60-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 208864,
+            "framerate": 24,
+            "filesize": 2941495
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/mSO67f60-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 279768,
+            "framerate": 24,
+            "filesize": 3940089
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/mSO67f60-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 395440,
+            "framerate": 24,
+            "filesize": 5569184
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/mSO67f60-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 983632,
+            "framerate": 24,
+            "filesize": 13852746
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/mSO67f60-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113448,
+            "filesize": 1597785
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/mSO67f60-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2941576,
+            "framerate": 24,
+            "filesize": 41427033
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/mSO67f60-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/lebba41G/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE12-Tech.mov",
+        "mediaid": "lebba41G",
+        "link": null,
+        "duration": 64.9816,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/lebba41G.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/lebba41G-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 232352,
+            "framerate": 24,
+            "filesize": 1890543
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/lebba41G-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 325312,
+            "framerate": 24,
+            "filesize": 2646962
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/lebba41G-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 466792,
+            "framerate": 24,
+            "filesize": 3798059
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/lebba41G-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1160888,
+            "framerate": 24,
+            "filesize": 9445620
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/lebba41G-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113496,
+            "filesize": 923485
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/lebba41G-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3357072,
+            "framerate": 24,
+            "filesize": 27314847
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/lebba41G-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hU1Z2wSs/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE14-Tech.mov",
+        "mediaid": "hU1Z2wSs",
+        "link": null,
+        "duration": 124.124,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/hU1Z2wSs.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hU1Z2wSs-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 222216,
+            "framerate": 24,
+            "filesize": 3450795
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hU1Z2wSs-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 309408,
+            "framerate": 24,
+            "filesize": 4804760
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hU1Z2wSs-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 439408,
+            "framerate": 24,
+            "filesize": 6823411
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hU1Z2wSs-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1113696,
+            "framerate": 24,
+            "filesize": 17294142
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hU1Z2wSs-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1761666
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hU1Z2wSs-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3209424,
+            "framerate": 24,
+            "filesize": 49837561
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/hU1Z2wSs-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/7Ijsex8L/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE16-Tech.mov",
+        "mediaid": "7Ijsex8L",
+        "link": null,
+        "duration": 118.035,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/7Ijsex8L.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7Ijsex8L-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 211304,
+            "framerate": 24,
+            "filesize": 3120678
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7Ijsex8L-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 293648,
+            "framerate": 24,
+            "filesize": 4336788
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7Ijsex8L-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 416272,
+            "framerate": 24,
+            "filesize": 6147715
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7Ijsex8L-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1069224,
+            "framerate": 24,
+            "filesize": 15790866
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7Ijsex8L-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1675447
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/7Ijsex8L-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3164424,
+            "framerate": 24,
+            "filesize": 46733861
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/7Ijsex8L-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/Bvr7JpGq/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE20-Tech.mov",
+        "mediaid": "Bvr7JpGq",
+        "link": null,
+        "duration": 86.2945,
+        "pubdate": 1471905590,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/Bvr7JpGq.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/Bvr7JpGq-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 181760,
+            "framerate": 24,
+            "filesize": 1963178
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/Bvr7JpGq-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 241720,
+            "framerate": 24,
+            "filesize": 2610783
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/Bvr7JpGq-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 344152,
+            "framerate": 24,
+            "filesize": 3717065
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/Bvr7JpGq-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 875224,
+            "framerate": 24,
+            "filesize": 9452878
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/Bvr7JpGq-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113472,
+            "filesize": 1225596
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/Bvr7JpGq-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2674032,
+            "framerate": 24,
+            "filesize": 28880905
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/Bvr7JpGq-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/d2y9IYSQ/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "FSSSE22-Tech.mov",
+        "mediaid": "d2y9IYSQ",
+        "link": null,
+        "duration": 80.9976,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/d2y9IYSQ.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/d2y9IYSQ-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 212664,
+            "framerate": 24,
+            "filesize": 2156875
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/d2y9IYSQ-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 294912,
+            "framerate": 24,
+            "filesize": 2990988
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/d2y9IYSQ-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 416456,
+            "framerate": 24,
+            "filesize": 4223711
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/d2y9IYSQ-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1036912,
+            "framerate": 24,
+            "filesize": 10516269
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/d2y9IYSQ-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113472,
+            "filesize": 1150895
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/d2y9IYSQ-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2996608,
+            "framerate": 24,
+            "filesize": 30391282
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/d2y9IYSQ-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/6U0XLHa3/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE1-Tech.mov",
+        "mediaid": "6U0XLHa3",
+        "link": null,
+        "duration": 90.7156,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/6U0XLHa3.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6U0XLHa3-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 210024,
+            "framerate": 24,
+            "filesize": 2384324
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6U0XLHa3-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 285256,
+            "framerate": 24,
+            "filesize": 3238433
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6U0XLHa3-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 404608,
+            "framerate": 24,
+            "filesize": 4593382
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6U0XLHa3-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1005224,
+            "framerate": 24,
+            "filesize": 11411839
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6U0XLHa3-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113464,
+            "filesize": 1288121
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/6U0XLHa3-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2901624,
+            "framerate": 24,
+            "filesize": 32940774
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/6U0XLHa3-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/3f2MBcKh/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE2-Tech.mov",
+        "mediaid": "3f2MBcKh",
+        "link": null,
+        "duration": 86.8367,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/3f2MBcKh.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/3f2MBcKh-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 186216,
+            "framerate": 24,
+            "filesize": 2024146
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/3f2MBcKh-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 253312,
+            "framerate": 24,
+            "filesize": 2753545
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/3f2MBcKh-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 348880,
+            "framerate": 24,
+            "filesize": 3792298
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/3f2MBcKh-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 867480,
+            "framerate": 24,
+            "filesize": 9429482
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/3f2MBcKh-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1233165
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/3f2MBcKh-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2499584,
+            "framerate": 24,
+            "filesize": 27170169
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/3f2MBcKh-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/hH2frMMC/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE4-Tech.mov",
+        "mediaid": "hH2frMMC",
+        "link": null,
+        "duration": 110.444,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/hH2frMMC.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hH2frMMC-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 220672,
+            "framerate": 24,
+            "filesize": 3049602
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hH2frMMC-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 303568,
+            "framerate": 24,
+            "filesize": 4195165
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hH2frMMC-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 429728,
+            "framerate": 24,
+            "filesize": 5938585
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hH2frMMC-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1092520,
+            "framerate": 24,
+            "filesize": 15097878
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hH2frMMC-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113448,
+            "filesize": 1567838
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/hH2frMMC-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3225848,
+            "framerate": 24,
+            "filesize": 44578854
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/hH2frMMC-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dbW6MSQ0/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE6-Tech.mov",
+        "mediaid": "dbW6MSQ0",
+        "link": null,
+        "duration": 119.244,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/dbW6MSQ0.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dbW6MSQ0-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 192432,
+            "framerate": 24,
+            "filesize": 2870703
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dbW6MSQ0-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 249664,
+            "framerate": 24,
+            "filesize": 3724556
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dbW6MSQ0-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 350264,
+            "framerate": 24,
+            "filesize": 5225273
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dbW6MSQ0-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 855192,
+            "framerate": 24,
+            "filesize": 12757762
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dbW6MSQ0-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113432,
+            "filesize": 1692230
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dbW6MSQ0-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2734072,
+            "framerate": 24,
+            "filesize": 40786641
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/dbW6MSQ0-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/AoVv2qco/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE8-Tech.mov",
+        "mediaid": "AoVv2qco",
+        "link": null,
+        "duration": 85.5438,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/AoVv2qco.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/AoVv2qco-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 228200,
+            "framerate": 24,
+            "filesize": 2442771
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/AoVv2qco-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 319072,
+            "framerate": 24,
+            "filesize": 3415571
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/AoVv2qco-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 442024,
+            "framerate": 24,
+            "filesize": 4731697
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/AoVv2qco-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1082592,
+            "framerate": 24,
+            "filesize": 11588676
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/AoVv2qco-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113472,
+            "filesize": 1214736
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/AoVv2qco-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2978040,
+            "framerate": 24,
+            "filesize": 31878470
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/AoVv2qco-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/xzlAuVyv/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE9-Tech.mov",
+        "mediaid": "xzlAuVyv",
+        "link": null,
+        "duration": 67.9846,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/xzlAuVyv.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xzlAuVyv-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 200792,
+            "framerate": 24,
+            "filesize": 1708758
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xzlAuVyv-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 267888,
+            "framerate": 24,
+            "filesize": 2279718
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xzlAuVyv-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 388704,
+            "framerate": 24,
+            "filesize": 3307881
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xzlAuVyv-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1004088,
+            "framerate": 24,
+            "filesize": 8544702
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xzlAuVyv-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113464,
+            "filesize": 965607
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/xzlAuVyv-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3093736,
+            "framerate": 24,
+            "filesize": 26327373
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/xzlAuVyv-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/HYA9NFa5/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE10-Tech.mov",
+        "mediaid": "HYA9NFa5",
+        "link": null,
+        "duration": 72.4057,
+        "pubdate": 1471905590,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/HYA9NFa5.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/HYA9NFa5-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 213408,
+            "framerate": 24,
+            "filesize": 1934464
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/HYA9NFa5-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 291072,
+            "framerate": 24,
+            "filesize": 2638485
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/HYA9NFa5-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 413024,
+            "framerate": 24,
+            "filesize": 3743864
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/HYA9NFa5-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1050304,
+            "framerate": 24,
+            "filesize": 9520494
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/HYA9NFa5-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113456,
+            "filesize": 1028461
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/HYA9NFa5-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3154000,
+            "framerate": 24,
+            "filesize": 28589498
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/HYA9NFa5-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/VnVjRvJm/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE13-Tech.mov",
+        "mediaid": "VnVjRvJm",
+        "link": null,
+        "duration": 109.985,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/VnVjRvJm.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/VnVjRvJm-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 190336,
+            "framerate": 24,
+            "filesize": 2619126
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/VnVjRvJm-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 255000,
+            "framerate": 24,
+            "filesize": 3509020
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/VnVjRvJm-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 371816,
+            "framerate": 24,
+            "filesize": 5116457
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/VnVjRvJm-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 946960,
+            "framerate": 24,
+            "filesize": 13030737
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/VnVjRvJm-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113432,
+            "filesize": 1560928
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/VnVjRvJm-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2683656,
+            "framerate": 24,
+            "filesize": 36928516
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/VnVjRvJm-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/dmiiWvBU/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE14-Tech.mov",
+        "mediaid": "dmiiWvBU",
+        "link": null,
+        "duration": 190.273,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/dmiiWvBU.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dmiiWvBU-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 223512,
+            "framerate": 24,
+            "filesize": 5319243
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dmiiWvBU-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 309448,
+            "framerate": 24,
+            "filesize": 7364267
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dmiiWvBU-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 429728,
+            "framerate": 24,
+            "filesize": 10226757
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dmiiWvBU-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1032792,
+            "framerate": 24,
+            "filesize": 24578397
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dmiiWvBU-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113416,
+            "filesize": 2699229
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/dmiiWvBU-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2919312,
+            "framerate": 24,
+            "filesize": 69473453
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/dmiiWvBU-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/akSgRQU9/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE16-Tech.mov",
+        "mediaid": "akSgRQU9",
+        "link": null,
+        "duration": 106.231,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/akSgRQU9.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/akSgRQU9-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 211608,
+            "framerate": 24,
+            "filesize": 2812604
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/akSgRQU9-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 287432,
+            "framerate": 24,
+            "filesize": 3820375
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/akSgRQU9-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 407680,
+            "framerate": 24,
+            "filesize": 5418629
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/akSgRQU9-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1038080,
+            "framerate": 24,
+            "filesize": 13797423
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/akSgRQU9-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113448,
+            "filesize": 1507946
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/akSgRQU9-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3119104,
+            "framerate": 24,
+            "filesize": 41456893
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/akSgRQU9-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/bohgzEP9/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE18-Tech.mov",
+        "mediaid": "bohgzEP9",
+        "link": null,
+        "duration": 101.643,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/bohgzEP9.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/bohgzEP9-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 218664,
+            "framerate": 24,
+            "filesize": 2781017
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/bohgzEP9-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 297640,
+            "framerate": 24,
+            "filesize": 3785448
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/bohgzEP9-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 428760,
+            "framerate": 24,
+            "filesize": 5452926
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/bohgzEP9-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1083664,
+            "framerate": 24,
+            "filesize": 13781914
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/bohgzEP9-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113440,
+            "filesize": 1442788
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/bohgzEP9-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3191744,
+            "framerate": 24,
+            "filesize": 40592295
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/bohgzEP9-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/ITnrK2Ng/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE19-Tech.mov",
+        "mediaid": "ITnrK2Ng",
+        "link": "",
+        "duration": 61.9369,
+        "pubdate": 1471905591,
+        "description": "",
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/ITnrK2Ng.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ITnrK2Ng-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 223088,
+            "framerate": 24,
+            "filesize": 1730691
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ITnrK2Ng-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 308344,
+            "framerate": 24,
+            "filesize": 2392156
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ITnrK2Ng-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 429400,
+            "framerate": 24,
+            "filesize": 3331274
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ITnrK2Ng-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1040256,
+            "framerate": 24,
+            "filesize": 8070238
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ITnrK2Ng-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113480,
+            "filesize": 880376
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/ITnrK2Ng-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 2943592,
+            "framerate": 24,
+            "filesize": 22836060
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/ITnrK2Ng-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/cqFEJKmL/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE20-Tech.mov",
+        "mediaid": "cqFEJKmL",
+        "link": null,
+        "duration": 126.418,
+        "pubdate": 1471905591,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/cqFEJKmL.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/cqFEJKmL-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 207672,
+            "framerate": 24,
+            "filesize": 3284133
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/cqFEJKmL-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 280528,
+            "framerate": 24,
+            "filesize": 4436324
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/cqFEJKmL-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 401832,
+            "framerate": 24,
+            "filesize": 6354584
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/cqFEJKmL-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1015504,
+            "framerate": 24,
+            "filesize": 16059110
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/cqFEJKmL-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113432,
+            "filesize": 1793916
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/cqFEJKmL-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3064336,
+            "framerate": 24,
+            "filesize": 48459149
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/cqFEJKmL-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/4LmWIaPM/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE22-Tech.mov",
+        "mediaid": "4LmWIaPM",
+        "link": null,
+        "duration": 104.98,
+        "pubdate": 1471905590,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/4LmWIaPM.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/4LmWIaPM-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 218552,
+            "framerate": 24,
+            "filesize": 2870516
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/4LmWIaPM-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 307832,
+            "framerate": 24,
+            "filesize": 4043035
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/4LmWIaPM-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 439680,
+            "framerate": 24,
+            "filesize": 5774715
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/4LmWIaPM-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1126984,
+            "framerate": 24,
+            "filesize": 14801766
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/4LmWIaPM-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113456,
+            "filesize": 1490176
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/4LmWIaPM-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3212272,
+            "framerate": 24,
+            "filesize": 42189671
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/4LmWIaPM-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/l6GdRXwI/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "MSSSE23-Tech.mov",
+        "mediaid": "l6GdRXwI",
+        "link": null,
+        "duration": 74.9916,
+        "pubdate": 1471905589,
+        "description": null,
+        "tags": "",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/l6GdRXwI.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/l6GdRXwI-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 235936,
+            "framerate": 24,
+            "filesize": 2215481
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/l6GdRXwI-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 341760,
+            "framerate": 24,
+            "filesize": 3209158
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/l6GdRXwI-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 472144,
+            "framerate": 24,
+            "filesize": 4433388
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/l6GdRXwI-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 1165072,
+            "framerate": 24,
+            "filesize": 10939952
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/l6GdRXwI-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113488,
+            "filesize": 1065663
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/l6GdRXwI-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 3170048,
+            "framerate": 24,
+            "filesize": 29766414
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/l6GdRXwI-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "playlist": [
+      {
+        "image": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=720",
+        "images": [
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=320",
+            "width": 320,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=480",
+            "width": 480,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=640",
+            "width": 640,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=720",
+            "width": 720,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=1280",
+            "width": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "src": "https://cdn.jwplayer.com/v2/media/laiG57nW/poster.jpg?width=1920",
+            "width": 1920,
+            "type": "image/jpeg"
+          }
+        ],
+        "title": "7-supine bent knee",
+        "mediaid": "laiG57nW",
+        "link": "",
+        "duration": 93.914,
+        "pubdate": 1533590150,
+        "description": "",
+        "tags": "Restore",
+        "sources": [
+          {
+            "file": "https://cdn.jwplayer.com/manifests/laiG57nW.m3u8",
+            "type": "application/vnd.apple.mpegurl"
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/laiG57nW-Kto0Jxz1.mp4",
+            "type": "video/mp4",
+            "width": 320,
+            "height": 180,
+            "label": "180p",
+            "bitrate": 182976,
+            "framerate": 30,
+            "filesize": 2148010
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/laiG57nW-NTNd90lS.mp4",
+            "type": "video/mp4",
+            "width": 480,
+            "height": 270,
+            "label": "270p",
+            "bitrate": 222992,
+            "framerate": 30,
+            "filesize": 2617786
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/laiG57nW-UCZo3Xfs.mp4",
+            "type": "video/mp4",
+            "width": 720,
+            "height": 406,
+            "label": "406p",
+            "bitrate": 282376,
+            "framerate": 30,
+            "filesize": 3314929
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/laiG57nW-r7GgoZS9.mp4",
+            "type": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "label": "720p",
+            "bitrate": 541576,
+            "framerate": 30,
+            "filesize": 6357738
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/laiG57nW-qqj8j44S.m4a",
+            "type": "audio/mp4",
+            "label": "Audio",
+            "bitrate": 113456,
+            "filesize": 1331889
+          },
+          {
+            "file": "https://cdn.jwplayer.com/videos/laiG57nW-plcfVP8W.mp4",
+            "type": "video/mp4",
+            "width": 1920,
+            "height": 1080,
+            "label": "1080p",
+            "bitrate": 1410448,
+            "framerate": 30,
+            "filesize": 16557676
+          }
+        ],
+        "tracks": [
+          {
+            "file": "https://cdn.jwplayer.com/strips/laiG57nW-120.vtt",
+            "kind": "thumbnails"
+          }
+        ]
+      }
+    ]
+  }
+]
