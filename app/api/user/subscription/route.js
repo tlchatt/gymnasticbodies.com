@@ -62,6 +62,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
         else {
             dbUser = await getUserWithEmail(json.billing.email)
+            console.log("dbUser in subscription route after getUserWithEmail:", dbUser)
             isExistingUser = dbUser?.user?.id ? true : false
 
             if (!isExistingUser) {
@@ -78,7 +79,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 console.log("password in !isExistingUser:", password)
                 dbUser = await createAccountForUser(json)
             }
-
+            console.log("dbUser after createAccountForUser:", dbUser)
             await updateUserSubscriptionStatus()
 
             if (!json?.password) {//only send email if password is not provided by the user 
@@ -130,7 +131,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 authorizeSubscription: json?.subscriptionId,
 
             },
-            userId: dbUser.user.id,
+            userId: dbUser.id,
             authorizeNextImport: json?.authorizeNextImport,
             authorizeCustomerId: json?.authorizeCustomerId,
 
