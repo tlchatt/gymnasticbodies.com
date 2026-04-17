@@ -1,0 +1,306 @@
+[
+    {
+        "title": "Build Your Own",
+        "kind": "single item",
+        "playlist": [
+            {
+                "title": "Build Your Own",
+                "mediaid": "3o98KK3H",
+                "link": "https://content.jwplatform.com/previews/3o98KK3H",
+                "image": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=720",
+                "images": [
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=320",
+                        "width": 320,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=480",
+                        "width": 480,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=640",
+                        "width": 640,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=720",
+                        "width": 720,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=1280",
+                        "width": 1280,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/3o98KK3H/poster.jpg?width=1920",
+                        "width": 1920,
+                        "type": "image/jpeg"
+                    }
+                ],
+                "duration": 140,
+                "pubdate": 1637257140,
+                "description": "",
+                "tags": "",
+                "custom": {},
+                "sources": [
+                    {
+                        "file": "https://content.jwplatform.com/manifests/3o98KK3H.m3u8",
+                        "duration": 140,
+                        "type": "application/vnd.apple.mpegurl"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/3o98KK3H-Hftyq3HI.mp4",
+                        "duration": 140,
+                        "type": "video/mp4",
+                        "height": 180,
+                        "width": 320,
+                        "label": "180p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/3o98KK3H-BdAl1Ata.mp4",
+                        "duration": 140,
+                        "type": "video/mp4",
+                        "height": 270,
+                        "width": 480,
+                        "label": "270p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/3o98KK3H-ejfSRjmG.mp4",
+                        "duration": 140,
+                        "type": "video/mp4",
+                        "height": 406,
+                        "width": 720,
+                        "label": "406p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/3o98KK3H-5AYsGvea.m4a",
+                        "duration": 140,
+                        "type": "audio/mp4",
+                        "height": -1,
+                        "width": -1,
+                        "label": "AAC Audio"
+                    }
+                ],
+                "tracks": [
+                    {
+                        "file": "https://content.jwplatform.com/strips/3o98KK3H-120.vtt",
+                        "kind": "thumbnails"
+                    }
+                ],
+                "variations": {}
+            }
+        ],
+        "feed_instance_id": "62c3b165-f7f2-48ee-8f7a-e56b1c6f3b7a"
+    },
+    {
+        "title": "Whiteboard-1",
+        "kind": "single item",
+        "playlist": [
+            {
+                "title": "Whiteboard-1",
+                "mediaid": "McZSmgTw",
+                "link": "https://content.jwplatform.com/previews/McZSmgTw",
+                "image": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=720",
+                "images": [
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=320",
+                        "width": 320,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=480",
+                        "width": 480,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=640",
+                        "width": 640,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=720",
+                        "width": 720,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=1280",
+                        "width": 1280,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/McZSmgTw/poster.jpg?width=1920",
+                        "width": 1920,
+                        "type": "image/jpeg"
+                    }
+                ],
+                "duration": 70,
+                "pubdate": 1640898066,
+                "description": "",
+                "tags": "",
+                "custom": {},
+                "sources": [
+                    {
+                        "file": "https://content.jwplatform.com/manifests/McZSmgTw.m3u8",
+                        "duration": 70,
+                        "type": "application/vnd.apple.mpegurl"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/McZSmgTw-Hftyq3HI.mp4",
+                        "duration": 70,
+                        "type": "video/mp4",
+                        "height": 180,
+                        "width": 320,
+                        "label": "180p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/McZSmgTw-BdAl1Ata.mp4",
+                        "duration": 70,
+                        "type": "video/mp4",
+                        "height": 270,
+                        "width": 480,
+                        "label": "270p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/McZSmgTw-ejfSRjmG.mp4",
+                        "duration": 70,
+                        "type": "video/mp4",
+                        "height": 406,
+                        "width": 720,
+                        "label": "406p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/McZSmgTw-5AYsGvea.m4a",
+                        "duration": 70,
+                        "type": "audio/mp4",
+                        "height": -1,
+                        "width": -1,
+                        "label": "AAC Audio"
+                    }
+                ],
+                "tracks": [
+                    {
+                        "file": "https://content.jwplatform.com/strips/McZSmgTw-120.vtt",
+                        "kind": "thumbnails"
+                    }
+                ],
+                "variations": {}
+            }
+        ],
+        "feed_instance_id": "bedd02b2-9795-462e-bc49-aed6d0b454a2"
+    },
+    {
+        "title": "Guided Plans",
+        "kind": "single item",
+        "playlist": [
+            {
+                "title": "Guided Plans",
+                "mediaid": "kDN7cnxE",
+                "link": "https://content.jwplatform.com/previews/kDN7cnxE",
+                "image": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=720",
+                "images": [
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=320",
+                        "width": 320,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=480",
+                        "width": 480,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=640",
+                        "width": 640,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=720",
+                        "width": 720,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=1280",
+                        "width": 1280,
+                        "type": "image/jpeg"
+                    },
+                    {
+                        "src": "https://content.jwplatform.com/v2/media/kDN7cnxE/poster.jpg?width=1920",
+                        "width": 1920,
+                        "type": "image/jpeg"
+                    }
+                ],
+                "duration": 1378,
+                "pubdate": 1637257320,
+                "description": "",
+                "tags": "",
+                "custom": {},
+                "sources": [
+                    {
+                        "file": "https://content.jwplatform.com/manifests/kDN7cnxE.m3u8",
+                        "duration": 1378,
+                        "type": "application/vnd.apple.mpegurl"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/kDN7cnxE-Hftyq3HI.mp4",
+                        "duration": 1378,
+                        "type": "video/mp4",
+                        "height": 180,
+                        "width": 320,
+                        "label": "180p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/kDN7cnxE-BdAl1Ata.mp4",
+                        "duration": 1378,
+                        "type": "video/mp4",
+                        "height": 270,
+                        "width": 480,
+                        "label": "270p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/kDN7cnxE-ejfSRjmG.mp4",
+                        "duration": 1378,
+                        "type": "video/mp4",
+                        "height": 406,
+                        "width": 720,
+                        "label": "406p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/kDN7cnxE-mIZsOz5r.mp4",
+                        "duration": 1378,
+                        "type": "video/mp4",
+                        "height": 720,
+                        "width": 1280,
+                        "label": "720p"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/kDN7cnxE-5AYsGvea.m4a",
+                        "duration": 1378,
+                        "type": "audio/mp4",
+                        "height": -1,
+                        "width": -1,
+                        "label": "AAC Audio"
+                    },
+                    {
+                        "file": "https://content.jwplatform.com/videos/kDN7cnxE-oGTIai4v.mp4",
+                        "duration": 1378,
+                        "type": "video/mp4",
+                        "height": 1080,
+                        "width": 1920,
+                        "label": "1080p"
+                    }
+                ],
+                "tracks": [
+                    {
+                        "file": "https://content.jwplatform.com/strips/kDN7cnxE-120.vtt",
+                        "kind": "thumbnails"
+                    }
+                ],
+                "variations": {}
+            }
+        ],
+        "feed_instance_id": "1f2ffd3b-7228-45c8-b7b6-766c26ed3a46"
+    }
+]

@@ -1,0 +1,141 @@
+[
+    {
+        "category": "Mobility",
+        "exerciseName": "Scap Pull",
+        "autoPilotExerciseId": 274,
+        "imageUrl": "RCSE1IM.jpg",
+        "repsOrSecs": "5r",
+        "autoPilotId": 77999,
+        "levelId": 4,
+        "rounds": 3,
+        "isLogged": false,
+        "exerciseFocusPoints": [
+            {
+                "description": "1) Using the scaps, strongly retract and arch backward.",
+                "descOrder": 1
+            },
+            {
+                "description": "2) Do not bend the arms.",
+                "descOrder": 2
+            }
+        ],
+        "videos": [
+            {
+                "mediaId": "RnXulJAp.json?exp=1773489557672&sig=b77df58f7083538c59292083c0534c07",
+                "version": "a"
+            }
+        ]
+    },
+    {
+        "category": "Core",
+        "exerciseName": "Negative Side Lever Pull",
+        "autoPilotExerciseId": 75,
+        "imageUrl": "SLSE8.jpg",
+        "repsOrSecs": "5r",
+        "autoPilotId": 78000,
+        "levelId": 4,
+        "rounds": 3,
+        "isLogged": false,
+        "exerciseFocusPoints": [
+            {
+                "description": "1) Descend with a controlled tempo.",
+                "descOrder": 1
+            },
+            {
+                "description": "2) Stay straight, no arching or piking.",
+                "descOrder": 2
+            }
+        ],
+        "videos": [
+            {
+                "mediaId": "70ePO0pZ.json?exp=1773489557673&sig=a91345564e38dbddaf59ccf94fc02e78",
+                "version": "a"
+            },
+            {
+                "mediaId": "Qkda1BMH.json?exp=1773489557674&sig=caabf6e524485ce19c08527844bb50e7",
+                "version": "b"
+            }
+        ]
+    },
+    {
+        "category": "Push",
+        "exerciseName": "Half Straddle Planche Double Leg Extension",
+        "autoPilotExerciseId": 123,
+        "imageUrl": "SPLSE9.jpg",
+        "repsOrSecs": "5r",
+        "autoPilotId": 78001,
+        "levelId": 4,
+        "rounds": 3,
+        "isLogged": false,
+        "exerciseFocusPoints": [
+            {
+                "description": "1) To count, each rep must begin and end in the hsPL.",
+                "descOrder": 1
+            },
+            {
+                "description": "2) The body must be horizontal at full extension.",
+                "descOrder": 2
+            }
+        ],
+        "videos": [
+            {
+                "mediaId": "XGmMAzuj.json?exp=1773489557675&sig=ce4aedb6686df969c8069c7a8298f8fb",
+                "version": "a"
+            }
+        ]
+    },
+    {
+        "category": "Pull",
+        "exerciseName": "Rope Pull-Up",
+        "autoPilotExerciseId": 151,
+        "imageUrl": "RCSE4.jpg",
+        "repsOrSecs": "5r",
+        "autoPilotId": 78002,
+        "levelId": 4,
+        "rounds": 3,
+        "isLogged": false,
+        "exerciseFocusPoints": [
+            {
+                "description": "1) The bottom hand will now release the rope and reach upward to full extension during each rep.",
+                "descOrder": 1
+            }
+        ],
+        "videos": [
+            {
+                "mediaId": "MDvq7fG2.json?exp=1773489557679&sig=f346169a19f9670abf72cb26a0721e50",
+                "version": "a"
+            },
+            {
+                "mediaId": "CWuJTwbd.json?exp=1773489557679&sig=2bf5c67207ed38eb6fc56256e9cc3971",
+                "version": "b"
+            }
+        ]
+    },
+    {
+        "category": "Legs",
+        "exerciseName": "Weighted Lunge: +75% Bodyweight",
+        "autoPilotExerciseId": 168,
+        "imageUrl": "FLSSE8.jpg",
+        "repsOrSecs": "5r",
+        "autoPilotId": 78003,
+        "levelId": 4,
+        "rounds": 3,
+        "isLogged": false,
+        "exerciseFocusPoints": [
+            {
+                "description": "1) Maintain an upright torso during the step forward.",
+                "descOrder": 1
+            },
+            {
+                "description": "2) Full depth is achieved by the rear knee lightly touching.",
+                "descOrder": 2
+            }
+        ],
+        "videos": [
+            {
+                "mediaId": "Ry3NH8Q7.json?exp=1773489557681&sig=42fe64df46c973ca63f5c2bd4b2b6e45",
+                "version": "a"
+            }
+        ]
+    }
+]

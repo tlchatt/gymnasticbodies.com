@@ -1,0 +1,64 @@
+[
+    {
+        "category": "Mobility",
+        "autoPilotExerciseId": 274,
+        "imageUrl": "RCSE1IM.jpg",
+        "autoPilotId": 77999,
+        "mediaId": "RnXulJAp.json?exp=1773489557672&sig=b77df58f7083538c59292083c0534c07",
+        "id": "RnXulJAp"
+    },
+    {
+        "category": "Core",
+        "autoPilotExerciseId": 75,
+        "imageUrl": "SLSE8.jpg",
+        "autoPilotId": 78000,
+        "mediaId": "70ePO0pZ.json?exp=1773489557673&sig=a91345564e38dbddaf59ccf94fc02e78",
+        "id": "70ePO0pZ",
+        "version": "a"
+    },
+    {
+        "category": "Core",
+        "autoPilotExerciseId": 75,
+        "imageUrl": "SLSE8.jpg",
+        "autoPilotId": 78000,
+        "mediaId": "Qkda1BMH.json?exp=1773489557674&sig=caabf6e524485ce19c08527844bb50e7",
+        "id": "Qkda1BMH",
+        "version": "b"
+    },
+    {
+        "category": "Push",
+        "autoPilotExerciseId": 123,
+        "imageUrl": "SPLSE9.jpg",
+        "autoPilotId": 78001,
+        "mediaId": "XGmMAzuj.json?exp=1773489557675&sig=ce4aedb6686df969c8069c7a8298f8fb",
+        "id": "XGmMAzuj",
+        "version": "a"
+    },
+    {
+        "category": "Pull",
+        "autoPilotExerciseId": 151,
+        "imageUrl": "RCSE4.jpg",
+        "autoPilotId": 78002,
+        "mediaId": "MDvq7fG2.json?exp=1773489557679&sig=f346169a19f9670abf72cb26a0721e50",
+        "id": "MDvq7fG2",
+        "version": "a"
+    },
+    {
+        "category": "Pull",
+        "autoPilotExerciseId": 151,
+        "imageUrl": "RCSE4.jpg",
+        "autoPilotId": 78002,
+        "mediaId": "CWuJTwbd.json?exp=1773489557679&sig=2bf5c67207ed38eb6fc56256e9cc3971",
+        "id": "CWuJTwbd",
+        "version": "b"
+    },
+    {
+        "category": "Legs",
+        "autoPilotExerciseId": 168,
+        "imageUrl": "FLSSE8.jpg",
+        "autoPilotId": 78003,
+        "mediaId": "Ry3NH8Q7.json?exp=1773489557681&sig=42fe64df46c973ca63f5c2bd4b2b6e45",
+        "id": "Ry3NH8Q7",
+        "version": "a"
+    }
+]
