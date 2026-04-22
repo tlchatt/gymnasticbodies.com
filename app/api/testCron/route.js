@@ -33,7 +33,7 @@ export async function GET(request) {
     console.log('Triggered by Vercel cron');
     let dbUser, isExistingUser, renewalDate, price, subscriptionTerm, userSettingsData, authorizeCustomerId, subscriptionStatus, name, lastName
     console.log("hello inside testCron")
-    let email = "pfsdfsfdsfc@tlchatt.com"
+    let email = "hachibear8@gmail.com"
     try {
         dbUser = await getUserWithEmail(email)
 
