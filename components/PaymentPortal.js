@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Button from '@mui/material/Button';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
@@ -9,25 +9,39 @@ import { user } from "@/app/context/stateContext";
 import Alert from '@mui/material/Alert';
 
 import CircularIndeterminate from '@/components/CircularLoading';
-import { storeInLocalStorage } from "@/lib/commonFunctions";
+import { paymentFormUpdate, storeInLocalStorage } from "@/lib/commonFunctions";
+import { ConnectingAirportsOutlined } from "@mui/icons-material";
+import { paymentFunctionality } from "@/lib/commonServerFunction";
+import { convertProcessSignalToExitCode } from "util";
 
 export function PaymentPortal(props) {
     let url = process.env.NEXT_PUBLIC_API_URL
+    console.log("url:", url)
     const router = useRouter();
     const { email, setEmail, setCustomerId } = user()
     let [error, setError] = useState(false)
+    let [success, setSuccess] = useState(false)
     let [loading, setLoading] = useState(false)
-    let [errorMessage, setErrorMessage] = useState("")
+    let [message, setMessage] = useState("")
+    let [response, setResponse] = useState(null)
+    const [count, setCount] = useState(5);
     const searchParams = useSearchParams();
 
     const amount = searchParams.get('amount');
     const term = searchParams.get('term');
+    const trial = searchParams.get('trial');
 
+    const formRef = useRef(null);
+    console.log("inside useEffect", amount, term, trial)
     useEffect(() => {
-        window.responseHandler = function (response) {
+        window.responseHandler = async function (response) {
             // handle response
-            console.log("response in responseHandler is:", response)
-            if (response.messages.resultCode === "Error") {
+
+            // console.log("response in responseHandler is:", response)
+
+            // console.log("loading if:", loading)
+
+            if (response?.messages?.resultCode === "Error") {
                 var i = 0;
                 while (i < response.messages.message.length) {
                     console.log(
@@ -37,123 +51,63 @@ export function PaymentPortal(props) {
                     i = i + 1;
                 }
             } else {
-                paymentFormUpdate(response);
+                // console.log("loading else:", loading)
+                setResponse(response)
+                // await paymentFormUpdate(response);
+                // console.log("loading after else:", loading)
             }
         }
-        async function paymentFormUpdate(response) {
-            //create variables
-            let email = document.querySelector("#email").value;
-            let phone = document.querySelector("#phone").value;
-            let password = document.querySelector("#password").value;
-            let country = document.querySelector("#search_country").value;
-            let postAWS = true
+    });
 
-            document.getElementById("dataDescriptor").value = response.opaqueData.dataDescriptor;
-            document.getElementById("dataValue").value = response.opaqueData.dataValue;
-            document.getElementById("billToFirstName").value = response.customerInformation.firstName;
-            document.getElementById("billToLastName").value = response.customerInformation.lastName;
-            document.getElementById("billAmount").value = amount;
-            document.getElementById("billEmail").value = email;
-            document.getElementById("billPhone").value = phone;
-            document.getElementById("billCountry").value = country;
-            document.getElementById("userPassword").value = password;
-            document.getElementById("billTerm").value = term;
-            document.getElementById("postAWS").value = postAWS;
+    useEffect(() => {
+        let timer
+        console.log("response in component is:", response)
 
-            //set global state email
-            setEmail(email)
-            setLoading(true);
-
-            const formData = new FormData(document.getElementById("paymentForm"));
-            try {
-                let response = await axios.post(`${url}/api/paymentPortal`, formData)
-                    .then(async response => {
-                        setLoading(false);
-                        console.log("response from /api/paymentPortal is:", JSON.stringify(response.data))
-                        let testResponse = {
-                            "message": "Transaction successful, but customer creation failed",
-                            "transaction": true,
-                            "customerCreated": false,
-                            "subscriptionCreated": false,
-                            "error": {
-                                "transactionResponse": {
-                                    "responseCode": "2",
-                                    "authCode": "",
-                                    "avsResultCode": "B",
-                                    "cvvResultCode": "",
-                                    "cavvResultCode": "",
-                                    "transId": "81491921659",
-                                    "refTransID": "",
-                                    "transHash": "",
-                                    "testRequest": "0",
-                                    "accountNumber": "XXXX0002",
-                                    "accountType": "AmericanExpress",
-                                    "errors": [
-                                        {
-                                            "errorCode": "37",
-                                            "errorText": "The credit card number is invalid."
-                                        }
-                                    ],
-                                    "transHashSha2": "",
-                                    "SupplementalDataQualificationIndicator": 0
-                                },
-                                "messages": {
-                                    "resultCode": "Ok",
-                                    "message": [
-                                        {
-                                            "code": "I00001",
-                                            "text": "Successful."
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                        let responseData = response?.data?.data
-                        let transaction = responseData ? responseData.transaction : response?.data?.transaction
-                        let customerCreated = responseData ? responseData.customerCreated : response?.data?.customerCreated
-                        let subscriptionCreated = responseData ? responseData.subscriptionCreated : response?.data?.subscriptionCreated
-                        
-                        console.log("transaction: ", transaction, "\n customerCreated value:",customerCreated, "\n subscriptionCreated value:",subscriptionCreated)
-
-                        if (transaction && customerCreated && !subscriptionCreated) {//doesn't matter since card is being charged anyway - fix that
-                            setError(true)
-                            //useCase: Credit Card expires before the start of the subscription.
-                            console.log("response.error:", response?.data?.error?.data?.messages?.message[0]?.text)
-                            setErrorMessage(response?.data?.error?.data?.messages ? response?.data?.error?.data?.messages.message[0].text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
-                        } else if (transaction && customerCreated) {
-                            let user = await storeInLocalStorage(response)
-                            console.log("user in paymentFormUpdate is:", JSON.stringify(user))
-
-                            router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
-                        }
-                        else {
-                            setError(true)
-                            setErrorMessage(response?.data?.error?.data?.messages ? response?.data?.error?.data?.messages.message[0]?.text : "Something went wrong! Contact Admin at admin@gymnasticbodies.com")
-                        }
-                    })
-                    .then(data => {
-                        setLoading(false);
-                        console.log("data in paymentFormUpdate is:", data)
-                        let customerProfileId = data?.customerId?.data?.customerProfileId
-                        console.log("customerProfileId:", customerProfileId)
-                        setCustomerId(customerProfileId)
-                        /*if(customerProfileId){
-                            router.push('/accountDetails')
-                        }*/
-                    })
-                    .catch(error => {
-                        setLoading(false);
-                        console.error("error is", error)
+        if (response) {
+            setLoading(true)
+            const updateForm = async () => {
+                let formResponse = await paymentFormUpdate(response, amount, term, trial, formRef);
+                if (formResponse.existingCustomer) {//existing customer
+                    if (count > 0) {
+                        timer = setTimeout(() => setCount(count - 1), 1000);
+                        setLoading(false)
                         setError(true)
-                        setErrorMessage("Transaction Failed, Try Again ! Contact Admin at admin@gymnasticbodies.com")
+                        setMessage(`${formResponse.message}. Redirecting in ${count} seconds...`)
+                    } else {
+                        router.push(`https://my.gymnasticbodies.com/`)
+                    }
+                    // router.push(`https://my.gymnasticbodies.com/`)
+                } else {//new customer
+                    console.log("formResponse in else:", formResponse)
 
-                    });
-            } catch (error) {
-                console.log("outer catch block:", error)
-            }
+                    let transaction = formResponse?.transaction ?? false
+                    let customerCreated = formResponse?.customerCreated ?? false
+                    let subscriptionCreated = formResponse?.subscriptionCreated ?? false
 
+                    if (!transaction || !customerCreated || !subscriptionCreated) {//not successfull and a new customer
+                        setLoading(false)
+                        setError(true)
+                        setMessage(`${formResponse?.message ?? "Transaction Failed!"} Please Try Again.`)
+                    } else {//successfull and a new customer
+                        //set success icon state to true here
+                        console.log("formResponse in else after transaction:", formResponse)
+                        let data = JSON.parse(formResponse.data)
+                        let user = await storeInLocalStorage(data)
+                        console.log("user in paymentFormUpdate is:", JSON.stringify(user))
+                        setLoading(false)
+                        setSuccess(true)
+                        setMessage(`${formResponse.message}. Redirecting To Your Workouts ...`)
+                        router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
+                    }
+                }
+            };
+            updateForm();
         }
-    }, []);
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+
+    }, [response, count]);
 
     let FormInnerStyle = {
         display: 'grid',
@@ -172,6 +126,7 @@ export function PaymentPortal(props) {
             <div>
                 {/* <div>Payment Portal</div> */}
                 <form id="paymentForm"
+                    ref={formRef}
                     method="POST"
                     style={FormInnerStyle}
                     action={`${url}/api/paymentPortal`}>
@@ -186,6 +141,7 @@ export function PaymentPortal(props) {
                     <input type="hidden" name="billTerm" id="billTerm" />
                     <input type="hidden" name="userPassword" id="userPassword" />
                     <input type="hidden" name="postAWS" id="postAWS" />
+                    <input type="hidden" name="trial" id="trial" />
                     <Button
                         type="button"
                         variant="contained"
@@ -199,6 +155,7 @@ export function PaymentPortal(props) {
                         data-acceptuiformheadertxt="Card Information"
                         data-paymentoptions='{"showCreditCard": true, "showBankAccount": false}'
                         data-responsehandler="responseHandler"
+
                     >
                         Confirm & Pay
                     </Button>
@@ -207,8 +164,11 @@ export function PaymentPortal(props) {
             {/* } */}
             {error &&
                 <Alert variant="filled" severity="error" style={{ marginTop: "20px" }}>
-                    {errorMessage}
+                    {message}
                 </Alert>
+            }
+            {success &&
+                <Alert severity="success" style={{ marginTop: "20px" }}>{message}</Alert>
             }
             {loading &&
                 <CircularIndeterminate incomingStyle={{ width: "100%", height: "100%", top: "0", left: "0", background: "#FAFAFA", opacity: "0.3", zIndex: "5" }} />

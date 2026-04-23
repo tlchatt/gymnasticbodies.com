@@ -27,7 +27,13 @@ export const user_setting = pgTable("user_setting", {
   authorizeCustomerId:text("autorize_customer_id"),
   awsCustomerId:text("aws_customer_id"),
   data: text("data"),
+  woocommerceAuthorizeImport: boolean("woocommerce_authorize_import"),
+  woocommerceSource: text("woocommerceSource"),
+  trial: boolean("trial"),
+  trialStartDate:timestamp("trial_start_date"),
+  trialEndDate:timestamp("trial_end_date"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  subscriptionInAuthorize: boolean("subscription_in_authorize"),
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())

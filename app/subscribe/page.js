@@ -30,89 +30,74 @@ export default function Subscribe(props) {
     }
     let blockStyle = {
         background: "#fafafa",
-        display: "grid",
+        display: "grid"
         // borderRadius: "4px"
     }
     let featuresStyles = {
         padding: "12px 0 0",
-        display:"grid",
-        gridAutoFlow:"column",
-        gap:"10px",
-        justifyContent:"start",
-        alignItems:"center"
+        display: "grid",
+        gridAutoFlow: "column",
+        gap: "10px",
+        justifyContent: "start",
+        alignItems: "center"
 
     }
     let iconStyle = {
         color: "#f05621"
     }
+    let pageJson = [
+        { "term": "Monthly", "price": "$75 / month", "amount": "0.02", "trial": true, "trialDetails": "(7 days Trial)", "buttonValue": "Start For Free", "billedText": "Billed Monthly", "billedTerm": "(After 7 days Trial)" },
+        { "term": "Monthly", "price": "$75 / month", "amount": "75", "trial": false, "trialDetails": "", "buttonValue": "Subscribe", "billedTerm": "", "billedText": "Billed Monthly" },
+    ]
     return (
         <>
             <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>OUR PLANS
             </Typography>
             {/* <Box sx={style}> */}
             {/* <StandardContainer style={ContainerStyle} innerStyle={ContainerInnerStyle} innerClassName="StandardContainerInnerMargin" id={Settings.id} innerID={Settings.innerID} {...props}> */}
-            <Grid size={12} style={{ gridAutoFlow: "column", display: "grid", justifyContent: "center", gap: "20px" }}>
-                <Paper elevation={3} rounded="true">
-                    <Grid size={6} style={blockStyle} elevation={24}>
-                        <Box >
-                            <Grid size={6} style={{ display: "grid", justifyItems: "center", gap: Settings.lowGap, padding: Settings.highPadding }} >
-                                {/* <Item>size=8</Item> */}
-                                <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
-                                    MONTHLY
-                                </Typography>
-                                <Typography id="modal-modal-description" variant="h4" component="h2">
-                                    $75 / month
-                                </Typography>
+            <Grid size={12} sx={{ display: 'grid', gridAutoFlow: { xs: 'row', md: 'column' } }} style={{ justifyContent: "center", gap: "20px" }}>
+                {pageJson.map((item, index) =>
+                    <Grid size={6} key={index} style={{ display: "grid" }}>
+                        <Paper elevation={3} rounded="true" style={{ display: "grid" }}>
+                            <Grid size={6} style={blockStyle} elevation={24}>
+                                <Box >
+                                    <Grid size={6} style={{ display: "grid", justifyItems: "center", gap: Settings.lowGap, padding: Settings.highPadding }} >
+                                        {/* <Item>size=8</Item> */}
+                                        <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
+                                            {item.term}
+                                        </Typography>
+                                        <Typography id="modal-modal-description" variant="h4" component="h2">
+                                            {item.price}
+                                        </Typography>
 
-                                <Button
-                                    type="button"
-                                    variant="contained"
-                                    color="primary"
-                                    href={"/checkout?amount=75&term=monthly"}
-                                    style={{ fontSize: "1rem", letterSpacing: 1, background: "linear-gradient(18deg, #fcb14e 0%, #f05621 100%) !important", }}
-                                // onClick={() => handleContactForm()}
-                                >
-                                    SUBSCRIBE
-                                </Button>
-                                <Typography id="modal-modal-description" variant="p" component="h3" >
-                                    (Billed Monthly)
-                                </Typography>
+                                        <Button
+                                            type="button"
+                                            variant="contained"
+                                            color="primary"
+                                            href={`/checkout?amount=${item?.amount}&term=monthly&trial=${item?.trial}`}
+                                            style={{ fontSize: "1rem", letterSpacing: 1, background: "linear-gradient(18deg, #fcb14e 0%, #f05621 100%) !important", }}
+                                        // onClick={() => handleContactForm()}
+                                        >
+                                            {item.buttonValue}
+                                        </Button>
+                                        <Typography id="modal-modal-description" variant="p" component="h3" >
+                                            {item?.billedText}
+                                        </Typography>
+                                        <Typography id="modal-modal-description" variant="p" component="h5" >
+                                            {item.billedTerm}
+                                        </Typography>
+                                    </Grid>
+                                </Box>
                             </Grid>
-                        </Box>
+                        </Paper>
                     </Grid>
-                </Paper>
-                {/* <Paper elevation={3} rounded="true">
-                    <Grid size={6} style={blockStyle} elevation={3}>
-                        <Box>
-                            <Grid size={6} style={{ display: "grid", justifyItems: "center", gap: Settings.lowGap, padding: Settings.highPadding }} >
-                                <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
-                                    ANNUALLY
-                                </Typography>
-                                <Typography id="modal-modal-description" variant="h6" component="h2" sx={{ mt: 2 }}>
-                                    $60 / month
-                                </Typography>
-
-                                <Button
-                                    type="button"
-                                    variant="contained"
-                                    color="primary"
-                                    href={"/checkout?amount=60&term=anually"}
-                                    style={{ fontSize: "1rem", letterSpacing: 1, background: "linear-gradient(18deg, #fcb14e 0%, #f05621 100%) !important", }}
-                                // onClick={() => handleContactForm()}
-                                >
-                                    SUBSCRIBE
-                                </Button>
-                                <Typography id="modal-modal-description" variant="p" component="p" >
-                                    ($720 billed annually)
-                                </Typography>
-                            </Grid>
-                        </Box>
-                    </Grid>
-                </Paper> */}
+                )
+                }
             </Grid>
 
 
-            <Grid size={6} style={{ display: "grid", padding:"10px", justifyItems: "center" }} elevation={24}>
+
+            <Grid size={6} style={{ display: "grid", padding: "10px", justifyItems: "center" }} elevation={24}>
                 <Box >
 
                     {/* <Item>size=8</Item> */}

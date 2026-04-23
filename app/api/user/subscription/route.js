@@ -57,13 +57,11 @@ export async function POST(request) {//when subscription webhook is triggered ->
             }else{
                 console.error("customer not in authorize. email:",username)
             }
-
-
         }
         else {
             dbUser = await getUserWithEmail(json.billing.email)
             console.log("dbUser in subscription route after getUserWithEmail:", dbUser)
-            isExistingUser = dbUser?.user?.id ? true : false
+            isExistingUser = dbUser?.id ? true : false
 
             if (!isExistingUser) {
                 if (json?.password) {
