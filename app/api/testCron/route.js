@@ -1,182 +1,113 @@
 import { createSubscriptionInAuthorizeWithCustomerProfile, getAllCustomerDataFromAuthorize, getCustomerPaymentProfile, updateCustomerLastName, updateCustomerPaymentProfile } from "@/lib/commonServerFunction";
 import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid";
-import { createAccountForUser, createAndModifyUserInNeon, getAllAuthUserSettings, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting, updateUserSettingData } from "@/lib/userSettings";
+import { createAccountForUser, createAndModifyUserInNeon, getAllAuthUserSettings, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting, updateUserSettingData, updateUserSettingSubscriptionStatus } from "@/lib/userSettings";
 import { ConnectingAirportsOutlined } from "@mui/icons-material";
 
 export async function POST(request) {
+    console.log("inside POST in testCron")
+    const today = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    }).format(new Date()); // "2026-04-22"
 
-   
+    console.log("today:", today)
 
+    let allAuthUsers = await getAllAuthUserSettings()//gets only authorizeUsers
+    console.log("allAuthUsers:", allAuthUsers.length)
 
+    for (let userSetting of allAuthUsers) {
+        //get useres with active status
+        if (userSetting?.status == "Active") {
+            let userSettingsData = JSON.parse(userSetting?.data)
+            let renewalDate = userSettingsData?.renewaldate
+            let email = userSettingsData?.email
+            let price = userSettingsData?.price
+            let subscriptionTerm = userSettingsData?.term
+            let authorizeCustomerId = userSetting?.authorizeCustomerId
 
-    /*
-    return new Response('Success!', {
-        status: 200,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        },
-        body: {
-            "jwtAuthorizationToken": "eyJhbGciOiJIUzUxMiJ9.eyJmbmFtZSI6Ikx1a2UiLCJzdWIiOiJsdWtlc2VhcnJhQGljbG91ZC5jb20iLCJsbmFtZSI6IiIsInR6IjoiQW1lcmljYS9Ub3JvbnRvIiwidGFnaWRzIjpbMTAyLDEyMiwyMjQsMjI2LDIyOCwzMzAsNDQ2LDYxMiw2MTYsNjIwLDYzMiw2OTgsNzg4LDEwMzYsMTMwMV0sImV4cCI6MTc2NTkxMjAxNiwiaWF0IjoxNzY1ODI1NjE2LCJjaWQiOjQxMTg0N30.JLW9ezWmdkQX71VFGT2WOw5Eu1ucx1YSn6ePiRy84oTUhIpdVLJ27d37fBwtBZeKaHyR5LHOvcb7MEqPRDGoNw",
-            "jwtRefreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJhbGxhY2Nlc3MiOnRydWUsInN1YiI6Imx1a2VzZWFycmFAaWNsb3VkLmNvbSIsInR6IjoiQW1lcmljYS9Ub3JvbnRvIiwiZnJlZW1lbSI6dHJ1ZSwidHlwZSI6InJlZnJlc2giLCJleHAiOjE3ODEzNzc2MTYsInNwIjp0cnVlLCJpYXQiOjE3NjU4MjU2MTYsImNpZCI6NDExODQ3fQ.Lpdq06b0wowjiV4WeYV9s0TCgtrPMGYn7hRgbxQKil4oh_P2MxSDk80hchDJEaUo6bUNQaVY928u-ntNeUcapQ",
-            "timezone": "America/Toronto",
-            "isAllAccessUser": true,
-            "isFreeMember": true,
-            "hasCourseProduct": true
-        }
-    })
-    */
-}
-
-export async function GET(request) {
-    console.log('Triggered by Vercel cron');
-    let dbUser, isExistingUser, renewalDate, price, subscriptionTerm, userSettingsData, authorizeCustomerId, subscriptionStatus, name, lastName
-    console.log("hello inside testCron")
-    let email = "hachibear8@gmail.com"
-    try {
-        dbUser = await getUserWithEmail(email)
-
-        console.log("dbUser in cronJobs route:", dbUser)
-        isExistingUser = dbUser?.id ? true : false
-
-        if (!isExistingUser) {
-            console.log("NOT FOUND IN isExistingUser: ", email)
-        }
-
-        let matching = await queryUserSetting(dbUser.id, 'subscription')
-        console.log("matching:", matching)
-
-        if (matching) {
-            if (matching.woocommerceAuthorizeImport) {//only where its an authorize user
-                userSettingsData = JSON.parse(matching?.data)
-                renewalDate = userSettingsData?.renewaldate
-                price = userSettingsData?.price
-                subscriptionTerm = userSettingsData?.term
-                authorizeCustomerId = matching?.authorizeCustomerId
-                lastName = userSettingsData?.last_name
-
-                console.log("lastName:", lastName)
+            let fullName = (userSettingsData?.first_name || "").trim().split(" ").filter(Boolean);//trims whitespace from beginning and end of the string. 
+            let firstName, lastName
+            if (fullName.length == 2) {
+                firstName = fullName[0]
+                lastName = fullName[1]
+            }
+            if (fullName.length == 3) {
+                firstName = fullName[0]
+                lastName = fullName[2]
+            }
+            if (fullName.length == 1) {
+                firstName = fullName[0]
+                lastName = "N/A"
+            }
+            renewalDate = (renewalDate && renewalDate != "N/A") ? renewalDate = renewalDate.split('T')[0] : null
+            if (renewalDate && renewalDate === today) {//for valid renewal date
+                console.log("authorizeCustomerId:", authorizeCustomerId)
                 let authorizeProfile = await getAllCustomerDataFromAuthorize(authorizeCustomerId)
-                let paymentProfiles = authorizeProfile?.result?.profile?.paymentProfiles.length > 1 ? authorizeProfile?.result?.profile?.paymentProfiles[1] : authorizeProfile?.result?.profile?.paymentProfiles[0]
-                console.log("paymentProfiles:", paymentProfiles)
+                console.log("authorizeProfile:",authorizeProfile)
+                let paymentProfile = authorizeProfile?.result?.profile?.paymentProfiles
+                let payment = paymentProfile?.length == 0 ? null : paymentProfile?.length > 1 ? paymentProfile[1] : paymentProfile[0]
+                console.log("renewalDate renewalDate < today:", renewalDate)
+                console.log("email is:", email)
+                console.log("userSetting:", userSetting)
+                console.log("fullName:", fullName)
+                console.log("firstName:", firstName)
+                console.log("lastName:", lastName)
+                console.log("paymentProfile:", payment)
+                await updateCustomerPaymentProfile(payment, firstName, lastName,authorizeProfile)
+                let subscriptionStatus
+                let updatedUserSettingsData = userSettingsData
+                updatedUserSettingsData["first_name"] = firstName
+                updatedUserSettingsData["last_name"] = lastName
 
-                if (lastName == "") {//check and update lastname
-                    //get the last name if possible and update the payment profile
-                    let firstName = userSettingsData?.first_name
-                    if (firstName.includes(" ")) {
-                        name = firstName.split(" ")
+                await updateUserSettingData(userSetting.id, updatedUserSettingsData)
 
-                        lastName = name[1] ?? "N/A"
-                        console.log("lastName is:", lastName)
-                        let customerPaymentProfile = await getCustomerPaymentProfile(authorizeCustomerId, paymentProfiles?.customerPaymentProfileId)
-                        console.log("customerPaymentProfile:", customerPaymentProfile)
-                        await updateCustomerPaymentProfile(customerPaymentProfile, name[0], lastName)
-
-                        //update neonDB lastname data too
-                        let updatedUserSettingsData = userSettingsData
-                        updatedUserSettingsData["first_name"] = name[0]
-                        updatedUserSettingsData["last_name"] = lastName
-
-                        await updateUserSettingData(matching, updatedUserSettingsData)
-                    } else {
-                        //don't move forward
-                        console.log("subscription can't be created since lastname not found")
+                let authorizeCustomerIs = {
+                    data: {
+                        customerProfileId: authorizeCustomerId,
+                        customerPaymentProfileIdList: payment
                     }
-
-                } else {
-                    //don't move forward
-                    console.log("subscription can't be created since lastname not found")
                 }
-
-
-
-                if (matching.status == "Active") {
-                    console.log("matching user with status active:", email)
-                    console.log("renewalDate:", renewalDate)
-                    console.log("price:", price)
-                    console.log("subscriptionTerm:", subscriptionTerm)
-
-                    //check if a subscription already exists already for the user in authorize
-
-                    // let paymentProfileId = authorizeProfile?.result?.profile?.paymentProfiles[0]?.customerPaymentProfileId
-
-                    let authorizeCustomerIs = {
-                        data: {
-                            customerProfileId: authorizeCustomerId,
-                            customerPaymentProfileIdList: paymentProfiles
-                        }
-                    }
-                    let impInfo = {
-                        matchedTerm: subscriptionTerm,
-                        recentTransactionDate: renewalDate,
-                        price: price,
-                        lastName: lastName
-                    }
-
-                    // console.log("authorizeProfile:", authorizeProfile)
-                    // console.log("subscription is:", authorizeProfile?.customerSubscription)
-                    console.log("subscription present in authorize", authorizeProfile)
-                    if (paymentProfiles.length > 0) {
-                        if (authorizeProfile?.customerSubscription?.status) {
-                            subscriptionStatus = authorizeProfile?.customerSubscription?.data?.subscription?.status
-                            //check status of subscription
-                            console.log("subscriptionStatus:", subscriptionStatus)
-                            if (subscriptionStatus == "active") {
-                                //do nothing
-                            } else {
-                                //create subscription
-                                console.log("create subscription in authorize using the customer profile from authorize")
-                                //https://developer.authorize.net/api/reference/index.html#customer-profiles-get-customer-profile
-
-                                await createSubscriptionInAuthorizeWithCustomerProfile(authorizeCustomerIs, impInfo)
-                                await updateUserSettingSubscriptionStatus(matching, "TRUE")
-                            }
-                        } else {
-                            console.log("no subscription in authorize")
-                            await createSubscriptionInAuthorizeWithCustomerProfile(authorizeCustomerIs, impInfo)
-                            await updateUserSettingSubscriptionStatus(matching, "TRUE")
-                        }
-                    } else {
-                        //send error to add payment info
-                        console.log("no payment method saved")
-                    }
-
-                    // if(authorizeProfile?.customerSubscription)
-
-                } else {
-                    console.log("user Inactive")
-                    let authorizeProfile = await getAllCustomerDataFromAuthorize(authorizeCustomerId)
+                let impInfo = {
+                    matchedTerm: subscriptionTerm,
+                    recentTransactionDate: renewalDate,
+                    price: price,
+                    lastName: lastName
+                }
+                console.log("authorizeProfile:::::", authorizeProfile)
+                if (payment) {
                     if (authorizeProfile?.customerSubscription?.status) {
-                        console.log("subscription present in authorize", authorizeProfile?.customerSubscription)
-                        //check status of the subscription
-                        subscriptionStatus = authorizeProfile?.customerSubscription?.data?.subscription?.status
+                        subscriptionStatus = authorizeProfile?.customerSubscription ? authorizeProfile?.customerSubscription?.data?.subscription?.status : null
                         //check status of subscription
                         console.log("subscriptionStatus:", subscriptionStatus)
+                        if (subscriptionStatus && subscriptionStatus == "active") {
+                            //do nothing
+                        } else {
+                            //create subscription
+                            console.log("create subscription in authorize using the customer profile from authorize")
+                            //https://developer.authorize.net/api/reference/index.html#customer-profiles-get-customer-profile
 
+                            await createSubscriptionInAuthorizeWithCustomerProfile(authorizeCustomerIs, impInfo)
+                            await updateUserSettingSubscriptionStatus(userSetting.id, "TRUE")
+                        }
                     } else {
                         console.log("no subscription in authorize")
+                        await createSubscriptionInAuthorizeWithCustomerProfile(authorizeCustomerIs, impInfo)
+                        await updateUserSettingSubscriptionStatus(userSetting.id, "TRUE")
                     }
+                } else {
+                    //send error to add payment info
+                    console.log("no payment method saved")
                 }
+
+
             } else {
-                console.log("not a authorize user")
+                //renewalDate not present, show user "no subscription"?
             }
-
+        } else {
+            //Auth User is InActive
+            //send Email to user?
         }
-
-
-        // return new Response('OK', { status: 200, data: dbUser });
-        return new Response(JSON.stringify({ message: 'OK', data: dbUser }), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-    } catch (error) {
-        console.error(error);
-        return new Response('Error processing request', { status: 200 });//so that webhook doesn't deactivate in wordpress
     }
-
-    // return Response.json({ source: 'cron' });
-  }
+}

@@ -27,6 +27,12 @@ export const user_setting = pgTable("user_setting", {
   authorizeCustomerId:text("autorize_customer_id"),
   awsCustomerId:text("aws_customer_id"),
   data: text("data"),
+  trial: boolean("trial"),
+  trialStartDate: timestamp("trial_start_date"),
+  trialEndDate: timestamp("trial_end_date"),
+  woocommerceAuthorizeImport: boolean("woocommerce_authorize_import"),
+  woocommerceSource: text("woocommerceSource"),
+  subscriptionInAuthorize: boolean("subscription_in_authorize"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
@@ -37,7 +43,7 @@ export const user_setting = pgTable("user_setting", {
     .references(() => user.id, { onDelete: "cascade" }),
 });
 export const user_logs = pgTable("user_logs", {
-  id: serial("id").primaryKey(),
+  id: serial("id").primaryKey(),  
   data: json("data"),
   progressions:json("progressions"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
