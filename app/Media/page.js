@@ -80,6 +80,7 @@ import ankleAndKneeRestorePlaylistData_mediaUrls from '@/data/ankleAndKneeRestor
 import otherPlaylistData from '@/data/other.json'
 import otherPlaylistData_mediaUrls from '@/data/other_mediaUrls.json'
 
+export const dynamic = 'force-dynamic' // Don't prerender, render on each request
 
 export default async function Media() {
     return { props: {} } // Forces SSR instead of SSG
