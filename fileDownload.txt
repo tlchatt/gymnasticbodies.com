@@ -1,0 +1,81 @@
+
+> gymfit2026@0.1.0 dev
+> next dev
+
+   ▲ Next.js 16.0.8 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.29.160:3000
+   - Environments: .env.development, .env
+
+ ✓ Starting...
+ ✓ Ready in 329ms
+ ○ Compiling /Media ...
+url: jTRUtQhq.json?exp=1773239849218&sig=557bdcebd43f5b043a435d4169062da7
+id is: jTRUtQhq
+manifests: [
+  {
+    file: 'https://content.jwplatform.com/videos/jTRUtQhq-plcfVP8W.mp4?exp=1773239849218&sig=5c6274dd78f29f988c215a7a441a7bbe',
+    duration: 447,
+    type: 'video/mp4',
+    height: 1080,
+    width: 1920,
+    label: 'H.264 1920px'
+  },
+  {
+    file: 'https://content.jwplatform.com/videos/jTRUtQhq-qqj8j44S.m4a?exp=1773239849218&sig=bd6ddf4d58c445d414fd745c32f5750e',
+    duration: 447,
+    type: 'audio/mp4',
+    height: -1,
+    width: -1,
+    label: 'AAC Audio'
+  },
+  {
+    file: 'https://content.jwplatform.com/videos/jTRUtQhq-r7GgoZS9.mp4?exp=1773239849218&sig=93e05ac37452c68781860c16d605c133',
+    duration: 447,
+    type: 'video/mp4',
+    height: 720,
+    width: 1280,
+    label: 'H.264 1280px'
+  },
+  {
+    file: 'https://content.jwplatform.com/videos/jTRUtQhq-UCZo3Xfs.mp4?exp=1773239849218&sig=bd1f0d4ee62108a0fe8641af252f6fde',
+    duration: 447,
+    type: 'video/mp4',
+    height: 406,
+    width: 720,
+    label: 'H.264 720px'
+  },
+  {
+    file: 'https://content.jwplatform.com/videos/jTRUtQhq-NTNd90lS.mp4?exp=1773239849218&sig=b1c37298b23e8b2492af2f44b4707096',
+    duration: 447,
+    type: 'video/mp4',
+    height: 270,
+    width: 480,
+    label: 'H.264 480px'
+  },
+  {
+    file: 'https://content.jwplatform.com/videos/jTRUtQhq-Kto0Jxz1.mp4?exp=1773239849218&sig=f2ad1350d844b96f159babb73c10aa68',
+    duration: 447,
+    type: 'video/mp4',
+    height: 180,
+    width: 320,
+    label: 'H.264 320px'
+  },
+  {
+    file: 'https://content.jwplatform.com/manifests/jTRUtQhq.m3u8?exp=1773239849218&sig=8d962606e4b577439aab18af69fa7b26',
+    duration: 447,
+    type: 'application/vnd.apple.mpegurl'
+  }
+]
+lastImage is: {
+  src: 'https://content.jwplatform.com/v2/media/jTRUtQhq/poster.jpg?width=1920',
+  width: 1920,
+  type: 'image/jpeg'
+}
+videoUrl ..........: https://videos-cloudfront.jwpsrv.com/69b5f189_46564fbbebef82e8c0ee43927e6c376923552dba/content/conversions/S41JwTap/videos/jTRUtQhq-25175562.mp4
+id in start is:id jTRUtQhq
+url in start is:id https://videos-cloudfront.jwpsrv.com/69b5f189_46564fbbebef82e8c0ee43927e6c376923552dba/content/conversions/S41JwTap/videos/jTRUtQhq-25175562.mp4
+outputDir: public/media/
+outputPath: public/media/jTRUtQhq.mp4
+command: yt-dlp https://videos-cloudfront.jwpsrv.com/69b5f189_46564fbbebef82e8c0ee43927e6c376923552dba/content/conversions/S41JwTap/videos/jTRUtQhq-25175562.mp4 -o public/media/jTRUtQhq.mp4
+ GET /Media 200 in 5.3s (compile: 3.3s, render: 2.1s)

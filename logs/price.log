@@ -1,0 +1,220 @@
+allData: 63362
+authorizeData: 6466
+No email: 16
+newallData: 34527
+newallData later: 9753
+otherSources: 9753
+uniqueStatuses: [
+  'wc-processing',
+  'wc-failed',
+  'wc-cancelled',
+  'wc-refunded',
+  'wc-pending',
+  'wc-on-hold',
+  'wc-completed'
+]
+uniquePrices: [
+  '0',       '179.88',  '-179.88', '29.99',
+  '99.99',   '30',      '200.01',  '225',
+  '-29.99',  '-239.88', '149.99',  '239.88',
+  '149.89',  '80',      '85',      '154.88',
+  '-154.88', '799',     '275',     '395',
+  '240',     '154.89',  '170',     '75',
+  '195',     '214.88',  '149.88',  '304',
+  '-240',    '720',     '-149.89', '129.88',
+  '-149.88', '164.89'
+]
+sourceToTest: [
+  {
+    order_item_id: '445515',
+    order_id: '403877',
+    customer_id: '4646',
+    date_created: '2022-11-29 16:42:03',
+    product_net_revenue: '214.88',
+    username: 'msimpson@hanoverpa.com',
+    first_name: 'Mike',
+    last_name: 'Simpson',
+    email: 'msimpson@hanoverpa.com',
+    date_last_active: '2024-04-01 0:00:00',
+    date_registered: '2018-10-10 15:22:02',
+    date_created_gmt: '2022-11-29 23:42:03',
+    status: 'wc-processing'
+  }
+]
+order: {
+  id: 403877,
+  parent_id: 0,
+  status: 'processing',
+  currency: 'USD',
+  version: '6.4.1',
+  prices_include_tax: false,
+  date_created: '2022-11-29T16:42:03',
+  date_modified: '2022-11-29T16:42:06',
+  discount_total: '25.00',
+  discount_tax: '0.00',
+  shipping_total: '0.00',
+  shipping_tax: '0.00',
+  cart_tax: '0.00',
+  total: '214.88',
+  total_tax: '0.00',
+  customer_id: 7920,
+  order_key: 'wc_order_Q5FpFZBoWEfqz',
+  billing: {
+    first_name: 'Mike',
+    last_name: 'Simpson',
+    company: '',
+    address_1: '3097 Kitzmiller Rd.',
+    address_2: '',
+    city: 'Glenville',
+    state: 'PA',
+    postcode: '17329',
+    country: 'US',
+    email: 'msimpson@hanoverpa.com',
+    phone: '7176985511'
+  },
+  shipping: {
+    first_name: '',
+    last_name: '',
+    company: '',
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    postcode: '',
+    country: '',
+    phone: ''
+  },
+  payment_method: 'braintree_credit_card',
+  payment_method_title: 'Credit Card',
+  transaction_id: 'nzeyytdm',
+  customer_ip_address: '73.187.54.61',
+  customer_user_agent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_8_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
+  created_via: 'subscription',
+  customer_note: '',
+  date_completed: null,
+  date_paid: '2022-11-29T16:42:07',
+  cart_hash: '',
+  number: 'GB403877',
+  meta_data: [
+    { id: 18002281, key: 'is_vat_exempt', value: 'no' },
+    {
+      id: 18002282,
+      key: '_mbr_woo_infusionsoft_invoice_id',
+      value: '250175'
+    },
+    {
+      id: 18002284,
+      key: '_mbr_infusionsoft_order_id',
+      value: '250175'
+    },
+    {
+      id: 18002285,
+      key: '_wc_braintree_credit_card_payment_token',
+      value: 'g733s6q'
+    },
+    {
+      id: 18002286,
+      key: '_wc_braintree_credit_card_customer_id',
+      value: '8445950836'
+    },
+    { id: 18002297, key: '_subscription_renewal', value: '310581' },
+    {
+      id: 18002300,
+      key: '_wc_braintree_credit_card_retry_count',
+      value: '0'
+    },
+    {
+      id: 18002301,
+      key: '_wc_braintree_credit_card_trans_id',
+      value: 'nzeyytdm'
+    },
+    {
+      id: 18002303,
+      key: '_wc_braintree_credit_card_trans_date',
+      value: '2022-11-29 16:42:06'
+    },
+    {
+      id: 18002304,
+      key: '_wc_braintree_credit_card_environment',
+      value: 'production'
+    },
+    {
+      id: 18002305,
+      key: '_wc_braintree_credit_card_account_four',
+      value: '5195'
+    },
+    {
+      id: 18002306,
+      key: '_wc_braintree_credit_card_authorization_amount',
+      value: '214.88'
+    },
+    {
+      id: 18002307,
+      key: '_wc_braintree_credit_card_authorization_code',
+      value: '029543'
+    },
+    {
+      id: 18002308,
+      key: '_wc_braintree_credit_card_charge_captured',
+      value: 'yes'
+    },
+    {
+      id: 18002309,
+      key: '_wc_braintree_credit_card_card_expiry_date',
+      value: '2023-09'
+    },
+    {
+      id: 18002310,
+      key: '_wc_braintree_credit_card_card_type',
+      value: 'visa'
+    }
+  ],
+  line_items: [
+    {
+      id: 445515,
+      name: 'GymnasticBodies Unlimited - $239.88 USD / Year',
+      product_id: 51,
+      variation_id: 56,
+      quantity: 1,
+      tax_class: '',
+      subtotal: '239.88',
+      subtotal_tax: '0.00',
+      total: '214.88',
+      total_tax: '0.00',
+      taxes: [],
+      meta_data: [Array],
+      sku: 'gbannual',
+      price: 214.88,
+      parent_name: 'GymFit TV'
+    }
+  ],
+  tax_lines: [],
+  shipping_lines: [],
+  fee_lines: [],
+  coupon_lines: [
+    {
+      id: 445516,
+      code: 'friday25off',
+      discount: '25',
+      discount_tax: '0',
+      meta_data: [Array]
+    }
+  ],
+  refunds: [],
+  payment_url: 'https://www.gymnasticbodies.com/checkout/order-pay/403877/?pay_for_order=true&key=wc_order_Q5FpFZBoWEfqz&subscription_renewal=true',
+  date_created_gmt: '2022-11-29T23:42:03',
+  date_modified_gmt: '2022-11-29T23:42:06',
+  date_completed_gmt: null,
+  date_paid_gmt: '2022-11-29T23:42:07',
+  currency_symbol: '$',
+  _links: {
+    self: [ [Object] ],
+    collection: [ [Object] ],
+    customer: [ [Object] ]
+  }
+}
+order?.payment_method: braintree_credit_card
+transactionDate is: 2022-11-29 16:42:03
+cost is: 214.88
+transactionStatus is: wc-processing
+productName is: GymnasticBodies Unlimited - $239.88 USD / Year

@@ -126,9 +126,8 @@ export default function Checkout(props) {
            
             /> */}
             {/* <SnackBar open={props.fail} variation='error' /> */}
-
-
             {/* <StandardContainer style={ContainerStyle} innerStyle={ContainerInnerStyle} innerClassName="StandardContainerInnerMargin" id={Settings.id} innerID={Settings.innerID} {...props}> */}
+
             <Typography variant='h4' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>BILLING DETAILS</Typography>
             <Grid size={12} style={{ gridAutoFlow: "row", display: "grid", width: "100%", padding: "0 10vw" }}>
 

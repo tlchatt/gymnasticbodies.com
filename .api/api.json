@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "identifier": "jwp-platform",
+      "source": "@jwp-platform/v1.0#5b26m196mmw063ni",
+      "integrity": "sha512-IlsqAZ4iioGECnPN47bWC88bEI4Kgka1FyDIUSKdlaLpID8HQIj03SN1UrBHJRjPB8SyRAMZtFL/yjNGZkjJ6w==",
+      "installerVersion": "6.1.3"
+    }
+  ]
+}
