@@ -82,7 +82,7 @@ import otherPlaylistData_mediaUrls from '@/data/other_mediaUrls.json'
 
 
 export default async function Media() {
-
+    return { props: {} } // Forces SSR instead of SSG
     let titleStyle = {
         color: "#656464",
         padding: "24px 0 0",
