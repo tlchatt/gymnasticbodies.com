@@ -26,7 +26,7 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
     }
 
-    let dbUser, isExistingUser, password
+    let dbUser, isExistingUser, password, userSetting
     let json = await request.json()
     console.log("POST /api/user/subscription, JSON:", json)
 
@@ -56,6 +56,10 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 console.log("dbUser after createAndModifyUserInNeon:", dbUser)
             }else{
                 console.error("customer not in authorize. email:",username)
+                //check user in neon db using the userId
+                dbUser = await getUserWithEmail(json.email)
+                //get userSettings using the userId
+                userSetting = await queryUserSetting(dbUser?.id,"subscription")
             }
         }
         else {
@@ -86,8 +90,9 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
 
         console.log("dbUser:", dbUser)
+        console.log("userSetting:",userSetting)
         // return new Response('OK', { status: 200, data: dbUser });
-        return new Response(JSON.stringify({ message: 'OK', data: dbUser }), {
+        return new Response(JSON.stringify({ message: 'OK', data: dbUser, settings:userSetting }), {
             status: 200,
             headers: {
                 'Content-Type': 'application/json'

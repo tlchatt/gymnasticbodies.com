@@ -33,12 +33,6 @@ export default function AccountDetailsComp({ data }) {
         padding: "24px 0 0",
     }
 
-    let SubscriptionData = [
-        {
-            ButtonText: "Add Subscription"
-
-        }
-    ]
     let paymentUpdateData =
     {
         title: "Insert payment details",
@@ -63,7 +57,7 @@ export default function AccountDetailsComp({ data }) {
     let updatePaymentInfo = {//for non auth users, and (in future) for those whose credit card details have expired
         title: "Review And Update Payment",
         subTitle: `To continue enjoying your workout subscription, update your payment info!`,
-        boldSubText: impInfo?.status == "Active" ? `` : `Renewing  Plan: $${impInfo?.price} ${impInfo?.matchedTerm}`,
+        boldSubText: (impInfo?.status == "Active" || impInfo?.status == "active") ? `` : `Renewing  Plan: $${impInfo?.price} ${impInfo?.matchedTerm}`,
         ButtonText: "Update Payment Info",
         // SecondaryButtonText: "Never Mind",//for the modal
         SecondaryButtonPosition: "right",
@@ -105,13 +99,13 @@ export default function AccountDetailsComp({ data }) {
                                 //     "required": true,
                                 //     "width": "half"
                                 //   },
-                                {
-                                    "type": "tel",
-                                    "content": "Phone ( + Country Code ) *",
-                                    "id": "phone",
-                                    "required": true,
-                                    "width": "full"
-                                },
+                                // {
+                                //     "type": "tel",
+                                //     "content": "Phone ( + Country Code ) *",
+                                //     "id": "phone",
+                                //     "required": true,
+                                //     "width": "full"
+                                // },
                             ]
                         }
                     ]
@@ -123,18 +117,27 @@ export default function AccountDetailsComp({ data }) {
         "title": "",
         "style": { padding: '0' }
     }
-    console.log("data??????????", data)
+    
     const nextPayment = new Date(impInfo.redableNextPaymentDate)
 
     const todaysDate = new Date()
     let userData = {
-        billEmail:impInfo?.email,
-        billToFirstName:impInfo?.firstName,
-        billToLastName:impInfo?.lastName,
-        billAmount:impInfo?.price,
-        billTerm:impInfo?.matchedTerm,
-        billStartDate:impInfo?.nextPaymentDate != "N/A" && impInfo?.nextPaymentDate ? impInfo?.nextPaymentDate : todaysDate,
-        postAWS:false
+        billEmail: impInfo?.email,
+        billToFirstName: impInfo?.firstName,
+        billToLastName: impInfo?.lastName,
+        billAmount: impInfo?.price,
+        billTerm: impInfo?.matchedTerm,
+        billStartDate: impInfo?.nextPaymentDate != "N/A" && impInfo?.nextPaymentDate ? impInfo?.nextPaymentDate : todaysDate,
+        postAWS: false
+    }
+    let userTest = {
+        billEmail: "pcTest1234@tlchatt.com",
+        billToFirstName: "Test",
+        billToLastName: "Technologic",
+        billAmount: "0.02",
+        billTerm: "montly",
+        billStartDate: todaysDate,
+        postAWS: false
     }
 
 
@@ -153,7 +156,7 @@ export default function AccountDetailsComp({ data }) {
                     <ModalPopUp data={updatePaymentInfo} formData={formData} paywall={true} userData={userData} />
                 }
 
-                {/* <ModalPopUp data={updatePaymentInfo} formData={formData} paywall={true} userData={userData} /> */}
+                {/* <ModalPopUp data={updatePaymentInfo} formData={formData} paywall={true} userData={userTest} /> */}
 
 
                 {/* <Checkout /> */}
@@ -323,17 +326,14 @@ function DisplaySubscription({ data }) {
                         {/* <Button size='large' autoFocus variant='contained' onClick={cancelSubscription} >
                                                 Cancel Subscription
                                             </Button> */}
-                        <ModalPopUp data={cancelSubscriptionData} />
+                        {/* <ModalPopUp data={cancelSubscriptionData} /> */}
                     </Stack>
                 }
                 {impInfo?.status != "Active" && //Add subscription button
                     <Stack direction="column" spacing={2} style={{ width: "100%", display: "flex", alignItems: "flex-end" }}>
-                        {/* <Button size='large' autoFocus variant='contained' >
-                            Add Subscription
-                        </Button> */}
-                        <ModalPopUp data={addSubscriptionData} />
 
-                        {/* <ModalPopUp data={SubscriptionData} /> */}
+                        {/* <ModalPopUp data={addSubscriptionData} /> */}
+
                     </Stack>
                 }
                 {/* {cancelled &&

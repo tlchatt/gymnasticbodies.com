@@ -1,10 +1,8 @@
 'use client';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { Box, Typography } from '@mui/material';
-import { StandardContainer } from '@/components/StandardContainer/StandardContainer';
 import { GetSettings } from '@/lib/GetSettings';
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 

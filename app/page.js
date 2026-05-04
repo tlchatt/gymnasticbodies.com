@@ -64,6 +64,9 @@ export default function Home() {
     justifyContent: "center",
     alignItems: "center"
   }
+
+  router.push(`https://my.gymnasticbodies.com`)
+
   function handleContactForm() {
     let contactFormDiv = document.querySelectorAll("#contactFormDiv")[0]
     let displayOfContactForm = contactFormDiv.style.display
@@ -94,85 +97,85 @@ export default function Home() {
 
       //check if the email is in the neon database
 
-     /* let response = await fetch(`${testUrl}/api/authentication`, {
-        method: 'POST',
-        config,
-        body: JSON.stringify(data)
-      })
-      let userInfo = await response.json()
-
-      let customerData = await getAllDataFromFile(values.email)
-      let merchantId = customerData?.result?.profile?.merchantCustomerId;
-      let customerId = customerData?.result?.profile?.customerProfileId;
-
-      console.log("customerId:", customerId, "\nerchantId:", merchantId, "\customerData:", customerData)
-
-      if (userInfo.status == "UNAUTHORIZED") {
-        //check if users email is in neon db
-        let checkNeonDB = {
-          email: values.email,
-          reason: "checkUserInNeon"
-        }
-        let response = await fetch(`${testUrl}/api/user/subscription`, {
-          method: 'POST',
-          config,
-          body: JSON.stringify(checkNeonDB)
-        })
-        let userInNeon = await response.json()
-        console.log("userInNeon:", userInNeon)
-
-        // let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
-        // console.log("customerData:", customerData)
-        // merchantId = customerData?.result?.profile?.merchantCustomerId;
-
-        if (!customerId && !userInNeon.data) {
-          router.push(`${testUrl}/subscribe`)//customer is neither in authorize nor in db (email check)
-        }
-        if (customerId && !userInNeon.data) {
-          let customerName = customerData?.result?.profile?.paymentProfiles ? customerData?.result?.profile?.paymentProfiles[0]?.billTo?.firstName : "N/A"
-          console.log("customerName:", customerName)
-          // customer in authorize but not in db
-          let createUserData = {
-            email: values.email,
-            password: values.password,
-            reason: "registerWPass",
-            first_name: customerName
-          }
-          let response = await fetch(`${testUrl}/api/user/subscription`, {
-            method: 'POST',
-            config,
-            body: JSON.stringify(createUserData)
-          })
-          userInfo = await response.json()
-
-        }
-      }
-      // let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
-
-
-      console.log("userInfo:", userInfo)
-
-      const today = new Date();
-      const expirationDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-      const refreshExpireTime = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-      const timezone = moment.tz.guess();
-      let token = userInfo.token ? userInfo.token : userInfo.data.token
-      let name = userInfo.user ? userInfo.user.name : userInfo.data.user.name
-      let id = userInfo.user ? userInfo.user.id : userInfo.data.user.id
-      let email = userInfo.user ? userInfo.user.email : userInfo.data.user.email
-      console.log("merchantId:", merchantId)
-      let postAWS = merchantId ? false : true//true limited options, false has all options
-      console.log("postAWS:", postAWS)
-      console.log("token:", token)
-      localStorage.setItem('name', name);
-      localStorage.setItem('userId', id);
-      localStorage.setItem('username', email);
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('AuthExpirationDate', expirationDate);
-      localStorage.setItem('refreshToken', token);
-      localStorage.setItem('refreshExpireTime', refreshExpireTime);
-      localStorage.setItem('timezone', timezone);
-      localStorage.setItem('postAWS', postAWS);*/
+      /* let response = await fetch(`${testUrl}/api/authentication`, {
+         method: 'POST',
+         config,
+         body: JSON.stringify(data)
+       })
+       let userInfo = await response.json()
+ 
+       let customerData = await getAllDataFromFile(values.email)
+       let merchantId = customerData?.result?.profile?.merchantCustomerId;
+       let customerId = customerData?.result?.profile?.customerProfileId;
+ 
+       console.log("customerId:", customerId, "\nerchantId:", merchantId, "\customerData:", customerData)
+ 
+       if (userInfo.status == "UNAUTHORIZED") {
+         //check if users email is in neon db
+         let checkNeonDB = {
+           email: values.email,
+           reason: "checkUserInNeon"
+         }
+         let response = await fetch(`${testUrl}/api/user/subscription`, {
+           method: 'POST',
+           config,
+           body: JSON.stringify(checkNeonDB)
+         })
+         let userInNeon = await response.json()
+         console.log("userInNeon:", userInNeon)
+ 
+         // let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
+         // console.log("customerData:", customerData)
+         // merchantId = customerData?.result?.profile?.merchantCustomerId;
+ 
+         if (!customerId && !userInNeon.data) {
+           router.push(`${testUrl}/subscribe`)//customer is neither in authorize nor in db (email check)
+         }
+         if (customerId && !userInNeon.data) {
+           let customerName = customerData?.result?.profile?.paymentProfiles ? customerData?.result?.profile?.paymentProfiles[0]?.billTo?.firstName : "N/A"
+           console.log("customerName:", customerName)
+           // customer in authorize but not in db
+           let createUserData = {
+             email: values.email,
+             password: values.password,
+             reason: "registerWPass",
+             first_name: customerName
+           }
+           let response = await fetch(`${testUrl}/api/user/subscription`, {
+             method: 'POST',
+             config,
+             body: JSON.stringify(createUserData)
+           })
+           userInfo = await response.json()
+ 
+         }
+       }
+       // let customerData = allAuthorizeData.find(data => data.result.profile.email === values.email);
+ 
+ 
+       console.log("userInfo:", userInfo)
+ 
+       const today = new Date();
+       const expirationDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+       const refreshExpireTime = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+       const timezone = moment.tz.guess();
+       let token = userInfo.token ? userInfo.token : userInfo.data.token
+       let name = userInfo.user ? userInfo.user.name : userInfo.data.user.name
+       let id = userInfo.user ? userInfo.user.id : userInfo.data.user.id
+       let email = userInfo.user ? userInfo.user.email : userInfo.data.user.email
+       console.log("merchantId:", merchantId)
+       let postAWS = merchantId ? false : true//true limited options, false has all options
+       console.log("postAWS:", postAWS)
+       console.log("token:", token)
+       localStorage.setItem('name', name);
+       localStorage.setItem('userId', id);
+       localStorage.setItem('username', email);
+       localStorage.setItem('authToken', token);
+       localStorage.setItem('AuthExpirationDate', expirationDate);
+       localStorage.setItem('refreshToken', token);
+       localStorage.setItem('refreshExpireTime', refreshExpireTime);
+       localStorage.setItem('timezone', timezone);
+       localStorage.setItem('postAWS', postAWS);*/
 
       /**TODO - store entire user object in localhost - reusable function */
       /*let user = {

@@ -3,21 +3,16 @@ import { useEffect, useRef } from "react";
 import Button from '@mui/material/Button';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { user } from "@/app/context/stateContext";
 import Alert from '@mui/material/Alert';
-
 import CircularIndeterminate from '@/components/CircularLoading';
 import { getAndUseInfoFrompaymentForm, storeInLocalStorage } from "@/lib/commonFunctions";
-import { ConnectingAirportsOutlined } from "@mui/icons-material";
-import { paymentFunctionality } from "@/lib/commonServerFunction";
-import { convertProcessSignalToExitCode } from "util";
 
 export function PaymentPortal(props) {
     console.log("props:::::::::::::", props)
     let url = process.env.NEXT_PUBLIC_API_URL
-    console.log("url:", url)
+    // console.log("url:", url)
     const router = useRouter();
     const { email, setEmail, setCustomerId } = user()
     let [error, setError] = useState(false)
@@ -33,7 +28,7 @@ export function PaymentPortal(props) {
     const trial = searchParams.get('trial');
 
     const formRef = useRef(null);
-    console.log("inside useEffect", amount, term, trial)
+    // console.log("inside useEffect", amount, term, trial)
     useEffect(() => {
         window.responseHandler = async function (response) {
             // handle response
@@ -65,7 +60,7 @@ export function PaymentPortal(props) {
         console.log("response in component is:", response)
 
         if (!response) {
-            router.push(`https://my.gymnasticbodies.com/`)
+            // router.push(`https://my.gymnasticbodies.com/`)
             return
         }
 
@@ -73,7 +68,6 @@ export function PaymentPortal(props) {
             setLoading(true)
             try {
                 const formResponse = await getAndUseInfoFrompaymentForm(response, props?.userData, amount, term, trial, formRef)
-
                 console.log("formResponse:", formResponse)
 
                 // Case 1: Existing customer -> start countdown      

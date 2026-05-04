@@ -83,7 +83,7 @@ export async function GET(request) {
                         subscriptionStatus = authorizeProfile?.customerSubscription ? authorizeProfile?.customerSubscription?.data?.subscription?.status : null
                         //check status of subscription
                         console.log("subscriptionStatus:", subscriptionStatus)
-                        if (subscriptionStatus && subscriptionStatus == "active") {
+                        if (subscriptionStatus && (subscriptionStatus == "active" || subscriptionStatus == "Active")) {
                             //do nothing
                         } else {
                             //create subscription

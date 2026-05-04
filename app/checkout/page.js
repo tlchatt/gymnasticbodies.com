@@ -1,16 +1,9 @@
 'use client'
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import Link from 'next/link';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import { PaymentPortal } from '@/components/PaymentPortal';
 import { Forms } from '@/components/Forms';
-import { GetSettings } from "@/lib/GetSettings.js";
-import { StandardContainer } from '@/components/StandardContainer/StandardContainer';
 import Script from 'next/script';
 import { Suspense } from 'react';
 
