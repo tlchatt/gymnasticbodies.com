@@ -17,7 +17,7 @@ import { Suspense } from 'react';
 
 
 export default function Checkout(props) {
-
+    console.log("props in checkout:", props)
     // let { Settings, Style, Media } = GetSettings(props, "Checkout");
     let commonGap = {
         gap: "10px",
@@ -110,6 +110,16 @@ export default function Checkout(props) {
         "title": ""
     }
 
+    let formTitle = props?.data?.title ?? "BILLING DETAILS"
+    let formOuterStyle = {
+
+        gridAutoFlow: "row",
+        display: "grid",
+        width: "100%",
+        padding: "0 10vw",
+        ...props?.data?.style
+    }
+
 
     return (
         <>
@@ -127,25 +137,31 @@ export default function Checkout(props) {
             /> */}
             {/* <SnackBar open={props.fail} variation='error' /> */}
             {/* <StandardContainer style={ContainerStyle} innerStyle={ContainerInnerStyle} innerClassName="StandardContainerInnerMargin" id={Settings.id} innerID={Settings.innerID} {...props}> */}
+            {formTitle &&
+                <Typography variant='h4' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>{formTitle}</Typography>
+            }
 
-            <Typography variant='h4' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>BILLING DETAILS</Typography>
-            <Grid size={12} style={{ gridAutoFlow: "row", display: "grid", width: "100%", padding: "0 10vw" }}>
+            <Grid size={12} style={formOuterStyle}>
 
-                <Forms data={formData} />
+                <Forms data={props?.data?.["form-Options"] ? props?.data : formData} />
+                {props?.modalData?.note &&
+                    <>
+                        <Typography variant='p' gutterBottom style={titleStyle} id="responsive-dialog-title" align='left'>By clicking on the "Pay" button below, I understand and agree to the following:</Typography>
+                        <Typography variant='p' gutterBottom style={titleStyle} id="responsive-dialog-title" align='left'>I am at least 18 years old and agree to the ‌
+                            <Link href="/terms-of-service">
+                                Terms of Service‌‌
+                            </Link>
+                            and
+                            <Link href="/privacy-policy">
+                                Privacy Policy .
+                            </Link>
+                        </Typography>
+                    </>
+                }
 
-                <Typography variant='p' gutterBottom style={titleStyle} id="responsive-dialog-title" align='left'>By clicking on the "Pay" button below, I understand and agree to the following:</Typography>
-                <Typography variant='p' gutterBottom style={titleStyle} id="responsive-dialog-title" align='left'>I am at least 18 years old and agree to the ‌
-                    <Link href="/terms-of-service">
-                        Terms of Service‌‌
-                    </Link>
-                    and
-                    <Link href="/privacy-policy">
-                        Privacy Policy .
-                    </Link>
-                </Typography>
                 <Script src="https://js.authorize.net/v3/AcceptUI.js" strategy="afterInteractive" />
                 <Suspense>
-                    <PaymentPortal />
+                    <PaymentPortal data={props?.data} userData={props?.userData}/>
                 </Suspense>
             </Grid>
             {/* </StandardContainer> */}

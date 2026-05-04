@@ -32,8 +32,9 @@ export async function POST(request) {
         trial: params.get('trial')
     };
     console.log("incomingData:", incomingData)
-    let merchantAuth = await authorizePaymentAuthentication();
 
+    let merchantAuth = await authorizePaymentAuthentication();
+    console.log("merchantAuth:",merchantAuth)
     /*
         * transaction success
         * create customer
@@ -140,9 +141,9 @@ export async function POST(request) {
                 if (authorizeCustomerIs.status) {
                     //get flag and subscription info for later
                     impInfo = await getFlagAndSubscriptionInfo(customerData, authorizeCustomerIs, incomingData)
-                    console.log("impInfo from customerSubscription not active:", impInfo)
-                    if (impInfo.status == "active") {
-                        subscriptionForCustomer = await createSubscriptionInAuthorize(authorizeCustomerIs, impInfo, authorizationTransactionIs)
+                    console.log("impInfo from customerSubscription:", impInfo)
+                    if (impInfo.status == "active"||impInfo.status == "Active") {
+                        subscriptionForCustomer = await createSubscriptionInAuthorize(authorizeCustomerIs, impInfo)
                         console.log("subscriptionForCustomer:", subscriptionForCustomer)
                     } else {
                         console.log("inactive customer authorizenetCustomerId", impInfo.authorizenetCustomerId)

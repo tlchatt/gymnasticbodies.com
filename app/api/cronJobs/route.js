@@ -1,3 +1,4 @@
+import { getCorrectNameFormat } from "@/lib/commonFunctions";
 import { createSubscriptionInAuthorizeWithCustomerProfile, getAllCustomerDataFromAuthorize, getCustomerPaymentProfile, updateCustomerLastName, updateCustomerPaymentProfile } from "@/lib/commonServerFunction";
 import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid";
 import { createAccountForUser, createAndModifyUserInNeon, getAllAuthUserSettings, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting, updateUserSettingData, updateUserSettingSubscriptionStatus } from "@/lib/userSettings";
@@ -27,20 +28,21 @@ export async function GET(request) {
             let subscriptionTerm = userSettingsData?.term
             let authorizeCustomerId = userSetting?.authorizeCustomerId
 
-            let fullName = (userSettingsData?.first_name || "").trim().split(" ").filter(Boolean);//trims whitespace from beginning and end of the string. 
-            let firstName, lastName
-            if (fullName.length == 2) {
-                firstName = fullName[0]
-                lastName = fullName[1]
-            }
-            if (fullName.length == 3) {
-                firstName = fullName[0]
-                lastName = fullName[2]
-            }
-            if (fullName.length == 1) {
-                firstName = fullName[0]
-                lastName = "N/A"
-            }
+            let name = await getCorrectNameFormat(userSettingsData?.first_name)
+            // let fullName = (userSettingsData?.first_name || "").trim().split(" ").filter(Boolean);//trims whitespace from beginning and end of the string. 
+            // let firstName, lastName
+            // if (fullName.length == 2) {
+            //     firstName = fullName[0]
+            //     lastName = fullName[1]
+            // }
+            // if (fullName.length == 3) {
+            //     firstName = fullName[0]
+            //     lastName = fullName[2]
+            // }
+            // if (fullName.length == 1) {
+            //     firstName = fullName[0]
+            //     lastName = "N/A"
+            // }
             renewalDate = (renewalDate && renewalDate != "N/A") ? renewalDate = renewalDate.split('T')[0] : null
             if (renewalDate && renewalDate === today) {//for valid renewal date
                 console.log("authorizeCustomerId:", authorizeCustomerId)
@@ -51,15 +53,15 @@ export async function GET(request) {
                 console.log("renewalDate renewalDate < today:", renewalDate)
                 console.log("email is:", email)
                 console.log("userSetting:", userSetting)
-                console.log("fullName:", fullName)
-                console.log("firstName:", firstName)
-                console.log("lastName:", lastName)
+                // console.log("fullName:", fullName)
+                console.log("firstName:", name?.firstName)
+                console.log("lastName:", name?.lastName)
                 console.log("paymentProfile:", payment)
-                await updateCustomerPaymentProfile(payment, firstName, lastName, authorizeProfile)
+                await updateCustomerPaymentProfile(payment,  name?.firstName, name?.lastName, authorizeProfile)
                 let subscriptionStatus
                 let updatedUserSettingsData = userSettingsData
-                updatedUserSettingsData["first_name"] = firstName
-                updatedUserSettingsData["last_name"] = lastName
+                updatedUserSettingsData["first_name"] = name?.firstName
+                updatedUserSettingsData["last_name"] = name?.lastName
 
                 await updateUserSettingData(userSetting.id, updatedUserSettingsData)
 

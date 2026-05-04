@@ -9,12 +9,13 @@ import { user } from "@/app/context/stateContext";
 import Alert from '@mui/material/Alert';
 
 import CircularIndeterminate from '@/components/CircularLoading';
-import { paymentFormUpdate, storeInLocalStorage } from "@/lib/commonFunctions";
+import { getAndUseInfoFrompaymentForm, storeInLocalStorage } from "@/lib/commonFunctions";
 import { ConnectingAirportsOutlined } from "@mui/icons-material";
 import { paymentFunctionality } from "@/lib/commonServerFunction";
 import { convertProcessSignalToExitCode } from "util";
 
 export function PaymentPortal(props) {
+    console.log("props:::::::::::::", props)
     let url = process.env.NEXT_PUBLIC_API_URL
     console.log("url:", url)
     const router = useRouter();
@@ -63,51 +64,57 @@ export function PaymentPortal(props) {
         let timer
         console.log("response in component is:", response)
 
-        if (response) {
-            setLoading(true)
-            const updateForm = async () => {
-                let formResponse = await paymentFormUpdate(response, amount, term, trial, formRef);
-                if (formResponse.existingCustomer) {//existing customer
-                    if (count > 0) {
-                        timer = setTimeout(() => setCount(count - 1), 1000);
-                        setLoading(false)
-                        setError(true)
-                        setMessage(`${formResponse.message}. Redirecting in ${count} seconds...`)
-                    } else {
-                        router.push(`https://my.gymnasticbodies.com/`)
-                    }
-                    // router.push(`https://my.gymnasticbodies.com/`)
-                } else {//new customer
-                    console.log("formResponse in else:", formResponse)
-
-                    let transaction = formResponse?.transaction ?? false
-                    let customerCreated = formResponse?.customerCreated ?? false
-                    let subscriptionCreated = formResponse?.subscriptionCreated ?? false
-
-                    if (!transaction || !customerCreated || !subscriptionCreated) {//not successfull and a new customer
-                        setLoading(false)
-                        setError(true)
-                        setMessage(`${formResponse?.message ?? "Transaction Failed!"} Please Try Again.`)
-                    } else {//successfull and a new customer
-                        //set success icon state to true here
-                        console.log("formResponse in else after transaction:", formResponse)
-                        let data = JSON.parse(formResponse.data)
-                        let user = await storeInLocalStorage(data)
-                        console.log("user in paymentFormUpdate is:", JSON.stringify(user))
-                        setLoading(false)
-                        setSuccess(true)
-                        setMessage(`${formResponse.message}. Redirecting To Your Workouts ...`)
-                        router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
-                    }
-                }
-            };
-            updateForm();
+        if (!response) {
+            router.push(`https://my.gymnasticbodies.com/`)
+            return
         }
+
+        const updateForm = async () => {
+            setLoading(true)
+            try {
+                const formResponse = await getAndUseInfoFrompaymentForm(response, props?.userData, amount, term, trial, formRef)
+
+                console.log("formResponse:", formResponse)
+
+                // Case 1: Existing customer -> start countdown      
+                if (formResponse.existingCustomer) {
+                    if (count > 0) {
+                        timer = setTimeout(() => setCount(prev => prev - 1), 1000)
+                        setLoading(false)
+                    }
+                    return
+                    // don't fall through      
+                }
+                // Case 2: New customer - but transaction failed
+                const { transaction, customerCreated, subscriptionCreated, message, data } = formResponse
+                if (!transaction || !customerCreated || !subscriptionCreated) {
+                    setLoading(false)
+                    setError(true)
+                    setMessage(`${message ?? "Transaction Failed!"} Please Try Again.`)
+                    return
+                }
+                // Success
+                const parsed = JSON.parse(data)
+                const user = await storeInLocalStorage(parsed)
+                console.log("user in paymentFormUpdate is:", user)
+                setLoading(false)
+                setSuccess(true)
+                setMessage(`${message}. Redirecting To Your Workouts...`)
+                router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
+            } catch (err) {
+                console.error(err)
+                setLoading(false)
+                setError(true)
+                setMessage("Something went wrong. Please Try Again.")
+            }
+        }
+        updateForm()
         return () => {
             if (timer) clearTimeout(timer);
         };
 
-    }, [response, count]);
+
+    }, [response, count, amount, term, trial, props?.userData, router]);
 
     let FormInnerStyle = {
         display: 'grid',
@@ -152,12 +159,12 @@ export function PaymentPortal(props) {
                         data-apiloginid="7F57wRjv"
                         data-clientkey="6vPVd2WmeVmz24UB5qkm8Avr3w5yxpAVW6c5MdkWT3kJ2E5U38A2Z5E2LZvdz9Qb"
                         data-acceptuiformbtntxt="Submit"
-                        data-acceptuiformheadertxt="Card Information"
+                        data-acceptuiformheadertxt={props?.data?.title ? props?.data?.title : "Card Information"}
                         data-paymentoptions='{"showCreditCard": true, "showBankAccount": false}'
                         data-responsehandler="responseHandler"
 
                     >
-                        Confirm & Pay
+                        {props?.data?.buttonText ? props?.data?.buttonText : "Confirm & Pay"}
                     </Button>
                 </form>
             </div>

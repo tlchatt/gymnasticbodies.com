@@ -94,9 +94,6 @@ export default function Subscribe(props) {
                 )
                 }
             </Grid>
-
-
-
             <Grid size={6} style={{ display: "grid", padding: "10px", justifyItems: "center" }} elevation={24}>
                 <Box >
 

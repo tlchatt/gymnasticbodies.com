@@ -20,6 +20,8 @@ import Countries from '../data/countries.json'
 import { submitForm } from '@/lib/SubmitForm';
 import { PaymentPortal } from './PaymentPortal';
 export function Forms(props) {
+
+    console.log("props in frms:",props)
     /** NOTES:
      * Add Mask for clean formating. 
      * Add email validation
@@ -104,7 +106,7 @@ export function Forms(props) {
 
     /**Section Data Registrtion */
     formsData.steps = formsData?.steps ? formsData?.steps : "no steps mentioned"
-    formsData.note = formsData?.note ? formsData?.note : "Add a Note"
+    formsData.note = formsData?.note ? formsData?.note : ""
     let formInfo = {}
 
     /** Styles */
@@ -689,7 +691,6 @@ export function Forms(props) {
                     right: "0"
                 }
                 const InputStyle = {
-
                     color: '#000',
                     padding: Settings.lowPadding,
                     border: 'none',
@@ -732,7 +733,7 @@ export function Forms(props) {
                     gridAutoFlow: "column",
                     alignItems: "center"
                 }
-                // console.log("type is:", type)
+                console.log("type is:", type)
                 return (
                     <>
                         {content &&
@@ -774,15 +775,6 @@ export function Forms(props) {
                                             onChange={e => handleValue(e)}
                                             onBlur={e => handleEngage()}
                                         />
-                                        // <PhoneInput
-                                        //     id={'phoneInput'}
-                                        //     className="Input" style={InputStyle}
-                                        //     value={value}
-                                        //     required={requiredValue}
-                                        //     onFocus={e => handleEngage()}
-                                        //     onChange={e => handleValue(e)}
-                                        //     onBlur={e => handleEngage()}
-                                        // />
                                     }
                                     {type === "email" &&
                                         <TextField
@@ -799,18 +791,6 @@ export function Forms(props) {
                                             onChange={e => handleValue(e)}
                                             onBlur={e => handleEngage()}
                                         />
-
-                                        // <input
-                                        //     type={type}
-                                        //     id={id}
-                                        //     name={id}
-                                        //     value={value}
-                                        //     className="Input"
-                                        //     style={InputStyle}
-                                        //     onFocus={e => handleEngage()}
-                                        //     onChange={e => handleValue(e)}
-                                        //     onBlur={e => handleEngage()}
-                                        //     required={requiredValue} />
                                     }
                                     {type === "checkbox" &&
                                         <input
@@ -896,18 +876,18 @@ export function Forms(props) {
                                     }
                                     {!(type === "textarea") && !(type === "checkbox") && !(type === "tel") && !(type === "email") && !(type === "address") && !(type === "search_country") && !(type === "pay") && !(type == "password") &&
                                         <input
-                                            type={type}
-                                            id={id}
-                                            name={id}
-                                            className="Input"
-                                            style={InputStyle}
-                                            onFocus={e => handleEngage()}
-                                            onBlur={e => handleEngage()}
-                                            onChange={e => handleValue(e)}
-                                            value={value}
-                                            required={requiredValue}
+                                        type={type}
+                                        id={id}
+                                        name={id}
+                                        className="Input"
+                                        style={InputStyle}
+                                        onFocus={e => handleEngage()}
+                                        onBlur={e => handleEngage()}
+                                        onChange={e => handleValue(e)}
+                                        value={value}
+                                        required={requiredValue}
 
-                                        />
+                                    />
                                     }
                                     {engaged && !value && !valid &&
                                         <SandGlassLoader Style={InputSVGStyle} />
