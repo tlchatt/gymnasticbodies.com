@@ -44,8 +44,8 @@ export default function Subscribe(props) {
         color: "#f05621"
     }
     let pageJson = [
-        { "term": "Monthly", "price": "$75 / month", "amount": "0.02", "trial": true, "trialDetails": "(7 days Trial)", "buttonValue": "Start For Free", "billedText": "Billed Monthly", "billedTerm": "(After 7 days Trial)" },
-        { "term": "Monthly", "price": "$75 / month", "amount": "75", "trial": false, "trialDetails": "", "buttonValue": "Subscribe", "billedTerm": "", "billedText": "Billed Monthly" },
+        { "term": "Monthly", "price": "$75 / month", "amount": "75", "trial": true, "trialDetails": "(7 days Trial)", "buttonValue": "Start For Free", "billedText": "Billed Monthly", "billedTerm": "(After 7 days Trial)" },
+        // { "term": "Monthly", "price": "$75 / month", "amount": "75", "trial": false, "trialDetails": "", "buttonValue": "Subscribe", "billedTerm": "", "billedText": "Billed Monthly" },
     ]
     return (
         <>
