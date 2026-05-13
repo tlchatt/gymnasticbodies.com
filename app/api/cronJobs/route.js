@@ -1,8 +1,6 @@
 import { getCorrectNameFormat } from "@/lib/commonFunctions";
 import { createSubscriptionInAuthorizeWithCustomerProfile, getAllCustomerDataFromAuthorize, getCustomerPaymentProfile, updateCustomerLastName, updateCustomerPaymentProfile } from "@/lib/commonServerFunction";
-import { sendCredentialsEmailSG, sendSubsCancelledEmailSG } from "@/lib/sendgrid";
 import { createAccountForUser, createAndModifyUserInNeon, getAllAuthUserSettings, getUserWithEmail, insertIntoUserSetting, queryUserSetting, updateUserSetting, updateUserSettingData, updateUserSettingSubscriptionStatus } from "@/lib/userSettings";
-import { ConnectingAirportsOutlined } from "@mui/icons-material";
 
 export async function GET(request) {
     console.log("inside POST in cronJobs")
@@ -75,8 +73,9 @@ export async function GET(request) {
                     matchedTerm: subscriptionTerm,
                     recentTransactionDate: renewalDate,
                     price: price,
-                    lastName: lastName
+                    lastName: name?.lastName
                 }
+                console.log("impInfo:",impInfo)
                 console.log("authorizeProfile:::::", authorizeProfile)
                 if (payment) {
                     if (authorizeProfile?.customerSubscription?.status) {
