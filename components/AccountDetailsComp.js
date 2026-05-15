@@ -2,27 +2,13 @@
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { GetSettings } from "@/lib/GetSettings.js";
-import { DateTime } from 'luxon';
-import { StandardContainer } from '@/components/StandardContainer/StandardContainer';
-import { getUserWithEmail, queryUserSetting, updateUserSetting } from '@/lib/userSettings';
-import { user } from "@/app/context/stateContext";
-import useSWR from 'swr'
-import axios from "axios";
-import CircularIndeterminate from '@/components/CircularLoading';
-import { Button, Stack } from '@mui/material';
+import { queryUserSetting, updateUserSetting } from '@/lib/userSettings';
+import { Stack } from '@mui/material';
 import ModalPopUp from './ModalPopUp';
 import { CancelSubscriptionInAuthorize } from '@/lib/commonServerFunction';
 import { useState } from 'react';
-import { getAccountInformation, getCorrectNameFormat } from '@/lib/commonFunctions';
-import { PaymentPortal } from './PaymentPortal';
-import { Suspense } from 'react';
-import Script from 'next/script';
-import Checkout from '@/app/checkout/page';
 
 export default function AccountDetailsComp({ data }) {
-    let [loading, setLoading] = useState(false)
-    let [displayPayWall, setDisplayPayWall] = useState(false)
     let {
         impInfo,
         lastTransactionInvoiceNumber
@@ -117,7 +103,7 @@ export default function AccountDetailsComp({ data }) {
         "title": "",
         "style": { padding: '0' }
     }
-    
+
     const nextPayment = new Date(impInfo.redableNextPaymentDate)
 
     const todaysDate = new Date()

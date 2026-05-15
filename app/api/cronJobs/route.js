@@ -25,25 +25,14 @@ export async function GET(request) {
             let price = userSettingsData?.price
             let subscriptionTerm = userSettingsData?.term
             let authorizeCustomerId = userSetting?.authorizeCustomerId
+            
+            let name = await getCorrectNameFormat(userSettingsData?.first_name, userSettingsData?.last_name)
 
-            let name = await getCorrectNameFormat(userSettingsData?.first_name)
-            // let fullName = (userSettingsData?.first_name || "").trim().split(" ").filter(Boolean);//trims whitespace from beginning and end of the string. 
-            // let firstName, lastName
-            // if (fullName.length == 2) {
-            //     firstName = fullName[0]
-            //     lastName = fullName[1]
-            // }
-            // if (fullName.length == 3) {
-            //     firstName = fullName[0]
-            //     lastName = fullName[2]
-            // }
-            // if (fullName.length == 1) {
-            //     firstName = fullName[0]
-            //     lastName = "N/A"
-            // }
             renewalDate = (renewalDate && renewalDate != "N/A") ? renewalDate = renewalDate.split('T')[0] : null
             if (renewalDate && renewalDate === today) {//for valid renewal date
                 console.log("authorizeCustomerId:", authorizeCustomerId)
+                console.log("userSettingsData:",userSettingsData)
+                console.log("name is:",name)
                 let authorizeProfile = await getAllCustomerDataFromAuthorize(authorizeCustomerId)
                 console.log("authorizeProfile:", authorizeProfile)
                 let paymentProfile = authorizeProfile?.result?.profile?.paymentProfiles
