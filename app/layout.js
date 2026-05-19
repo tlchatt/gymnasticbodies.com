@@ -31,6 +31,14 @@ export default function RootLayout({ children }) {
             src={`https://www.googletagmanager.com/gtag/js?id=${analytics_tag}`}
             id="Google-Analytics-gymnasticbodies"
           />
+          <Script id="google-analytics-init">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${analytics_tag}');
+            `}
+          </Script>
         </>
       }
       {hot_jar &&
