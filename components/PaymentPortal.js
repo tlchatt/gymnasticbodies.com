@@ -1,181 +1,166 @@
 'use client';
-import { useEffect, useRef } from "react";
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import Button from '@mui/material/Button';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { user } from "@/app/context/stateContext";
 import Alert from '@mui/material/Alert';
 import CircularIndeterminate from '@/components/CircularLoading';
-import { getAndUseInfoFrompaymentForm, storeInLocalStorage } from "@/lib/commonFunctions";
+import { storeInLocalStorage } from "@/lib/commonFunctions";
 
 export function PaymentPortal(props) {
-    console.log("props:::::::::::::", props)
-    let url = process.env.NEXT_PUBLIC_API_URL
-    // console.log("url:", url)
+    const stripe = useStripe();
+    const elements = useElements();
     const router = useRouter();
-    const { email, setEmail, setCustomerId } = user()
-    let [error, setError] = useState(false)
-    let [success, setSuccess] = useState(false)
-    let [loading, setLoading] = useState(false)
-    let [message, setMessage] = useState("")
-    let [response, setResponse] = useState(null)
-    const [count, setCount] = useState(5);
     const searchParams = useSearchParams();
 
     const amount = searchParams.get('amount');
     const term = searchParams.get('term');
     const trial = searchParams.get('trial');
 
-    const formRef = useRef(null);
-    // console.log("inside useEffect", amount, term, trial)
-    useEffect(() => {
-        window.responseHandler = async function (response) {
-            // handle response
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
 
-            // console.log("response in responseHandler is:", response)
+    const handleSubmit = async () => {
+        if (!stripe || !elements) return;
 
-            // console.log("loading if:", loading)
+        setLoading(true);
+        setError(false);
+        setSuccess(false);
+        setMessage('');
 
-            if (response?.messages?.resultCode === "Error") {
-                var i = 0;
-                while (i < response.messages.message.length) {
-                    console.log(
-                        response.messages.message[i].code + ": " +
-                        response.messages.message[i].text
-                    );
-                    i = i + 1;
-                }
-            } else {
-                // console.log("loading else:", loading)
-                setResponse(response)
-                // await paymentFormUpdate(response);
-                // console.log("loading after else:", loading)
+        try {
+            // Read form values from DOM — preserves Forms.js independence
+            const email = document.querySelector('#email')?.value;
+            const phone = document.querySelector('#phone')?.value;
+            const password = document.querySelector('#password')?.value;
+            const country = document.querySelector('#search_country')?.value;
+
+            if (!email || !phone || !country || !password) {
+                setError(true);
+                setMessage('Please fill in all required fields.');
+                setLoading(false);
+                return;
             }
-        }
-    });
 
-    useEffect(() => {
-        let timer
-        console.log("response in component is:", response)
+            // Tokenize card with Stripe
+            const cardElement = elements.getElement(CardElement);
+            const { paymentMethod, error: pmError } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+                billing_details: { email, phone },
+            });
 
-        if (!response) {
-            // router.push(`https://my.gymnasticbodies.com/`)
-            return
-        }
-
-        const updateForm = async () => {
-            setLoading(true)
-            try {
-                const formResponse = await getAndUseInfoFrompaymentForm(response, props?.userData, amount, term, trial, formRef)
-                console.log("formResponse:", formResponse)
-
-                // Case 1: Existing customer -> start countdown      
-                if (formResponse.existingCustomer) {
-                    if (count > 0) {
-                        timer = setTimeout(() => setCount(prev => prev - 1), 1000)
-                        setLoading(false)
-                    }
-                    return
-                    // don't fall through      
-                }
-                // Case 2: New customer - but transaction failed
-                const { transaction, customerCreated, subscriptionCreated, message, data } = formResponse
-                if (!transaction || !customerCreated || !subscriptionCreated) {
-                    setLoading(false)
-                    setError(true)
-                    setMessage(`${message ?? "Transaction Failed!"} Please Try Again.`)
-                    return
-                }
-                // Success
-                const parsed = JSON.parse(data)
-                const user = await storeInLocalStorage(parsed)
-                console.log("user in paymentFormUpdate is:", user)
-                setLoading(false)
-                setSuccess(true)
-                setMessage(`${message}. Redirecting To Your Workouts...`)
-                router.push(`https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`)
-            } catch (err) {
-                console.error(err)
-                setLoading(false)
-                setError(true)
-                setMessage("Something went wrong. Please Try Again.")
+            if (pmError) {
+                setError(true);
+                setMessage(pmError.message);
+                setLoading(false);
+                return;
             }
+
+            // Call backend to create customer + subscription + Neon user
+            const result = await fetch('/api/stripe/create-subscription', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    paymentMethodId: paymentMethod.id,
+                    email, phone, country, password,
+                    amount, term, trial,
+                }),
+            }).then(r => r.json());
+
+            // Handle 3DS (rare for 7-day trial — no immediate charge)
+            if (result.requiresAction) {
+                const { error: confirmError } = await stripe.confirmCardPayment(result.clientSecret);
+                if (confirmError) {
+                    setError(true);
+                    setMessage(confirmError.message);
+                    setLoading(false);
+                    return;
+                }
+            }
+
+            if (result.existingCustomer) {
+                setError(true);
+                setMessage('An account with this email already exists. Please log in.');
+                setLoading(false);
+                return;
+            }
+
+            if (!result.subscriptionCreated) {
+                setError(true);
+                setMessage(result.message || 'Subscription creation failed. Please try again.');
+                setLoading(false);
+                return;
+            }
+
+            // Success — same redirect logic as before
+            const parsed = JSON.parse(result.data);
+            const user = await storeInLocalStorage(parsed);
+            setSuccess(true);
+            setMessage(`${result.message}. Redirecting To Your Workouts...`);
+            router.push(
+                `https://my.gymnasticbodies.com/?authToken=${user.token}&refreshToken=${user.token}&refreshExpireTime=${user.refreshExpireTime}&AuthExpirationDate=${user.expirationDate}&timezone=${user.timezone}&postAWS=${user.postAWS}&userId=${user.id}&username=${user.email}&name=${user.name}`
+            );
+        } catch (err) {
+            console.error('PaymentPortal error:', err);
+            setError(true);
+            setMessage('Something went wrong. Please Try Again.');
+        } finally {
+            setLoading(false);
         }
-        updateForm()
-        return () => {
-            if (timer) clearTimeout(timer);
-        };
+    };
 
+    const cardElementOptions = {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#32325d',
+                fontFamily: '"Open Sans", Helvetica, sans-serif',
+                '::placeholder': { color: '#aab7c4' },
+            },
+            invalid: { color: '#dc2626' },
+        },
+    };
 
-    }, [response, count, amount, term, trial, props?.userData, router]);
-
-    let FormInnerStyle = {
-        display: 'grid',
-        // gap: isSmall ? Settings.standardGap : Settings.highPadding,//GW: could we add hghgap?
-        position: 'relative',
-        alignSelf: 'start',
-        placeItems: 'unset',
-        minWidth: '100%',
-        overflow: 'inherit',
-        gridTemplateColumns: '1fr 1fr'
-    }
+    const cardWrapperStyle = {
+        gridColumn: 'span 2',
+        border: '1px solid rgba(0,0,0,0.23)',
+        borderRadius: '4px',
+        padding: '14px 12px',
+        marginTop: '8px',
+    };
 
     return (
         <>
-            {/* {!customerData && */}
-            <div>
-                {/* <div>Payment Portal</div> */}
-                <form id="paymentForm"
-                    ref={formRef}
-                    method="POST"
-                    style={FormInnerStyle}
-                    action={`${url}/api/paymentPortal`}>
-                    <input type="hidden" name="dataValue" id="dataValue" />
-                    <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
-                    <input type="hidden" name="billToFirstName" id="billToFirstName" />
-                    <input type="hidden" name="billToLastName" id="billToLastName" />
-                    <input type="hidden" name="billAmount" id="billAmount" />
-                    <input type="hidden" name="billEmail" id="billEmail" />
-                    <input type="hidden" name="billPhone" id="billPhone" />
-                    <input type="hidden" name="billCountry" id="billCountry" />
-                    <input type="hidden" name="billTerm" id="billTerm" />
-                    <input type="hidden" name="userPassword" id="userPassword" />
-                    <input type="hidden" name="postAWS" id="postAWS" />
-                    <input type="hidden" name="trial" id="trial" />
-                    <Button
-                        type="button"
-                        variant="contained"
-                        color="primary"
-                        style={{ marginTop: "2em", width: "max-content" }}
-                        className="AcceptUI"
-                        data-billingaddressoptions='{"show":true, "required":false}'
-                        data-apiloginid="7F57wRjv"
-                        data-clientkey="6vPVd2WmeVmz24UB5qkm8Avr3w5yxpAVW6c5MdkWT3kJ2E5U38A2Z5E2LZvdz9Qb"
-                        data-acceptuiformbtntxt="Submit"
-                        data-acceptuiformheadertxt={props?.data?.title ? props?.data?.title : "Card Information"}
-                        data-paymentoptions='{"showCreditCard": true, "showBankAccount": false}'
-                        data-responsehandler="responseHandler"
-
-                    >
-                        {props?.data?.buttonText ? props?.data?.buttonText : "Confirm & Pay"}
-                    </Button>
-                </form>
+            <div style={{ gridColumn: 'span 2', width: '100%' }}>
+                <div style={cardWrapperStyle}>
+                    <CardElement options={cardElementOptions} />
+                </div>
+                <Button
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '2em', width: 'max-content' }}
+                    onClick={handleSubmit}
+                    disabled={loading || !stripe}
+                >
+                    {props?.data?.buttonText ? props?.data?.buttonText : 'Confirm & Pay'}
+                </Button>
             </div>
-            {/* } */}
             {error &&
-                <Alert variant="filled" severity="error" style={{ marginTop: "20px" }}>
+                <Alert variant="filled" severity="error" style={{ marginTop: '20px', gridColumn: 'span 2' }}>
                     {message}
                 </Alert>
             }
             {success &&
-                <Alert severity="success" style={{ marginTop: "20px" }}>{message}</Alert>
+                <Alert severity="success" style={{ marginTop: '20px', gridColumn: 'span 2' }}>{message}</Alert>
             }
             {loading &&
-                <CircularIndeterminate incomingStyle={{ width: "100%", height: "100%", top: "0", left: "0", background: "#FAFAFA", opacity: "0.3", zIndex: "5" }} />
+                <CircularIndeterminate incomingStyle={{ width: '100%', height: '100%', top: '0', left: '0', background: '#FAFAFA', opacity: '0.3', zIndex: '5' }} />
             }
-
         </>
-
     );
 }

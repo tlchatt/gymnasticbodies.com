@@ -29,6 +29,11 @@ export async function GET(request) {
             let name = await getCorrectNameFormat(userSettingsData?.first_name, userSettingsData?.last_name)
 
             renewalDate = (renewalDate && renewalDate != "N/A") ? renewalDate = renewalDate.split('T')[0] : null
+            // Stripe subscriptions are self-managed via webhooks — skip them here
+            if (userSetting.stripeSubscriptionId) {
+                console.log('Skipping Stripe-managed user in cron:', email);
+                continue;
+            }
             if (renewalDate && renewalDate === today) {//for valid renewal date
                 console.log("authorizeCustomerId:", authorizeCustomerId)
                 console.log("userSettingsData:",userSettingsData)

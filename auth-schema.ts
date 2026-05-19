@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index, serial,json } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -7,57 +7,17 @@ export const user = pgTable("user", {
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
-  role: text("role"),
-  banned: boolean("banned"),
-  banReason: text("banReason"),
-  banExpires: timestamp("banExpires"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
+  role: text("role"),
+  banned: boolean("banned").default(false),
+  banReason: text("ban_reason"),
+  banExpires: timestamp("ban_expires"),
 });
 
-export const user_setting = pgTable("user_setting", {
-  id: serial("id").primaryKey(),
-  type: text("type").notNull(),
-  status:text("status"),
-  postAWS:boolean("postAWS"),
-  authorizeNextImport: boolean("autorize_next_import").default(false),
-  authorizeCustomerId:text("autorize_customer_id"),
-  awsCustomerId:text("aws_customer_id"),
-  data: text("data"),
-  woocommerceAuthorizeImport: boolean("woocommerce_authorize_import"),
-  woocommerceSource: text("woocommerceSource"),
-  trial: boolean("trial"),
-  trialStartDate:timestamp("trial_start_date"),
-  trialEndDate:timestamp("trial_end_date"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  subscriptionInAuthorize: boolean("subscription_in_authorize"),
-  stripeCustomerId: text("stripe_customer_id"),
-  stripeSubscriptionId: text("stripe_subscription_id"),
-  updatedAt: timestamp("updated_at")
-    .defaultNow()
-    .$onUpdate(() => /* @__PURE__ */ new Date())
-    .notNull(),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-});
-export const user_logs = pgTable("user_logs", {
-  id: serial("id").primaryKey(),  
-  data: json("data"),
-  progressions:json("progressions"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
-    .defaultNow()
-    .$onUpdate(() => /* @__PURE__ */ new Date())
-    .notNull(),
-  userScheduleDate: text("user_schedule_date"),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-});
 export const session = pgTable(
   "session",
   {
@@ -73,6 +33,7 @@ export const session = pgTable(
     userId: text("user_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
+    impersonatedBy: text("impersonated_by"),
   },
   (table) => [index("session_userId_idx").on(table.userId)],
 );
@@ -120,7 +81,6 @@ export const verification = pgTable(
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
-  user_settings: many(user_setting),
 }));
 
 export const sessionRelations = relations(session, ({ one }) => ({
@@ -133,18 +93,6 @@ export const sessionRelations = relations(session, ({ one }) => ({
 export const accountRelations = relations(account, ({ one }) => ({
   user: one(user, {
     fields: [account.userId],
-    references: [user.id],
-  }),
-}));
-export const userSettingRelations = relations(user_setting, ({ one }) => ({
-  user: one(user, {
-    fields: [user_setting.userId],
-    references: [user.id],
-  }),
-}));
-export const userLogsRelations = relations(user_logs, ({ one }) => ({
-  user: one(user, {
-    fields: [user_logs.userId],
     references: [user.id],
   }),
 }));

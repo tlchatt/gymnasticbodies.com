@@ -4,8 +4,11 @@ import Link from 'next/link';
 import Typography from '@mui/material/Typography';
 import { PaymentPortal } from '@/components/PaymentPortal';
 import { Forms } from '@/components/Forms';
-import Script from 'next/script';
 import { Suspense } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 
 
@@ -152,10 +155,11 @@ export default function Checkout(props) {
                     </>
                 }
 
-                <Script src="https://js.authorize.net/v3/AcceptUI.js" strategy="afterInteractive" />
-                <Suspense>
-                    <PaymentPortal data={props?.data} userData={props?.userData}/>
-                </Suspense>
+                <Elements stripe={stripePromise}>
+                    <Suspense>
+                        <PaymentPortal data={props?.data} userData={props?.userData}/>
+                    </Suspense>
+                </Elements>
             </Grid>
             {/* </StandardContainer> */}
 

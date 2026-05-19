@@ -19,6 +19,8 @@
     "@node-rs/argon2": "^2.0.2",
     "@portabletext/react": "^6.0.2",
     "@sendgrid/mail": "^8.1.6",
+    "@stripe/react-stripe-js": "^6.4.0",
+    "@stripe/stripe-js": "^9.6.0",
     "@vercel/blob": "^2.3.1",
     "authorizenet": "^1.0.10",
     "bcrypt": "^6.0.0",
@@ -38,6 +40,7 @@
     "react-dom": "19.2.1",
     "react-phone-number-input": "^3.4.14",
     "sass": "^1.97.3",
+    "stripe": "^22.1.1",
     "swr": "^2.4.0",
     "uuidv4": "^6.2.13",
     "v4": "^0.0.1"
