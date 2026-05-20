@@ -1,0 +1,23 @@
+authorize_next_impport = imported from woo but was an auth customer.
+^Unreliable existed befroe Woo Migrate.
+
+woocommercer_authorize_import=The opposite of the column below, could be combined. 
+wooCommerceSource= Woo commerce if not authroize.net.
+
+aws_customer_id <- Imported from the my. side on login.
+
+type=purchase. Lifetime membership? No renewal date. Or "Bought courses". Prich check with no renewal date. Price for a product and not a subscription. See data for info on purchase. term, product, etc.
+
+
+ renewal_status  | count
+  -----------------|-------
+  active_current   | 1,115
+  active_expired   |   114
+  -----------------|-------
+  TOTAL            | 1,229
+
+  - 31 have N/A — no date ever set
+  - 83 have dates clustered tightly in April 2026 — all within the last 30
+  days or so
+
+type=subcription plus status=Active, typically indicates a Active user as in subscription is active. Users began to fall through the cracks post migrate though so a portion of this group is off. 

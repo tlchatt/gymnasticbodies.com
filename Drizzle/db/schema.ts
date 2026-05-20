@@ -8,6 +8,7 @@ export const user = pgTable("user", {
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
   role: text("role"),
+  migrationType: text("migration_type"),
   banned: boolean("banned"),
   banReason: text("banReason"),
   banExpires: timestamp("banExpires"),
@@ -36,6 +37,7 @@ export const user_setting = pgTable("user_setting", {
   subscriptionInAuthorize: boolean("subscription_in_authorize"),
   stripeCustomerId: text("stripe_customer_id"),
   stripeSubscriptionId: text("stripe_subscription_id"),
+  authorizeSubscriptionId: text("authorize_subscription_id"),
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())

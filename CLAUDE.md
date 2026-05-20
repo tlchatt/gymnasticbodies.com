@@ -43,10 +43,16 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 ### Payment Processing
 
-- **Authorize.net** (`authorizenet` SDK) — all payment logic lives in `lib/commonServerFunction.js`
-- Capabilities: create transactions, void, create customer profiles, manage ARB subscriptions
-- Payment entry point: `/api/paymentPortal/route.js` (accepts `multipart/form-data`)
-- Subscription webhook receiver: `/api/user/subscription/route.js`
+- **Stripe** (`stripe` SDK) — primary payment processor for all new signups and renewals
+  - New subscriptions: `app/api/stripe/create-subscription/route.js` (7-day trial, inline price_data)
+  - Renewals (lapsed users): `app/api/stripe/renew-subscription/route.js` (no trial, honours historical rate)
+  - Webhooks: `app/api/stripe/webhook/route.js` — handles `invoice.payment_succeeded`, `customer.subscription.deleted`, `invoice.payment_failed`
+  - Server helpers: `lib/stripeServerFunction.js`
+- **Authorize.net** (`authorizenet` SDK) — legacy only, do not use for new work
+  - Logic lives in `lib/commonServerFunction.js`
+  - ~19 users remain on active Auth.net ARB subscriptions (`migration_type = 'auth_net_subscriber'`)
+  - Payment entry point: `/api/paymentPortal/route.js` (kept for legacy account pages)
+  - Subscription webhook receiver: `/api/user/subscription/route.js`
 
 ### Email
 
@@ -74,7 +80,11 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 |---|---|
 | `/api/auth/[...all]` | better-auth handler (signin, signup, session, logout) |
 | `/api/authentication` | Custom email+password sign-in |
-| `/api/paymentPortal` | Authorize.net transactions & subscription creation |
+| `/api/stripe/create-subscription` | New user Stripe checkout (replaces Auth.net) |
+| `/api/stripe/renew-subscription` | Lapsed user renewal — no trial, honours historical rate |
+| `/api/stripe/webhook` | Stripe lifecycle events (payment, cancellation, failure) |
+| `/api/user/renewalStatus` | Called by `my.gymnasticbodies.com` post-login to check if user needs renewal |
+| `/api/paymentPortal` | Authorize.net — legacy only, do not use for new work |
 | `/api/user/subscription` | Subscription webhook + account creation |
 | `/api/user/userStatus` | Current user subscription status |
 | `/api/user/log` | Workout log CRUD |
@@ -86,6 +96,20 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *`).
 
+## User Migration Types
+
+The `user.migration_type` column classifies all 16,265 users for paywall logic:
+
+| Value | Count | Meaning |
+|---|---|---|
+| `stripe` | 3+ | Active Stripe subscriber — no paywall |
+| `auth_net_subscriber` | ~19 | Active Auth.net ARB sub — no paywall |
+| `active_current` | ~340 | Has activity + future renewal date — no paywall |
+| `active_expired` | ~405 | Has activity + lapsed/missing renewal date — **redirect to `/renew`** |
+| `inactive` | ~15,503 | No activity signals — no paywall |
+
+Re-run `node claudePlans/classify-users.js --write` periodically to keep types current as subscriptions change.
+
 ## Environment Variables
 
 ```
@@ -93,7 +117,12 @@ All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *
 DATABASE_URL
 BETTER_AUTH_SECRET
 
-# Authorize.net
+# Stripe (primary payment processor)
+STRIPE_SECRET_KEY
+STRIPE_WEBHOOK_SECRET
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+
+# Authorize.net (legacy — do not use for new work)
 AUTHORIZE_NET_API_LOGIN_ID
 AUTHORIZE_NET_TRANSACTION_KEY
 AUTHORIZE_NET_API_CLIENT_ID
