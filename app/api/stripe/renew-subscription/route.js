@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserMigrationType } from '@/lib/userSettings';
-import { auth } from '@/lib/auth';
+import { db } from '@/Drizzle/index.ts';
+import { session } from '@/Drizzle/db/schema';
+import { randomBytes } from 'crypto';
+
+function generateSessionToken() {
+    return randomBytes(16).toString('hex'); // 32-char hex string matching better-auth format
+}
 
 function getStripeInterval(term) {
     switch (term?.toLowerCase()) {
@@ -55,7 +61,8 @@ export async function POST(request) {
             });
         }
 
-        const renewaldate = new Date(subscription.current_period_end * 1000).toISOString();
+        const periodEnd = subscription.items?.data?.[0]?.current_period_end ?? subscription.current_period_end;
+        const renewaldate = new Date(periodEnd * 1000).toISOString();
 
         await updateUserSettingRenewal(setting, {
             stripeCustomerId: customerId,
@@ -70,12 +77,17 @@ export async function POST(request) {
 
         await updateUserMigrationType(user.id, 'stripe');
 
-        // Create better-auth session for redirect back to my.gymnasticbodies.com
-        const sessionRes = await auth.api.createSession({
-            body: { userId: user.id },
+        // Create a better-auth session directly — auth.api.createSession doesn't exist in v1.5.x
+        const token = generateSessionToken();
+        const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+        await db.insert(session).values({
+            id: randomBytes(16).toString('hex'),
+            token,
+            userId: user.id,
+            expiresAt,
+            createdAt: new Date(),
+            updatedAt: new Date(),
         });
-        const sessionData = await sessionRes.json();
-        const token = sessionData?.session?.token ?? sessionData?.token;
 
         return NextResponse.json({
             success: true,
