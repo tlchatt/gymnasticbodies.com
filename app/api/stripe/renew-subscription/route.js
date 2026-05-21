@@ -20,8 +20,10 @@ function getStripeInterval(term) {
 
 export async function POST(request) {
     let newCustomerId = null;
+    let email;
     try {
-        const { paymentMethodId, email, price: overridePrice, term: overrideTerm } = await request.json();
+        let paymentMethodId, overridePrice, overrideTerm;
+        ({ paymentMethodId, email, price: overridePrice, term: overrideTerm } = await request.json());
 
         logger.info('renewal.attempt', { email, price: overridePrice, term: overrideTerm });
 

@@ -1,7 +1,7 @@
 // Test: Stripe webhook handler — triggers test events via Stripe CLI
 // Pre-req:
 //   1. stripe CLI installed and authenticated (stripe login)
-//   2. stripe listen --forward-to localhost:3000/api/stripe/webhook  (separate terminal)
+//   2. stripe listen --forward-to localhost:3002/api/stripe/webhook  (separate terminal)
 //   3. dev server on :3000
 // Run: node claudePlans/test-stripe-webhooks.js
 
@@ -14,7 +14,7 @@ const EVENTS = [
 ];
 
 console.log('\n=== Stripe Webhook Trigger Tests ===\n');
-console.log('Requires: stripe listen --forward-to localhost:3000/api/stripe/webhook\n');
+console.log('Requires: stripe listen --forward-to localhost:3002/api/stripe/webhook\n');
 
 let passed = 0;
 for (const event of EVENTS) {

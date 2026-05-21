@@ -5,8 +5,14 @@
 const Stripe = require('stripe');
 require('dotenv').config({ path: '.env.local' });
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const BASE = 'http://localhost:3000';
+const key = process.env.STRIPE_SECRET_KEY || '';
+if (!key.startsWith('sk_test_')) {
+    console.error('ERROR: STRIPE_SECRET_KEY must be a test-mode key (sk_test_...) — refusing to run against live Stripe.');
+    process.exit(1);
+}
+
+const stripe = new Stripe(key);
+const BASE = 'http://localhost:3002';
 
 function check(label, pass) {
     console.log(`  ${pass ? '✅' : '❌'} ${label}`);

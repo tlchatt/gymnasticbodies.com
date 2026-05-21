@@ -1,16 +1,14 @@
 // Test: renewalStatus endpoint across all user types
-// Pre-req: dev server on :3000
-// Edit the CASES emails before running — pull from claudePlans/test-users.json
+// Hits the live site — no dev server needed, no Stripe keys needed (read-only)
 // Run: node claudePlans/test-stripe-renewalstatus.js
 
-const BASE = 'http://localhost:3000';
+const BASE = 'https://app.gymnasticbodies.com';
 
-// Replace placeholder emails with real ones from claudePlans/test-users.json
 const CASES = [
-    { email: 'REPLACE_active_expired@example.com', expectRenewal: true,  label: 'active_expired user' },
-    { email: 'REPLACE_stripe_active@example.com',  expectRenewal: false, label: 'active Stripe user' },
-    { email: 'REPLACE_inactive@example.com',       expectRenewal: false, label: 'inactive user' },
-    { email: 'notarealuser_xyz_123@example.com',   expectRenewal: false, label: 'unknown email' },
+    { email: 'gw12z33@tlchatt.com',       expectRenewal: true,  label: 'active_expired user' },
+    { email: 'l2taouk@hotmail.com',        expectRenewal: false, label: 'active Stripe user' },
+    { email: 'test@tlchatt.com',           expectRenewal: false, label: 'inactive user' },
+    { email: 'notarealuser_xyz_123@example.com', expectRenewal: false, label: 'unknown email' },
 ];
 
 async function run() {

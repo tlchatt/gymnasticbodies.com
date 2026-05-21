@@ -6,11 +6,17 @@
 const Stripe = require('stripe');
 require('dotenv').config({ path: '.env.local' });
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const BASE = 'http://localhost:3000';
+const key = process.env.STRIPE_SECRET_KEY || '';
+if (!key.startsWith('sk_test_')) {
+    console.error('ERROR: STRIPE_SECRET_KEY must be a test-mode key (sk_test_...) — refusing to run against live Stripe.');
+    process.exit(1);
+}
 
-// Replace with a known active_expired user from claudePlans/test-users.json
-const TEST_EMAIL = 'REPLACE_WITH_ACTIVE_EXPIRED_EMAIL';
+const stripe = new Stripe(key);
+const BASE = 'http://localhost:3002';
+
+// Test account — active_expired in Neon. Running this will convert it to a Stripe subscriber.
+const TEST_EMAIL = 'paywall-test@tlchatt.com';
 
 function check(label, pass) {
     console.log(`  ${pass ? '✅' : '❌'} ${label}`);

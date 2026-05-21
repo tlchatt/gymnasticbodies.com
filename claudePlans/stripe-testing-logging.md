@@ -680,18 +680,18 @@ Failure cases log `level: "error"` with `error.message` and `error.stack`. A `my
 
 ## Implementation Order
 
-**`app.gymnasticbodies.com` (already done ✅ except clientLog endpoint)**
+**`app.gymnasticbodies.com` ✅ DEPLOYED**
 1. [x] Add `LOG_ENABLED` / `LOG_LEVEL` to `.env.local` and Vercel
 2. [x] `lib/logger.js` — structured logger created
 3. [x] Wire logger into all 4 routes
-4. [ ] Add `CLIENT_LOG_TOKEN` to `.env.local` and Vercel (server-side only)
-5. [ ] Create `app/api/clientLog/route.js` — log ingestion endpoint
+4. [x] Add `CLIENT_LOG_TOKEN` to `.env.local` and Vercel (server-side only)
+5. [x] Create `app/api/clientLog/route.js` — log ingestion endpoint
 
-**`my.gymnasticbodies.com`**
-6. [ ] Add `REACT_APP_LOG_TOKEN` to `.env` and deployment env (must match `CLIENT_LOG_TOKEN`)
-7. [ ] Create `src/util/clientLogger.js` — fire-and-forget `logEvent` helper
-8. [ ] Fix `authCheckState` — handle `source=renewal`, add `logEvent` calls
-9. [ ] Add `logEvent('my.login.renewal_redirect', ...)` before all three redirect sites in `loginActions.js`
+**`my.gymnasticbodies.com` ✅ DEPLOYED**
+6. [x] Add `REACT_APP_LOG_TOKEN` to `.env` and deployment env (must match `CLIENT_LOG_TOKEN`)
+7. [x] Create `src/util/clientLogger.js` — fire-and-forget `logEvent` helper
+8. [x] Fix `authCheckState` — handle `source=renewal`, add `logEvent` calls
+9. [x] Add `logEvent('my.login.renewal_redirect', ...)` before all three redirect sites in `loginActions.js`
 
 **Testing**
 10. [ ] Populate test email cases in `claudePlans/test-stripe-*.js` from `test-users.json`
