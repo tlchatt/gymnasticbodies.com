@@ -4,6 +4,7 @@ import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUse
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
 import { randomBytes } from 'crypto';
+import { logger } from '@/lib/logger';
 
 function generateSessionToken() {
     return randomBytes(16).toString('hex'); // 32-char hex string matching better-auth format
@@ -21,6 +22,8 @@ export async function POST(request) {
     let newCustomerId = null;
     try {
         const { paymentMethodId, email, price: overridePrice, term: overrideTerm } = await request.json();
+
+        logger.info('renewal.attempt', { email, price: overridePrice, term: overrideTerm });
 
         const user = await getUserWithEmail(email);
         if (!user) return NextResponse.json({ success: false, message: 'Account not found.' }, { status: 404 });
@@ -54,6 +57,7 @@ export async function POST(request) {
         // Handle 3DS
         const paymentIntent = subscription?.latest_invoice?.payment_intent;
         if (paymentIntent?.status === 'requires_action') {
+            logger.info('renewal.3ds_required', { email, subscriptionId: subscription.id });
             return NextResponse.json({
                 requiresAction: true,
                 clientSecret: paymentIntent.client_secret,
@@ -89,6 +93,13 @@ export async function POST(request) {
             updatedAt: new Date(),
         });
 
+        logger.info('renewal.success', {
+            email: user.email,
+            stripeCustomerId: customerId,
+            stripeSubscriptionId: subscription.id,
+            userId: user.id,
+        });
+
         return NextResponse.json({
             success: true,
             token,
@@ -97,7 +108,7 @@ export async function POST(request) {
             name: user.name,
         });
     } catch (error) {
-        console.error('renew-subscription error:', error);
+        logger.error('renewal.failed', { email, error });
         if (newCustomerId) {
             try { await deleteStripeCustomer(newCustomerId); } catch (_) {}
         }

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
+import { logger } from '@/lib/logger';
 
 export async function GET(request) {
     const email = new URL(request.url).searchParams.get('email');
@@ -23,9 +24,10 @@ export async function GET(request) {
             } catch (_) {}
         }
 
+        logger.info('renewalStatus.check', { email, needsRenewal, migrationType: user.migrationType });
         return NextResponse.json({ needsRenewal, price, term });
     } catch (err) {
-        console.error('renewalStatus error:', err);
+        logger.error('renewalStatus.error', { email, error: err });
         return NextResponse.json({ needsRenewal: false });
     }
 }

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer } from '@/lib/stripeServerFunction';
 import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
+import { logger } from '@/lib/logger';
 
 export async function POST(request) {
     let customer = null;
@@ -9,11 +10,14 @@ export async function POST(request) {
         const json = await request.json();
         const { paymentMethodId, email, phone, country, password, amount, term, trial } = json;
 
+        logger.info('signup.attempt', { email, trial: trial === 'true' || trial === true, term, amount });
+
         // Check for existing active Stripe subscriber
         const existingUser = await getUserWithEmail(email);
         if (existingUser) {
             const existingSetting = await queryUserSetting(existingUser.id, 'subscription');
             if (existingSetting?.stripeSubscriptionId) {
+                logger.warn('signup.duplicate', { email });
                 return NextResponse.json({
                     existingCustomer: true,
                     message: 'An account with this email already exists.',
@@ -75,6 +79,13 @@ export async function POST(request) {
 
         await sendCredentialsEmailSG({ email, password });
 
+        logger.info('signup.success', {
+            email,
+            stripeCustomerId: customer.id,
+            stripeSubscriptionId: subscription.id,
+            userId: dbUser?.user?.id,
+        });
+
         return NextResponse.json({
             message: 'Subscription Created Successfully',
             existingCustomer: false,
@@ -91,8 +102,7 @@ export async function POST(request) {
             }),
         });
     } catch (error) {
-        console.error('Stripe create-subscription error:', error);
-        // Clean up Stripe customer if we got that far but something downstream failed
+        logger.error('signup.failed', { email: json?.email, error });
         if (customer?.id) {
             try { await deleteStripeCustomer(customer.id); } catch (_) {}
         }

@@ -1,0 +1,28 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "Get Started" [ref=e7] [cursor=pointer]
+  - generic [ref=e8]:
+    - heading "Renew Your Subscription" [level=5] [ref=e9]
+    - paragraph [ref=e10]: Your subscription has expired. Enter your card details below to continue.
+    - paragraph [ref=e11]:
+      - text: "Account:"
+      - strong [ref=e12]: paywall-test@tlchatt.com
+    - radiogroup [ref=e13]:
+      - generic [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]:
+          - radio "Keep my plan — $179.88 / year" [checked] [ref=e16]
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - img [ref=e20]
+        - generic [ref=e22]: Keep my plan — $179.88 / year
+      - generic [ref=e23] [cursor=pointer]:
+        - generic [ref=e24]:
+          - radio "Switch to standard monthly — $75.00 / month" [ref=e25]
+          - img [ref=e27]
+        - generic [ref=e29]: Switch to standard monthly — $75.00 / month
+    - button "Renew Subscription" [disabled]
+  - alert [ref=e31]
