@@ -2,11 +2,19 @@
 
 ## Status: ACTIVE
 
-**Scope:** End-to-end testing and structured logging for:
+**Scope:** End-to-end testing and structured logging for the full renewal journey across both apps:
+
+**`app.gymnasticbodies.com` (server-side, Vercel logs)**
 1. New-user signup via Stripe (`/api/stripe/create-subscription`)
 2. Lapsed-user renewal via Stripe (`/api/stripe/renew-subscription`)
 3. Renewal paywall redirect check (`/api/user/renewalStatus`)
 4. Stripe webhook lifecycle events (`/api/stripe/webhook`)
+5. Client log ingestion endpoint (`/api/clientLog`) — receives logs posted from `my.`
+
+**`my.gymnasticbodies.com` (client-side React, posts to `app.` log endpoint)**
+6. Renewal redirect triggered in `loginActions.js`
+7. User landing back from `/renew` (source=renewal) in `authCheckState`
+8. Session established or failed from renewal token
 
 ---
 
@@ -18,16 +26,24 @@ Replace ad-hoc `console.error(...)` calls with structured, machine-readable log 
 
 ### 1a. Environment variables
 
-Two env vars control logging behaviour. Add both to `.env.local` and to Vercel project settings.
+**`app.gymnasticbodies.com` — `.env.local` + Vercel project settings:**
 
 ```
 # Master on/off switch. Set to 'false' to silence all payment logs.
-# Default: true (logging on)
 LOG_ENABLED=true
 
 # Minimum severity to emit. One of: debug | info | warn | error
-# Default: info  (debug lines are suppressed unless explicitly enabled)
 LOG_LEVEL=info
+
+# Shared secret for the /api/clientLog endpoint (server-side only — no NEXT_PUBLIC_)
+CLIENT_LOG_TOKEN=a-long-random-secret
+```
+
+**`my.gymnasticbodies.com` — `.env` + deployment env:**
+
+```
+# Must match CLIENT_LOG_TOKEN above (exposed in the bundle — acceptable for logging only)
+REACT_APP_LOG_TOKEN=a-long-random-secret
 ```
 
 In Vercel:
@@ -73,6 +89,10 @@ export const logger = {
 
 ### 1c. Event taxonomy
 
+All events include `source` to distinguish origin. `app.` events write to Vercel function logs directly; `my.` events are posted to `/api/clientLog` which then writes them through the same `lib/logger.js` with `source: 'my.gymnasticbodies.com'`.
+
+**`app.gymnasticbodies.com` events** (`source` omitted — implicit from function log context)
+
 | Event name | Route | Level | Key fields |
 |---|---|---|---|
 | `signup.attempt` | create-subscription | info | email, trial, term, amount |
@@ -86,10 +106,19 @@ export const logger = {
 | `renewalStatus.check` | renewalStatus | info | email, needsRenewal, migrationType |
 | `renewalStatus.error` | renewalStatus | error | email, error |
 | `webhook.received` | webhook | info | eventType, subscriptionId |
-| `webhook.processed` | webhook | info | eventType, subscriptionId, userId |
+| `webhook.processed` | webhook | info | eventType, subscriptionId, settingId |
 | `webhook.sig_failed` | webhook | error | error |
 | `webhook.handler_error` | webhook | error | eventType, error |
-| `webhook.unmatched` | webhook | warn | subscriptionId |
+| `webhook.unmatched` | webhook | warn | eventType, subscriptionId |
+
+**`my.gymnasticbodies.com` events** (all include `source: 'my.gymnasticbodies.com'`)
+
+| Event name | Corresponds to app. event | Level | Key fields |
+|---|---|---|---|
+| `my.login.renewal_redirect` | → `renewalStatus.check` (needsRenewal: true) | info | email |
+| `my.renewal.landed` | → `renewal.success` | info | email |
+| `my.renewal.auth_success` | — | info | email, userId |
+| `my.renewal.auth_failed` | — | error | email, reason |
 
 ### 1d. Wire into each route
 
@@ -153,7 +182,140 @@ logger.error('webhook.sig_failed', { error: err });
 
 ---
 
-## Part 2: Testing
+## Part 2: my.gymnasticbodies.com Additions
+
+### 2a. `POST /api/clientLog` — log ingestion endpoint (`app.gymnasticbodies.com`)
+
+Accepts structured log payloads from the React frontend and writes them through `lib/logger.js`. Protected by a shared secret header so arbitrary clients can't spam the log stream. Always returns 200 — never blocks the caller on a logging failure.
+
+```js
+// app/api/clientLog/route.js
+import { NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
+
+const ALLOWED_EVENTS = new Set([
+    'my.login.renewal_redirect',
+    'my.renewal.landed',
+    'my.renewal.auth_success',
+    'my.renewal.auth_failed',
+]);
+
+export async function POST(request) {
+    try {
+        const token = request.headers.get('x-log-token');
+        if (token !== process.env.CLIENT_LOG_TOKEN) {
+            return NextResponse.json({ ok: false }, { status: 401 });
+        }
+
+        const { event, level = 'info', ...data } = await request.json();
+
+        if (!ALLOWED_EVENTS.has(event)) {
+            return NextResponse.json({ ok: false, reason: 'unknown event' }, { status: 400 });
+        }
+
+        logger[level]?.(event, { source: 'my.gymnasticbodies.com', ...data });
+    } catch (_) {
+        // Never surface logging errors to the caller
+    }
+
+    return NextResponse.json({ ok: true });
+}
+
+export async function OPTIONS() {
+    return new Response(null, {
+        status: 204,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, x-log-token',
+        },
+    });
+}
+```
+
+### 2b. `src/util/clientLogger.js` — fire-and-forget logger (`my.gymnasticbodies.com`)
+
+Thin wrapper that posts to the `app.` log endpoint. Never throws — a failed log call must not affect the user flow.
+
+```js
+// src/util/clientLogger.js
+const API = process.env.REACT_APP_API_NEW;
+const TOKEN = process.env.REACT_APP_LOG_TOKEN;
+
+export function logEvent(event, data = {}) {
+    if (!API || !TOKEN) return;
+    fetch(`${API}/api/clientLog`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-log-token': TOKEN },
+        body: JSON.stringify({ event, ...data }),
+    }).catch(() => {});
+}
+```
+
+### 2c. Fix `authCheckState` — handle `source=renewal` (`my.gymnasticbodies.com`)
+
+**Bug:** When a user lands back from `/renew` with `?authToken=xxx&source=renewal`, the URL has only `authToken`, `source`, `userId`, `username`, `name`, and `refreshToken`. The legacy fields `refreshExpireTime`, `AuthExpirationDate`, and `timezone` are absent, so the null-check at line ~575 fires `dispatch(Logout())` and the user is immediately signed out.
+
+**Fix:** In `loginActions.js`, detect `source=renewal` before the null-check and supply safe defaults for the missing legacy fields. Also fire `my.renewal.landed` and `my.renewal.auth_success`/`my.renewal.auth_failed` log events.
+
+```js
+// In authCheckState, inside the urlParams.size > 0 block — add after extracting params:
+
+const source = urlParams.get('source');
+
+if (source === 'renewal') {
+    // Renewal token is a better-auth session — legacy JWT fields are not present.
+    // Supply safe defaults so the null-check below doesn't fire Logout.
+    if (!refreshExpireTime) {
+        refreshExpireTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+        localStorage.setItem('refreshExpireTime', refreshExpireTime);
+    }
+    if (!authExpireTime) {
+        authExpireTime = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+        localStorage.setItem('AuthExpirationDate', authExpireTime);
+    }
+    if (!timezone) {
+        timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        localStorage.setItem('timezone', timezone);
+    }
+    logEvent('my.renewal.landed', { email: userName });
+}
+```
+
+Then after the null-check passes and `LoginAsync` is dispatched, add:
+
+```js
+if (source === 'renewal') {
+    logEvent('my.renewal.auth_success', { email: userName, userId });
+}
+```
+
+And in the failure branch (where `dispatch(Logout())` fires due to missing fields):
+
+```js
+// Replace the bare dispatch(Logout()) with:
+if (source === 'renewal') {
+    logEvent('my.renewal.auth_failed', { email: userName, reason: 'missing_session_fields' });
+}
+dispatch(setDidTryAL());
+dispatch(Logout());
+```
+
+### 2d. Log the renewal redirect in `loginActions.js` (`my.gymnasticbodies.com`)
+
+In each of the three login thunks (lines ~168, ~265, ~402) where `window.location.href = .../renew?email=...` fires, add a log call immediately before the redirect:
+
+```js
+import { logEvent } from '../../util/clientLogger';
+
+// Before each window.location.href = `...renew...` redirect:
+logEvent('my.login.renewal_redirect', { email: username });
+window.location.href = `https://app.gymnasticbodies.com/renew?email=${encodeURIComponent(username)}`;
+```
+
+---
+
+## Part 3: Testing
 
 ### Pre-requisites
 
@@ -458,13 +620,18 @@ Run after deploying to Vercel preview. Use Stripe test mode keys.
 
 **Renewal flow:**
 - [ ] Log in on `my.gymnasticbodies.com` with an `active_expired` user's email
+- [ ] Vercel logs: `my.login.renewal_redirect` fires with correct email
 - [ ] Redirected to `https://app.gymnasticbodies.com/renew?email=xxx`
+- [ ] Vercel logs: `renewalStatus.check` with `needsRenewal: true`
 - [ ] Email shown in UI (read-only)
 - [ ] Historical billing amount shown (e.g. "$25 / month")
 - [ ] Fill card `4242 4242 4242 4242` → submit
+- [ ] Vercel logs: `renewal.attempt` → `renewal.success`
 - [ ] Neon: `user_setting.status = 'active'`, `stripeSubscriptionId` set, `migration_type = 'stripe'`
 - [ ] Stripe test dashboard: subscription visible
-- [ ] Redirect to `my.gymnasticbodies.com/?authToken=xxx&source=renewal` — user logged in
+- [ ] Redirect to `my.gymnasticbodies.com/?authToken=xxx&source=renewal`
+- [ ] Vercel logs: `my.renewal.landed` → `my.renewal.auth_success`
+- [ ] User has full access on `my.gymnasticbodies.com` — not logged out
 
 **Error paths:**
 - [ ] Declined card `4000 0000 0000 0002` → inline error, no subscription created, no redirect
@@ -477,7 +644,7 @@ Run after deploying to Vercel preview. Use Stripe test mode keys.
 
 ---
 
-## Part 3: Verifying Logs
+## Part 4: Verifying Logs
 
 After running tests, check Vercel function logs:
 
@@ -489,29 +656,47 @@ vercel logs --follow
 # Project → Functions → select route → Logs tab
 ```
 
-Expected log lines (JSON, one per event):
+A complete renewal journey produces this log sequence in order, all in one place (Vercel):
 
 ```json
-{"ts":"2026-...","level":"info","event":"signup.attempt","email":"...","trial":true,"term":"monthly","amount":"75"}
-{"ts":"2026-...","level":"info","event":"signup.success","email":"...","stripeCustomerId":"cus_...","stripeSubscriptionId":"sub_..."}
-{"ts":"2026-...","level":"info","event":"webhook.received","eventType":"invoice.payment_succeeded","subscriptionId":"sub_..."}
-{"ts":"2026-...","level":"info","event":"webhook.processed","eventType":"invoice.payment_succeeded","subscriptionId":"sub_..."}
+{"ts":"...","level":"info","event":"renewalStatus.check","email":"...","needsRenewal":true,"migrationType":"active_expired"}
+{"ts":"...","level":"info","event":"my.login.renewal_redirect","source":"my.gymnasticbodies.com","email":"..."}
+{"ts":"...","level":"info","event":"renewal.attempt","email":"...","price":"25","term":"monthly"}
+{"ts":"...","level":"info","event":"renewal.success","email":"...","stripeCustomerId":"cus_...","stripeSubscriptionId":"sub_...","userId":"..."}
+{"ts":"...","level":"info","event":"my.renewal.landed","source":"my.gymnasticbodies.com","email":"..."}
+{"ts":"...","level":"info","event":"my.renewal.auth_success","source":"my.gymnasticbodies.com","email":"...","userId":"..."}
 ```
 
-Failure cases should log `level: "error"` with an `error.message` and `error.stack`.
+A new signup produces:
+
+```json
+{"ts":"...","level":"info","event":"signup.attempt","email":"...","trial":true,"term":"monthly","amount":"75"}
+{"ts":"...","level":"info","event":"signup.success","email":"...","stripeCustomerId":"cus_...","stripeSubscriptionId":"sub_..."}
+```
+
+Failure cases log `level: "error"` with `error.message` and `error.stack`. A `my.renewal.auth_failed` event indicates the `authCheckState` fix is missing or broken.
 
 ---
 
 ## Implementation Order
 
-1. [ ] **Add env vars** — `LOG_ENABLED=true` + `LOG_LEVEL=info` to `.env.local` and Vercel project settings (all environments)
-2. [ ] **`lib/logger.js`** — create the structured logger (5 min)
-3. [ ] **Wire logger into all 4 routes** — add log calls at key points (20 min)
-4. [ ] **Deploy to Vercel preview** — test logs are appearing
-5. [ ] **Install test scripts** — write `claudePlans/test-stripe-*.js` files (30 min)
-6. [ ] **Populate test email cases** — pull from `claudePlans/test-users.json`, fill in REPLACE_ values
-7. [ ] **Run `test-stripe-renewalstatus.js`** — validates read-only endpoint
-8. [ ] **Run `test-stripe-renewal.js`** — validates full renewal flow
-9. [ ] **Run `test-stripe-signup.js`** — validates new signup flow
-10. [ ] **Run `test-stripe-webhooks.js`** — validates webhook handling
-11. [ ] **Manual E2E browser checklist** — sign off on each item above
+**`app.gymnasticbodies.com` (already done ✅ except clientLog endpoint)**
+1. [x] Add `LOG_ENABLED` / `LOG_LEVEL` to `.env.local` and Vercel
+2. [x] `lib/logger.js` — structured logger created
+3. [x] Wire logger into all 4 routes
+4. [ ] Add `CLIENT_LOG_TOKEN` to `.env.local` and Vercel (server-side only)
+5. [ ] Create `app/api/clientLog/route.js` — log ingestion endpoint
+
+**`my.gymnasticbodies.com`**
+6. [ ] Add `REACT_APP_LOG_TOKEN` to `.env` and deployment env (must match `CLIENT_LOG_TOKEN`)
+7. [ ] Create `src/util/clientLogger.js` — fire-and-forget `logEvent` helper
+8. [ ] Fix `authCheckState` — handle `source=renewal`, add `logEvent` calls
+9. [ ] Add `logEvent('my.login.renewal_redirect', ...)` before all three redirect sites in `loginActions.js`
+
+**Testing**
+10. [ ] Populate test email cases in `claudePlans/test-stripe-*.js` from `test-users.json`
+11. [ ] Run `test-stripe-renewalstatus.js`
+12. [ ] Run `test-stripe-renewal.js`
+13. [ ] Run `test-stripe-signup.js`
+14. [ ] Run `test-stripe-webhooks.js`
+15. [ ] Manual E2E browser checklist — verify full log sequence appears in Vercel
