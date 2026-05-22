@@ -30,7 +30,7 @@ export async function GET(request) {
         }
 
         logger.info('renewalStatus.check', { email, needsRenewal, migrationType: user.migrationType });
-        return NextResponse.json({ needsRenewal, price, term, hasValidHistoricalData });
+        return NextResponse.json({ needsRenewal, price, term, hasValidHistoricalData, name: user.name ?? '' });
     } catch (err) {
         logger.error('renewalStatus.error', { email, error: err });
         return NextResponse.json({ needsRenewal: false });

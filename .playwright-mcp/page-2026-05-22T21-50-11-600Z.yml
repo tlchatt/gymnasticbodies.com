@@ -1,0 +1,13 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+        - /url: https://my.gymnasticbodies.com/
+        - img "GymFit by Gymnastic Bodies" [ref=e6]
+      - generic [ref=e7]:
+        - link "Sign In" [ref=e8] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+        - link "Get Started" [ref=e9] [cursor=pointer]:
+          - /url: /subscribe
+  - button "Open Next.js Dev Tools" [ref=e15] [cursor=pointer]:
+    - img [ref=e16]

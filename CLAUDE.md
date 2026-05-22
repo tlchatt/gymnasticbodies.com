@@ -74,6 +74,40 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 - Legacy data lives in `data/` (CSV/JSON from Authorize.net and WooCommerce)
 - `migration.js` reads these files and calls `POST /api/migration` to bulk-import users into Neon
 
+### Logging
+
+- **`lib/logger.js`** — server-side logger. Writes to stdout (JSON) and inserts into the `app_logs` Neon table. `LOG_ENABLED=false` disables all logging; `LOG_LEVEL` sets minimum level (debug/info/warn/error, default: info).
+- **`Drizzle/db/schema.ts`** — `app_logs` table: `id`, `ts`, `level`, `event`, `email`, `userId`, `source`, `data` (jsonb). Indexed on `event`, `ts`, `email`.
+- **`/api/log/route.js`** — server-side log ingestion endpoint.
+- **`/api/clientLog/route.js`** — client-side log forwarding endpoint.
+- **Wired into:** `renewalStatus`, `create-subscription`, `renew-subscription`, `stripe/webhook`, `lib/userSettings.js`.
+- Usage: `import { logger } from '@/lib/logger'; logger.info('event.name', { email, userId, ...data });`
+
+### Marketing / Subscribe Page
+
+- **`app/subscribe/page.js`** — full dark/orange redesign (Barlow Condensed + DM Sans, CSS modules, no MUI). Copy of old page preserved at `app/subscribeOld/`.
+- **`components/DarkNav.js`** — MUI-free sticky nav for marketing pages (dark bg, blur, white logo, ghost Sign In + orange CTA). The global MUI nav (`components/Nav.js`) returns null on `/subscribe` via `usePathname`.
+- **`components/marketing/`** — reusable marketing section components: `PricingCard`, `FeaturesList`, `BottomCta` — each with its own CSS module.
+- **`lib/fonts.js`** — shared Barlow Condensed + DM Sans `next/font/google` instances for marketing pages.
+- **`app/layout.js`** — body uses `minHeight: "100vh"` (was incorrectly `height: "100vh"` which clipped all pages to one viewport).
+
+### Renewal / Account Fixes (2026-05-22)
+
+- **`app/renew/page.js`** — RenewalPortal loaded with `dynamic(..., { ssr: false })` to fix React #418 hydration error from Stripe Elements rendering server-side.
+- **`components/RenewalPortal.js`** — mobile padding reduced, CTA button full-width on mobile.
+- **`components/ModalPopUp.js`** — fixed oversized title (h3→h5), added `width: '90vw', maxWidth: '480px'` constraint.
+- **`components/AccountDetailsComp.js`** — old Authorize.net payment modal disabled (was auto-opening for expired users, conflicting with the new Stripe `/renew` flow).
+
+### Renewal Pricing — Grandfathered $50/month (2026-05-22)
+
+- **`app/api/user/renewalStatus/route.js`** — now returns `hasValidHistoricalData: boolean`. True only when the stored `price` is a positive number from the DB (not a default fallback). Used by RenewalPortal to distinguish users with real historical data from those without.
+- **`components/RenewalPortal.js`** — four-branch pricing logic:
+  - No valid historical data (~6,800 users with N/A/0/unknown price) → **$50/month**
+  - Historical annual/quarterly rate > $50/mo equivalent (e.g. $720/yr = $60/mo) → **$50/month**
+  - Historical annual/quarterly rate ≤ $50/mo equivalent (e.g. $179.88/yr = $15/mo) → **radio: keep historical rate or switch to $50/month**
+  - Historical monthly rate (e.g. $29.99/mo) → **their stored monthly rate, no choice**
+- Monthly equivalent threshold: annual ÷ 12, quarterly ÷ 3. `GRANDFATHERED_MONTHLY_PRICE = '50'` constant controls the offer price.
+
 ## Key API Routes
 
 | Route | Purpose |
@@ -98,17 +132,19 @@ All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *
 
 ## User Migration Types
 
-The `user.migration_type` column classifies all 16,265 users for paywall logic:
+The `user.migration_type` column classifies all users for paywall logic (last updated 2026-05-22):
 
 | Value | Count | Meaning |
 |---|---|---|
-| `stripe` | 3+ | Active Stripe subscriber — no paywall |
-| `auth_net_subscriber` | ~19 | Active Auth.net ARB sub — no paywall |
-| `active_current` | ~340 | Has activity + future renewal date — no paywall |
-| `active_expired` | ~405 | Has activity + lapsed/missing renewal date — **redirect to `/renew`** |
-| `inactive` | ~15,503 | No activity signals — no paywall |
+| `stripe` | 11 | Active Stripe subscriber — no paywall |
+| `auth_net_subscriber` | 19 | Active Auth.net ARB sub — no paywall |
+| `active_current` | 335 | Has activity + future renewal date — no paywall |
+| `active_expired` | 404 | Has activity + lapsed/missing renewal date — **redirect to `/renew`** |
+| `inactive` | 15,502 | No activity signals — no paywall |
 
-Re-run `node claudePlans/classify-users.js --write` periodically to keep types current as subscriptions change.
+Classification rules: `active_expired` = has activity signals (session/user_logs/levelPath records) AND renewal date is missing or in the past. `active_current` = same activity signals AND renewal date is in the future. `renewalStatus` API reads this pre-computed field directly — it does not re-evaluate dates at runtime.
+
+Re-run `node claudePlans/classify-users.js --write` periodically to keep types current as subscriptions change. Run without `--write` first to preview changes.
 
 ## Environment Variables
 

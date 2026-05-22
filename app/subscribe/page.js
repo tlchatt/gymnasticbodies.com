@@ -1,20 +1,30 @@
-'use client';
 import { barlow, dm } from '@/lib/fonts';
 import DarkNav from '@/components/DarkNav';
 import PricingCard from '@/components/marketing/PricingCard';
 import FeaturesList from '@/components/marketing/FeaturesList';
 import BottomCta from '@/components/marketing/BottomCta';
 import s from './subscribe.module.css';
+import content from '@/data/content/subscribe.json';
 
-const features = [
-    { label: 'Thrive nutrition course', detail: 'Diet meets movement — now included' },
-    { label: '700+ guided exercises', detail: '350 strength · 300 mobility · 75 handstand' },
-    { label: 'Programs for every level', detail: 'Beginner through advanced, any age' },
-    { label: '6+ week adaptive programs', detail: 'Evolve as you get stronger' },
-    { label: 'Short, medium & long sessions', detail: 'Fits any schedule, anywhere' },
-];
+export const metadata = {
+    title: content.meta.title,
+    description: content.meta.description,
+    openGraph: {
+        title: content.meta.ogTitle,
+        description: content.meta.ogDescription,
+        images: [{ url: content.meta.ogImage, width: 1200, height: 630, alt: content.meta.ogTitle }],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: content.meta.ogTitle,
+        description: content.meta.ogDescription,
+    },
+};
 
 export default function Subscribe() {
+    const { hero, pricing, trust, features, cta } = content;
+
     return (
         <div className={`${s.page} ${barlow.variable} ${dm.variable}`}>
 
@@ -25,43 +35,22 @@ export default function Subscribe() {
                 <div className={s.glow} />
                 <div className={s.inner}>
 
-                    <span className={s.overline}>GymFit · by Gymnastic Bodies</span>
+                    <span className={s.overline}>{hero.overline}</span>
 
                     <h1 className={s.headline}>
-                        Move like<br />
-                        <span className={s.headlineOutline}>you were</span>
-                        built for it.
+                        {hero.headlineLine1}<br />
+                        <span className={s.headlineOutline}>{hero.headlineLine2}</span>
+                        {hero.headlineLine3}
                     </h1>
 
-                    <p className={s.subtext}>
-                        Restore mobility. Build real strength. Tens of thousands of students — every age, every level — training the gymnastic way.
-                    </p>
+                    <p className={s.subtext}>{hero.subtext}</p>
 
                     <div className={s.pricingGrid}>
-                        <PricingCard
-                            label="Monthly"
-                            price="$75"
-                            unit="/ mo"
-                            sub="after 7-day free trial"
-                            ctaHref="/checkout?amount=75&term=monthly&trial=true"
-                            ctaText="Start Free Trial →"
-                            note="Cancel anytime · No commitment"
-                        />
-                        <PricingCard
-                            label="Annual"
-                            price="$60"
-                            unit="/ mo"
-                            sub="$720 billed annually · after 7-day free trial"
-                            ctaHref="/checkout?amount=720&term=annually&trial=true"
-                            ctaText="Start Free Trial →"
-                            note="Save $180/year vs monthly"
-                            featured
-                            badge="Best Value"
-                        />
+                        {pricing.map(p => <PricingCard key={p.id} {...p} />)}
                     </div>
 
                     <div className={s.trust}>
-                        {['🔒 Secure checkout', '✓ Cancel anytime', '7-day free trial', '10,000+ members'].map(t => (
+                        {trust.map(t => (
                             <span key={t} className={s.trustItem}>{t}</span>
                         ))}
                     </div>
@@ -70,19 +59,12 @@ export default function Subscribe() {
             </section>
 
             <FeaturesList
-                title="Everything<br />included."
-                subtitle="One membership. Every program, every exercise, every update."
-                items={features}
+                title={features.title}
+                subtitle={features.subtitle}
+                items={features.items}
             />
 
-            <BottomCta
-                overline="Start today"
-                title="Your first 7 days are free."
-                ctaHref="/checkout?amount=75&term=monthly&trial=true"
-                ctaText="Get Started →"
-                note="No credit card required to start"
-                watermark="Go"
-            />
+            <BottomCta {...cta} />
 
         </div>
     );

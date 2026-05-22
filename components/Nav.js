@@ -21,7 +21,7 @@ const pages = [{ option: 'Get Started', href: '/subscribe' }];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const settings = [];
 
-const DARK_NAV_ROUTES = ['/subscribe'];
+const DARK_NAV_ROUTES = ['/subscribe', '/renew'];
 
 function ResponsiveAppBar() {
     const router = useRouter();

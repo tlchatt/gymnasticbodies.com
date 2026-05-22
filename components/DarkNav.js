@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import s from './DarkNav.module.css';
 
-export default function DarkNav() {
+export default function DarkNav({ userDisplay }) {
     const [open, setOpen] = useState(false);
 
     return (
@@ -21,7 +21,11 @@ export default function DarkNav() {
                 </a>
 
                 <div className={`${s.links} ${open ? s.linksOpen : ''}`}>
-                    <Link href="https://my.gymnasticbodies.com/" className={s.signIn}>Sign In</Link>
+                    {userDisplay ? (
+                        <span className={s.userDisplay}>{userDisplay}</span>
+                    ) : (
+                        <Link href="https://my.gymnasticbodies.com/" className={s.signIn}>Sign In</Link>
+                    )}
                     <Link href="/subscribe" className={s.cta}>Get Started</Link>
                 </div>
 

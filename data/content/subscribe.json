@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "Start Your 7-Day Free Trial",
+    "description": "Restore mobility. Build real strength. 700+ guided exercises and programs for every level. Start your free trial — cancel anytime.",
+    "ogTitle": "Move Like You Were Built For It | GymFit",
+    "ogDescription": "Tens of thousands of students training the gymnastic way. Start your 7-day free trial today.",
+    "ogImage": "/images/GFmarkandName.webp"
+  },
+  "hero": {
+    "overline": "GymFit · by Gymnastic Bodies",
+    "headlineLine1": "Move like",
+    "headlineLine2": "you were",
+    "headlineLine3": "built for it.",
+    "subtext": "Restore mobility. Build real strength. Tens of thousands of students — every age, every level — training the gymnastic way."
+  },
+  "pricing": [
+    {
+      "id": "monthly",
+      "label": "Monthly",
+      "price": "$75",
+      "unit": "/ mo",
+      "sub": "after 7-day free trial",
+      "ctaHref": "/checkout?amount=75&term=monthly&trial=true",
+      "ctaText": "Start Free Trial →",
+      "note": "Cancel anytime · No commitment"
+    },
+    {
+      "id": "annual",
+      "label": "Annual",
+      "price": "$60",
+      "unit": "/ mo",
+      "sub": "$720 billed annually · after 7-day free trial",
+      "ctaHref": "/checkout?amount=720&term=annually&trial=true",
+      "ctaText": "Start Free Trial →",
+      "note": "Save $180/year vs monthly",
+      "featured": true,
+      "badge": "Best Value"
+    }
+  ],
+  "trust": [
+    "🔒 Secure checkout",
+    "✓ Cancel anytime",
+    "7-day free trial",
+    "10,000+ members"
+  ],
+  "features": {
+    "title": "Everything<br />included.",
+    "subtitle": "One membership. Every program, every exercise, every update.",
+    "items": [
+      { "label": "Thrive nutrition course", "detail": "Diet meets movement — now included" },
+      { "label": "700+ guided exercises", "detail": "350 strength · 300 mobility · 75 handstand" },
+      { "label": "Programs for every level", "detail": "Beginner through advanced, any age" },
+      { "label": "6+ week adaptive programs", "detail": "Evolve as you get stronger" },
+      { "label": "Short, medium & long sessions", "detail": "Fits any schedule, anywhere" }
+    ]
+  },
+  "cta": {
+    "overline": "Start today",
+    "title": "Your first 7 days are free.",
+    "ctaHref": "/checkout?amount=75&term=monthly&trial=true",
+    "ctaText": "Get Started →",
+    "note": "No credit card required to start",
+    "watermark": "Go"
+  }
+}

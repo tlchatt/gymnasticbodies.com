@@ -1,0 +1,29 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e7]:
+      - img [ref=e8]
+    - generic [ref=e11]:
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+      - button "Collapse issues badge" [ref=e17]:
+        - img [ref=e18]
+  - banner [ref=e20]:
+    - generic [ref=e22]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e23] [cursor=pointer]
+      - button "Get Started" [ref=e25] [cursor=pointer]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "GymFit by Gymnastic Bodies" [ref=e29] [cursor=pointer]:
+        - /url: https://my.gymnasticbodies.com/
+        - img "GymFit by Gymnastic Bodies" [ref=e30]
+      - generic [ref=e31]:
+        - link "Sign In" [ref=e32] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+        - link "Get Started" [ref=e33] [cursor=pointer]:
+          - /url: /subscribe
+  - alert [ref=e34]

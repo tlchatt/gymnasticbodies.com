@@ -1,26 +1,12 @@
-'use client';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
+import RenewClient from './RenewClient';
+import content from '@/data/content/renew.json';
 
-const RenewalPortal = dynamic(() => import('@/components/RenewalPortal'), { ssr: false });
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
-function RenewInner() {
-    const searchParams = useSearchParams();
-    const email = searchParams.get('email') ?? '';
-    return <RenewalPortal email={email} />;
-}
+export const metadata = {
+    title: content.meta.title,
+    description: content.meta.description,
+    robots: { index: false, follow: false },
+};
 
 export default function RenewPage() {
-    return (
-        <Elements stripe={stripePromise}>
-            <Suspense>
-                <RenewInner />
-            </Suspense>
-        </Elements>
-    );
+    return <RenewClient />;
 }

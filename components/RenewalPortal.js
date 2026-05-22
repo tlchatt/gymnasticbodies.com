@@ -1,30 +1,31 @@
 'use client';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Alert from '@mui/material/Alert';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import CircularIndeterminate from '@/components/CircularLoading';
 import { useState, useEffect } from 'react';
+import s from './RenewalPortal.module.css';
 
-const STANDARD_PRICE = '75';
 const STANDARD_TERM = 'monthly';
 const GRANDFATHERED_MONTHLY_PRICE = '50';
-const STANDARD_ANNUAL_PRICE = '720';
-const STANDARD_ANNUAL_TERM = 'annually';
 
-function formatBilling(price, term) {
+function parseBilling(price, term) {
     const amount = parseFloat(price);
-    if (isNaN(amount)) return '$75.00 / month';
+    if (isNaN(amount)) return { display: '$50', unit: '/ mo' };
+    const t = term?.toLowerCase();
+    const fmt = n => n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`;
+    if (t === 'annually') return { display: fmt(amount), unit: '/ yr' };
+    if (t === 'quarterly') return { display: fmt(amount), unit: '/ qtr' };
+    return { display: fmt(amount), unit: '/ mo' };
+}
+
+function formatBillingLabel(price, term) {
+    const amount = parseFloat(price);
+    if (isNaN(amount)) return '$50 / month';
     const t = term?.toLowerCase();
     if (t === 'annually') return `$${amount.toFixed(2)} / year`;
     if (t === 'quarterly') return `$${amount.toFixed(2)} / quarter`;
     return `$${amount.toFixed(2)} / month`;
 }
 
-export default function RenewalPortal({ email }) {
+export default function RenewalPortal({ email, onNameLoaded }) {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -51,6 +52,7 @@ export default function RenewalPortal({ email }) {
                 if (data.term) setHistoricalTerm(data.term);
                 setHasValidHistoricalData(!!data.hasValidHistoricalData);
                 if (!data.hasValidHistoricalData) setBillingChoice('standard_monthly');
+                if (data.name && onNameLoaded) onNameLoaded(data.name);
             })
             .catch(() => {});
     }, [email]);
@@ -171,101 +173,89 @@ export default function RenewalPortal({ email }) {
         style: {
             base: {
                 fontSize: '16px',
-                color: '#32325d',
-                fontFamily: '"Open Sans", Helvetica, sans-serif',
-                '::placeholder': { color: '#aab7c4' },
+                color: '#ffffff',
+                fontFamily: '"DM Sans", sans-serif',
+                '::placeholder': { color: 'rgba(255,255,255,0.35)' },
             },
-            invalid: { color: '#dc2626' },
+            invalid: { color: '#ff8080' },
         },
     };
 
-    const wrapperStyle = {
-        maxWidth: '480px',
-        margin: '24px auto',
-        padding: '24px 16px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '16px',
-    };
-
-    const cardWrapperStyle = {
-        border: '1px solid rgba(0,0,0,0.23)',
-        borderRadius: '4px',
-        padding: '14px 12px',
-    };
+    const showChoice = hasValidHistoricalData && !isMonthlyTerm && !historicalAboveThreshold;
+    const staticBilling = parseBilling(selectedPrice, selectedTerm);
 
     return (
-        <div style={wrapperStyle}>
-            <Typography variant="h5" gutterBottom style={{ color: '#333' }}>
-                Renew Your Subscription
-            </Typography>
-            <Typography variant="body1" style={{ color: '#555' }}>
-                Your subscription has expired. Enter your card details below to continue.
-            </Typography>
+        <>
+            <div className={s.glow} />
+            <div className={s.body}>
+                <span className={s.overline}>GymFit · Payment Update</span>
 
-            {email && (
-                <Typography variant="body2" style={{ color: '#777' }}>
-                    Account: <strong>{email}</strong>
-                </Typography>
-            )}
+                <h1 className={s.headline}>
+                    Update Your
+                    <span className={s.headlineAccent}>Payment.</span>
+                </h1>
 
-            {!hasValidHistoricalData ? (
-                <Typography variant="body2" style={{ color: '#444', fontWeight: 600 }}>
-                    You will be billed {formatBilling(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}
-                </Typography>
-            ) : !isMonthlyTerm ? (
-                historicalAboveThreshold ? (
-                    <Typography variant="body2" style={{ color: '#444', fontWeight: 600 }}>
-                        You will be billed {formatBilling(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}
-                    </Typography>
+                <p className={s.sub}>
+                    Your subscription has lapsed — add your card below to pick up right where you left off.
+                </p>
+
+                {email && (
+                    <p className={s.emailRow}>
+                        Account: <strong className={s.emailStrong}>{email}</strong>
+                    </p>
+                )}
+
+                {showChoice ? (
+                    <div className={s.billingChoice}>
+                        {[
+                            { value: 'historical', label: `Keep my plan — ${formatBillingLabel(historicalPrice, historicalTerm)}` },
+                            { value: 'grandfathered_monthly', label: `Switch to monthly — ${formatBillingLabel(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}` },
+                        ].map(opt => {
+                            const selected = billingChoice === opt.value;
+                            return (
+                                <div
+                                    key={opt.value}
+                                    className={`${s.billingOption} ${selected ? s.billingOptionSelected : ''}`}
+                                    onClick={() => setBillingChoice(opt.value)}
+                                >
+                                    <div className={`${s.radioRing} ${selected ? s.radioRingSelected : ''}`}>
+                                        {selected && <div className={s.radioDot} />}
+                                    </div>
+                                    <span className={`${s.billingOptionLabel} ${selected ? s.billingOptionLabelSelected : ''}`}>
+                                        {opt.label}
+                                    </span>
+                                </div>
+                            );
+                        })}
+                    </div>
                 ) : (
-                    <RadioGroup value={billingChoice} onChange={e => setBillingChoice(e.target.value)}>
-                        <FormControlLabel
-                            value="historical"
-                            control={<Radio color="primary" />}
-                            label={`Keep my plan — ${formatBilling(historicalPrice, historicalTerm)}`}
-                        />
-                        <FormControlLabel
-                            value="grandfathered_monthly"
-                            control={<Radio color="primary" />}
-                            label={`Switch to monthly — ${formatBilling(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}`}
-                        />
-                    </RadioGroup>
-                )
-            ) : (
-                <Typography variant="body2" style={{ color: '#444', fontWeight: 600 }}>
-                    You will be billed {formatBilling(selectedPrice, selectedTerm)}
-                </Typography>
-            )}
+                    <div className={s.billingDisplay}>
+                        <p className={s.billingLabel}>You will be billed</p>
+                        <div className={s.billingAmountRow}>
+                            <span className={s.billingAmount}>{staticBilling.display}</span>
+                            <span className={s.billingUnit}>{staticBilling.unit}</span>
+                        </div>
+                    </div>
+                )}
 
-            <div style={cardWrapperStyle}>
-                <CardElement options={cardElementOptions} />
+                <div className={s.cardSection}>
+                    <p className={s.cardFieldLabel}>Card details</p>
+                    <div className={s.cardBox}>
+                        <CardElement options={cardElementOptions} />
+                    </div>
+                </div>
+
+                <button
+                    className={s.ctaBtn}
+                    onClick={handleSubmit}
+                    disabled={loading || !stripe || success}
+                >
+                    {loading ? 'Processing...' : 'Renew Subscription →'}
+                </button>
+
+                {error && <p className={s.errorMsg}>{message}</p>}
+                {success && <p className={s.successMsg}>{message}</p>}
             </div>
-
-            <Button
-                type="button"
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}
-                disabled={loading || !stripe || success}
-                style={{ width: '100%' }}
-            >
-                Renew Subscription
-            </Button>
-
-            {error && (
-                <Alert variant="filled" severity="error" style={{ marginTop: '8px' }}>
-                    {message}
-                </Alert>
-            )}
-            {success && (
-                <Alert severity="success" style={{ marginTop: '8px' }}>
-                    {message}
-                </Alert>
-            )}
-            {loading && (
-                <CircularIndeterminate incomingStyle={{ width: '100%', height: '100%', top: '0', left: '0', background: '#FAFAFA', opacity: '0.3', zIndex: '5' }} />
-            )}
-        </div>
+        </>
     );
 }
