@@ -3,7 +3,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
-import RenewalPortal from '@/components/RenewalPortal';
+import dynamic from 'next/dynamic';
+
+const RenewalPortal = dynamic(() => import('@/components/RenewalPortal'), { ssr: false });
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
