@@ -66,8 +66,10 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 ### Cron Jobs
 
-- Vercel cron jobs hit `/api/cronJobs/route.js` on a schedule
-- Checks renewal dates, updates subscription statuses, sends emails via SendGrid
+- Vercel cron jobs are defined in `vercel.json` and run on a schedule:
+  - `/api/cronJobs` — daily at 10 AM UTC: renewal checks, subscription status updates, SendGrid emails
+  - `/api/classifyUsers` — daily at 11 AM UTC: re-classifies all users into `migration_type` buckets
+- **`app/api/classifyUsers/route.js`** — runs the full user classification query using `neon()` direct SQL for the JOIN and Drizzle `inArray` for batch UPDATE. Returns a JSON summary with counts and changes. Logs results to `app_logs`.
 
 ### Data Migration
 
@@ -85,11 +87,13 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 ### Marketing / Subscribe Page
 
-- **`app/subscribe/page.js`** — full dark/orange redesign (Barlow Condensed + DM Sans, CSS modules, no MUI). Copy of old page preserved at `app/subscribeOld/`.
-- **`components/DarkNav.js`** — MUI-free sticky nav for marketing pages (dark bg, blur, white logo, ghost Sign In + orange CTA). The global MUI nav (`components/Nav.js`) returns null on `/subscribe` via `usePathname`.
+- **`app/subscribe/page.js`** — server component (no `'use client'`); imports all copy from `data/content/subscribe.json`; exports `metadata` with OG + Twitter card tags. Full dark/orange redesign (Barlow Condensed + DM Sans, CSS modules, no MUI). Copy of old page preserved at `app/subscribeOld/`.
+- **`data/content/subscribe.json`** — all subscribe page copy: hero text, pricing cards, trust strip, features list, bottom CTA, plus metadata strings (title, description, ogTitle, ogDescription, ogImage). Edit this file to update page copy without touching component logic.
+- **`data/content/renew.json`** — renew page metadata only (title, description). Renew page content is mostly dynamic (pulled from API).
+- **`app/layout.js`** — exports base `metadata` with `title.template: '%s | GymFit'` so page-level titles cascade automatically. Includes `metadataBase`, OG `siteName`, and Twitter card defaults. Body uses `minHeight: "100vh"`.
+- **`components/DarkNav.js`** — MUI-free sticky nav for marketing pages (dark bg, blur, white logo, ghost Sign In + orange CTA). The global MUI nav (`components/Nav.js`) returns null on `/subscribe` and `/renew` via `usePathname`.
 - **`components/marketing/`** — reusable marketing section components: `PricingCard`, `FeaturesList`, `BottomCta` — each with its own CSS module.
 - **`lib/fonts.js`** — shared Barlow Condensed + DM Sans `next/font/google` instances for marketing pages.
-- **`app/layout.js`** — body uses `minHeight: "100vh"` (was incorrectly `height: "100vh"` which clipped all pages to one viewport).
 
 ### Renewal / Account Fixes (2026-05-22)
 
@@ -108,6 +112,18 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
   - Historical monthly rate (e.g. $29.99/mo) → **their stored monthly rate, no choice**
 - Monthly equivalent threshold: annual ÷ 12, quarterly ÷ 3. `GRANDFATHERED_MONTHLY_PRICE = '50'` constant controls the offer price.
 
+### Renewal Page Redesign + Nav Personalization (2026-05-22)
+
+- **`components/RenewalPortal.js`** — full MUI removal; rewritten with `RenewalPortal.module.css` (dark/orange theme matching `/subscribe`). Barlow Condensed headline, DM Sans body, custom CSS radio buttons, dark Stripe CardElement, orange gradient CTA. Accepts `onNameLoaded` callback.
+- **`components/RenewalPortal.module.css`** — new CSS module for the portal.
+- **`app/renew/page.js`** — now a static server component exporting metadata; delegates to `RenewClient`.
+- **`app/renew/RenewClient.js`** — client wrapper; holds `userName` state, passes `onNameLoaded` down to `RenewalPortal` via `RenewInner`, passes resolved name to `DarkNav` as `userDisplay`.
+- **`app/renew/renew.module.css`** — dark page wrapper (`#0e0e0e` background).
+- **`components/DarkNav.js`** — accepts optional `userDisplay` prop; replaces "Sign In" link with the user's name when provided.
+- **`components/DarkNav.module.css`** — added `.userDisplay` style (ghost pill matching Sign In button dimensions).
+- **`components/Nav.js`** — added `/renew` to `DARK_NAV_ROUTES` so the global MUI nav suppresses itself on the renew page.
+- **`app/api/user/renewalStatus/route.js`** — now returns `name: user.name` so the nav can display the user's real name pulled from the DB via their email (carried over from the `my.gymnasticbodies.com` session).
+
 ## Key API Routes
 
 | Route | Purpose |
@@ -125,7 +141,8 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/user/resetLink` / `resetPassword` | Password reset flow |
 | `/api/user/contactUs` | Contact form (SendGrid) |
 | `/api/user/accountInformation` | Account details read/write |
-| `/api/cronJobs` | Renewal checks & subscription updates |
+| `/api/cronJobs` | Renewal checks & subscription updates (daily cron) |
+| `/api/classifyUsers` | Re-classifies all users into migration_type buckets (daily cron) |
 | `/api/migration` | Bulk user import from legacy data |
 
 All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *`).
@@ -144,7 +161,7 @@ The `user.migration_type` column classifies all users for paywall logic (last up
 
 Classification rules: `active_expired` = has activity signals (session/user_logs/levelPath records) AND renewal date is missing or in the past. `active_current` = same activity signals AND renewal date is in the future. `renewalStatus` API reads this pre-computed field directly — it does not re-evaluate dates at runtime.
 
-Re-run `node claudePlans/classify-users.js --write` periodically to keep types current as subscriptions change. Run without `--write` first to preview changes.
+The `/api/classifyUsers` cron runs automatically at 11 AM UTC daily. To re-run manually: `node claudePlans/classify-users.js --write` (omit `--write` to preview without changes).
 
 ## Environment Variables
 

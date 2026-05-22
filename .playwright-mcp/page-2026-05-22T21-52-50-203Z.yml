@@ -1,0 +1,59 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "Get Started" [ref=e7] [cursor=pointer]
+  - alert [ref=e8]
+  - generic [ref=e9]:
+    - heading "Renew Your Subscription" [level=5] [ref=e10]
+    - paragraph [ref=e11]: Your subscription has expired. Enter your card details below to continue.
+    - paragraph [ref=e12]:
+      - text: "Account:"
+      - strong [ref=e13]: albertini.nadine@gmail.com
+    - paragraph [ref=e14]: You will be billed $50.00 / month
+    - generic [ref=e17]:
+      - iframe [ref=e18]:
+        - generic [ref=f157e1]:
+          - generic: 0123456789０１２３４５６７８９
+          - textbox [disabled]
+          - generic [ref=f157e2]:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic:
+                    - img
+            - generic [ref=f157e3]:
+              - generic [ref=f157e4]:
+                - generic: Number
+                - generic [ref=f157e6]:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                        - generic:
+                          - img
+                  - textbox "Credit or debit card number" [ref=f157e9]:
+                    - /placeholder: Card number
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - textbox:
+                        - /placeholder: MM / YY
+                - generic:
+                  - generic:
+                    - generic:
+                      - textbox:
+                        - /placeholder: CVC
+          - textbox [disabled]
+          - button
+      - textbox
+      - iframe [ref=e20]:
+        - button "Autofill with Link" [ref=f160e3] [cursor=pointer]:
+          - generic [ref=f160e4]: Autofill
+    - button "Renew Subscription" [ref=e21] [cursor=pointer]
