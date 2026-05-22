@@ -35,6 +35,11 @@ export default function RenewalPortal({ email }) {
 
     useEffect(() => {
         if (!email) return;
+        fetch('/api/log', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event: 'renew.page_view', email }),
+        }).catch(() => {});
         fetch(`/api/user/renewalStatus?email=${encodeURIComponent(email)}`)
             .then(r => r.json())
             .then(data => {
@@ -52,6 +57,12 @@ export default function RenewalPortal({ email }) {
 
     const handleSubmit = async () => {
         if (!stripe || !elements) return;
+
+        fetch('/api/log', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event: 'renew.form_submit', email, price: selectedPrice, term: selectedTerm }),
+        }).catch(() => {});
 
         setLoading(true);
         setError(false);
@@ -74,6 +85,11 @@ export default function RenewalPortal({ email }) {
             });
 
             if (pmError) {
+                fetch('/api/log', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ event: 'renew.card_error', level: 'warn', email, message: pmError.message }),
+                }).catch(() => {});
                 setError(true);
                 setMessage(pmError.message);
                 setLoading(false);

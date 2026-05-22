@@ -1,6 +1,21 @@
 import { relations } from "drizzle-orm";
 import { pgTable, text, timestamp, boolean, index, serial,json } from "drizzle-orm/pg-core";
 
+export const app_logs = pgTable("app_logs", {
+  id: serial("id").primaryKey(),
+  ts: timestamp("ts").defaultNow().notNull(),
+  level: text("level").notNull(),
+  event: text("event").notNull(),
+  email: text("email"),
+  userId: text("user_id"),
+  source: text("source").default('app.gymnasticbodies.com'),
+  data: json("data"),
+}, (table) => [
+  index("app_logs_event_idx").on(table.event),
+  index("app_logs_ts_idx").on(table.ts),
+  index("app_logs_email_idx").on(table.email),
+]);
+
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
