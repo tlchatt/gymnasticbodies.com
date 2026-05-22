@@ -12,7 +12,11 @@ const style = {
   transform: 'translate(-50%, -50%)',
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
+  p: 3,
+  width: '90vw',
+  maxWidth: '480px',
+  maxHeight: '90vh',
+  overflowY: 'auto',
 };
 
 export default function ModalPopUp(props) {
@@ -48,7 +52,7 @@ export default function ModalPopUp(props) {
         <Box sx={style} style={{ boxShadow: "0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14)" }}>
 
           {props?.data?.title &&
-            <Typography id="modal-modal-title" variant="h3" component="h3">
+            <Typography id="modal-modal-title" variant="h5" component="h2">
               {props?.data?.title}
             </Typography>
           }

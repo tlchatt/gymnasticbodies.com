@@ -152,8 +152,8 @@ export default function RenewalPortal({ email }) {
 
     const wrapperStyle = {
         maxWidth: '480px',
-        margin: '60px auto',
-        padding: '32px',
+        margin: '24px auto',
+        padding: '24px 16px',
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',
@@ -212,7 +212,7 @@ export default function RenewalPortal({ email }) {
                 color="primary"
                 onClick={handleSubmit}
                 disabled={loading || !stripe || success}
-                style={{ width: 'max-content' }}
+                style={{ width: '100%' }}
             >
                 Renew Subscription
             </Button>

@@ -138,9 +138,7 @@ export default function AccountDetailsComp({ data }) {
                     <PaymentPortal data={paymentPortalData} />
                 </Suspense> */}
 
-                {impInfo?.nextPaymentDate && impInfo?.matchedTerm !== "oneTime" && impInfo?.matchedTerm !== "N/A" && new Date(nextPayment) < new Date(todaysDate) &&
-                    <ModalPopUp data={updatePaymentInfo} formData={formData} paywall={true} userData={userData} />
-                }
+                {/* Old Auth.net payment modal — disabled; renewal now handled by /renew (Stripe) */}
 
                 {/* <ModalPopUp data={updatePaymentInfo} formData={formData} paywall={true} userData={userTest} /> */}
 
