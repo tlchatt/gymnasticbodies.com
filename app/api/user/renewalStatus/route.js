@@ -14,18 +14,23 @@ export async function GET(request) {
 
         let price = '75';
         let term = 'monthly';
+        let hasValidHistoricalData = false;
 
         const setting = await queryUserSetting(user.id, 'subscription');
         if (setting?.data) {
             try {
                 const data = JSON.parse(setting.data);
-                if (data.price && data.price !== 'N/A') price = data.price;
-                if (data.term && data.term !== 'N/A') term = data.term;
+                const storedPrice = data.price && data.price !== 'N/A' ? data.price : null;
+                const storedTerm  = data.term  && data.term  !== 'N/A' ? data.term  : null;
+                if (storedPrice) price = storedPrice;
+                if (storedTerm)  term  = storedTerm;
+                const parsed = parseFloat(storedPrice);
+                hasValidHistoricalData = storedPrice !== null && !isNaN(parsed) && parsed > 0;
             } catch (_) {}
         }
 
         logger.info('renewalStatus.check', { email, needsRenewal, migrationType: user.migrationType });
-        return NextResponse.json({ needsRenewal, price, term });
+        return NextResponse.json({ needsRenewal, price, term, hasValidHistoricalData });
     } catch (err) {
         logger.error('renewalStatus.error', { email, error: err });
         return NextResponse.json({ needsRenewal: false });

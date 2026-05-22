@@ -11,6 +11,9 @@ import { useState, useEffect } from 'react';
 
 const STANDARD_PRICE = '75';
 const STANDARD_TERM = 'monthly';
+const GRANDFATHERED_MONTHLY_PRICE = '50';
+const STANDARD_ANNUAL_PRICE = '720';
+const STANDARD_ANNUAL_TERM = 'annually';
 
 function formatBilling(price, term) {
     const amount = parseFloat(price);
@@ -31,6 +34,7 @@ export default function RenewalPortal({ email }) {
     const [message, setMessage] = useState('');
     const [historicalPrice, setHistoricalPrice] = useState(null);
     const [historicalTerm, setHistoricalTerm] = useState(null);
+    const [hasValidHistoricalData, setHasValidHistoricalData] = useState(false);
     const [billingChoice, setBillingChoice] = useState('historical');
 
     useEffect(() => {
@@ -45,15 +49,40 @@ export default function RenewalPortal({ email }) {
             .then(data => {
                 if (data.price) setHistoricalPrice(data.price);
                 if (data.term) setHistoricalTerm(data.term);
+                setHasValidHistoricalData(!!data.hasValidHistoricalData);
+                if (!data.hasValidHistoricalData) setBillingChoice('standard_monthly');
             })
             .catch(() => {});
     }, [email]);
 
-    const isHistoricalSameAsStandard =
-        historicalPrice === STANDARD_PRICE && historicalTerm?.toLowerCase() === STANDARD_TERM;
+    const isMonthlyTerm = historicalTerm?.toLowerCase() === 'monthly';
 
-    const selectedPrice = billingChoice === 'monthly' ? STANDARD_PRICE : (historicalPrice ?? STANDARD_PRICE);
-    const selectedTerm = billingChoice === 'monthly' ? STANDARD_TERM : (historicalTerm ?? STANDARD_TERM);
+    const historicalMonthlyEquivalent = (() => {
+        const amount = parseFloat(historicalPrice);
+        if (isNaN(amount)) return 0;
+        const t = historicalTerm?.toLowerCase();
+        if (t === 'annually') return amount / 12;
+        if (t === 'quarterly') return amount / 3;
+        return amount;
+    })();
+    const historicalAboveThreshold = historicalMonthlyEquivalent > parseFloat(GRANDFATHERED_MONTHLY_PRICE);
+
+    let selectedPrice, selectedTerm;
+    if (!hasValidHistoricalData) {
+        selectedPrice = GRANDFATHERED_MONTHLY_PRICE;
+        selectedTerm  = STANDARD_TERM;
+    } else if (!isMonthlyTerm) {
+        if (historicalAboveThreshold) {
+            selectedPrice = GRANDFATHERED_MONTHLY_PRICE;
+            selectedTerm  = STANDARD_TERM;
+        } else {
+            selectedPrice = billingChoice === 'grandfathered_monthly' ? GRANDFATHERED_MONTHLY_PRICE : historicalPrice;
+            selectedTerm  = billingChoice === 'grandfathered_monthly' ? STANDARD_TERM               : historicalTerm;
+        }
+    } else {
+        selectedPrice = historicalPrice;
+        selectedTerm  = historicalTerm;
+    }
 
     const handleSubmit = async () => {
         if (!stripe || !elements) return;
@@ -180,22 +209,29 @@ export default function RenewalPortal({ email }) {
                 </Typography>
             )}
 
-            {historicalPrice && !isHistoricalSameAsStandard ? (
-                <RadioGroup
-                    value={billingChoice}
-                    onChange={e => setBillingChoice(e.target.value)}
-                >
-                    <FormControlLabel
-                        value="historical"
-                        control={<Radio color="primary" />}
-                        label={`Keep my plan — ${formatBilling(historicalPrice, historicalTerm)}`}
-                    />
-                    <FormControlLabel
-                        value="monthly"
-                        control={<Radio color="primary" />}
-                        label={`Switch to standard monthly — ${formatBilling(STANDARD_PRICE, STANDARD_TERM)}`}
-                    />
-                </RadioGroup>
+            {!hasValidHistoricalData ? (
+                <Typography variant="body2" style={{ color: '#444', fontWeight: 600 }}>
+                    You will be billed {formatBilling(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}
+                </Typography>
+            ) : !isMonthlyTerm ? (
+                historicalAboveThreshold ? (
+                    <Typography variant="body2" style={{ color: '#444', fontWeight: 600 }}>
+                        You will be billed {formatBilling(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}
+                    </Typography>
+                ) : (
+                    <RadioGroup value={billingChoice} onChange={e => setBillingChoice(e.target.value)}>
+                        <FormControlLabel
+                            value="historical"
+                            control={<Radio color="primary" />}
+                            label={`Keep my plan — ${formatBilling(historicalPrice, historicalTerm)}`}
+                        />
+                        <FormControlLabel
+                            value="grandfathered_monthly"
+                            control={<Radio color="primary" />}
+                            label={`Switch to monthly — ${formatBilling(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}`}
+                        />
+                    </RadioGroup>
+                )
             ) : (
                 <Typography variant="body2" style={{ color: '#444', fontWeight: 600 }}>
                     You will be billed {formatBilling(selectedPrice, selectedTerm)}
