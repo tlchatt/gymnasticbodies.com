@@ -1,0 +1,17 @@
+[     388ms] Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at rK (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:45827)
+    at io (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:96549)
+    at sc (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:137020)
+    at https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:131910
+    at u9 (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:132011)
+    at sV (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:158525)
+    at MessagePort.z (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_9g6u2EJsNJGLWyuMzV9fRLzd9RVT:1:7365)
+[   52573ms] [LOG] App props 12-29-2025 3 {history: Object, location: Object, match: Object, staticContext: undefined, isAuth: false} @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52573ms] [LOG] 4 @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52582ms] [LOG] window.location length: URLSearchParams @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52582ms] [LOG] urlParams: URLSearchParams @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52582ms] [LOG] inside authCheckState: {login: Object, calendar: Object, classes: Array(0), data: Array(0), subClasses: Array(0)} @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52582ms] [LOG] values in authCheckState: {authToken: null, refreshToken: null, userLevelID: null, refreshExpireTime: null, authExpireTime: null} @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52582ms] [LOG] postAWS: null @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52582ms] [LOG] here @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[   52591ms] [LOG] sectionId: initial @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0

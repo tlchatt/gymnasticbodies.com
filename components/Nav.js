@@ -15,14 +15,18 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const pages = [{ option: 'Get Started', href: '/subscribe' }];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const settings = [];
 
+const DARK_NAV_ROUTES = ['/subscribe'];
+
 function ResponsiveAppBar() {
     const router = useRouter();
+    const pathname = usePathname();
+    if (DARK_NAV_ROUTES.includes(pathname)) return null;
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 

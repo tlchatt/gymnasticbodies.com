@@ -1,0 +1,33 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "account of current user" [ref=e7] [cursor=pointer]:
+        - img [ref=e8]
+  - heading "OUR PLANS" [level=3] [ref=e10]
+  - generic [ref=e16]:
+    - heading "Monthly" [level=2] [ref=e17]
+    - heading "$75 / month" [level=2] [ref=e18]
+    - link "Start For Free" [ref=e19] [cursor=pointer]:
+      - /url: /checkout?amount=75&term=monthly&trial=true
+    - heading "Billed Monthly" [level=3] [ref=e20]
+    - heading "(After 7 days Trial)" [level=5] [ref=e21]
+  - generic [ref=e23]:
+    - paragraph [ref=e24]:
+      - img [ref=e25]
+      - text: Now includes our nutrition course Thrive
+    - paragraph [ref=e27]:
+      - img [ref=e28]
+      - text: Over 350 Strength exercises, 300 mobility exercises and 75 Handstand exercises to deliver noticeable results in less time
+    - paragraph [ref=e30]:
+      - img [ref=e31]
+      - text: Customizable training to match your fitness level and goals
+    - paragraph [ref=e33]:
+      - img [ref=e34]
+      - text: 6+ Week Programs that adapt as you progress
+    - paragraph [ref=e36]:
+      - img [ref=e37]
+      - text: Short, Medium and Long workouts to suit your schedule
+  - alert [ref=e39]

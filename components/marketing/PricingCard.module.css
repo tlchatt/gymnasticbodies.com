@@ -1,0 +1,110 @@
+.card {
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(240,86,33,0.35);
+}
+
+.cardFeatured {
+    border-color: rgba(240,86,33,0.5);
+    background: rgba(240,86,33,0.06);
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f05621;
+    color: #fff;
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 99px;
+    white-space: nowrap;
+}
+
+.cardLabel {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+}
+
+.cardLabelFeatured {
+    color: rgba(252,177,78,0.9);
+}
+
+.priceRow {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.priceAmount {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 900;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: #fff;
+}
+
+.priceUnit {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+}
+
+.priceSub {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: -8px;
+}
+
+.ctaBtn {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, #fcb14e 0%, #f05621 100%);
+    color: #fff;
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 24px;
+    border-radius: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    margin-top: 4px;
+}
+
+.ctaBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(240,86,33,0.5);
+    color: #fff;
+}
+
+.cardNote {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+.cardNoteFeatured {
+    color: rgba(252,177,78,0.8);
+}

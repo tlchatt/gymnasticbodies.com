@@ -1,0 +1,52 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "account of current user" [ref=e7] [cursor=pointer]:
+        - img [ref=e8]
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - heading "Train Like a Gymnast" [level=1] [ref=e12]
+      - paragraph [ref=e13]: Full access · New content weekly · Cancel anytime
+      - generic [ref=e14]:
+        - generic [ref=e15]: MONTHLY PLAN
+        - generic [ref=e16]:
+          - generic [ref=e17]: $75
+          - paragraph [ref=e18]: / month
+        - generic [ref=e19]: after 7-day free trial
+        - link "START FOR FREE →" [ref=e20] [cursor=pointer]:
+          - /url: /checkout?amount=75&term=monthly&trial=true
+        - generic [ref=e21]: Billed monthly · No commitment
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e26]: Secure payment
+        - generic [ref=e27]:
+          - img [ref=e28]
+          - generic [ref=e30]: Cancel anytime
+        - generic [ref=e31]:
+          - img [ref=e32]
+          - generic [ref=e34]: 7-day free trial
+    - generic [ref=e35]:
+      - generic [ref=e36]: EVERYTHING INCLUDED
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - img [ref=e39]
+          - paragraph [ref=e41]: Now includes our nutrition course Thrive
+        - generic [ref=e42]:
+          - img [ref=e43]
+          - paragraph [ref=e45]: Over 350 Strength, 300 mobility, and 75 Handstand exercises
+        - generic [ref=e46]:
+          - img [ref=e47]
+          - paragraph [ref=e49]: Customizable training to match your fitness level and goals
+        - generic [ref=e50]:
+          - img [ref=e51]
+          - paragraph [ref=e53]: 6+ Week Programs that adapt as you progress
+        - generic [ref=e54]:
+          - img [ref=e55]
+          - paragraph [ref=e57]: Short, Medium and Long workouts to suit your schedule
+  - button "Open Next.js Dev Tools" [ref=e63] [cursor=pointer]:
+    - img [ref=e64]
+  - alert [ref=e67]

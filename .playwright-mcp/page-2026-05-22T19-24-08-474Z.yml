@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "Get Started" [ref=e7] [cursor=pointer]
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - heading "Train Like a Gymnast" [level=1] [ref=e10]
+      - paragraph [ref=e11]: Full access · New content weekly · Cancel anytime
+      - generic [ref=e12]:
+        - generic [ref=e13]: MONTHLY PLAN
+        - generic [ref=e14]:
+          - generic [ref=e15]: $75
+          - paragraph [ref=e16]: / month
+        - generic [ref=e17]: after 7-day free trial
+        - link "START FOR FREE →" [ref=e18] [cursor=pointer]:
+          - /url: /checkout?amount=75&term=monthly&trial=true
+        - generic [ref=e19]: Billed monthly · No commitment
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - img [ref=e22]
+          - generic [ref=e24]: Secure payment
+        - generic [ref=e25]:
+          - img [ref=e26]
+          - generic [ref=e28]: Cancel anytime
+        - generic [ref=e29]:
+          - img [ref=e30]
+          - generic [ref=e32]: 7-day free trial
+    - generic [ref=e33]:
+      - generic [ref=e34]: EVERYTHING INCLUDED
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - img [ref=e37]
+          - paragraph [ref=e39]: Now includes our nutrition course Thrive
+        - generic [ref=e40]:
+          - img [ref=e41]
+          - paragraph [ref=e43]: Over 350 Strength, 300 mobility, and 75 Handstand exercises
+        - generic [ref=e44]:
+          - img [ref=e45]
+          - paragraph [ref=e47]: Customizable training to match your fitness level and goals
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - paragraph [ref=e51]: 6+ Week Programs that adapt as you progress
+        - generic [ref=e52]:
+          - img [ref=e53]
+          - paragraph [ref=e55]: Short, Medium and Long workouts to suit your schedule

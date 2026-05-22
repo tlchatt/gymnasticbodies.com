@@ -1,123 +1,89 @@
 'use client';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import { Box, Typography } from '@mui/material';
-import { GetSettings } from '@/lib/GetSettings';
-import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
+import { barlow, dm } from '@/lib/fonts';
+import DarkNav from '@/components/DarkNav';
+import PricingCard from '@/components/marketing/PricingCard';
+import FeaturesList from '@/components/marketing/FeaturesList';
+import BottomCta from '@/components/marketing/BottomCta';
+import s from './subscribe.module.css';
 
+const features = [
+    { label: 'Thrive nutrition course', detail: 'Diet meets movement — now included' },
+    { label: '700+ guided exercises', detail: '350 strength · 300 mobility · 75 handstand' },
+    { label: 'Programs for every level', detail: 'Beginner through advanced, any age' },
+    { label: '6+ week adaptive programs', detail: 'Evolve as you get stronger' },
+    { label: 'Short, medium & long sessions', detail: 'Fits any schedule, anywhere' },
+];
 
-export default function Subscribe(props) {
-    let { Settings, Style, Media } = GetSettings(props, "Checkout");
-
-    let ContainerStyle = {
-        ...Style,
-        margin: `${Settings.standardMargin} 0`
-
-    }
-    let ContainerInnerStyle = {
-        ...Style,
-        placeContent: 'unset',
-        gap: Settings.standardGap,
-        gridAutoFlow: "column",
-        justifyItems: "stretch"
-    }
-    let titleStyle = {
-        color: "#656464",
-        padding: "24px 0 0",
-    }
-    let blockStyle = {
-        background: "#fafafa",
-        display: "grid"
-        // borderRadius: "4px"
-    }
-    let featuresStyles = {
-        padding: "12px 0 0",
-        display: "grid",
-        gridAutoFlow: "column",
-        gap: "10px",
-        justifyContent: "start",
-        alignItems: "center"
-
-    }
-    let iconStyle = {
-        color: "#f05621"
-    }
-    let pageJson = [
-        { "term": "Monthly", "price": "$75 / month", "amount": "75", "trial": true, "trialDetails": "(7 days Trial)", "buttonValue": "Start For Free", "billedText": "Billed Monthly", "billedTerm": "(After 7 days Trial)" },
-        // { "term": "Monthly", "price": "$75 / month", "amount": "75", "trial": false, "trialDetails": "", "buttonValue": "Subscribe", "billedTerm": "", "billedText": "Billed Monthly" },
-    ]
+export default function Subscribe() {
     return (
-        <>
-            <Typography variant='h3' gutterBottom style={titleStyle} id="responsive-dialog-title" align='center'>OUR PLANS
-            </Typography>
-            {/* <Box sx={style}> */}
-            {/* <StandardContainer style={ContainerStyle} innerStyle={ContainerInnerStyle} innerClassName="StandardContainerInnerMargin" id={Settings.id} innerID={Settings.innerID} {...props}> */}
-            <Grid size={12} sx={{ display: 'grid', gridAutoFlow: { xs: 'row', md: 'column' } }} style={{ justifyContent: "center", gap: "20px" }}>
-                {pageJson.map((item, index) =>
-                    <Grid size={6} key={index} style={{ display: "grid" }}>
-                        <Paper elevation={3} rounded="true" style={{ display: "grid" }}>
-                            <Grid size={6} style={blockStyle} elevation={24}>
-                                <Box >
-                                    <Grid size={6} style={{ display: "grid", justifyItems: "center", gap: Settings.lowGap, padding: Settings.highPadding }} >
-                                        {/* <Item>size=8</Item> */}
-                                        <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
-                                            {item.term}
-                                        </Typography>
-                                        <Typography id="modal-modal-description" variant="h4" component="h2">
-                                            {item.price}
-                                        </Typography>
+        <div className={`${s.page} ${barlow.variable} ${dm.variable}`}>
 
-                                        <Button
-                                            type="button"
-                                            variant="contained"
-                                            color="primary"
-                                            href={`/checkout?amount=${item?.amount}&term=monthly&trial=${item?.trial}`}
-                                            style={{ fontSize: "1rem", letterSpacing: 1, background: "linear-gradient(18deg, #fcb14e 0%, #f05621 100%) !important", }}
-                                        // onClick={() => handleContactForm()}
-                                        >
-                                            {item.buttonValue}
-                                        </Button>
-                                        <Typography id="modal-modal-description" variant="p" component="h3" >
-                                            {item?.billedText}
-                                        </Typography>
-                                        <Typography id="modal-modal-description" variant="p" component="h5" >
-                                            {item.billedTerm}
-                                        </Typography>
-                                    </Grid>
-                                </Box>
-                            </Grid>
-                        </Paper>
-                    </Grid>
-                )
-                }
-            </Grid>
-            <Grid size={6} style={{ display: "grid", padding: "10px", justifyItems: "center" }} elevation={24}>
-                <Box >
+            <DarkNav />
 
-                    {/* <Item>size=8</Item> */}
+            {/* ── Hero ── */}
+            <section className={s.hero}>
+                <div className={s.glow} />
+                <div className={s.inner}>
 
-                    <Typography id="modal-modal-title" variant="p" component="p" style={featuresStyles}>
-                        <FileDownloadDoneIcon style={iconStyle} /> Now includes our nutrition course Thrive
-                    </Typography>
-                    <Typography id="modal-modal-title" variant="p" component="p" style={featuresStyles}>
-                        <FileDownloadDoneIcon style={iconStyle} /> Over 350 Strength exercises, 300 mobility exercises and 75 Handstand exercises to deliver noticeable results in less time
-                    </Typography>
-                    <Typography id="modal-modal-title" variant="p" component="p" style={featuresStyles}>
-                        <FileDownloadDoneIcon style={iconStyle} /> Customizable training to match your fitness level and goals
-                    </Typography>
-                    <Typography id="modal-modal-title" variant="p" component="p" style={featuresStyles}>
-                        <FileDownloadDoneIcon style={iconStyle} /> 6+ Week Programs that adapt as you progress
-                    </Typography>
-                    <Typography id="modal-modal-title" variant="p" component="p" style={featuresStyles}>
-                        <FileDownloadDoneIcon style={iconStyle} /> Short, Medium and Long workouts to suit your schedule
-                    </Typography>
-                </Box>
-            </Grid>
+                    <span className={s.overline}>GymFit · by Gymnastic Bodies</span>
 
+                    <h1 className={s.headline}>
+                        Move like<br />
+                        <span className={s.headlineOutline}>you were</span>
+                        built for it.
+                    </h1>
 
+                    <p className={s.subtext}>
+                        Restore mobility. Build real strength. Tens of thousands of students — every age, every level — training the gymnastic way.
+                    </p>
 
-            {/* </StandardContainer> */}
-        </>
+                    <div className={s.pricingGrid}>
+                        <PricingCard
+                            label="Monthly"
+                            price="$75"
+                            unit="/ mo"
+                            sub="after 7-day free trial"
+                            ctaHref="/checkout?amount=75&term=monthly&trial=true"
+                            ctaText="Start Free Trial →"
+                            note="Cancel anytime · No commitment"
+                        />
+                        <PricingCard
+                            label="Annual"
+                            price="$60"
+                            unit="/ mo"
+                            sub="$720 billed annually · after 7-day free trial"
+                            ctaHref="/checkout?amount=720&term=annually&trial=true"
+                            ctaText="Start Free Trial →"
+                            note="Save $180/year vs monthly"
+                            featured
+                            badge="Best Value"
+                        />
+                    </div>
+
+                    <div className={s.trust}>
+                        {['🔒 Secure checkout', '✓ Cancel anytime', '7-day free trial', '10,000+ members'].map(t => (
+                            <span key={t} className={s.trustItem}>{t}</span>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
+
+            <FeaturesList
+                title="Everything<br />included."
+                subtitle="One membership. Every program, every exercise, every update."
+                items={features}
+            />
+
+            <BottomCta
+                overline="Start today"
+                title="Your first 7 days are free."
+                ctaHref="/checkout?amount=75&term=monthly&trial=true"
+                ctaText="Get Started →"
+                note="No credit card required to start"
+                watermark="Go"
+            />
+
+        </div>
     );
 }

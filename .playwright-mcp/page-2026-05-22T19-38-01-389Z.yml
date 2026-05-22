@@ -1,0 +1,92 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e7]:
+      - img [ref=e8]
+    - generic [ref=e11]:
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+      - button "Collapse issues badge" [ref=e17]:
+        - img [ref=e18]
+  - banner [ref=e20]:
+    - generic [ref=e22]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e23] [cursor=pointer]
+      - button "Get Started" [ref=e25] [cursor=pointer]
+  - generic [ref=e26]:
+    - generic [ref=e28]:
+      - generic [ref=e29]: GymFit · by Gymnastic Bodies
+      - heading "Move like you were built for it." [level=1] [ref=e30]:
+        - text: Move like
+        - generic [ref=e31]: you were
+        - text: built for it.
+      - paragraph [ref=e32]: Restore mobility. Build real strength. Tens of thousands of students — every age, every level — training the gymnastic way.
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - paragraph [ref=e35]: Monthly
+          - generic [ref=e36]:
+            - generic [ref=e37]: $75
+            - generic [ref=e38]: / mo
+          - paragraph [ref=e39]: after 7-day free trial
+          - link "Start Free Trial →" [ref=e40] [cursor=pointer]:
+            - /url: /checkout?amount=75&term=monthly&trial=true
+          - paragraph [ref=e41]: Cancel anytime · No commitment
+        - generic [ref=e42]:
+          - generic [ref=e43]: Best Value
+          - paragraph [ref=e44]: Annual
+          - generic [ref=e45]:
+            - generic [ref=e46]: $60
+            - generic [ref=e47]: / mo
+          - paragraph [ref=e48]: $720 billed annually · after 7-day free trial
+          - link "Start Free Trial →" [ref=e49] [cursor=pointer]:
+            - /url: /checkout?amount=720&term=annually&trial=true
+          - paragraph [ref=e50]: Save $180/year vs monthly
+      - generic [ref=e51]:
+        - generic [ref=e52]: 🔒 Secure checkout
+        - generic [ref=e53]: ✓ Cancel anytime
+        - generic [ref=e54]: 7-day free trial
+        - generic [ref=e55]: 10,000+ members
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - heading "Everything included." [level=2] [ref=e59]:
+          - text: Everything
+          - text: included.
+        - paragraph [ref=e60]: One membership. Every program, every exercise, every update.
+      - list [ref=e61]:
+        - listitem [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: "01"
+            - generic [ref=e65]: Thrive nutrition course
+          - generic [ref=e66]: Diet meets movement — now included
+        - listitem [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: "02"
+            - generic [ref=e70]: 700+ guided exercises
+          - generic [ref=e71]: 350 strength · 300 mobility · 75 handstand
+        - listitem [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e74]: "03"
+            - generic [ref=e75]: Programs for every level
+          - generic [ref=e76]: Beginner through advanced, any age
+        - listitem [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e79]: "04"
+            - generic [ref=e80]: 6+ week adaptive programs
+          - generic [ref=e81]: Evolve as you get stronger
+        - listitem [ref=e82]:
+          - generic [ref=e83]:
+            - generic [ref=e84]: "05"
+            - generic [ref=e85]: Short, medium & long sessions
+          - generic [ref=e86]: Fits any schedule, anywhere
+    - generic [ref=e87]:
+      - generic: Go
+      - generic [ref=e88]:
+        - generic [ref=e89]: Start today
+        - heading "Your first 7 days are free." [level=3] [ref=e90]
+        - link "Get Started →" [ref=e91] [cursor=pointer]:
+          - /url: /checkout?amount=75&term=monthly&trial=true
+        - paragraph [ref=e92]: No credit card required to start
+  - alert [ref=e93]
