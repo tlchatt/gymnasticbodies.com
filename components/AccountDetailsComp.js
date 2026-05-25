@@ -8,7 +8,7 @@ import ModalPopUp from './ModalPopUp';
 import { CancelSubscriptionInAuthorize } from '@/lib/commonServerFunction';
 import { useState } from 'react';
 
-export default function AccountDetailsComp({ data }) {
+export default function AccountDetailsComp({ data, userId }) {
     let {
         impInfo,
         lastTransactionInvoiceNumber
@@ -104,7 +104,7 @@ export default function AccountDetailsComp({ data }) {
         "style": { padding: '0' }
     }
 
-    const nextPayment = new Date(impInfo.redableNextPaymentDate)
+    const nextPayment = impInfo?.redableNextPaymentDate ? new Date(impInfo.redableNextPaymentDate) : null
 
     const todaysDate = new Date()
     let userData = {
@@ -149,7 +149,7 @@ export default function AccountDetailsComp({ data }) {
 
                 <DisplayOrder data={data} />
 
-                <DisplaySubscription data={data} />
+                <DisplaySubscription data={data} userId={userId} />
 
             </Stack >
         </>
@@ -249,8 +249,10 @@ function DisplayOrder({ data }) {
         </GridBox>
     )
 }
-function DisplaySubscription({ data }) {
+function DisplaySubscription({ data, userId }) {
     let [cancelled, setCancelled] = useState(false)
+    let [cancelling, setCancelling] = useState(false)
+    let [trialCancelled, setTrialCancelled] = useState(false)
     let {
         cardType,
         cardNumber,
@@ -259,6 +261,28 @@ function DisplaySubscription({ data }) {
         lastTransactionStatus,
         transactionHistory
     } = data ?? {}
+
+    const handleCancelTrial = async () => {
+        if (!impInfo?.subscriptionId) return
+        setCancelling(true)
+        try {
+            const res = await fetch('/api/stripe/cancel-subscription', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ subscriptionId: impInfo.subscriptionId }),
+            })
+            const result = await res.json()
+            if (result.success) {
+                setTrialCancelled(true)
+            } else {
+                alert(result.message ?? 'Cancellation failed. Please try again.')
+            }
+        } catch (e) {
+            alert('Something went wrong. Please try again.')
+        } finally {
+            setCancelling(false)
+        }
+    }
     let presentContent = [
         { "Status": impInfo?.status },
         impInfo?.trial ? { "Trial End Date": impInfo?.trialEndDate } : null,
@@ -336,6 +360,32 @@ function DisplaySubscription({ data }) {
                     </Stack>
                 }
             </Stack>
+            {impInfo?.trial && impInfo?.subscriptionId && impInfo?.subscriptionId !== 'N/A' && (
+                <Stack direction="row" spacing={2} style={{ margin: "20px" }}>
+                    {trialCancelled ? (
+                        <Typography variant="body1" style={{ color: '#4caf50' }}>
+                            Your trial has been cancelled. You will not be charged.
+                        </Typography>
+                    ) : (
+                        <button
+                            onClick={handleCancelTrial}
+                            disabled={cancelling}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                color: '#d32f2f',
+                                cursor: cancelling ? 'not-allowed' : 'pointer',
+                                fontSize: '14px',
+                                textDecoration: 'underline',
+                                padding: 0,
+                                opacity: cancelling ? 0.6 : 1,
+                            }}
+                        >
+                            {cancelling ? 'Cancelling...' : 'Cancel Trial'}
+                        </button>
+                    )}
+                </Stack>
+            )}
         </GridBox>
     )
 

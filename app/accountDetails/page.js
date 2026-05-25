@@ -24,9 +24,17 @@ export default async function page({ searchParams }) {
     let accountInformation = await getAccountInformation(dataJson)
     console.log("accountInformation:", accountInformation)
 
+    if (!accountInformation) {
+        return (
+            <div style={{ padding: '40px', textAlign: 'center' }}>
+                <h2>Account information not available.</h2>
+                <p>We could not find subscription details for this account.</p>
+            </div>
+        )
+    }
 
     return (
-        <AccountDetailsComp data={accountInformation} />
+        <AccountDetailsComp data={accountInformation} userId={userId} />
         // <AccountDetailsComp userId={userId} username={username}/>
     );
 
