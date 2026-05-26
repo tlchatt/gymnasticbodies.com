@@ -11,6 +11,7 @@ export default function LoginClient() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -60,14 +61,29 @@ export default function LoginClient() {
 
       <div className={s.field}>
         <label className={s.label}>Password</label>
-        <input
-          className={s.input}
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          autoComplete="current-password"
-        />
+        <div style={{ position: 'relative' }}>
+          <input
+            className={s.input}
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            autoComplete="current-password"
+            style={{ paddingRight: '2.5rem' }}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((v) => !v)}
+            style={{
+              position: 'absolute', right: '0.75rem', top: '50%',
+              transform: 'translateY(-50%)', background: 'none',
+              border: 'none', cursor: 'pointer', color: '#aaa', fontSize: '0.8rem',
+              padding: 0,
+            }}
+          >
+            {showPassword ? 'Hide' : 'Show'}
+          </button>
+        </div>
       </div>
 
       <button className={s.btn} type="submit" disabled={loading}>
