@@ -1,0 +1,8 @@
+[     443ms] Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at rK (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:45827)
+    at io (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:96549)
+    at sc (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:137020)
+    at https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:131910
+    at u9 (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:132011)
+    at sV (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:158525)
+    at MessagePort.z (https://app.gymnasticbodies.com/_next/static/chunks/e480fb48dbf55c2e.js?dpl=dpl_BP1BcTMKDbUdZtzRbcra1vvsuFxj:1:7365)

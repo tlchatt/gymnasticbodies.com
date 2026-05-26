@@ -15,6 +15,13 @@
       "when": 1779390987133,
       "tag": "0001_smart_black_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779729074002,
+      "tag": "0002_hard_rachel_grey",
+      "breakpoints": true
     }
   ]
 }

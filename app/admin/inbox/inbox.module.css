@@ -1,0 +1,156 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.syncBtn {
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #fcb14e 0%, #f05621 100%);
+  color: #fff;
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.syncBtn:hover { opacity: 0.88; }
+.syncBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.syncMsg {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #222;
+}
+
+.tab {
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  color: #666;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.tab:hover { color: #ccc; }
+.tab.activeTab {
+  color: #f05621;
+  border-bottom-color: #f05621;
+}
+
+.empty {
+  color: #555;
+  font-size: 0.875rem;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.1s, border-color 0.1s;
+}
+.row:hover {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+.sender {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subject {
+  font-size: 0.875rem;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+.badge {
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badgeOpen    { background: rgba(240, 86, 33, 0.15); color: #f05621; }
+.badgeReplied { background: rgba(80, 200, 120, 0.12); color: #50c878; }
+.badgeClosed  { background: rgba(120, 120, 120, 0.15); color: #888; }
+
+.badgeStripe        { background: rgba(99, 91, 255, 0.15); color: #9b94ff; }
+.badgeActiveCurrent { background: rgba(80, 200, 120, 0.12); color: #50c878; }
+.badgeActiveExpired { background: rgba(240, 86, 33, 0.15); color: #f05621; }
+.badgeInactive      { background: rgba(120, 120, 120, 0.15); color: #888; }
+.badgeUnknown       { background: rgba(120, 120, 120, 0.1); color: #666; }
+
+.userDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #50c878;
+  flex-shrink: 0;
+}
+.userDotMissing {
+  background: #444;
+}

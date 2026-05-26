@@ -30,6 +30,7 @@
     "drizzle-orm": "^0.45.2",
     "email-validator": "^2.0.4",
     "generate-password": "^1.7.1",
+    "googleapis": "^172.0.0",
     "jsonwebtoken": "^9.0.3",
     "libphonenumber-js": "^1.12.36",
     "luxon": "^3.7.2",

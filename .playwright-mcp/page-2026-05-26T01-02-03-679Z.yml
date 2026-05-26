@@ -1,0 +1,49 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "Get Started" [ref=e7] [cursor=pointer]
+  - heading "ACCOUNT" [level=3] [ref=e8]
+  - generic [ref=e9]:
+    - generic [ref=e11]:
+      - heading "User Information" [level=2] [ref=e14]
+      - generic [ref=e16]:
+        - generic [ref=e18]:
+          - heading "First Name" [level=2] [ref=e19]
+          - heading "Greggory" [level=2] [ref=e20]
+        - generic [ref=e22]:
+          - heading "Last Name" [level=2] [ref=e23]
+          - heading "N/A" [level=2] [ref=e24]
+        - generic [ref=e26]:
+          - heading "Email" [level=2] [ref=e27]
+          - heading "p123c@tlchatt.com" [level=2] [ref=e28]
+        - generic [ref=e30]:
+          - heading "Country" [level=2] [ref=e31]
+          - heading "N/A" [level=2] [ref=e32]
+        - generic [ref=e34]:
+          - heading "Phone" [level=2] [ref=e35]
+          - heading "N/A" [level=2] [ref=e36]
+    - generic [ref=e38]:
+      - heading "Order Information" [level=2] [ref=e41]
+      - heading "No Order Present" [level=2] [ref=e46]
+    - generic [ref=e48]:
+      - heading "Manage Subscription" [level=2] [ref=e51]
+      - generic [ref=e55]:
+        - generic [ref=e57]:
+          - heading "Status" [level=2] [ref=e58]
+          - heading "Inactive" [level=2] [ref=e59]
+        - generic [ref=e61]:
+          - heading "Name" [level=2] [ref=e62]
+          - heading "GymFit TV - $0.02 / monthly" [level=2] [ref=e63]
+        - generic [ref=e65]:
+          - heading "Amount" [level=2] [ref=e66]
+          - heading "$0.02" [level=2] [ref=e67]
+        - generic [ref=e69]:
+          - heading "Next Payment Date" [level=2] [ref=e70]
+          - heading "N/A" [level=2] [ref=e71]
+        - generic [ref=e73]:
+          - heading "Payment Method" [level=2] [ref=e74]
+          - heading "AmericanExpress ending in XXXX1000" [level=2] [ref=e75]
+  - alert [ref=e76]

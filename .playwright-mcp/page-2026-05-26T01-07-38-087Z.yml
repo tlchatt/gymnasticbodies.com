@@ -1,0 +1,11 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Logo":
+        - /url: https://my.gymnasticbodies.com/
+        - img "Logo" [ref=e5] [cursor=pointer]
+      - button "Get Started" [ref=e7] [cursor=pointer]
+  - generic [ref=e8]:
+    - heading "Account information not available." [level=2] [ref=e9]
+    - paragraph [ref=e10]: We could not find subscription details for this account.
+  - alert [ref=e11]

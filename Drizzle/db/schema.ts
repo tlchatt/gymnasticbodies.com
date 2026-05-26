@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index, serial,json } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, serial, json, integer } from "drizzle-orm/pg-core";
 
 export const app_logs = pgTable("app_logs", {
   id: serial("id").primaryKey(),
@@ -134,6 +134,41 @@ export const verification = pgTable(
   (table) => [index("verification_identifier_idx").on(table.identifier)],
 );
 
+export const support_emails = pgTable("support_emails", {
+  id: serial("id").primaryKey(),
+  gmailMessageId: text("gmail_message_id").unique(),
+  gmailThreadId: text("gmail_thread_id"),
+  fromEmail: text("from_email").notNull(),
+  fromName: text("from_name"),
+  subject: text("subject").notNull(),
+  body: text("body").notNull(),
+  receivedAt: timestamp("received_at").notNull(),
+  status: text("status").default("open").notNull(),
+  adminNotes: text("admin_notes"),
+  userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+  assignedTo: text("assigned_to").references(() => user.id, { onDelete: "set null" }),
+  repliedAt: timestamp("replied_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
+}, (t) => [
+  index("support_emails_from_idx").on(t.fromEmail),
+  index("support_emails_status_idx").on(t.status),
+  index("support_emails_received_idx").on(t.receivedAt),
+  index("support_emails_user_idx").on(t.userId),
+]);
+
+export const support_replies = pgTable("support_replies", {
+  id: serial("id").primaryKey(),
+  emailId: integer("email_id").notNull().references(() => support_emails.id, { onDelete: "cascade" }),
+  adminUserId: text("admin_user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+  body: text("body").notNull(),
+  sentAt: timestamp("sent_at").defaultNow().notNull(),
+  gmailMessageId: text("gmail_message_id"),
+});
+
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
@@ -162,6 +197,25 @@ export const userSettingRelations = relations(user_setting, ({ one }) => ({
 export const userLogsRelations = relations(user_logs, ({ one }) => ({
   user: one(user, {
     fields: [user_logs.userId],
+    references: [user.id],
+  }),
+}));
+
+export const supportEmailRelations = relations(support_emails, ({ one, many }) => ({
+  user: one(user, {
+    fields: [support_emails.userId],
+    references: [user.id],
+  }),
+  replies: many(support_replies),
+}));
+
+export const supportReplyRelations = relations(support_replies, ({ one }) => ({
+  email: one(support_emails, {
+    fields: [support_replies.emailId],
+    references: [support_emails.id],
+  }),
+  admin: one(user, {
+    fields: [support_replies.adminUserId],
     references: [user.id],
   }),
 }));

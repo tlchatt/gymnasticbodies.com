@@ -1,0 +1,9 @@
+[    1575ms] [LOG] App props 12-29-2025 3 {history: Object, location: Object, match: Object, staticContext: undefined, isAuth: false} @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1575ms] [LOG] 4 @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1584ms] [LOG] window.location length: URLSearchParams @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1584ms] [LOG] urlParams: URLSearchParams @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1584ms] [LOG] inside authCheckState: {login: Object, calendar: Object, classes: Array(0), data: Array(0), subClasses: Array(0)} @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1584ms] [LOG] values in authCheckState: {authToken: null, refreshToken: null, userLevelID: null, refreshExpireTime: null, authExpireTime: null} @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1584ms] [LOG] postAWS: null @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1584ms] [LOG] here @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
+[    1593ms] [LOG] sectionId: initial @ https://my.gymnasticbodies.com/static/js/main.ae2024ee.chunk.js:0
