@@ -20,6 +20,7 @@ export async function GET(request) {
       receivedAt: support_emails.receivedAt,
       status: support_emails.status,
       userId: support_emails.userId,
+      caseId: support_emails.caseId,
       migrationType: user.migrationType,
     })
     .from(support_emails)

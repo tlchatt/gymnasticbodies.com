@@ -1,6 +1,6 @@
 'use client';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import s from './RenewalPortal.module.css';
 
 const STANDARD_TERM = 'monthly';
@@ -37,6 +37,7 @@ export default function RenewalPortal({ email, onNameLoaded }) {
     const [historicalTerm, setHistoricalTerm] = useState(null);
     const [hasValidHistoricalData, setHasValidHistoricalData] = useState(false);
     const [billingChoice, setBillingChoice] = useState('historical');
+    const submittingRef = useRef(false);
 
     useEffect(() => {
         if (!email) return;
@@ -87,7 +88,8 @@ export default function RenewalPortal({ email, onNameLoaded }) {
     }
 
     const handleSubmit = async () => {
-        if (!stripe || !elements) return;
+        if (!stripe || !elements || submittingRef.current) return;
+        submittingRef.current = true;
 
         fetch('/api/log', {
             method: 'POST',
@@ -159,13 +161,14 @@ export default function RenewalPortal({ email, onNameLoaded }) {
             setMessage('Subscription renewed! Redirecting to your workouts...');
 
             const { token, userId, name } = result;
-            window.location.href = `https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&postAWS=true&userId=${userId}&username=${encodeURIComponent(email)}&name=${encodeURIComponent(name ?? '')}`;
+            window.location.href = `https://my.gymnasticbodies.com/?authToken=${token}&refreshToken=${token}&postAWS=true&userId=${userId}&username=${encodeURIComponent(email)}&name=${encodeURIComponent(name ?? '')}&source=renewal`;
         } catch (err) {
             console.error('RenewalPortal error:', err);
             setError(true);
             setMessage('Something went wrong. Please try again.');
         } finally {
             setLoading(false);
+            submittingRef.current = false;
         }
     };
 

@@ -146,6 +146,7 @@ export const support_emails = pgTable("support_emails", {
   status: text("status").default("open").notNull(),
   adminNotes: text("admin_notes"),
   userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+  caseId: integer("case_id").references(() => support_cases.id, { onDelete: "set null" }),
   assignedTo: text("assigned_to").references(() => user.id, { onDelete: "set null" }),
   repliedAt: timestamp("replied_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -158,6 +159,25 @@ export const support_emails = pgTable("support_emails", {
   index("support_emails_status_idx").on(t.status),
   index("support_emails_received_idx").on(t.receivedAt),
   index("support_emails_user_idx").on(t.userId),
+]);
+
+export const support_cases = pgTable("support_cases", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+  fromEmail: text("from_email").notNull(),
+  fromName: text("from_name"),
+  title: text("title").notNull(),
+  status: text("status").default("open").notNull(), // open | pending | resolved | closed
+  priority: text("priority").default("normal").notNull(), // low | normal | high | urgent
+  adminNotes: text("admin_notes"),
+  openedBy: text("opened_by").references(() => user.id, { onDelete: "set null" }),
+  resolvedAt: timestamp("resolved_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+}, (t) => [
+  index("support_cases_user_idx").on(t.userId),
+  index("support_cases_status_idx").on(t.status),
+  index("support_cases_email_idx").on(t.fromEmail),
 ]);
 
 export const support_replies = pgTable("support_replies", {
@@ -201,10 +221,20 @@ export const userLogsRelations = relations(user_logs, ({ one }) => ({
   }),
 }));
 
+export const supportCaseRelations = relations(support_cases, ({ one, many }) => ({
+  user: one(user, { fields: [support_cases.userId], references: [user.id] }),
+  openedByUser: one(user, { fields: [support_cases.openedBy], references: [user.id] }),
+  emails: many(support_emails),
+}));
+
 export const supportEmailRelations = relations(support_emails, ({ one, many }) => ({
   user: one(user, {
     fields: [support_emails.userId],
     references: [user.id],
+  }),
+  case: one(support_cases, {
+    fields: [support_emails.caseId],
+    references: [support_cases.id],
   }),
   replies: many(support_replies),
 }));

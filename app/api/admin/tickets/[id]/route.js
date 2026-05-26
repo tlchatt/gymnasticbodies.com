@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
-import { support_emails, support_replies, user, user_setting, app_logs } from '@/Drizzle/db/schema';
+import { support_emails, support_replies, support_cases, user, user_setting, app_logs } from '@/Drizzle/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
 export async function GET(request, { params }) {
@@ -42,7 +42,24 @@ export async function GET(request, { params }) {
     }
   }
 
+  let linkedCase = null;
+  if (ticket.caseId) {
+    const [c] = await db
+      .select({ id: support_cases.id, title: support_cases.title, status: support_cases.status })
+      .from(support_cases)
+      .where(eq(support_cases.id, ticket.caseId));
+    linkedCase = c ?? null;
+  }
+
   return NextResponse.json({
-    ticket: { ...ticket, replies, user: matchedUser, userSetting, recentLogs },
+    ticket: {
+      ...ticket,
+      replies,
+      user: matchedUser,
+      userSetting,
+      recentLogs,
+      caseId: ticket.caseId ?? null,
+      case: linkedCase,
+    },
   });
 }

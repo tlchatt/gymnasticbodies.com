@@ -39,6 +39,22 @@ export async function POST(request) {
         const amountCents = Math.round(parseFloat(rawPrice) * 100);
         const { interval, intervalCount } = getStripeInterval(rawTerm);
 
+        // Idempotency: if already subscribed, return success without creating a duplicate
+        if (setting?.stripeSubscriptionId && user.migrationType === 'stripe') {
+            logger.info('renewal.already_active', { email, stripeSubscriptionId: setting.stripeSubscriptionId });
+            const token = generateSessionToken();
+            const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+            await db.insert(session).values({
+                id: randomBytes(16).toString('hex'),
+                token,
+                userId: user.id,
+                expiresAt,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            });
+            return NextResponse.json({ success: true, token, userId: user.id, email: user.email, name: user.name });
+        }
+
         // Reuse existing Stripe customer or create new one
         let customerId = setting?.stripeCustomerId ?? null;
         if (!customerId) {
