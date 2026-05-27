@@ -340,3 +340,89 @@
   transition: background 0.15s;
 }
 .saveNotesBtn:hover { background: #2a2a2a; color: #fff; }
+
+/* --- Case section --- */
+.caseSection {
+  padding: 12px 16px;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.viewCaseLink {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #f05621;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.viewCaseLink:hover { opacity: 0.8; }
+
+.openCaseBtn {
+  padding: 6px 14px;
+  background: #222;
+  color: #f05621;
+  font-size: 0.78rem;
+  border: 1px solid rgba(240, 86, 33, 0.4);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.openCaseBtn:hover { background: rgba(240, 86, 33, 0.1); }
+.openCaseBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.cancelCaseBtn {
+  padding: 6px 12px;
+  background: transparent;
+  color: #666;
+  font-size: 0.78rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.cancelCaseBtn:hover { color: #aaa; }
+
+.caseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.caseInput {
+  width: 100%;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.caseInput:focus { border-color: #f05621; }
+
+.caseSelect {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 5px 10px;
+  color: #ccc;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.caseFormRow {
+  display: flex;
+  gap: 8px;
+}
+
+.caseMsg {
+  font-size: 0.75rem;
+  color: #ef4444;
+}

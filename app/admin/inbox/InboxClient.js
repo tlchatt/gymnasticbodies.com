@@ -99,7 +99,18 @@ export default function InboxClient() {
           {tickets.map((t) => (
             <Link key={t.id} href={`/admin/ticket/${t.id}`} className={s.row}>
               <span className={s.sender}>{t.fromName || t.fromEmail}</span>
-              <span className={s.subject}>{t.subject}</span>
+              <span className={s.subjectCell}>
+                <span className={s.subjectText}>{t.subject}</span>
+                {t.caseId && (
+                  <Link
+                    href={`/admin/cases/${t.caseId}`}
+                    className={s.caseBadge}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    CASE
+                  </Link>
+                )}
+              </span>
               <span className={s.date}>{fmtDate(t.receivedAt)}</span>
               <span className={`${s.badge} ${statusClass(t.status)}`}>{t.status}</span>
               {t.migrationType ? (

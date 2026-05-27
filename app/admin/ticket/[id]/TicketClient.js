@@ -34,6 +34,11 @@ export default function TicketClient({ ticket: initial }) {
   const [sendMsg, setSendMsg] = useState('');
   const [notes, setNotes] = useState(initial.adminNotes ?? '');
   const [savingNotes, setSavingNotes] = useState(false);
+  const [showCaseForm, setShowCaseForm] = useState(false);
+  const [caseTitle, setCaseTitle] = useState(initial.subject ?? '');
+  const [casePriority, setCasePriority] = useState('normal');
+  const [openingCase, setOpeningCase] = useState(false);
+  const [caseMsg, setCaseMsg] = useState('');
 
   const user = ticket.user;
   const setting = ticket.userSetting;
@@ -84,6 +89,35 @@ export default function TicketClient({ ticket: initial }) {
       body: JSON.stringify({ adminNotes: notes }),
     });
     setSavingNotes(false);
+  }
+
+  async function openCase(e) {
+    e.preventDefault();
+    if (!caseTitle.trim()) return;
+    setOpeningCase(true);
+    setCaseMsg('');
+    try {
+      const res = await fetch('/api/admin/cases', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fromEmail: ticket.fromEmail,
+          fromName: ticket.fromName ?? null,
+          title: caseTitle,
+          priority: casePriority,
+          emailId: ticket.id,
+          userId: ticket.userId ?? null,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setCaseMsg(data.error ?? 'Failed to open case'); return; }
+      setTicket((t) => ({ ...t, caseId: data.case.id, case: { id: data.case.id, title: data.case.title, status: data.case.status } }));
+      setShowCaseForm(false);
+    } catch {
+      setCaseMsg('Network error — try again');
+    } finally {
+      setOpeningCase(false);
+    }
   }
 
   return (
@@ -148,6 +182,52 @@ export default function TicketClient({ ticket: initial }) {
         <div>
           <div className={s.panel}>
             <div className={s.panelTitle}>Customer</div>
+
+            {/* Case link or open case button */}
+            <div className={s.caseSection}>
+              {ticket.caseId ? (
+                <Link href={`/admin/cases/${ticket.caseId}`} className={s.viewCaseLink}>
+                  View Case #{ticket.caseId} →
+                </Link>
+              ) : ticket.userId ? (
+                <>
+                  {!showCaseForm ? (
+                    <button className={s.openCaseBtn} onClick={() => setShowCaseForm(true)}>
+                      Open Case
+                    </button>
+                  ) : (
+                    <form onSubmit={openCase} className={s.caseForm}>
+                      <input
+                        className={s.caseInput}
+                        value={caseTitle}
+                        onChange={(e) => setCaseTitle(e.target.value)}
+                        placeholder="Case title"
+                        required
+                      />
+                      <select
+                        className={s.caseSelect}
+                        value={casePriority}
+                        onChange={(e) => setCasePriority(e.target.value)}
+                      >
+                        <option value="low">Low</option>
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                      </select>
+                      <div className={s.caseFormRow}>
+                        <button type="submit" className={s.openCaseBtn} disabled={openingCase}>
+                          {openingCase ? 'Opening…' : 'Submit'}
+                        </button>
+                        <button type="button" className={s.cancelCaseBtn} onClick={() => setShowCaseForm(false)}>
+                          Cancel
+                        </button>
+                      </div>
+                      {caseMsg && <div className={s.caseMsg}>{caseMsg}</div>}
+                    </form>
+                  )}
+                </>
+              ) : null}
+            </div>
             {!user ? (
               <div className={s.noUser}>No account found for {ticket.fromEmail}</div>
             ) : (

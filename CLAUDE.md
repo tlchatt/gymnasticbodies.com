@@ -199,3 +199,20 @@ NEXT_PUBLIC_API_URL          # Backend base URL (ngrok or vercel)
 NEXT_PUBLIC_ENVIRONMENT      # 'development' | 'production'
 REACT_APP_API_NEW            # API endpoint base (https://gymnasticbodies-com.vercel.app)
 ```
+
+## Logging / app_logs Queries
+
+- **`app_logs.data` is `json` type** — `DISTINCT`, `->>` operator, and `LOWER()` all fail in parameterized neon template-literal queries. Fetch raw rows and process in JavaScript instead.
+- **Stripe key in `.env.local` is `sk_test_*`** — local Stripe SDK queries return test data only. Real production subscriptions require the live key (Vercel env only).
+- **Confirmed renewal conversion** = `renewal.success` log event + non-null `stripe_customer_id` in `user_setting`. A `renew.form_submit` with no `renewal.success` and null `stripe_customer_id` indicates a test-key submission.
+- **Reclassification is immediate** — `updateUserMigrationType` is called synchronously inside `renew-subscription/route.js`. A successful renewal is reflected in `renewalStatus` on the next request, no cron wait needed.
+
+## Renewal Flow — Known Fixes (2026-05-27)
+
+- **Double-submission race condition** — `RenewalPortal.js` uses `submittingRef` (`useRef`) to guard `handleSubmit`; React `setState` is async and doesn't block re-clicks before re-render.
+- **`source=renewal` in redirect URL** — `RenewalPortal.js` redirect to `my.gymnasticbodies.com` must include `&source=renewal`. Without it, `loginActions.js` on the `my.` side skips filling in missing JWT fields (`refreshExpireTime`, `authExpireTime`, `timezone`) and dispatches `Logout()` immediately.
+- **Server-side idempotency** — `renew-subscription/route.js` returns early if `user.migrationType === 'stripe'` and `stripeSubscriptionId` already exists, preventing duplicate subscriptions from racing requests.
+
+## SendGrid — Direct Scripting
+
+- Can send email directly via `node -e` script: `require('@sendgrid/mail')` + `require('dotenv').config({ path: '.env.local' })`. No need to go through the `/api/` route for one-off sends.

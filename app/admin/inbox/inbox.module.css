@@ -154,3 +154,37 @@
 .userDotMissing {
   background: #444;
 }
+
+.subjectCell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.subjectText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  color: #aaa;
+}
+
+.caseBadge {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  padding: 1px 6px;
+  border-radius: 100px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(240, 86, 33, 0.2);
+  color: #f05621;
+  border: 1px solid rgba(240, 86, 33, 0.4);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.caseBadge:hover {
+  background: rgba(240, 86, 33, 0.35);
+}
