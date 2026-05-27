@@ -250,11 +250,11 @@ export default function UserDetailClient({ params }) {
               </button>
             </div>
 
+            <div className={s.panelDivider} />
+            <div className={s.panelSubTitle}>Access</div>
+
             {setting && (
               <>
-                <div className={s.panelDivider} />
-                <div className={s.panelSubTitle}>Subscription</div>
-
                 {setting.status && (
                   <div className={s.infoRow}>
                     <span className={s.infoKey}>Status</span>
@@ -295,9 +295,11 @@ export default function UserDetailClient({ params }) {
                     </a>
                   </div>
                 )}
+              </>
+            )}
 
-                {/* Contextual: Stripe subscriber → extend via Stripe; everyone else → app-level grant */}
-                {setting.stripeSubscriptionId ? (
+            {/* Contextual access action — always visible for non-Stripe users */}
+            {setting?.stripeSubscriptionId ? (
                   <div className={s.actionRow}>
                     <button
                       className={`${s.actionBtn} ${s.actionOrange} ${extendState === 'ok' ? s.actionOk : extendState === 'error' ? s.actionErr : ''}`}
@@ -348,8 +350,6 @@ export default function UserDetailClient({ params }) {
                     )}
                   </div>
                 )}
-              </>
-            )}
           </div>
         </div>
       </div>
