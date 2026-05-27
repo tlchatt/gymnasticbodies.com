@@ -1,0 +1,252 @@
+.back {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #555;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.15s;
+}
+.back:hover { color: #aaa; }
+
+.loading {
+  color: #555;
+  font-size: 0.875rem;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.leftCol, .rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cards */
+.card {
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statLabel {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+.statVal {
+  font-size: 1.4rem;
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+/* Log list */
+.logList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.logItem {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.logLevel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.logInfo  { background: rgba(80, 200, 120, 0.1); color: #50c878; }
+.logWarn  { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+.logError { background: rgba(240, 86, 33, 0.12); color: #f05621; }
+
+.logEvent { color: #aaa; }
+.logTs    { color: #444; white-space: nowrap; font-size: 0.72rem; }
+
+/* Link lists (tickets/cases) */
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.linkItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #1e1e1e;
+  background: #111;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.1s, border-color 0.1s;
+}
+.linkItem:hover { background: #1a1a1a; border-color: #2a2a2a; }
+
+.linkSubject {
+  font-size: 0.82rem;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.linkMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.linkDate { font-size: 0.72rem; color: #444; }
+
+.badge {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badgeOpen     { background: rgba(240, 86, 33, 0.15); color: #f05621; }
+.badgeReplied  { background: rgba(80, 200, 120, 0.12); color: #50c878; }
+.badgePending  { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+.badgeResolved { background: rgba(99, 91, 255, 0.15); color: #9b94ff; }
+.badgeClosed   { background: rgba(120, 120, 120, 0.15); color: #888; }
+
+.empty {
+  font-size: 0.82rem;
+  color: #444;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Right panel */
+.panel {
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.panelTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.userName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 2px;
+}
+
+.userEmail {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 14px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 0.82rem;
+}
+.infoRow:last-child { border-bottom: none; }
+
+.infoKey { color: #555; flex-shrink: 0; }
+.infoVal { color: #aaa; text-align: right; }
+.infoId  { color: #444; font-size: 0.68rem; text-align: right; font-family: monospace; word-break: break-all; }
+
+.migBadge {
+  font-size: 0.67rem;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.migStripe        { background: rgba(99, 91, 255, 0.15); color: #9b94ff; }
+.migAuthNet       { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+.migActiveCurrent { background: rgba(80, 200, 120, 0.12); color: #50c878; }
+.migActiveExpired { background: rgba(240, 86, 33, 0.15); color: #f05621; }
+.migInactive      { background: rgba(120, 120, 120, 0.15); color: #888; }
+.migUnknown       { background: rgba(120, 120, 120, 0.1); color: #555; }
+
+.panelDivider {
+  height: 1px;
+  background: #1e1e1e;
+  margin: 14px 0;
+}
+
+.panelSubTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.stripeLink {
+  color: #9b94ff;
+  font-size: 0.68rem;
+  font-family: monospace;
+  text-decoration: none;
+  text-align: right;
+  word-break: break-all;
+}
+.stripeLink:hover { text-decoration: underline; }

@@ -69,6 +69,7 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 - Vercel cron jobs are defined in `vercel.json` and run on a schedule:
   - `/api/cronJobs` — daily at 10 AM UTC: renewal checks, subscription status updates, SendGrid emails
   - `/api/classifyUsers` — daily at 11 AM UTC: re-classifies all users into `migration_type` buckets
+  - `/api/admin/gmail/sync` — hourly: pulls new support emails from Gmail into `support_emails`
 - **`app/api/classifyUsers/route.js`** — runs the full user classification query using `neon()` direct SQL for the JOIN and Drizzle `inArray` for batch UPDATE. Returns a JSON summary with counts and changes. Logs results to `app_logs`.
 
 ### Data Migration
@@ -144,8 +145,90 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/cronJobs` | Renewal checks & subscription updates (daily cron) |
 | `/api/classifyUsers` | Re-classifies all users into migration_type buckets (daily cron) |
 | `/api/migration` | Bulk user import from legacy data |
+| `/api/admin/gmail/sync` | Pull new support emails from Gmail (POST; admin or cron) |
+| `/api/admin/tickets` | List support tickets with optional `?status=` filter |
+| `/api/admin/tickets/[id]` | Single ticket + joined user context + reply thread |
+| `/api/admin/tickets/[id]/reply` | Send reply via Gmail, insert support_replies row |
+| `/api/admin/tickets/[id]/status` | PATCH ticket status / adminNotes |
+| `/api/admin/cases` | List + create support cases |
+| `/api/admin/cases/[id]` | Case detail + user panel + linked emails + past cases |
+| `/api/admin/cases/[id]/update` | PATCH case status / priority / adminNotes |
+| `/api/admin/cases/[id]/link-email` | Link a support_email row to a case |
 
 All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *`).
+
+## Admin Support Inbox
+
+A full support ticketing system built into `/admin`. Accessible only to users with `role = 'admin'` in the `user` table.
+
+### How it works
+
+1. `admin@gymnasticbodies.com` is subscribed to the `support@gymnasticbodies.com` Google Group (individual delivery, not digest).
+2. The hourly cron (or manual **Sync Gmail** button) calls `POST /api/admin/gmail/sync`.
+3. The sync route queries Gmail with `list:support@gymnasticbodies.com after:{cursor}` and parses each email into a `support_emails` row.
+4. Emails are deduplicated by a synthetic ID: `{gmailMessageId}_{base64(fromEmail).slice(0,8)}`.
+5. The sync cursor advances automatically — it uses `MAX(receivedAt)` from `support_emails` minus a 2-minute overlap. On first run (empty table) it starts from the current moment, so no historical backfill occurs.
+
+### Email parsing (`lib/gmail.js`)
+
+Three parsing paths:
+
+| Email type | Detection | Extraction |
+|---|---|---|
+| **Contact form submission** | `From:` contains `contact@gymnasticbodies.com` | HTML body parsed: `Email:` field → real customer email; `Name:` field → display name |
+| **Google Groups individual forward** | Everything else (non-contact-form) | `resolveSender()` priority: `X-Original-Sender` → `Reply-To` (if not a group address) → `From` header (strips `via GroupName` pattern for DMARC rewrites) |
+| **Google Groups digest** (legacy) | Plain-text body with `\n___\n` separators | Split into blocks; each block parsed for `From:`, `Subject:`, `Date:` headers |
+
+`extractPlainText()` tries `text/plain` first; falls back to `stripHtml(text/html)` for HTML-only emails.
+
+### Database tables (`Drizzle/db/schema.ts`)
+
+- **`support_emails`** — one row per inbound customer message. Fields: `gmailMessageId` (dedup key), `fromEmail`, `fromName`, `subject`, `body`, `receivedAt`, `status` (`open`/`replied`/`closed`), `adminNotes`, `userId` (FK to `user`, nullable), `caseId` (FK to `support_cases`, nullable), `assignedTo`, `repliedAt`.
+- **`support_cases`** — groups related emails into a case. Fields: `title`, `status` (`open`/`pending`/`resolved`/`closed`), `priority` (`low`/`normal`/`high`/`urgent`), `adminNotes`, `userId`, `fromEmail`, `openedBy`, `resolvedAt`.
+- **`support_replies`** — outbound admin replies. Fields: `emailId` (FK), `adminUserId`, `body`, `sentAt`, `gmailMessageId` (sent message ID from Gmail API).
+
+### Admin pages
+
+| Route | Files | Purpose |
+|---|---|---|
+| `/admin/login` | `app/admin/login/page.js` + `LoginClient.js` | Admin sign-in (checks `role === 'admin'` after better-auth signIn) |
+| `/admin/inbox` | `app/admin/inbox/InboxClient.js` | Ticket list, status filter tabs, Sync Gmail button, CASE badge on linked tickets |
+| `/admin/ticket/[id]` | `app/admin/ticket/[id]/TicketClient.js` | Ticket detail: email body, reply composer, Open Case form / View Case link |
+| `/admin/cases` | `app/admin/cases/CasesClient.js` | Case list, status filter tabs |
+| `/admin/cases/[id]` | `app/admin/cases/[id]/CaseClient.js` | Case detail: status/priority/notes, linked emails, user panel (subscription, Stripe IDs, last session, activity logs, past cases) |
+
+All admin pages use the dark/orange CSS Modules design system (`#0e0e0e` background, `#f05621` accent, Barlow Condensed + DM Sans).
+
+### Route protection
+
+`proxy.ts` (at project root, serves as Next.js middleware) gates all `/admin/*` routes. It reads the better-auth session cookie (`__Secure-better-auth.session_token` in production, `better-auth.session_token` in local dev) and redirects to `/admin/login` if absent. Role check is done client-side in `LoginClient.js` after sign-in via `authClient.getSession()`.
+
+- **Cookie prefix**: determined by `BETTER_AUTH_URL` — if it starts with `https://`, better-auth sets `__Secure-` prefix. Set `BETTER_AUTH_URL=http://localhost:3000` in `.env` for local dev to avoid the prefix.
+
+### Sending replies (`lib/gmail.js` → `sendSupportEmail`)
+
+Replies are sent from `support@gymnasticbodies.com` (configured as a Send As alias on `admin@gymnasticbodies.com`). The Gmail OAuth client uses `GMAIL_REFRESH_TOKEN` to auto-refresh access tokens. Set `GMAIL_SEND_AS=support@gymnasticbodies.com`.
+
+### Admin users
+
+Admin role is set by two mechanisms:
+1. `better-auth` admin plugin — `adminUserIds` list in `lib/auth.js` grants admin API access.
+2. `user.role = 'admin'` in the DB — checked by `LoginClient.js` and all `/api/admin/*` routes via `requireAdmin()` in `lib/adminAuth.js`.
+
+Both must be set for full access. Current admin IDs in `lib/auth.js`: `TufkirhwrYmEEDUfnxDtTGVpIhdgUzQv`, `buzioZXby6sR6dRMT3zZGoxSKiQj0wbc`, `3FJ44luUDpRKHEdukXTkKDIpvk2O1yTn`, `f4b53c00-86ec-48dd-842c-09ac51ca6645`.
+
+### Environment variables required
+
+```
+GMAIL_CLIENT_ID         # Google OAuth2 client ID
+GMAIL_CLIENT_SECRET     # Google OAuth2 client secret
+GMAIL_REFRESH_TOKEN     # Refresh token for admin@gymnasticbodies.com
+GMAIL_SEND_AS           # support@gymnasticbodies.com (Send As alias)
+CRON_SECRET             # Shared secret — Vercel cron passes as x-cron-secret header
+BETTER_AUTH_URL         # https://app.gymnasticbodies.com (prod) / http://localhost:3000 (dev)
+```
+
+---
 
 ## User Migration Types
 
@@ -169,6 +252,7 @@ The `/api/classifyUsers` cron runs automatically at 11 AM UTC daily. To re-run m
 # Database & Auth
 DATABASE_URL
 BETTER_AUTH_SECRET
+BETTER_AUTH_URL              # https://app.gymnasticbodies.com (prod) | http://localhost:3000 (dev)
 
 # Stripe (primary payment processor)
 STRIPE_SECRET_KEY
@@ -198,6 +282,13 @@ NEXT_PUBLIC_APP_URL          # e.g. https://my.gymnasticbodies.com
 NEXT_PUBLIC_API_URL          # Backend base URL (ngrok or vercel)
 NEXT_PUBLIC_ENVIRONMENT      # 'development' | 'production'
 REACT_APP_API_NEW            # API endpoint base (https://gymnasticbodies-com.vercel.app)
+
+# Admin Support Inbox (Gmail OAuth)
+GMAIL_CLIENT_ID              # Google OAuth2 client ID for admin@gymnasticbodies.com
+GMAIL_CLIENT_SECRET          # Google OAuth2 client secret
+GMAIL_REFRESH_TOKEN          # Long-lived refresh token (run scripts/gmail-auth.js once to generate)
+GMAIL_SEND_AS                # support@gymnasticbodies.com (Send As alias on admin account)
+CRON_SECRET                  # Arbitrary secret — Vercel cron sends as x-cron-secret header
 ```
 
 ## Logging / app_logs Queries

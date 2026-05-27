@@ -1,0 +1,217 @@
+.header {
+  margin-bottom: 28px;
+}
+
+.title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.empty {
+  color: #555;
+  font-size: 0.875rem;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.section {}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.sectionHeader .sectionTitle { margin-bottom: 0; }
+
+/* Period tabs */
+.tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.tab {
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  color: #666;
+  cursor: pointer;
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab:hover { color: #ccc; }
+.activeTab {
+  color: #f05621;
+  border-color: rgba(240, 86, 33, 0.4);
+  background: rgba(240, 86, 33, 0.08);
+}
+
+/* User stat grid */
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.statCard {
+  background: var(--card-bg, rgba(120,120,120,0.1));
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.statCardCount {
+  font-family: var(--font-display, sans-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--card-color, #fff);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statCardLabel {
+  font-size: 0.78rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.statCardPct {
+  font-size: 0.7rem;
+  color: #555;
+}
+
+/* Funnel card */
+.funnelCard {
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+
+.funnelRow {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.funnelRow:last-of-type { margin-bottom: 20px; }
+
+.funnelLabel {
+  font-size: 0.78rem;
+  color: #888;
+  text-align: right;
+}
+
+.funnelBarWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.funnelBarTrack {
+  flex: 1;
+  height: 8px;
+  background: #1e1e1e;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.funnelBarFill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+
+.funnelCount {
+  font-size: 0.8rem;
+  color: #aaa;
+  min-width: 40px;
+  font-family: var(--font-display, sans-serif);
+  font-weight: 600;
+}
+
+/* Conversion rate row */
+.conversionRow {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid #1e1e1e;
+  padding-top: 16px;
+  flex-wrap: wrap;
+}
+
+.conversionStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conversionLabel {
+  font-size: 0.7rem;
+  color: #555;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.conversionValue {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Recent conversions */
+.conversionList {
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.conversionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 18px;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 0.82rem;
+}
+.conversionItem:last-child { border-bottom: none; }
+
+.convEmail {
+  color: #ccc;
+}
+
+.convTs {
+  color: #555;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
