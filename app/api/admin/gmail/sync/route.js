@@ -5,7 +5,7 @@ import { fetchDigestsSince, parseDigest } from '@/lib/gmail';
 import { getUserWithEmail } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { support_emails } from '@/Drizzle/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
 
 // Allow Vercel cron to call this route with CRON_SECRET header
@@ -23,8 +23,19 @@ export async function POST(request) {
   }
 
   try {
-    // Fetch digests from the last 7 days (cron runs hourly, safe overlap)
-    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    // Use the most recent receivedAt in the DB as cursor.
+    // If the table is empty, start from now (no historical backfill).
+    // A 2-minute overlap guards against clock skew.
+    const [latest] = await db
+      .select({ receivedAt: support_emails.receivedAt })
+      .from(support_emails)
+      .orderBy(desc(support_emails.receivedAt))
+      .limit(1);
+
+    const since = latest?.receivedAt
+      ? new Date(latest.receivedAt.getTime() - 2 * 60 * 1000)
+      : new Date(); // no rows yet → start from right now
+
     const rawMessages = await fetchDigestsSince(since);
 
     let inserted = 0;
