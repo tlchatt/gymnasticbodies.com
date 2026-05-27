@@ -1,18 +1,87 @@
 import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
 import { requireAdmin } from '@/lib/adminAuth';
 import { fetchDigestsSince, parseDigest } from '@/lib/gmail';
 import { getUserWithEmail } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
-import { support_emails } from '@/Drizzle/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { support_emails, support_cases, outbound_emails } from '@/Drizzle/db/schema';
+import { eq, desc, and, gte, or } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
+
+// Internal staff domain — replies from these addresses are not customer tickets
+const INTERNAL_DOMAINS = ['gymnasticbodies.com'];
+
+function isInternalSender(email) {
+  if (!email) return false;
+  const domain = email.split('@')[1]?.toLowerCase();
+  return INTERNAL_DOMAINS.includes(domain);
+}
 
 // Allow Vercel cron to call this route with CRON_SECRET header
 function isCronRequest(req) {
   const secret = process.env.CRON_SECRET;
   if (!secret) return false;
   return req.headers.get('x-cron-secret') === secret;
+}
+
+// Check if this inbound email is a reply to an outbound email we sent.
+// Looks back 90 days. Returns the most recent matching outbound record or null.
+async function findOutboundMatch(fromEmail) {
+  const since = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
+  const rows = await db
+    .select({
+      id: outbound_emails.id,
+      subject: outbound_emails.subject,
+      campaign: outbound_emails.campaign,
+      sentAt: outbound_emails.sentAt,
+    })
+    .from(outbound_emails)
+    .where(and(eq(outbound_emails.toEmail, fromEmail), gte(outbound_emails.sentAt, since)))
+    .orderBy(desc(outbound_emails.sentAt))
+    .limit(1);
+
+  return rows[0] ?? null;
+}
+
+// Find or create a support case for an incoming email.
+// If user has an open/pending case in the last 30 days, link to it.
+// Otherwise create a new case.
+async function upsertCase({ userId, fromEmail, fromName, subject, isOutboundResponse, campaign }) {
+  if (userId) {
+    const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const existing = await db
+      .select({ id: support_cases.id })
+      .from(support_cases)
+      .where(
+        and(
+          eq(support_cases.userId, userId),
+          or(eq(support_cases.status, 'open'), eq(support_cases.status, 'pending')),
+          gte(support_cases.createdAt, since)
+        )
+      )
+      .orderBy(desc(support_cases.createdAt))
+      .limit(1);
+
+    if (existing.length > 0) return existing[0].id;
+  }
+
+  // Title hints when it's a reply to our outreach
+  const title = isOutboundResponse
+    ? `[Response${campaign ? `: ${campaign}` : ''}] ${subject || '(no subject)'}`
+    : subject || '(no subject)';
+
+  const [newCase] = await db
+    .insert(support_cases)
+    .values({
+      userId: userId ?? null,
+      fromEmail,
+      fromName: fromName ?? null,
+      title,
+      status: 'open',
+      priority: isOutboundResponse ? 'high' : 'normal',
+    })
+    .returning({ id: support_cases.id });
+
+  return newCase.id;
 }
 
 export async function POST(request) {
@@ -23,9 +92,6 @@ export async function POST(request) {
   }
 
   try {
-    // Use the most recent receivedAt in the DB as cursor.
-    // If the table is empty, start from now (no historical backfill).
-    // A 2-minute overlap guards against clock skew.
     const [latest] = await db
       .select({ receivedAt: support_emails.receivedAt })
       .from(support_emails)
@@ -34,7 +100,7 @@ export async function POST(request) {
 
     const since = latest?.receivedAt
       ? new Date(latest.receivedAt.getTime() - 2 * 60 * 1000)
-      : new Date(); // no rows yet → start from right now
+      : new Date();
 
     const rawMessages = await fetchDigestsSince(since);
 
@@ -43,17 +109,12 @@ export async function POST(request) {
 
     for (const raw of rawMessages) {
       const gmailMessageId = raw.id;
-
-      // Deduplicate at the digest level first
-      const existing = await db
-        .select({ id: support_emails.id })
-        .from(support_emails)
-        .where(eq(support_emails.gmailMessageId, gmailMessageId));
-
       const parsed = parseDigest(raw);
 
       for (const msg of parsed) {
-        // Each parsed message gets a synthetic ID: digest_id + fromEmail hash
+        // Skip internal staff replies (e.g. luke@gymnasticbodies.com)
+        if (isInternalSender(msg.fromEmail)) { skipped++; continue; }
+
         const syntheticId = `${gmailMessageId}_${Buffer.from(msg.fromEmail).toString('base64').slice(0, 8)}`;
 
         const alreadyExists = await db
@@ -63,8 +124,20 @@ export async function POST(request) {
 
         if (alreadyExists.length > 0) { skipped++; continue; }
 
-        // Try to link to a user account
+        // Link to user account
         const user = await getUserWithEmail(msg.fromEmail);
+
+        // Check if this is a reply to an outbound email we sent
+        const outboundMatch = await findOutboundMatch(msg.fromEmail);
+
+        const caseId = await upsertCase({
+          userId: user?.id ?? null,
+          fromEmail: msg.fromEmail,
+          fromName: msg.fromName || null,
+          subject: msg.subject,
+          isOutboundResponse: !!outboundMatch,
+          campaign: outboundMatch?.campaign ?? null,
+        });
 
         await db.insert(support_emails).values({
           gmailMessageId: syntheticId,
@@ -76,13 +149,21 @@ export async function POST(request) {
           receivedAt: msg.receivedAt,
           status: 'open',
           userId: user?.id ?? null,
+          caseId,
         });
+
+        // If this was a reply to outbound, update outbound record with the case
+        if (outboundMatch) {
+          await db
+            .update(outbound_emails)
+            .set({ caseId })
+            .where(eq(outbound_emails.id, outboundMatch.id));
+        }
 
         inserted++;
       }
 
-      // If the digest itself had no parsed sub-messages but wasn't seen before
-      if (parsed.length === 0 && existing.length === 0) skipped++;
+      if (parsed.length === 0) skipped++;
     }
 
     logger.info('admin.gmail.sync', { inserted, skipped, digests: rawMessages.length });

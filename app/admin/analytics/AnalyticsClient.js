@@ -39,7 +39,7 @@ function fmtDateTime(str) {
 }
 
 function FunnelBar({ label, value, max, color }) {
-  const pctWidth = max > 0 ? (value / max) * 100 : 0;
+  const pctWidth = max > 0 ? Math.max((value / max) * 100, value > 0 ? 1 : 0) : 0;
   return (
     <div className={s.funnelRow}>
       <div className={s.funnelLabel}>{label}</div>
@@ -53,6 +53,43 @@ function FunnelBar({ label, value, max, color }) {
   );
 }
 
+function ConversionStats({ stats }) {
+  return (
+    <div className={s.conversionRow}>
+      {stats.map(({ label, value, color }) => (
+        <div key={label} className={s.conversionStat}>
+          <span className={s.conversionLabel}>{label}</span>
+          <span className={s.conversionValue} style={color ? { color } : {}}>
+            {value}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RecentList({ title, items }) {
+  if (!items?.length) return (
+    <section className={s.section}>
+      <div className={s.sectionTitle}>{title}</div>
+      <div className={s.empty}>No events logged yet.</div>
+    </section>
+  );
+  return (
+    <section className={s.section}>
+      <div className={s.sectionTitle}>{title}</div>
+      <div className={s.conversionList}>
+        {items.map((r) => (
+          <div key={r.id} className={s.conversionItem}>
+            <span className={s.convEmail}>{r.email ?? '—'}</span>
+            <span className={s.convTs}>{fmtDateTime(r.ts)}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function AnalyticsClient() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -62,16 +99,28 @@ export default function AnalyticsClient() {
   useEffect(() => {
     fetch('/api/admin/analytics')
       .then((r) => r.json())
-      .then((d) => {
-        if (d.error) setErr(d.error);
-        else setData(d);
-      })
+      .then((d) => { if (d.error) setErr(d.error); else setData(d); })
       .catch(() => setErr('Failed to load analytics'))
       .finally(() => setLoading(false));
   }, []);
 
-  const funnel = data?.funnel?.[period] ?? null;
+  const renewalFunnel   = data?.renewalFunnel?.[period]   ?? null;
+  const subscribeFunnel = data?.subscribeFunnel?.[period] ?? null;
   const totalUsers = data?.userBreakdown?.reduce((sum, r) => sum + r.count, 0) ?? 0;
+
+  const PeriodTabs = () => (
+    <div className={s.tabs}>
+      {PERIODS.map((p) => (
+        <button
+          key={p.key}
+          className={`${s.tab} ${period === p.key ? s.activeTab : ''}`}
+          onClick={() => setPeriod(p.key)}
+        >
+          {p.label}
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -95,9 +144,7 @@ export default function AnalyticsClient() {
                 return (
                   <div key={row.migrationType} className={s.statCard} style={{ '--card-bg': style.bg, '--card-color': style.text }}>
                     <div className={s.statCardCount}>{row.count.toLocaleString()}</div>
-                    <div className={s.statCardLabel}>
-                      {MIGRATION_LABELS[row.migrationType] ?? row.migrationType}
-                    </div>
+                    <div className={s.statCardLabel}>{MIGRATION_LABELS[row.migrationType] ?? row.migrationType}</div>
                     <div className={s.statCardPct}>{pct(row.count, totalUsers)} of total</div>
                   </div>
                 );
@@ -113,69 +160,51 @@ export default function AnalyticsClient() {
           <section className={s.section}>
             <div className={s.sectionHeader}>
               <div className={s.sectionTitle}>Renewal Funnel</div>
-              <div className={s.tabs}>
-                {PERIODS.map((p) => (
-                  <button
-                    key={p.key}
-                    className={`${s.tab} ${period === p.key ? s.activeTab : ''}`}
-                    onClick={() => setPeriod(p.key)}
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </div>
+              <PeriodTabs />
             </div>
-
-            {funnel && (
+            {renewalFunnel && (
               <div className={s.funnelCard}>
-                <FunnelBar label="Page Views"   value={funnel.pageViews}   max={funnel.pageViews} color="#555" />
-                <FunnelBar label="Form Submits" value={funnel.formSubmits} max={funnel.pageViews} color="#f05621" />
-                <FunnelBar label="Card Errors"  value={funnel.cardErrors}  max={funnel.pageViews} color="#ef4444" />
-                <FunnelBar label="Successes"    value={funnel.successes}   max={funnel.pageViews} color="#50c878" />
-
-                <div className={s.conversionRow}>
-                  <div className={s.conversionStat}>
-                    <span className={s.conversionLabel}>Submit rate</span>
-                    <span className={s.conversionValue}>{pct(funnel.formSubmits, funnel.pageViews)}</span>
-                  </div>
-                  <div className={s.conversionStat}>
-                    <span className={s.conversionLabel}>Error rate</span>
-                    <span className={s.conversionValue} style={{ color: funnel.cardErrors > 0 ? '#ef4444' : '#50c878' }}>
-                      {pct(funnel.cardErrors, funnel.formSubmits)}
-                    </span>
-                  </div>
-                  <div className={s.conversionStat}>
-                    <span className={s.conversionLabel}>Conversion</span>
-                    <span className={s.conversionValue} style={{ color: '#50c878' }}>
-                      {pct(funnel.successes, funnel.pageViews)}
-                    </span>
-                  </div>
-                </div>
+                <FunnelBar label="Page Views"   value={renewalFunnel.pageViews}   max={renewalFunnel.pageViews} color="#555" />
+                <FunnelBar label="Form Submits" value={renewalFunnel.formSubmits} max={renewalFunnel.pageViews} color="#f05621" />
+                <FunnelBar label="Card Errors"  value={renewalFunnel.cardErrors}  max={renewalFunnel.pageViews} color="#ef4444" />
+                <FunnelBar label="Successes"    value={renewalFunnel.successes}   max={renewalFunnel.pageViews} color="#50c878" />
+                <ConversionStats stats={[
+                  { label: 'Submit rate',  value: pct(renewalFunnel.formSubmits, renewalFunnel.pageViews) },
+                  { label: 'Error rate',   value: pct(renewalFunnel.cardErrors, renewalFunnel.formSubmits), color: renewalFunnel.cardErrors > 0 ? '#ef4444' : '#50c878' },
+                  { label: 'Conversion',   value: pct(renewalFunnel.successes, renewalFunnel.pageViews),   color: '#50c878' },
+                ]} />
               </div>
             )}
           </section>
 
-          {/* Recent conversions */}
-          {(data.recentConversions?.length > 0) && (
-            <section className={s.section}>
-              <div className={s.sectionTitle}>Recent Renewals</div>
-              <div className={s.conversionList}>
-                {data.recentConversions.map((r) => (
-                  <div key={r.id} className={s.conversionItem}>
-                    <span className={s.convEmail}>{r.email ?? '—'}</span>
-                    <span className={s.convTs}>{fmtDateTime(r.ts)}</span>
-                  </div>
-                ))}
+          {/* Subscribe funnel */}
+          <section className={s.section}>
+            <div className={s.sectionHeader}>
+              <div className={s.sectionTitle}>Subscribe Funnel</div>
+              <PeriodTabs />
+            </div>
+            {subscribeFunnel && (
+              <div className={s.funnelCard}>
+                <FunnelBar label="Page Views" value={subscribeFunnel.pageViews} max={subscribeFunnel.pageViews} color="#555" />
+                <FunnelBar label="Attempts"   value={subscribeFunnel.attempts}  max={subscribeFunnel.pageViews} color="#f05621" />
+                <FunnelBar label="Successes"  value={subscribeFunnel.successes} max={subscribeFunnel.pageViews} color="#50c878" />
+                <FunnelBar label="Failed"     value={subscribeFunnel.failed}    max={subscribeFunnel.pageViews} color="#ef4444" />
+                <FunnelBar label="Duplicates" value={subscribeFunnel.duplicates} max={subscribeFunnel.pageViews} color="#fbbf24" />
+                <ConversionStats stats={[
+                  { label: 'Attempt rate', value: pct(subscribeFunnel.attempts, subscribeFunnel.pageViews) },
+                  { label: 'Conversion',   value: pct(subscribeFunnel.successes, subscribeFunnel.attempts), color: '#50c878' },
+                  { label: 'Fail rate',    value: pct(subscribeFunnel.failed, subscribeFunnel.attempts),    color: subscribeFunnel.failed > 0 ? '#ef4444' : '#50c878' },
+                ]} />
               </div>
-            </section>
-          )}
+            )}
+          </section>
 
-          {(!data.recentConversions?.length) && (
-            <section className={s.section}>
-              <div className={s.sectionTitle}>Recent Renewals</div>
-              <div className={s.empty}>No renewal.success events logged yet.</div>
-            </section>
-          )}
+          {/* Recent activity */}
+          <div className={s.recentGrid}>
+            <RecentList title="Recent Renewals" items={data.recentRenewals} />
+            <RecentList title="Recent Sign-ups"  items={data.recentSignups} />
+          </div>
+
         </div>
       )}
     </>

@@ -189,6 +189,24 @@ export const support_replies = pgTable("support_replies", {
   gmailMessageId: text("gmail_message_id"),
 });
 
+// Outbound emails sent to users (from email-group campaigns, renewal reminders, etc.)
+// No case is created at send time. When the user replies (inbound), Gmail sync checks
+// this table and creates a case flagged as a response to outreach.
+export const outbound_emails = pgTable("outbound_emails", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+  toEmail: text("to_email").notNull(),
+  subject: text("subject").notNull(),
+  body: text("body"),
+  campaign: text("campaign"),      // optional tag e.g. 'renewal_outreach', 'active_expired_2026-05'
+  sentAt: timestamp("sent_at").defaultNow().notNull(),
+  caseId: integer("case_id"),      // set when a reply creates a case
+}, (t) => [
+  index("outbound_emails_user_idx").on(t.userId),
+  index("outbound_emails_email_idx").on(t.toEmail),
+  index("outbound_emails_sent_idx").on(t.sentAt),
+]);
+
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),

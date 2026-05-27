@@ -1,5 +1,5 @@
 'use client';
-import { use, useState, useEffect } from 'react';
+import { use, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import s from './userDetail.module.css';
 
@@ -45,6 +45,77 @@ export default function UserDetailClient({ params }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
+
+  // Admin action states
+  const [resetState, setResetState]     = useState('idle'); // idle | loading | ok | error
+  const [extendState, setExtendState]   = useState('idle'); // idle | loading | ok | error
+  const [extendMsg, setExtendMsg]       = useState('');
+  const [grantState, setGrantState]     = useState('idle'); // idle | loading | ok | error
+  const [grantMsg, setGrantMsg]         = useState('');
+  const [grantDays, setGrantDays]       = useState('30');
+
+  const handlePasswordReset = useCallback(async () => {
+    if (resetState === 'loading') return;
+    setResetState('loading');
+    try {
+      const res = await fetch(`/api/admin/users/${id}/send-password-reset`, { method: 'POST' });
+      const json = await res.json();
+      setResetState(json.ok ? 'ok' : 'error');
+    } catch {
+      setResetState('error');
+    }
+  }, [id, resetState]);
+
+  // Stripe subscriber: extend via Stripe trial_end (+30 days)
+  const handleExtendSubscription = useCallback(async () => {
+    if (extendState === 'loading') return;
+    setExtendState('loading');
+    setExtendMsg('');
+    try {
+      const res = await fetch(`/api/admin/users/${id}/extend-subscription`, { method: 'POST' });
+      const json = await res.json();
+      if (json.ok) {
+        const dateStr = json.newPeriodEnd ?? json.newRenewalDate;
+        const label = dateStr ? ` · renews ${new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}` : '';
+        setExtendMsg(`+30 days granted${label}`);
+        setExtendState('ok');
+      } else {
+        setExtendMsg(json.error ?? 'Failed');
+        setExtendState('error');
+      }
+    } catch {
+      setExtendMsg('Request failed');
+      setExtendState('error');
+    }
+  }, [id, extendState]);
+
+  // Non-Stripe: grant free access via app-level migration_type + renewaldate
+  const handleGrantAccess = useCallback(async () => {
+    if (grantState === 'loading') return;
+    setGrantState('loading');
+    setGrantMsg('');
+    try {
+      const res = await fetch(`/api/admin/users/${id}/grant-access`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ days: grantDays === 'indefinite' ? 'indefinite' : parseInt(grantDays) }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        const label = grantDays === 'indefinite'
+          ? 'Indefinite access granted'
+          : `Access granted · expires ${new Date(json.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+        setGrantMsg(label);
+        setGrantState('ok');
+      } else {
+        setGrantMsg(json.error ?? 'Failed');
+        setGrantState('error');
+      }
+    } catch {
+      setGrantMsg('Request failed');
+      setGrantState('error');
+    }
+  }, [id, grantDays, grantState]);
 
   useEffect(() => {
     fetch(`/api/admin/users/${id}`)
@@ -165,6 +236,20 @@ export default function UserDetailClient({ params }) {
               <span className={s.infoId}>{user.id}</span>
             </div>
 
+            {/* Password reset */}
+            <div className={s.actionRow}>
+              <button
+                className={`${s.actionBtn} ${resetState === 'ok' ? s.actionOk : resetState === 'error' ? s.actionErr : ''}`}
+                onClick={handlePasswordReset}
+                disabled={resetState === 'loading' || resetState === 'ok'}
+              >
+                {resetState === 'loading' ? 'Sending…'
+                  : resetState === 'ok'   ? '✓ Reset email sent'
+                  : resetState === 'error' ? '✗ Failed — retry?'
+                  : 'Send password reset'}
+              </button>
+            </div>
+
             {setting && (
               <>
                 <div className={s.panelDivider} />
@@ -208,6 +293,59 @@ export default function UserDetailClient({ params }) {
                     >
                       {setting.stripeCustomerId}
                     </a>
+                  </div>
+                )}
+
+                {/* Contextual: Stripe subscriber → extend via Stripe; everyone else → app-level grant */}
+                {setting.stripeSubscriptionId ? (
+                  <div className={s.actionRow}>
+                    <button
+                      className={`${s.actionBtn} ${s.actionOrange} ${extendState === 'ok' ? s.actionOk : extendState === 'error' ? s.actionErr : ''}`}
+                      onClick={handleExtendSubscription}
+                      disabled={extendState === 'loading' || extendState === 'ok'}
+                    >
+                      {extendState === 'loading' ? 'Extending…'
+                        : extendState === 'ok'    ? '✓ Extended'
+                        : extendState === 'error' ? '✗ Failed — retry?'
+                        : 'Extend subscription +30 days'}
+                    </button>
+                    {extendMsg && (
+                      <div className={`${s.actionMsg} ${extendState === 'ok' ? s.actionOk : s.actionErr}`}>
+                        {extendMsg}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className={s.actionRow}>
+                    <div className={s.grantRow}>
+                      <select
+                        className={s.durationSelect}
+                        value={grantDays}
+                        onChange={(e) => setGrantDays(e.target.value)}
+                        disabled={grantState === 'loading' || grantState === 'ok'}
+                      >
+                        <option value="30">30 days</option>
+                        <option value="60">60 days</option>
+                        <option value="90">90 days</option>
+                        <option value="365">1 year</option>
+                        <option value="indefinite">Indefinite</option>
+                      </select>
+                      <button
+                        className={`${s.actionBtn} ${s.actionOrange} ${s.grantBtn} ${grantState === 'ok' ? s.actionOk : grantState === 'error' ? s.actionErr : ''}`}
+                        onClick={handleGrantAccess}
+                        disabled={grantState === 'loading' || grantState === 'ok'}
+                      >
+                        {grantState === 'loading' ? 'Granting…'
+                          : grantState === 'ok'    ? '✓ Access granted'
+                          : grantState === 'error' ? '✗ Failed — retry?'
+                          : 'Grant free access'}
+                      </button>
+                    </div>
+                    {grantMsg && (
+                      <div className={`${s.actionMsg} ${grantState === 'ok' ? s.actionOk : s.actionErr}`}>
+                        {grantMsg}
+                      </div>
+                    )}
                   </div>
                 )}
               </>

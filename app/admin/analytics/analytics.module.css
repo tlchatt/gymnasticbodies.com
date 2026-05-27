@@ -187,6 +187,17 @@
   line-height: 1;
 }
 
+/* Recent activity side-by-side */
+.recentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .recentGrid { grid-template-columns: 1fr; }
+}
+
 /* Recent conversions */
 .conversionList {
   background: #151515;

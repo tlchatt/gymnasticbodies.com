@@ -196,3 +196,100 @@
   color: #444;
   text-align: center;
 }
+
+/* ── Create free user ────────────────────────────────────────────────────── */
+
+.createToggle {
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: 7px;
+  border: 1px solid #2a2a2a;
+  background: #111;
+  color: #777;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.createToggle:hover { background: #1a1a1a; border-color: #3a3a3a; color: #bbb; }
+.createToggleActive { border-color: #3a3a3a; color: #aaa; }
+
+.createForm {
+  background: #151515;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.createFields {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.createInput {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 12px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 7px;
+  color: #e0e0e0;
+  font-size: 0.82rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.createInput::placeholder { color: #444; }
+.createInput:focus { border-color: #444; }
+.createInput:disabled { opacity: 0.6; }
+
+.createSelect {
+  padding: 9px 10px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 7px;
+  color: #888;
+  font-size: 0.82rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.createSelect:focus { border-color: #444; }
+.createSelect:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.createBtn {
+  padding: 9px 20px;
+  border-radius: 7px;
+  border: 1px solid rgba(240, 86, 33, 0.4);
+  background: rgba(240, 86, 33, 0.08);
+  color: #f05621;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+.createBtn:hover:not(:disabled) { background: rgba(240, 86, 33, 0.14); border-color: rgba(240, 86, 33, 0.6); }
+.createBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.createMsg {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.createOk  { color: #50c878; }
+.createErr { color: #f05621; }
+
+.createProfileLink {
+  color: #9b94ff;
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+.createProfileLink:hover { text-decoration: underline; }

@@ -250,3 +250,91 @@
   word-break: break-all;
 }
 .stripeLink:hover { text-decoration: underline; }
+
+/* Admin action buttons */
+.actionRow {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.actionBtn {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 7px;
+  border: 1px solid #2a2a2a;
+  background: #111;
+  color: #888;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  text-align: center;
+}
+.actionBtn:hover:not(:disabled) {
+  background: #1a1a1a;
+  border-color: #3a3a3a;
+  color: #bbb;
+}
+.actionBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Orange accent variant (extend subscription) */
+.actionOrange {
+  border-color: rgba(240, 86, 33, 0.3);
+  color: #f05621;
+}
+.actionOrange:hover:not(:disabled) {
+  background: rgba(240, 86, 33, 0.08);
+  border-color: rgba(240, 86, 33, 0.5);
+  color: #f05621;
+}
+
+/* State variants */
+.actionOk {
+  border-color: rgba(80, 200, 120, 0.3) !important;
+  color: #50c878 !important;
+  background: rgba(80, 200, 120, 0.06) !important;
+}
+.actionErr {
+  border-color: rgba(240, 86, 33, 0.35) !important;
+  color: #f05621 !important;
+  background: rgba(240, 86, 33, 0.06) !important;
+}
+
+.actionMsg {
+  font-size: 0.73rem;
+  text-align: center;
+  padding: 2px 0;
+}
+
+/* Grant free access — duration select + button side by side */
+.grantRow {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.durationSelect {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 7px;
+  color: #888;
+  font-size: 0.78rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.durationSelect:focus { border-color: #444; }
+.durationSelect:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.grantBtn {
+  flex: 1;
+  width: auto;
+}

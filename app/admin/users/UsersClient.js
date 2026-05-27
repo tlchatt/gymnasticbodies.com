@@ -46,6 +46,15 @@ export default function UsersClient() {
   const [err, setErr] = useState('');
   const debounceRef = useRef(null);
 
+  // Create free user form
+  const [showCreate, setShowCreate]     = useState(false);
+  const [createName, setCreateName]     = useState('');
+  const [createEmail, setCreateEmail]   = useState('');
+  const [createDays, setCreateDays]     = useState('30');
+  const [createState, setCreateState]   = useState('idle'); // idle | loading | ok | error
+  const [createMsg, setCreateMsg]       = useState('');
+  const [createdUserId, setCreatedUserId] = useState(null);
+
   const load = useCallback(async (query) => {
     setLoading(true);
     setErr('');
@@ -62,6 +71,41 @@ export default function UsersClient() {
       setLoading(false);
     }
   }, []);
+
+  const handleCreate = useCallback(async (e) => {
+    e.preventDefault();
+    if (createState === 'loading') return;
+    setCreateState('loading');
+    setCreateMsg('');
+    setCreatedUserId(null);
+    try {
+      const res = await fetch('/api/admin/users/create-free', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: createName.trim(),
+          email: createEmail.trim(),
+          days: createDays === 'indefinite' ? 'indefinite' : parseInt(createDays),
+        }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        const durationLabel = createDays === 'indefinite' ? 'indefinite access' : `${createDays}-day access`;
+        setCreateMsg(`✓ ${json.isNew ? 'Created' : 'Updated'} — ${durationLabel} granted. ${json.isNew ? 'Reset email sent.' : ''}`);
+        setCreatedUserId(json.userId);
+        setCreateState('ok');
+        setCreateName('');
+        setCreateEmail('');
+        load(debouncedQ); // Refresh list
+      } else {
+        setCreateMsg(json.error ?? 'Failed');
+        setCreateState('error');
+      }
+    } catch {
+      setCreateMsg('Request failed');
+      setCreateState('error');
+    }
+  }, [createName, createEmail, createDays, createState, debouncedQ, load]);
 
   // Debounced search
   useEffect(() => {
@@ -82,7 +126,66 @@ export default function UsersClient() {
           {total !== null && !loading && (
             <span className={s.count}>{total.toLocaleString()} result{total !== 1 ? 's' : ''}</span>
           )}
+          <button
+            className={`${s.createToggle} ${showCreate ? s.createToggleActive : ''}`}
+            onClick={() => { setShowCreate((v) => !v); setCreateState('idle'); setCreateMsg(''); setCreatedUserId(null); }}
+          >
+            {showCreate ? '✕ Cancel' : '+ Create free user'}
+          </button>
         </div>
+
+        {showCreate && (
+          <form className={s.createForm} onSubmit={handleCreate}>
+            <div className={s.createFields}>
+              <input
+                className={s.createInput}
+                type="text"
+                placeholder="Full name"
+                value={createName}
+                onChange={(e) => setCreateName(e.target.value)}
+                required
+                disabled={createState === 'loading'}
+              />
+              <input
+                className={s.createInput}
+                type="email"
+                placeholder="Email address"
+                value={createEmail}
+                onChange={(e) => setCreateEmail(e.target.value)}
+                required
+                disabled={createState === 'loading'}
+              />
+              <select
+                className={s.createSelect}
+                value={createDays}
+                onChange={(e) => setCreateDays(e.target.value)}
+                disabled={createState === 'loading'}
+              >
+                <option value="30">30 days</option>
+                <option value="60">60 days</option>
+                <option value="90">90 days</option>
+                <option value="365">1 year</option>
+                <option value="indefinite">Indefinite</option>
+              </select>
+              <button
+                type="submit"
+                className={s.createBtn}
+                disabled={createState === 'loading'}
+              >
+                {createState === 'loading' ? 'Creating…' : 'Create'}
+              </button>
+            </div>
+            {createMsg && (
+              <div className={`${s.createMsg} ${createState === 'ok' ? s.createOk : s.createErr}`}>
+                {createMsg}
+                {createdUserId && createState === 'ok' && (
+                  <a href={`/admin/users/${createdUserId}`} className={s.createProfileLink}>View profile →</a>
+                )}
+              </div>
+            )}
+          </form>
+        )}
+
         <div className={s.searchWrap}>
           <input
             className={s.search}

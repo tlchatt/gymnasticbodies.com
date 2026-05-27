@@ -234,6 +234,9 @@ export default function TicketClient({ ticket: initial }) {
               <div className={s.userInfo}>
                 <div className={s.userName}>{user.name}</div>
                 <div className={s.userEmail}>{user.email}</div>
+                <Link href={`/admin/users/${user.id}`} className={s.profileLink}>
+                  View full profile →
+                </Link>
 
                 <div className={s.infoRow}>
                   <span className={s.infoKey}>Status</span>

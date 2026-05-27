@@ -21,6 +21,34 @@ node authUserCron.js       # Auth user cron helper
 node updateAuthorizeData.js
 ```
 
+## Support CLI (claudeTools/support.js)
+
+Run from the repo root. Resolves packages from `app.gymnasticbodies.com/node_modules` — no separate install.
+
+```bash
+# From /var/www/Work/Gymfit/
+node claudeTools/support.js tickets [--status=open]
+node claudeTools/support.js cases [--status=open]
+node claudeTools/support.js user --email=x@y.com
+node claudeTools/support.js create-case --email=x --title="Subject" [--priority=normal|high|urgent|low]
+node claudeTools/support.js reply --ticket=ID --body="Your reply text"
+node claudeTools/support.js send-email --to=x --subject="..." --body="..."
+node claudeTools/support.js email-group --type=active_expired --subject="..." --body="..." [--dry-run]
+node claudeTools/support.js email-group --type=active_expired --subject="..." --body-file=./template.txt
+node claudeTools/support.js backfill-cases   # create cases for all uncased open tickets
+```
+
+**Template variables** in `--body`: `{{name}}`, `{{email}}`
+
+**`email-group` flow**: sends via SendGrid + auto-creates a support case per recipient (so replies are tracked). Skip with `--create-cases=false`. Rates: 100ms between sends. Always test with `--dry-run` first.
+
+**Valid `--type` values**: `stripe` | `auth_net_subscriber` | `active_current` | `active_expired` | `inactive`
+
+**Key notes**:
+- Loads env from `app.gymnasticbodies.com/.env.local` automatically
+- All DB queries run directly against Neon — no HTTP auth needed
+- Replies are sent via SendGrid and update ticket status to `replied`
+
 ## Architecture Overview
 
 This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user accounts, subscriptions, and workout logging. It uses the App Router.
