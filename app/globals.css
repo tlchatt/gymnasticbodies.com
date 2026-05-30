@@ -1,10 +1,63 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   DESIGN TOKENS — dark / orange system
+   All UI should consume these variables. Never hardcode the
+   raw hex values below — use the token instead.
+───────────────────────────────────────────────────────────── */
 :root {
+  /* Backgrounds */
+  --bg-base:    #0e0e0e;   /* page / shell background        */
+  --bg-surface: #151515;   /* cards, sidebar, raised panels  */
+  --bg-raised:  #1a1a1a;   /* hover states on surfaces       */
+  --bg-overlay: #222222;   /* dividers, borders at full opacity */
+
+  /* Brand */
+  --accent:       #f05621;
+  --accent-light: #fcb14e;
+  --gradient-cta: linear-gradient(135deg, #fcb14e 0%, #f05621 100%);
+  --glow-accent:  rgba(240, 86, 33, 0.18);
+
+  /* Borders */
+  --border-subtle:        rgba(255, 255, 255, 0.06);
+  --border-default:       rgba(255, 255, 255, 0.10);
+  --border-hover:         rgba(255, 255, 255, 0.20);
+  --border-accent:        rgba(240, 86, 33, 0.35);
+  --border-accent-strong: rgba(240, 86, 33, 0.55);
+
+  /* Text */
+  --text:        #ffffff;
+  --text-muted:  rgba(255, 255, 255, 0.65);
+  --text-subtle: rgba(255, 255, 255, 0.40);
+  --text-faint:  rgba(255, 255, 255, 0.25);
+  --text-dim:    #aaaaaa;
+  --text-meta:   #666666;
+  --text-ghost:  #444444;
+
+  /* Semantic status colors */
+  --color-success: #50c878;
+  --color-warning: #eab308;
+  --color-danger:  #ef4444;
+  --color-info:    #3b82f6;
+  --color-stripe:  #9b94ff;
+
+  /* Border radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-pill: 100px;
+
+  /* Layout */
+  --nav-height:    64px;
+  --sidebar-width: 220px;
+  --content-max:   1160px;
+
+  /* Legacy — keep for MUI pages */
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* ── Base reset ── */
 html,
 body {
   max-width: 100vw;
@@ -30,10 +83,11 @@ a {
   text-decoration: none;
 }
 
-/* ── Subscribe page ── */
+/* ── Font utility classes (used by marketing + admin pages) ── */
 .font-display { font-family: var(--font-display), sans-serif; }
 .font-body    { font-family: var(--font-body), sans-serif; }
 
+/* ── Entrance animations ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -43,15 +97,17 @@ a {
 .fade-up-3 { animation: fadeUp 0.6s 0.24s ease both; }
 .fade-up-4 { animation: fadeUp 0.6s 0.36s ease both; }
 
+/* ── CTA button (global utility — prefer CtaButton component) ── */
 .cta-btn {
-  background: linear-gradient(135deg, #fcb14e 0%, #f05621 100%);
+  background: var(--gradient-cta);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .cta-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(240,86,33,0.55);
+  box-shadow: 0 12px 40px rgba(240, 86, 33, 0.55);
 }
 
+/* ── Grain texture overlay ── */
 .grain::before {
   content: '';
   position: absolute;
@@ -61,7 +117,7 @@ a {
   z-index: 0;
 }
 
+/* ── Feature list dividers ── */
 .feature-row:not(:last-child) {
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border-subtle);
 }
-

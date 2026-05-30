@@ -21,12 +21,15 @@ const pages = [{ option: 'Get Started', href: '/subscribe' }];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const settings = [];
 
-const DARK_NAV_ROUTES = ['/subscribe', '/renew'];
+// Routes where the MUI AppBar should be suppressed entirely.
+// - Exact matches: /subscribe, /renew
+// - Prefix match: /admin/* (has its own sidebar nav via AdminNav)
+const HIDDEN_NAV_PREFIXES = ['/subscribe', '/renew', '/admin'];
 
 function ResponsiveAppBar() {
     const router = useRouter();
     const pathname = usePathname();
-    if (DARK_NAV_ROUTES.includes(pathname)) return null;
+    if (HIDDEN_NAV_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 

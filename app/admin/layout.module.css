@@ -1,45 +1,44 @@
+/* ── Admin shell layout ── */
+
 .shell {
   display: flex;
   min-height: 100vh;
-  background: #0e0e0e;
-  color: #fff;
+  background: var(--bg-base, #0e0e0e);
+  color: var(--text, #fff);
   font-family: var(--font-body, sans-serif);
 }
 
+/* ── Sidebar ── */
 .sidebar {
-  width: 220px;
+  width: var(--sidebar-width, 220px);
   flex-shrink: 0;
-  background: #151515;
-  border-right: 1px solid #222;
+  background: var(--bg-surface, #151515);
+  border-right: 1px solid var(--bg-overlay, #222);
   display: flex;
   flex-direction: column;
-  padding: 0;
 }
 
+/* ── Brand / logo area ── */
 .sidebarLogo {
-  padding: 24px 20px 20px;
-  border-bottom: 1px solid #222;
+  padding: 20px 20px 18px;
+  border-bottom: 1px solid var(--bg-overlay, #222);
 }
 
-.sidebarLogo h2 {
-  font-family: var(--font-display, sans-serif);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #f05621;
-  margin: 0;
-}
-
-.sidebarLogo span {
+.logoLink {
   display: block;
-  font-size: 0.7rem;
-  color: #666;
-  margin-top: 2px;
-  letter-spacing: 0.08em;
+  line-height: 0;          /* remove inline-block gap below image */
+}
+
+.logoSub {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-meta, #666);
+  margin-top: 6px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+/* ── Nav links ── */
 .nav {
   flex: 1;
   padding: 12px 0;
@@ -50,35 +49,45 @@
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
-  color: #aaa;
+  color: var(--text-dim, #aaa);
   text-decoration: none;
   font-size: 0.875rem;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .navLink:hover {
-  color: #fff;
-  background: #1e1e1e;
+  color: var(--text, #fff);
+  background: var(--bg-raised, #1a1a1a);
 }
 
 .navLink.active {
-  color: #f05621;
+  color: var(--accent, #f05621);
   background: rgba(240, 86, 33, 0.08);
 }
 
 .navIcon {
-  font-size: 1rem;
   width: 18px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.8;
 }
 
+.navLink.active .navIcon {
+  opacity: 1;
+}
+
+/* ── Sidebar footer ── */
 .sidebarBottom {
-  padding: 16px 20px;
-  border-top: 1px solid #222;
-  font-size: 0.75rem;
-  color: #555;
+  padding: 14px 20px;
+  border-top: 1px solid var(--bg-overlay, #222);
+  font-size: 0.72rem;
+  color: var(--text-ghost, #444);
+  letter-spacing: 0.02em;
 }
 
+/* ── Main content area ── */
 .main {
   flex: 1;
   display: flex;
@@ -86,24 +95,8 @@
   overflow: hidden;
 }
 
-.topbar {
-  height: 52px;
-  border-bottom: 1px solid #1a1a1a;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  gap: 12px;
-  background: #0e0e0e;
-}
-
-.topbarTitle {
-  font-size: 0.875rem;
-  color: #555;
-  flex: 1;
-}
-
 .content {
   flex: 1;
   overflow-y: auto;
-  padding: 24px;
+  padding: 28px 28px 48px;
 }

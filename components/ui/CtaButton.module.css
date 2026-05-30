@@ -1,0 +1,66 @@
+/* ── CtaButton — orange gradient CTA button ── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-md, 10px);
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ── Variants ── */
+.solid {
+  background: var(--gradient-cta, linear-gradient(135deg, #fcb14e 0%, #f05621 100%));
+  color: #fff;
+}
+.solid:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(240, 86, 33, 0.45);
+  color: #fff;
+}
+
+.ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.ghost:hover:not(.disabled) {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Sizes ── */
+.sm {
+  font-size: 0.75rem;
+  padding: 7px 16px;
+  border-radius: var(--radius-sm, 6px);
+}
+.md {
+  font-size: 0.85rem;
+  padding: 10px 22px;
+}
+.lg {
+  font-size: 1rem;
+  padding: 16px 32px;
+  border-radius: var(--radius-lg, 16px);
+}
+
+/* ── States ── */
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fullWidth {
+  width: 100%;
+}

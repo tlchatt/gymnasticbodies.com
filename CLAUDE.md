@@ -335,3 +335,161 @@ CRON_SECRET                  # Arbitrary secret — Vercel cron sends as x-cron-
 ## SendGrid — Direct Scripting
 
 - Can send email directly via `node -e` script: `require('@sendgrid/mail')` + `require('dotenv').config({ path: '.env.local' })`. No need to go through the `/api/` route for one-off sends.
+
+---
+
+## Design System
+
+The app uses a unified **dark / orange** design system across all pages. Do not hardcode hex colors — use the CSS custom properties defined in `app/globals.css`.
+
+### Design Tokens (`app/globals.css`)
+
+| Token | Value | Use for |
+|---|---|---|
+| `--bg-base` | `#0e0e0e` | Page / shell background |
+| `--bg-surface` | `#151515` | Cards, sidebar |
+| `--bg-raised` | `#1a1a1a` | Hover states on surfaces |
+| `--bg-overlay` | `#222222` | Borders, dividers |
+| `--accent` | `#f05621` | Orange accent (icons, active states) |
+| `--accent-light` | `#fcb14e` | Light orange (gradient start) |
+| `--gradient-cta` | `linear-gradient(135deg, #fcb14e → #f05621)` | All CTA buttons |
+| `--border-subtle` | `rgba(255,255,255,0.06)` | Default card borders |
+| `--border-accent` | `rgba(240,86,33,0.35)` | Hover / active borders |
+| `--text` | `#ffffff` | Primary text |
+| `--text-muted` | `rgba(255,255,255,0.65)` | Secondary body text |
+| `--text-subtle` | `rgba(255,255,255,0.40)` | Labels, captions |
+| `--text-meta` | `#666666` | Timestamps, metadata |
+| `--radius-sm` | `6px` | Buttons, small elements |
+| `--radius-md` | `10px` | Inputs, mid-size cards |
+| `--radius-lg` | `16px` | Large cards |
+| `--radius-pill` | `100px` | Badges |
+
+### Typography (`lib/fonts.js`)
+
+| Variable | Font | Weights | Use for |
+|---|---|---|---|
+| `--font-display` | Barlow Condensed | 700, 900 | Headlines, nav brand, button labels, badges |
+| `--font-body` | DM Sans | 300, 400, 500 | Body copy, labels, metadata |
+
+Apply to a page or layout via the font variable class props:
+```jsx
+import { barlow, dm } from '@/lib/fonts';
+<div className={`${barlow.variable} ${dm.variable}`}>…</div>
+```
+
+### Shared UI Components (`components/ui/`)
+
+Import from the barrel:
+```js
+import { Badge, Tabs, PageHeader, CtaButton, Card } from '@/components/ui';
+```
+
+#### `Badge`
+Status, priority, and migration-type pills. Handles all variant→color mapping.
+```jsx
+<Badge variant="open">open</Badge>
+<Badge variant="active_expired">active expired</Badge>
+<Badge variant="urgent">urgent</Badge>
+<Badge variant="case">Case</Badge>   {/* orange outlined */}
+```
+Supported variants: `open` `replied` `closed` `pending` `resolved` | `stripe` `active_current` `active_expired` `inactive` `auth_net_subscriber` | `urgent` `high` `normal` `low` | `accent` `case`
+
+#### `Tabs`
+Controlled tab bar with orange active indicator.
+```jsx
+const TABS = [{ label: 'All', value: '' }, { label: 'Open', value: 'open' }];
+<Tabs tabs={TABS} value={tab} onChange={setTab} />
+```
+
+#### `PageHeader`
+Page title + optional right-side actions slot.
+```jsx
+<PageHeader title="Support Inbox">
+  <CtaButton size="sm" onClick={sync}>Sync Gmail</CtaButton>
+</PageHeader>
+```
+
+#### `CtaButton`
+Orange gradient button — renders as `<Link>` when `href` is given, `<button>` otherwise.
+```jsx
+<CtaButton href="/subscribe">Get Started</CtaButton>
+<CtaButton onClick={save} size="sm" disabled={saving}>Save</CtaButton>
+<CtaButton variant="ghost" href="/login">Sign In</CtaButton>
+```
+Props: `href` · `onClick` · `variant` (`solid`|`ghost`) · `size` (`sm`|`md`|`lg`) · `disabled` · `fullWidth` · `type`
+
+#### `Card`
+Dark bordered surface.
+```jsx
+<Card>Default card</Card>
+<Card variant="accent" padding="lg">Highlighted</Card>
+<Card padding="none">Custom padding</Card>
+```
+Props: `variant` (`default`|`accent`) · `padding` (`none`|`sm`|`md`|`lg`)
+
+### Marketing Section Components (`components/marketing/`)
+
+Used on `/subscribe` and similar landing pages. Do not use in admin.
+
+| Component | File | Purpose |
+|---|---|---|
+| `PricingCard` | `marketing/PricingCard.js` | Subscription pricing card |
+| `FeaturesList` | `marketing/FeaturesList.js` | Numbered feature list section |
+| `BottomCta` | `marketing/BottomCta.js` | Full-width bottom CTA section |
+
+### Navigation
+
+| Component | File | Used on | Style |
+|---|---|---|---|
+| `DarkNav` | `components/DarkNav.js` | `/subscribe`, `/renew` | Sticky top bar — logo + ghost Sign In + orange CTA |
+| `AdminNav` | `app/admin/AdminNav.js` | `/admin/*` | Left sidebar — logo + section links |
+| `Nav` | `components/Nav.js` | `/` (home, MUI pages) | Light MUI AppBar — suppressed on dark routes |
+
+**Rule:** `Nav.js` returns `null` on `/subscribe` and `/renew` (checked via `usePathname`). Never add `DarkNav` and `Nav` to the same page — they're mutually exclusive.
+
+### Code Structure Map
+
+```
+app/
+  globals.css           ← Design tokens + global resets (edit here for system-wide changes)
+  layout.js             ← Root layout: Geist font, Nav, UserProvider, Analytics
+  page.js               ← Home — redirects to my.gymnasticbodies.com
+  subscribe/            ← Marketing subscribe page (server component, dark/orange)
+  renew/                ← Renewal portal (SSR disabled for Stripe Elements)
+  admin/
+    AdminNav.js         ← Sidebar nav with brand logo
+    layout.js           ← Admin shell layout (AdminNav + content area)
+    layout.module.css   ← Admin shell CSS (uses design tokens)
+    login/              ← Admin auth page
+    inbox/              ← Support ticket list
+    ticket/[id]/        ← Ticket detail + reply composer
+    cases/              ← Support case list
+    cases/[id]/         ← Case detail + user panel
+    users/              ← User list + search
+    analytics/          ← Subscription funnel analytics
+
+components/
+  ui/                   ← Shared design system components (Badge, Tabs, PageHeader, CtaButton, Card)
+  marketing/            ← Marketing section components (PricingCard, FeaturesList, BottomCta)
+  DarkNav.js            ← Top nav for marketing pages
+  Nav.js                ← MUI top nav for legacy/home pages
+  RenewalPortal.js      ← Stripe renewal form (client only)
+  DarkNav.module.css
+  RenewalPortal.module.css
+
+lib/
+  fonts.js              ← Barlow Condensed + DM Sans next/font/google instances
+  auth.js               ← better-auth config
+  logger.js             ← Server-side logger (stdout + app_logs table)
+  stripeServerFunction.js ← Stripe helpers
+  sendgrid.js           ← Email helpers
+  gmail.js              ← Gmail OAuth + email parsing
+
+Drizzle/
+  db/schema.ts          ← All table definitions
+  index.ts              ← DB instance export
+
+data/
+  content/subscribe.json ← All copy for /subscribe (edit here, not in the component)
+  content/renew.json     ← Metadata for /renew
+```

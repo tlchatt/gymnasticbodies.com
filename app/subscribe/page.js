@@ -1,5 +1,4 @@
 import { barlow, dm } from '@/lib/fonts';
-import DarkNav from '@/components/DarkNav';
 import SubscribeTracker from './SubscribeTracker';
 import PricingCard from '@/components/marketing/PricingCard';
 import FeaturesList from '@/components/marketing/FeaturesList';
@@ -29,7 +28,6 @@ export default function Subscribe() {
     return (
         <div className={`${s.page} ${barlow.variable} ${dm.variable}`}>
             <SubscribeTracker />
-            <DarkNav />
 
             {/* ── Hero ── */}
             <section className={s.hero}>

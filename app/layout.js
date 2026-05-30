@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./context/stateContext";
-import ResponsiveAppBar from "@/components/Nav";
+import NavShell from "@/components/NavShell";
+import { barlow, dm } from "@/lib/fonts";
 import { Suspense } from 'react';
 import Script from "next/script";
 const geistSans = Geist({
@@ -74,12 +75,10 @@ export default function RootLayout({ children }) {
         </>
       }
 
-      <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ minHeight: "100vh" }}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${barlow.variable} ${dm.variable}`} style={{ minHeight: "100vh" }}>
         <UserProvider>
-
-          <ResponsiveAppBar />
+          <NavShell />
           {children}
-
         </UserProvider>
       </body>
     </html >

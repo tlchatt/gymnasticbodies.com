@@ -1,37 +1,25 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { Badge, Tabs, PageHeader, CtaButton } from '@/components/ui';
 import s from './inbox.module.css';
 
 const TABS = [
-  { label: 'All', value: '' },
-  { label: 'Open', value: 'open' },
+  { label: 'All',     value: '' },
+  { label: 'Open',    value: 'open' },
   { label: 'Replied', value: 'replied' },
-  { label: 'Closed', value: 'closed' },
+  { label: 'Closed',  value: 'closed' },
 ];
-
-function statusClass(status) {
-  if (status === 'replied') return s.badgeReplied;
-  if (status === 'closed') return s.badgeClosed;
-  return s.badgeOpen;
-}
-
-function migrationClass(type) {
-  if (type === 'stripe') return s.badgeStripe;
-  if (type === 'active_current') return s.badgeActiveCurrent;
-  if (type === 'active_expired') return s.badgeActiveExpired;
-  if (type === 'inactive') return s.badgeInactive;
-  return s.badgeUnknown;
-}
 
 function fmtDate(str) {
   if (!str) return '';
-  const d = new Date(str);
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  return new Date(str).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  });
 }
 
 export default function InboxClient() {
-  const [tab, setTab] = useState('');
+  const [tab,     setTab]     = useState('');
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
@@ -41,7 +29,7 @@ export default function InboxClient() {
     setLoading(true);
     try {
       const url = `/api/admin/tickets${tab ? `?status=${tab}` : ''}`;
-      const res = await fetch(url);
+      const res  = await fetch(url);
       const data = await res.json();
       setTickets(data.tickets ?? []);
     } finally {
@@ -55,7 +43,7 @@ export default function InboxClient() {
     setSyncing(true);
     setSyncMsg('');
     try {
-      const res = await fetch('/api/admin/gmail/sync', { method: 'POST' });
+      const res  = await fetch('/api/admin/gmail/sync', { method: 'POST' });
       const data = await res.json();
       setSyncMsg(`Synced: ${data.inserted ?? 0} new, ${data.skipped ?? 0} already seen`);
       load();
@@ -68,27 +56,14 @@ export default function InboxClient() {
 
   return (
     <>
-      <div className={s.header}>
-        <div className={s.title}>Support Inbox</div>
-        <div className={s.actions}>
-          {syncMsg && <span className={s.syncMsg}>{syncMsg}</span>}
-          <button className={s.syncBtn} onClick={syncGmail} disabled={syncing}>
-            {syncing ? 'Syncing…' : 'Sync Gmail'}
-          </button>
-        </div>
-      </div>
+      <PageHeader title="Support Inbox">
+        {syncMsg && <span className={s.syncMsg}>{syncMsg}</span>}
+        <CtaButton size="sm" onClick={syncGmail} disabled={syncing}>
+          {syncing ? 'Syncing…' : 'Sync Gmail'}
+        </CtaButton>
+      </PageHeader>
 
-      <div className={s.tabs}>
-        {TABS.map((t) => (
-          <button
-            key={t.value}
-            className={`${s.tab}${tab === t.value ? ` ${s.activeTab}` : ''}`}
-            onClick={() => setTab(t.value)}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
+      <Tabs tabs={TABS} value={tab} onChange={setTab} />
 
       {loading ? (
         <div className={s.empty}>Loading…</div>
@@ -99,26 +74,30 @@ export default function InboxClient() {
           {tickets.map((t) => (
             <Link key={t.id} href={`/admin/ticket/${t.id}`} className={s.row}>
               <span className={s.sender}>{t.fromName || t.fromEmail}</span>
+
               <span className={s.subjectCell}>
                 <span className={s.subjectText}>{t.subject}</span>
                 {t.caseId && (
                   <Link
                     href={`/admin/cases/${t.caseId}`}
-                    className={s.caseBadge}
+                    className={s.caseBadgeLink}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    CASE
+                    <Badge variant="case">Case</Badge>
                   </Link>
                 )}
               </span>
+
               <span className={s.date}>{fmtDate(t.receivedAt)}</span>
-              <span className={`${s.badge} ${statusClass(t.status)}`}>{t.status}</span>
+
+              <Badge variant={t.status}>{t.status}</Badge>
+
               {t.migrationType ? (
-                <span className={`${s.badge} ${migrationClass(t.migrationType)}`}>
-                  {t.migrationType.replace('_', ' ')}
-                </span>
+                <Badge variant={t.migrationType}>
+                  {t.migrationType.replace(/_/g, ' ')}
+                </Badge>
               ) : (
-                <span title="No account found" className={`${s.userDot} ${s.userDotMissing}`} />
+                <span title="No account found" className={s.noAccountDot} />
               )}
             </Link>
           ))}
