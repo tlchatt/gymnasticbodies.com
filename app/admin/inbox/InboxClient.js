@@ -18,21 +18,14 @@ function fmtDate(str) {
   });
 }
 
-function campaignLabel(campaign) {
-  if (!campaign) return null;
-  return campaign.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-}
-
 export default function InboxClient() {
-  const [section,  setSection]  = useState('inbound');
-  const [tab,      setTab]      = useState('');
-  const [tickets,  setTickets]  = useState([]);
-  const [outbound, setOutbound] = useState([]);
-  const [loading,  setLoading]  = useState(true);
-  const [syncing,  setSyncing]  = useState(false);
-  const [syncMsg,  setSyncMsg]  = useState('');
+  const [tab,     setTab]     = useState('');
+  const [tickets, setTickets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState('');
 
-  const loadInbound = useCallback(async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     try {
       const url = `/api/admin/tickets${tab ? `?status=${tab}` : ''}`;
@@ -44,21 +37,7 @@ export default function InboxClient() {
     }
   }, [tab]);
 
-  const loadOutbound = useCallback(async () => {
-    setLoading(true);
-    try {
-      const res  = await fetch('/api/admin/outbound');
-      const data = await res.json();
-      setOutbound(data.outbound ?? []);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (section === 'inbound') loadInbound();
-    else loadOutbound();
-  }, [section, loadInbound, loadOutbound]);
+  useEffect(() => { load(); }, [load]);
 
   async function syncGmail() {
     setSyncing(true);
@@ -67,7 +46,7 @@ export default function InboxClient() {
       const res  = await fetch('/api/admin/gmail/sync', { method: 'POST' });
       const data = await res.json();
       setSyncMsg(`Synced: ${data.inserted ?? 0} new, ${data.skipped ?? 0} already seen`);
-      loadInbound();
+      load();
     } catch {
       setSyncMsg('Sync failed — check console');
     } finally {
@@ -79,103 +58,50 @@ export default function InboxClient() {
     <>
       <PageHeader title="Support Inbox">
         {syncMsg && <span className={s.syncMsg}>{syncMsg}</span>}
-        {section === 'inbound' && (
-          <CtaButton size="sm" onClick={syncGmail} disabled={syncing}>
-            {syncing ? 'Syncing…' : 'Sync Gmail'}
-          </CtaButton>
-        )}
-        {section === 'outbound' && (
-          <CtaButton size="sm" href="/admin/outbound/compose">Compose</CtaButton>
-        )}
+        <CtaButton size="sm" onClick={syncGmail} disabled={syncing}>
+          {syncing ? 'Syncing…' : 'Sync Gmail'}
+        </CtaButton>
       </PageHeader>
 
-      <div className={s.sectionSwitch}>
-        <button
-          className={`${s.sectionBtn} ${section === 'inbound' ? s.sectionBtnActive : ''}`}
-          onClick={() => setSection('inbound')}
-        >
-          Inbound
-        </button>
-        <button
-          className={`${s.sectionBtn} ${section === 'outbound' ? s.sectionBtnActive : ''}`}
-          onClick={() => setSection('outbound')}
-        >
-          Outbound
-        </button>
-      </div>
-
-      {section === 'inbound' && (
-        <Tabs tabs={STATUS_TABS} value={tab} onChange={setTab} />
-      )}
+      <Tabs tabs={STATUS_TABS} value={tab} onChange={setTab} />
 
       {loading ? (
         <div className={s.empty}>Loading…</div>
-      ) : section === 'inbound' ? (
-        tickets.length === 0 ? (
-          <div className={s.empty}>No tickets{tab ? ` with status "${tab}"` : ''}.</div>
-        ) : (
-          <div className={s.list}>
-            {tickets.map((t) => (
-              <Link key={t.id} href={`/admin/ticket/${t.id}`} className={s.row}>
-                <span className={s.sender}>{t.fromName || t.fromEmail}</span>
-
-                <span className={s.subjectCell}>
-                  <span className={s.subjectText}>{t.subject}</span>
-                  {t.caseId && (
-                    <Link
-                      href={`/admin/cases/${t.caseId}`}
-                      className={s.caseBadgeLink}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Badge variant="case">Case</Badge>
-                    </Link>
-                  )}
-                </span>
-
-                <span className={s.date}>{fmtDate(t.receivedAt)}</span>
-
-                <Badge variant={t.status}>{t.status}</Badge>
-
-                {t.migrationType ? (
-                  <Badge variant={t.migrationType}>
-                    {t.migrationType.replace(/_/g, ' ')}
-                  </Badge>
-                ) : (
-                  <span title="No account found" className={s.noAccountDot} />
-                )}
-              </Link>
-            ))}
-          </div>
-        )
+      ) : tickets.length === 0 ? (
+        <div className={s.empty}>No tickets{tab ? ` with status "${tab}"` : ''}.</div>
       ) : (
-        outbound.length === 0 ? (
-          <div className={s.empty}>No outbound emails recorded.</div>
-        ) : (
-          <div className={s.list}>
-            {outbound.map((o) => (
-              <div key={o.id} className={s.outboundRow}>
-                <span className={s.sender}>{o.userName && o.userName !== 'N/A' ? o.userName : o.toEmail}</span>
+        <div className={s.list}>
+          {tickets.map((t) => (
+            <Link key={t.id} href={`/admin/ticket/${t.id}`} className={s.row}>
+              <span className={s.sender}>{t.fromName || t.fromEmail}</span>
 
-                <span className={s.subjectCell}>
-                  <span className={s.subjectText}>{o.subject}</span>
-                  {o.caseId && (
-                    <Link href={`/admin/cases/${o.caseId}`} className={s.caseBadgeLink}>
-                      <Badge variant="case">Case</Badge>
-                    </Link>
-                  )}
-                </span>
-
-                {o.campaign && (
-                  <span className={s.campaignTag}>{campaignLabel(o.campaign)}</span>
+              <span className={s.subjectCell}>
+                <span className={s.subjectText}>{t.subject}</span>
+                {t.caseId && (
+                  <Link
+                    href={`/admin/cases/${t.caseId}`}
+                    className={s.caseBadgeLink}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Badge variant="case">Case</Badge>
+                  </Link>
                 )}
+              </span>
 
-                <span className={s.date}>{fmtDate(o.sentAt)}</span>
+              <span className={s.date}>{fmtDate(t.receivedAt)}</span>
 
-                <span className={s.toEmail}>{o.toEmail}</span>
-              </div>
-            ))}
-          </div>
-        )
+              <Badge variant={t.status}>{t.status}</Badge>
+
+              {t.migrationType ? (
+                <Badge variant={t.migrationType}>
+                  {t.migrationType.replace(/_/g, ' ')}
+                </Badge>
+              ) : (
+                <span title="No account found" className={s.noAccountDot} />
+              )}
+            </Link>
+          ))}
+        </div>
       )}
     </>
   );

@@ -33,6 +33,9 @@ const CLASS_MAP = {
   high:   s.high,
   normal: s.normal,
   low:    s.low,
+  // Outbound type
+  support:   s.support,
+  marketing: s.marketing,
   // Special
   accent: s.accent,
   case:   s.accent,

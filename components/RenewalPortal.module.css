@@ -179,7 +179,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.8);
     margin-bottom: 10px;
 }
 
@@ -193,6 +193,14 @@
 
 .cardBox:focus-within {
     border-color: rgba(240,86,33,0.45);
+}
+
+.cardHint {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
 }
 
 /* ── CTA button ── */

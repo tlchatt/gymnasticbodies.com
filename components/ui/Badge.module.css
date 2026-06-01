@@ -40,5 +40,9 @@
 }
 .accent:hover { background: rgba(240, 86, 33, 0.28); }
 
+/* ── Outbound type ── */
+.support   { background: rgba(59,  130, 246, 0.15); color: #3b82f6; }
+.marketing { background: rgba(168, 85,  247, 0.15); color: #a855f7; }
+
 /* ── Fallback ── */
 .default { background: rgba(120, 120, 120, 0.10); color: #666; }

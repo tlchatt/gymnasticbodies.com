@@ -147,7 +147,11 @@ export default function ComposeClient() {
           <div className={s.field}>
             <label className={s.label}>
               Body
-              <span className={s.hint}>Variables: <code>{'{{name}}'}</code> <code>{'{{renewalLink}}'}</code> <code>{'{{email}}'}</code></span>
+              <span className={s.hint}>Variables:
+              {' '}<code title="First name from DB — empty string if unknown">{'{{name}}'}</code>
+              {' '}<code title="Full renewal URL: https://app.gymnasticbodies.com/renew?email=...">{'{{renewalLink}}'}</code>
+              {' '}<code title="Recipient's email address">{'{{email}}'}</code>
+            </span>
             </label>
             <textarea
               className={`${s.textarea} ${s.bodyArea}`}

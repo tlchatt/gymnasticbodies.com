@@ -123,8 +123,12 @@ export default function RenewalPortal({ email, onNameLoaded }) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ event: 'renew.card_error', level: 'warn', email, message: pmError.message }),
                 }).catch(() => {});
+                const isIncomplete = pmError.message?.toLowerCase().includes('incomplete') || pmError.message?.toLowerCase().includes('incomplet') || pmError.message?.toLowerCase().includes('ufullstendig') || pmError.message?.toLowerCase().includes('ofullständigt') || pmError.message?.toLowerCase().includes('niepełny');
                 setError(true);
-                setMessage(pmError.message);
+                setMessage(isIncomplete
+                    ? 'Please fill in all card fields — card number, expiry date, CVC, and ZIP code. If the form isn\'t responding, try disabling your ad blocker or switching browsers.'
+                    : pmError.message
+                );
                 setLoading(false);
                 return;
             }
@@ -178,7 +182,7 @@ export default function RenewalPortal({ email, onNameLoaded }) {
                 fontSize: '16px',
                 color: '#ffffff',
                 fontFamily: '"DM Sans", sans-serif',
-                '::placeholder': { color: 'rgba(255,255,255,0.35)' },
+                '::placeholder': { color: 'rgba(255,255,255,0.65)' },
             },
             invalid: { color: '#ff8080' },
         },
@@ -246,6 +250,7 @@ export default function RenewalPortal({ email, onNameLoaded }) {
                     <div className={s.cardBox}>
                         <CardElement options={cardElementOptions} />
                     </div>
+                    <p className={s.cardHint}>Card number &nbsp;·&nbsp; MM / YY &nbsp;·&nbsp; CVC &nbsp;·&nbsp; ZIP</p>
                 </div>
 
                 <button
