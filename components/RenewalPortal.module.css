@@ -253,6 +253,98 @@
     padding: 12px 16px;
 }
 
+/* ── Support form ── */
+.supportSection {
+    margin-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+}
+
+.supportToggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease;
+}
+
+.supportToggle:hover {
+    color: rgba(255,255,255,0.75);
+}
+
+.supportForm {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.supportInput,
+.supportTextarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.9rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.supportInput::placeholder,
+.supportTextarea::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+
+.supportInput:focus,
+.supportTextarea:focus {
+    border-color: rgba(240,86,33,0.45);
+}
+
+.supportInput[readonly] {
+    color: rgba(255,255,255,0.35);
+    cursor: default;
+}
+
+.supportTextarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.supportSendBtn {
+    align-self: flex-start;
+    background: rgba(240,86,33,0.15);
+    border: 1px solid rgba(240,86,33,0.4);
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f05621;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.supportSendBtn:hover:not(:disabled) {
+    background: rgba(240,86,33,0.25);
+    border-color: rgba(240,86,33,0.65);
+}
+
+.supportSendBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 @media (max-width: 640px) {
     .body { padding: 32px 16px 64px; }
 }

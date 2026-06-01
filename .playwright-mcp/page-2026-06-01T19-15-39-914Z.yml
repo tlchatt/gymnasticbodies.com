@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+          - img "GymFit by Gymnastic Bodies" [ref=e6]
+        - generic [ref=e7]: Admin
+      - navigation "Admin navigation" [ref=e8]:
+        - link "Inbox" [ref=e9] [cursor=pointer]:
+          - /url: /admin/inbox
+          - img [ref=e11]
+          - text: Inbox
+        - link "Outbox" [ref=e14] [cursor=pointer]:
+          - /url: /admin/outbox
+          - img [ref=e16]
+          - text: Outbox
+        - link "Cases" [ref=e20] [cursor=pointer]:
+          - /url: /admin/cases
+          - img [ref=e22]
+          - text: Cases
+        - link "Users" [ref=e25] [cursor=pointer]:
+          - /url: /admin/users
+          - img [ref=e27]
+          - text: Users
+        - link "Analytics" [ref=e30] [cursor=pointer]:
+          - /url: /admin/analytics
+          - img [ref=e32]
+          - text: Analytics
+      - generic [ref=e33]: app.gymnasticbodies.com
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - heading "Outbox" [level=1] [ref=e37]
+        - link "Compose" [ref=e39] [cursor=pointer]:
+          - /url: /admin/outbound/compose
+      - generic [ref=e40]: Loading…
+  - alert [ref=e41]

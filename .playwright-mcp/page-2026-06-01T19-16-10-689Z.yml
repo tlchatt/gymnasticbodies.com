@@ -1,0 +1,101 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+          - img "GymFit by Gymnastic Bodies" [ref=e6]
+        - generic [ref=e7]: Admin
+      - navigation "Admin navigation" [ref=e8]:
+        - link "Inbox" [ref=e9] [cursor=pointer]:
+          - /url: /admin/inbox
+          - img [ref=e11]
+          - text: Inbox
+        - link "Outbox" [ref=e14] [cursor=pointer]:
+          - /url: /admin/outbox
+          - img [ref=e16]
+          - text: Outbox
+        - link "Cases" [ref=e20] [cursor=pointer]:
+          - /url: /admin/cases
+          - img [ref=e22]
+          - text: Cases
+        - link "Users" [ref=e25] [cursor=pointer]:
+          - /url: /admin/users
+          - img [ref=e27]
+          - text: Users
+        - link "Analytics" [ref=e30] [cursor=pointer]:
+          - /url: /admin/analytics
+          - img [ref=e32]
+          - text: Analytics
+      - generic [ref=e33]: app.gymnasticbodies.com
+    - generic [ref=e35]:
+      - link "← Back to cases" [ref=e36] [cursor=pointer]:
+        - /url: /admin/cases
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e41]: my.gymnasticbodies.com Contact Form Submission
+              - generic [ref=e42]:
+                - generic [ref=e43]: Status
+                - combobox [ref=e44] [cursor=pointer]:
+                  - option "Open" [selected]
+                  - option "Pending"
+                  - option "Resolved"
+                  - option "Closed"
+                - generic [ref=e45]: Priority
+                - combobox [ref=e46] [cursor=pointer]:
+                  - option "Low"
+                  - option "Normal" [selected]
+                  - option "High"
+                  - option "Urgent"
+                - button "Save" [ref=e47] [cursor=pointer]
+            - generic [ref=e48]:
+              - generic [ref=e49]: Admin Notes
+              - textbox "Internal notes about this case…" [ref=e50]
+          - generic [ref=e52]:
+            - generic [ref=e53]: Linked Emails (1)
+            - generic [ref=e55]:
+              - button "▾ my.gymnasticbodies.com Contact Form Submission from Chris Sommer ↩ 1 May 26, 2026 replied" [active] [ref=e93] [cursor=pointer]:
+                - generic [ref=e57]: ▾
+                - generic [ref=e58]: my.gymnasticbodies.com Contact Form Submission from Chris Sommer
+                - generic [ref=e59]: ↩ 1
+                - generic [ref=e60]: May 26, 2026
+                - generic [ref=e61]: replied
+              - generic [ref=e94]:
+                - generic [ref=e95]: "From: Chris Sommer <c.sommerother@gmail.com>"
+                - generic [ref=e96]: "my.gymnasticbodies.com Contact Form Submission from Chris Sommer Chris Sommer: Test test test Sender Contact Information: Name: Chris Sommer Phone: 4802408740 Email: c.sommerother@gmail.com Acquisition Data: undefined"
+                - generic [ref=e98]:
+                  - generic [ref=e99]: ↩ Admin reply · May 28, 2026, 3:43 PM
+                  - generic [ref=e100]: reply reply reply
+        - generic [ref=e63]:
+          - generic [ref=e64]: Customer
+          - generic [ref=e65]:
+            - generic [ref=e66]: Coach
+            - generic [ref=e67]: c.sommerother@gmail.com
+            - link "View full profile →" [ref=e68] [cursor=pointer]:
+              - /url: /admin/users/CT8upESWIQO8AKIRd8zcP1SSRNHFiqWU
+            - generic [ref=e69]:
+              - generic [ref=e70]: Status
+              - generic [ref=e71]: active expired
+            - generic [ref=e72]:
+              - generic [ref=e73]: Member since
+              - generic [ref=e74]: Dec 23, 2025
+            - generic [ref=e75]:
+              - generic [ref=e76]: Last active
+              - generic [ref=e77]: May 29, 2026
+          - generic [ref=e78]:
+            - generic [ref=e79]: Subscription
+            - generic [ref=e80]:
+              - generic [ref=e81]: Type
+              - generic [ref=e82]: subscription
+            - generic [ref=e83]:
+              - generic [ref=e84]: Status
+              - generic [ref=e85]: Inactive
+            - generic [ref=e86]:
+              - generic [ref=e87]: Auth.net customer
+              - generic [ref=e88]: "806095521"
+          - generic [ref=e89]:
+            - generic [ref=e90]: Notes
+            - textbox "Internal notes…" [ref=e91]
+  - alert [ref=e92]

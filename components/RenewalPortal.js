@@ -39,6 +39,14 @@ export default function RenewalPortal({ email, onNameLoaded }) {
     const [billingChoice, setBillingChoice] = useState('historical');
     const submittingRef = useRef(false);
 
+    const [userName, setUserName] = useState('');
+    const [supportOpen, setSupportOpen] = useState(false);
+    const [supportName, setSupportName] = useState('');
+    const [supportMessage, setSupportMessage] = useState('');
+    const [supportSending, setSupportSending] = useState(false);
+    const [supportSent, setSupportSent] = useState(false);
+    const [supportError, setSupportError] = useState('');
+
     useEffect(() => {
         if (!email) return;
         fetch('/api/log', {
@@ -53,7 +61,11 @@ export default function RenewalPortal({ email, onNameLoaded }) {
                 if (data.term) setHistoricalTerm(data.term);
                 setHasValidHistoricalData(!!data.hasValidHistoricalData);
                 if (!data.hasValidHistoricalData) setBillingChoice('standard_monthly');
-                if (data.name && onNameLoaded) onNameLoaded(data.name);
+                if (data.name) {
+                    setUserName(data.name);
+                    setSupportName(data.name);
+                    if (onNameLoaded) onNameLoaded(data.name);
+                }
             })
             .catch(() => {});
     }, [email]);
@@ -176,6 +188,37 @@ export default function RenewalPortal({ email, onNameLoaded }) {
         }
     };
 
+    const handleSupportSubmit = async () => {
+        if (!supportMessage.trim() || supportSending) return;
+        setSupportSending(true);
+        setSupportError('');
+        try {
+            const res = await fetch('/api/user/contactUs', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: 'support@gymnasticbodies.com',
+                    from: 'contact@gymnasticbodies.com',
+                    replyTo: email,
+                    subject: `app.gymnasticbodies.com Contact Form Submission from ${supportName || email}`,
+                    name: supportName || email,
+                    email,
+                    phone: 'N/A',
+                    message: supportMessage,
+                }),
+            });
+            if (res.ok) {
+                setSupportSent(true);
+            } else {
+                setSupportError('Failed to send. Please email support@gymnasticbodies.com directly.');
+            }
+        } catch {
+            setSupportError('Failed to send. Please email support@gymnasticbodies.com directly.');
+        } finally {
+            setSupportSending(false);
+        }
+    };
+
     const cardElementOptions = {
         style: {
             base: {
@@ -263,6 +306,56 @@ export default function RenewalPortal({ email, onNameLoaded }) {
 
                 {error && <p className={s.errorMsg}>{message}</p>}
                 {success && <p className={s.successMsg}>{message}</p>}
+
+                <div className={s.supportSection}>
+                    <button
+                        className={s.supportToggle}
+                        onClick={() => setSupportOpen(o => !o)}
+                        type="button"
+                    >
+                        {supportOpen ? 'Hide support form' : 'Need help? Contact support'}
+                    </button>
+
+                    {supportOpen && (
+                        <div className={s.supportForm}>
+                            {supportSent ? (
+                                <p className={s.successMsg}>Message sent! We'll get back to you shortly.</p>
+                            ) : (
+                                <>
+                                    <input
+                                        className={s.supportInput}
+                                        type="text"
+                                        placeholder="Your name"
+                                        value={supportName}
+                                        onChange={e => setSupportName(e.target.value)}
+                                    />
+                                    <input
+                                        className={s.supportInput}
+                                        type="email"
+                                        value={email || ''}
+                                        readOnly
+                                    />
+                                    <textarea
+                                        className={s.supportTextarea}
+                                        placeholder="How can we help you?"
+                                        rows={4}
+                                        value={supportMessage}
+                                        onChange={e => setSupportMessage(e.target.value)}
+                                    />
+                                    {supportError && <p className={s.errorMsg}>{supportError}</p>}
+                                    <button
+                                        className={s.supportSendBtn}
+                                        onClick={handleSupportSubmit}
+                                        disabled={supportSending || !supportMessage.trim()}
+                                        type="button"
+                                    >
+                                        {supportSending ? 'Sending...' : 'Send Message'}
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     );
