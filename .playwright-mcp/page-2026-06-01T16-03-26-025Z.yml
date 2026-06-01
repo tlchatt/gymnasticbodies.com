@@ -1,0 +1,154 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+          - img "GymFit by Gymnastic Bodies" [ref=e6]
+        - generic [ref=e7]: Admin
+      - navigation "Admin navigation" [ref=e8]:
+        - link "Inbox" [ref=e9] [cursor=pointer]:
+          - /url: /admin/inbox
+          - img [ref=e11]
+          - text: Inbox
+        - link "Cases" [ref=e14] [cursor=pointer]:
+          - /url: /admin/cases
+          - img [ref=e16]
+          - text: Cases
+        - link "Users" [ref=e19] [cursor=pointer]:
+          - /url: /admin/users
+          - img [ref=e21]
+          - text: Users
+        - link "Analytics" [ref=e24] [cursor=pointer]:
+          - /url: /admin/analytics
+          - img [ref=e26]
+          - text: Analytics
+      - generic [ref=e27]: app.gymnasticbodies.com
+    - generic [ref=e29]:
+      - generic [ref=e44]:
+        - heading "Support Inbox" [level=1] [ref=e45]
+        - link "Compose" [ref=e381] [cursor=pointer]:
+          - /url: /admin/outbound/compose
+      - generic [ref=e48]:
+        - button "Inbound" [ref=e49] [cursor=pointer]
+        - button "Outbound" [active] [ref=e50] [cursor=pointer]
+      - generic [ref=e56]:
+        - generic [ref=e382]:
+          - generic [ref=e383]: Nadine
+          - generic [ref=e385]: Having trouble renewing your GymFit membership?
+          - generic [ref=e386]: Renewal Outreach 2026-05-27
+          - generic [ref=e387]: May 27, 2026
+          - generic [ref=e388]: albertini.nadine@gmail.com
+        - generic [ref=e389]:
+          - generic [ref=e390]: Nicolas
+          - generic [ref=e392]: Having trouble renewing your GymFit membership?
+          - generic [ref=e393]: Renewal Outreach 2026-05-27
+          - generic [ref=e394]: May 27, 2026
+          - generic [ref=e395]: nico.aeschlimann@gmail.com
+        - generic [ref=e396]:
+          - generic [ref=e397]: Taekwon Mabry
+          - generic [ref=e399]: Having trouble renewing your GymFit membership?
+          - generic [ref=e400]: Renewal Outreach 2026-05-27
+          - generic [ref=e401]: May 27, 2026
+          - generic [ref=e402]: taemabb@gmail.com
+        - generic [ref=e403]:
+          - generic [ref=e404]: Lars Wiberg
+          - generic [ref=e406]: Having trouble renewing your GymFit membership?
+          - generic [ref=e407]: Renewal Outreach 2026-05-27
+          - generic [ref=e408]: May 27, 2026
+          - generic [ref=e409]: larwib@gmail.com
+        - generic [ref=e410]:
+          - generic [ref=e411]: Yusef
+          - generic [ref=e413]: Having trouble renewing your GymFit membership?
+          - generic [ref=e414]: Renewal Outreach 2026-05-27
+          - generic [ref=e415]: May 27, 2026
+          - generic [ref=e416]: yusef.elmansouri@gmail.com
+        - generic [ref=e417]:
+          - generic [ref=e418]: Stephan W
+          - generic [ref=e420]: Having trouble renewing your GymFit membership?
+          - generic [ref=e421]: Renewal Outreach 2026-05-27
+          - generic [ref=e422]: May 27, 2026
+          - generic [ref=e423]: skjwjks@gmail.com
+        - generic [ref=e424]:
+          - generic [ref=e425]: Udo Boehm
+          - generic [ref=e427]: Having trouble renewing your GymFit membership?
+          - generic [ref=e428]: Renewal Outreach 2026-05-27
+          - generic [ref=e429]: May 27, 2026
+          - generic [ref=e430]: udoboehm1@gmail.com
+        - generic [ref=e431]:
+          - generic [ref=e432]: John Vancelette
+          - generic [ref=e434]: Having trouble renewing your GymFit membership?
+          - generic [ref=e435]: Renewal Outreach 2026-05-27
+          - generic [ref=e436]: May 27, 2026
+          - generic [ref=e437]: javancelette@gmail.com
+        - generic [ref=e438]:
+          - generic [ref=e439]: shirshadinky@gmail.com
+          - generic [ref=e441]: Having trouble renewing your GymFit membership?
+          - generic [ref=e442]: Renewal Outreach 2026-05-27
+          - generic [ref=e443]: May 27, 2026
+          - generic [ref=e444]: shirshadinky@gmail.com
+        - generic [ref=e445]:
+          - generic [ref=e446]: Jeremy Griffiths
+          - generic [ref=e448]: Having trouble renewing your GymFit membership?
+          - generic [ref=e449]: Renewal Outreach 2026-05-27
+          - generic [ref=e450]: May 27, 2026
+          - generic [ref=e451]: jeremygriffiths2@me.com
+        - generic [ref=e452]:
+          - generic [ref=e453]: cillian.ocuinneagain@gmail.com
+          - generic [ref=e455]: Having trouble renewing your GymFit membership?
+          - generic [ref=e456]: Renewal Outreach 2026-05-27
+          - generic [ref=e457]: May 27, 2026
+          - generic [ref=e458]: cillian.ocuinneagain@gmail.com
+        - generic [ref=e459]:
+          - generic [ref=e460]: dfw9sb@gmail.com
+          - generic [ref=e462]: Having trouble renewing your GymFit membership?
+          - generic [ref=e463]: Renewal Outreach 2026-05-27
+          - generic [ref=e464]: May 27, 2026
+          - generic [ref=e465]: dfw9sb@gmail.com
+        - generic [ref=e466]:
+          - generic [ref=e467]: Gregory Gysberg
+          - generic [ref=e469]: Having trouble renewing your GymFit membership?
+          - generic [ref=e470]: Renewal Outreach 2026-05-27
+          - generic [ref=e471]: May 27, 2026
+          - generic [ref=e472]: ggysber2@gmail.com
+        - generic [ref=e473]:
+          - generic [ref=e474]: Dmytro Hutsal
+          - generic [ref=e475]:
+            - generic [ref=e476]: Having trouble renewing your GymFit membership?
+            - link "Case" [ref=e477] [cursor=pointer]:
+              - /url: /admin/cases/6
+              - generic [ref=e478]: Case
+          - generic [ref=e479]: Renewal Outreach 2026-05-27
+          - generic [ref=e480]: May 27, 2026
+          - generic [ref=e481]: dhutsal@gmail.com
+        - generic [ref=e482]:
+          - generic [ref=e483]: Jeff
+          - generic [ref=e484]:
+            - generic [ref=e485]: Having trouble renewing your GymFit membership?
+            - link "Case" [ref=e486] [cursor=pointer]:
+              - /url: /admin/cases/10
+              - generic [ref=e487]: Case
+          - generic [ref=e488]: Renewal Outreach 2026-05-27
+          - generic [ref=e489]: May 27, 2026
+          - generic [ref=e490]: jeffarmstrong1970@yahoo.com
+        - generic [ref=e491]:
+          - generic [ref=e492]: David Cooney
+          - generic [ref=e493]:
+            - generic [ref=e494]: Having trouble renewing your GymFit membership?
+            - link "Case" [ref=e495] [cursor=pointer]:
+              - /url: /admin/cases/11
+              - generic [ref=e496]: Case
+          - generic [ref=e497]: Renewal Outreach 2026-05-27
+          - generic [ref=e498]: May 27, 2026
+          - generic [ref=e499]: djcooney@hotmail.com
+        - generic [ref=e500]:
+          - generic [ref=e501]: Coach
+          - generic [ref=e502]:
+            - generic [ref=e503]: Having trouble renewing your GymFit membership?
+            - link "Case" [ref=e504] [cursor=pointer]:
+              - /url: /admin/cases/4
+              - generic [ref=e505]: Case
+          - generic [ref=e506]: Renewal Outreach 2026-05-27
+          - generic [ref=e507]: May 27, 2026
+          - generic [ref=e508]: c.sommerother@gmail.com
+  - alert [ref=e43]: Inbox | Admin
