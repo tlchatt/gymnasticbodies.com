@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Badge, PageHeader, CtaButton } from '@/components/ui';
+import { Badge, PageHeader, CtaButton, Card } from '@/components/ui';
 import s from './outbox.module.css';
 
 function fmtDate(str) {
@@ -61,6 +61,14 @@ export default function OutboxClient() {
               )}
 
               <span className={s.date}>{fmtDate(o.sentAt)}</span>
+
+              {o.migrationType ? (
+                <Badge variant={o.migrationType}>
+                  {o.migrationType.replace(/_/g, ' ')}
+                </Badge>
+              ) : (
+                <span title="No account found" className={s.noAccountDot} />
+              )}
 
               <span className={s.toEmail}>{o.toEmail}</span>
             </div>

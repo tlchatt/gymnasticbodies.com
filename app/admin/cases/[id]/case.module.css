@@ -128,25 +128,40 @@
 .emailList {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .emailItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
   background: #1a1a1a;
   border: 1px solid #222;
   border-radius: 6px;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.1s, background 0.1s;
+  overflow: hidden;
+  transition: border-color 0.1s;
 }
-.emailItem:hover {
-  background: #202020;
-  border-color: #2a2a2a;
+.emailItemOpen {
+  border-color: #2e2e2e;
+}
+
+.emailHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+.emailHeader:hover { background: #202020; }
+
+.emailChevron {
+  font-size: 0.75rem;
+  color: #555;
+  flex-shrink: 0;
+  width: 12px;
 }
 
 .emailSubject {
@@ -158,10 +173,76 @@
   flex: 1;
 }
 
+.replyCount {
+  font-size: 0.72rem;
+  color: #f05621;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .emailDate {
   font-size: 0.72rem;
   color: #555;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.emailStatus {
+  font-size: 0.68rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.emailStatusReplied { color: #4ade80; }
+
+/* Expanded body */
+.emailBody {
+  padding: 0 12px 12px 28px;
+  border-top: 1px solid #1e1e1e;
+}
+
+.emailMeta {
+  font-size: 0.72rem;
+  color: #555;
+  padding: 8px 0 6px;
+}
+
+.emailText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.82rem;
+  color: #bbb;
+  white-space: pre-wrap;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Reply thread */
+.replyThread {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.replyItem {
+  border-left: 2px solid #f05621;
+  padding-left: 12px;
+}
+
+.replyMeta {
+  font-size: 0.7rem;
+  color: #f05621;
+  margin-bottom: 4px;
+}
+
+.replyText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.82rem;
+  color: #bbb;
+  white-space: pre-wrap;
+  margin: 0;
+  line-height: 1.55;
 }
 
 .noEmails {

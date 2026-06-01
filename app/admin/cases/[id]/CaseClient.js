@@ -3,6 +3,45 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import s from './case.module.css';
 
+function EmailThread({ email }) {
+  const [open, setOpen] = useState(false);
+  const hasReplies = email.replies?.length > 0;
+
+  return (
+    <div className={`${s.emailItem} ${open ? s.emailItemOpen : ''}`}>
+      <button className={s.emailHeader} onClick={() => setOpen(o => !o)}>
+        <span className={s.emailChevron}>{open ? '▾' : '▸'}</span>
+        <span className={s.emailSubject}>{email.subject}</span>
+        {hasReplies && (
+          <span className={s.replyCount}>↩ {email.replies.length}</span>
+        )}
+        <span className={s.emailDate}>{fmtDate(email.receivedAt)}</span>
+        <span className={`${s.emailStatus} ${email.status === 'replied' ? s.emailStatusReplied : ''}`}>
+          {email.status}
+        </span>
+      </button>
+
+      {open && (
+        <div className={s.emailBody}>
+          <div className={s.emailMeta}>From: {email.fromName ? `${email.fromName} <${email.fromEmail}>` : email.fromEmail}</div>
+          <pre className={s.emailText}>{email.body || '(no body)'}</pre>
+
+          {hasReplies && (
+            <div className={s.replyThread}>
+              {email.replies.map(r => (
+                <div key={r.id} className={s.replyItem}>
+                  <div className={s.replyMeta}>↩ Admin reply · {fmtDateTime(r.sentAt)}</div>
+                  <pre className={s.replyText}>{r.body}</pre>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function fmtDate(str) {
   if (!str) return '';
   return new Date(str).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -150,10 +189,7 @@ export default function CaseClient({ data: initial }) {
               ) : (
                 <div className={s.emailList}>
                   {linkedEmails.map((e) => (
-                    <Link key={e.id} href={`/admin/ticket/${e.id}`} className={s.emailItem}>
-                      <span className={s.emailSubject}>{e.subject}</span>
-                      <span className={s.emailDate}>{fmtDate(e.receivedAt)}</span>
-                    </Link>
+                    <EmailThread key={e.id} email={e} />
                   ))}
                 </div>
               )}

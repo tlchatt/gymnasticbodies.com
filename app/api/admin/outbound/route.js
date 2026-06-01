@@ -18,6 +18,8 @@ export async function GET() {
       sentAt: outbound_emails.sentAt,
       caseId: outbound_emails.caseId,
       userName: user.name,
+      migrationType: user.migrationType,
+      type: outbound_emails.type,
     })
     .from(outbound_emails)
     .leftJoin(user, eq(outbound_emails.userId, user.id))

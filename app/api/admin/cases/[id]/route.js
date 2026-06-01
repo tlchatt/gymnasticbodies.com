@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
-import { support_cases, support_emails, user, user_setting, app_logs, session } from '@/Drizzle/db/schema';
-import { eq, desc, and, ne } from 'drizzle-orm';
+import { support_cases, support_emails, support_replies, user, user_setting, app_logs, session } from '@/Drizzle/db/schema';
+import { eq, desc, and, ne, inArray } from 'drizzle-orm';
 
 export async function GET(request, { params }) {
   const { error } = await requireAdmin();
@@ -19,19 +19,45 @@ export async function GET(request, { params }) {
 
   if (!caseRow) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-  // Linked emails
+  // Linked emails (with body)
   const linkedEmails = await db
     .select({
       id: support_emails.id,
       subject: support_emails.subject,
       fromEmail: support_emails.fromEmail,
       fromName: support_emails.fromName,
+      body: support_emails.body,
       receivedAt: support_emails.receivedAt,
       status: support_emails.status,
     })
     .from(support_emails)
     .where(eq(support_emails.caseId, caseId))
     .orderBy(desc(support_emails.receivedAt));
+
+  // Replies for all linked emails
+  const emailIds = linkedEmails.map(e => e.id);
+  const replies = emailIds.length > 0
+    ? await db
+        .select({
+          id: support_replies.id,
+          emailId: support_replies.emailId,
+          body: support_replies.body,
+          sentAt: support_replies.sentAt,
+        })
+        .from(support_replies)
+        .where(inArray(support_replies.emailId, emailIds))
+        .orderBy(support_replies.sentAt)
+    : [];
+
+  // Attach replies to their parent emails
+  const repliesByEmail = replies.reduce((acc, r) => {
+    (acc[r.emailId] ??= []).push(r);
+    return acc;
+  }, {});
+  const linkedEmailsWithReplies = linkedEmails.map(e => ({
+    ...e,
+    replies: repliesByEmail[e.id] ?? [],
+  }));
 
   let matchedUser = null;
   let setting = null;
@@ -93,6 +119,6 @@ export async function GET(request, { params }) {
     lastSession,
     recentLogs,
     pastCases,
-    linkedEmails,
+    linkedEmails: linkedEmailsWithReplies,
   });
 }
