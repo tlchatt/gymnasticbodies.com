@@ -199,6 +199,7 @@ export const outbound_emails = pgTable("outbound_emails", {
   subject: text("subject").notNull(),
   body: text("body"),
   campaign: text("campaign"),      // optional tag e.g. 'renewal_outreach', 'active_expired_2026-05'
+  type: text("type").default("support").notNull(), // 'support' | 'marketing'
   sentAt: timestamp("sent_at").defaultNow().notNull(),
   caseId: integer("case_id"),      // set when a reply creates a case
 }, (t) => [

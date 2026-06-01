@@ -32,6 +32,7 @@ async function findOutboundMatch(fromEmail) {
       id: outbound_emails.id,
       subject: outbound_emails.subject,
       campaign: outbound_emails.campaign,
+      type: outbound_emails.type,
       sentAt: outbound_emails.sentAt,
     })
     .from(outbound_emails)
@@ -129,15 +130,17 @@ export async function POST(request) {
 
         // Check if this is a reply to an outbound email we sent
         const outboundMatch = await findOutboundMatch(msg.fromEmail);
+        const isSupportReply = outboundMatch?.type === 'support';
 
-        const caseId = await upsertCase({
+        // Only auto-create a case for replies to support outbound emails
+        const caseId = isSupportReply ? await upsertCase({
           userId: user?.id ?? null,
           fromEmail: msg.fromEmail,
           fromName: msg.fromName || null,
           subject: msg.subject,
-          isOutboundResponse: !!outboundMatch,
-          campaign: outboundMatch?.campaign ?? null,
-        });
+          isOutboundResponse: true,
+          campaign: outboundMatch.campaign ?? null,
+        }) : null;
 
         await db.insert(support_emails).values({
           gmailMessageId: syntheticId,

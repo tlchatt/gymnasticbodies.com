@@ -36,13 +36,24 @@ node claudeTools/support.js send-email --to=x --subject="..." --body="..."
 node claudeTools/support.js email-group --type=active_expired --subject="..." --body="..." [--dry-run]
 node claudeTools/support.js email-group --type=active_expired --subject="..." --body-file=./template.txt
 node claudeTools/support.js backfill-cases   # create cases for all uncased open tickets
+
+# Outbound email (records in outbound_emails + sends via SendGrid atomically)
+node claudeTools/support.js sendOutboundSupportEmail \
+  --emails="a@b.com, c@d.com"    # or --emails-file=./list.txt
+  --subject="Subject line" \
+  --body="Hi {{name}}, ..." \    # or --body-file=./template.txt
+  --campaign="renewal_outreach_2026-06" \
+  --type=support \               # support (default) | marketing
+  --dry-run                      # preview without sending
 ```
 
-**Template variables** in `--body`: `{{name}}`, `{{email}}`
+**Template variables** in `--body`: `{{name}}` (first name from DB), `{{email}}`, `{{renewalLink}}` (auto-generated `https://app.gymnasticbodies.com/renew?email=...`)
 
-**`email-group` flow**: sends via SendGrid + auto-creates a support case per recipient (so replies are tracked). Skip with `--create-cases=false`. Rates: 100ms between sends. Always test with `--dry-run` first.
+**`sendOutboundSupportEmail` flow**: looks up each recipient's user record, renders personalized body, sends via SendGrid with `replyTo: support@gymnasticbodies.com`, inserts one row per recipient into `outbound_emails`. 100ms between sends. Always test with `--dry-run` first.
 
-**Valid `--type` values**: `stripe` | `auth_net_subscriber` | `active_current` | `active_expired` | `inactive`
+**`email-group` flow**: sends to all users of a `migration_type` — auto-creates a support case per recipient. Skip case creation with `--create-cases=false`.
+
+**Valid `--type` values for `email-group`**: `stripe` | `auth_net_subscriber` | `active_current` | `active_expired` | `inactive`
 
 **Key notes**:
 - Loads env from `app.gymnasticbodies.com/.env.local` automatically
@@ -85,7 +96,9 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 ### Email
 
 - **SendGrid** (`@sendgrid/mail`) — configured in `lib/sendgrid.js`
-- Used for: credential emails, subscription cancellation notices, error alerts, contact form
+- Used for: credential emails, subscription cancellation notices, error alerts, contact form, outbound support/marketing sends
+- All outbound mail sets `replyTo: support@gymnasticbodies.com` so replies route through the support Google Group and are picked up by Gmail sync
+- **Do not send outbound email without recording it in `outbound_emails`** — use `sendOutboundSupportEmail` CLI or `POST /api/admin/outbound/send` so replies auto-case correctly
 
 ### Storage
 
@@ -182,6 +195,8 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/admin/cases/[id]` | Case detail + user panel + linked emails + past cases |
 | `/api/admin/cases/[id]/update` | PATCH case status / priority / adminNotes |
 | `/api/admin/cases/[id]/link-email` | Link a support_email row to a case |
+| `/api/admin/outbound` | GET — list all outbound emails (joined with user name) |
+| `/api/admin/outbound/send` | POST — send + record outbound email(s); supports `dryRun: true` for preview |
 
 All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *`).
 
@@ -220,7 +235,8 @@ Three parsing paths:
 | Route | Files | Purpose |
 |---|---|---|
 | `/admin/login` | `app/admin/login/page.js` + `LoginClient.js` | Admin sign-in (checks `role === 'admin'` after better-auth signIn) |
-| `/admin/inbox` | `app/admin/inbox/InboxClient.js` | Ticket list, status filter tabs, Sync Gmail button, CASE badge on linked tickets |
+| `/admin/inbox` | `app/admin/inbox/InboxClient.js` | **Inbound** tab: ticket list, status filter tabs, Sync Gmail button, CASE badge. **Outbound** tab: sent email log with Case badge and Compose button |
+| `/admin/outbound/compose` | `app/admin/outbound/compose/ComposeClient.js` | Compose + send outbound emails — type, campaign, paste recipients, template body, preview step, send |
 | `/admin/ticket/[id]` | `app/admin/ticket/[id]/TicketClient.js` | Ticket detail: email body, reply composer, Open Case form / View Case link |
 | `/admin/cases` | `app/admin/cases/CasesClient.js` | Case list, status filter tabs |
 | `/admin/cases/[id]` | `app/admin/cases/[id]/CaseClient.js` | Case detail: status/priority/notes, linked emails, user panel (subscription, Stripe IDs, last session, activity logs, past cases) |
@@ -258,7 +274,90 @@ BETTER_AUTH_URL         # https://app.gymnasticbodies.com (prod) / http://localh
 
 ---
 
-## User Migration Types
+## Outbound Email System
+
+All proactive outreach to users — support follow-ups and marketing campaigns — flows through a single system that ties sending, recording, and reply detection together. **Never send outbound email by calling SendGrid directly without going through this system**, or replies won't auto-case.
+
+### How to send outbound email
+
+**Option 1 — Admin UI** (`/admin/inbox` → Outbound tab → Compose):
+1. Set **type** (`support` or `marketing`), **campaign tag** (e.g. `renewal_outreach_2026-06`), paste **recipient emails** (one per line or comma-separated), write **subject** and **body** using template variables.
+2. Click **Preview** — renders the first 3 personalized messages using live DB lookups.
+3. Click **Send** — fires SendGrid + inserts one row per recipient into `outbound_emails` atomically.
+
+**Option 2 — CLI** (`claudeTools/support.js sendOutboundSupportEmail`):
+```bash
+node claudeTools/support.js sendOutboundSupportEmail \
+  --emails="jeff@foo.com, sara@bar.com" \
+  --subject="Having trouble renewing?" \
+  --body="Hi {{name}},\n\nYour link: {{renewalLink}}" \
+  --campaign="renewal_outreach_2026-06" \
+  --type=support \
+  --dry-run    # remove to actually send
+```
+Also accepts `--emails-file=./list.txt` and `--body-file=./template.txt`.
+
+**Option 3 — API** (`POST /api/admin/outbound/send`):
+```json
+{
+  "emails": ["a@foo.com", "b@bar.com"],
+  "subject": "Subject line",
+  "body": "Hi {{name}}, your link: {{renewalLink}}",
+  "campaign": "renewal_outreach_2026-06",
+  "type": "support",
+  "dryRun": false
+}
+```
+Returns `{ sent, failed, dryRun, results: [{ email, name, status }] }`. Pass `dryRun: true` to preview rendered bodies without sending.
+
+### Template variables
+
+| Variable | Renders as |
+|---|---|
+| `{{name}}` | First name from `user.name` in DB; empty string if unknown |
+| `{{email}}` | Recipient's email address |
+| `{{renewalLink}}` | `https://app.gymnasticbodies.com/renew?email=<encoded>` |
+
+### `outbound_emails` table
+
+Defined in `Drizzle/db/schema.ts`. One row per recipient per send.
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | integer | PK |
+| `user_id` | text | FK → `user.id`, nullable — null if email not in DB |
+| `to_email` | text | Recipient email (required) |
+| `subject` | text | Email subject (required) |
+| `body` | text | Fully rendered body after template substitution |
+| `campaign` | text | Tag for grouping sends, e.g. `renewal_outreach_2026-05-27` |
+| `type` | text | `support` or `marketing` (default `support`) |
+| `sent_at` | timestamp | When it was sent (defaults to `NOW()`) |
+| `case_id` | integer | Set by Gmail sync when a reply creates a case |
+
+### Auto-case creation rules (Gmail sync)
+
+Every time Gmail syncs (`/api/admin/gmail/sync`), each inbound email is evaluated against `outbound_emails`:
+
+| Inbound email is... | What happens |
+|---|---|
+| Reply to a `support` outbound (within 90 days) | Case auto-created: title `[Response: <campaign>]`, priority `high`. `outbound_emails.case_id` is set. Case badge appears in Outbound tab. |
+| Reply to a `marketing` outbound | **No case.** Lands as a plain ticket in the inbox only. |
+| No match (cold inbound — contact form, etc.) | **No case.** Lands as a plain ticket in the inbox only. |
+| From `@gymnasticbodies.com` internal sender | Skipped entirely — not inserted. |
+
+Cases are only auto-created for replies to `support` outbound emails. Everything else stays as a plain ticket until manually promoted.
+
+The reply-detection window is **90 days** from `sent_at`. `findOutboundMatch()` in `app/api/admin/gmail/sync/route.js` does the lookup.
+
+### Outbound tab in the inbox
+
+`/admin/inbox` has an **Inbound / Outbound** section switcher. The Outbound tab:
+- Lists all rows from `outbound_emails`, newest first
+- Shows: name (or email), subject, campaign tag, sent date
+- Shows a **Case** badge when `case_id` is set (links to the case)
+- Has a **Compose** button → `/admin/outbound/compose`
+
+---
 
 The `user.migration_type` column classifies all users for paywall logic (last updated 2026-05-22):
 
@@ -461,7 +560,9 @@ app/
     layout.js           ← Admin shell layout (AdminNav + content area)
     layout.module.css   ← Admin shell CSS (uses design tokens)
     login/              ← Admin auth page
-    inbox/              ← Support ticket list
+    inbox/              ← Support inbox (Inbound + Outbound tabs, Sync Gmail, Compose button)
+    outbound/
+      compose/          ← Compose outbound email (type, campaign, recipients, template, preview, send)
     ticket/[id]/        ← Ticket detail + reply composer
     cases/              ← Support case list
     cases/[id]/         ← Case detail + user panel

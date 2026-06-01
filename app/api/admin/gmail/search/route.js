@@ -11,65 +11,60 @@ export async function GET(request) {
 
   const gmail = getGmailClient();
 
-  const res = await gmail.users.messages.list({
+  // Step 1: find sent outreach emails matching the phrase
+  const sentRes = await gmail.users.messages.list({
     userId: 'me',
-    q,
+    q: `in:sent ${q}`,
     maxResults: 200,
   });
 
-  const messages = res.data.messages ?? [];
+  const sentMessages = sentRes.data.messages ?? [];
 
-  const results = await Promise.all(
-    messages.map(async (m) => {
-      const full = await gmail.users.messages.get({
-        userId: 'me',
-        id: m.id,
-        format: 'metadata',
-        metadataHeaders: ['From', 'Subject', 'Date', 'To'],
-      });
+  if (sentMessages.length === 0) {
+    return NextResponse.json({
+      total: 0, sentCount: 0, inboundCount: 0, uniqueRepliers: 0, repliers: [],
+      debug: 'No sent messages matched the search phrase.',
+    });
+  }
+
+  // Step 2: collect unique thread IDs from sent outreach
+  const threadIds = [...new Set(
+    await Promise.all(sentMessages.map(async (m) => {
+      const msg = await gmail.users.messages.get({ userId: 'me', id: m.id, format: 'minimal' });
+      return msg.data.threadId;
+    }))
+  )];
+
+  // Step 3: for each thread, find replies from external (non-gymnasticbodies.com) senders
+  const repliers = [];
+  const seenEmails = new Set();
+
+  await Promise.all(threadIds.map(async (threadId) => {
+    const thread = await gmail.users.threads.get({ userId: 'me', id: threadId, format: 'metadata',
+      metadataHeaders: ['From', 'Subject', 'Date'] });
+
+    for (const msg of thread.data.messages ?? []) {
       const headers = Object.fromEntries(
-        (full.data.payload?.headers ?? []).map((h) => [h.name.toLowerCase(), h.value])
+        (msg.payload?.headers ?? []).map((h) => [h.name.toLowerCase(), h.value])
       );
-      // Extract email address from "Name <email>" format
       const fromRaw = headers.from ?? '';
       const emailMatch = fromRaw.match(/([^\s<]+@[^\s>]+)/);
-      const fromEmail = emailMatch ? emailMatch[1].toLowerCase().replace(/[<>]/g, '') : fromRaw;
+      const fromEmail = (emailMatch?.[1] ?? '').toLowerCase().replace(/[<>]/g, '');
+
+      if (!fromEmail || fromEmail.includes('gymnasticbodies.com')) continue;
+      if (seenEmails.has(fromEmail)) continue;
+      seenEmails.add(fromEmail);
+
       const fromName = fromRaw.replace(/<[^>]+>/, '').replace(/"/g, '').trim() || fromEmail;
-
-      return {
-        messageId: m.id,
-        fromEmail,
-        fromName,
-        subject: headers.subject ?? '',
-        date: headers.date ?? '',
-        to: headers.to ?? '',
-      };
-    })
-  );
-
-  // Separate sent messages (outreach) from inbound replies
-  const adminDomain = 'gymnasticbodies.com';
-  const sent = results.filter((r) => r.fromEmail.includes(adminDomain));
-  const inbound = results.filter((r) => !r.fromEmail.includes(adminDomain));
-
-  // Deduplicate inbound by fromEmail
-  const seen = new Set();
-  const uniqueInbound = inbound.filter((r) => {
-    if (seen.has(r.fromEmail)) return false;
-    seen.add(r.fromEmail);
-    return true;
-  });
+      repliers.push({ email: fromEmail, name: fromName, date: headers.date ?? '', subject: headers.subject ?? '' });
+    }
+  }));
 
   return NextResponse.json({
-    total: messages.length,
-    sentCount: sent.length,
-    inboundCount: inbound.length,
-    uniqueRepliers: uniqueInbound.length,
-    repliers: uniqueInbound.map((r) => ({
-      email: r.fromEmail,
-      name: r.fromName,
-      date: r.date,
-      subject: r.subject,
-    })),
+    total: sentMessages.length,
+    sentCount: sentMessages.length,
+    threadCount: threadIds.length,
+    uniqueRepliers: repliers.length,
+    repliers,
   });
 }
