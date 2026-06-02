@@ -25,7 +25,7 @@ function formatBillingLabel(price, term) {
     return `$${amount.toFixed(2)} / month`;
 }
 
-export default function RenewalPortal({ email, onNameLoaded }) {
+export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -64,7 +64,7 @@ export default function RenewalPortal({ email, onNameLoaded }) {
                 if (data.name) {
                     setUserName(data.name);
                     setSupportName(data.name);
-                    if (onNameLoaded) onNameLoaded(data.name);
+                    if (onNameLoaded) onNameLoaded(data.name, token, userId);
                 }
             })
             .catch(() => {});
@@ -319,7 +319,7 @@ export default function RenewalPortal({ email, onNameLoaded }) {
                     {supportOpen && (
                         <div className={s.supportForm}>
                             {supportSent ? (
-                                <p className={s.successMsg}>Message sent! We'll get back to you shortly.</p>
+                                <p className={s.successMsg}>Message sent! We&apos;ll get back to you shortly.</p>
                             ) : (
                                 <>
                                     <input

@@ -47,6 +47,25 @@
     background: rgba(255,255,255,0.04);
 }
 
+.accountLink {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(240,86,33,0.4);
+    background: rgba(240,86,33,0.08);
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.accountLink:hover {
+    color: #fff;
+    border-color: rgba(240,86,33,0.7);
+    background: rgba(240,86,33,0.15);
+}
+
 .signIn {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;

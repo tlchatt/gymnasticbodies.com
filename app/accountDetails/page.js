@@ -34,7 +34,7 @@ export default async function page({ searchParams }) {
     }
 
     return (
-        <AccountDetailsComp data={accountInformation} userId={userId} />
+        <AccountDetailsComp data={accountInformation} userId={userId} token={token} />
         // <AccountDetailsComp userId={userId} username={username}/>
     );
 

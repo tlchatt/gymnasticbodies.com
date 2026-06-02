@@ -8,7 +8,7 @@ import ModalPopUp from './ModalPopUp';
 import { CancelSubscriptionInAuthorize } from '@/lib/commonServerFunction';
 import { useState } from 'react';
 
-export default function AccountDetailsComp({ data, userId }) {
+export default function AccountDetailsComp({ data, userId, token }) {
     let {
         impInfo,
         lastTransactionInvoiceNumber
@@ -339,9 +339,21 @@ function DisplaySubscription({ data, userId }) {
                 }
                 {impInfo?.status != "Active" && //Add subscription button
                     <Stack direction="column" spacing={2} style={{ width: "100%", display: "flex", alignItems: "flex-end" }}>
-
-                        {/* <ModalPopUp data={addSubscriptionData} /> */}
-
+                        <a
+                            href={`/renew?email=${encodeURIComponent(impInfo?.email || '')}&token=${encodeURIComponent(token || '')}&userId=${encodeURIComponent(userId || '')}`}
+                            style={{
+                                display: 'inline-block',
+                                padding: '10px 24px',
+                                borderRadius: '8px',
+                                background: 'linear-gradient(135deg, #fcb14e 0%, #f05621 100%)',
+                                color: '#fff',
+                                fontWeight: '600',
+                                fontSize: '0.9rem',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Renew Subscription
+                        </a>
                     </Stack>
                 }
                 {/* {cancelled &&

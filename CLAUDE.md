@@ -183,6 +183,13 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 - **`components/marketing/`** — reusable marketing section components: `PricingCard`, `FeaturesList`, `BottomCta` — each with its own CSS module.
 - **`lib/fonts.js`** — shared Barlow Condensed + DM Sans `next/font/google` instances for marketing pages.
 
+### Signup / Registration — Existing User Behavior
+
+- **Stripe is the only active payment channel.** Authorize.net is legacy-only (~19 remaining ARB users); do not write new Auth.net code.
+- **Duplicate guard** in `create-subscription/route.js` blocks re-registration only when the user already has an active `stripeSubscriptionId` in their `user_setting`. This is intentional — it's the only case that would cause a true conflict.
+- **Lapsed/noncurrent users who hit `/subscribe` instead of `/renew`** will pass the guard and get a new 7-day trial at the standard rate. This is acceptable — the only difference vs `/renew` is they get a trial and lose their grandfathered historical pricing. Not a data integrity problem.
+- **`createAndModifyUserInNeon`** detects existing users and skips account creation, updating the existing `user_setting` record instead. No duplicate user rows are created.
+
 ### Renewal / Account Fixes (2026-05-22)
 
 - **`app/renew/page.js`** — RenewalPortal loaded with `dynamic(..., { ssr: false })` to fix React #418 hydration error from Stripe Elements rendering server-side.
