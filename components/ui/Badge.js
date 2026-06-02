@@ -22,12 +22,20 @@ const CLASS_MAP = {
   closed:   s.closed,
   pending:  s.pending,
   resolved: s.resolved,
-  // Migration type
-  stripe:               s.stripe,
-  active_current:       s.activeCurrent,
-  active_expired:       s.activeExpired,
-  inactive:             s.inactive,
-  auth_net_subscriber:  s.inactive,
+  // Migration type (current/noncurrent)
+  current:    s.current,
+  noncurrent: s.noncurrent,
+  // Customer segment
+  stripe:     s.stripe,
+  auth_net:   s.authNet,
+  subscriber: s.current,
+  purchased:  s.purchased,
+  lapsed:     s.noncurrent,
+  inactive:   s.inactive,
+  // Legacy values (kept for any existing data in transit)
+  active_current:       s.current,
+  active_expired:       s.noncurrent,
+  auth_net_subscriber:  s.authNet,
   // Priority
   urgent: s.urgent,
   high:   s.high,

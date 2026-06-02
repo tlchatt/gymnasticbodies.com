@@ -24,6 +24,7 @@ export const user = pgTable("user", {
   image: text("image"),
   role: text("role"),
   migrationType: text("migration_type"),
+  customerSegment: text("customer_segment"),
   banned: boolean("banned"),
   banReason: text("banReason"),
   banExpires: timestamp("banExpires"),

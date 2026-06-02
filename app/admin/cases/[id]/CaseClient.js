@@ -57,11 +57,17 @@ function fmtDateTime(str) {
 
 function migrationClass(type) {
   const map = {
-    stripe: s.migStripe,
-    auth_net_subscriber: s.migAuthNet,
-    active_current: s.migActiveCurrent,
-    active_expired: s.migActiveExpired,
-    inactive: s.migInactive,
+    current:            s.migActiveCurrent,
+    noncurrent:         s.migActiveExpired,
+    stripe:             s.migStripe,
+    auth_net:           s.migAuthNet,
+    subscriber:         s.migActiveCurrent,
+    purchased:          s.migPurchased,
+    lapsed:             s.migActiveExpired,
+    inactive:           s.migInactive,
+    auth_net_subscriber:s.migAuthNet,
+    active_current:     s.migActiveCurrent,
+    active_expired:     s.migActiveExpired,
   };
   return map[type] ?? s.migUnknown;
 }

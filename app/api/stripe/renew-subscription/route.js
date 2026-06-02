@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer } from '@/lib/stripeServerFunction';
-import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserMigrationType } from '@/lib/userSettings';
+import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
 import { randomBytes } from 'crypto';
@@ -40,7 +40,7 @@ export async function POST(request) {
         const { interval, intervalCount } = getStripeInterval(rawTerm);
 
         // Idempotency: if already subscribed, return success without creating a duplicate
-        if (setting?.stripeSubscriptionId && user.migrationType === 'stripe') {
+        if (setting?.stripeSubscriptionId && user.customerSegment === 'stripe') {
             logger.info('renewal.already_active', { email, stripeSubscriptionId: setting.stripeSubscriptionId });
             const token = generateSessionToken();
             const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
@@ -97,7 +97,7 @@ export async function POST(request) {
             }),
         });
 
-        await updateUserMigrationType(user.id, 'stripe');
+        await updateUserClassification(user.id, 'current', 'stripe');
 
         // Create a better-auth session directly — auth.api.createSession doesn't exist in v1.5.x
         const token = generateSessionToken();

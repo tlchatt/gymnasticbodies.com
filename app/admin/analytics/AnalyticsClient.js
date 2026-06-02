@@ -9,18 +9,24 @@ const PERIODS = [
 ];
 
 const MIGRATION_COLORS = {
-  stripe:             { bg: 'rgba(99, 91, 255, 0.15)',  text: '#9b94ff' },
-  auth_net_subscriber:{ bg: 'rgba(251, 191, 36, 0.12)', text: '#fbbf24' },
-  active_current:     { bg: 'rgba(80, 200, 120, 0.12)', text: '#50c878' },
-  active_expired:     { bg: 'rgba(240, 86, 33, 0.15)',  text: '#f05621' },
-  inactive:           { bg: 'rgba(120, 120, 120, 0.15)', text: '#888' },
+  current:            { bg: 'rgba(80, 200, 120, 0.12)',  text: '#50c878' },
+  noncurrent:         { bg: 'rgba(240, 86, 33, 0.15)',   text: '#f05621' },
+  stripe:             { bg: 'rgba(99, 91, 255, 0.15)',   text: '#9b94ff' },
+  auth_net:           { bg: 'rgba(251, 191, 36, 0.12)',  text: '#fbbf24' },
+  subscriber:         { bg: 'rgba(80, 200, 120, 0.12)',  text: '#50c878' },
+  purchased:          { bg: 'rgba(168, 85, 247, 0.15)',  text: '#a855f7' },
+  lapsed:             { bg: 'rgba(240, 86, 33, 0.15)',   text: '#f05621' },
+  inactive:           { bg: 'rgba(120, 120, 120, 0.15)', text: '#888'    },
 };
 
 const MIGRATION_LABELS = {
+  current:            'Current',
+  noncurrent:         'Non-Current (paywall)',
   stripe:             'Stripe Active',
-  auth_net_subscriber:'Auth.net Active',
-  active_current:     'Active (no Stripe)',
-  active_expired:     'Expired (paywall)',
+  auth_net:           'Auth.net Active',
+  subscriber:         'Subscriber',
+  purchased:          'One-Time Purchase',
+  lapsed:             'Lapsed',
   inactive:           'Inactive',
   unknown:            'Unknown',
 };

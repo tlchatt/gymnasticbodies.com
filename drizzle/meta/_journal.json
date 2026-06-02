@@ -43,6 +43,13 @@
       "when": 1780328307654,
       "tag": "0005_fixed_wendigo",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1780350831480,
+      "tag": "0006_petite_garia",
+      "breakpoints": true
     }
   ]
 }

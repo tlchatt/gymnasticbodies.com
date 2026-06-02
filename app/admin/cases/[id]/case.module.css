@@ -342,6 +342,7 @@
 .migActiveCurrent  { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
 .migActiveExpired  { background: rgba(239, 68, 68, 0.15);  color: #ef4444; }
 .migInactive       { background: rgba(107, 114, 128, 0.15); color: #6b7280; }
+.migPurchased      { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
 .migUnknown        { background: rgba(107, 114, 128, 0.1);  color: #555; }
 
 /* --- Status badges (for past cases) --- */

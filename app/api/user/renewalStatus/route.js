@@ -10,7 +10,7 @@ export async function GET(request) {
         const user = await getUserWithEmail(email);
         if (!user) return NextResponse.json({ needsRenewal: false });
 
-        const needsRenewal = user.migrationType === 'active_expired';
+        const needsRenewal = user.migrationType === 'noncurrent';
 
         let price = '75';
         let term = 'monthly';

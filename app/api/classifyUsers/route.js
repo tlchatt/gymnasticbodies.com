@@ -1,7 +1,7 @@
 import { neon } from '@neondatabase/serverless';
 import { db } from '@/Drizzle/index.ts';
 import { user } from '@/Drizzle/db/schema';
-import { inArray, eq } from 'drizzle-orm';
+import { inArray } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
 
 export async function GET(request) {
@@ -25,31 +25,41 @@ export async function GET(request) {
             FROM user_setting
             WHERE type = 'subscription'
             ORDER BY user_id, id DESC
+        ),
+        purchases AS (
+            SELECT DISTINCT user_id FROM user_setting WHERE type = 'purchase'
         )
         SELECT
             u.id,
-            u.migration_type AS current_type,
+            u.migration_type      AS current_type,
+            u.customer_segment    AS current_segment,
             sub.stripe_subscription_id,
             sub.authorize_subscription_id,
             sub.data,
-            (act.user_id IS NOT NULL) AS is_active
+            (act.user_id IS NOT NULL)  AS is_active,
+            (pur.user_id IS NOT NULL)  AS has_purchase
         FROM "user" u
-        LEFT JOIN sub ON sub.user_id = u.id
+        LEFT JOIN sub       ON sub.user_id = u.id
         LEFT JOIN active_signals act ON act.user_id = u.id
+        LEFT JOIN purchases pur ON pur.user_id = u.id
     `;
 
     const now = new Date();
-    const counts = { stripe: 0, auth_net_subscriber: 0, active_current: 0, active_expired: 0, inactive: 0 };
-    const updatesByType = { stripe: [], auth_net_subscriber: [], active_current: [], active_expired: [], inactive: [] };
+    const migrationCounts  = { current: 0, noncurrent: 0 };
+    const segmentCounts    = { stripe: 0, auth_net: 0, subscriber: 0, purchased: 0, lapsed: 0, inactive: 0 };
+    const updatesByType    = {};
 
     for (const u of rows) {
-        let type;
+        let migrationType, customerSegment;
 
         if (u.stripe_subscription_id) {
-            type = 'stripe';
+            migrationType   = 'current';
+            customerSegment = 'stripe';
         } else if (u.authorize_subscription_id) {
-            type = 'auth_net_subscriber';
-        } else if (u.is_active) {
+            migrationType   = 'current';
+            customerSegment = 'auth_net';
+        } else {
+            // Check for valid future renewal date
             let renewalDate = null;
             try {
                 const data = JSON.parse(u.data ?? '{}');
@@ -58,26 +68,42 @@ export async function GET(request) {
                     renewalDate = new Date(raw);
                 }
             } catch (_) {}
-            type = (renewalDate && renewalDate > now) ? 'active_current' : 'active_expired';
-        } else {
-            type = 'inactive';
+
+            if (renewalDate && renewalDate > now) {
+                migrationType   = 'current';
+                customerSegment = 'subscriber';
+            } else if (u.has_purchase) {
+                migrationType   = 'noncurrent';
+                customerSegment = 'purchased';
+            } else if (u.is_active) {
+                migrationType   = 'noncurrent';
+                customerSegment = 'lapsed';
+            } else {
+                migrationType   = 'noncurrent';
+                customerSegment = 'inactive';
+            }
         }
 
-        counts[type]++;
-        if (u.current_type !== type) {
-            updatesByType[type].push(u.id);
+        migrationCounts[migrationType]++;
+        segmentCounts[customerSegment]++;
+
+        if (u.current_type !== migrationType || u.current_segment !== customerSegment) {
+            const key = `${migrationType}::${customerSegment}`;
+            if (!updatesByType[key]) updatesByType[key] = { migrationType, customerSegment, ids: [] };
+            updatesByType[key].ids.push(u.id);
         }
     }
 
-    const totalChanges = Object.values(updatesByType).reduce((s, a) => s + a.length, 0);
+    const totalChanges = Object.values(updatesByType).reduce((s, g) => s + g.ids.length, 0);
 
-    for (const [type, ids] of Object.entries(updatesByType)) {
-        if (ids.length === 0) continue;
-        await db.update(user).set({ migrationType: type }).where(inArray(user.id, ids));
+    for (const { migrationType, customerSegment, ids } of Object.values(updatesByType)) {
+        await db.update(user)
+            .set({ migrationType, customerSegment })
+            .where(inArray(user.id, ids));
     }
 
     const elapsed = Date.now() - start;
-    logger.info('classifyUsers.complete', { totalUsers: rows.length, totalChanges, counts, elapsedMs: elapsed });
+    logger.info('classifyUsers.complete', { totalUsers: rows.length, totalChanges, migrationCounts, segmentCounts, elapsedMs: elapsed });
 
-    return Response.json({ ok: true, totalUsers: rows.length, totalChanges, counts, elapsedMs: elapsed });
+    return Response.json({ ok: true, totalUsers: rows.length, totalChanges, migrationCounts, segmentCounts, elapsedMs: elapsed });
 }

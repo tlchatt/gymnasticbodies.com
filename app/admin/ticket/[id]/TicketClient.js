@@ -19,10 +19,17 @@ function statusClass(status) {
 
 function migrationClass(type) {
   const map = {
-    stripe: s.badgeStripe,
-    active_current: s.badgeActiveCurrent,
-    active_expired: s.badgeActiveExpired,
-    inactive: s.badgeInactive,
+    current:            s.badgeActiveCurrent,
+    noncurrent:         s.badgeActiveExpired,
+    stripe:             s.badgeStripe,
+    auth_net:           s.badgeStripe,
+    subscriber:         s.badgeActiveCurrent,
+    purchased:          s.badgeStripe,
+    lapsed:             s.badgeActiveExpired,
+    inactive:           s.badgeInactive,
+    auth_net_subscriber:s.badgeStripe,
+    active_current:     s.badgeActiveCurrent,
+    active_expired:     s.badgeActiveExpired,
   };
   return map[type] ?? s.badgeUnknown;
 }

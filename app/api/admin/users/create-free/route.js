@@ -5,7 +5,7 @@ import {
   createAccountForUser,
   queryUserSetting,
   insertIntoUserSetting,
-  updateUserMigrationType,
+  updateUserClassification,
 } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { user_setting } from '@/Drizzle/db/schema';
@@ -81,8 +81,7 @@ export async function POST(request) {
     });
   }
 
-  // Flip migration_type immediately
-  await updateUserMigrationType(userId, 'active_current');
+  await updateUserClassification(userId, 'current', 'subscriber');
 
   // For new users: send a password reset link so they can set their own password
   if (isNew) {

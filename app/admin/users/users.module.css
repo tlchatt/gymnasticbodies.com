@@ -153,6 +153,7 @@
 .migActiveCurrent { background: rgba(80, 200, 120, 0.12); color: #50c878; }
 .migActiveExpired { background: rgba(240, 86, 33, 0.15); color: #f05621; }
 .migInactive      { background: rgba(120, 120, 120, 0.15); color: #888; }
+.migPurchased     { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
 .migUnknown       { background: rgba(120, 120, 120, 0.1); color: #555; }
 
 .subStatus {

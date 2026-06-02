@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
-import { getUserWithId, queryUserSetting, insertIntoUserSetting } from '@/lib/userSettings';
-import { updateUserMigrationType } from '@/lib/userSettings';
+import { getUserWithId, queryUserSetting, insertIntoUserSetting, updateUserClassification } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { user_setting } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
@@ -52,8 +51,7 @@ export async function POST(request, { params }) {
     });
   }
 
-  // Immediately flip migration_type — don't wait for the nightly cron
-  await updateUserMigrationType(id, 'active_current');
+  await updateUserClassification(id, 'current', 'subscriber');
 
   logger.info('admin.grant_access', {
     userId: id,

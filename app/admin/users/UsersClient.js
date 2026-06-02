@@ -4,20 +4,33 @@ import Link from 'next/link';
 import s from './users.module.css';
 
 const MIGRATION_LABELS = {
+  current:            'Current',
+  noncurrent:         'Non-Current',
   stripe:             'Stripe',
-  auth_net_subscriber:'Auth.net',
-  active_current:     'Active',
-  active_expired:     'Expired',
+  auth_net:           'Auth.net',
+  subscriber:         'Subscriber',
+  purchased:          'Purchased',
+  lapsed:             'Lapsed',
   inactive:           'Inactive',
+  // legacy
+  auth_net_subscriber:'Auth.net',
+  active_current:     'Current',
+  active_expired:     'Non-Current',
 };
 
 function migrationClass(type) {
   const map = {
+    current:            s.migActiveCurrent,
+    noncurrent:         s.migActiveExpired,
     stripe:             s.migStripe,
+    auth_net:           s.migAuthNet,
+    subscriber:         s.migActiveCurrent,
+    purchased:          s.migPurchased,
+    lapsed:             s.migActiveExpired,
+    inactive:           s.migInactive,
     auth_net_subscriber:s.migAuthNet,
     active_current:     s.migActiveCurrent,
     active_expired:     s.migActiveExpired,
-    inactive:           s.migInactive,
   };
   return map[type] ?? s.migUnknown;
 }
