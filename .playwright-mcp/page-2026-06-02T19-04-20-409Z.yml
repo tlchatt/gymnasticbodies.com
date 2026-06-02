@@ -1,0 +1,38 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "GymFit by Gymnastic Bodies" [ref=e4] [cursor=pointer]:
+        - /url: https://my.gymnasticbodies.com/
+        - img "GymFit by Gymnastic Bodies" [ref=e5]
+      - generic [ref=e6]:
+        - link "Sign In" [ref=e7] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+        - link "Get Started" [ref=e8] [cursor=pointer]:
+          - /url: /subscribe
+  - heading "ACCOUNT" [level=3] [ref=e9]
+  - generic [ref=e10]:
+    - generic [ref=e12]:
+      - heading "User Information" [level=2] [ref=e15]
+      - generic [ref=e17]:
+        - generic [ref=e19]:
+          - heading "First Name" [level=2] [ref=e20]
+          - heading [level=2]
+        - generic [ref=e22]:
+          - heading "Last Name" [level=2] [ref=e23]
+          - heading "N/A" [level=2] [ref=e24]
+        - generic [ref=e26]:
+          - heading "Email" [level=2] [ref=e27]
+          - heading "N/A" [level=2] [ref=e28]
+        - generic [ref=e30]:
+          - heading "Country" [level=2] [ref=e31]
+          - heading "N/A" [level=2] [ref=e32]
+        - generic [ref=e34]:
+          - heading "Phone" [level=2] [ref=e35]
+          - heading "N/A" [level=2] [ref=e36]
+    - generic [ref=e38]:
+      - heading "Order Information" [level=2] [ref=e41]
+      - heading "No Order Present" [level=2] [ref=e46]
+    - generic [ref=e48]:
+      - heading "Manage Subscription" [level=2] [ref=e51]
+      - heading "No Subscription Present" [level=2] [ref=e58]
+  - alert [ref=e59]

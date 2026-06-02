@@ -1,0 +1,64 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+          - /url: https://my.gymnasticbodies.com/
+          - img "GymFit by Gymnastic Bodies" [ref=e6]
+        - button "Open menu" [ref=e7] [cursor=pointer]
+    - generic [ref=e11]:
+      - generic [ref=e12]: GymFit · Payment Update
+      - heading "Update Your Payment." [level=1] [ref=e13]:
+        - text: Update Your
+        - generic [ref=e14]: Payment.
+      - paragraph [ref=e15]: Your subscription has lapsed — add your card below to pick up right where you left off.
+      - paragraph [ref=e16]:
+        - text: "Account:"
+        - strong [ref=e17]: indian_pride_28@yahoo.com
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: You will be billed
+        - generic [ref=e20]:
+          - generic [ref=e21]: $50
+          - generic [ref=e22]: / mo
+      - generic [ref=e23]:
+        - paragraph [ref=e24]: Card details
+        - generic [ref=e27]:
+          - iframe [ref=e28]:
+            - generic [ref=f3e1]:
+              - generic: 0123456789０１２３４５６７８９
+              - textbox [disabled]
+              - generic [ref=f3e2]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic:
+                        - img
+                - generic [ref=f3e3]:
+                  - generic [ref=f3e4]:
+                    - generic: Number
+                    - generic [ref=f3e6]:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - img
+                      - textbox "Credit or debit card number" [ref=f3e9]:
+                        - /placeholder: Card number
+                  - generic [ref=f3e10]:
+                    - textbox "Credit or debit card expiration date" [ref=f3e14]:
+                      - /placeholder: MM / YY
+                    - textbox "Credit or debit card CVC/CVV" [ref=f3e18]:
+                      - /placeholder: CVC
+              - textbox [disabled]
+              - button
+          - textbox
+          - generic:
+            - iframe
+        - paragraph [ref=e29]: Card number · MM / YY · CVC · ZIP
+      - button "Renew Subscription →" [ref=e30] [cursor=pointer]
+      - button "Need help? Contact support" [ref=e32] [cursor=pointer]
+  - alert [ref=e33]
