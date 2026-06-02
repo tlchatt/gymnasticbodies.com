@@ -33,8 +33,8 @@ node claudeTools/support.js user --email=x@y.com
 node claudeTools/support.js create-case --email=x --title="Subject" [--priority=normal|high|urgent|low]
 node claudeTools/support.js reply --ticket=ID --body="Your reply text"
 node claudeTools/support.js send-email --to=x --subject="..." --body="..."
-node claudeTools/support.js email-group --type=active_expired --subject="..." --body="..." [--dry-run]
-node claudeTools/support.js email-group --type=active_expired --subject="..." --body-file=./template.txt
+node claudeTools/support.js email-group --type=noncurrent --subject="..." --body="..." [--dry-run]
+node claudeTools/support.js email-group --type=lapsed --subject="..." --body-file=./template.txt
 node claudeTools/support.js backfill-cases   # create cases for all uncased open tickets
 
 # Outbound email (records in outbound_emails + sends via SendGrid atomically)
@@ -51,9 +51,9 @@ node claudeTools/support.js sendOutboundSupportEmail \
 
 **`sendOutboundSupportEmail` flow**: looks up each recipient's user record, renders personalized body, sends via SendGrid with `replyTo: support@gymnasticbodies.com`, inserts one row per recipient into `outbound_emails`. 100ms between sends. Always test with `--dry-run` first.
 
-**`email-group` flow**: sends to all users of a `migration_type` — auto-creates a support case per recipient. Skip case creation with `--create-cases=false`.
+**`email-group` flow**: sends to all users matching a `migration_type` or `customer_segment` value — auto-creates a support case per recipient. Skip case creation with `--create-cases=false`.
 
-**Valid `--type` values for `email-group`**: `stripe` | `auth_net_subscriber` | `active_current` | `active_expired` | `inactive`
+**Valid `--type` values for `email-group`**: `current` | `noncurrent` | `stripe` | `auth_net` | `subscriber` | `purchased` | `lapsed` | `inactive`
 
 **Key notes**:
 - Loads env from `app.gymnasticbodies.com/.env.local` automatically
@@ -89,7 +89,7 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
   - Server helpers: `lib/stripeServerFunction.js`
 - **Authorize.net** (`authorizenet` SDK) — legacy only, do not use for new work
   - Logic lives in `lib/commonServerFunction.js`
-  - ~19 users remain on active Auth.net ARB subscriptions (`migration_type = 'auth_net_subscriber'`)
+  - ~19 users remain on active Auth.net ARB subscriptions (`customer_segment = 'auth_net'`)
   - Payment entry point: `/api/paymentPortal/route.js` (kept for legacy account pages)
   - Subscription webhook receiver: `/api/user/subscription/route.js`
 
@@ -109,9 +109,9 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 - Vercel cron jobs are defined in `vercel.json` and run on a schedule:
   - `/api/cronJobs` — daily at 10 AM UTC: renewal checks, subscription status updates, SendGrid emails
-  - `/api/classifyUsers` — daily at 11 AM UTC: re-classifies all users into `migration_type` buckets
+  - `/api/classifyUsers` — daily at 11 AM UTC: re-classifies all users, setting both `migration_type` and `customer_segment`
   - `/api/admin/gmail/sync` — hourly: pulls new support emails from Gmail into `support_emails`
-- **`app/api/classifyUsers/route.js`** — runs the full user classification query using `neon()` direct SQL for the JOIN and Drizzle `inArray` for batch UPDATE. Returns a JSON summary with counts and changes. Logs results to `app_logs`.
+- **`app/api/classifyUsers/route.js`** — runs the full user classification query, populating both `migration_type` (`current`/`noncurrent`) and `customer_segment` (`stripe`, `auth_net`, `subscriber`, `purchased`, `lapsed`, `inactive`). Uses `neon()` direct SQL for the JOIN and Drizzle `inArray` for batch UPDATEs. Returns a JSON summary with counts and changes. Logs results to `app_logs`.
 
 ### Data Migration
 
@@ -184,7 +184,7 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/user/contactUs` | Contact form (SendGrid) |
 | `/api/user/accountInformation` | Account details read/write |
 | `/api/cronJobs` | Renewal checks & subscription updates (daily cron) |
-| `/api/classifyUsers` | Re-classifies all users into migration_type buckets (daily cron) |
+| `/api/classifyUsers` | Re-classifies all users, setting `migration_type` + `customer_segment` (daily cron) |
 | `/api/migration` | Bulk user import from legacy data |
 | `/api/admin/gmail/sync` | Pull new support emails from Gmail (POST; admin or cron) |
 | `/api/admin/tickets` | List support tickets with optional `?status=` filter |
@@ -359,19 +359,38 @@ The reply-detection window is **90 days** from `sent_at`. `findOutboundMatch()` 
 
 ---
 
-The `user.migration_type` column classifies all users for paywall logic (last updated 2026-05-22):
+Two columns on the `user` table drive access and segmentation (last updated 2026-06-02):
+
+### `user.migration_type` — binary, drives the paywall
 
 | Value | Count | Meaning |
 |---|---|---|
-| `stripe` | 11 | Active Stripe subscriber — no paywall |
-| `auth_net_subscriber` | 19 | Active Auth.net ARB sub — no paywall |
-| `active_current` | 335 | Has activity + future renewal date — no paywall |
-| `active_expired` | 404 | Has activity + lapsed/missing renewal date — **redirect to `/renew`** |
-| `inactive` | 15,502 | No activity signals — no paywall |
+| `current` | 1,096 | Has active subscription or future renewal date — **no paywall** |
+| `noncurrent` | 15,181 | No active subscription, no future renewal date — **redirect to `/renew`** |
 
-Classification rules: `active_expired` = has activity signals (session/user_logs/levelPath records) AND renewal date is missing or in the past. `active_current` = same activity signals AND renewal date is in the future. `renewalStatus` API reads this pre-computed field directly — it does not re-evaluate dates at runtime.
+`renewalStatus` API returns `needsRenewal: true` when `migration_type = 'noncurrent'`. Classification is purely date/subscription based — no activity signals required.
 
-The `/api/classifyUsers` cron runs automatically at 11 AM UTC daily. To re-run manually: `node claudePlans/classify-users.js --write` (omit `--write` to preview without changes).
+### `user.customer_segment` — granular, drives what we offer
+
+| Value | Count | Meaning |
+|---|---|---|
+| `stripe` | 15 | Active Stripe subscriber |
+| `auth_net` | 19 | Active Auth.net ARB subscriber |
+| `subscriber` | 1,062 | Current — future renewal date set (manually granted or imported) |
+| `purchased` | 334 | One-time WooCommerce product buyer — noncurrent, paywalled for now |
+| `lapsed` | 430 | Had a subscription, now expired — offered `/renew` |
+| `inactive` | 14,417 | No meaningful signals |
+
+### Classification waterfall (`/api/classifyUsers`)
+
+1. Has `stripe_subscription_id` → `current` / `stripe`
+2. Has `authorize_subscription_id` → `current` / `auth_net`
+3. Has valid future `renewaldate` in subscription data → `current` / `subscriber`
+4. Has a `purchase` type row in `user_setting` → `noncurrent` / `purchased`
+5. Has activity signals (session, user_logs, levelPath) → `noncurrent` / `lapsed`
+6. None of the above → `noncurrent` / `inactive`
+
+The `/api/classifyUsers` cron runs automatically at 11 AM UTC daily. Both `migration_type` and `customer_segment` are updated atomically per user. `grant-access` and `create-free` routes set `current` / `subscriber` immediately without waiting for the cron.
 
 ## Environment Variables
 
@@ -423,13 +442,13 @@ CRON_SECRET                  # Arbitrary secret — Vercel cron sends as x-cron-
 - **`app_logs.data` is `json` type** — `DISTINCT`, `->>` operator, and `LOWER()` all fail in parameterized neon template-literal queries. Fetch raw rows and process in JavaScript instead.
 - **Stripe key in `.env.local` is `sk_test_*`** — local Stripe SDK queries return test data only. Real production subscriptions require the live key (Vercel env only).
 - **Confirmed renewal conversion** = `renewal.success` log event + non-null `stripe_customer_id` in `user_setting`. A `renew.form_submit` with no `renewal.success` and null `stripe_customer_id` indicates a test-key submission.
-- **Reclassification is immediate** — `updateUserMigrationType` is called synchronously inside `renew-subscription/route.js`. A successful renewal is reflected in `renewalStatus` on the next request, no cron wait needed.
+- **Reclassification is immediate** — `updateUserClassification` is called synchronously inside `renew-subscription/route.js`, setting `migration_type = 'current'` and `customer_segment = 'stripe'`. A successful renewal is reflected in `renewalStatus` on the next request, no cron wait needed.
 
 ## Renewal Flow — Known Fixes (2026-05-27)
 
 - **Double-submission race condition** — `RenewalPortal.js` uses `submittingRef` (`useRef`) to guard `handleSubmit`; React `setState` is async and doesn't block re-clicks before re-render.
 - **`source=renewal` in redirect URL** — `RenewalPortal.js` redirect to `my.gymnasticbodies.com` must include `&source=renewal`. Without it, `loginActions.js` on the `my.` side skips filling in missing JWT fields (`refreshExpireTime`, `authExpireTime`, `timezone`) and dispatches `Logout()` immediately.
-- **Server-side idempotency** — `renew-subscription/route.js` returns early if `user.migrationType === 'stripe'` and `stripeSubscriptionId` already exists, preventing duplicate subscriptions from racing requests.
+- **Server-side idempotency** — `renew-subscription/route.js` returns early if `user.customerSegment === 'stripe'` and `stripeSubscriptionId` already exists, preventing duplicate subscriptions from racing requests.
 
 ## SendGrid — Direct Scripting
 
@@ -487,11 +506,11 @@ import { Badge, Tabs, PageHeader, CtaButton, Card } from '@/components/ui';
 Status, priority, and migration-type pills. Handles all variant→color mapping.
 ```jsx
 <Badge variant="open">open</Badge>
-<Badge variant="active_expired">active expired</Badge>
+<Badge variant="noncurrent">noncurrent</Badge>
 <Badge variant="urgent">urgent</Badge>
 <Badge variant="case">Case</Badge>   {/* orange outlined */}
 ```
-Supported variants: `open` `replied` `closed` `pending` `resolved` | `stripe` `active_current` `active_expired` `inactive` `auth_net_subscriber` | `urgent` `high` `normal` `low` | `accent` `case`
+Supported variants: `open` `replied` `closed` `pending` `resolved` | `current` `noncurrent` `stripe` `auth_net` `subscriber` `purchased` `lapsed` `inactive` | `urgent` `high` `normal` `low` | `accent` `case`
 
 #### `Tabs`
 Controlled tab bar with orange active indicator.
