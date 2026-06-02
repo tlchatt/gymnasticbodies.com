@@ -4,6 +4,7 @@ import {
     getUserSettingByStripeSubscriptionId,
     updateUserSettingStatus,
     updateUserSettingData,
+    updateUserClassification,
 } from '@/lib/userSettings';
 import { sendSubsCancelledEmailSG } from '@/lib/sendgrid';
 import { logger } from '@/lib/logger';
@@ -55,6 +56,7 @@ export async function POST(request) {
                     const email = currentData?.email;
                     if (email) await sendSubsCancelledEmailSG(email);
                 }
+                await updateUserClassification(userSetting.userId, 'noncurrent', 'lapsed');
                 logger.info('webhook.processed', { eventType: event.type, subscriptionId, settingId: userSetting.id });
                 break;
             }
@@ -64,6 +66,7 @@ export async function POST(request) {
                     ...currentData,
                     status: 'inactive',
                 }));
+                await updateUserClassification(userSetting.userId, 'noncurrent', 'lapsed');
                 logger.info('webhook.processed', { eventType: event.type, subscriptionId, settingId: userSetting.id });
                 break;
             }

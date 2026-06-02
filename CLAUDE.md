@@ -21,6 +21,52 @@ node authUserCron.js       # Auth user cron helper
 node updateAuthorizeData.js
 ```
 
+## Stripe Key Environment — Test vs Production
+
+The development Vercel environment does **not** have `STRIPE_SECRET_KEY` set. After `vercel env pull`, `.env.local` will be missing it.
+
+### Standard local dev setup (test keys)
+
+After a dev env pull, append the test keys manually:
+
+```bash
+vercel env pull .env.local --environment=development --yes
+
+# Then append test keys (get from Stripe dashboard → Developers → API keys, toggle to Test mode)
+echo "STRIPE_SECRET_KEY=sk_test_..." >> .env.local
+echo "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_..." >> .env.local
+echo "STRIPE_PRICE_ID=price_..." >> .env.local   # test price from Stripe → Products
+```
+
+`.env.local` should look like this when set up for local dev:
+```
+# ... vercel dev vars ...
+STRIPE_SECRET_KEY=sk_test_...       # ← test key active
+# STRIPE_SECRET_KEY=sk_live_...     # ← production key (commented out)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_PRICE_ID=price_...           # test price ID
+```
+
+### Switching to production key (for Stripe data queries only)
+
+```bash
+# Option A — pull production env (overwrites entire .env.local)
+vercel env pull .env.local --environment=production --yes
+# ⚠️  Switch back before running npm run dev
+
+# Option B — comment swap in .env.local manually
+# STRIPE_SECRET_KEY=sk_test_...     # ← comment out test
+# STRIPE_SECRET_KEY=sk_live_...     # ← uncomment live
+```
+
+**After querying production Stripe, always switch back to test key before `npm run dev`.**
+
+### Rules
+- Use **test key** for all local dev and Stripe flow testing — no real charges
+- Use **production key** only for one-off queries against real Stripe data
+- Never commit `.env.local` — it is in `.gitignore`
+- `vercel env pull --environment=production` overwrites the whole file — back up test keys first or re-add them after
+
 ## Support CLI (claudeTools/support.js)
 
 Run from the repo root. Resolves packages from `app.gymnasticbodies.com/node_modules` — no separate install.

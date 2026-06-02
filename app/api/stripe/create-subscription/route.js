@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, stripe } from '@/lib/stripeServerFunction';
 import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
 import { logger } from '@/lib/logger';
@@ -14,6 +14,7 @@ export async function POST(request) {
 
         // Check for existing active Stripe subscriber
         const existingUser = await getUserWithEmail(email);
+        let existingCustomerId = null;
         if (existingUser) {
             const existingSetting = await queryUserSetting(existingUser.id, 'subscription');
             if (existingSetting?.stripeSubscriptionId) {
@@ -26,14 +27,25 @@ export async function POST(request) {
                     subscriptionCreated: false,
                 });
             }
+            // Reuse existing Stripe customer if one was already created (e.g. prior failed attempt)
+            if (existingSetting?.stripeCustomerId) {
+                existingCustomerId = existingSetting.stripeCustomerId;
+            }
         }
 
         const trialDays = (trial === 'true' || trial === true) ? 7 : 0;
         const priceId = process.env.STRIPE_PRICE_ID;
 
-        // Create Stripe customer
+        // Reuse existing customer or create new one (idempotency key prevents dupes on concurrent requests)
         const name = email.split('@')[0];
-        customer = await createStripeCustomer(email, name, phone, country);
+        if (existingCustomerId) {
+            customer = await stripe.customers.retrieve(existingCustomerId);
+        } else {
+            customer = await stripe.customers.create(
+                { email, name, phone, metadata: { country } },
+                { idempotencyKey: `customer-${email}` }
+            );
+        }
 
         // Attach payment method
         await attachPaymentMethod(paymentMethodId, customer.id);
