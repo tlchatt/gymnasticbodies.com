@@ -11,11 +11,14 @@ function generateSessionToken() {
 }
 
 function getStripeInterval(term) {
-    switch (term?.toLowerCase()) {
-        case 'annually': return { interval: 'year', intervalCount: 1 };
-        case 'quarterly': return { interval: 'month', intervalCount: 3 };
-        default: return { interval: 'month', intervalCount: 1 };
+    const t = term?.toLowerCase();
+    if (t === 'annually' || t === 'annual' || t === 'yearly' || t === 'year') {
+        return { interval: 'year', intervalCount: 1 };
     }
+    if (t === 'quarterly' || t === 'quarter') {
+        return { interval: 'month', intervalCount: 3 };
+    }
+    return { interval: 'month', intervalCount: 1 };
 }
 
 export async function POST(request) {
@@ -94,6 +97,8 @@ export async function POST(request) {
                 ...currentData,
                 status: 'active',
                 renewaldate,
+                price: rawPrice,
+                term: rawTerm,
             }),
         });
 

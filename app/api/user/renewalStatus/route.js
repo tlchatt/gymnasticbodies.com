@@ -2,6 +2,13 @@ import { NextResponse } from 'next/server';
 import { getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
 
+function normalizeTerm(t) {
+    const v = t?.toLowerCase();
+    if (v === 'annually' || v === 'annual' || v === 'yearly' || v === 'year') return 'annually';
+    if (v === 'quarterly' || v === 'quarter') return 'quarterly';
+    return 'monthly';
+}
+
 export async function GET(request) {
     const email = new URL(request.url).searchParams.get('email');
     if (!email) return NextResponse.json({ needsRenewal: false });
@@ -23,7 +30,7 @@ export async function GET(request) {
                 const storedPrice = data.price && data.price !== 'N/A' ? data.price : null;
                 const storedTerm  = data.term  && data.term  !== 'N/A' ? data.term  : null;
                 if (storedPrice) price = storedPrice;
-                if (storedTerm)  term  = storedTerm;
+                if (storedTerm)  term  = normalizeTerm(storedTerm);
                 const parsed = parseFloat(storedPrice);
                 hasValidHistoricalData = storedPrice !== null && !isNaN(parsed) && parsed > 0;
             } catch (_) {}
