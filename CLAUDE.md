@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Support Email Rule
+
+**Always show the full draft message and wait for explicit user approval before sending any email** — via `reply`, `send-email`, `sendOutboundSupportEmail`, the admin UI, or any other channel. This applies even after the user requests a wording change: show the edited draft again before sending. Never send in the same turn as drafting or editing.
+
 ## Commands
 
 ```bash

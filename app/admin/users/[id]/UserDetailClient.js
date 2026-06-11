@@ -59,6 +59,8 @@ export default function UserDetailClient({ params }) {
   const [grantState, setGrantState]     = useState('idle'); // idle | loading | ok | error
   const [grantMsg, setGrantMsg]         = useState('');
   const [grantDays, setGrantDays]       = useState('30');
+  const [tempPwState, setTempPwState]   = useState('idle'); // idle | loading | ok | error
+  const [tempPw, setTempPw]             = useState('');
 
   const handlePasswordReset = useCallback(async () => {
     if (resetState === 'loading') return;
@@ -71,6 +73,24 @@ export default function UserDetailClient({ params }) {
       setResetState('error');
     }
   }, [id, resetState]);
+
+  const handleSetTempPassword = useCallback(async () => {
+    if (tempPwState === 'loading') return;
+    setTempPwState('loading');
+    setTempPw('');
+    try {
+      const res = await fetch(`/api/admin/users/${id}/set-temp-password`, { method: 'POST' });
+      const json = await res.json();
+      if (json.ok) {
+        setTempPw(json.tempPassword);
+        setTempPwState('ok');
+      } else {
+        setTempPwState('error');
+      }
+    } catch {
+      setTempPwState('error');
+    }
+  }, [id, tempPwState]);
 
   // Stripe subscriber: extend via Stripe trial_end (+30 days)
   const handleExtendSubscription = useCallback(async () => {
@@ -255,6 +275,25 @@ export default function UserDetailClient({ params }) {
                   : 'Send password reset'}
               </button>
             </div>
+
+            {/* Set temp password */}
+            <div className={s.actionRow}>
+              <button
+                className={`${s.actionBtn} ${tempPwState === 'ok' ? s.actionOk : tempPwState === 'error' ? s.actionErr : ''}`}
+                onClick={handleSetTempPassword}
+                disabled={tempPwState === 'loading'}
+              >
+                {tempPwState === 'loading' ? 'Setting…'
+                  : tempPwState === 'error' ? '✗ Failed — retry?'
+                  : 'Set temp password'}
+              </button>
+            </div>
+            {tempPw && (
+              <div className={s.actionRow}>
+                <span className={s.infoKey}>Temp password</span>
+                <code style={{ color: 'var(--accent)', fontFamily: 'monospace', fontSize: 13, userSelect: 'all' }}>{tempPw}</code>
+              </div>
+            )}
 
             <div className={s.panelDivider} />
             <div className={s.panelSubTitle}>Access</div>

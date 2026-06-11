@@ -1,5 +1,5 @@
 'use client';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import s from './case.module.css';
 
@@ -84,6 +84,20 @@ export default function CaseClient({ data: initial }) {
   const [notes, setNotes] = useState(initial.case.adminNotes ?? '');
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState('');
+  const [tempPwState, setTempPwState] = useState('idle');
+  const [tempPw, setTempPw] = useState('');
+
+  const handleSetTempPassword = useCallback(async () => {
+    if (!user?.id || tempPwState === 'loading') return;
+    setTempPwState('loading');
+    setTempPw('');
+    try {
+      const res = await fetch(`/api/admin/users/${user.id}/set-temp-password`, { method: 'POST' });
+      const json = await res.json();
+      if (json.ok) { setTempPw(json.tempPassword); setTempPwState('ok'); }
+      else setTempPwState('error');
+    } catch { setTempPwState('error'); }
+  }, [user?.id, tempPwState]);
 
   const user = initial.user;
   const setting = initial.setting;
@@ -221,6 +235,22 @@ export default function CaseClient({ data: initial }) {
                   <Link href={`/admin/users/${user.id}`} className={s.profileLink}>
                     View full profile →
                   </Link>
+
+                  <div style={{ marginTop: 8 }}>
+                    <button
+                      onClick={handleSetTempPassword}
+                      disabled={tempPwState === 'loading'}
+                      style={{ fontSize: 12, padding: '4px 10px', background: 'var(--bg-raised)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}
+                    >
+                      {tempPwState === 'loading' ? 'Setting…' : tempPwState === 'error' ? '✗ Failed' : 'Set temp password'}
+                    </button>
+                    {tempPw && (
+                      <div style={{ marginTop: 6, fontSize: 12 }}>
+                        <span style={{ color: 'var(--text-subtle)' }}>Temp: </span>
+                        <code style={{ color: 'var(--accent)', fontFamily: 'monospace', userSelect: 'all' }}>{tempPw}</code>
+                      </div>
+                    )}
+                  </div>
 
                   <div className={s.infoRow}>
                     <span className={s.infoKey}>Status</span>
