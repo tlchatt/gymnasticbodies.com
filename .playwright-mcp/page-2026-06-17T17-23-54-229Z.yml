@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - heading "Why Bodyweight?" [level=1] [ref=e26]
+      - link "Get Started" [ref=e28] [cursor=pointer]:
+        - /url: /subscribe
+      - generic [ref=e30]:
+        - paragraph [ref=e31]: Maybe you’re not convinced that it’s possible to get huge results only using bodyweight. But if you’ve been looking for sustainable fitness that doesn’t skimp on gains, you’ve come to the right place. Let us explain why the bodyweight movement is such a big deal and why GymFit specifically can guide you into your greatest fitness.
+        - heading "Bodyweight provides more resistence than is commonly understood." [level=1] [ref=e32]
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: If you’ve been looking at bodyweight programs that max out at squats and push-ups, we understand the confusion.
+        - list [ref=e35]:
+          - listitem [ref=e36]: Two-dimensional movements like squats and push-ups eventually plateau if no resistance (weight) is added.
+          - listitem [ref=e37]: Your entire bodyweight becomes resistence as soon as your angles change.
+          - listitem [ref=e38]: This kind of resistance calls for full-body engagement, rather than one targeted muscle at a time.
+  - generic [ref=e40]:
+    - heading "It’s safe and scalable to you" [level=1] [ref=e42]
+    - generic [ref=e43]:
+      - paragraph [ref=e44]: Many intense and effective workout regimes run a high risk of injury. With bodyweight, you can gain the intensity without feeling so vulnerable.
+      - list [ref=e45]:
+        - listitem [ref=e46]: You easily adjust your difficulty when you are ready.
+        - listitem [ref=e47]: Our program coaches you on proper form and individual muscle-strengthening.
+        - listitem [ref=e48]: Your workouts consist of the most potent and practical movements at each level
+  - generic [ref=e50]:
+    - heading "You’ll build an insane core" [level=1] [ref=e52]
+    - generic [ref=e53]:
+      - paragraph [ref=e54]: An athlete doesn’t just want pretty abs. They need core strength that moves and stabilizes the body.
+      - list [ref=e55]:
+        - listitem [ref=e56]: We strengthen your entire trunk arear 360-degrees (Abs, Obliques, Lower Back, etc.)
+        - listitem [ref=e57]: The core is at the foundation of everything we do, so it’s trained even in non-core specific workouts.
+        - listitem [ref=e58]: Our core-specific workouts are designed to progress your core stamina as well as strength.
+  - generic [ref=e60]:
+    - heading "You build stability with fluid movements" [level=1] [ref=e62]
+    - generic [ref=e63]:
+      - paragraph [ref=e64]: Very rarely do we move at strict ninety-degree angles. Your body needs to be under control while moving.
+      - list [ref=e65]:
+        - listitem [ref=e66]: Healthy movement requires healthy multi-dimensional joints.
+        - listitem [ref=e67]: Because our athletes train active mobility, they are ahead of the curve in joint strength and injury prevention.
+        - listitem [ref=e68]: As you progress, you can add weights to your active mobility routines, but you will master your own bodyweight first.
+  - generic [ref=e70]:
+    - heading "It’s convenient and effective" [level=1] [ref=e72]
+    - generic [ref=e73]:
+      - paragraph [ref=e74]: If you have a bit of floor space and maybe a bare wall, you’ve got yourself a gym.
+      - list [ref=e75]:
+        - listitem [ref=e76]: Bodyweight exercises can be done almost anywhere.
+        - listitem [ref=e77]: We require minimal, if any, equipment.
+        - listitem [ref=e78]: Workouts can be short and intense, mixing cardio and strength similar to HIIT.
+        - listitem [ref=e79]: Quick and effective workouts to give you more time in your day
+  - generic [ref=e81]:
+    - heading "It’s fun" [level=1] [ref=e83]
+    - generic [ref=e84]:
+      - paragraph [ref=e85]: As soon as Spiderman discovered his web-slinging skills, he was swinging from building to building. Our athletes are kind of like Spiderman—they develop healthy joints and neurological pathways that allow them to truly enjoy moving beyond normal.
+      - list [ref=e86]:
+        - listitem [ref=e87]: Learn cool skills and develop the strength to do them.
+        - listitem [ref=e88]: Find yourself feeling decades younger.
+        - listitem [ref=e89]: Rediscover the joy of moving like a kid.
+  - generic [ref=e91]:
+    - heading "Not ready for premium?" [level=2] [ref=e92]
+    - heading "check out our free member page Where you have access to:" [level=3] [ref=e93]:
+      - text: check out our
+      - link "free member page" [ref=e94] [cursor=pointer]:
+        - /url: /free-members/
+      - text: "Where you have access to:"
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - img "Rings One" [ref=e99]
+        - heading "White Board Workouts" [level=3] [ref=e100]
+      - generic [ref=e101]:
+        - img "Rings One" [ref=e103]
+        - heading "Blogs" [level=3] [ref=e104]
+      - generic [ref=e105]:
+        - img "Rings One" [ref=e107]
+        - heading "Exercise Tutorials" [level=3] [ref=e108]
+      - generic [ref=e109]:
+        - img "Rings One" [ref=e111]
+        - heading "Forum" [level=3] [ref=e112]
+      - generic [ref=e113]:
+        - img "Rings One" [ref=e115]
+        - heading "Advocates" [level=3] [ref=e116]
+      - generic [ref=e117]:
+        - img "Rings One" [ref=e119]
+        - heading "Podcasts" [level=3] [ref=e120]
+  - text:     
+  - contentinfo [ref=e121]:
+    - generic [ref=e122]:
+      - link " Beginner" [ref=e124] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e125]: 
+        - generic [ref=e126]: Beginner
+      - link " Inter/Adv" [ref=e128] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e129]: 
+        - generic [ref=e130]: Inter/Adv
+      - link " Overcome" [ref=e132] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e133]: 
+        - generic [ref=e134]: Overcome
+      - link " Bodyweight" [ref=e136] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e137]: 
+        - generic [ref=e138]: Bodyweight
+      - link " White Board" [ref=e140] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e141]: 
+        - generic [ref=e142]: White Board

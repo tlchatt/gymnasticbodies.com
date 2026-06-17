@@ -1,0 +1,198 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - link "25% off icon" [ref=e22] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/all-access
+        - img "25% off icon" [ref=e23]
+      - link "Get Started" [ref=e25] [cursor=pointer]:
+        - /url: /subscribe
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - img "Intermediate One Preview" [ref=e30]
+          - generic [ref=e31]:
+            - img "Get Started With Premuim" [ref=e32]
+            - link "7-day free trial!" [ref=e33] [cursor=pointer]:
+              - /url: /subscribe
+            - link "what’s included" [ref=e34] [cursor=pointer]:
+              - /url: /all-access
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: Restore your mobility by building strength into extended ranges of motion and move like a kid again!
+            - img "Top Illos" [ref=e37]
+        - heading "Take our fitness quiz to see how gymfit can help you" [level=3] [ref=e40]:
+          - generic [ref=e41]:
+            - text: Take our fitness quiz
+            - text: to see how gymfit can help you
+        - generic [ref=e44]:
+          - heading "Welcome" [level=2] [ref=e46]
+          - heading "GymFit offers many programs, all the way from beginner to advanced. This short assessment will help to find the right program for you." [level=3] [ref=e49]
+          - button "Let's begin" [ref=e51] [cursor=pointer]
+      - generic [ref=e52]:
+        - generic [ref=e54]:
+          - generic [ref=e56]:
+            - heading "You're in Good Company" [level=2] [ref=e57]
+            - heading "Join tens of thousands of people making progress around the world just like you" [level=3] [ref=e58]
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - generic:
+                - generic [ref=e62]:
+                  - link "GymFit TV 10" [ref=e64] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/james-jones/
+                    - img "GymFit TV 10" [ref=e65]
+                  - heading "Jame Jones" [level=5] [ref=e66]
+                  - heading "Pain Free" [level=6] [ref=e67]
+                - generic [ref=e69]:
+                  - link "GymFit TV 11" [ref=e71] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/roland-schoemann/
+                    - img "GymFit TV 11" [ref=e72]
+                  - heading "Roland Schoemann" [level=5] [ref=e73]
+                  - heading "Olympic Gold Medalist" [level=6] [ref=e74]
+                - generic [ref=e76]:
+                  - link "GymFit TV 12" [ref=e78] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/andrey-trium/
+                    - img "GymFit TV 12" [ref=e79]
+                  - heading "Andrey Trium" [level=5] [ref=e80]
+                  - heading "Enjoy the Journey" [level=6] [ref=e81]
+                - generic [ref=e83]:
+                  - link "GymFit TV 13" [ref=e85] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/ryan-bailey/
+                    - img "GymFit TV 13" [ref=e86]
+                  - heading "Ryan Bailey" [level=5] [ref=e87]
+                  - heading "Building Flexibility" [level=6] [ref=e88]
+                - generic [ref=e90]:
+                  - link "GymFit TV 7" [ref=e92] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/jin-liu/
+                    - img "GymFit TV 7" [ref=e93]
+                  - heading "Jin Liu" [level=5] [ref=e94]
+                  - heading "Me? An Athlete?" [level=6] [ref=e95]
+                - generic [ref=e97]:
+                  - link "GymFit TV 8" [ref=e99] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/kc/
+                    - img "GymFit TV 8" [ref=e100]
+                  - heading "KC" [level=5] [ref=e101]
+                  - heading "Fit after 70" [level=6] [ref=e102]
+                - generic [ref=e104]:
+                  - link "GymFit TV 9" [ref=e106] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/suzanna-mcgee/
+                    - img "GymFit TV 9" [ref=e107]
+                  - heading "Suzanna McGee" [level=5] [ref=e108]
+                  - heading "Correcting Weaknesses" [level=6] [ref=e109]
+                - generic [ref=e111]:
+                  - link "GymFit TV 10" [ref=e113] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/james-jones/
+                    - img "GymFit TV 10" [ref=e114]
+                  - heading "Jame Jones" [level=5] [ref=e115]
+                  - heading "Pain Free" [level=6] [ref=e116]
+                - generic [ref=e118]:
+                  - link "GymFit TV 11" [ref=e120] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/roland-schoemann/
+                    - img "GymFit TV 11" [ref=e121]
+                  - heading "Roland Schoemann" [level=5] [ref=e122]
+                  - heading "Olympic Gold Medalist" [level=6] [ref=e123]
+                - generic [ref=e125]:
+                  - link "GymFit TV 12" [ref=e127] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/andrey-trium/
+                    - img "GymFit TV 12" [ref=e128]
+                  - heading "Andrey Trium" [level=5] [ref=e129]
+                  - heading "Enjoy the Journey" [level=6] [ref=e130]
+                - generic [ref=e132]:
+                  - link "GymFit TV 13" [ref=e134] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/ryan-bailey/
+                    - img "GymFit TV 13" [ref=e135]
+                  - heading "Ryan Bailey" [level=5] [ref=e136]
+                  - heading "Building Flexibility" [level=6] [ref=e137]
+                - generic [ref=e139]:
+                  - link "GymFit TV 7" [ref=e141] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/jin-liu/
+                    - img "GymFit TV 7" [ref=e142]
+                  - heading "Jin Liu" [level=5] [ref=e143]
+                  - heading "Me? An Athlete?" [level=6] [ref=e144]
+                - generic [ref=e146]:
+                  - link "GymFit TV 8" [ref=e148] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/kc/
+                    - img "GymFit TV 8" [ref=e149]
+                  - heading "KC" [level=5] [ref=e150]
+                  - heading "Fit after 70" [level=6] [ref=e151]
+                - generic [ref=e153]:
+                  - link "GymFit TV 9" [ref=e155] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/suzanna-mcgee/
+                    - img "GymFit TV 9" [ref=e156]
+                  - heading "Suzanna McGee" [level=5] [ref=e157]
+                  - heading "Correcting Weaknesses" [level=6] [ref=e158]
+                - generic [ref=e160]:
+                  - link "GymFit TV 10" [ref=e162] [cursor=pointer]:
+                    - /url: https://www.gymnasticbodies.com/testimonial/james-jones/
+                    - img "GymFit TV 10" [ref=e163]
+                  - heading "Jame Jones" [level=5] [ref=e164]
+                  - heading "Pain Free" [level=6] [ref=e165]
+            - generic:
+              - button "chevron_left" [ref=e166] [cursor=pointer]:
+                - generic [ref=e167]: chevron_left
+              - button "chevron_right" [ref=e168] [cursor=pointer]:
+                - generic [ref=e169]: chevron_right
+        - generic [ref=e171]:
+          - heading "Not ready for premium?" [level=2] [ref=e172]
+          - heading "check out our free member page Where you have access to:" [level=3] [ref=e173]:
+            - text: check out our
+            - link "free member page" [ref=e174] [cursor=pointer]:
+              - /url: /free-members/
+            - text: "Where you have access to:"
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - img "Rings One" [ref=e179]
+              - heading "White Board Workouts" [level=3] [ref=e180]
+            - generic [ref=e181]:
+              - img "Rings One" [ref=e183]
+              - heading "Blogs" [level=3] [ref=e184]
+            - generic [ref=e185]:
+              - img "Rings One" [ref=e187]
+              - heading "Exercise Tutorials" [level=3] [ref=e188]
+            - generic [ref=e189]:
+              - img "Rings One" [ref=e191]
+              - heading "Forum" [level=3] [ref=e192]
+            - generic [ref=e193]:
+              - img "Rings One" [ref=e195]
+              - heading "Advocates" [level=3] [ref=e196]
+            - generic [ref=e197]:
+              - img "Rings One" [ref=e199]
+              - heading "Podcasts" [level=3] [ref=e200]
+  - text:     
+  - contentinfo [ref=e201]:
+    - generic [ref=e202]:
+      - link " Beginner" [ref=e204] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e205]: 
+        - generic [ref=e206]: Beginner
+      - link " Inter/Adv" [ref=e208] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e209]: 
+        - generic [ref=e210]: Inter/Adv
+      - link " Overcome" [ref=e212] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e213]: 
+        - generic [ref=e214]: Overcome
+      - link " Bodyweight" [ref=e216] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e217]: 
+        - generic [ref=e218]: Bodyweight
+      - link " White Board" [ref=e220] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e221]: 
+        - generic [ref=e222]: White Board

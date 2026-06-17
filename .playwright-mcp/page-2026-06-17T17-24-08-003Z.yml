@@ -1,0 +1,164 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Premium" [level=3] [ref=e20]
+        - link "Select Plan" [ref=e22] [cursor=pointer]:
+          - /url: /subscribe/
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - img "All Access 1" [ref=e28]
+              - paragraph
+              - paragraph [ref=e29]: All Levels
+            - generic [ref=e30]:
+              - img "All Access 2" [ref=e31]
+              - paragraph
+              - paragraph [ref=e32]: Monthly Access
+            - generic [ref=e33]:
+              - img "All Access 3" [ref=e34]
+              - paragraph
+              - paragraph [ref=e35]: Every Focus
+            - generic [ref=e36]:
+              - img "All Access 4" [ref=e37]
+              - paragraph
+              - paragraph [ref=e38]: Varied Equipment
+          - img "All Access 5" [ref=e41]
+          - generic [ref=e42]:
+            - heading "BUILD A STRONG, FLEXIBLE, POWERFUL BODY." [level=2] [ref=e43]
+            - paragraph
+            - paragraph [ref=e44]: We believe exercise can be fun, informative, and life-changing. With access to our entire library, you can rebuild and strengthen your body from every angle. Begin with basic movements and joint strengthening. Advance into the mechanics of movement, preparing your body for anything you throw at it. Our programming takes athletes past old plateaus and graduates them into strength they didn’t know they were missing.
+            - paragraph [ref=e45]: Time for you to get strong, limber, and build skills you thought were impossible.
+        - heading "What’s Included:" [level=3] [ref=e47]
+        - generic [ref=e48]:
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - heading "Strength" [level=2] [ref=e52]
+              - paragraph [ref=e53]: Our approach to strength-building is nuanced because the roadmap to strength is unique to every individual. Beginners are encouraged to use less resistance and more reps, while advanced athletes will have to work against extreme load using their bodyweight at challenging angles.
+            - img "All Access 6" [ref=e56]
+            - paragraph [ref=e58]: Our system will coach you on where to begin and what kinds of work to schedule through your weekly workouts. An athlete who sticks with the program will get stronger if they are consistent and go at a reasonable pace.
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - heading "Mobility" [level=2] [ref=e62]
+              - paragraph [ref=e63]: We want to make sure you have healthy, mobile joints that can support your strength work. When you have access to our entire library, you have access to a system that can potentially rebuild you from every angle.
+            - img "All Access 8" [ref=e66]
+            - paragraph [ref=e68]: The Stretch Series will prep your movement by expanding your passive reach. You will also build strength into your mobility in each step of our programming. Active mobility is included in focused sequences as well as interspersed through your Levels and Foundation sequences.
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - heading "Nutrition" [level=2] [ref=e72]
+              - paragraph [ref=e73]: "Nutrition is one key to a balanced, healthy body and therefore included in our programming. We approach nutrition with the same discipline with which we approach working out: Ease in and be consistent. Thrive Nutrition will teach you how to eat well so you can perform well in your workouts and in your life."
+            - img "All Access 10" [ref=e76]
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - heading "Integrated Plans" [level=2] [ref=e80]
+              - paragraph [ref=e81]: No matter your level of physical fitness, we have a plan laid out for your success. Haven’t worked out in a while? No problem. We can ease you into the Intro Plan or Level One Plan (depending on your mobility). Are you strong and mobile, but can’t get past that plateau? Maybe Level Two is your schtick. Use our quick assessment tool to determine which plan fits you, and your week will automatically populate with exercises we think will advance your body to its awesomest. Then you can adjust it as much as you want for following weeks!
+            - img "All Access 11" [ref=e84]
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - heading "Restoration" [level=2] [ref=e88]
+              - paragraph [ref=e89]: If you’re coming in with pains and imbalances, we can help. Our Intro Plan has been designed especially for those who have some ground to make up before they can make real gains. Fundamentals will help you discover basic mobility through natural movements. Restore will give you specific routines to loosen specific joints. Bands will strengthen your joints through extended ranges of motion with gentle load.
+            - img "All Access 13" [ref=e92]
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - heading "Skills" [level=2] [ref=e96]
+              - paragraph [ref=e97]: One of the benefits of developing strength and mobility is being able to then do cool things. The stronger and more mobile an athlete becomes, the more they can partake in fun things that make working out out a blast.
+            - img "All Access 15" [ref=e100]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "Much More!" [level=2] [ref=e104]
+              - paragraph [ref=e105]: It’s... a lot. We’re constantly adding to our library of workouts, which means you get tons of additional core, mobility, strength, flexibility, and prehab options. But we’ve provided a way for you to sort through the library, as well as keeping track of your workouts daily. A lot of time has gone into getting you to a point where you can be successful.
+            - img "All Access 17" [ref=e108]
+          - generic [ref=e109]:
+            - link "program selector" [ref=e111] [cursor=pointer]:
+              - /url: /get-started/
+              - text: program selector
+            - generic [ref=e113]:
+              - heading "Here’s What the Professionals Have to Say" [level=3] [ref=e114]
+              - paragraph [ref=e115]: “The mobility is put together so well. It confirms to me that most people have mobility that is pathological. In my work as a Physio I treat many people with rotator cuff injuries. They have mobility that comes nowhere near what is in this program. If only they did these mobility exercises before they got injured! This whole program is so well thought out. This is worth way more than it costs. I truly believe this is the best program I have seen that is also beneficial in terms of musculoskeletal health.”
+              - paragraph [ref=e116]: "- Mark Collins, Physiotherapist"
+        - heading "See Your Progress Over Time" [level=3] [ref=e118]
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - img "All Access 18" [ref=e123]
+            - generic [ref=e124]:
+              - heading "Workout History & Support" [level=2] [ref=e125]
+              - paragraph [ref=e126]: Training is a journey and improvement comes in small steps. We make it easy for you to see progress over time so that any workout you do can be logged and tracked. Where will you be in a month? In a year?
+              - paragraph [ref=e127]: Your success is our main priority. Our support team consists of advanced coaches who have been through the sticking points you may have, and they can offer advice on what to do next.
+              - paragraph [ref=e128]:
+                - text: Not sure where to start? Just ask, we’re an
+                - link "email" [ref=e129] [cursor=pointer]:
+                  - /url: mailto:support@gymnasticbodies.com
+                - text: away.
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - heading "Complete Athletic Blueprint" [level=2] [ref=e133]
+              - paragraph [ref=e134]: You don’t need a degree in physiotherapy to make this work. We’ll supply a detailed plan of bodyweight strength and mobility workouts, perfect for short- and long-term goals. You just show up and give your personal best.
+              - paragraph [ref=e135]: All our programs form a complete athletic blueprint. You can start as an absolute beginner built like a concrete zombie and over time develop into a strong and flexible athlete. We’ll be with you every step.
+            - img "All Access 19" [ref=e138]
+        - generic [ref=e141]:
+          - heading "“I have not found another program that structures some of the incredibly demanding elements of bodyweight strength in all it’s forms of flexibility, balance, mobility, muscle strength including the connective tissue (ligaments and tendon) where the real ability to create power resides.”" [level=3] [ref=e142]
+          - heading "-Paul Watson" [level=3] [ref=e143]
+      - heading "Frequently Asked Questions" [level=3] [ref=e145]
+      - list [ref=e148]:
+        - listitem [ref=e149]:
+          - generic [ref=e150]:
+            - text: Is bodyweight training effective for building muscle?
+            - text: There are two different types of muscle that you can put on. Bodyweight training is most effective at building muscle density. Think incredibly strong but lean like a gymnast. Muscle size is more common in bodybuilding but can also be done with special programming of bodyweight training.
+        - listitem [ref=e151]:
+          - generic [ref=e152]:
+            - text: Is bodyweight training enough?
+            - text: Bodyweight training is so effective that weight training is not required at all. Some students choose to supplement their weight training with bodyweight work while others do not weight train at all. It comes down to your goals and having a good program like GymFit to progress you properly.
+        - listitem [ref=e153]:
+          - generic [ref=e154]:
+            - text: Why are bodyweight exercise as effective as weight training?
+            - text: The short answer is that the body doesn’t care whether your resistance comes from a weight or creating load through bodyweight progressions. Bodyweight workouts focus on maximal muscle contraction which makes the muscle more efficient and thus stronger.
+        - listitem [ref=e155]:
+          - generic [ref=e156]:
+            - text: Can you build muscle without a gym?
+            - text: Absolutely. Many students workout at home with minimal equipment or at playgrounds or parks. Some skills and exercises do require equipment to learn, but for most everything the best piece of equipment is your own body!
+        - listitem [ref=e157]:
+          - generic [ref=e158]:
+            - text: Can you maintain muscle with bodyweight exercises?
+            - text: Yes, though it depends on whether your mobility is in line with your strength. If you are too tight while being very strong, you are very likely to get injured. In this scenario, we put muscle gains on maintenance while building the proper mobility. The benefit of good mobility is that you’ll be able to use the muscle in larger ranges of motion and so will be even stronger long term.
+  - text:     
+  - contentinfo [ref=e159]:
+    - generic [ref=e160]:
+      - link " Beginner" [ref=e162] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e163]: 
+        - generic [ref=e164]: Beginner
+      - link " Inter/Adv" [ref=e166] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e167]: 
+        - generic [ref=e168]: Inter/Adv
+      - link " Overcome" [ref=e170] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e171]: 
+        - generic [ref=e172]: Overcome
+      - link " Bodyweight" [ref=e174] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e175]: 
+        - generic [ref=e176]: Bodyweight
+      - link " White Board" [ref=e178] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e179]: 
+        - generic [ref=e180]: White Board

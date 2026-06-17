@@ -1,0 +1,138 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Free Members" [level=1] [ref=e27]
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - heading "Not ready for premium?" [level=2] [ref=e30]
+            - generic [ref=e32]:
+              - heading "Try a Free White Board Workout" [level=1] [ref=e34]
+              - generic [ref=e35]:
+                - generic [ref=e37]:
+                  - generic [ref=e38]:
+                    - generic [ref=e39] [cursor=pointer]: arrow_drop_up
+                    - generic [ref=e40]: "1"
+                    - generic [ref=e41] [cursor=pointer]: arrow_drop_down
+                  - generic [ref=e42]: Rounds
+                - generic [ref=e44]:
+                  - heading "Mobility" [level=2] [ref=e46]
+                  - img "Free Members 6" [ref=e48]
+                  - generic [ref=e50]:
+                    - generic [ref=e51]:
+                      - generic [ref=e52] [cursor=pointer]: expand_less
+                      - generic [ref=e53]: "2"
+                      - generic [ref=e54] [cursor=pointer]: expand_more
+                    - paragraph [ref=e55]: Incline Pushup
+                  - generic [ref=e57] [cursor=pointer]: autorenew
+                - generic [ref=e59]:
+                  - heading "Push" [level=2] [ref=e61]
+                  - img "Free Members 7" [ref=e63]
+                  - generic [ref=e65]:
+                    - generic [ref=e66]:
+                      - generic [ref=e67] [cursor=pointer]: expand_less
+                      - generic [ref=e68]: "2"
+                      - generic [ref=e69] [cursor=pointer]: expand_more
+                    - paragraph [ref=e70]: Pushup
+                  - generic [ref=e72] [cursor=pointer]: autorenew
+                - generic [ref=e74]:
+                  - heading "Pull" [level=2] [ref=e76]
+                  - img "Free Members 8" [ref=e78]
+                  - generic [ref=e80]:
+                    - generic [ref=e81]:
+                      - generic [ref=e82] [cursor=pointer]: expand_less
+                      - generic [ref=e83]: "2"
+                      - generic [ref=e84] [cursor=pointer]: expand_more
+                    - paragraph [ref=e85]: Incline Row
+                  - generic [ref=e87] [cursor=pointer]: autorenew
+                - generic [ref=e89]:
+                  - heading "Core" [level=2] [ref=e91]
+                  - img "Free Members 9" [ref=e93]
+                  - generic [ref=e95]:
+                    - generic [ref=e96]:
+                      - generic [ref=e97] [cursor=pointer]: expand_less
+                      - generic [ref=e98]: "2"
+                      - generic [ref=e99] [cursor=pointer]: expand_more
+                    - paragraph [ref=e100]: Bent Hollow Body Rock
+                  - generic [ref=e102] [cursor=pointer]: autorenew
+                - generic [ref=e104]:
+                  - heading "Legs" [level=2] [ref=e106]
+                  - img "Free Members 10" [ref=e108]
+                  - generic [ref=e110]:
+                    - generic [ref=e111]:
+                      - generic [ref=e112] [cursor=pointer]: expand_less
+                      - generic [ref=e113]: "2"
+                      - generic [ref=e114] [cursor=pointer]: expand_more
+                    - paragraph [ref=e115]: Parallel Squat
+                  - generic [ref=e117] [cursor=pointer]: autorenew
+              - generic [ref=e118]:
+                - paragraph [ref=e119]:
+                  - text: Create an account to get free randomized Level One workout samples. Or sign up for
+                  - link "premium" [ref=e120] [cursor=pointer]:
+                    - /url: /subscribe
+                  - text: to be guided through extended workouts with strength and mobility progressions and a full library of additional options.
+                - img [ref=e121] [cursor=pointer]:
+                  - generic [ref=e123]: REFRESHWORKOUT
+              - button "Sign me up for free!" [ref=e128] [cursor=pointer]
+          - generic [ref=e130]:
+            - heading "When signing up for our free member service you gain access to:" [level=3] [ref=e131]
+            - generic [ref=e133]:
+              - generic [ref=e134]:
+                - img "Rings One" [ref=e136]
+                - heading "White Board Workouts" [level=3] [ref=e137]
+              - generic [ref=e138]:
+                - img "Rings One" [ref=e140]
+                - heading "Blogs" [level=3] [ref=e141]
+              - generic [ref=e142]:
+                - img "Rings One" [ref=e144]
+                - heading "Exercise Tutorials" [level=3] [ref=e145]
+              - generic [ref=e146]:
+                - img "Rings One" [ref=e148]
+                - heading "Forum" [level=3] [ref=e149]
+              - generic [ref=e150]:
+                - img "Rings One" [ref=e152]
+                - heading "Advocates" [level=3] [ref=e153]
+              - generic [ref=e154]:
+                - img "Rings One" [ref=e156]
+                - heading "Podcasts" [level=3] [ref=e157]
+  - text:     
+  - contentinfo [ref=e158]:
+    - generic [ref=e159]:
+      - link " Beginner" [ref=e161] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e162]: 
+        - generic [ref=e163]: Beginner
+      - link " Inter/Adv" [ref=e165] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e166]: 
+        - generic [ref=e167]: Inter/Adv
+      - link " Overcome" [ref=e169] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e170]: 
+        - generic [ref=e171]: Overcome
+      - link " Bodyweight" [ref=e173] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e174]: 
+        - generic [ref=e175]: Bodyweight
+      - link " White Board" [ref=e177] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e178]: 
+        - generic [ref=e179]: White Board

@@ -1,0 +1,92 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e21]:
+          - heading "Monthly" [level=5] [ref=e22]
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - superscript [ref=e25]: $
+              - text: "75"
+              - superscript [ref=e26]: ".00"
+            - text: /month
+          - link "Start for free" [ref=e28] [cursor=pointer]:
+            - /url: /checkout/?add-to-cart=51&variation_id=55
+          - generic [ref=e29]:
+            - text: $225 billed quarterly
+            - text: after 7-day free trial
+        - generic [ref=e31]:
+          - heading "Annually" [level=5] [ref=e32]
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - superscript [ref=e35]: $
+              - text: "60"
+              - superscript [ref=e36]: ".00"
+            - text: /month
+          - link "Start for free" [ref=e38] [cursor=pointer]:
+            - /url: /checkout/?add-to-cart=51&variation_id=56
+          - generic [ref=e39]:
+            - text: $720 billed annually
+            - text: after 7 day free trial
+      - list [ref=e44]:
+        - listitem [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: check
+            - heading "Now includes our nutrition course Thrive" [level=3] [ref=e48]
+        - listitem [ref=e49]:
+          - generic [ref=e50]:
+            - generic [ref=e51]: check
+            - heading "Over 350 Strength exercises, 300 mobility exercises and 75 Handstand exercises to deliver noticeable results in less time" [level=3] [ref=e52]
+        - listitem [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: check
+            - heading "Customizable training to match your fitness level and goals" [level=3] [ref=e56]
+        - listitem [ref=e57]:
+          - generic [ref=e58]:
+            - generic [ref=e59]: check
+            - heading "6+ Week Programs that adapt as you progress" [level=3] [ref=e60]
+        - listitem [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: check
+            - heading "Short, Medium and Long workouts to suit your schedule" [level=3] [ref=e64]
+  - text:     
+  - contentinfo [ref=e65]:
+    - generic [ref=e66]:
+      - link " Beginner" [ref=e68] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e69]: 
+        - generic [ref=e70]: Beginner
+      - link " Inter/Adv" [ref=e72] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e73]: 
+        - generic [ref=e74]: Inter/Adv
+      - link " Overcome" [ref=e76] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e77]: 
+        - generic [ref=e78]: Overcome
+      - link " Bodyweight" [ref=e80] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e81]: 
+        - generic [ref=e82]: Bodyweight
+      - link " White Board" [ref=e84] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e85]: 
+        - generic [ref=e86]: White Board

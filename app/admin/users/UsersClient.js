@@ -50,9 +50,20 @@ function initials(name, email) {
   return email?.slice(0, 2).toUpperCase() ?? '??';
 }
 
+const SEGMENTS = [
+  { value: 'stripe',     label: 'Stripe' },
+  { value: 'auth_net',   label: 'Auth.net' },
+  { value: 'subscriber', label: 'Subscriber' },
+  { value: 'purchased',  label: 'Purchased' },
+  { value: 'lapsed',     label: 'Lapsed' },
+  { value: 'inactive',   label: 'Inactive' },
+];
+
 export default function UsersClient() {
   const [q, setQ] = useState('');
   const [debouncedQ, setDebouncedQ] = useState('');
+  const [migration, setMigration] = useState('');
+  const [segment, setSegment] = useState('');
   const [users, setUsers] = useState([]);
   const [total, setTotal] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -68,11 +79,15 @@ export default function UsersClient() {
   const [createMsg, setCreateMsg]       = useState('');
   const [createdUserId, setCreatedUserId] = useState(null);
 
-  const load = useCallback(async (query) => {
+  const load = useCallback(async (query, mig, seg) => {
     setLoading(true);
     setErr('');
     try {
-      const url = `/api/admin/users${query ? `?q=${encodeURIComponent(query)}` : ''}`;
+      const params = new URLSearchParams();
+      if (query) params.set('q', query);
+      if (mig)   params.set('migration', mig);
+      if (seg)   params.set('segment', seg);
+      const url = `/api/admin/users${params.toString() ? `?${params}` : ''}`;
       const res = await fetch(url);
       if (!res.ok) throw new Error('Failed to load');
       const data = await res.json();
@@ -129,7 +144,7 @@ export default function UsersClient() {
     return () => clearTimeout(debounceRef.current);
   }, [q]);
 
-  useEffect(() => { load(debouncedQ); }, [debouncedQ, load]);
+  useEffect(() => { load(debouncedQ, migration, segment); }, [debouncedQ, migration, segment, load]);
 
   return (
     <>
@@ -199,6 +214,30 @@ export default function UsersClient() {
           </form>
         )}
 
+        <div className={s.filterRow}>
+          <select
+            className={s.migSelect}
+            value={migration}
+            onChange={e => { setMigration(e.target.value); setSegment(''); }}
+          >
+            <option value="">All users</option>
+            <option value="current">Current</option>
+            <option value="noncurrent">Non-Current</option>
+          </select>
+
+          <div className={s.chips}>
+            {SEGMENTS.map(seg => (
+              <button
+                key={seg.value}
+                className={`${s.chip} ${segment === seg.value ? s.chipActive : ''}`}
+                onClick={() => setSegment(s => s === seg.value ? '' : seg.value)}
+              >
+                {seg.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className={s.searchWrap}>
           <input
             className={s.search}
@@ -237,8 +276,8 @@ export default function UsersClient() {
                   <span className={s.name}>{u.name || '—'}</span>
                 </span>
                 <span className={s.email}>{u.email}</span>
-                <span className={`${s.migBadge} ${migrationClass(u.migrationType)}`}>
-                  {MIGRATION_LABELS[u.migrationType] ?? u.migrationType ?? 'unknown'}
+                <span className={`${s.migBadge} ${migrationClass(u.customerSegment || u.migrationType)}`}>
+                  {MIGRATION_LABELS[u.customerSegment] ?? MIGRATION_LABELS[u.migrationType] ?? u.migrationType ?? 'unknown'}
                 </span>
                 <span className={s.subStatus}>
                   {u.settingStatus

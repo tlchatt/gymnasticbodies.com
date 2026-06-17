@@ -25,6 +25,62 @@
   color: #555;
 }
 
+/* ── Filter row ── */
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.migSelect {
+  padding: 7px 10px;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 7px;
+  color: #aaa;
+  font-size: 0.8rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  flex-shrink: 0;
+}
+.migSelect:focus { border-color: #444; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid #2a2a2a;
+  background: #151515;
+  color: #666;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.chip:hover { border-color: #3a3a3a; color: #aaa; }
+
+.chipActive {
+  background: rgba(240, 86, 33, 0.12);
+  border-color: rgba(240, 86, 33, 0.45);
+  color: #f05621;
+}
+.chipActive:hover {
+  background: rgba(240, 86, 33, 0.18);
+  border-color: rgba(240, 86, 33, 0.6);
+  color: #f05621;
+}
+
 .searchWrap {
   position: relative;
   max-width: 480px;

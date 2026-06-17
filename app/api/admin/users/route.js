@@ -8,7 +8,15 @@ export async function GET(request) {
   const { error } = await requireAdmin();
   if (error) return error;
 
-  const q = new URL(request.url).searchParams.get('q')?.trim() ?? '';
+  const sp = new URL(request.url).searchParams;
+  const q         = sp.get('q')?.trim()         ?? '';
+  const migration = sp.get('migration')?.trim()  ?? '';
+  const segment   = sp.get('segment')?.trim()    ?? '';
+
+  const conditions = [];
+  if (q)         conditions.push(or(ilike(user.email, `%${q}%`), ilike(user.name, `%${q}%`)));
+  if (migration) conditions.push(eq(user.migrationType, migration));
+  if (segment)   conditions.push(eq(user.customerSegment, segment));
 
   const rows = await db
     .select({
@@ -16,6 +24,7 @@ export async function GET(request) {
       name: user.name,
       email: user.email,
       migrationType: user.migrationType,
+      customerSegment: user.customerSegment,
       createdAt: user.createdAt,
       settingStatus: user_setting.status,
       stripeCustomerId: user_setting.stripeCustomerId,
@@ -28,7 +37,7 @@ export async function GET(request) {
       user_setting,
       and(eq(user_setting.userId, user.id), eq(user_setting.type, 'subscription'))
     )
-    .where(q ? or(ilike(user.email, `%${q}%`), ilike(user.name, `%${q}%`)) : undefined)
+    .where(conditions.length ? and(...conditions) : undefined)
     .orderBy(desc(user.createdAt))
     .limit(200);
 

@@ -1,0 +1,13 @@
+{
+  "legacy15": {
+    "campaign": "marketing_drip_legacy15",
+    "price": "15",
+    "term": "monthly",
+    "campaignEndDate": "2026-09-30",
+    "headline": "Welcome Back.",
+    "headlineAccent": "Legacy Offer.",
+    "subheadline": "A special rate reserved for Legacy Members — $15/month to rejoin the GymnasticBodies community.",
+    "ctaLabel": "Rejoin for $15/month",
+    "metaTitle": "Legacy Member Offer | GymnasticBodies"
+  }
+}

@@ -190,6 +190,18 @@ export const support_replies = pgTable("support_replies", {
   gmailMessageId: text("gmail_message_id"),
 });
 
+export const campaigns = pgTable("campaigns", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  type: text("type").default("support").notNull(), // 'support' | 'marketing'
+  subject: text("subject"),
+  createdBy: text("created_by").references(() => user.id, { onDelete: "set null" }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+}, (t) => [
+  index("campaigns_created_by_idx").on(t.createdBy),
+]);
+
 // Outbound emails sent to users (from email-group campaigns, renewal reminders, etc.)
 // No case is created at send time. When the user replies (inbound), Gmail sync checks
 // this table and creates a case flagged as a response to outreach.
@@ -199,10 +211,11 @@ export const outbound_emails = pgTable("outbound_emails", {
   toEmail: text("to_email").notNull(),
   subject: text("subject").notNull(),
   body: text("body"),
-  campaign: text("campaign"),      // optional tag e.g. 'renewal_outreach', 'active_expired_2026-05'
+  campaign: text("campaign"),      // legacy text tag — use campaignId going forward
+  campaignId: integer("campaign_id").references(() => campaigns.id, { onDelete: "set null" }),
   type: text("type").default("support").notNull(), // 'support' | 'marketing'
   sentAt: timestamp("sent_at").defaultNow().notNull(),
-  caseId: integer("case_id"),      // set when a reply creates a case
+  caseId: integer("case_id").references(() => support_cases.id, { onDelete: "set null" }),
 }, (t) => [
   index("outbound_emails_user_idx").on(t.userId),
   index("outbound_emails_email_idx").on(t.toEmail),
@@ -213,6 +226,11 @@ export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
   user_settings: many(user_setting),
+  userLogs: many(user_logs),
+  supportEmails: many(support_emails),
+  supportCases: many(support_cases),
+  outboundEmails: many(outbound_emails),
+  campaigns: many(campaigns),
 }));
 
 export const sessionRelations = relations(session, ({ one }) => ({
@@ -245,6 +263,7 @@ export const supportCaseRelations = relations(support_cases, ({ one, many }) => 
   user: one(user, { fields: [support_cases.userId], references: [user.id] }),
   openedByUser: one(user, { fields: [support_cases.openedBy], references: [user.id] }),
   emails: many(support_emails),
+  outboundEmails: many(outbound_emails),
 }));
 
 export const supportEmailRelations = relations(support_emails, ({ one, many }) => ({
@@ -268,4 +287,15 @@ export const supportReplyRelations = relations(support_replies, ({ one }) => ({
     fields: [support_replies.adminUserId],
     references: [user.id],
   }),
+}));
+
+export const outboundEmailRelations = relations(outbound_emails, ({ one }) => ({
+  user: one(user, { fields: [outbound_emails.userId], references: [user.id] }),
+  case: one(support_cases, { fields: [outbound_emails.caseId], references: [support_cases.id] }),
+  campaign: one(campaigns, { fields: [outbound_emails.campaignId], references: [campaigns.id] }),
+}));
+
+export const campaignRelations = relations(campaigns, ({ one, many }) => ({
+  createdByUser: one(user, { fields: [campaigns.createdBy], references: [user.id] }),
+  outboundEmails: many(outbound_emails),
 }));

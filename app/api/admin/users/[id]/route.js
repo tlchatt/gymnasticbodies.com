@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
-import { user, user_setting, app_logs, user_logs, support_emails, support_cases } from '@/Drizzle/db/schema';
+import { user, user_setting, app_logs, user_logs, support_emails, support_cases, outbound_emails } from '@/Drizzle/db/schema';
 import { and, eq, desc, count } from 'drizzle-orm';
 
 export async function GET(request, { params }) {
@@ -65,5 +65,20 @@ export async function GET(request, { params }) {
     .orderBy(desc(support_cases.createdAt))
     .limit(5);
 
-  return NextResponse.json({ user: u, setting, recentLogs, logsCount, tickets, cases });
+  // Outbound emails sent to this user
+  const outbound = await db
+    .select({
+      id: outbound_emails.id,
+      subject: outbound_emails.subject,
+      campaign: outbound_emails.campaign,
+      type: outbound_emails.type,
+      sentAt: outbound_emails.sentAt,
+      caseId: outbound_emails.caseId,
+    })
+    .from(outbound_emails)
+    .where(eq(outbound_emails.userId, id))
+    .orderBy(desc(outbound_emails.sentAt))
+    .limit(20);
+
+  return NextResponse.json({ user: u, setting, recentLogs, logsCount, tickets, cases, outbound });
 }

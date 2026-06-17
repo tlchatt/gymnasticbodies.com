@@ -16,6 +16,10 @@
       {
         "path": "/api/cronRenewalOutreach",
         "schedule": "0 14 * * *"
+      },
+      {
+        "path": "/api/cronMarketingDrip",
+        "schedule": "0 18 * * *"
       }
     ]
   }

@@ -1,0 +1,98 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Hey Newbies!" [level=1] [ref=e27]
+        - link "Get Started" [ref=e29] [cursor=pointer]:
+          - /url: /subscribe
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - paragraph [ref=e32]: We’re not rigid about what constitutes a “beginner.” You may be new to fitness or you may simply be new to GymFit and our methodology. Either way, we help athletes like you discover their deficits and gently address them before moving into greater fitness gains. Likewise, if you’ve been struggling with injuries and know you need to strengthen tendons and regain mobility, the Intro Plan is a gateway into new levels of freedom.
+            - paragraph [ref=e33]: "This is how it works:"
+            - heading "#1-Recover Basic Mobility with Fundamentals" [level=1] [ref=e34]
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - img "Fundamentals" [ref=e37]
+              - paragraph [ref=e38]: Fundamentals is our introductory course, which has active movements you haven’t practiced since you were a kid in gym class. The goal is to get your body back to a baseline fitness.
+              - paragraph [ref=e39]: You will be surprised by how much mobility you might be lacking in these simple movements. It’s normal. Adults don’t often crawl across the floor like a bear or a lizard. But there is method in our madness. These movements unlock joints and gently reintroduce mobility with your own bodyweight as load.
+              - paragraph [ref=e40]: It may take a few months to do these well, but it will be worth it when you feel youthful again.
+            - generic [ref=e41]:
+              - img "Fundamentals" [ref=e42]
+              - img "Fundamentals" [ref=e43]
+          - link "Get Started" [ref=e45] [cursor=pointer]:
+            - /url: https://www.gymnasticbodies.com/all-access/
+          - heading "#2-Target and Repair Deficits with Restore and Bands" [level=1] [ref=e47]
+          - img "Hey Newbies 6" [ref=e49]
+          - img "Hey Newbies 7" [ref=e51]
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: Once you know your weak mobility points, you can focus more specifically on stretching and strengthening those tight, painful areas. We already schedule the Restore Series and the Band Series throughout the Intro program, but we suggest repeating the stretches and exercises that you need most. For example, if you can’t quite reach the ground in stiff bear due to tight hamstrings, then we recommend adjusting your workout schedule to include Hamstring Restore on a regular basis.
+            - img "Fundamentals" [ref=e54]
+            - img "Fundamentals" [ref=e55]
+            - paragraph [ref=e56]: Ultimately, the goal is always to get you to that next level of strength and mobility. Once you’ve spent the months remobilizing, you can jump into our Level programs more earnestly. There’s no hurry. Slow, steady, and consistent is how you move beyond deficits and get your body back.
+        - generic [ref=e58]:
+          - heading "Not ready for premium?" [level=2] [ref=e59]
+          - heading "check out our free member page Where you have access to:" [level=3] [ref=e60]:
+            - text: check out our
+            - link "free member page" [ref=e61] [cursor=pointer]:
+              - /url: /free-members/
+            - text: "Where you have access to:"
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - img "Rings One" [ref=e66]
+              - heading "White Board Workouts" [level=3] [ref=e67]
+            - generic [ref=e68]:
+              - img "Rings One" [ref=e70]
+              - heading "Blogs" [level=3] [ref=e71]
+            - generic [ref=e72]:
+              - img "Rings One" [ref=e74]
+              - heading "Exercise Tutorials" [level=3] [ref=e75]
+            - generic [ref=e76]:
+              - img "Rings One" [ref=e78]
+              - heading "Forum" [level=3] [ref=e79]
+            - generic [ref=e80]:
+              - img "Rings One" [ref=e82]
+              - heading "Advocates" [level=3] [ref=e83]
+            - generic [ref=e84]:
+              - img "Rings One" [ref=e86]
+              - heading "Podcasts" [level=3] [ref=e87]
+  - text:     
+  - contentinfo [ref=e88]:
+    - generic [ref=e89]:
+      - link " Beginner" [ref=e91] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e92]: 
+        - generic [ref=e93]: Beginner
+      - link " Inter/Adv" [ref=e95] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e96]: 
+        - generic [ref=e97]: Inter/Adv
+      - link " Overcome" [ref=e99] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e100]: 
+        - generic [ref=e101]: Overcome
+      - link " Bodyweight" [ref=e103] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e104]: 
+        - generic [ref=e105]: Bodyweight
+      - link " White Board" [ref=e107] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e108]: 
+        - generic [ref=e109]: White Board

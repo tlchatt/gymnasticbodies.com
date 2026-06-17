@@ -1,0 +1,265 @@
+.page {
+    min-height: 100vh;
+    background: var(--bg-base, #0e0e0e);
+    color: #fff;
+}
+
+.body {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+}
+
+.glow {
+    position: fixed;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(240,86,33,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.overline {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #f05621;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.headline {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 0.9;
+    color: #fff;
+    margin: 0 0 16px;
+}
+
+.headlineAccent {
+    -webkit-text-stroke: 2px #f05621;
+    color: transparent;
+    display: block;
+}
+
+.sub {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 32px;
+    max-width: 400px;
+}
+
+/* ── Email lookup form ── */
+.emailForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.emailInput {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.emailInput::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+
+.emailInput:focus {
+    border-color: rgba(240,86,33,0.5);
+}
+
+/* ── Billing display ── */
+.billingDisplay {
+    border: 1px solid rgba(240,86,33,0.3);
+    background: rgba(240,86,33,0.06);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+}
+
+.billingLabel {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+}
+
+.billingAmountRow {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.billingAmount {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1;
+    color: #fff;
+}
+
+.billingUnit {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+}
+
+.billingBadge {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f05621;
+}
+
+/* ── Card input ── */
+.cardSection {
+    margin-bottom: 20px;
+}
+
+.cardFieldLabel {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 10px;
+}
+
+.cardBox {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 16px;
+    background: rgba(255,255,255,0.03);
+    transition: border-color 0.2s ease;
+}
+
+.cardBox:focus-within {
+    border-color: rgba(240,86,33,0.45);
+}
+
+.cardHint {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+}
+
+.emailRow {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+}
+
+.emailStrong {
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+}
+
+/* ── CTA button ── */
+.ctaBtn {
+    width: 100%;
+    display: block;
+    background: linear-gradient(135deg, #fcb14e 0%, #f05621 100%);
+    color: #fff;
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    padding: 18px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    margin-bottom: 16px;
+}
+
+.ctaBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(240,86,33,0.45);
+}
+
+.ctaBtn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* ── Messages ── */
+.errorMsg {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.9rem;
+    color: #ff8080;
+    background: rgba(255,100,100,0.08);
+    border: 1px solid rgba(255,100,100,0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+}
+
+.successMsg {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.9rem;
+    color: #7dffb3;
+    background: rgba(100,255,160,0.07);
+    border: 1px solid rgba(100,255,160,0.18);
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.infoMsg {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 20px 24px;
+}
+
+.infoLink {
+    color: #f05621;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.loading {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    padding-top: 20px;
+}
+
+@media (max-width: 640px) {
+    .body { padding: 32px 16px 64px; }
+}

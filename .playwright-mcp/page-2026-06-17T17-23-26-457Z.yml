@@ -1,0 +1,99 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Think Stronger." [level=1] [ref=e27]
+        - link "Get Started" [ref=e29] [cursor=pointer]:
+          - /url: /subscribe
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - paragraph [ref=e32]: "You’re not new to the fitness neighborhood, but you aren’t sure if you need a program like GymFit. Here are a few reasons you should be here:"
+            - list [ref=e33]:
+              - listitem [ref=e34]: You need a competitive edge in your sport.
+              - listitem [ref=e35]: The gym is starting to bore you, and you want some fun hard work—like handstands or gymnastic rings.
+              - listitem [ref=e36]: You think you can’t do your favorite sport anymore because you’re “too old.”
+              - listitem [ref=e37]: You’re consistent and committed, but you keep hitting plateaus.
+              - listitem [ref=e38]: You keep getting injured.
+              - listitem [ref=e39]: You would like to get stronger than you ever thought was possible while still being able to move like a panther.
+            - paragraph [ref=e40]: Our program addresses all of the above. It doesn’t merely strengthen your muscles, it builds your body. It’s for every athlete. It’s systematic. And it works if you’re consistent and committed.
+            - heading "FOUNDATION SERIES" [level=1] [ref=e41]
+          - paragraph [ref=e43]: If you are in decent shape already, you will start with our Foundation Series, which covers seven disciplines of movement and prepares your body holistically for advanced physical endeavors. This goes up to elite level, so it can get challenging if you need that. But it starts at healthy beginner, if you need that. Let’s take a closer look at Foundation tracks, so you understand where you are going when you work your way through Foundation Courses.
+          - generic [ref=e44]:
+            - 'heading "Foundation: Why it Works" [level=2] [ref=e45]'
+            - application "Video Player - Foundation-Short Version" [ref=e46]:
+              - generic [ref=e48]:
+                - generic [ref=e52]: 0 seconds of 3 minutes, 54 secondsVolume 90%
+                - generic:
+                  - button "Play" [ref=e53] [cursor=pointer]:
+                    - img
+                  - text: • /
+            - link "Download PDF" [ref=e55] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/media/Foundation-Poster-11x17-interactive.pdf
+          - img "Think Stronger 6" [ref=e57]
+        - generic [ref=e59]:
+          - heading "Not ready for premium?" [level=2] [ref=e60]
+          - heading "check out our free member page Where you have access to:" [level=3] [ref=e61]:
+            - text: check out our
+            - link "free member page" [ref=e62] [cursor=pointer]:
+              - /url: /free-members/
+            - text: "Where you have access to:"
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - img "Rings One" [ref=e67]
+              - heading "White Board Workouts" [level=3] [ref=e68]
+            - generic [ref=e69]:
+              - img "Rings One" [ref=e71]
+              - heading "Blogs" [level=3] [ref=e72]
+            - generic [ref=e73]:
+              - img "Rings One" [ref=e75]
+              - heading "Exercise Tutorials" [level=3] [ref=e76]
+            - generic [ref=e77]:
+              - img "Rings One" [ref=e79]
+              - heading "Forum" [level=3] [ref=e80]
+            - generic [ref=e81]:
+              - img "Rings One" [ref=e83]
+              - heading "Advocates" [level=3] [ref=e84]
+            - generic [ref=e85]:
+              - img "Rings One" [ref=e87]
+              - heading "Podcasts" [level=3] [ref=e88]
+  - text:     
+  - contentinfo [ref=e89]:
+    - generic [ref=e90]:
+      - link " Beginner" [ref=e92] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/hey-newbies
+        - generic [ref=e93]: 
+        - generic [ref=e94]: Beginner
+      - link " Inter/Adv" [ref=e96] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/think-stronger
+        - generic [ref=e97]: 
+        - generic [ref=e98]: Inter/Adv
+      - link " Overcome" [ref=e100] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/mobility
+        - generic [ref=e101]: 
+        - generic [ref=e102]: Overcome
+      - link " Bodyweight" [ref=e104] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/body-weight
+        - generic [ref=e105]: 
+        - generic [ref=e106]: Bodyweight
+      - link " White Board" [ref=e108] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com/free-members
+        - generic [ref=e109]: 
+        - generic [ref=e110]: White Board

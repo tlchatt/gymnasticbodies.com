@@ -50,6 +50,13 @@
       "when": 1780350831480,
       "tag": "0006_petite_garia",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1781719641809,
+      "tag": "0007_typical_wrecking_crew",
+      "breakpoints": true
     }
   ]
 }

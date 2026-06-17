@@ -158,7 +158,7 @@ export default function UserDetailClient({ params }) {
   if (err) return <div className={s.loading}>Error: {err}</div>;
   if (!data) return null;
 
-  const { user, setting, recentLogs, logsCount, tickets, cases } = data;
+  const { user, setting, recentLogs, logsCount, tickets, cases, outbound = [] } = data;
 
   return (
     <>
@@ -237,6 +237,38 @@ export default function UserDetailClient({ params }) {
               <div className={s.empty}>No tickets or cases for this user.</div>
             </div>
           )}
+
+          {/* Outbound emails */}
+          <div className={s.card}>
+            <div className={s.cardTitle}>Outbound Emails ({outbound.length})</div>
+            {outbound.length === 0 ? (
+              <div className={s.empty}>No outbound emails sent to this user.</div>
+            ) : (
+              <div className={s.linkList}>
+                {outbound.map((o) => (
+                  <div key={o.id} className={s.linkItem} style={{ cursor: 'default' }}>
+                    <span className={s.linkSubject}>{o.subject}</span>
+                    <span className={s.linkMeta}>
+                      {o.campaign && (
+                        <span className={s.campaignTag}>
+                          {o.campaign.replace(/_/g, ' ')}
+                        </span>
+                      )}
+                      <span className={`${s.badge} ${o.type === 'marketing' ? s.badgeMarketing : s.badgeSupport}`}>
+                        {o.type}
+                      </span>
+                      {o.caseId && (
+                        <Link href={`/admin/cases/${o.caseId}`} className={s.caseLink}>
+                          Case #{o.caseId}
+                        </Link>
+                      )}
+                      <span className={s.linkDate}>{fmtDate(o.sentAt)}</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Right column: user panel */}
