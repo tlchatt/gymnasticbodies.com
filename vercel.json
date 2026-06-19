@@ -15,7 +15,7 @@
       },
       {
         "path": "/api/cronMarketingDrip",
-        "schedule": "20 19 * * *"
+        "schedule": "9 20 * * *"
       }
     ]
   }

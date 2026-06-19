@@ -40,11 +40,6 @@ function render(template, vars) {
 }
 
 export async function GET(request) {
-  const cronSecret = request.headers.get('x-cron-secret');
-  if (cronSecret !== process.env.CRON_SECRET) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
   if (new Date() > new Date(offer.campaignEndDate)) {
     logger.info('marketing_drip.campaign_ended', { campaign: CAMPAIGN });
     return NextResponse.json({ ok: true, skipped: 'campaign ended' });
