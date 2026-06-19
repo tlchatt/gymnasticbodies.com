@@ -1,4 +1,7 @@
 import { barlow, dm } from '@/lib/fonts';
+import { getSiteSettings } from '@/lib/siteSettings';
+import Nav from '@/components/Nav';
+import MarketingFooter from '@/components/marketing/MarketingFooter';
 import SubscribeTracker from './SubscribeTracker';
 import PricingCard from '@/components/marketing/PricingCard';
 import FeaturesList from '@/components/marketing/FeaturesList';
@@ -22,11 +25,13 @@ export const metadata = {
     },
 };
 
-export default function Subscribe() {
+export default async function Subscribe() {
+    const { nav, footer } = await getSiteSettings('nav', 'footer');
     const { hero, pricing, trust, features, cta } = content;
 
     return (
         <div className={`${s.page} ${barlow.variable} ${dm.variable}`}>
+            <Nav navData={nav || []} />
             <SubscribeTracker />
 
             {/* ── Hero ── */}
@@ -65,6 +70,7 @@ export default function Subscribe() {
 
             <BottomCta {...cta} />
 
+            <MarketingFooter footerData={footer || []} />
         </div>
     );
 }

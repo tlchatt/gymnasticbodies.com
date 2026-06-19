@@ -1,0 +1,976 @@
+{
+  "hey-newbies": {
+    "url": "https://www.gymnasticbodies.com/hey-newbies/",
+    "pageTitle": "Hey Newbies! | GymFit — Beginner Intro",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "hero": {
+      "headline": "Hey Newbies!",
+      "cta": "GET STARTED",
+      "ctaHref": "https://www.gymnasticbodies.com/subscribe"
+    },
+    "navLinks": [
+      {
+        "label": "Beginners",
+        "href": "https://www.gymnasticbodies.com/hey-newbies/"
+      },
+      {
+        "label": "Intermediate & Advanced Athletes",
+        "href": "https://www.gymnasticbodies.com/think-stronger/"
+      },
+      {
+        "label": "Overcoming Pain and Injury",
+        "href": "https://www.gymnasticbodies.com/mobility/"
+      },
+      {
+        "label": "About Bodyweight Strength Training",
+        "href": "https://www.gymnasticbodies.com/body-weight/"
+      },
+      {
+        "label": "Free White Board",
+        "href": "https://www.gymnasticbodies.com/free-members/"
+      }
+    ],
+    "intro": "We're not rigid about what constitutes a \"beginner.\" You may be new to fitness or you may simply be new to GymFit and our methodology. Either way, we help athletes like you discover their deficits and gently address them before moving into greater fitness gains. Likewise, if you've been struggling with injuries and know you need to strengthen tendons and regain mobility, the Intro Plan is a gateway into new levels of freedom.",
+    "sections": [
+      {
+        "heading": "#1-Recover Basic Mobility with Fundamentals",
+        "body": [
+          "Fundamentals is our introductory course, which has active movements you haven't practiced since you were a kid in gym class. The goal is to get your body back to a baseline fitness.",
+          "You will be surprised by how much mobility you might be lacking in these simple movements. It's normal. Adults don't often crawl across the floor like a bear or a lizard. But there is method in our madness. These movements unlock joints and gently reintroduce mobility with your own bodyweight as load.",
+          "It may take a few months to do these well, but it will be worth it when you feel youthful again."
+        ],
+        "cta": "GET STARTED",
+        "ctaHref": "https://app.gymnasticbodies.com/subscribe"
+      },
+      {
+        "heading": "#2-Target and Repair Deficits with Restore and Bands",
+        "body": [
+          "Once you know your weak mobility points, you can focus more specifically on stretching and strengthening those tight, painful areas. We already schedule the Restore Series and the Band Series throughout the Intro program, but we suggest repeating the stretches and exercises that you need most. For example, if you can't quite reach the ground in stiff bear due to tight hamstrings, then we recommend adjusting your workout schedule to include Hamstring Restore on a regular basis.",
+          "Ultimately, the goal is always to get you to that next level of strength and mobility. Once you've spent the months remobilizing, you can jump into our Level programs more earnestly. There's no hurry. Slow, steady, and consistent is how you move beyond deficits and get your body back."
+        ]
+      }
+    ],
+    "bottomCta": {
+      "heading": "Not ready for premium?",
+      "subheading": "CHECK OUT OUR FREE MEMBER PAGE WHERE YOU HAVE ACCESS TO:",
+      "features": [
+        "WHITE BOARD WORKOUTS",
+        "BLOGS",
+        "EXERCISE TUTORIALS",
+        "FORUM",
+        "ADVOCATES",
+        "PODCASTS"
+      ],
+      "ctaLabel": "FREE MEMBER PAGE",
+      "ctaHref": "https://www.gymnasticbodies.com/free-members/"
+    },
+    "images": [
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-beginner.svg",
+        "alt": "Beginner icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-advanced.svg",
+        "alt": "Advanced icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-mobility.svg",
+        "alt": "Mobility icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-bodyweight.svg",
+        "alt": "Bodyweight icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/WhiteBoard.svg",
+        "alt": "White Board icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/funda.jpg",
+        "alt": "Fundamentals"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/crabwalk.jpg",
+        "alt": "Fundamentals crab walk"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/bearwalk.jpg",
+        "alt": "Fundamentals bear walk"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2019/04/330x220-RestoreSeries.jpg",
+        "alt": "Restore Series"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/bands.jpg",
+        "alt": "Bands"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/restore-stretches.jpg",
+        "alt": "Restore stretches"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/rotator-cuff.jpg",
+        "alt": "Rotator cuff"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-wb-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-4.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-3.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-5.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-2.jpg",
+        "alt": "Rings One"
+      }
+    ]
+  },
+  "think-stronger": {
+    "url": "https://www.gymnasticbodies.com/think-stronger/",
+    "pageTitle": "Think Stronger | GymFit — Intermediate & Advanced Athletes",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "hero": {
+      "headline": "Think Stronger.",
+      "cta": "GET STARTED",
+      "ctaHref": "https://www.gymnasticbodies.com/subscribe"
+    },
+    "navLinks": [
+      {
+        "label": "Beginners",
+        "href": "https://www.gymnasticbodies.com/hey-newbies/"
+      },
+      {
+        "label": "Intermediate & Advanced Athletes",
+        "href": "https://www.gymnasticbodies.com/think-stronger/"
+      },
+      {
+        "label": "Overcoming Pain and Injury",
+        "href": "https://www.gymnasticbodies.com/mobility/"
+      },
+      {
+        "label": "About Bodyweight Strength Training",
+        "href": "https://www.gymnasticbodies.com/body-weight/"
+      },
+      {
+        "label": "Free White Board",
+        "href": "https://www.gymnasticbodies.com/free-members/"
+      }
+    ],
+    "intro": "You're not new to the fitness neighborhood, but you aren't sure if you need a program like GymFit. Here are a few reasons you should be here:",
+    "reasonsList": [
+      "You need a competitive edge in your sport.",
+      "The gym is starting to bore you, and you want some fun hard work—like handstands or gymnastic rings.",
+      "You think you can't do your favorite sport anymore because you're \"too old.\"",
+      "You're consistent and committed, but you keep hitting plateaus.",
+      "You keep getting injured.",
+      "You would like to get stronger than you ever thought was possible while still being able to move like a panther."
+    ],
+    "reasonsConclusion": "Our program addresses all of the above. It doesn't merely strengthen your muscles, it builds your body. It's for every athlete. It's systematic. And it works if you're consistent and committed.",
+    "sections": [
+      {
+        "heading": "FOUNDATION SERIES",
+        "body": "If you are in decent shape already, you will start with our Foundation Series, which covers seven disciplines of movement and prepares your body holistically for advanced physical endeavors. This goes up to elite level, so it can get challenging if you need that. But it starts at healthy beginner, if you need that. Let's take a closer look at Foundation tracks, so you understand where you are going when you work your way through Foundation Courses.",
+        "subheading": "Foundation: Why it Works",
+        "videoPresent": true,
+        "downloadLink": {
+          "label": "Download PDF",
+          "href": "https://www.gymnasticbodies.com/media/Foundation-Poster-11x17-interactive.pdf"
+        }
+      }
+    ],
+    "bottomCta": {
+      "heading": "Not ready for premium?",
+      "subheading": "CHECK OUT OUR FREE MEMBER PAGE WHERE YOU HAVE ACCESS TO:",
+      "features": [
+        "WHITE BOARD WORKOUTS",
+        "BLOGS",
+        "EXERCISE TUTORIALS",
+        "FORUM",
+        "ADVOCATES",
+        "PODCASTS"
+      ],
+      "ctaLabel": "FREE MEMBER PAGE",
+      "ctaHref": "https://www.gymnasticbodies.com/free-members/"
+    },
+    "images": [
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-beginner.svg",
+        "alt": "Beginner icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-advanced.svg",
+        "alt": "Advanced icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-mobility.svg",
+        "alt": "Mobility icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-bodyweight.svg",
+        "alt": "Bodyweight icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/WhiteBoard.svg",
+        "alt": "White Board icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/adv-mockup.png",
+        "alt": "Advanced program mockup"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-wb-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-4.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-3.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-5.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-2.jpg",
+        "alt": "Rings One"
+      }
+    ]
+  },
+  "mobility": {
+    "url": "https://www.gymnasticbodies.com/mobility/",
+    "pageTitle": "Mobility over dysfunction | GymFit — Overcoming Pain and Injury",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "hero": {
+      "headline": "Mobility over dysfunction.",
+      "cta": "GET STARTED",
+      "ctaHref": "https://www.gymnasticbodies.com/subscribe"
+    },
+    "navLinks": [
+      {
+        "label": "Beginners",
+        "href": "https://www.gymnasticbodies.com/hey-newbies/"
+      },
+      {
+        "label": "Intermediate & Advanced Athletes",
+        "href": "https://www.gymnasticbodies.com/think-stronger/"
+      },
+      {
+        "label": "Overcoming Pain and Injury",
+        "href": "https://www.gymnasticbodies.com/mobility/"
+      },
+      {
+        "label": "About Bodyweight Strength Training",
+        "href": "https://www.gymnasticbodies.com/body-weight/"
+      },
+      {
+        "label": "Free White Board",
+        "href": "https://www.gymnasticbodies.com/free-members/"
+      }
+    ],
+    "intro": "Pain and injury happen, but chronic pain and consistent injury are a sign of dysfunction—exactly what we're out to cure. And we've had many success stories from our athletes that have gone beyond our expectation.",
+    "sections": [
+      {
+        "heading": "Avoiding Injury",
+        "body": [
+          "The greatest advantage we can give our athletes is to build their most vulnerable body parts first, namely joints like the shoulders, hips, and spine. Healing joints that are already broken take a similar approach, though we highly encourage injured warriors to work one-on-one with a professional as you use our curriculum.",
+          "Big muscles are nice... but problematic if your joint tissues are compromised. Imagine a thread pulled at greater and greater forces without the reinforcement of its own thickness. Eventually it snaps. The same is true of our body's soft tissues—like tendons and ligaments—when they are neglected and muscles are continually tightened through strength work.",
+          "Even if you aren't trying to get big muscles, taking care of your joints will give you freedom and longevity of movement in day-to-day life. These soft tissues have less blood flowing through them so it takes longer for them to receive the cellular material to rebuild after a workout. They can and do get stronger, but it requires methodical, consistent work over a longer stretch of time than muscles require.",
+          "Adequately prepared strength athletes, like gymnasts, can be tossed around and have their joints twisted without so much as a grunt. That's our goal for you and why we include full body mobility in your training from day one."
+        ]
+      },
+      {
+        "heading": "Active Mobility",
+        "body": [
+          "You will see two types of mobility work at GymFit: Active Mobility and Flexibility. Both are important in building strength and longevity.",
+          "It's a little bit like passive stretching, except that you're moving into a stretch rather than falling into one. Think of a ballerina. It's no secret they can do the splits, but have you seen them move their leg into the splits while standing? That's active and something even flexible people need to spend time building up to.",
+          "Active mobility is one of our specialties, from our beginner levels to advanced.",
+          "Not only is it interspersed in our programming, like Fundamentals or Foundations, but there are also individual videos dedicated to active, even weighted, mobility work that can be added to your workout. (Available with All-Access only.)",
+          "One way to increase the intensity of movement and joint work is to add weights throughout the movement. Normal dislocates can be difficult for stiff shoulders, but once the movement is easy, the next step is not to throw your entire bodyweight onto those joints. Adding weights will enable shoulders to gradually build towards bodyweight movements, like single-arm handstands and side levers. This is one of the biggest advantages of GymansticBodies training. We aren't targeting the big showy muscles, we're targeting all of your muscles, thereby building a larger strength gamut.",
+          "When dealing with joint work, it's important to slowly build up to higher weights or resistance—and it's much faster than having to rehabilitate an injury."
+        ]
+      },
+      {
+        "heading": "Passive Stretching",
+        "body": [
+          "If you've been around GymFit for any length of time, you've heard us lecture on the advantages of stretching. We also know that many of our students run into road blocks that don't fit into tidy little boxes. Our bodies are complex machines, after all, so when we begin a stretching regimen, we uncover unexpected ways our muscles are tight.",
+          "Ligament pain and muscle tightness are systemic issues, tied into a web of myofascial tissue that connect to one another from your head to your toes. Plantar fasciitis might very well originate in tight hips. Orthotics can bring relief, but until you loosen up your back, your hamstrings, calves, and achilles, your feet will continue to ache. But then, you can't loosen those if other muscles in your hips are stiff and not activating, because you're sitting at a desk all day without relief.",
+          "This is why our Stretch Series presents three workouts that address an entire chain of connected muscles in multi-dimensions. By following this curriculum, you will begin to understand how it's possible for you to improve by addressing problematic muscles that you may not have realized were problematic. It's thorough, safe and fun!"
+        ]
+      },
+      {
+        "heading": "Motivation",
+        "body": "You may be convinced that our program leads athletes into greater mobility, but you're still wondering if that's relevant to you. Let us share a few facts..",
+        "facts": [
+          "Stretching makes you stronger.",
+          "Career athletes use our program to eliminate pain, especially those pains developed by training repetitive, two-dimensional motions: Running, swimming, weightlifting, throwing etc.",
+          "Time is its own chaos-maker. If you haven't exercised regularly in years or even if you sit for hours every day at a desk, simply being unintentional about your body will break it down.",
+          "Joints need love, and it's easier to care for them before they hurt.",
+          "It is possible to move from out of shape beginner to incredible athlete. It only requires your commitment of consistency and time.",
+          "Age is rarely a factor in success. Many of our strongest athletes started our program after age 40 and some into their 70s.",
+          "This program will be as gentle or as intense as you make it. Intimidation is unnecessary."
+        ]
+      }
+    ],
+    "bottomCta": {
+      "heading": "Not ready for premium?",
+      "subheading": "CHECK OUT OUR FREE MEMBER PAGE WHERE YOU HAVE ACCESS TO:",
+      "features": [
+        "WHITE BOARD WORKOUTS",
+        "BLOGS",
+        "EXERCISE TUTORIALS",
+        "FORUM",
+        "ADVOCATES",
+        "PODCASTS"
+      ],
+      "ctaLabel": "FREE MEMBER PAGE",
+      "ctaHref": "https://www.gymnasticbodies.com/free-members/"
+    },
+    "images": [
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-beginner.svg",
+        "alt": "Beginner icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-advanced.svg",
+        "alt": "Advanced icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-mobility.svg",
+        "alt": "Mobility icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-bodyweight.svg",
+        "alt": "Bodyweight icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/WhiteBoard.svg",
+        "alt": "White Board icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Mobility-koreandip.jpg",
+        "alt": "Mobility Korean Dip"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Screen-Shot-2021-06-14-at-11.29.01-AM.png",
+        "alt": "Beginner to Advanced"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/progress-mob@2x.jpg",
+        "alt": "Beginner to Advanced progress"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Mobility-mobclasses.jpg",
+        "alt": "Mobility Sub Classes"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Mobility-mobclasses-stack.jpg",
+        "alt": "Mobility Sub Classes stack"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Mobility-mobprogressions.jpg",
+        "alt": "Mobility progressions"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/mob-prog-mob@2x.jpg",
+        "alt": "Mobility progressions 2x"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Mobility-stretch-oblique.jpg",
+        "alt": "Mobility stretch oblique"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/Mobility-stretch-courses.jpg",
+        "alt": "Mobility stretch courses"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/06/mob-stretch.jpg",
+        "alt": "Mobility stretch"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-wb-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-4.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-3.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-5.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-2.jpg",
+        "alt": "Rings One"
+      }
+    ]
+  },
+  "body-weight": {
+    "url": "https://www.gymnasticbodies.com/body-weight/",
+    "pageTitle": "Why Bodyweight? | GymFit — Bodyweight Strength Training",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "hero": {
+      "headline": "Why Bodyweight?",
+      "cta": "GET STARTED",
+      "ctaHref": "https://www.gymnasticbodies.com/subscribe"
+    },
+    "navLinks": [
+      {
+        "label": "Beginners",
+        "href": "https://www.gymnasticbodies.com/hey-newbies/"
+      },
+      {
+        "label": "Intermediate & Advanced Athletes",
+        "href": "https://www.gymnasticbodies.com/think-stronger/"
+      },
+      {
+        "label": "Overcoming Pain and Injury",
+        "href": "https://www.gymnasticbodies.com/mobility/"
+      },
+      {
+        "label": "About Bodyweight Strength Training",
+        "href": "https://www.gymnasticbodies.com/body-weight/"
+      },
+      {
+        "label": "Free White Board",
+        "href": "https://www.gymnasticbodies.com/free-members/"
+      }
+    ],
+    "intro": "Maybe you're not convinced that it's possible to get huge results only using bodyweight. But if you've been looking for sustainable fitness that doesn't skimp on gains, you've come to the right place. Let us explain why the bodyweight movement is such a big deal and why GymFit specifically can guide you into your greatest fitness.",
+    "sections": [
+      {
+        "heading": "Bodyweight provides more resistance than is commonly understood.",
+        "body": "If you've been looking at bodyweight programs that max out at squats and push-ups, we understand the confusion.",
+        "points": [
+          "Two-dimensional movements like squats and push-ups eventually plateau if no resistance (weight) is added.",
+          "Your entire bodyweight becomes resistance as soon as your angles change.",
+          "This kind of resistance calls for full-body engagement, rather than one targeted muscle at a time."
+        ]
+      },
+      {
+        "heading": "It's safe and scalable to you",
+        "body": "Many intense and effective workout regimes run a high risk of injury. With bodyweight, you can gain the intensity without feeling so vulnerable.",
+        "points": [
+          "You easily adjust your difficulty when you are ready.",
+          "Our program coaches you on proper form and individual muscle-strengthening.",
+          "Your workouts consist of the most potent and practical movements at each level"
+        ]
+      },
+      {
+        "heading": "You'll build an insane core",
+        "body": "An athlete doesn't just want pretty abs. They need core strength that moves and stabilizes the body.",
+        "points": [
+          "We strengthen your entire trunk area 360-degrees (Abs, Obliques, Lower Back, etc.)",
+          "The core is at the foundation of everything we do, so it's trained even in non-core specific workouts.",
+          "Our core-specific workouts are designed to progress your core stamina as well as strength."
+        ]
+      },
+      {
+        "heading": "You build stability with fluid movements",
+        "body": "Very rarely do we move at strict ninety-degree angles. Your body needs to be under control while moving.",
+        "points": [
+          "Healthy movement requires healthy multi-dimensional joints.",
+          "Because our athletes train active mobility, they are ahead of the curve in joint strength and injury prevention.",
+          "As you progress, you can add weights to your active mobility routines, but you will master your own bodyweight first."
+        ]
+      },
+      {
+        "heading": "It's convenient and effective",
+        "body": "If you have a bit of floor space and maybe a bare wall, you've got yourself a gym.",
+        "points": [
+          "Bodyweight exercises can be done almost anywhere.",
+          "We require minimal, if any, equipment.",
+          "Workouts can be short and intense, mixing cardio and strength similar to HIIT.",
+          "Quick and effective workouts to give you more time in your day"
+        ]
+      },
+      {
+        "heading": "It's fun",
+        "body": "As soon as Spiderman discovered his web-slinging skills, he was swinging from building to building. Our athletes are kind of like Spiderman—they develop healthy joints and neurological pathways that allow them to truly enjoy moving beyond normal.",
+        "points": [
+          "Learn cool skills and develop the strength to do them.",
+          "Find yourself feeling decades younger.",
+          "Rediscover the joy of moving like a kid."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is bodyweight training effective for building muscle?",
+        "answer": "There are two different types of muscle that you can put on. Bodyweight training is most effective at building muscle density. Think incredibly strong but lean like a gymnast. Muscle size is more common in bodybuilding but can also be done with special programming of bodyweight training."
+      },
+      {
+        "question": "Is bodyweight training enough?",
+        "answer": "Bodyweight training is so effective that weight training is not required at all. Some students choose to supplement their weight training with bodyweight work while others do not weight train at all. It comes down to your goals and having a good program like GymFit to progress you properly."
+      },
+      {
+        "question": "Why are bodyweight exercises as effective as weight training?",
+        "answer": "The short answer is that the body doesn't care whether your resistance comes from a weight or creating load through bodyweight progressions. Bodyweight workouts focus on maximal muscle contraction which makes the muscle more efficient and thus stronger."
+      },
+      {
+        "question": "Can you build muscle without a gym?",
+        "answer": "Absolutely. Many students workout at home with minimal equipment or at playgrounds or parks. Some skills and exercises do require equipment to learn, but for most everything the best piece of equipment is your own body!"
+      },
+      {
+        "question": "Can you maintain muscle with bodyweight exercises?",
+        "answer": "Yes, though it depends on whether your mobility is in line with your strength. If you are too tight while being very strong, you are very likely to get injured. In this scenario, we put muscle gains on maintenance while building the proper mobility. The benefit of good mobility is that you'll be able to use the muscle in larger ranges of motion and so will be even stronger long term."
+      }
+    ],
+    "bottomCta": {
+      "heading": "Not ready for premium?",
+      "subheading": "CHECK OUT OUR FREE MEMBER PAGE WHERE YOU HAVE ACCESS TO:",
+      "features": [
+        "WHITE BOARD WORKOUTS",
+        "BLOGS",
+        "EXERCISE TUTORIALS",
+        "FORUM",
+        "ADVOCATES",
+        "PODCASTS"
+      ],
+      "ctaLabel": "FREE MEMBER PAGE",
+      "ctaHref": "https://www.gymnasticbodies.com/free-members/"
+    },
+    "images": [
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-beginner.svg",
+        "alt": "Beginner icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-advanced.svg",
+        "alt": "Advanced icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-mobility.svg",
+        "alt": "Mobility icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-bodyweight.svg",
+        "alt": "Bodyweight icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/WhiteBoard.svg",
+        "alt": "White Board icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-wb-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-4.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-3.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-5.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-2.jpg",
+        "alt": "Rings One"
+      }
+    ]
+  },
+  "all-access": {
+    "url": "https://www.gymnasticbodies.com/all-access/",
+    "pageTitle": "All Access Premium | GymFit — Build a Strong, Flexible, Powerful Body",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "hero": {
+      "headline": "BUILD A STRONG, FLEXIBLE, POWERFUL BODY.",
+      "subtext": "We believe exercise can be fun, informative, and life-changing. With access to our entire library, you can rebuild and strengthen your body from every angle. Begin with basic movements and joint strengthening. Advance into the mechanics of movement, preparing your body for anything you throw at it. Our programming takes athletes past old plateaus and graduates them into strength they didn't know they were missing.",
+      "tagline": "Time for you to get strong, limber, and build skills you thought were impossible.",
+      "planLabel": "Premium",
+      "ctas": [
+        {
+          "label": "SELECT PLAN",
+          "href": "https://www.gymnasticbodies.com/subscribe/"
+        },
+        {
+          "label": "PROGRAM SELECTOR",
+          "href": "https://www.gymnasticbodies.com/get-started/"
+        }
+      ]
+    },
+    "highlights": [
+      "All Levels",
+      "Monthly Access",
+      "Every Focus",
+      "Varied Equipment"
+    ],
+    "whatsIncluded": {
+      "heading": "What's Included:",
+      "categories": [
+        {
+          "name": "STRENGTH",
+          "description": "Our approach to strength-building is nuanced because the roadmap to strength is unique to every individual. Beginners are encouraged to use less resistance and more reps, while advanced athletes will have to work against extreme load using their bodyweight at challenging angles. Our system will coach you on where to begin and what kinds of work to schedule through your weekly workouts. An athlete who sticks with the program will get stronger if they are consistent and go at a reasonable pace."
+        },
+        {
+          "name": "MOBILITY",
+          "description": "We want to make sure you have healthy, mobile joints that can support your strength work. When you have access to our entire library, you have access to a system that can potentially rebuild you from every angle. The Stretch Series will prep your movement by expanding your passive reach. You will also build strength into your mobility in each step of our programming. Active mobility is included in focused sequences as well as interspersed through your Levels and Foundation sequences."
+        },
+        {
+          "name": "NUTRITION",
+          "description": "Nutrition is one key to a balanced, healthy body and therefore included in our programming. We approach nutrition with the same discipline with which we approach working out: Ease in and be consistent. Thrive Nutrition will teach you how to eat well so you can perform well in your workouts and in your life."
+        },
+        {
+          "name": "INTEGRATED PLANS",
+          "description": "No matter your level of physical fitness, we have a plan laid out for your success. Haven't worked out in a while? No problem. We can ease you into the Intro Plan or Level One Plan (depending on your mobility). Are you strong and mobile, but can't get past that plateau? Maybe Level Two is your schtick. Use our quick assessment tool to determine which plan fits you, and your week will automatically populate with exercises we think will advance your body to its awesomest. Then you can adjust it as much as you want for following weeks!"
+        },
+        {
+          "name": "RESTORATION",
+          "description": "If you're coming in with pains and imbalances, we can help. Our Intro Plan has been designed especially for those who have some ground to make up before they can make real gains. Fundamentals will help you discover basic mobility through natural movements. Restore will give you specific routines to loosen specific joints. Bands will strengthen your joints through extended ranges of motion with gentle load."
+        },
+        {
+          "name": "SKILLS",
+          "description": "One of the benefits of developing strength and mobility is being able to then do cool things. The stronger and more mobile an athlete becomes, the more they can partake in fun things that make working out a blast."
+        },
+        {
+          "name": "MUCH MORE!",
+          "description": "It's a lot. We're constantly adding to our library of workouts, which means you get tons of additional core, mobility, strength, flexibility, and prehab options. But we've provided a way for you to sort through the library, as well as keeping track of your workouts daily. A lot of time has gone into getting you to a point where you can be successful."
+        }
+      ]
+    },
+    "testimonials": [
+      {
+        "quote": "The mobility is put together so well. It confirms to me that most people have mobility that is pathological. In my work as a Physio I treat many people with rotator cuff injuries. They have mobility that comes nowhere near what is in this program. If only they did these mobility exercises before they got injured! This whole program is so well thought out. This is worth way more than it costs. I truly believe this is the best program I have seen that is also beneficial in terms of musculoskeletal health.",
+        "attribution": "Mark Collins, Physiotherapist"
+      },
+      {
+        "quote": "I have not found another program that structures some of the incredibly demanding elements of bodyweight strength in all its forms of flexibility, balance, mobility, muscle strength including the connective tissue (ligaments and tendon) where the real ability to create power resides.",
+        "attribution": "Paul Watson"
+      }
+    ],
+    "progressTracking": {
+      "heading": "See Your Progress Over Time",
+      "subheading": "WORKOUT HISTORY & SUPPORT",
+      "description": "Training is a journey and improvement comes in small steps. We make it easy for you to see progress over time so that any workout you do can be logged and tracked. Where will you be in a month? In a year?"
+    },
+    "support": {
+      "heading": "WORKOUT HISTORY & SUPPORT",
+      "description": "Your success is our main priority. Our support team consists of advanced coaches who have been through the sticking points you may have, and they can offer advice on what to do next. Not sure where to start? Just ask, we're an email away.",
+      "supportEmail": "support@gymnasticbodies.com"
+    },
+    "athleticBlueprint": {
+      "heading": "COMPLETE ATHLETIC BLUEPRINT",
+      "description": "You don't need a degree in physiotherapy to make this work. We'll supply a detailed plan of bodyweight strength and mobility workouts, perfect for short- and long-term goals. You just show up and give your personal best. All our programs form a complete athletic blueprint. You can start as an absolute beginner built like a concrete zombie and over time develop into a strong and flexible athlete. We'll be with you every step."
+    },
+    "images": [
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/images/all-levels.svg",
+        "alt": "All Levels"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/images/monthly-access.svg",
+        "alt": "Monthly Access"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/images/every-focus.svg",
+        "alt": "Every Focus"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/images/varied-equipment.svg",
+        "alt": "Varied Equipment"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2019/05/subscription-banner.jpg",
+        "alt": "Subscription banner"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-53.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-58.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-54.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-59.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/330x220-thrive2.jpg",
+        "alt": "Thrive nutrition"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-55.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-64.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-56.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-61.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-57.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/Group-69.png",
+        "alt": "All Access feature"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2020/10/muchmore.png",
+        "alt": "Much more"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2019/05/jin-bridge.jpg",
+        "alt": "Jin bridge pose"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2021/11/GuidedPlan-Screenshot@2x.png",
+        "alt": "Guided Plan screenshot"
+      }
+    ]
+  },
+  "free-members": {
+    "url": "https://www.gymnasticbodies.com/free-members/",
+    "pageTitle": "Free Members | GymFit — Try a Free White Board Workout",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "hero": {
+      "headline": "Free Members",
+      "subheading": "Not ready for premium?",
+      "cta": "TRY A FREE WHITE BOARD WORKOUT"
+    },
+    "freeSampleWorkout": {
+      "heading": "TRY A FREE WHITE BOARD WORKOUT",
+      "description": "Create an account to get free randomized Level One workout samples. Or sign up for premium to be guided through extended workouts with strength and mobility progressions and a full library of additional options.",
+      "workoutCategories": [
+        {
+          "category": "MOBILITY",
+          "sampleExercise": "Incline Pushup",
+          "reps": 2
+        },
+        {
+          "category": "PUSH",
+          "sampleExercise": "Pushup",
+          "reps": 2
+        },
+        {
+          "category": "PULL",
+          "sampleExercise": "Incline Row",
+          "reps": 2
+        },
+        {
+          "category": "CORE",
+          "sampleExercise": "Bent Hollow Body Rock",
+          "reps": 2
+        },
+        {
+          "category": "LEGS",
+          "sampleExercise": "Parallel Squat",
+          "reps": 2
+        }
+      ],
+      "ctas": [
+        {
+          "label": "REFRESH WORKOUT",
+          "action": "randomize"
+        },
+        {
+          "label": "SIGN ME UP FOR FREE!",
+          "href": "https://app.gymnasticbodies.com/subscribe"
+        }
+      ]
+    },
+    "freeMembershipIncludes": {
+      "heading": "WHEN SIGNING UP FOR OUR FREE MEMBER SERVICE YOU GAIN ACCESS TO:",
+      "features": [
+        "WHITE BOARD WORKOUTS",
+        "BLOGS",
+        "EXERCISE TUTORIALS",
+        "FORUM",
+        "ADVOCATES",
+        "PODCASTS"
+      ]
+    },
+    "privacyNote": "We do not sell or share your information with anyone.",
+    "navLinks": [
+      {
+        "label": "Beginners",
+        "href": "https://www.gymnasticbodies.com/hey-newbies/"
+      },
+      {
+        "label": "Intermediate & Advanced Athletes",
+        "href": "https://www.gymnasticbodies.com/think-stronger/"
+      },
+      {
+        "label": "Overcoming Pain and Injury",
+        "href": "https://www.gymnasticbodies.com/mobility/"
+      },
+      {
+        "label": "About Bodyweight Strength Training",
+        "href": "https://www.gymnasticbodies.com/body-weight/"
+      },
+      {
+        "label": "Free White Board",
+        "href": "https://www.gymnasticbodies.com/free-members/"
+      }
+    ],
+    "images": [
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-beginner.svg",
+        "alt": "Beginner icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-advanced.svg",
+        "alt": "Advanced icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-mobility.svg",
+        "alt": "Mobility icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/icon-bodyweight.svg",
+        "alt": "Bodyweight icon"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/themes/gymnasticbodies/library/images/WhiteBoard.svg",
+        "alt": "White Board icon"
+      },
+      {
+        "src": "https://gymfit-images.s3.amazonaws.com/exercises/HBPPE1.jpg",
+        "alt": "Exercise HBPPE1"
+      },
+      {
+        "src": "https://gymfit-images.s3.amazonaws.com/exercises/HBPPE2.jpg",
+        "alt": "Exercise HBPPE2"
+      },
+      {
+        "src": "https://gymfit-images.s3.amazonaws.com/exercises/RCPE1.jpg",
+        "alt": "Exercise RCPE1"
+      },
+      {
+        "src": "https://gymfit-images.s3.amazonaws.com/exercises/FLPE2.jpg",
+        "alt": "Exercise FLPE2"
+      },
+      {
+        "src": "https://gymfit-images.s3.amazonaws.com/exercises/SLSPE2.jpg",
+        "alt": "Exercise SLSPE2"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-wb-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-4.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-3.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-1.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-5.jpg",
+        "alt": "Rings One"
+      },
+      {
+        "src": "https://www.gymnasticbodies.com/gymfit/wp-content/uploads/2022/01/info-icons-2.jpg",
+        "alt": "Rings One"
+      }
+    ]
+  },
+  "subscribe": {
+    "url": "https://www.gymnasticbodies.com/subscribe/",
+    "pageTitle": "Subscribe | GymFit — Pricing Plans",
+    "metaDescription": "GymFit is the world leading bodyweight strength program, blending mobility, strength, cardio and more to improve your quality of life.",
+    "pricingPlans": [
+      {
+        "name": "MONTHLY",
+        "price": "$75.00",
+        "priceUnit": "/month",
+        "billingDetail": "$225 billed quarterly",
+        "trial": "after 7-day free trial",
+        "cta": "START FOR FREE",
+        "ctaHref": "https://www.gymnasticbodies.com/checkout/?add-to-cart=51&variation_id=55"
+      },
+      {
+        "name": "ANNUALLY",
+        "price": "$60.00",
+        "priceUnit": "/month",
+        "billingDetail": "$720 billed annually",
+        "trial": "after 7 day free trial",
+        "cta": "START FOR FREE",
+        "ctaHref": "https://www.gymnasticbodies.com/checkout/?add-to-cart=51&variation_id=56"
+      }
+    ],
+    "features": [
+      "Now includes our nutrition course Thrive",
+      "Over 350 Strength exercises, 300 mobility exercises and 75 Handstand exercises to deliver noticeable results in less time",
+      "Customizable training to match your fitness level and goals",
+      "6+ Week Programs that adapt as you progress",
+      "Short, Medium and Long workouts to suit your schedule"
+    ],
+    "navLinks": [
+      {
+        "label": "Beginners",
+        "href": "https://www.gymnasticbodies.com/hey-newbies"
+      },
+      {
+        "label": "Inter/Adv",
+        "href": "https://www.gymnasticbodies.com/think-stronger"
+      },
+      {
+        "label": "Overcome",
+        "href": "https://www.gymnasticbodies.com/mobility"
+      },
+      {
+        "label": "Bodyweight",
+        "href": "https://www.gymnasticbodies.com/body-weight"
+      },
+      {
+        "label": "White Board",
+        "href": "https://www.gymnasticbodies.com/free-members"
+      }
+    ],
+    "images": []
+  }
+}

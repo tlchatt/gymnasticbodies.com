@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./context/stateContext";
-import NavShell from "@/components/NavShell";
 import { barlow, dm } from "@/lib/fonts";
 import { Suspense } from 'react';
 import Script from "next/script";
@@ -77,7 +76,6 @@ export default function RootLayout({ children }) {
 
       <body className={`${geistSans.variable} ${geistMono.variable} ${barlow.variable} ${dm.variable}`} style={{ minHeight: "100vh" }}>
         <UserProvider>
-          <NavShell />
           {children}
         </UserProvider>
       </body>

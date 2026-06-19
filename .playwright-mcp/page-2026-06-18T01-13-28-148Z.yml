@@ -1,0 +1,152 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - heading "Why Bodyweight?" [level=1] [ref=e26]
+      - link "Get Started" [ref=e28] [cursor=pointer]:
+        - /url: /subscribe
+      - generic [ref=e30]:
+        - link "Beginners" [ref=e32] [cursor=pointer]:
+          - /url: /hey-newbies/
+          - generic [ref=e33]:
+            - img [ref=e34]
+            - paragraph [ref=e35]: Beginners
+        - link "Intermediate & Advanced Athletes" [ref=e37] [cursor=pointer]:
+          - /url: /think-stronger/
+          - generic [ref=e38]:
+            - img [ref=e39]
+            - paragraph [ref=e40]:
+              - text: Intermediate
+              - text: "& Advanced Athletes"
+        - link "Overcoming Pain and Injury" [ref=e42] [cursor=pointer]:
+          - /url: /mobility/
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - paragraph [ref=e45]:
+              - text: Overcoming
+              - text: Pain and Injury
+        - link "About Bodyweight Strength Training" [ref=e47] [cursor=pointer]:
+          - /url: /body-weight/
+          - generic [ref=e48]:
+            - img [ref=e49]
+            - paragraph [ref=e50]:
+              - text: About Bodyweight
+              - text: Strength Training
+        - link "Free White Board" [ref=e52] [cursor=pointer]:
+          - /url: /free-members/
+          - generic [ref=e53]:
+            - img [ref=e54]
+            - paragraph [ref=e55]:
+              - text: Free
+              - text: White Board
+      - generic [ref=e56]:
+        - paragraph [ref=e57]: Maybe you’re not convinced that it’s possible to get huge results only using bodyweight. But if you’ve been looking for sustainable fitness that doesn’t skimp on gains, you’ve come to the right place. Let us explain why the bodyweight movement is such a big deal and why GymFit specifically can guide you into your greatest fitness.
+        - heading "Bodyweight provides more resistence than is commonly understood." [level=1] [ref=e58]
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: If you’ve been looking at bodyweight programs that max out at squats and push-ups, we understand the confusion.
+        - list [ref=e61]:
+          - listitem [ref=e62]: Two-dimensional movements like squats and push-ups eventually plateau if no resistance (weight) is added.
+          - listitem [ref=e63]: Your entire bodyweight becomes resistence as soon as your angles change.
+          - listitem [ref=e64]: This kind of resistance calls for full-body engagement, rather than one targeted muscle at a time.
+  - generic [ref=e66]:
+    - heading "It’s safe and scalable to you" [level=1] [ref=e68]
+    - generic [ref=e69]:
+      - paragraph [ref=e70]: Many intense and effective workout regimes run a high risk of injury. With bodyweight, you can gain the intensity without feeling so vulnerable.
+      - list [ref=e71]:
+        - listitem [ref=e72]: You easily adjust your difficulty when you are ready.
+        - listitem [ref=e73]: Our program coaches you on proper form and individual muscle-strengthening.
+        - listitem [ref=e74]: Your workouts consist of the most potent and practical movements at each level
+  - generic [ref=e76]:
+    - heading "You’ll build an insane core" [level=1] [ref=e78]
+    - generic [ref=e79]:
+      - paragraph [ref=e80]: An athlete doesn’t just want pretty abs. They need core strength that moves and stabilizes the body.
+      - list [ref=e81]:
+        - listitem [ref=e82]: We strengthen your entire trunk arear 360-degrees (Abs, Obliques, Lower Back, etc.)
+        - listitem [ref=e83]: The core is at the foundation of everything we do, so it’s trained even in non-core specific workouts.
+        - listitem [ref=e84]: Our core-specific workouts are designed to progress your core stamina as well as strength.
+  - generic [ref=e86]:
+    - heading "You build stability with fluid movements" [level=1] [ref=e88]
+    - generic [ref=e89]:
+      - paragraph [ref=e90]: Very rarely do we move at strict ninety-degree angles. Your body needs to be under control while moving.
+      - list [ref=e91]:
+        - listitem [ref=e92]: Healthy movement requires healthy multi-dimensional joints.
+        - listitem [ref=e93]: Because our athletes train active mobility, they are ahead of the curve in joint strength and injury prevention.
+        - listitem [ref=e94]: As you progress, you can add weights to your active mobility routines, but you will master your own bodyweight first.
+  - generic [ref=e96]:
+    - heading "It’s convenient and effective" [level=1] [ref=e98]
+    - generic [ref=e99]:
+      - paragraph [ref=e100]: If you have a bit of floor space and maybe a bare wall, you’ve got yourself a gym.
+      - list [ref=e101]:
+        - listitem [ref=e102]: Bodyweight exercises can be done almost anywhere.
+        - listitem [ref=e103]: We require minimal, if any, equipment.
+        - listitem [ref=e104]: Workouts can be short and intense, mixing cardio and strength similar to HIIT.
+        - listitem [ref=e105]: Quick and effective workouts to give you more time in your day
+  - generic [ref=e107]:
+    - heading "It’s fun" [level=1] [ref=e109]
+    - generic [ref=e110]:
+      - paragraph [ref=e111]: As soon as Spiderman discovered his web-slinging skills, he was swinging from building to building. Our athletes are kind of like Spiderman—they develop healthy joints and neurological pathways that allow them to truly enjoy moving beyond normal.
+      - list [ref=e112]:
+        - listitem [ref=e113]: Learn cool skills and develop the strength to do them.
+        - listitem [ref=e114]: Find yourself feeling decades younger.
+        - listitem [ref=e115]: Rediscover the joy of moving like a kid.
+  - generic [ref=e117]:
+    - heading "Not ready for premium?" [level=2] [ref=e118]
+    - heading "check out our free member page Where you have access to:" [level=3] [ref=e119]:
+      - text: check out our
+      - link "free member page" [ref=e120] [cursor=pointer]:
+        - /url: /free-members/
+      - text: "Where you have access to:"
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - img "Rings One" [ref=e125]
+        - heading "White Board Workouts" [level=3] [ref=e126]
+      - generic [ref=e127]:
+        - img "Rings One" [ref=e129]
+        - heading "Blogs" [level=3] [ref=e130]
+      - generic [ref=e131]:
+        - img "Rings One" [ref=e133]
+        - heading "Exercise Tutorials" [level=3] [ref=e134]
+      - generic [ref=e135]:
+        - img "Rings One" [ref=e137]
+        - heading "Forum" [level=3] [ref=e138]
+      - generic [ref=e139]:
+        - img "Rings One" [ref=e141]
+        - heading "Advocates" [level=3] [ref=e142]
+      - generic [ref=e143]:
+        - img "Rings One" [ref=e145]
+        - heading "Podcasts" [level=3] [ref=e146]
+  - contentinfo [ref=e147]:
+    - generic [ref=e148]:
+      - link "  Gymnastic Bodies" [ref=e151] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com
+        - generic [ref=e152]: 
+        - generic [ref=e153]: 
+        - generic: Gymnastic Bodies
+      - generic [ref=e154]:
+        - link "" [ref=e155] [cursor=pointer]:
+          - /url: https://www.facebook.com/GymnasticBodies/
+          - generic [ref=e156]: 
+        - link "" [ref=e157] [cursor=pointer]:
+          - /url: https://twitter.com/gymnasticbodies
+          - generic [ref=e158]: 
+        - link "" [ref=e159] [cursor=pointer]:
+          - /url: https://www.instagram.com/gymnasticbodies/
+          - generic [ref=e160]: 
+  - text:     

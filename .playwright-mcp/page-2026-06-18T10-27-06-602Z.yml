@@ -1,0 +1,181 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "GymFit by Gymnastic Bodies" [ref=e6]
+        - button "Open menu" [ref=e7] [cursor=pointer]
+    - main [ref=e11]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: GymFit · by Gymnastic Bodies
+        - heading "Move like you were built for it." [level=1] [ref=e15]
+        - paragraph [ref=e17]: Restore mobility. Build real strength. Join tens of thousands of students training the gymnastic way.
+        - link "Start Free Trial →" [ref=e18] [cursor=pointer]:
+          - /url: /subscribe
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - heading "Find your program." [level=2] [ref=e22]
+          - paragraph [ref=e23]: Every level. Every goal. Every age.
+        - generic [ref=e24]:
+          - link "🌱 Hey Newbies Start here. Zero experience required." [ref=e25] [cursor=pointer]:
+            - /url: /hey-newbies
+            - generic [ref=e26]: 🌱
+            - generic [ref=e27]: Hey Newbies
+            - generic [ref=e28]: Start here. Zero experience required.
+          - link "💪 Think Stronger Progressive gymnastic strength training." [ref=e29] [cursor=pointer]:
+            - /url: /think-stronger
+            - generic [ref=e30]: 💪
+            - generic [ref=e31]: Think Stronger
+            - generic [ref=e32]: Progressive gymnastic strength training.
+          - link "🔄 Mobility Restore range of motion in every joint." [ref=e33] [cursor=pointer]:
+            - /url: /mobility
+            - generic [ref=e34]: 🔄
+            - generic [ref=e35]: Mobility
+            - generic [ref=e36]: Restore range of motion in every joint.
+          - link "⚡ Body Weight No equipment. No excuses. Train anywhere." [ref=e37] [cursor=pointer]:
+            - /url: /body-weight
+            - generic [ref=e38]: ⚡
+            - generic [ref=e39]: Body Weight
+            - generic [ref=e40]: No equipment. No excuses. Train anywhere.
+          - link "🏆 All Access Every program. Every exercise. One price." [ref=e41] [cursor=pointer]:
+            - /url: /all-access
+            - generic [ref=e42]: 🏆
+            - generic [ref=e43]: All Access
+            - generic [ref=e44]: Every program. Every exercise. One price.
+      - generic [ref=e45]:
+        - heading "Join tens of thousands of students." [level=2] [ref=e47]
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - img "Suzanna McGee" [ref=e50]
+            - generic [ref=e51]:
+              - paragraph [ref=e52]: "\"I started to train with the mindset that this is a lifestyle — correcting all weaknesses and making the body strong from all angles, working on strength and mobility at the same time. The coaches are amazing. It's almost like going to school on how to become a super human.\""
+              - generic [ref=e53]: Suzanna McGee
+              - generic [ref=e54]: Correcting Weaknesses
+          - generic [ref=e55]:
+            - img "James Jones" [ref=e56]
+            - generic [ref=e57]:
+              - paragraph [ref=e58]: "\"I'd been doing Crossfit for 7 years and dealing with a nagging back pain which eventually turned into a pretty devastating injury. After 2 years of GB Foundation — thanks to you guys I'm pain free!\""
+              - generic [ref=e59]: James Jones
+              - generic [ref=e60]: Pain Free
+          - generic [ref=e61]:
+            - img "Roland Schoemann" [ref=e62]
+            - generic [ref=e63]:
+              - paragraph [ref=e64]: "\"I've represented South Africa at four Olympics and won three Olympic medals including a gold. I'm a very, very humble GymnasticBodies subscriber. Embrace your weaknesses — that's how you're going to get better at them.\""
+              - generic [ref=e65]: Roland Schoemann
+              - generic [ref=e66]: Olympic Gold Medalist
+          - generic [ref=e67]:
+            - img "Andrey Trium" [ref=e68]
+            - generic [ref=e69]:
+              - paragraph [ref=e70]: "\"GymnasticBodies training is about doing more of more: conquering your own body and mind, doing exercises you could not even dare thinking about. Mobility — a synergetic combination of strength and flexibility — is the keyword.\""
+              - generic [ref=e71]: Andrey Trium
+              - generic [ref=e72]: Enjoy the Journey
+          - generic [ref=e73]:
+            - img "Ryan Bailey" [ref=e74]
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: "\"I started a year ago all concerned about how long things take. Things have changed — I no longer care about time frames. Grateful for the stretch series and Coach Sommer's message of patience. Better than I ever thought for myself.\""
+              - generic [ref=e77]: Ryan Bailey
+              - generic [ref=e78]: Building Flexibility
+          - generic [ref=e79]:
+            - img "Jin Liu" [ref=e80]
+            - generic [ref=e81]:
+              - paragraph [ref=e82]: "\"GymnasticBodies has helped me grow tremendously — discovering my imbalances, developing strength and mobility. More importantly its progressive approach has taught me patience. My nagging hamstring pain from two years ago is completely gone!\""
+              - generic [ref=e83]: Jin Liu
+              - generic [ref=e84]: Me? An Athlete?
+          - generic [ref=e85]:
+            - img "KC" [ref=e86]
+            - generic [ref=e87]:
+              - paragraph [ref=e88]: "\"Every single day you can find KC at 71-years-young outside, keeping active and loving life — rock climbing, mountain biking, skiing. Gymnastic Strength Training is his base, one he doesn't skip because it's critical to the hobbies that keep him feeling young.\""
+              - generic [ref=e89]: KC
+              - generic [ref=e90]: Fit after 70
+          - generic [ref=e91]:
+            - img "Suzanna McGee" [ref=e92]
+            - generic [ref=e93]:
+              - paragraph [ref=e94]: "\"I started to train with the mindset that this is a lifestyle — correcting all weaknesses and making the body strong from all angles, working on strength and mobility at the same time. The coaches are amazing. It's almost like going to school on how to become a super human.\""
+              - generic [ref=e95]: Suzanna McGee
+              - generic [ref=e96]: Correcting Weaknesses
+          - generic [ref=e97]:
+            - img "James Jones" [ref=e98]
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: "\"I'd been doing Crossfit for 7 years and dealing with a nagging back pain which eventually turned into a pretty devastating injury. After 2 years of GB Foundation — thanks to you guys I'm pain free!\""
+              - generic [ref=e101]: James Jones
+              - generic [ref=e102]: Pain Free
+          - generic [ref=e103]:
+            - img "Roland Schoemann" [ref=e104]
+            - generic [ref=e105]:
+              - paragraph [ref=e106]: "\"I've represented South Africa at four Olympics and won three Olympic medals including a gold. I'm a very, very humble GymnasticBodies subscriber. Embrace your weaknesses — that's how you're going to get better at them.\""
+              - generic [ref=e107]: Roland Schoemann
+              - generic [ref=e108]: Olympic Gold Medalist
+          - generic [ref=e109]:
+            - img "Andrey Trium" [ref=e110]
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: "\"GymnasticBodies training is about doing more of more: conquering your own body and mind, doing exercises you could not even dare thinking about. Mobility — a synergetic combination of strength and flexibility — is the keyword.\""
+              - generic [ref=e113]: Andrey Trium
+              - generic [ref=e114]: Enjoy the Journey
+          - generic [ref=e115]:
+            - img "Ryan Bailey" [ref=e116]
+            - generic [ref=e117]:
+              - paragraph [ref=e118]: "\"I started a year ago all concerned about how long things take. Things have changed — I no longer care about time frames. Grateful for the stretch series and Coach Sommer's message of patience. Better than I ever thought for myself.\""
+              - generic [ref=e119]: Ryan Bailey
+              - generic [ref=e120]: Building Flexibility
+          - generic [ref=e121]:
+            - img "Jin Liu" [ref=e122]
+            - generic [ref=e123]:
+              - paragraph [ref=e124]: "\"GymnasticBodies has helped me grow tremendously — discovering my imbalances, developing strength and mobility. More importantly its progressive approach has taught me patience. My nagging hamstring pain from two years ago is completely gone!\""
+              - generic [ref=e125]: Jin Liu
+              - generic [ref=e126]: Me? An Athlete?
+          - generic [ref=e127]:
+            - img "KC" [ref=e128]
+            - generic [ref=e129]:
+              - paragraph [ref=e130]: "\"Every single day you can find KC at 71-years-young outside, keeping active and loving life — rock climbing, mountain biking, skiing. Gymnastic Strength Training is his base, one he doesn't skip because it's critical to the hobbies that keep him feeling young.\""
+              - generic [ref=e131]: KC
+              - generic [ref=e132]: Fit after 70
+      - generic [ref=e134]:
+        - generic [ref=e135]: 7 days free
+        - heading "Start training today." [level=3] [ref=e136]
+        - link "Get Started →" [ref=e137] [cursor=pointer]:
+          - /url: /subscribe
+        - paragraph [ref=e138]: No credit card required
+    - contentinfo [ref=e139]:
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - link "GymFit by Gymnastic Bodies" [ref=e143] [cursor=pointer]:
+              - /url: /
+              - img "GymFit by Gymnastic Bodies" [ref=e144]
+            - paragraph [ref=e145]: Move like you were built for it.
+          - generic [ref=e146]:
+            - generic [ref=e147]: Programs
+            - link "Hey Newbies" [ref=e148] [cursor=pointer]:
+              - /url: /hey-newbies
+            - link "Think Stronger" [ref=e149] [cursor=pointer]:
+              - /url: /think-stronger
+            - link "Mobility" [ref=e150] [cursor=pointer]:
+              - /url: /mobility
+            - link "Body Weight" [ref=e151] [cursor=pointer]:
+              - /url: /body-weight
+            - link "All Access" [ref=e152] [cursor=pointer]:
+              - /url: /all-access
+            - link "Free Members" [ref=e153] [cursor=pointer]:
+              - /url: /free-members
+          - generic [ref=e154]:
+            - generic [ref=e155]: Company
+            - link "Blog" [ref=e156] [cursor=pointer]:
+              - /url: /blog
+            - link "Forum" [ref=e157] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/forum/
+            - link "Contact" [ref=e158] [cursor=pointer]:
+              - /url: mailto:support@gymnasticbodies.com
+        - generic [ref=e159]:
+          - paragraph [ref=e160]: © Gymnastic Bodies. All rights reserved.
+          - generic [ref=e161]:
+            - link "instagram" [ref=e162] [cursor=pointer]:
+              - /url: https://www.instagram.com/gymnasticbodies/
+              - img [ref=e163]
+            - link "youtube" [ref=e165] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/GymnasticBodies
+              - img [ref=e166]
+            - link "facebook" [ref=e168] [cursor=pointer]:
+              - /url: https://www.facebook.com/gymnasticbodies
+              - img [ref=e169]
+  - alert [ref=e171]

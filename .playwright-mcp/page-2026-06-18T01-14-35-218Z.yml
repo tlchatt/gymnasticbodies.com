@@ -1,0 +1,127 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Hey Newbies!" [level=1] [ref=e27]
+        - link "Get Started" [ref=e29] [cursor=pointer]:
+          - /url: /subscribe
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - link "Hey Newbies 1 Beginners" [ref=e33] [cursor=pointer]:
+              - /url: /hey-newbies/
+              - generic [ref=e34]:
+                - img "Hey Newbies 1" [ref=e35]
+                - paragraph [ref=e36]: Beginners
+            - link "Hey Newbies 2 Intermediate & Advanced Athletes" [ref=e38] [cursor=pointer]:
+              - /url: /think-stronger/
+              - generic [ref=e39]:
+                - img "Hey Newbies 2" [ref=e40]
+                - paragraph [ref=e41]:
+                  - text: Intermediate
+                  - text: "& Advanced Athletes"
+            - link "Hey Newbies 3 Overcoming Pain and Injury" [ref=e43] [cursor=pointer]:
+              - /url: /mobility/
+              - generic [ref=e44]:
+                - img "Hey Newbies 3" [ref=e45]
+                - paragraph [ref=e46]:
+                  - text: Overcoming
+                  - text: Pain and Injury
+            - link "Hey Newbies 4 About Bodyweight Strength Training" [ref=e48] [cursor=pointer]:
+              - /url: /body-weight/
+              - generic [ref=e49]:
+                - img "Hey Newbies 4" [ref=e50]
+                - paragraph [ref=e51]:
+                  - text: About Bodyweight
+                  - text: Strength Training
+            - link "Hey Newbies 5 Free White Board" [ref=e53] [cursor=pointer]:
+              - /url: /free-members/
+              - generic [ref=e54]:
+                - img "Hey Newbies 5" [ref=e55]
+                - paragraph [ref=e56]:
+                  - text: Free
+                  - text: White Board
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: We’re not rigid about what constitutes a “beginner.” You may be new to fitness or you may simply be new to GymFit and our methodology. Either way, we help athletes like you discover their deficits and gently address them before moving into greater fitness gains. Likewise, if you’ve been struggling with injuries and know you need to strengthen tendons and regain mobility, the Intro Plan is a gateway into new levels of freedom.
+            - paragraph [ref=e59]: "This is how it works:"
+            - heading "#1-Recover Basic Mobility with Fundamentals" [level=1] [ref=e60]
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - img "Fundamentals" [ref=e63]
+              - paragraph [ref=e64]: Fundamentals is our introductory course, which has active movements you haven’t practiced since you were a kid in gym class. The goal is to get your body back to a baseline fitness.
+              - paragraph [ref=e65]: You will be surprised by how much mobility you might be lacking in these simple movements. It’s normal. Adults don’t often crawl across the floor like a bear or a lizard. But there is method in our madness. These movements unlock joints and gently reintroduce mobility with your own bodyweight as load.
+              - paragraph [ref=e66]: It may take a few months to do these well, but it will be worth it when you feel youthful again.
+            - generic [ref=e67]:
+              - img "Fundamentals" [ref=e68]
+              - img "Fundamentals" [ref=e69]
+          - link "Get Started" [ref=e71] [cursor=pointer]:
+            - /url: https://www.gymnasticbodies.com/all-access/
+          - heading "#2-Target and Repair Deficits with Restore and Bands" [level=1] [ref=e73]
+          - img "Hey Newbies 6" [ref=e75]
+          - img "Hey Newbies 7" [ref=e77]
+          - generic [ref=e78]:
+            - paragraph [ref=e79]: Once you know your weak mobility points, you can focus more specifically on stretching and strengthening those tight, painful areas. We already schedule the Restore Series and the Band Series throughout the Intro program, but we suggest repeating the stretches and exercises that you need most. For example, if you can’t quite reach the ground in stiff bear due to tight hamstrings, then we recommend adjusting your workout schedule to include Hamstring Restore on a regular basis.
+            - img "Fundamentals" [ref=e80]
+            - img "Fundamentals" [ref=e81]
+            - paragraph [ref=e82]: Ultimately, the goal is always to get you to that next level of strength and mobility. Once you’ve spent the months remobilizing, you can jump into our Level programs more earnestly. There’s no hurry. Slow, steady, and consistent is how you move beyond deficits and get your body back.
+        - generic [ref=e84]:
+          - heading "Not ready for premium?" [level=2] [ref=e85]
+          - heading "check out our free member page Where you have access to:" [level=3] [ref=e86]:
+            - text: check out our
+            - link "free member page" [ref=e87] [cursor=pointer]:
+              - /url: /free-members/
+            - text: "Where you have access to:"
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - img "Rings One" [ref=e92]
+              - heading "White Board Workouts" [level=3] [ref=e93]
+            - generic [ref=e94]:
+              - img "Rings One" [ref=e96]
+              - heading "Blogs" [level=3] [ref=e97]
+            - generic [ref=e98]:
+              - img "Rings One" [ref=e100]
+              - heading "Exercise Tutorials" [level=3] [ref=e101]
+            - generic [ref=e102]:
+              - img "Rings One" [ref=e104]
+              - heading "Forum" [level=3] [ref=e105]
+            - generic [ref=e106]:
+              - img "Rings One" [ref=e108]
+              - heading "Advocates" [level=3] [ref=e109]
+            - generic [ref=e110]:
+              - img "Rings One" [ref=e112]
+              - heading "Podcasts" [level=3] [ref=e113]
+  - contentinfo [ref=e114]:
+    - generic [ref=e115]:
+      - link "  Gymnastic Bodies" [ref=e118] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com
+        - generic [ref=e119]: 
+        - generic [ref=e120]: 
+        - generic: Gymnastic Bodies
+      - generic [ref=e121]:
+        - link "" [ref=e122] [cursor=pointer]:
+          - /url: https://www.facebook.com/GymnasticBodies/
+          - generic [ref=e123]: 
+        - link "" [ref=e124] [cursor=pointer]:
+          - /url: https://twitter.com/gymnasticbodies
+          - generic [ref=e125]: 
+        - link "" [ref=e126] [cursor=pointer]:
+          - /url: https://www.instagram.com/gymnasticbodies/
+          - generic [ref=e127]: 
+  - text:     

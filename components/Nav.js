@@ -1,184 +1,162 @@
-'use client'
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter, usePathname } from 'next/navigation';
+import { useMediaQuery } from '@/lib/MediaQueries';
+import { authClient } from '@/lib/auth-client';
+import { ptToText } from '@/lib/portableText';
 
-const pages = [{ option: 'Get Started', href: '/subscribe' }];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const settings = [];
+export default function Nav({ navData = [] }) {
+    const [open, setOpen] = useState(false);
+    const { data: session } = authClient.useSession();
+    const user = session?.user;
+    const isLarge = useMediaQuery('(min-width: 1024px)');
 
-// Routes where the MUI AppBar should be suppressed entirely.
-// - Exact matches: /subscribe, /renew
-// - Prefix match: /admin/* (has its own sidebar nav via AdminNav)
-const HIDDEN_NAV_PREFIXES = ['/subscribe', '/renew', '/admin'];
+    const links = navData.filter(b => b._type === 'navLink' && b.variant !== 'ghost');
+    const signInBlock = navData.find(b => b._type === 'navLink' && b.variant === 'ghost');
+    const ctaBlock = navData.find(b => b._type === 'ctaButton');
 
-function ResponsiveAppBar() {
-    const router = useRouter();
-    const pathname = usePathname();
-    if (HIDDEN_NAV_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
-    const [anchorElNav, setAnchorElNav] = useState(null);
-    const [anchorElUser, setAnchorElUser] = useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+    const navStyle = {
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        backgroundColor: 'rgba(14,14,14,0.92)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid var(--border-subtle)',
+        height: 'var(--nav-height)',
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+    const innerStyle = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '100%',
+        maxWidth: 'var(--content-max)',
+        margin: '0 auto',
+        padding: isLarge ? '0 2rem' : '0 1.25rem',
     };
 
-    function handleOptionClick(e) {
-        router.push(`/subscribe`)
-    }
+    const linksStyle = {
+        display: isLarge ? 'flex' : open ? 'flex' : 'none',
+        alignItems: isLarge ? 'center' : 'stretch',
+        gap: isLarge ? '0.25rem' : 0,
+        flexDirection: isLarge ? 'row' : 'column',
+        ...(isLarge ? {} : {
+            position: 'absolute',
+            top: 'var(--nav-height)',
+            left: 0,
+            right: 0,
+            backgroundColor: 'rgba(14,14,14,0.97)',
+            borderBottom: '1px solid var(--border-subtle)',
+            padding: '1rem 1.25rem',
+        }),
+    };
+
+    const linkStyle = {
+        color: 'var(--text-muted)',
+        textDecoration: 'none',
+        fontSize: '0.9rem',
+        fontFamily: 'var(--font-body)',
+        fontWeight: 500,
+        padding: isLarge ? '0.4rem 0.75rem' : '0.75rem 0',
+        borderRadius: 'var(--radius-sm)',
+        display: 'block',
+        borderBottom: isLarge ? 'none' : '1px solid var(--border-subtle)',
+    };
+
+    const signInStyle = {
+        color: 'var(--text-muted)',
+        textDecoration: 'none',
+        fontSize: '0.9rem',
+        fontFamily: 'var(--font-body)',
+        fontWeight: 500,
+        padding: isLarge ? '0.4rem 0.75rem' : '0.75rem 0',
+        display: 'block',
+    };
+
+    const ctaStyle = {
+        background: 'var(--gradient-cta)',
+        color: '#fff',
+        textDecoration: 'none',
+        fontSize: '0.875rem',
+        fontFamily: 'var(--font-display)',
+        fontWeight: 700,
+        padding: isLarge ? '0.5rem 1.25rem' : '0.75rem 0',
+        borderRadius: 'var(--radius-sm)',
+        letterSpacing: '0.02em',
+        display: 'block',
+        marginTop: isLarge ? 0 : '0.5rem',
+        textAlign: isLarge ? undefined : 'center',
+    };
+
+    const hamburgerStyle = {
+        display: isLarge ? 'none' : 'flex',
+        flexDirection: 'column',
+        gap: '5px',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '4px',
+    };
+
+    const barBase = {
+        width: '22px',
+        height: '2px',
+        backgroundColor: 'var(--text)',
+        borderRadius: '2px',
+        transition: 'transform 0.2s, opacity 0.2s',
+        display: 'block',
+    };
 
     return (
-        <AppBar position="static" style={{ background: "#f5f5f5", color: "black", padding: "10px" }}>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-                    <a href="https://my.gymnasticbodies.com/">
+        <nav style={navStyle}>
+            <div style={innerStyle}>
+                <Link href="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0, textDecoration: 'none' }}>
                     <Image
                         src="/images/GFmarkandName.webp"
-                        fill
-                        alt="Logo "
-                        style={{ objectFit: "contain" }}
+                        alt="GymFit by Gymnastic Bodies"
+                        width={130}
+                        height={38}
+                        style={{ objectFit: 'contain' }}
+                        priority
                     />
-                    </a>
-                    {/* <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'black',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography> */}
+                </Link>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="black"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{ display: { xs: 'block', md: 'none' } }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                                    <Typography sx={{ textAlign: 'center' }}>{page.option}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-                    {/*<Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'black',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>*/}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={(e) => handleOptionClick(e)}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                {page.option}
-                            </Button>
-                        ))}
-                    </Box>
-                    {/* <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box> */}
-                </Toolbar>
-            </Container>
-        </AppBar>
+                <div style={linksStyle}>
+                    {links.map((link, i) => (
+                        <Link key={i} href={link.href || '#'} style={linkStyle}>
+                            {ptToText(link.text)}
+                        </Link>
+                    ))}
+
+                    {user ? (
+                        <a href="https://my.gymnasticbodies.com" style={signInStyle}>
+                            {user.name?.split(' ')[0] || 'Account'}
+                        </a>
+                    ) : signInBlock ? (
+                        <a href={signInBlock.href || 'https://my.gymnasticbodies.com'} style={signInStyle}>
+                            {ptToText(signInBlock.text)}
+                        </a>
+                    ) : null}
+
+                    {ctaBlock && (
+                        <Link href={ctaBlock.href || '/subscribe'} style={ctaStyle}>
+                            {ptToText(ctaBlock.text)}
+                        </Link>
+                    )}
+                </div>
+
+                <button
+                    style={hamburgerStyle}
+                    aria-label={open ? 'Close menu' : 'Open menu'}
+                    onClick={() => setOpen(v => !v)}
+                >
+                    <span style={{ ...barBase, transform: open ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+                    <span style={{ ...barBase, opacity: open ? 0 : 1 }} />
+                    <span style={{ ...barBase, transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
+                </button>
+            </div>
+        </nav>
     );
 }
-export default ResponsiveAppBar;

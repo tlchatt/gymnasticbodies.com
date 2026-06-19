@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index, serial, json, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, serial, json, jsonb, integer } from "drizzle-orm/pg-core";
 
 export const app_logs = pgTable("app_logs", {
   id: serial("id").primaryKey(),
@@ -299,3 +299,34 @@ export const campaignRelations = relations(campaigns, ({ one, many }) => ({
   createdByUser: one(user, { fields: [campaigns.createdBy], references: [user.id] }),
   outboundEmails: many(outbound_emails),
 }));
+
+// Marketing pages + blog posts (unified)
+export const pages = pgTable("pages", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  type: text("type").notNull(), // 'marketing' | 'blog_post' | 'admin_guide'
+  title: text("title").notNull(),
+  meta: jsonb("meta"),          // { description, ogTitle, ogDescription, ogImage }
+  content: jsonb("content"),    // full PortableText JSON document
+  category: text("category"),   // blog posts only
+  tags: text("tags").array(),   // blog posts only
+  author: text("author"),       // blog posts only
+  featuredImage: text("featured_image"), // Vercel Blob URL
+  publishedAt: timestamp("published_at"), // blog posts only
+  status: text("status").default("draft").notNull(), // 'published' | 'draft'
+  updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+}, (t) => [
+  index("pages_slug_idx").on(t.slug),
+  index("pages_type_idx").on(t.type),
+  index("pages_status_idx").on(t.status),
+]);
+
+// Global shared content: nav, footer, social links, testimonials, etc.
+export const site_settings = pgTable("site_settings", {
+  id: serial("id").primaryKey(),
+  key: text("key").notNull().unique(), // e.g. 'nav', 'footer', 'testimonials'
+  value: jsonb("value").notNull(),     // PortableText JSON document for that key
+  updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+}, (t) => [
+  index("site_settings_key_idx").on(t.key),
+]);

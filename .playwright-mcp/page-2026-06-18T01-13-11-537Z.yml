@@ -1,0 +1,147 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Mobility over dysfunction." [level=1] [ref=e27]
+        - link "Get Started" [ref=e29] [cursor=pointer]:
+          - /url: /subscribe
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - link "Mobility 1 Beginners" [ref=e33] [cursor=pointer]:
+              - /url: /hey-newbies/
+              - generic [ref=e34]:
+                - img "Mobility 1" [ref=e35]
+                - paragraph [ref=e36]: Beginners
+            - link "Mobility 2 Intermediate & Advanced Athletes" [ref=e38] [cursor=pointer]:
+              - /url: /think-stronger/
+              - generic [ref=e39]:
+                - img "Mobility 2" [ref=e40]
+                - paragraph [ref=e41]:
+                  - text: Intermediate
+                  - text: "& Advanced Athletes"
+            - link "Mobility 3 Overcoming Pain and Injury" [ref=e43] [cursor=pointer]:
+              - /url: /mobility/
+              - generic [ref=e44]:
+                - img "Mobility 3" [ref=e45]
+                - paragraph [ref=e46]:
+                  - text: Overcoming
+                  - text: Pain and Injury
+            - link "Mobility 4 About Bodyweight Strength Training" [ref=e48] [cursor=pointer]:
+              - /url: /body-weight/
+              - generic [ref=e49]:
+                - img "Mobility 4" [ref=e50]
+                - paragraph [ref=e51]:
+                  - text: About Bodyweight
+                  - text: Strength Training
+            - link "Mobility 5 Free White Board" [ref=e53] [cursor=pointer]:
+              - /url: /free-members/
+              - generic [ref=e54]:
+                - img "Mobility 5" [ref=e55]
+                - paragraph [ref=e56]:
+                  - text: Free
+                  - text: White Board
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: Pain and injury happen, but chronic pain and consistent injury are a sign of dysfunction—exactly what we’re out to cure. And we’ve had many success stories from our athletes that have gone beyond our expectation.
+            - paragraph [ref=e59]: The greatest advantage we can give our athletes is to build their most vulnerable body parts first, namely joints like the shoulders, hips, and spine. Healing joints that are already broken take a similar approach, though we highly encourage injured warriors to work one-on-one with a professional as you use our curriculum.
+            - heading "Avoiding Injury" [level=1] [ref=e60]
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: Big muscles are nice... but problematic if your joint tissues are compromised. Imagine a thread pulled at greater and greater forces without the reinforcement of its own thickness. Eventually it snaps. The same is true of our body’s soft tissues—like tendons and ligaments—when they are neglected and muscles are continually tightened through strength work.
+            - paragraph [ref=e63]: Even if you aren’t trying to get big muscles, taking care of your joints will give you freedom and longevity of movement in day-to-day life. These soft tissues have less blood flowing through them so it takes longer for them to receive the cellular material to rebuild after a workout. They can and do get stronger, but it requires methodical, consistent work over a longer stretch of time than muscles require.
+            - paragraph [ref=e64]: Adequately prepared strength athletes, like gymnasts, can be tossed around and have their joints twisted without so much as a grunt. That’s our goal for you and why we include full body mobility in your training from day one.
+            - paragraph [ref=e65]:
+              - strong [ref=e66]: "You will see two types of mobility work at GymFit: Active Mobility and Flexibility. Both are important in building strength and longevity."
+        - generic [ref=e67]:
+          - heading "Active Mobility" [level=1] [ref=e69]
+          - img "Mobility Korean Dip" [ref=e71]
+          - generic [ref=e72]:
+            - paragraph [ref=e73]: It’s a little bit like passive stretching, except that you’re moving into a stretch rather than falling into one. Think of a ballerina. It’s no secret they can do the splits, but have you seen them move their leg into the splits while standing? That’s active and something even flexible people need to spend time building up to.
+            - paragraph [ref=e74]: Active mobility is one of our specialties, from our beginner levels to advanced.
+            - img "Beginner to Advanced" [ref=e75]
+            - paragraph [ref=e76]: Not only is it interspersed in our programming, like Fundamentals or Foundations, but there are also individual videos dedicated to active, even weighted, mobility work that can be added to your workout. (Available with All-Access only.)
+            - img "Mobility Sub Classes" [ref=e77]
+            - paragraph [ref=e78]: One way to increase the intensity of movement and joint work is to add weights throughout the movement. Normal dislocates can be difficult for stiff shoulders, but once the movement is easy, the next step is not to throw your entire bodyweight onto those joints. Adding weights will enable shoulders to gradually build towards bodyweight movements, like single-arm handstands and side levers. This is one of the biggest advantages of GymansticBodies training. We aren’t targeting the big showy muscles, we’re targeting all of your muscles, thereby building a larger strength gamut.
+            - paragraph [ref=e79]: When dealing with joint work, it’s important to slowly build up to higher weights or resistance—and it’s much faster than having to rehabilitate an injury.
+            - img "Beginner to Advanced" [ref=e80]
+        - generic [ref=e81]:
+          - heading "Passive Stretching" [level=1] [ref=e83]
+          - img "Mobility stretch oblique" [ref=e85]
+          - generic [ref=e86]:
+            - paragraph [ref=e87]: If you’ve been around GymFit for any length of time, you’ve heard us lecture on the advantages of stretching. We also know that many of our students run into road blocks that don’t fit into tidy little boxes. Our bodies are complex machines, after all, so when we begin a stretching regimen, we uncover unexpected ways our muscles are tight.
+            - paragraph [ref=e88]: Ligament pain and muscle tightness are systemic issues, tied into a web of myofascial tissue that connect to one another from your head to your toes. Plantar fasciitis might very well originate in tight hips. Orthotics can bring relief, but until you loosen up your back, your hamstrings, calves, and achilles, your feet will continue to ache. But then, you can’t loosen those if other muscles in your hips are stiff and not activating, because you’re sitting at a desk all day without relief.
+            - paragraph [ref=e89]: This is why our Stretch Series presents three workouts that address an entire chain of connected muscles in multi- dimensions. By following this curriculum, you will begin to understand how it’s possible for you to improve by addressing problematic muscles that you may not have realized were problematic. It’s thorough, safe and fun!
+            - img "Mobility stretch courses" [ref=e90]
+        - generic [ref=e91]:
+          - heading "Motivation" [level=1] [ref=e93]
+          - generic [ref=e94]:
+            - paragraph [ref=e95]: You may be convinced that our program leads athletes into greater mobility, but you’re still wondering if that’s relevant to you. Let us share a few facts..
+            - list [ref=e96]:
+              - listitem [ref=e97]: Stretching makes you stronger.
+              - listitem [ref=e98]: "Career athletes use our program to eliminate pain, especially those pains developed by training repetitive, two-dimensional motions: Running, swimming, weightlifting, throwing etc."
+              - listitem [ref=e99]: Time is its own chaos-maker. If you haven’t exercised regularly in years or even if you sit for hours every day at a desk, simply being unintentional about your body will break it down.
+              - listitem [ref=e100]: Joints need love, and it’s easier to care for them before they hurt.
+              - listitem [ref=e101]: It is possible to move from out of shape beginner to incredible athlete. It only requires your commitment
+              - listitem [ref=e102]: of consistency and time.
+              - listitem [ref=e103]: Age is rarely a factor in success. Many of our strongest athletes started our program after age 40 and some into their 70s.
+              - listitem [ref=e104]: This program will be as gentle or as intense as you make it. Intimidation is unnecessary.
+        - generic [ref=e106]:
+          - heading "Not ready for premium?" [level=2] [ref=e107]
+          - heading "check out our free member page Where you have access to:" [level=3] [ref=e108]:
+            - text: check out our
+            - link "free member page" [ref=e109] [cursor=pointer]:
+              - /url: /free-members/
+            - text: "Where you have access to:"
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - img "Rings One" [ref=e114]
+              - heading "White Board Workouts" [level=3] [ref=e115]
+            - generic [ref=e116]:
+              - img "Rings One" [ref=e118]
+              - heading "Blogs" [level=3] [ref=e119]
+            - generic [ref=e120]:
+              - img "Rings One" [ref=e122]
+              - heading "Exercise Tutorials" [level=3] [ref=e123]
+            - generic [ref=e124]:
+              - img "Rings One" [ref=e126]
+              - heading "Forum" [level=3] [ref=e127]
+            - generic [ref=e128]:
+              - img "Rings One" [ref=e130]
+              - heading "Advocates" [level=3] [ref=e131]
+            - generic [ref=e132]:
+              - img "Rings One" [ref=e134]
+              - heading "Podcasts" [level=3] [ref=e135]
+  - contentinfo [ref=e136]:
+    - generic [ref=e137]:
+      - link "  Gymnastic Bodies" [ref=e140] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com
+        - generic [ref=e141]: 
+        - generic [ref=e142]: 
+        - generic: Gymnastic Bodies
+      - generic [ref=e143]:
+        - link "" [ref=e144] [cursor=pointer]:
+          - /url: https://www.facebook.com/GymnasticBodies/
+          - generic [ref=e145]: 
+        - link "" [ref=e146] [cursor=pointer]:
+          - /url: https://twitter.com/gymnasticbodies
+          - generic [ref=e147]: 
+        - link "" [ref=e148] [cursor=pointer]:
+          - /url: https://www.instagram.com/gymnasticbodies/
+          - generic [ref=e149]: 
+  - text:     

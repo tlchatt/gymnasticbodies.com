@@ -1,0 +1,137 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "GymFit by Gymnastic Bodies" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "GymFit by Gymnastic Bodies" [ref=e6]
+      - button "Open menu" [ref=e7] [cursor=pointer]
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e14]: GymFit · by Gymnastic Bodies
+      - heading "Move like you were built for it." [level=1] [ref=e15]
+      - paragraph [ref=e17]: Restore mobility. Build real strength. Join tens of thousands of students training the gymnastic way.
+      - link "Start Free Trial →" [ref=e18] [cursor=pointer]:
+        - /url: /subscribe
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "Find your program." [level=2] [ref=e22]
+        - paragraph [ref=e23]: Every level. Every goal. Every age.
+      - generic [ref=e24]:
+        - link "🌱 Hey Newbies Start here. Zero experience required." [ref=e25] [cursor=pointer]:
+          - /url: /hey-newbies
+          - generic [ref=e26]: 🌱
+          - generic [ref=e27]: Hey Newbies
+          - generic [ref=e28]: Start here. Zero experience required.
+        - link "💪 Think Stronger Progressive gymnastic strength training." [ref=e29] [cursor=pointer]:
+          - /url: /think-stronger
+          - generic [ref=e30]: 💪
+          - generic [ref=e31]: Think Stronger
+          - generic [ref=e32]: Progressive gymnastic strength training.
+        - link "🔄 Mobility Restore range of motion in every joint." [ref=e33] [cursor=pointer]:
+          - /url: /mobility
+          - generic [ref=e34]: 🔄
+          - generic [ref=e35]: Mobility
+          - generic [ref=e36]: Restore range of motion in every joint.
+        - link "⚡ Body Weight No equipment. No excuses. Train anywhere." [ref=e37] [cursor=pointer]:
+          - /url: /body-weight
+          - generic [ref=e38]: ⚡
+          - generic [ref=e39]: Body Weight
+          - generic [ref=e40]: No equipment. No excuses. Train anywhere.
+        - link "🏆 All Access Every program. Every exercise. One price." [ref=e41] [cursor=pointer]:
+          - /url: /all-access
+          - generic [ref=e42]: 🏆
+          - generic [ref=e43]: All Access
+          - generic [ref=e44]: Every program. Every exercise. One price.
+    - generic [ref=e45]:
+      - heading "Join tens of thousands of students." [level=2] [ref=e47]
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]: Coach Sommer
+          - generic [ref=e51]: Gymnastic Bodies Founder
+        - generic [ref=e52]:
+          - generic [ref=e53]: Member
+          - generic [ref=e54]: Training since 2015
+        - generic [ref=e55]:
+          - generic [ref=e56]: Member
+          - generic [ref=e57]: Age 52, stronger than ever
+        - generic [ref=e58]:
+          - generic [ref=e59]: Member
+          - generic [ref=e60]: Lost 30 lbs, gained mobility
+        - generic [ref=e61]:
+          - generic [ref=e62]: Member
+          - generic [ref=e63]: First handstand at 45
+        - generic [ref=e64]:
+          - generic [ref=e65]: Member
+          - generic [ref=e66]: Injury rehab success
+        - generic [ref=e67]:
+          - generic [ref=e68]: Member
+          - generic [ref=e69]: From couch to splits
+        - generic [ref=e70]:
+          - generic [ref=e71]: Coach Sommer
+          - generic [ref=e72]: Gymnastic Bodies Founder
+        - generic [ref=e73]:
+          - generic [ref=e74]: Member
+          - generic [ref=e75]: Training since 2015
+        - generic [ref=e76]:
+          - generic [ref=e77]: Member
+          - generic [ref=e78]: Age 52, stronger than ever
+        - generic [ref=e79]:
+          - generic [ref=e80]: Member
+          - generic [ref=e81]: Lost 30 lbs, gained mobility
+        - generic [ref=e82]:
+          - generic [ref=e83]: Member
+          - generic [ref=e84]: First handstand at 45
+        - generic [ref=e85]:
+          - generic [ref=e86]: Member
+          - generic [ref=e87]: Injury rehab success
+        - generic [ref=e88]:
+          - generic [ref=e89]: Member
+          - generic [ref=e90]: From couch to splits
+    - generic [ref=e92]:
+      - generic [ref=e93]: 7 days free
+      - heading "Start training today." [level=3] [ref=e94]
+      - link "Get Started →" [ref=e95] [cursor=pointer]:
+        - /url: /subscribe
+      - paragraph [ref=e96]: No credit card required
+  - contentinfo [ref=e97]:
+    - generic [ref=e98]:
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - link "GymFit by Gymnastic Bodies" [ref=e101] [cursor=pointer]:
+            - /url: /
+            - img "GymFit by Gymnastic Bodies" [ref=e102]
+          - paragraph [ref=e103]: Move like you were built for it.
+        - generic [ref=e104]:
+          - generic [ref=e105]: Programs
+          - link "Hey Newbies" [ref=e106] [cursor=pointer]:
+            - /url: /hey-newbies
+          - link "Think Stronger" [ref=e107] [cursor=pointer]:
+            - /url: /think-stronger
+          - link "Mobility" [ref=e108] [cursor=pointer]:
+            - /url: /mobility
+          - link "Body Weight" [ref=e109] [cursor=pointer]:
+            - /url: /body-weight
+          - link "All Access" [ref=e110] [cursor=pointer]:
+            - /url: /all-access
+          - link "Free Members" [ref=e111] [cursor=pointer]:
+            - /url: /free-members
+        - generic [ref=e112]:
+          - generic [ref=e113]: Company
+          - link "Blog" [ref=e114] [cursor=pointer]:
+            - /url: /blog
+          - link "Forum" [ref=e115] [cursor=pointer]:
+            - /url: https://www.gymnasticbodies.com/forum/
+          - link "Contact" [ref=e116] [cursor=pointer]:
+            - /url: mailto:support@gymnasticbodies.com
+      - generic [ref=e117]:
+        - paragraph [ref=e118]: © Gymnastic Bodies. All rights reserved.
+        - generic [ref=e119]:
+          - link "instagram" [ref=e120] [cursor=pointer]:
+            - /url: https://www.instagram.com/gymnasticbodies/
+            - img [ref=e121]
+          - link "youtube" [ref=e123] [cursor=pointer]:
+            - /url: https://www.youtube.com/user/GymnasticBodies
+            - img [ref=e124]
+          - link "facebook" [ref=e126] [cursor=pointer]:
+            - /url: https://www.facebook.com/gymnasticbodies
+            - img [ref=e127]

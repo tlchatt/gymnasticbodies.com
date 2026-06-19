@@ -1,0 +1,28 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com
+        - generic [ref=e8]: 
+        - generic [ref=e9]: 
+        - generic: Gymnastic Bodies
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - link "Testimonials" [ref=e12] [cursor=pointer]:
+            - /url: /#gf-testimonial
+          - link "BLOGS" [ref=e13] [cursor=pointer]:
+            - /url: https://www.gymnasticbodies.com/blog/
+      - link "Get Started" [ref=e14] [cursor=pointer]:
+        - /url: https://app.gymnasticbodies.com/subscribe
+      - button "person " [ref=e16] [cursor=pointer]:
+        - generic [ref=e17]: person
+        - text: 
+  - main [ref=e18]:
+    - generic [ref=e22]:
+      - img "Suzanna McGee 1" [ref=e24]
+      - generic [ref=e25]:
+        - heading "Suzanna McGee" [level=1] [ref=e26]
+        - heading "Correcting Weaknesses" [level=4] [ref=e27]
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: Last year, I was 51 years old and I decided that I wanted to learn a handstand. That’s how I found GymnasticBodies. Until this point, I never thought that I would want to do any gymnastic movements. The Handstand course was excellent. I am an athlete and a performance coach so I could really appreciate the depth of the program and the knowledge put into it.
+          - paragraph [ref=e30]: In the beginning of my training, I was very humbled. I thought that I was a pretty good athlete, but the programs quickly revealed many of my weaknesses. At first, I was “in a hurry” to quickly learn a handstand, but then I realized that this is going to be a long journey. I surrendered and started to train with the mindset that this is a lifestyle, where I am correcting all weaknesses and making the body strong from all angles—working on strength and mobility at the same time. The coaches are amazing and extremely helpful. It’s almost like going to school on how to become a super human. Sometimes the progress seems very slow, but looking back, it has been a solid, continuous progress. I am not in a hurry anymore, this is the way to live.

@@ -1,0 +1,167 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "  Gymnastic Bodies" [ref=e7] [cursor=pointer]:
+          - /url: https://www.gymnasticbodies.com
+          - generic [ref=e8]: 
+          - generic [ref=e9]: 
+          - generic: Gymnastic Bodies
+        - navigation [ref=e10]:
+          - generic [ref=e11]:
+            - link "Testimonials" [ref=e12] [cursor=pointer]:
+              - /url: /#gf-testimonial
+            - link "BLOGS" [ref=e13] [cursor=pointer]:
+              - /url: https://www.gymnasticbodies.com/blog/
+        - link "Get Started" [ref=e14] [cursor=pointer]:
+          - /url: https://app.gymnasticbodies.com/subscribe
+        - button "person " [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: person
+          - text: 
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Free Members" [level=1] [ref=e27]
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - link "Free Members 1 Beginners" [ref=e31] [cursor=pointer]:
+              - /url: /hey-newbies/
+              - generic [ref=e32]:
+                - img "Free Members 1" [ref=e33]
+                - paragraph [ref=e34]: Beginners
+            - link "Free Members 2 Intermediate & Advanced Athletes" [ref=e36] [cursor=pointer]:
+              - /url: /think-stronger/
+              - generic [ref=e37]:
+                - img "Free Members 2" [ref=e38]
+                - paragraph [ref=e39]:
+                  - text: Intermediate
+                  - text: "& Advanced Athletes"
+            - link "Free Members 3 Overcoming Pain and Injury" [ref=e41] [cursor=pointer]:
+              - /url: /mobility/
+              - generic [ref=e42]:
+                - img "Free Members 3" [ref=e43]
+                - paragraph [ref=e44]:
+                  - text: Overcoming
+                  - text: Pain and Injury
+            - link "Free Members 4 About Bodyweight Strength Training" [ref=e46] [cursor=pointer]:
+              - /url: /body-weight/
+              - generic [ref=e47]:
+                - img "Free Members 4" [ref=e48]
+                - paragraph [ref=e49]:
+                  - text: About Bodyweight
+                  - text: Strength Training
+            - link "Free Members 5 Free White Board" [ref=e51] [cursor=pointer]:
+              - /url: /free-members/
+              - generic [ref=e52]:
+                - img "Free Members 5" [ref=e53]
+                - paragraph [ref=e54]:
+                  - text: Free
+                  - text: White Board
+          - generic [ref=e55]:
+            - heading "Not ready for premium?" [level=2] [ref=e56]
+            - generic [ref=e58]:
+              - heading "Try a Free White Board Workout" [level=1] [ref=e60]
+              - generic [ref=e61]:
+                - generic [ref=e63]:
+                  - generic [ref=e64]:
+                    - generic [ref=e65] [cursor=pointer]: arrow_drop_up
+                    - generic [ref=e66]: "1"
+                    - generic [ref=e67] [cursor=pointer]: arrow_drop_down
+                  - generic [ref=e68]: Rounds
+                - generic [ref=e70]:
+                  - heading "Mobility" [level=2] [ref=e72]
+                  - img "Free Members 6" [ref=e74]
+                  - generic [ref=e76]:
+                    - generic [ref=e77]:
+                      - generic [ref=e78] [cursor=pointer]: expand_less
+                      - generic [ref=e79]: "2"
+                      - generic [ref=e80] [cursor=pointer]: expand_more
+                    - paragraph [ref=e81]: Incline Pushup
+                  - generic [ref=e83] [cursor=pointer]: autorenew
+                - generic [ref=e85]:
+                  - heading "Push" [level=2] [ref=e87]
+                  - img "Free Members 7" [ref=e89]
+                  - generic [ref=e91]:
+                    - generic [ref=e92]:
+                      - generic [ref=e93] [cursor=pointer]: expand_less
+                      - generic [ref=e94]: "2"
+                      - generic [ref=e95] [cursor=pointer]: expand_more
+                    - paragraph [ref=e96]: Pushup
+                  - generic [ref=e98] [cursor=pointer]: autorenew
+                - generic [ref=e100]:
+                  - heading "Pull" [level=2] [ref=e102]
+                  - img "Free Members 8" [ref=e104]
+                  - generic [ref=e106]:
+                    - generic [ref=e107]:
+                      - generic [ref=e108] [cursor=pointer]: expand_less
+                      - generic [ref=e109]: "2"
+                      - generic [ref=e110] [cursor=pointer]: expand_more
+                    - paragraph [ref=e111]: Incline Row
+                  - generic [ref=e113] [cursor=pointer]: autorenew
+                - generic [ref=e115]:
+                  - heading "Core" [level=2] [ref=e117]
+                  - img "Free Members 9" [ref=e119]
+                  - generic [ref=e121]:
+                    - generic [ref=e122]:
+                      - generic [ref=e123] [cursor=pointer]: expand_less
+                      - generic [ref=e124]: "2"
+                      - generic [ref=e125] [cursor=pointer]: expand_more
+                    - paragraph [ref=e126]: Bent Hollow Body Rock
+                  - generic [ref=e128] [cursor=pointer]: autorenew
+                - generic [ref=e130]:
+                  - heading "Legs" [level=2] [ref=e132]
+                  - img "Free Members 10" [ref=e134]
+                  - generic [ref=e136]:
+                    - generic [ref=e137]:
+                      - generic [ref=e138] [cursor=pointer]: expand_less
+                      - generic [ref=e139]: "2"
+                      - generic [ref=e140] [cursor=pointer]: expand_more
+                    - paragraph [ref=e141]: Parallel Squat
+                  - generic [ref=e143] [cursor=pointer]: autorenew
+              - generic [ref=e144]:
+                - paragraph [ref=e145]:
+                  - text: Create an account to get free randomized Level One workout samples. Or sign up for
+                  - link "premium" [ref=e146] [cursor=pointer]:
+                    - /url: /subscribe
+                  - text: to be guided through extended workouts with strength and mobility progressions and a full library of additional options.
+                - img [ref=e147] [cursor=pointer]:
+                  - generic [ref=e149]: REFRESHWORKOUT
+              - button "Sign me up for free!" [ref=e154] [cursor=pointer]
+          - generic [ref=e156]:
+            - heading "When signing up for our free member service you gain access to:" [level=3] [ref=e157]
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - img "Rings One" [ref=e162]
+                - heading "White Board Workouts" [level=3] [ref=e163]
+              - generic [ref=e164]:
+                - img "Rings One" [ref=e166]
+                - heading "Blogs" [level=3] [ref=e167]
+              - generic [ref=e168]:
+                - img "Rings One" [ref=e170]
+                - heading "Exercise Tutorials" [level=3] [ref=e171]
+              - generic [ref=e172]:
+                - img "Rings One" [ref=e174]
+                - heading "Forum" [level=3] [ref=e175]
+              - generic [ref=e176]:
+                - img "Rings One" [ref=e178]
+                - heading "Advocates" [level=3] [ref=e179]
+              - generic [ref=e180]:
+                - img "Rings One" [ref=e182]
+                - heading "Podcasts" [level=3] [ref=e183]
+  - contentinfo [ref=e184]:
+    - generic [ref=e185]:
+      - link "  Gymnastic Bodies" [ref=e188] [cursor=pointer]:
+        - /url: https://www.gymnasticbodies.com
+        - generic [ref=e189]: 
+        - generic [ref=e190]: 
+        - generic: Gymnastic Bodies
+      - generic [ref=e191]:
+        - link "" [ref=e192] [cursor=pointer]:
+          - /url: https://www.facebook.com/GymnasticBodies/
+          - generic [ref=e193]: 
+        - link "" [ref=e194] [cursor=pointer]:
+          - /url: https://twitter.com/gymnasticbodies
+          - generic [ref=e195]: 
+        - link "" [ref=e196] [cursor=pointer]:
+          - /url: https://www.instagram.com/gymnasticbodies/
+          - generic [ref=e197]: 
+  - text:     

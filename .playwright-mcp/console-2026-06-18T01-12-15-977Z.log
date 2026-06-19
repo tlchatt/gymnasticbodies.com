@@ -1,0 +1,6 @@
+[    1420ms] [LOG] JQMIGRATE: Migrate is installed, version 3.3.2 @ https://www.gymnasticbodies.com/gymfit/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2:1
+[    1590ms] ReferenceError: wp is not defined
+    at modalCustomizer (https://www.gymnasticbodies.com/gymfit/wp-content/plugins/wp-post-modal/public/js/wp-post-modal-public.js?ver=1.0.0:404:9)
+    at https://www.gymnasticbodies.com/gymfit/wp-content/plugins/wp-post-modal/public/js/wp-post-modal-public.js?ver=1.0.0:418:9
+    at dispatch (https://www.gymnasticbodies.com/gymfit/wp-includes/js/jquery/jquery.min.js?ver=3.6.0:2:43064)
+    at v.handle (https://www.gymnasticbodies.com/gymfit/wp-includes/js/jquery/jquery.min.js?ver=3.6.0:2:41048)
