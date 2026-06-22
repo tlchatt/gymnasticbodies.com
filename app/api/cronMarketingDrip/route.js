@@ -48,21 +48,22 @@ export async function GET(request) {
   const sql = neon(process.env.DATABASE_URL);
 
   const candidates = await sql`
-    SELECT DISTINCT u.id, u.email, u.name
+    SELECT u.id, u.email, u.name
     FROM "user" u
     LEFT JOIN user_setting us ON us.user_id = u.id AND us.type = 'subscription'
     WHERE u.migration_type = 'noncurrent'
       AND (
-        (us.data->>'renewaldate' IS NOT NULL
-         AND (us.data->>'renewaldate')::date < NOW() - INTERVAL '1 year')
+        (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NOT NULL
+         AND (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date < NOW() - INTERVAL '1 year')
         OR
-        (us.data->>'renewaldate' IS NULL
+        (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NULL
          AND u.created_at < NOW() - INTERVAL '1 year')
       )
       AND u.email NOT IN (
         SELECT to_email FROM outbound_emails WHERE campaign = ${CAMPAIGN}
       )
-    ORDER BY COALESCE((us.data->>'renewaldate')::date, u.created_at::date) ASC
+    GROUP BY u.id, u.email, u.name, u.created_at, us.data
+    ORDER BY COALESCE((NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date, u.created_at::date) ASC
     LIMIT 250
   `;
 
