@@ -1,5 +1,5 @@
 'use client';
-import { useState, useCallback, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import s from './case.module.css';
 
@@ -87,7 +87,14 @@ export default function CaseClient({ data: initial }) {
   const [tempPwState, setTempPwState] = useState('idle');
   const [tempPw, setTempPw] = useState('');
 
-  const handleSetTempPassword = useCallback(async () => {
+  const user = initial.user;
+  const setting = initial.setting;
+  const lastSession = initial.lastSession;
+  const recentLogs = initial.recentLogs ?? [];
+  const pastCases = initial.pastCases ?? [];
+  const linkedEmails = initial.linkedEmails ?? [];
+
+  async function handleSetTempPassword() {
     if (!user?.id || tempPwState === 'loading') return;
     setTempPwState('loading');
     setTempPw('');
@@ -97,14 +104,7 @@ export default function CaseClient({ data: initial }) {
       if (json.ok) { setTempPw(json.tempPassword); setTempPwState('ok'); }
       else setTempPwState('error');
     } catch { setTempPwState('error'); }
-  }, [user?.id, tempPwState]);
-
-  const user = initial.user;
-  const setting = initial.setting;
-  const lastSession = initial.lastSession;
-  const recentLogs = initial.recentLogs ?? [];
-  const pastCases = initial.pastCases ?? [];
-  const linkedEmails = initial.linkedEmails ?? [];
+  }
 
   async function patchCase(updates) {
     setSaving(true);
@@ -135,12 +135,11 @@ export default function CaseClient({ data: initial }) {
     });
   }
 
-  const handleNotesBlur = useCallback(() => {
+  function handleNotesBlur() {
     if (notes !== (initial.case.adminNotes ?? '')) {
       patchCase({ adminNotes: notes });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [notes]);
+  }
 
   return (
     <>
