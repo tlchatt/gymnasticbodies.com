@@ -2,8 +2,9 @@ import { notFound } from 'next/navigation';
 import OfferClient from './OfferClient';
 import offers from '@/data/content/offers.json';
 
-export function generateMetadata({ params }) {
-  const offer = offers[params.slug];
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const offer = offers[slug];
   if (!offer) return {};
   return {
     title: offer.metaTitle,
@@ -11,8 +12,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function OfferPage({ params }) {
-  const offer = offers[params.slug];
+export default async function OfferPage({ params }) {
+  const { slug } = await params;
+  const offer = offers[slug];
   if (!offer) notFound();
-  return <OfferClient slug={params.slug} offer={offer} />;
+  return <OfferClient slug={slug} offer={offer} />;
 }

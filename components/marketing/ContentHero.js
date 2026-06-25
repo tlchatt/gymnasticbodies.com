@@ -13,7 +13,7 @@ export default function ContentHero({ hero = {} }) {
         padding: isLarge ? '7rem 2rem 3.5rem' : '5rem 1.25rem 2rem',
         textAlign: 'center',
         ...(hasImage && {
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.72)), url(${hero.backgroundImage})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url(${hero.backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
         }),

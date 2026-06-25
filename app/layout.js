@@ -20,7 +20,7 @@ export const metadata = {
     template: '%s | GymFit',
   },
   description: 'Train like a gymnast. Restore mobility, build real strength with 700+ guided exercises and programs for every level.',
-  metadataBase: new URL('https://app.gymnasticbodies.com'),
+  metadataBase: new URL('https://www.gymnasticbodies.com'),
   openGraph: {
     siteName: 'GymFit by Gymnastic Bodies',
     type: 'website',

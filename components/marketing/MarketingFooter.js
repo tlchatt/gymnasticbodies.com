@@ -37,7 +37,7 @@ export default function MarketingFooter({ footerData = [] }) {
                         <Link href="/" style={{ display: 'inline-flex' }}>
                             <Image src="/images/GFmarkandName.webp" alt="GymFit by Gymnastic Bodies" width={110} height={32} style={{ objectFit: 'contain' }} />
                         </Link>
-                        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontFamily: 'var(--font-body)', lineHeight: 1.6, maxWidth: '220px' }}>Move like you were built for it.</p>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontFamily: 'var(--font-body)', lineHeight: 1.6, maxWidth: '220px' }}>Restore mobility. Build real strength.</p>
                     </div>
 
                     {groups.map((group, i) => (

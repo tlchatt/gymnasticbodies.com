@@ -1,0 +1,1 @@
+ALTER TABLE "outbound_emails" ADD COLUMN "type" text DEFAULT 'support' NOT NULL;
