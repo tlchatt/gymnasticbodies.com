@@ -5,7 +5,7 @@ import { eq, and } from 'drizzle-orm';
 import offers from '@/data/content/offers.json';
 
 export async function GET(request, { params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const offer = offers[slug];
   if (!offer) {
     return NextResponse.json({ eligible: false, reason: 'not_found' }, { status: 404 });

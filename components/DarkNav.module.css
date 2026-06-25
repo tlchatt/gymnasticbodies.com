@@ -40,18 +40,18 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.90);
     padding: 8px 18px;
     border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.05);
 }
 
 .accountLink {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.95);
     text-decoration: none;
     padding: 8px 18px;
     border-radius: 8px;
@@ -70,17 +70,17 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.90);
     text-decoration: none;
     padding: 8px 18px;
     border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.22);
     transition: color 0.15s, border-color 0.15s;
 }
 
 .signIn:hover {
     color: #fff;
-    border-color: rgba(255,255,255,0.4);
+    border-color: rgba(255,255,255,0.5);
 }
 
 .cta {
