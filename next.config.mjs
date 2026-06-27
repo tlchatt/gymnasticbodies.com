@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  trailingSlash: true,
   images: {
     domains: ['gymfit-images.s3.amazonaws.com']
   },

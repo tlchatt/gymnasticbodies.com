@@ -149,7 +149,7 @@ export default function AccountDetailsComp({ data, userId, token }) {
 
                 <DisplayOrder data={data} />
 
-                <DisplaySubscription data={data} userId={userId} />
+                <DisplaySubscription data={data} userId={userId} token={token} />
 
             </Stack >
         </>
@@ -249,7 +249,7 @@ function DisplayOrder({ data }) {
         </GridBox>
     )
 }
-function DisplaySubscription({ data, userId }) {
+function DisplaySubscription({ data, userId, token }) {
     let [cancelled, setCancelled] = useState(false)
     let [cancelling, setCancelling] = useState(false)
     let [trialCancelled, setTrialCancelled] = useState(false)
