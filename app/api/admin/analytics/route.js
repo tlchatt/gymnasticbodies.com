@@ -18,6 +18,15 @@ const SUBSCRIBE_EVENTS = [
   'signup.duplicate',
 ];
 
+const OFFER_EVENTS = [
+  'offer.page_view',
+  'offer.eligibility_check',
+  'offer.form_submit',
+  'offer.attempt',
+  'offer.success',
+  'offer.card_error',
+];
+
 function toRenewalFunnel(rows) {
   const map = Object.fromEntries(rows.map((r) => [r.event, Number(r.cnt)]));
   return {
@@ -52,6 +61,8 @@ export async function GET(request) {
     breakdown,
     recentRenewals,
     recentSignups,
+    offerRows,
+    recentOfferConversions,
   ] = await Promise.all([
     // Renewal funnel — 30d / 7d / 24h
     sql`SELECT event, count(*)::int AS cnt FROM app_logs
@@ -86,7 +97,35 @@ export async function GET(request) {
     // Recent new signups
     sql`SELECT id, ts, email FROM app_logs
         WHERE event = 'signup.success' ORDER BY ts DESC LIMIT 20`,
+
+    // Offer events — all time, fetch raw rows, group by slug in JS
+    sql`SELECT event, email, ts, data FROM app_logs
+        WHERE event = ANY(${OFFER_EVENTS})
+        ORDER BY ts DESC`,
+
+    // Recent offer conversions
+    sql`SELECT id, ts, email, data FROM app_logs
+        WHERE event = 'offer.success' ORDER BY ts DESC LIMIT 20`,
   ]);
+
+  // Build per-slug offer funnels from raw rows (data is json — can't use ->> in parameterized queries)
+  const offerBySlug = {};
+  for (const row of offerRows) {
+    const slug = row.data?.slug ?? 'unknown';
+    if (!offerBySlug[slug]) {
+      offerBySlug[slug] = { pageViews: 0, eligibilityChecks: 0, eligibleChecks: 0, formSubmits: 0, cardErrors: 0, attempts: 0, successes: 0 };
+    }
+    const f = offerBySlug[slug];
+    if (row.event === 'offer.page_view')        f.pageViews++;
+    if (row.event === 'offer.eligibility_check') {
+      f.eligibilityChecks++;
+      if (row.data?.eligible) f.eligibleChecks++;
+    }
+    if (row.event === 'offer.form_submit')  f.formSubmits++;
+    if (row.event === 'offer.card_error')   f.cardErrors++;
+    if (row.event === 'offer.attempt')      f.attempts++;
+    if (row.event === 'offer.success')      f.successes++;
+  }
 
   return NextResponse.json({
     renewalFunnel: {
@@ -105,5 +144,9 @@ export async function GET(request) {
     })),
     recentRenewals: recentRenewals.map((r) => ({ id: r.id, ts: r.ts, email: r.email })),
     recentSignups:  recentSignups.map((r)  => ({ id: r.id, ts: r.ts, email: r.email })),
+    offerFunnels: offerBySlug,
+    recentOfferConversions: recentOfferConversions.map((r) => ({
+      id: r.id, ts: r.ts, email: r.email, slug: r.data?.slug ?? '—', price: r.data?.price ?? '—',
+    })),
   });
 }

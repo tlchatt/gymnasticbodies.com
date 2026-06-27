@@ -6,6 +6,9 @@ const ALLOWED_EVENTS = new Set([
     'renew.form_submit',
     'renew.card_error',
     'subscribe.page_view',
+    'offer.page_view',
+    'offer.form_submit',
+    'offer.card_error',
 ]);
 
 export async function POST(request) {

@@ -20,6 +20,14 @@ function OfferInner({ slug, offer }) {
   const [status, setStatus] = useState(email ? 'loading' : 'no_email');
 
   useEffect(() => {
+    fetch('/api/log', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ event: 'offer.page_view', slug, email: email || null }),
+    }).catch(() => {});
+  }, [slug]);
+
+  useEffect(() => {
     if (!email) return;
     fetch(`/api/offer/${slug}/eligibility?email=${encodeURIComponent(email)}`)
       .then(r => r.json())
@@ -121,7 +129,7 @@ function OfferInner({ slug, offer }) {
         <span className={s.headlineAccent}>{offer.headlineAccent}</span>
       </h1>
       <p className={s.sub}>{offer.subheadline}</p>
-      <OfferPortal email={email} offer={offer} />
+      <OfferPortal email={email} offer={offer} slug={slug} />
     </div>
   );
 }

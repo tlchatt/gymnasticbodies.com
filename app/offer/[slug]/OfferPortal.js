@@ -15,7 +15,15 @@ const cardElementOptions = {
   },
 };
 
-export default function OfferPortal({ email, offer }) {
+function logEvent(event, data) {
+  fetch('/api/log', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ event, ...data }),
+  }).catch(() => {});
+}
+
+export default function OfferPortal({ email, offer, slug }) {
   const stripe = useStripe();
   const elements = useElements();
   const submittingRef = useRef(false);
@@ -41,23 +49,25 @@ export default function OfferPortal({ email, offer }) {
 
       if (pmError) {
         const isIncomplete = pmError.message?.toLowerCase().includes('incomplete');
-        setError(isIncomplete
+        const msg = isIncomplete
           ? 'Please fill in all card fields — card number, expiry date, CVC, and ZIP code. If the form isn\'t responding, try disabling your ad blocker or switching browsers.'
-          : pmError.message
-        );
+          : pmError.message;
+        logEvent('offer.card_error', { email, slug, message: msg });
+        setError(msg);
         setLoading(false);
         submittingRef.current = false;
         return;
       }
 
-      const result = await fetch('/api/stripe/renew-subscription', {
+      logEvent('offer.form_submit', { email, slug, price: offer.price, term: offer.term });
+
+      const result = await fetch('/api/stripe/offer-subscription', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           paymentMethodId: paymentMethod.id,
           email,
-          price: offer.price,
-          term: offer.term,
+          slug,
         }),
       }).then(r => r.json());
 

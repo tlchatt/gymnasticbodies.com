@@ -205,6 +205,49 @@ export default function AnalyticsClient() {
             )}
           </section>
 
+          {/* Offer funnels */}
+          {data.offerFunnels && Object.keys(data.offerFunnels).length > 0 && (
+            <section className={s.section}>
+              <div className={s.sectionTitle}>Offer Funnels (all time)</div>
+              {Object.entries(data.offerFunnels).map(([slug, f]) => (
+                <div key={slug} style={{ marginBottom: 24 }}>
+                  <div style={{ fontSize: '0.72rem', color: '#f05621', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 10 }}>
+                    {slug}
+                  </div>
+                  <div className={s.funnelCard}>
+                    <FunnelBar label="Page Views"    value={f.pageViews}        max={f.pageViews}  color="#555" />
+                    <FunnelBar label="Eligible"      value={f.eligibleChecks}   max={f.pageViews}  color="#9b94ff" />
+                    <FunnelBar label="Form Submits"  value={f.formSubmits}      max={f.pageViews}  color="#f05621" />
+                    <FunnelBar label="Card Errors"   value={f.cardErrors}       max={f.pageViews}  color="#ef4444" />
+                    <FunnelBar label="Conversions"   value={f.successes}        max={f.pageViews}  color="#50c878" />
+                    <ConversionStats stats={[
+                      { label: 'Eligible rate',  value: pct(f.eligibleChecks, f.pageViews) },
+                      { label: 'Submit rate',    value: pct(f.formSubmits, f.eligibleChecks) },
+                      { label: 'Error rate',     value: pct(f.cardErrors, f.formSubmits), color: f.cardErrors > 0 ? '#ef4444' : '#50c878' },
+                      { label: 'Conversion',     value: pct(f.successes, f.pageViews), color: '#50c878' },
+                    ]} />
+                  </div>
+                </div>
+              ))}
+            </section>
+          )}
+
+          {/* Recent offer conversions */}
+          {data.recentOfferConversions?.length > 0 && (
+            <section className={s.section}>
+              <div className={s.sectionTitle}>Recent Offer Conversions</div>
+              <div className={s.conversionList}>
+                {data.recentOfferConversions.map((r) => (
+                  <div key={r.id} className={s.conversionItem}>
+                    <span className={s.convEmail}>{r.email ?? '—'}</span>
+                    <span style={{ color: '#f05621', fontSize: '0.75rem' }}>{r.slug} · ${r.price}/mo</span>
+                    <span className={s.convTs}>{fmtDateTime(r.ts)}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Recent activity */}
           <div className={s.recentGrid}>
             <RecentList title="Recent Renewals" items={data.recentRenewals} />
