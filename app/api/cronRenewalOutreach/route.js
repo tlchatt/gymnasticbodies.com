@@ -77,8 +77,8 @@ export async function GET(request) {
     try {
       await sgMail.send({
         to: email,
-        from: process.env.SENDGRID_FROM,
-        replyTo: process.env.SENDGRID_REPLYTO || 'support@gymnasticbodies.com',
+        from: 'support@gymnasticbodies.com',
+        replyTo: 'support@gymnasticbodies.com',
         subject: SUBJECT,
         text: renderedBody,
       });

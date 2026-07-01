@@ -78,8 +78,8 @@ export async function GET(request) {
     try {
       await sgMail.send({
         to: email,
-        from: { email: process.env.SENDGRID_FROM, name: 'GymnasticBodies' },
-        replyTo: process.env.SENDGRID_REPLYTO || 'support@gymnasticbodies.com',
+        from: { email: 'marketing@gymnasticbodies.com', name: 'GymnasticBodies' },
+        replyTo: 'support@gymnasticbodies.com',
         subject: SUBJECT,
         text: renderedBody,
       });

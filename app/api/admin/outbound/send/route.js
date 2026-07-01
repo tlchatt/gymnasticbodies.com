@@ -51,10 +51,11 @@ export async function POST(request) {
     }
 
     try {
+      const fromEmail = type === 'marketing' ? 'marketing@gymnasticbodies.com' : 'support@gymnasticbodies.com';
       await sgMail.send({
         to: email,
-        from: process.env.SENDGRID_FROM,
-        replyTo: process.env.SENDGRID_REPLYTO || 'support@gymnasticbodies.com',
+        from: fromEmail,
+        replyTo: 'support@gymnasticbodies.com',
         subject,
         text: renderedBody,
       });

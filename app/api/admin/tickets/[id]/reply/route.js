@@ -3,8 +3,10 @@ import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
 import { support_emails, support_replies } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
-import { sendSupportEmail } from '@/lib/gmail';
+import sgMail from '@sendgrid/mail';
 import { logger } from '@/lib/logger';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(request, { params }) {
   const { error, user: adminUser } = await requireAdmin();
@@ -20,24 +22,24 @@ export async function POST(request, { params }) {
   const { body } = await request.json();
   if (!body?.trim()) return NextResponse.json({ error: 'Reply body required' }, { status: 400 });
 
-  let gmailMessageId = null;
   try {
-    const sent = await sendSupportEmail({
+    await sgMail.send({
       to: ticket.fromEmail,
+      from: 'support@gymnasticbodies.com',
+      replyTo: 'support@gymnasticbodies.com',
       subject: ticket.subject.startsWith('Re:') ? ticket.subject : `Re: ${ticket.subject}`,
-      body: body.trim(),
+      text: body.trim(),
     });
-    gmailMessageId = sent.id ?? null;
   } catch (err) {
     logger.error('admin.reply.send_failed', { ticketId, error: err.message });
-    return NextResponse.json({ error: `Gmail send failed: ${err.message}` }, { status: 500 });
+    return NextResponse.json({ error: `SendGrid send failed: ${err.message}` }, { status: 500 });
   }
 
   const [inserted] = await db.insert(support_replies).values({
     emailId: ticketId,
     adminUserId: adminUser.id,
     body: body.trim(),
-    gmailMessageId,
+    gmailMessageId: null,
   }).returning();
 
   await db.update(support_emails)
