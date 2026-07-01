@@ -239,7 +239,11 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/user/log` | Workout log CRUD |
 | `/api/user/resetLink` / `resetPassword` | Password reset flow |
 | `/api/user/contactUs` | Contact form (SendGrid) |
-| `/api/user/accountInformation` | Account details read/write |
+| `/api/user/accountInformation` | Account details read (subscription, card, profile) via `getAccountInformation` in `lib/commonFunctions.js` |
+| `/api/user/profile` | PUT — update `user.name`, `user_setting.data.phone`, `user_setting.data.country` |
+| `/api/user/change-email` | PUT — send email verification link to new address (token stored in `verification` table) |
+| `/api/user/verify-email` | GET — validate token, update `user.email` + `user_setting.data.email`, redirect to `?emailChanged=1` |
+| `/api/stripe/cancel-subscription` | POST — cancel Stripe subscription (trial → immediate; active → `cancel_at_period_end: true`) |
 | `/api/cronJobs` | Renewal checks & subscription updates (daily cron) |
 | `/api/classifyUsers` | Re-classifies all users, setting `migration_type` + `customer_segment` (daily cron) |
 | `/api/migration` | Bulk user import from legacy data |
@@ -256,6 +260,109 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/admin/outbound/send` | POST — send + record outbound email(s); supports `dryRun: true` for preview |
 
 All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *`).
+
+---
+
+## Account Details Page (`/accountDetails`)
+
+`my.gymnasticbodies.com` links users here with `?userId=<neon-id>&token=<session-token>`. The page is a **server component** — all data is fetched server-side and passed as props to `AccountDetailsComp` (client component).
+
+### Data fetching (`app/accountDetails/page.js`)
+
+Three parallel fetches at render time:
+
+```js
+const [accountInformation, supportHistory, workoutLogs] = await Promise.all([
+    getAccountInformation({ userId, token, type: 'subscription' }),  // lib/commonFunctions.js
+    fetchUserSupportHistory(userId),   // lib/userHelpers.js
+    fetchUserWorkoutLogs(userId),      // lib/userHelpers.js
+])
+```
+
+`getAccountInformation` has THREE enrichment paths: DB → Stripe (if `stripeSubscriptionId` exists) → Authorize.net (early return if `authorizeSubscriptionId` exists). It returns `migrationStatus: user.migrationType` in **both** the Stripe path AND the Auth.net early return — this is important for the `isActive` check in the component.
+
+### Component sections (`components/AccountDetailsComp.js`)
+
+| Section | What it shows |
+|---|---|
+| **Manage Subscription** | Status, price, term, next payment, card. Cancel button for Stripe subs. Renew button for noncurrent users. |
+| **Order Information** | Historical order details |
+| **Profile** | Name, phone, country — editable inline via `PUT /api/user/profile` |
+| **Security** | Password reset button (calls existing `/api/user/resetLink`). Email change form (calls `PUT /api/user/change-email` → verification email). |
+| **Support History** | Last 20 support emails linked to this userId, ordered by date |
+| **Workout Activity** | Total log count + most recent date from `user_logs` |
+
+### Key logic in `AccountDetailsComp.js`
+
+```js
+const isActive   = impInfo?.status === 'Active' && migrationStatus !== 'noncurrent'
+const isTrial    = !!impInfo?.trial
+const hasStripeSub = impInfo?.subscriptionId?.startsWith?.('sub_')
+// hasStripeSub uses startsWith('sub_') — auth.net ARB IDs (e.g. 'ARB-TEST-...') must NOT trigger cancel button
+```
+
+### Cancel subscription (`app/api/stripe/cancel-subscription/route.js`)
+
+- **Trial** → `stripe.subscriptions.cancel()` → DB status `'cancelled'` → classifies as `noncurrent/lapsed`
+- **Active** → `stripe.subscriptions.update(id, { cancel_at_period_end: true })` → DB status `'pending_cancel'` → classifies as `noncurrent/lapsed`
+- Returns `{ success, cancelAtPeriodEnd, accessUntil }` (accessUntil is epoch seconds from Stripe)
+
+### Email change verification flow
+
+1. `PUT /api/user/change-email` — checks new email not taken, inserts token into `verification` table with `identifier = 'change-email:{userId}'`, sends SendGrid link via `sendEmailChangeSG()` in `lib/sendgrid.js`
+2. User clicks link → `GET /api/user/verify-email?token=...` — validates token, updates `user.email` + `user_setting.data.email`, deletes verification record, redirects to `/accountDetails?userId=...&emailChanged=1`
+3. Page renders success banner on `?emailChanged=1`, error banner on `?emailError=link_expired`
+
+### Helpers (`lib/userHelpers.js`)
+
+- `fetchUserSupportHistory(userId)` — queries `support_emails` joined with `support_cases`, limit 20, ordered by `receivedAt DESC`
+- `fetchUserWorkoutLogs(userId)` — queries `user_logs`, limit 200
+
+---
+
+## Test Infrastructure (`claudeTools/`)
+
+### Account details test suite
+
+Two scripts cover the full `/accountDetails` page with 56 automated checks:
+
+**`claudeTools/setupAccountTestUsers.js`** — creates/resets 7 dedicated test accounts in Neon via direct DB insert (no API sign-up, no origin restriction). Run once before testing, or re-run to reset to a clean state. Writes IDs to `claudeTools/accountTestUsers.json`.
+
+```bash
+node claudeTools/setupAccountTestUsers.js
+```
+
+| Account key | Email | Segment | Notes |
+|---|---|---|---|
+| `stripeActive` | `test-acct-stripe@gymnasticbodies-test.com` | current/stripe | Cancel button — test adds real Stripe sub per run |
+| `stripeTrial` | `test-acct-trial@gymnasticbodies-test.com` | current/stripe | Cancel Trial button — trial sub added per run |
+| `subscriber` | `test-acct-subscriber@gymnasticbodies-test.com` | current/subscriber | Manual grant — no cancel, no renew |
+| `authNet` | `test-acct-authnet@gymnasticbodies-test.com` | current/auth_net | No Stripe cancel button |
+| `lapsed` | `test-acct-lapsed@gymnasticbodies-test.com` | noncurrent/lapsed | Renew button |
+| `purchased` | `test-acct-purchased@gymnasticbodies-test.com` | noncurrent/purchased | Renew button, no price history |
+| `withHistory` | `test-acct-history@gymnasticbodies-test.com` | current/subscriber | Seeded with 3 support emails + 24 workout logs |
+
+**`claudeTools/testAccountDetails.js`** — Puppeteer test suite. Reads from `accountTestUsers.json`.
+
+```bash
+# Non-Stripe tests (40 checks — section visibility, buttons, profile edit, banners)
+node claudeTools/testAccountDetails.js http://localhost:3000
+
+# Full suite including cancel flows (56 checks — swaps to test Stripe key, restores after)
+node claudeTools/testAccountDetails.js http://localhost:3000 --stripe-test
+
+# Single account type
+node claudeTools/testAccountDetails.js http://localhost:3000 --only=lapsed
+
+# With browser visible
+node claudeTools/testAccountDetails.js http://localhost:3000 --stripe-test --headless=false --slow=400
+```
+
+**Important**: `--stripe-test` swaps `STRIPE_SECRET_KEY` to `sk_test_*` in `.env.local` for the duration of the run and restores the live key afterward (with a safety-net restore in the `finally` block). Do not interrupt mid-run.
+
+### Password: `GBtest2026!` (all test accounts)
+
+---
 
 ## Admin Support Inbox
 
