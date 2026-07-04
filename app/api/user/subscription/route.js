@@ -41,25 +41,46 @@ export async function POST(request) {//when subscription webhook is triggered ->
             let customerId, impInfo, userInNeon
             console.log("password in registerWPass:", password)
 
-            let customerData = await getAllDataFromFile(username)//getting authorizeCustomerData from file
-            customerId = customerData?.result?.profile?.customerProfileId;
+            // A manually-granted future renewaldate (e.g. via admin grant-access, or a
+            // direct indefinite-access override) is an administrative decision. Without
+            // this check, every legacy-AWS login re-syncs subscription data from the
+            // user's real (possibly dead/never-paid) Authorize.net profile and silently
+            // overwrites that grant back to "N/A" on the very next login.
+            let existingUser = await getUserWithEmail(username)
+            let existingSetting = existingUser?.id ? await queryUserSetting(existingUser.id, "subscription") : null
+            let existingRenewalDate = null
+            try {
+                let raw = typeof existingSetting?.data === 'string' ? JSON.parse(existingSetting.data) : existingSetting?.data
+                let parsed = raw?.renewaldate && raw.renewaldate !== 'N/A' ? new Date(raw.renewaldate) : null
+                existingRenewalDate = parsed && !isNaN(parsed) ? parsed : null
+            } catch (_) {}
+            let hasManualGrant = existingRenewalDate && (existingRenewalDate.getTime() - Date.now()) > 90 * 24 * 60 * 60 * 1000
 
-            console.log("customerId is:", customerId)
-            if (customerId) {
-                let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
-                console.log("authorizeData:", authorizeData)
+            if (hasManualGrant) {
+                console.log("registerWPass: manual grant in effect through", existingRenewalDate, "— skipping Authorize.net resync for", username)
+                dbUser = existingUser
+                userSetting = existingSetting
+            } else {
+                let customerData = await getAllDataFromFile(username)//getting authorizeCustomerData from file
+                customerId = customerData?.result?.profile?.customerProfileId;
 
-                impInfo = await getFlagAndSubscriptionInfo(authorizeData)
-                console.log("impInfo:", impInfo)
+                console.log("customerId is:", customerId)
+                if (customerId) {
+                    let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
+                    console.log("authorizeData:", authorizeData)
 
-                dbUser = await createAndModifyUserInNeon(json, impInfo)
-                console.log("dbUser after createAndModifyUserInNeon:", dbUser)
-            }else{
-                console.error("customer not in authorize. email:",username)
-                //check user in neon db using the userId
-                dbUser = await getUserWithEmail(json.email)
-                //get userSettings using the userId
-                userSetting = await queryUserSetting(dbUser?.id,"subscription")
+                    impInfo = await getFlagAndSubscriptionInfo(authorizeData)
+                    console.log("impInfo:", impInfo)
+
+                    dbUser = await createAndModifyUserInNeon(json, impInfo)
+                    console.log("dbUser after createAndModifyUserInNeon:", dbUser)
+                }else{
+                    console.error("customer not in authorize. email:",username)
+                    //check user in neon db using the userId
+                    dbUser = existingUser ?? await getUserWithEmail(json.email)
+                    //get userSettings using the userId
+                    userSetting = existingSetting ?? await queryUserSetting(dbUser?.id,"subscription")
+                }
             }
         }
         else {
