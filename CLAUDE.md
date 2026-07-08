@@ -523,36 +523,43 @@ The reply-detection window is **90 days** from `sent_at`. `findOutboundMatch()` 
 
 ---
 
-Two columns on the `user` table drive access and segmentation (last updated 2026-06-02):
+Two columns on the `user` table drive access and segmentation (last updated 2026-07-01):
 
 ### `user.migration_type` — binary, drives the paywall
 
 | Value | Count | Meaning |
 |---|---|---|
-| `current` | 1,096 | Has active subscription or future renewal date — **no paywall** |
-| `noncurrent` | 15,181 | No active subscription, no future renewal date — **redirect to `/renew`** |
+| `current` | 950 | Has active subscription (verified) or future renewal date — **no paywall** |
+| `noncurrent` | 15,362 | No active subscription, no future renewal date — **redirect to `/renew`** |
 
-`renewalStatus` API returns `needsRenewal: true` when `migration_type = 'noncurrent'`. Classification is purely date/subscription based — no activity signals required.
+`renewalStatus` API returns `needsRenewal: true` when `migration_type = 'noncurrent'`. Classification is date/subscription based, with a live Stripe recheck once a Stripe user's cached date goes stale (see waterfall below) — not purely a cached-field read for Stripe users anymore.
 
 ### `user.customer_segment` — granular, drives what we offer
 
 | Value | Count | Meaning |
 |---|---|---|
-| `stripe` | 15 | Active Stripe subscriber |
-| `auth_net` | 19 | Active Auth.net ARB subscriber |
-| `subscriber` | 1,062 | Current — future renewal date set (manually granted or imported) |
+| `stripe` | 43 | Active Stripe subscriber |
+| `auth_net` | 20 | Active Auth.net ARB subscriber |
+| `subscriber` | 887 | Current — future renewal date set (manually granted or imported) |
 | `purchased` | 334 | One-time WooCommerce product buyer — noncurrent, paywalled for now |
-| `lapsed` | 430 | Had a subscription, now expired — offered `/renew` |
-| `inactive` | 14,417 | No meaningful signals |
+| `lapsed` | 552 | Had a subscription, now expired — offered `/renew` |
+| `inactive` | 14,476 | No meaningful signals |
 
 ### Classification waterfall (`/api/classifyUsers`)
 
-1. Has `stripe_subscription_id` → `current` / `stripe`
-2. Has `authorize_subscription_id` → `current` / `auth_net`
-3. Has valid future `renewaldate` in subscription data → `current` / `subscriber`
+1. Has `stripe_subscription_id`:
+   - Cached `renewaldate` still in the future → `current` / `stripe` (no API call — trusted from cache)
+   - Cached `renewaldate` expired or missing → **live Stripe recheck** (throttled to 5 concurrent calls via `mapWithConcurrency`):
+     - Confirmed `active`/`trialing` → `current` / `stripe`, and the stale `renewaldate`/`status` in `user_setting.data` is self-healed to the real value from Stripe
+     - Confirmed inactive (`canceled`, `past_due`, etc.) or subscription no longer exists (`resource_missing`) → `noncurrent` / `lapsed`
+     - Transient failure (rate limit, network, timeout) → **classification is left unchanged** — a same-day API hiccup must not silently paywall a real customer
+2. Has `authorize_subscription_id` → `current` / `auth_net` (legacy, presence-only — no live Auth.net recheck)
+3. Has valid future `renewaldate` in subscription data (no gateway ID) → `current` / `subscriber`
 4. Has a `purchase` type row in `user_setting` → `noncurrent` / `purchased`
 5. Has activity signals (session, user_logs, levelPath) → `noncurrent` / `lapsed`
 6. None of the above → `noncurrent` / `inactive`
+
+**Why the live recheck exists:** presence of `stripe_subscription_id` alone was previously treated as permanent proof of `current`, fully dependent on Stripe webhooks to ever flip a user back to `noncurrent`. Two failure modes made that unsafe: (a) `customer.subscription.deleted`/`invoice.payment_failed` webhook handlers update `migration_type` directly but never clear `stripe_subscription_id` from `user_setting` — without the date/live check, the next cron run would silently re-flip a correctly-cancelled subscriber back to `current`; (b) test-mode Stripe subscriptions (e.g. from the account-test-suite scripts) never reach the production webhook endpoint, so they stayed `current` forever. Supports `?dryRun=true` to preview reclassifications/self-heals without writing.
 
 The `/api/classifyUsers` cron runs automatically at 11 AM UTC daily. Both `migration_type` and `customer_segment` are updated atomically per user. `grant-access` and `create-free` routes set `current` / `subscriber` immediately without waiting for the cron.
 
