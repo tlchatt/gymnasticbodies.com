@@ -4,7 +4,7 @@ import { useMediaQuery } from '@/lib/MediaQueries';
 import { PortableText, ptToText } from '@/lib/portableText';
 
 // Shared hero for the marketing content pages (mobility, hey-newbies, think-stronger,
-// body-weight, all-access, free-members). Matches the /subscribe + homepage hero
+// body-weight, all-access). Matches the /subscribe + homepage hero
 // language: orange glow, left-aligned italic Barlow headline, overline kicker, muted
 // subtext, tight top padding so it sits right under the sticky nav.
 //

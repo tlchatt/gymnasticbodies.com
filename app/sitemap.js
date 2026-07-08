@@ -12,7 +12,6 @@ const STATIC_ROUTES = [
     { url: `${BASE}/think-stronger/`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE}/mobility/`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE}/body-weight/`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE}/free-members/`, priority: 0.6, changeFrequency: 'monthly' },
     { url: `${BASE}/blog/`, priority: 0.6, changeFrequency: 'weekly' },
     { url: `${BASE}/exercises/`, priority: 0.7, changeFrequency: 'monthly' },
 ];

@@ -11,7 +11,6 @@ import data from '@/data/test.json'
 // import remainingData from '@/data/left.json'
 import path from 'path';
 import completeData from '@/data/done.json'
-import whiteBoardCategoryData from '@/data/test.json'
 import jwt from 'jsonwebtoken';
 import { sendMediaToVercel, uploadToVercelBlob } from '@/lib/commonServerFunction';
 import fs from 'fs/promises';
@@ -114,13 +113,6 @@ export default async function Media() {
     //     console.log("url:", name)
     //     await downloadMediaWorkflow(name)
     // await downloadMediaWorkflow()
-    // }
-
-    /*for whiteboard category videos*/
-    // for (let whiteboard of whiteBoardCategoryData) {
-    //     let name = whiteboard?.videoName ?? whiteboard.mediaId
-    //     console.log("url:", name)
-    //     await downloadMediaWorkflow(name)
     // }
 
     // await getMatchInMediaData(mediaIdsJwplayer,mediaData)

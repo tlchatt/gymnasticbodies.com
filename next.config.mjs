@@ -7,6 +7,12 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   crossOrigin: 'anonymous',
+  async redirects() {
+    return [
+      // Free tier / "Free White Board" page discontinued — send old links to /subscribe.
+      { source: '/free-members', destination: '/subscribe', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
