@@ -2,6 +2,7 @@
 import { use, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import AccountHistory from '@/components/admin/AccountHistory';
+import SubscriptionActions from '@/components/admin/SubscriptionActions';
 import s from './userDetail.module.css';
 
 function fmtDate(str) {
@@ -401,6 +402,10 @@ export default function UserDetailClient({ params }) {
                     )}
                   </div>
                 )}
+
+            <div className={s.panelDivider} />
+            <div className={s.panelSubTitle}>Billing</div>
+            <SubscriptionActions userId={id} hasStripeSub={!!setting?.stripeSubscriptionId} />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import AccountHistory from '@/components/admin/AccountHistory';
+import SubscriptionActions from '@/components/admin/SubscriptionActions';
 import s from './case.module.css';
 
 function EmailThread({ email }) {
@@ -369,6 +370,8 @@ export default function CaseClient({ data: initial }) {
                         {grantMsg && <div style={{ fontSize: 11, color: grantState === 'ok' ? 'var(--accent-light)' : '#e66' }}>{grantMsg}</div>}
                       </>
                     )}
+
+                    <SubscriptionActions userId={user.id} hasStripeSub={!!setting?.stripeSubscriptionId} />
                   </div>
 
                   <div className={s.infoRow}>

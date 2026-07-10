@@ -26,6 +26,14 @@ function actionLabel(event, data = {}) {
       return 'Sent password reset email';
     case 'admin.temp_password_set':
       return `Set temp password${data.created ? ' (new login created)' : ''}`;
+    case 'admin.cancel_subscription':
+      return data.method === 'app'
+        ? 'Cancelled subscription (app-level)'
+        : data.cancelAtPeriodEnd || data.method === 'stripe_period_end'
+          ? 'Cancelled subscription (at period end)'
+          : 'Cancelled subscription (immediate)';
+    case 'admin.refund':
+      return `Refunded ${data.amount != null ? `$${(Number(data.amount) / 100).toFixed(2)}` : 'a payment'}${data.reason ? ` — ${data.reason}` : ''}`;
     default:
       return event.replace(/^admin\./, '').replace(/_/g, ' ');
   }
