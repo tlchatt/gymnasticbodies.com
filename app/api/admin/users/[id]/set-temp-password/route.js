@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { randomUUID } from 'crypto';
 import { requireAdmin } from '@/lib/adminAuth';
 import { getUserWithId } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
@@ -34,16 +35,28 @@ export async function POST(request, { params }) {
   const tempPassword = generateTempPassword();
   const hashed = await hash(tempPassword, ARGON_OPTS);
 
+  // Try to update an existing better-auth credential account first.
   const updated = await db
     .update(account)
     .set({ password: hashed })
     .where(and(eq(account.userId, id), eq(account.providerId, 'credential')))
     .returning({ id: account.id });
 
+  let created = false;
   if (!updated.length) {
-    return NextResponse.json({ error: 'No credential account found for this user' }, { status: 404 });
+    // Legacy users (AWS/WooCommerce imports) have no credential account row yet.
+    // Create one so the temp password actually lets them sign in. For a
+    // credential provider, better-auth stores accountId = userId.
+    await db.insert(account).values({
+      id: randomUUID(),
+      accountId: id,
+      providerId: 'credential',
+      userId: id,
+      password: hashed,
+    });
+    created = true;
   }
 
-  logger.info('admin.temp_password_set', { email: user.email, userId: user.id });
-  return NextResponse.json({ ok: true, tempPassword, email: user.email });
+  logger.info('admin.temp_password_set', { email: user.email, userId: user.id, created });
+  return NextResponse.json({ ok: true, tempPassword, email: user.email, created });
 }
