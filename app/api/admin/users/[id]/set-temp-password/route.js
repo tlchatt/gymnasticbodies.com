@@ -24,7 +24,7 @@ function generateTempPassword() {
 }
 
 export async function POST(request, { params }) {
-  const { error } = await requireAdmin();
+  const { error, user: admin } = await requireAdmin();
   if (error) return error;
 
   const { id } = await params;
@@ -57,6 +57,6 @@ export async function POST(request, { params }) {
     created = true;
   }
 
-  logger.info('admin.temp_password_set', { email: user.email, userId: user.id, created });
+  logger.info('admin.temp_password_set', { email: user.email, userId: user.id, created, adminEmail: admin?.email, adminId: admin?.id });
   return NextResponse.json({ ok: true, tempPassword, email: user.email, created });
 }

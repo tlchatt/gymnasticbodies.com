@@ -14,7 +14,7 @@ function calcExpiry(days) {
 }
 
 export async function POST(request, { params }) {
-  const { error } = await requireAdmin();
+  const { error, user: admin } = await requireAdmin();
   if (error) return error;
 
   const { id } = await params;
@@ -58,6 +58,8 @@ export async function POST(request, { params }) {
     email: user.email,
     days: days === 'indefinite' ? 'indefinite' : Number(days),
     expiresAt: expiryIso,
+    adminEmail: admin?.email,
+    adminId: admin?.id,
   });
 
   return NextResponse.json({ ok: true, expiresAt: expiryIso });

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import AccountHistory from '@/components/admin/AccountHistory';
 import s from './case.module.css';
 
 function EmailThread({ email }) {
@@ -79,6 +80,16 @@ function statusClass(status) {
   return s.statusOpen;
 }
 
+const ACT_BTN = {
+  fontSize: 12,
+  padding: '6px 10px',
+  background: 'var(--bg-raised)',
+  border: '1px solid var(--border-subtle)',
+  color: 'var(--text-muted)',
+  borderRadius: 'var(--radius-sm)',
+  cursor: 'pointer',
+};
+
 export default function CaseClient({ data: initial }) {
   const [caseData, setCaseData] = useState(initial.case);
   const [notes, setNotes] = useState(initial.case.adminNotes ?? '');
@@ -86,11 +97,19 @@ export default function CaseClient({ data: initial }) {
   const [saveMsg, setSaveMsg] = useState('');
   const [tempPwState, setTempPwState] = useState('idle');
   const [tempPw, setTempPw] = useState('');
+  const [resetState, setResetState] = useState('idle');
+  const [extendState, setExtendState] = useState('idle');
+  const [extendMsg, setExtendMsg] = useState('');
+  const [grantState, setGrantState] = useState('idle');
+  const [grantMsg, setGrantMsg] = useState('');
+  const [grantDays, setGrantDays] = useState('30');
 
   const user = initial.user;
   const setting = initial.setting;
   const lastSession = initial.lastSession;
   const recentLogs = initial.recentLogs ?? [];
+  const adminActions = initial.adminActions ?? [];
+  const outbound = initial.outbound ?? [];
   const pastCases = initial.pastCases ?? [];
   const linkedEmails = initial.linkedEmails ?? [];
 
@@ -104,6 +123,67 @@ export default function CaseClient({ data: initial }) {
       if (json.ok) { setTempPw(json.tempPassword); setTempPwState('ok'); }
       else setTempPwState('error');
     } catch { setTempPwState('error'); }
+  }
+
+  async function handlePasswordReset() {
+    if (!user?.id || resetState === 'loading') return;
+    setResetState('loading');
+    try {
+      const res = await fetch(`/api/admin/users/${user.id}/send-password-reset`, { method: 'POST' });
+      const json = await res.json();
+      setResetState(json.ok ? 'ok' : 'error');
+    } catch { setResetState('error'); }
+  }
+
+  // Stripe subscriber: extend via Stripe trial_end / period (+30 days)
+  async function handleExtendSubscription() {
+    if (!user?.id || extendState === 'loading') return;
+    setExtendState('loading');
+    setExtendMsg('');
+    try {
+      const res = await fetch(`/api/admin/users/${user.id}/extend-subscription`, { method: 'POST' });
+      const json = await res.json();
+      if (json.ok) {
+        const dateStr = json.newPeriodEnd ?? json.newRenewalDate;
+        const label = dateStr ? ` · renews ${fmtDate(dateStr)}` : '';
+        setExtendMsg(`+30 days granted${label}`);
+        setExtendState('ok');
+      } else {
+        setExtendMsg(json.error ?? 'Failed');
+        setExtendState('error');
+      }
+    } catch {
+      setExtendMsg('Request failed');
+      setExtendState('error');
+    }
+  }
+
+  // Non-Stripe: grant free access via migration_type + renewaldate
+  async function handleGrantAccess() {
+    if (!user?.id || grantState === 'loading') return;
+    setGrantState('loading');
+    setGrantMsg('');
+    try {
+      const res = await fetch(`/api/admin/users/${user.id}/grant-access`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ days: grantDays === 'indefinite' ? 'indefinite' : parseInt(grantDays) }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        const label = grantDays === 'indefinite'
+          ? 'Indefinite access granted'
+          : `Access granted · expires ${fmtDate(json.expiresAt)}`;
+        setGrantMsg(label);
+        setGrantState('ok');
+      } else {
+        setGrantMsg(json.error ?? 'Failed');
+        setGrantState('error');
+      }
+    } catch {
+      setGrantMsg('Request failed');
+      setGrantState('error');
+    }
   }
 
   async function patchCase(updates) {
@@ -229,25 +309,65 @@ export default function CaseClient({ data: initial }) {
             ) : (
               <>
                 <div className={s.userInfo}>
-                  <div className={s.userName}>{user.name}</div>
+                  <Link href={`/admin/users/${user.id}`} className={s.userName} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}>
+                    {user.name}
+                    <span style={{ color: 'var(--accent)', fontSize: '0.8em' }}>→</span>
+                  </Link>
                   <div className={s.userEmail}>{user.email}</div>
                   <Link href={`/admin/users/${user.id}`} className={s.profileLink}>
                     View full profile →
                   </Link>
 
-                  <div style={{ marginTop: 8 }}>
-                    <button
-                      onClick={handleSetTempPassword}
-                      disabled={tempPwState === 'loading'}
-                      style={{ fontSize: 12, padding: '4px 10px', background: 'var(--bg-raised)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}
-                    >
-                      {tempPwState === 'loading' ? 'Setting…' : tempPwState === 'error' ? '✗ Failed' : 'Set temp password'}
+                  {/* Admin actions — same set as the user detail page, logged to app_logs per action */}
+                  <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <button onClick={handlePasswordReset} disabled={resetState === 'loading' || resetState === 'ok'} style={ACT_BTN}>
+                      {resetState === 'loading' ? 'Sending…'
+                        : resetState === 'ok'    ? '✓ Reset email sent'
+                        : resetState === 'error' ? '✗ Failed — retry?'
+                        : 'Send password reset'}
+                    </button>
+
+                    <button onClick={handleSetTempPassword} disabled={tempPwState === 'loading'} style={ACT_BTN}>
+                      {tempPwState === 'loading' ? 'Setting…'
+                        : tempPwState === 'error' ? '✗ Failed — retry?'
+                        : 'Set temp password'}
                     </button>
                     {tempPw && (
-                      <div style={{ marginTop: 6, fontSize: 12 }}>
+                      <div style={{ fontSize: 12 }}>
                         <span style={{ color: 'var(--text-subtle)' }}>Temp: </span>
                         <code style={{ color: 'var(--accent)', fontFamily: 'monospace', userSelect: 'all' }}>{tempPw}</code>
                       </div>
+                    )}
+
+                    {setting?.stripeSubscriptionId ? (
+                      <>
+                        <button onClick={handleExtendSubscription} disabled={extendState === 'loading' || extendState === 'ok'} style={{ ...ACT_BTN, borderColor: 'var(--border-accent)' }}>
+                          {extendState === 'loading' ? 'Extending…'
+                            : extendState === 'ok'    ? '✓ Extended'
+                            : extendState === 'error' ? '✗ Failed — retry?'
+                            : 'Extend subscription +30 days'}
+                        </button>
+                        {extendMsg && <div style={{ fontSize: 11, color: extendState === 'ok' ? 'var(--accent-light)' : '#e66' }}>{extendMsg}</div>}
+                      </>
+                    ) : (
+                      <>
+                        <div style={{ display: 'flex', gap: 6 }}>
+                          <select value={grantDays} onChange={(e) => setGrantDays(e.target.value)} disabled={grantState === 'loading' || grantState === 'ok'} style={{ ...ACT_BTN, width: 'auto', flex: '0 0 auto' }}>
+                            <option value="30">30 days</option>
+                            <option value="60">60 days</option>
+                            <option value="90">90 days</option>
+                            <option value="365">1 year</option>
+                            <option value="indefinite">Indefinite</option>
+                          </select>
+                          <button onClick={handleGrantAccess} disabled={grantState === 'loading' || grantState === 'ok'} style={{ ...ACT_BTN, borderColor: 'var(--border-accent)', flex: 1 }}>
+                            {grantState === 'loading' ? 'Granting…'
+                              : grantState === 'ok'    ? '✓ Access granted'
+                              : grantState === 'error' ? '✗ Failed — retry?'
+                              : 'Grant free access'}
+                          </button>
+                        </div>
+                        {grantMsg && <div style={{ fontSize: 11, color: grantState === 'ok' ? 'var(--accent-light)' : '#e66' }}>{grantMsg}</div>}
+                      </>
                     )}
                   </div>
 
@@ -329,7 +449,12 @@ export default function CaseClient({ data: initial }) {
                   </div>
                 )}
 
-                {/* Recent activity */}
+                {/* Admin actions + outreach history (subscription grants, resets, marketing offers) */}
+                <div className={s.panelSection}>
+                  <AccountHistory adminActions={adminActions} outbound={outbound} />
+                </div>
+
+                {/* Recent app activity (logins, renewal checks) */}
                 {recentLogs.length > 0 && (
                   <div className={s.panelSection}>
                     <div className={s.panelSectionTitle}>Recent Activity</div>

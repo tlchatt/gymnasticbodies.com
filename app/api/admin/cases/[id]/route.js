@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
-import { support_cases, support_emails, support_replies, user, user_setting, app_logs, session } from '@/Drizzle/db/schema';
-import { eq, desc, and, ne, inArray } from 'drizzle-orm';
+import { support_cases, support_emails, support_replies, user, user_setting, app_logs, session, outbound_emails } from '@/Drizzle/db/schema';
+import { eq, desc, and, ne, inArray, like } from 'drizzle-orm';
 
 export async function GET(request, { params }) {
   const { error } = await requireAdmin();
@@ -63,6 +63,8 @@ export async function GET(request, { params }) {
   let setting = null;
   let lastSession = null;
   let recentLogs = [];
+  let adminActions = [];
+  let outbound = [];
   let pastCases = [];
 
   if (caseRow.userId) {
@@ -79,6 +81,29 @@ export async function GET(request, { params }) {
         .where(eq(app_logs.userId, caseRow.userId))
         .orderBy(desc(app_logs.ts))
         .limit(8);
+
+      // Admin actions taken on this user (subscription extensions, resets, temp pw, grants)
+      adminActions = await db
+        .select({ id: app_logs.id, event: app_logs.event, ts: app_logs.ts, data: app_logs.data })
+        .from(app_logs)
+        .where(and(eq(app_logs.userId, caseRow.userId), like(app_logs.event, 'admin.%')))
+        .orderBy(desc(app_logs.ts))
+        .limit(20);
+
+      // Outbound emails sent to this user (marketing offers + support)
+      outbound = await db
+        .select({
+          id: outbound_emails.id,
+          subject: outbound_emails.subject,
+          campaign: outbound_emails.campaign,
+          type: outbound_emails.type,
+          sentAt: outbound_emails.sentAt,
+          caseId: outbound_emails.caseId,
+        })
+        .from(outbound_emails)
+        .where(eq(outbound_emails.userId, caseRow.userId))
+        .orderBy(desc(outbound_emails.sentAt))
+        .limit(20);
 
       const sessions = await db
         .select({ createdAt: session.createdAt })
@@ -118,6 +143,8 @@ export async function GET(request, { params }) {
     setting,
     lastSession,
     recentLogs,
+    adminActions,
+    outbound,
     pastCases,
     linkedEmails: linkedEmailsWithReplies,
   });

@@ -10,7 +10,7 @@ import { logger } from '@/lib/logger';
 const EXTEND_DAYS = 30;
 
 export async function POST(request, { params }) {
-  const { error } = await requireAdmin();
+  const { error, user: admin } = await requireAdmin();
   if (error) return error;
 
   const { id } = await params;
@@ -43,6 +43,8 @@ export async function POST(request, { params }) {
       days: EXTEND_DAYS,
       stripeSubscriptionId: setting.stripeSubscriptionId,
       newPeriodEnd,
+      adminEmail: admin?.email,
+      adminId: admin?.id,
     });
 
     return NextResponse.json({ ok: true, method: 'stripe', newPeriodEnd });
@@ -75,6 +77,8 @@ export async function POST(request, { params }) {
     method: 'db',
     days: EXTEND_DAYS,
     newRenewalDate: data.renewaldate,
+    adminEmail: admin?.email,
+    adminId: admin?.id,
   });
 
   return NextResponse.json({ ok: true, method: 'db', newRenewalDate: data.renewaldate });

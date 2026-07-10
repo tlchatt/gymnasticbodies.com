@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
 import { user, user_setting, app_logs, user_logs, support_emails, support_cases, outbound_emails } from '@/Drizzle/db/schema';
-import { and, eq, desc, count } from 'drizzle-orm';
+import { and, eq, desc, count, like } from 'drizzle-orm';
 
 export async function GET(request, { params }) {
   const { error } = await requireAdmin();
@@ -29,6 +29,14 @@ export async function GET(request, { params }) {
     .where(eq(app_logs.email, u.email))
     .orderBy(desc(app_logs.ts))
     .limit(15);
+
+  // Admin actions on this user (extensions, resets, temp pw, grants) — with data for labels
+  const adminActions = await db
+    .select({ id: app_logs.id, ts: app_logs.ts, event: app_logs.event, data: app_logs.data })
+    .from(app_logs)
+    .where(and(eq(app_logs.userId, id), like(app_logs.event, 'admin.%')))
+    .orderBy(desc(app_logs.ts))
+    .limit(20);
 
   // Total workout log entries
   const [logsCountRow] = await db
@@ -80,5 +88,5 @@ export async function GET(request, { params }) {
     .orderBy(desc(outbound_emails.sentAt))
     .limit(20);
 
-  return NextResponse.json({ user: u, setting, recentLogs, logsCount, tickets, cases, outbound });
+  return NextResponse.json({ user: u, setting, recentLogs, adminActions, logsCount, tickets, cases, outbound });
 }

@@ -1,6 +1,7 @@
 'use client';
 import { use, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import AccountHistory from '@/components/admin/AccountHistory';
 import s from './userDetail.module.css';
 
 function fmtDate(str) {
@@ -158,7 +159,7 @@ export default function UserDetailClient({ params }) {
   if (err) return <div className={s.loading}>Error: {err}</div>;
   if (!data) return null;
 
-  const { user, setting, recentLogs, logsCount, tickets, cases, outbound = [] } = data;
+  const { user, setting, recentLogs, adminActions = [], logsCount, tickets, cases, outbound = [] } = data;
 
   return (
     <>
@@ -238,36 +239,9 @@ export default function UserDetailClient({ params }) {
             </div>
           )}
 
-          {/* Outbound emails */}
+          {/* Admin actions + outreach history (grants, resets, temp pw, marketing offers, support emails) */}
           <div className={s.card}>
-            <div className={s.cardTitle}>Outbound Emails ({outbound.length})</div>
-            {outbound.length === 0 ? (
-              <div className={s.empty}>No outbound emails sent to this user.</div>
-            ) : (
-              <div className={s.linkList}>
-                {outbound.map((o) => (
-                  <div key={o.id} className={s.linkItem} style={{ cursor: 'default' }}>
-                    <span className={s.linkSubject}>{o.subject}</span>
-                    <span className={s.linkMeta}>
-                      {o.campaign && (
-                        <span className={s.campaignTag}>
-                          {o.campaign.replace(/_/g, ' ')}
-                        </span>
-                      )}
-                      <span className={`${s.badge} ${o.type === 'marketing' ? s.badgeMarketing : s.badgeSupport}`}>
-                        {o.type}
-                      </span>
-                      {o.caseId && (
-                        <Link href={`/admin/cases/${o.caseId}`} className={s.caseLink}>
-                          Case #{o.caseId}
-                        </Link>
-                      )}
-                      <span className={s.linkDate}>{fmtDate(o.sentAt)}</span>
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
+            <AccountHistory adminActions={adminActions} outbound={outbound} title={`Admin & Outreach History`} />
           </div>
         </div>
 
