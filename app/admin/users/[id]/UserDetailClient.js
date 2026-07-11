@@ -3,6 +3,7 @@ import { use, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import AccountHistory from '@/components/admin/AccountHistory';
 import SubscriptionActions from '@/components/admin/SubscriptionActions';
+import SubscriptionSummary from '@/components/admin/SubscriptionSummary';
 import s from './userDetail.module.css';
 
 function fmtDate(str) {
@@ -160,7 +161,7 @@ export default function UserDetailClient({ params }) {
   if (err) return <div className={s.loading}>Error: {err}</div>;
   if (!data) return null;
 
-  const { user, setting, recentLogs, adminActions = [], logsCount, tickets, cases, outbound = [] } = data;
+  const { user, setting, subscription, recentLogs, adminActions = [], logsCount, tickets, cases, outbound = [] } = data;
 
   return (
     <>
@@ -305,49 +306,8 @@ export default function UserDetailClient({ params }) {
             <div className={s.panelDivider} />
             <div className={s.panelSubTitle}>Access</div>
 
-            {setting && (
-              <>
-                {setting.status && (
-                  <div className={s.infoRow}>
-                    <span className={s.infoKey}>Status</span>
-                    <span className={s.infoVal}>{setting.status}</span>
-                  </div>
-                )}
-                {setting.trial && (
-                  <div className={s.infoRow}>
-                    <span className={s.infoKey}>Trial</span>
-                    <span className={s.infoVal}>
-                      {setting.trialEndDate ? `ends ${fmtDate(setting.trialEndDate)}` : 'active'}
-                    </span>
-                  </div>
-                )}
-                {setting.stripeSubscriptionId && (
-                  <div className={s.infoRow}>
-                    <span className={s.infoKey}>Stripe sub</span>
-                    <a
-                      href={`https://dashboard.stripe.com/subscriptions/${setting.stripeSubscriptionId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={s.stripeLink}
-                    >
-                      {setting.stripeSubscriptionId}
-                    </a>
-                  </div>
-                )}
-                {setting.stripeCustomerId && (
-                  <div className={s.infoRow}>
-                    <span className={s.infoKey}>Stripe customer</span>
-                    <a
-                      href={`https://dashboard.stripe.com/customers/${setting.stripeCustomerId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={s.stripeLink}
-                    >
-                      {setting.stripeCustomerId}
-                    </a>
-                  </div>
-                )}
-              </>
+            {(subscription || setting) && (
+              <SubscriptionSummary subscription={subscription} setting={setting} showTitle={false} />
             )}
 
             {/* Contextual access action — always visible for non-Stripe users */}

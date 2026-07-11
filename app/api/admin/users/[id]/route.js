@@ -3,6 +3,7 @@ import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
 import { user, user_setting, app_logs, user_logs, support_emails, support_cases, outbound_emails } from '@/Drizzle/db/schema';
 import { and, eq, desc, count, like } from 'drizzle-orm';
+import { buildSubscriptionSummary } from '@/lib/adminSubscription';
 
 export async function GET(request, { params }) {
   const { error } = await requireAdmin();
@@ -88,5 +89,7 @@ export async function GET(request, { params }) {
     .orderBy(desc(outbound_emails.sentAt))
     .limit(20);
 
-  return NextResponse.json({ user: u, setting, recentLogs, adminActions, logsCount, tickets, cases, outbound });
+  const subscription = await buildSubscriptionSummary(setting, id);
+
+  return NextResponse.json({ user: u, setting, subscription, recentLogs, adminActions, logsCount, tickets, cases, outbound });
 }
