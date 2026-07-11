@@ -81,6 +81,19 @@ function statusClass(status) {
   return s.statusOpen;
 }
 
+function money(cents, currency = 'usd') {
+  if (cents == null) return null;
+  const v = (Number(cents) / 100).toFixed(2);
+  return currency && currency !== 'usd' ? `${v} ${currency.toUpperCase()}` : `$${v}`;
+}
+
+function accessSourceLabel(src) {
+  return src === 'stripe' ? 'Stripe · paying subscriber'
+    : src === 'auth_net' ? 'Auth.net · legacy subscriber'
+    : src === 'legacy_renewaldate' ? 'Legacy renewal date (pre-migration)'
+    : 'Unknown';
+}
+
 const ACT_BTN = {
   fontSize: 12,
   padding: '6px 10px',
@@ -108,6 +121,7 @@ export default function CaseClient({ data: initial }) {
   const user = initial.user;
   const setting = initial.setting;
   const lastSession = initial.lastSession;
+  const subscription = initial.subscription ?? null;
   const recentLogs = initial.recentLogs ?? [];
   const adminActions = initial.adminActions ?? [];
   const outbound = initial.outbound ?? [];
@@ -393,60 +407,114 @@ export default function CaseClient({ data: initial }) {
                 </div>
 
                 {/* Subscription */}
-                {setting && (
+                {(subscription || setting) && (
                   <div className={s.panelSection}>
                     <div className={s.panelSectionTitle}>Subscription</div>
-                    {setting.type && (
-                      <div className={s.infoRow}>
-                        <span className={s.infoKey}>Type</span>
-                        <span className={s.infoVal}>{setting.type}</span>
-                      </div>
+
+                    {subscription && (
+                      <>
+                        {/* Where their access actually comes from */}
+                        <div className={s.infoRow}>
+                          <span className={s.infoKey}>Access via</span>
+                          <span className={s.infoVal} style={{ color: subscription.accessSource === 'stripe' ? 'var(--accent-light)' : subscription.accessSource === 'legacy_renewaldate' ? '#fcb14e' : 'var(--text)' }}>
+                            {accessSourceLabel(subscription.accessSource)}
+                          </span>
+                        </div>
+
+                        {/* Plan + what they pay */}
+                        {subscription.productName && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Plan</span>
+                            <span className={s.infoVal}>{subscription.productName}</span>
+                          </div>
+                        )}
+                        {(subscription.stripeLive?.amount != null || subscription.price != null) && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Price</span>
+                            <span className={s.infoVal}>
+                              {subscription.stripeLive?.amount != null
+                                ? `${money(subscription.stripeLive.amount, subscription.stripeLive.currency)}/${subscription.stripeLive.interval ?? subscription.term ?? ''}`
+                                : `$${subscription.price}${subscription.term ? `/${subscription.term}` : ''}`}
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Live Stripe status */}
+                        {subscription.stripeLive && !subscription.stripeLive.error && (
+                          <>
+                            <div className={s.infoRow}>
+                              <span className={s.infoKey}>Stripe status</span>
+                              <span className={s.infoVal} style={{ color: subscription.stripeLive.status === 'active' || subscription.stripeLive.status === 'trialing' ? 'var(--accent-light)' : '#e66' }}>
+                                {subscription.stripeLive.status}{subscription.stripeLive.cancelAtPeriodEnd ? ' · cancels at period end' : ''}
+                              </span>
+                            </div>
+                            {subscription.stripeLive.currentPeriodEnd && (
+                              <div className={s.infoRow}>
+                                <span className={s.infoKey}>Next charge</span>
+                                <span className={s.infoVal}>{fmtDate(subscription.stripeLive.currentPeriodEnd)}</span>
+                              </div>
+                            )}
+                          </>
+                        )}
+                        {subscription.stripeLive?.error && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Stripe status</span>
+                            <span className={s.infoVal} style={{ color: '#e66' }}>could not load from Stripe</span>
+                          </div>
+                        )}
+
+                        {/* Non-Stripe renewal date */}
+                        {!subscription.isStripe && subscription.renewalDate && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Renews / expires</span>
+                            <span className={s.infoVal}>{fmtDate(subscription.renewalDate)}</span>
+                          </div>
+                        )}
+
+                        {!subscription.isStripe && subscription.paymentMethod && subscription.paymentMethod !== 'N/A' && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Payment method</span>
+                            <span className={s.infoVal}>{subscription.paymentMethod.replace(/_/g, ' ')}</span>
+                          </div>
+                        )}
+                        {subscription.startDate && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Customer since</span>
+                            <span className={s.infoVal}>{fmtDate(subscription.startDate)}</span>
+                          </div>
+                        )}
+
+                        {/* Offer conversion — answers "did they accept the offer?" */}
+                        {subscription.offerConversion && (
+                          <div className={s.infoRow}>
+                            <span className={s.infoKey}>Offer accepted</span>
+                            <span className={s.infoVal} style={{ color: 'var(--accent-light)' }}>
+                              {subscription.offerConversion.slug}
+                              {subscription.offerConversion.price ? ` · $${subscription.offerConversion.price}/${subscription.offerConversion.term ?? ''}` : ''}
+                              {subscription.offerConversion.at ? ` · ${fmtDate(subscription.offerConversion.at)}` : ''}
+                            </span>
+                          </div>
+                        )}
+                      </>
                     )}
-                    {setting.status && (
-                      <div className={s.infoRow}>
-                        <span className={s.infoKey}>Status</span>
-                        <span className={s.infoVal}>{setting.status}</span>
-                      </div>
-                    )}
-                    {setting.trial && (
-                      <div className={s.infoRow}>
-                        <span className={s.infoKey}>Trial</span>
-                        <span className={s.infoVal}>
-                          {setting.trialStartDate && `${fmtDate(setting.trialStartDate)} – `}
-                          {setting.trialEndDate ? fmtDate(setting.trialEndDate) : 'active'}
-                        </span>
-                      </div>
-                    )}
-                    {setting.stripeSubscriptionId && (
+
+                    {/* Gateway IDs (kept, de-emphasized) */}
+                    {setting?.stripeSubscriptionId && (
                       <div className={s.infoRow}>
                         <span className={s.infoKey}>Stripe sub</span>
-                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>
-                          {setting.stripeSubscriptionId}
-                        </span>
+                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>{setting.stripeSubscriptionId}</span>
                       </div>
                     )}
-                    {setting.stripeCustomerId && (
+                    {setting?.stripeCustomerId && (
                       <div className={s.infoRow}>
                         <span className={s.infoKey}>Stripe customer</span>
-                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>
-                          {setting.stripeCustomerId}
-                        </span>
+                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>{setting.stripeCustomerId}</span>
                       </div>
                     )}
-                    {setting.authorizeSubscriptionId && (
+                    {setting?.authorizeSubscriptionId && (
                       <div className={s.infoRow}>
                         <span className={s.infoKey}>Auth.net sub</span>
-                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>
-                          {setting.authorizeSubscriptionId}
-                        </span>
-                      </div>
-                    )}
-                    {setting.authorizeCustomerId && (
-                      <div className={s.infoRow}>
-                        <span className={s.infoKey}>Auth.net customer</span>
-                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>
-                          {setting.authorizeCustomerId}
-                        </span>
+                        <span className={s.infoVal} style={{ fontSize: '0.68rem' }}>{setting.authorizeSubscriptionId}</span>
                       </div>
                     )}
                   </div>
