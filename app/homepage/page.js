@@ -17,6 +17,7 @@ export async function generateMetadata() {
     return {
         title: page.title,
         description: page.meta?.description,
+        alternates: { canonical: '/' },
         openGraph: {
             title: page.meta?.ogTitle || page.title,
             description: page.meta?.ogDescription || page.meta?.description,

@@ -4,16 +4,18 @@ import { eq } from 'drizzle-orm';
 
 const BASE = 'https://www.gymnasticbodies.com';
 
+// URLs are emitted WITHOUT a trailing slash to match the app's routing
+// (next.config trailingSlash defaults to false — the canonical form is non-slashed).
 const STATIC_ROUTES = [
     { url: `${BASE}/`, priority: 1.0, changeFrequency: 'weekly' },
-    { url: `${BASE}/subscribe/`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${BASE}/all-access/`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE}/hey-newbies/`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE}/think-stronger/`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE}/mobility/`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE}/body-weight/`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE}/blog/`, priority: 0.6, changeFrequency: 'weekly' },
-    { url: `${BASE}/exercises/`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/subscribe`, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${BASE}/all-access`, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE}/hey-newbies`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/think-stronger`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/mobility`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/body-weight`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/blog`, priority: 0.6, changeFrequency: 'weekly' },
+    { url: `${BASE}/exercises`, priority: 0.7, changeFrequency: 'monthly' },
 ];
 
 export default async function sitemap() {
@@ -30,7 +32,7 @@ export default async function sitemap() {
     ]);
 
     const blogEntries = posts.map(post => ({
-        url: `${BASE}/${post.slug}/`,
+        url: `${BASE}/${post.slug}`,
         lastModified: post.updatedAt ?? new Date(),
         changeFrequency: 'yearly',
         priority: 0.5,
@@ -38,14 +40,14 @@ export default async function sitemap() {
 
     // exercise slugs are already stored as 'exercises/<wpslug>'
     const exerciseEntries = exercises.map(ex => ({
-        url: `${BASE}/${ex.slug}/`,
+        url: `${BASE}/${ex.slug}`,
         lastModified: ex.updatedAt ?? new Date(),
         changeFrequency: 'yearly',
         priority: 0.5,
     }));
 
     const pageEntries = contentPages.map(p => ({
-        url: `${BASE}/${p.slug}/`,
+        url: `${BASE}/${p.slug}`,
         lastModified: p.updatedAt ?? new Date(),
         changeFrequency: 'monthly',
         priority: 0.6,
