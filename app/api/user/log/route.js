@@ -1,34 +1,22 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user_setting, user_logs } from "@/Drizzle/db/schema"
-import { eq } from 'drizzle-orm';
-import { queryUserLogsForDate } from "@/lib/userSettings";
+import { eq, and } from 'drizzle-orm';
+import { upsertUserLog } from "@/lib/userSettings";
 
 export async function POST(request) {
     const json = await request.json()
     console.log("POST /api/user/log, JSON:", json)
-    //check if user with userId has same userScheduleDate log
-    //if yes, merge the incoming data in that log,
-    //if no, create a new log
+    // Atomic upsert keyed (userId, section, userScheduleDate). Existing guided-plan
+    // clients don't send `section`, so it defaults to 'levels' — their rows and
+    // behavior are unchanged. New workout sections pass it explicitly.
     try {
-        let userLog
-        let matching = await queryUserLogsForDate(json.userId, json.userScheduleDate)
-
-        let logRecord = {
+        await upsertUserLog({
+            userId: json.userId,
+            section: json.section ?? 'levels',
             userScheduleDate: json.userScheduleDate,
             data: json.updatedData,
-            userId: json.userId,
-            progressions: json?.progressions ? json?.progressions : {}
-        }
-        if (matching) {
-            userLog = await db.update(user_logs)
-                .set({
-                    data: json.updatedData,
-                    progressions: json?.progressions ? json?.progressions : {}
-                }).where(eq(user_logs.id, matching.id)).returning();
-        }
-        else {
-            userLog = await db.insert(user_logs).values(logRecord).returning();
-        }
+            progressions: json?.progressions ? json?.progressions : {},
+        })
 
         return Response.json({ status: 200 })
     }
@@ -72,24 +60,14 @@ export async function DELETE(request) {
     //if yes, merge the incoming data in that log,
     //if no, create a new log
     try {
-        let userLog
-        let matching = await queryUserLogsForDate(json.userId, json.userScheduleDate)
-
-        let logRecord = {
+        // NOTE: despite the DELETE verb this has always been an overwrite — the client
+        // sends the pruned document as updatedData. Progressions intentionally untouched.
+        await upsertUserLog({
+            userId: json.userId,
+            section: json.section ?? 'levels',
             userScheduleDate: json.userScheduleDate,
             data: json.updatedData,
-            userId: json.userId
-        }
-        console.log("logRecord:", logRecord)
-        if (matching) {
-            userLog = await db.update(user_logs)
-                .set({
-                    data: json.updatedData
-                }).where(eq(user_logs.id, matching.id)).returning();
-        }
-        else {
-            userLog = await db.insert(user_logs).values(logRecord).returning();
-        }
+        })
 
         return Response.json({ status: 200 })
     }
@@ -112,8 +90,12 @@ export async function GET(request) {
     const userData = Object.fromEntries(searchParams);
     console.log("userData:", userData)
     if (userData?.userId) {
-        let queryExisting = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId));
-        console.log("queryExqueryExistingTestisting:", queryExisting)
+        // Section-scoped (default 'levels'): after AWS-history seeding a user can have
+        // thousands of autopilot/byo/history/thrive rows — returning them all here would
+        // bloat every guided-plan page load.
+        let queryExisting = await db.select().from(user_logs)
+            .where(and(eq(user_logs.userId, userData.userId), eq(user_logs.section, userData.section ?? 'levels')));
+        console.log("GET /api/user/log rows:", queryExisting.length)
         
         // let queryExisting = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId)).where(eq(user_logs.userScheduleDate, userData?.userScheduleDate));
         // console.log("queryExisting:", queryExisting[0])

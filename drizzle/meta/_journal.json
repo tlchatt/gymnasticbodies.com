@@ -64,6 +64,13 @@
       "when": 1781723077835,
       "tag": "0008_absent_shape",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1784739804897,
+      "tag": "0009_workout_sections",
+      "breakpoints": true
     }
   ]
 }

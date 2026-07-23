@@ -1,6 +1,6 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user_logs, user_setting } from "@/Drizzle/db/schema"
-import { eq } from 'drizzle-orm';
+import { eq, and } from 'drizzle-orm';
 import { queryUserSetting } from "@/lib/userSettings";
 
 export async function POST(request) {
@@ -65,10 +65,16 @@ export async function GET(request) {
     const userData = Object.fromEntries(searchParams);
 
     if (userData?.userId) {
-        let queryExisting = await db.select().from(user_setting).where(eq(user_setting.userId, userData.userId)).where(eq(user_setting.type, userData.type));
+        // and() — chained .where().where() silently REPLACES the first condition in this
+        // drizzle version, which returned other users' settings rows. Fixed 2026-07.
+        let queryExisting = await db.select().from(user_setting)
+            .where(and(eq(user_setting.userId, userData.userId), eq(user_setting.type, userData.type)));
         console.log("queryExisting:",queryExisting[0])
-        let userWithLogs = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId))
-        console.log("userWithLogs:", userWithLogs)
+        // Guided-plan consumers expect ONLY the 'levels' logs here; without the section
+        // filter, seeded autopilot/byo/history/thrive docs would bloat this response.
+        let userWithLogs = await db.select().from(user_logs)
+            .where(and(eq(user_logs.userId, userData.userId), eq(user_logs.section, userData.section ?? 'levels')))
+        console.log("userWithLogs count:", userWithLogs.length)
         let returnData = [{settings:queryExisting[0]},{logs:userWithLogs}]
         console.log("returnData:",returnData)
         return new Response(JSON.stringify(returnData), {

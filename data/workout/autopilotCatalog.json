@@ -1,0 +1,9620 @@
+[
+ {
+  "autoPilotExerciseId": 1,
+  "exerciseId": 1,
+  "category": "Core",
+  "element": "FLPE1",
+  "exerciseName": "Bent Hollow Body Hold",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "Kn6ka1Ub",
+    "version": "a"
+   },
+   {
+    "mediaId": "lPrZTV99",
+    "version": "b"
+   },
+   {
+    "mediaId": "43Tx6KBc",
+    "version": "c"
+   },
+   {
+    "mediaId": "MZwcPuld",
+    "version": "d"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the lower back pressed firmly into the ground.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the feet and shoulders off the ground during the set.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 2,
+  "exerciseId": 2,
+  "category": "Core",
+  "element": "FLPE2",
+  "exerciseName": "Bent Hollow Body Rock",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "uWcDpAng",
+    "version": "a"
+   },
+   {
+    "mediaId": "X9cvxUYD",
+    "version": "b"
+   },
+   {
+    "mediaId": "v3fgeXmU",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) An arched lower back will prevent a smooth roll.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the chin pulled downward towards the chest.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 3,
+  "exerciseId": 3,
+  "category": "Core",
+  "element": "FLPE3",
+  "exerciseName": "Straddle Hollow Body Hold",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "JJYaBOb8",
+    "version": "a"
+   },
+   {
+    "mediaId": "EmeuTCty",
+    "version": "b"
+   },
+   {
+    "mediaId": "XHZGoe49",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) A wider straddle will quite strongly target the hips.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the lower back to arch.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 4,
+  "exerciseId": 4,
+  "category": "Core",
+  "element": "FLPE4",
+  "exerciseName": "Straddle Hollow Body Rock",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "wEqZnQ9y",
+    "version": "a"
+   },
+   {
+    "mediaId": "T4qdGuYu",
+    "version": "b"
+   },
+   {
+    "mediaId": "W7ygbZuN",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the feet to lift more than 6-12 inches at most.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the arms in place by the hips at all times.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 5,
+  "exerciseId": 5,
+  "category": "Core",
+  "element": "FLPE5",
+  "exerciseName": "Hollow Body Hold",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "0qx7MEuD",
+    "version": "a"
+   },
+   {
+    "mediaId": "3qHaKWDp",
+    "version": "b"
+   },
+   {
+    "mediaId": "LPbED1Ik",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The arms may also be placed down by the hips, however mastery requires arms overhead.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) With a neutral chin keep the eyes focused on the ceiling.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 6,
+  "exerciseId": 6,
+  "category": "Core",
+  "element": "FLPE6",
+  "exerciseName": "Hollow Body Rock",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "vqNlptnO",
+    "version": "a"
+   },
+   {
+    "mediaId": "jhEFF4tF",
+    "version": "b"
+   },
+   {
+    "mediaId": "1FxRP3Ai",
+    "version": "c"
+   },
+   {
+    "mediaId": "3T80W66u",
+    "version": "d"
+   },
+   {
+    "mediaId": "hXvgcuLu",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Notice the smoothness of this athlete's roll.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Arms may also be placed down next to the hips, however mastery requires arms overhead.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 7,
+  "exerciseId": 101,
+  "category": "Core",
+  "element": "FLPE7",
+  "exerciseName": "Negative Straddle Body Lever",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "a7RyMr8T",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the lower back to arch during the descent.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The arms should be comfortably bent.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 8,
+  "exerciseId": 102,
+  "category": "Core",
+  "element": "FLPE8",
+  "exerciseName": "Negative Single Leg Body Lever",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE8.jpg",
+  "videos": [
+   {
+    "mediaId": "5mUViRKw",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the hip of the extended leg to pike during the descent.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 9,
+  "exerciseId": 103,
+  "category": "Core",
+  "element": "FLPE9",
+  "exerciseName": "Negative Body Lever",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE9.jpg",
+  "videos": [
+   {
+    "mediaId": "ujk1PcGh",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use full ROM; be sure that you are all the way up on the shoulder girdle before you begin the descent",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 10,
+  "exerciseId": 104,
+  "category": "Core",
+  "element": "FLPE10",
+  "exerciseName": "Body Lever",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE10.jpg",
+  "videos": [
+   {
+    "mediaId": "lW7vQNaT",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Elevating the shoulders, while not mandatory, dramatically increases the ROM and intensity of this exercise.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 11,
+  "exerciseId": 105,
+  "category": "Core",
+  "element": "FLPE11",
+  "exerciseName": "Negative Vertical Body Lever",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE11.jpg",
+  "videos": [
+   {
+    "mediaId": "tLDEGC7R",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) This may also be performed in a Smith Machine etc.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Note that the shoulders are directly above the hands.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 12,
+  "exerciseId": 106,
+  "category": "Core",
+  "element": "FLPE12",
+  "exerciseName": "Vertical Body Lever",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE12.jpg",
+  "videos": [
+   {
+    "mediaId": "IWQW5es5",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull strongly with the lats to elevate the body.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) At no time should the elbows be allowed to bend.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 13,
+  "exerciseId": 107,
+  "category": "Core",
+  "element": "FLPE13",
+  "exerciseName": "Single Bar Inverted Hang",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE13.jpg",
+  "videos": [
+   {
+    "mediaId": "9fG6cfcF",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that while inverted the body is tilted forward with protracted shoulders and is NOT completely vertical.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 14,
+  "exerciseId": 108,
+  "category": "Core",
+  "element": "FLPE14",
+  "exerciseName": "Kip Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE14.jpg",
+  "videos": [
+   {
+    "mediaId": "uORUiRt0",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Beginning from SBIH, pike the body down until only the tip toes are touching the bar then extend back up to SBIH.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 15,
+  "exerciseId": 145,
+  "category": "Core",
+  "element": "FLPE15",
+  "exerciseName": "Negative Front Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE15.jpg",
+  "videos": [
+   {
+    "mediaId": "WqjC0k0Q",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Feel the shoulders partially protract and widen during the descent. This provides the best leverage.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 16,
+  "exerciseId": 146,
+  "category": "Core",
+  "element": "FLPE16",
+  "exerciseName": "Front Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE16.jpg",
+  "videos": [
+   {
+    "mediaId": "r2mGmxLp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain proper protraction and posterior pelvic tilt.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not bend the arms during the ascent.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 17,
+  "exerciseId": 147,
+  "category": "Core",
+  "element": "FLSE1",
+  "exerciseName": "Open Front Lever",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "LG0Q8kIS",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The knees should be just outside the elbows.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Feel the shoulder pressing back behind your hands.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 18,
+  "exerciseId": 148,
+  "category": "Core",
+  "element": "FLSE2",
+  "exerciseName": "Single Leg Open Front Lever",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "Uf9rvtQP",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the athlete maintains PPT (no lower back arch) while extending the bent leg.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 19,
+  "exerciseId": 149,
+  "category": "Core",
+  "element": "FLSE3",
+  "exerciseName": "Bent Double Leg Open Front Lever",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "3PytA8JH",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the knees pulled apart while extending the legs.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Press backward to counterbalance the legs going forward.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 20,
+  "exerciseId": 150,
+  "category": "Core",
+  "element": "FLSE4",
+  "exerciseName": "Half Straddle Front Lever",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "NnhQz2ha",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the knees are wide, but the feet much narrower.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Strive to maintain proper to PPT.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 21,
+  "exerciseId": 185,
+  "category": "Core",
+  "element": "FLSE5",
+  "exerciseName": "Half Straddle Front Lever Scissor",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE5.jpg",
+  "videos": [
+   {
+    "mediaId": "hIfip529",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not perform speed scissors; each repetition should be controlled and deliberate.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 22,
+  "exerciseId": 186,
+  "category": "Core",
+  "element": "FLSE6",
+  "exerciseName": "Half Front Lever",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLSE6.jpg",
+  "videos": [
+   {
+    "mediaId": "plG9Chqz",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Notice the neutral position of the head. Neither dropping forward or backward, the neck is a natural extension of the spine.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 23,
+  "exerciseId": 187,
+  "category": "Core",
+  "element": "FLSE7",
+  "exerciseName": "Single Leg Straddle Front Lever",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE7.jpg",
+  "videos": [
+   {
+    "mediaId": "Fr1wQZEp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the hip is open and flat of the leg that is bent.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Each set is composed of two iM; one right &amp; one left leg.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 24,
+  "exerciseId": 188,
+  "category": "Core",
+  "element": "FLSE8",
+  "exerciseName": "Straddle Front Lever",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLSE8.jpg",
+  "videos": [
+   {
+    "mediaId": "NvjhWG5n",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) As long as the hips are flat, use as wide a straddle as possible.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 25,
+  "exerciseId": 189,
+  "category": "Core",
+  "element": "FLSE9",
+  "exerciseName": "Single Leg Front Lever",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE9.jpg",
+  "videos": [
+   {
+    "mediaId": "pM7carnJ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the hips to pike during the static hold.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pull down strongly on the bar.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 26,
+  "exerciseId": 190,
+  "category": "Core",
+  "element": "FLSE10",
+  "exerciseName": "Half Front Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE10.jpg",
+  "videos": [
+   {
+    "mediaId": "KwOMChCR",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lower completely to a horizontal position.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep hollow, do not arch during the ascent.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 27,
+  "exerciseId": 191,
+  "category": "Core",
+  "element": "FLSE11",
+  "exerciseName": "Front Lever",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE11.jpg",
+  "videos": [
+   {
+    "mediaId": "s3BkTMdf",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Feel the hands pulling down strongly towards the hips.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Press the shoulders back and the toes forward strongly.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 28,
+  "exerciseId": 19,
+  "category": "Core",
+  "element": "MNPE1",
+  "exerciseName": "Tuck-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "qhxC4JKF",
+    "version": "a"
+   },
+   {
+    "mediaId": "aHQvY7vz",
+    "version": "b"
+   },
+   {
+    "mediaId": "qPudqff3",
+    "version": "c"
+   },
+   {
+    "mediaId": "su6UiDI0",
+    "version": "d"
+   },
+   {
+    "mediaId": "9S25r6CD",
+    "version": "e"
+   },
+   {
+    "mediaId": "Buvu1UnV",
+    "version": "f"
+   },
+   {
+    "mediaId": "84RcTJ2K",
+    "version": "g"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the knees all the way to the chest.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Lay down completely flat in between repetitions.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 29,
+  "exerciseId": 20,
+  "category": "Core",
+  "element": "MNPE2",
+  "exerciseName": "Straddle-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "w4hiyvvH",
+    "version": "a"
+   },
+   {
+    "mediaId": "pbJHFPa3",
+    "version": "b"
+   },
+   {
+    "mediaId": "LnpbBVLD",
+    "version": "c"
+   },
+   {
+    "mediaId": "pjlUgELG",
+    "version": "d"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the knees completely straight during the ascent.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Sit the chest up as high as possible without caving in.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 30,
+  "exerciseId": 21,
+  "category": "Core",
+  "element": "MNPE3",
+  "exerciseName": "V-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "HsidktX0",
+    "version": "a"
+   },
+   {
+    "mediaId": "8PL4MuUQ",
+    "version": "b"
+   },
+   {
+    "mediaId": "bIydsiQH",
+    "version": "c"
+   },
+   {
+    "mediaId": "w2qO1zFg",
+    "version": "d"
+   },
+   {
+    "mediaId": "ulQbMyS3",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the back flat and the chest high.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pike as much as possible at the top of each repetition.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 31,
+  "exerciseId": 22,
+  "category": "Core",
+  "element": "MNPE4",
+  "exerciseName": "Half Tuck Hanging Leg Lift",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "78O3hpst",
+    "version": "a"
+   },
+   {
+    "mediaId": "prP70tjq",
+    "version": "b"
+   },
+   {
+    "mediaId": "VMhvRCPS",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the lower back pressed back firmly into the wall.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pull the knees up, do not swing or kick them up.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 32,
+  "exerciseId": 23,
+  "category": "Core",
+  "element": "MNPE5",
+  "exerciseName": "Half Hanging Leg Lift",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "6myXgX91",
+    "version": "a"
+   },
+   {
+    "mediaId": "lWa4DyuP",
+    "version": "b"
+   },
+   {
+    "mediaId": "OIBqLZzl",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the knees to bend during the leg lift.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the elbows straight, do not use your biceps to help.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 33,
+  "exerciseId": 24,
+  "category": "Core",
+  "element": "MNPE6",
+  "exerciseName": "Negative Hanging Leg Lift",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "ot0F81nl",
+    "version": "a"
+   },
+   {
+    "mediaId": "1BRh8rcZ",
+    "version": "b"
+   },
+   {
+    "mediaId": "gWSCtyBY",
+    "version": "c"
+   },
+   {
+    "mediaId": "JiFU6tD9",
+    "version": "d"
+   },
+   {
+    "mediaId": "eBJ8AKqR",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Each negative should require 10 seconds to descend.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Completely straighten the knees at the top of each rep.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 34,
+  "exerciseId": 119,
+  "category": "Core",
+  "element": "MNPE7",
+  "exerciseName": "Hanging Leg Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "hO1Vu3Gv",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not simply raise your shins to the bar; rather focus on touching the toes to the bar for each rep.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 35,
+  "exerciseId": 120,
+  "category": "Core",
+  "element": "MNPE8",
+  "exerciseName": "Under Grip Hanging Leg Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE8.jpg",
+  "videos": [
+   {
+    "mediaId": "nbHXCL0L",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) If you have been using the lats to assist during your HLL work, using the undergrip will quickly reveal this bad habit.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 36,
+  "exerciseId": 121,
+  "category": "Core",
+  "element": "MNPE9",
+  "exerciseName": "V to L Hanging Leg Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE9.jpg",
+  "videos": [
+   {
+    "mediaId": "I1lum58D",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Make sure to begin with toes next to the bar.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The shoulder girdle stays completely open and extended.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 37,
+  "exerciseId": 122,
+  "category": "Core",
+  "element": "MNSE1",
+  "exerciseName": "Half L-Sit",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "5l6usG3I",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) With an open chest and depressed shoulders, maintain the knees at hip level for the entire duration of each set.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 38,
+  "exerciseId": 123,
+  "category": "Core",
+  "element": "MNSE2",
+  "exerciseName": "Half L-Sit Single Leg Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "VPqOhRyM",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the quad to drop below the hip during the extension of the knee.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 39,
+  "exerciseId": 124,
+  "category": "Core",
+  "element": "MNSE3",
+  "exerciseName": "Half L-Sit Double Leg Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "IOTUp9c2",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the glutes to push back behind the arms during the extension of the knees.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 40,
+  "exerciseId": 161,
+  "category": "Core",
+  "element": "MNSE4",
+  "exerciseName": "L-Sit Scissor",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "P6NKNnal",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the legs apart with control; no jerking or rushing.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the feet to drop below the knees.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 41,
+  "exerciseId": 162,
+  "category": "Core",
+  "element": "MNSE5",
+  "exerciseName": "L-Sit",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE5.jpg",
+  "videos": [
+   {
+    "mediaId": "AwdPTIWk",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Fully depress the scapula to strengthen your support.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) No fidgeting, twitching or wiggling during the 30s.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 42,
+  "exerciseId": 163,
+  "category": "Core",
+  "element": "MNSE6",
+  "exerciseName": "Half Straddle L",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE6.jpg",
+  "videos": [
+   {
+    "mediaId": "TNmwgjQe",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The knees should remain above the elbows.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the legs clear of the arms; no resting on the arms!",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 43,
+  "exerciseId": 164,
+  "category": "Core",
+  "element": "MNSE7",
+  "exerciseName": "Half Straddle L Single Leg Extension",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE7.jpg",
+  "videos": [
+   {
+    "mediaId": "rhRfOBfj",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The knees should remain above the elbows at all times.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The foot should be above the knee at full extension.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 44,
+  "exerciseId": 165,
+  "category": "Core",
+  "element": "MNSE8",
+  "exerciseName": "Half Straddle L Double Leg Extension",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE8.jpg",
+  "videos": [
+   {
+    "mediaId": "jasPS8qu",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The knees will always remain above the elbows.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Both feet will be above the knees at full extension.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 45,
+  "exerciseId": 166,
+  "category": "Core",
+  "element": "MNSE9",
+  "exerciseName": "Straddle L",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE9.jpg",
+  "videos": [
+   {
+    "mediaId": "uuW7W9NZ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the legs to rest on the arms at any time.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Notice the upward angle; hips then knees then feet.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 46,
+  "exerciseId": 203,
+  "category": "Core",
+  "element": "MNSE10",
+  "exerciseName": "Elevated Reverse Plank",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE10.jpg",
+  "videos": [
+   {
+    "mediaId": "OTIZMciR",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) With hands shoulder width, strongly retract the scapula while pressing the hips up to shoulder height.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 47,
+  "exerciseId": 204,
+  "category": "Core",
+  "element": "MNSE11",
+  "exerciseName": "Half Middle Split Hold",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE11.jpg",
+  "videos": [
+   {
+    "mediaId": "qfMhCR8L",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the hips to rest on the wrists or arms.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Press the hips as far forward as possible.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 48,
+  "exerciseId": 205,
+  "category": "Core",
+  "element": "MNSE12",
+  "exerciseName": "Half Middle Split Hold Single Leg Extension",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE12.jpg",
+  "videos": [
+   {
+    "mediaId": "HJp6KFV4",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) If the foot drops below the knee, do not count the rep.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not lay on your arms, press the hips forward!",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 49,
+  "exerciseId": 206,
+  "category": "Core",
+  "element": "MNSE13",
+  "exerciseName": "Half Middle Split Hold Double Leg Extension",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE13.jpg",
+  "videos": [
+   {
+    "mediaId": "jH0kcjNv",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The upper thighs remain stationary; even at full extension.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The only movement should be the lower legs as they lift.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 50,
+  "exerciseId": 207,
+  "category": "Core",
+  "element": "MNSE14",
+  "exerciseName": "Middle Split Hold",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE14.jpg",
+  "videos": [
+   {
+    "mediaId": "BIf8F944",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Actively attempt to press the hips in front of the wrists.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The feet and knees should be approximately the same.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 51,
+  "exerciseId": 208,
+  "category": "Core",
+  "element": "MNSE15",
+  "exerciseName": "Manna Press",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE15.jpg",
+  "videos": [
+   {
+    "mediaId": "2GpYkm8n",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Actively press the hips forward to achieve elevation.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Retract, retract, retract. NEVER protract during MN work.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 52,
+  "exerciseId": 209,
+  "category": "Core",
+  "element": "MNSE16",
+  "exerciseName": "Manna",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE16.jpg",
+  "videos": [
+   {
+    "mediaId": "MNarrXm3",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Generally 75% of my athletes develop a manna.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The secret is consistent, patient effort at each workout.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 53,
+  "exerciseId": 13,
+  "category": "Core",
+  "element": "SLPE1",
+  "exerciseName": "Seated Russian Twist",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "kNV3qsjh",
+    "version": "a"
+   },
+   {
+    "mediaId": "YktNSBWe",
+    "version": "b"
+   },
+   {
+    "mediaId": "68T5Kz07",
+    "version": "c"
+   },
+   {
+    "mediaId": "fsJ7bhrM",
+    "version": "d"
+   },
+   {
+    "mediaId": "iGtaz9HV",
+    "version": "e"
+   },
+   {
+    "mediaId": "tHE5Ke7f",
+    "version": "f"
+   },
+   {
+    "mediaId": "rIaxd2YT",
+    "version": "g"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) No slouching during the twists; flat back!",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) My preference is to use 5lbs+ for these, but scale as needed for your situation.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 54,
+  "exerciseId": 14,
+  "category": "Core",
+  "element": "SLPE2",
+  "exerciseName": "Elbow Side Plank Twist",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "8Ox7IsIz",
+    "version": "a"
+   },
+   {
+    "mediaId": "5fTFk9uJ",
+    "version": "b"
+   },
+   {
+    "mediaId": "Ak2sNLG5",
+    "version": "c"
+   },
+   {
+    "mediaId": "CZpqSNDG",
+    "version": "d"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not sag or arch during the twist.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Press the supporting forearm firmly into the ground.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 55,
+  "exerciseId": 15,
+  "category": "Core",
+  "element": "SLPE3",
+  "exerciseName": "Side Over Arch",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "3qZd5BX5",
+    "version": "a"
+   },
+   {
+    "mediaId": "FbBdA8Hy",
+    "version": "b"
+   },
+   {
+    "mediaId": "86zuLb8H",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Allow the top foot to come forward and the feet to separate for stability",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The obliques should arch fully at the bottom and then also arch fully at the top.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 56,
+  "exerciseId": 16,
+  "category": "Core",
+  "element": "SLPE4",
+  "exerciseName": "Arch-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "IxdxeUaa",
+    "version": "a"
+   },
+   {
+    "mediaId": "z65nEZfN",
+    "version": "b"
+   },
+   {
+    "mediaId": "qeCX8SkR",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Sit up to at least horizontal.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Lift the chin at the top of each repetition.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 57,
+  "exerciseId": 17,
+  "category": "Core",
+  "element": "SLPE5",
+  "exerciseName": "Twisting Arch-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "MjpO6rFH",
+    "version": "a"
+   },
+   {
+    "mediaId": "jznFt094",
+    "version": "b"
+   },
+   {
+    "mediaId": "5DXcN9Aa",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not use abbreviated range of motion; sit up as high as possible.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The neck is part of the spine; make sure the neck is arched at the top of each rep.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 58,
+  "exerciseId": 18,
+  "category": "Core",
+  "element": "SLPE6",
+  "exerciseName": "Circle Arch-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "fCUyuBx4",
+    "version": "a"
+   },
+   {
+    "mediaId": "81Th5KRo",
+    "version": "b"
+   },
+   {
+    "mediaId": "HXu9vYwz",
+    "version": "c"
+   },
+   {
+    "mediaId": "PIKIrJZr",
+    "version": "d"
+   },
+   {
+    "mediaId": "axkurG2q",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Make sure you are doing a complete circular motion.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the body to fall forward on the sides.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 59,
+  "exerciseId": 113,
+  "category": "Core",
+  "element": "SLPE7",
+  "exerciseName": "Straddle Reverse Leg Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "YUj1VUXX",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lift the heels all the way to horizontal.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pause briefly at the top of each repetition.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 60,
+  "exerciseId": 114,
+  "category": "Core",
+  "element": "SLPE8",
+  "exerciseName": "Reverse Leg Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE8.jpg",
+  "videos": [
+   {
+    "mediaId": "oJzsQK5D",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Anchoring the chest firmly will greatly increase your leverage during this exercise.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 61,
+  "exerciseId": 115,
+  "category": "Core",
+  "element": "SLPE9",
+  "exerciseName": "Stall Bar Reverse Leg Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE9.jpg",
+  "videos": [
+   {
+    "mediaId": "jEHx2o9R",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) If you lack stall bars, a good substitution is to perform this movement while in a headstand against the wall.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 62,
+  "exerciseId": 116,
+  "category": "Core",
+  "element": "SLPE10",
+  "exerciseName": "Half Windshield Wiper",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE10.jpg",
+  "videos": [
+   {
+    "mediaId": "LmInn7YU",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain a horizontal L throughout the movement.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The feet should nearly touch the wall on each rep.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 63,
+  "exerciseId": 117,
+  "category": "Core",
+  "element": "SLPE11",
+  "exerciseName": "Windshield Wiper",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE11.jpg",
+  "videos": [
+   {
+    "mediaId": "nSYoB2sQ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The feet should remain relatively close to bars and/or wall at all times.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 64,
+  "exerciseId": 118,
+  "category": "Core",
+  "element": "SLPE12",
+  "exerciseName": "Side Arch Body Hold",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE12.jpg",
+  "videos": [
+   {
+    "mediaId": "a70UZfZ0",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lift the head/feet equally while balancing on the hip.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The hand on the floor is for maintaining balance only.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 65,
+  "exerciseId": 155,
+  "category": "Core",
+  "element": "SLPE13",
+  "exerciseName": "Side Arch Body Rock",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE13.jpg",
+  "videos": [
+   {
+    "mediaId": "xVqyQBI0",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The torso and feet should elevate equally on their respective sides during the rocking motion.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 66,
+  "exerciseId": 156,
+  "category": "Core",
+  "element": "SLPE14",
+  "exerciseName": "Arch Body Hold",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE14.jpg",
+  "videos": [
+   {
+    "mediaId": "jxMcdCWW",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the arms next to the ears.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Arch both the neck and the spine.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 67,
+  "exerciseId": 157,
+  "category": "Core",
+  "element": "SLPE15",
+  "exerciseName": "Arch Body Rock",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE15.jpg",
+  "videos": [
+   {
+    "mediaId": "Cjl5kKzx",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Roll up onto the chest a well as the thighs.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) A bumpy roll indicates insufficient arch.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 68,
+  "exerciseId": 158,
+  "category": "Core",
+  "element": "SLSE1",
+  "exerciseName": "Side Lever Block",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "YrnWfXcC",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) To balance bring the hands inward toward the centerline.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the body square; do not allow the torso to twist.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 69,
+  "exerciseId": 159,
+  "category": "Core",
+  "element": "SLSE2",
+  "exerciseName": "Side Lever Block Twist",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "wDbG0trg",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press outward to initiate the twist.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not use the foot to assist until completely twisted.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 70,
+  "exerciseId": 160,
+  "category": "Core",
+  "element": "SLSE3",
+  "exerciseName": "Side Lever Block Press",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "8oHcf4hr",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The top hand pulls and the bottom hand presses.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the body to arch sideways at extension.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 71,
+  "exerciseId": 196,
+  "category": "Core",
+  "element": "SLSE4",
+  "exerciseName": "Inverted Side Lever Block",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "MgwA358Z",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press up strongly with the bottom arm.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the hips square at the top of the movement.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 72,
+  "exerciseId": 197,
+  "category": "Core",
+  "element": "SLSE5",
+  "exerciseName": "Straddle Side Lever Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE5.jpg",
+  "videos": [
+   {
+    "mediaId": "jbWGZasb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The top foot must remain in contact while the bottom leg opens to your full straddle.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 73,
+  "exerciseId": 198,
+  "category": "Core",
+  "element": "SLSE6",
+  "exerciseName": "Scissoring Side Lever Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE6.jpg",
+  "videos": [
+   {
+    "mediaId": "raQZUvvK",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the legs in this variation move independently.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The degree of tilt in the body is however unchanging.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 74,
+  "exerciseId": 199,
+  "category": "Core",
+  "element": "SLSE7",
+  "exerciseName": "Closed Side Lever Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE7.jpg",
+  "videos": [
+   {
+    "mediaId": "VJKEG6li",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the body to sink lower after closing the legs.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Maintain a tight stretched body during the ascent.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 75,
+  "exerciseId": 200,
+  "category": "Core",
+  "element": "SLSE8",
+  "exerciseName": "Negative Side Lever Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE8.jpg",
+  "videos": [
+   {
+    "mediaId": "FhalvlrI",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Descend with a controlled tempo.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Stay straight, no arching or piking.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 76,
+  "exerciseId": 201,
+  "category": "Core",
+  "element": "SLSE9",
+  "exerciseName": "Side Lever Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE9.jpg",
+  "videos": [
+   {
+    "mediaId": "wBD2WQn1",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lightly brush the toes at the bottom of the movement.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Contract the glutes and abs to maintain a straight body.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 77,
+  "exerciseId": 202,
+  "category": "Core",
+  "element": "SLSE10",
+  "exerciseName": "Side Lever",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLSE10.jpg",
+  "videos": [
+   {
+    "mediaId": "qKJmkdcQ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the bottom shoulder blade somewhat elevated.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the top shoulder blade somewhat depressed.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 78,
+  "exerciseId": 30,
+  "category": "Push",
+  "element": "HBPPE1",
+  "exerciseName": "Incline Push-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "nZJfwDyx",
+    "version": "a"
+   },
+   {
+    "mediaId": "IP1MFSPF",
+    "version": "b"
+   },
+   {
+    "mediaId": "lloWGTyZ",
+    "version": "c"
+   },
+   {
+    "mediaId": "qc5tKPY3",
+    "version": "d"
+   },
+   {
+    "mediaId": "aYhYU1oC",
+    "version": "e"
+   },
+   {
+    "mediaId": "F3EdEZ1g",
+    "version": "f"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Set the bar to approximately hip height.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The bar of a smith machine is a good substitute.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 79,
+  "exerciseId": 31,
+  "category": "Push",
+  "element": "HBPPE2",
+  "exerciseName": "Push-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "3N5cgLx6",
+    "version": "a"
+   },
+   {
+    "mediaId": "4RtfA2HL",
+    "version": "b"
+   },
+   {
+    "mediaId": "xJjh3Bsl",
+    "version": "c"
+   },
+   {
+    "mediaId": "jo4YvYcv",
+    "version": "d"
+   },
+   {
+    "mediaId": "64hL1j4q",
+    "version": "e"
+   },
+   {
+    "mediaId": "06cGR2Q2",
+    "version": "f"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lower the chest completely to the ground each rep.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the body to sag at any time.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 80,
+  "exerciseId": 32,
+  "category": "Push",
+  "element": "HBPPE3",
+  "exerciseName": "Pseudo Planche Push-Up",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "DBCwUDsG",
+    "version": "a"
+   },
+   {
+    "mediaId": "Ys6xlWwb",
+    "version": "b"
+   },
+   {
+    "mediaId": "f6e0pvHJ",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lean forward until the hands are just in front of the hips.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the scapula strongly protracted and depressed.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 81,
+  "exerciseId": 33,
+  "category": "Push",
+  "element": "HBPPE4",
+  "exerciseName": "Bench Dip",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "F1NRgWq7",
+    "version": "a"
+   },
+   {
+    "mediaId": "qziX1RyG",
+    "version": "b"
+   },
+   {
+    "mediaId": "aMRiJOcZ",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Initially you may find that you prefer descending only to 90 degrees until your shoulder mobility improves.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 82,
+  "exerciseId": 34,
+  "category": "Push",
+  "element": "HBPPE5",
+  "exerciseName": "Negative Parallel Bar Dip",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "4JPAqNMx",
+    "version": "a"
+   },
+   {
+    "mediaId": "G5qjVEFK",
+    "version": "b"
+   },
+   {
+    "mediaId": "u15VmmzV",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) A single repetition is comprised of a 10 second descent; thus each set contains 50 seconds total time under tension .",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 83,
+  "exerciseId": 35,
+  "category": "Push",
+  "element": "HBPPE6",
+  "exerciseName": "Parallel Bar Dip",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "ASRvCd90",
+    "version": "a"
+   },
+   {
+    "mediaId": "NfaCCQ4P",
+    "version": "b"
+   },
+   {
+    "mediaId": "dsbCtydF",
+    "version": "c"
+   },
+   {
+    "mediaId": "VO5JbtpX",
+    "version": "d"
+   },
+   {
+    "mediaId": "rPjr9MIF",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The shoulders should be reasonably close to the hands at the bottom of each repetition.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 84,
+  "exerciseId": 129,
+  "category": "Push",
+  "element": "HBPPE7",
+  "exerciseName": "Single Bar Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "M75P8tL0",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lightly slide down along the bar; do not lay on the bar.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Full ROM is lowering to the bottom of the chest.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 85,
+  "exerciseId": 130,
+  "category": "Push",
+  "element": "HBPPE8",
+  "exerciseName": "Under Grip Single Bar Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE8.jpg",
+  "videos": [
+   {
+    "mediaId": "tlPmA3ZA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Many people unconsciously lean forward during their dips, single bar dips automatically correct this.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 86,
+  "exerciseId": 131,
+  "category": "Push",
+  "element": "HBPPE9",
+  "exerciseName": "Korean Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE9.jpg",
+  "videos": [
+   {
+    "mediaId": "LYMmTAXb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Descend until the bottom of the shoulder blades contact the bar.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 87,
+  "exerciseId": 132,
+  "category": "Push",
+  "element": "HBPPE10",
+  "exerciseName": "Under Grip Korean Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE10.jpg",
+  "videos": [
+   {
+    "mediaId": "xQbC9tWp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pressing the hips forward keeps the glutes clear of the bar during the ascent.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 88,
+  "exerciseId": 133,
+  "category": "Push",
+  "element": "HBPPE11",
+  "exerciseName": "Russian Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE11.jpg",
+  "videos": [
+   {
+    "mediaId": "MEraNQ2r",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Descend completely to the bottom of the dip before lowering backward to the upper arm support.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 89,
+  "exerciseId": 134,
+  "category": "Push",
+  "element": "HBPPE12",
+  "exerciseName": "L Russian Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE12.jpg",
+  "videos": [
+   {
+    "mediaId": "jofll9H1",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The torso does not tilt forward and backward.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Rather it stays upright while the arms do the work.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 90,
+  "exerciseId": 135,
+  "category": "Push",
+  "element": "HBPPE13",
+  "exerciseName": "Ring Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE13.jpg",
+  "videos": [
+   {
+    "mediaId": "jLWZOqGa",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note the smooth stable motion of the demonstration.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Full depth and complete extension are mandatory.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 91,
+  "exerciseId": 136,
+  "category": "Push",
+  "element": "HBPPE14",
+  "exerciseName": "Bulgarian Ring Dip",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE14.jpg",
+  "videos": [
+   {
+    "mediaId": "JoEOmivl",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The torso, elbows and hands should be in a single plane.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the elbows to drift backward.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 92,
+  "exerciseId": 169,
+  "category": "Push",
+  "element": "HBPPE15",
+  "exerciseName": "Box Headstand Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE15.jpg",
+  "videos": [
+   {
+    "mediaId": "NpBqo6Gj",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Place and keep your hips directly over the shoulders.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The head should touch just in front of the hands.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 93,
+  "exerciseId": 170,
+  "category": "Push",
+  "element": "HBPPE16",
+  "exerciseName": "Negative Headstand Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE16.jpg",
+  "videos": [
+   {
+    "mediaId": "txiH6aFx",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Those who are more advanced may perform these free standing, although on the wall will count for mastery.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 94,
+  "exerciseId": 171,
+  "category": "Push",
+  "element": "HBPPE17",
+  "exerciseName": "Free Headstand Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE17.jpg",
+  "videos": [
+   {
+    "mediaId": "3QwLhoBi",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Only reps that achieve a steady HS count for your total.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Note that the head is forward at the bottom of each rep.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 95,
+  "exerciseId": 172,
+  "category": "Push",
+  "element": "HBPPE18",
+  "exerciseName": "Elevated Headstand Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE18.jpg",
+  "videos": [
+   {
+    "mediaId": "aUECXnzA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use books, panel mats, etc; anything that allows a gradual increase in the depth of the movement is fine.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 96,
+  "exerciseId": 173,
+  "category": "Push",
+  "element": "HBPPE19",
+  "exerciseName": "Wall Handstand Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE19.jpg",
+  "videos": [
+   {
+    "mediaId": "SIyUYZ2r",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Only reps that nearly touch shoulders to the hands count.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Elevate and protract the scaps at the top of each rep.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 97,
+  "exerciseId": 174,
+  "category": "Push",
+  "element": "HBPPE20",
+  "exerciseName": "Super Pseudo Planche Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE20.jpg",
+  "videos": [
+   {
+    "mediaId": "Irg0pasR",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The hands should be just in front of the hips to count.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not touch the chest as the feet leave the floor.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 98,
+  "exerciseId": 175,
+  "category": "Push",
+  "element": "HBPPE21",
+  "exerciseName": "Planche Dip",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE21.jpg",
+  "videos": [
+   {
+    "mediaId": "pWm5aYte",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Although a straddle is demonstrated, a tuck is also fine.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Begin planching forward from the bottom of the movement.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 99,
+  "exerciseId": 176,
+  "category": "Push",
+  "element": "HBPPE22",
+  "exerciseName": "Tuck Planche Push-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE22.jpg",
+  "videos": [
+   {
+    "mediaId": "F2ZeDAEk",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hips at shoulder height during the ascent.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Press out completely to the tuck PL for the rep to count.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 100,
+  "exerciseId": 212,
+  "category": "Push",
+  "element": "HBPSE1",
+  "exerciseName": "Elevated Half Handstand Chest Roll",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "sdX1MAD7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) A common error is failing to pull the feet over the head.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) If this occurs, the chest roll will press out to a planche.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 101,
+  "exerciseId": 213,
+  "category": "Push",
+  "element": "HBPSE2",
+  "exerciseName": "Headstand Chest Roll",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "mITiOCV7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain a curve in the back to be efficient in your roll.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Wait until the feet are vertical to begin pressing upward.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 102,
+  "exerciseId": 214,
+  "category": "Push",
+  "element": "HBPSE3",
+  "exerciseName": "Headstand Push-Up Chest Roll",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "C2ILdhke",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) During the press the shoulders will pull backward towards the hands during the ascent.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 103,
+  "exerciseId": 215,
+  "category": "Push",
+  "element": "HBPSE4",
+  "exerciseName": "Half Handstand Chest Roll",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "mVw180tU",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The degree of arch in the back will lessen the closer the body gets to handstand.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 104,
+  "exerciseId": 216,
+  "category": "Push",
+  "element": "HBPSE5",
+  "exerciseName": "Handstand Chest Roll",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE5.jpg",
+  "videos": [
+   {
+    "mediaId": "uhk8nKPP",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Continue pressing the shoulders forward in front of the hands to balance during the descent.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 105,
+  "exerciseId": 217,
+  "category": "Push",
+  "element": "HBPSE6",
+  "exerciseName": "Handstand Chest Roll with Negative Hollow Back Press",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE6.jpg",
+  "videos": [
+   {
+    "mediaId": "o7oTu0Lm",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) A slow controlled descent must be demonstrated.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Only minimal arch is allowed during the bottom static.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 106,
+  "exerciseId": 218,
+  "category": "Push",
+  "element": "HBPSE7",
+  "exerciseName": "Half Hollow Back Press",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE7.jpg",
+  "videos": [
+   {
+    "mediaId": "oBbfkACr",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Partially press upward toward the handstand, before allowing the body to settle down in the headstand.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 107,
+  "exerciseId": 219,
+  "category": "Push",
+  "element": "HBPSE8",
+  "exerciseName": "Hollow Back Press",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE8.jpg",
+  "videos": [
+   {
+    "mediaId": "LzQ9vtwF",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note how far in front of the hands the shoulders are in the bottom of this movement.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 108,
+  "exerciseId": 7,
+  "category": "Push",
+  "element": "SPLPE1",
+  "exerciseName": "Scapular Shrug",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "LgNSLUfk",
+    "version": "a"
+   },
+   {
+    "mediaId": "wcMOEVwY",
+    "version": "b"
+   },
+   {
+    "mediaId": "2Gak0fGV",
+    "version": "c"
+   },
+   {
+    "mediaId": "bKDgKjtz",
+    "version": "d"
+   },
+   {
+    "mediaId": "VJIuRuFu",
+    "version": "e"
+   },
+   {
+    "mediaId": "DHc5LQtF",
+    "version": "f"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pinch the shoulder blades together at the bottom.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pull the shoulder blades apart at the top.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 109,
+  "exerciseId": 8,
+  "category": "Push",
+  "element": "SPLPE2",
+  "exerciseName": "Forearm Plank",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "WOTRpk9U",
+    "version": "a"
+   },
+   {
+    "mediaId": "Lv7VAwI3",
+    "version": "b"
+   },
+   {
+    "mediaId": "CDWMXpvD",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hips tucked and the back curled.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) A neutral chin will be the most comfortable.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 110,
+  "exerciseId": 9,
+  "category": "Push",
+  "element": "SPLPE3",
+  "exerciseName": "Plank",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "CyQCrqhW",
+    "version": "a"
+   },
+   {
+    "mediaId": "CqL3rrAL",
+    "version": "b"
+   },
+   {
+    "mediaId": "uc7KtTmm",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the shoulders directly over the hands.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the body to sag or arch.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 111,
+  "exerciseId": 10,
+  "category": "Push",
+  "element": "SPLPE4",
+  "exerciseName": "Single Arm Plank",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "vWOZHG3t",
+    "version": "a"
+   },
+   {
+    "mediaId": "dI7NAjsP",
+    "version": "b"
+   },
+   {
+    "mediaId": "3nIuIwlJ",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) 30 seconds on both arms counts as a single set.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the supporting shoulder completely extended.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 112,
+  "exerciseId": 11,
+  "category": "Push",
+  "element": "SPLPE5",
+  "exerciseName": "Planche Lean",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "UctdwNBr",
+    "version": "a"
+   },
+   {
+    "mediaId": "B1XAdn1J",
+    "version": "b"
+   },
+   {
+    "mediaId": "ijjUXQnI",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Protracting and depressing the scapula (shoulder blades) will greatly strengthen your planche lean position.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 113,
+  "exerciseId": 12,
+  "category": "Push",
+  "element": "SPLPE6",
+  "exerciseName": "Elevated Planche Lean",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "ZLFBDCY2",
+    "version": "a"
+   },
+   {
+    "mediaId": "4TYLwP44",
+    "version": "b"
+   },
+   {
+    "mediaId": "thvj9iXY",
+    "version": "c"
+   },
+   {
+    "mediaId": "1pF241BF",
+    "version": "d"
+   },
+   {
+    "mediaId": "ndUVX7Uy",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Place a furniture slider under the feet to reduce friction.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Lean forward until the hips are over the hands.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 114,
+  "exerciseId": 109,
+  "category": "Push",
+  "element": "SPLPE7",
+  "exerciseName": "Elevated Planche Lean Bounce",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "s4NYHkFh",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) As much as possible, initiate the lift from the upper back.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Minimize the piking of hips during the bounces.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 115,
+  "exerciseId": 110,
+  "category": "Push",
+  "element": "SPLSE1",
+  "exerciseName": "Frog Stand",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "XUlnsWgg",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Place the knees comfortably on the elbows and then continue leaning forward until the feet come off the ground.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 116,
+  "exerciseId": 111,
+  "category": "Push",
+  "element": "SPLSE2",
+  "exerciseName": "Advanced Frog Stand",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "skC8DqH6",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) With aFrS a much larger percentage of the bodyweight must now be born directly by the upper back.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 117,
+  "exerciseId": 112,
+  "category": "Push",
+  "element": "SPLSE3",
+  "exerciseName": "Tuck Planche",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "M1KD2W37",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) With locked elbows and strongly protracted shoulders, lean forward until the hips come up to shoulder height.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 118,
+  "exerciseId": 151,
+  "category": "Push",
+  "element": "SPLSE4",
+  "exerciseName": "Open Planche",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "exTjsEnD",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Planche work requires the scapula to be BOTH protracted and depressed to maximize your leverage.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 119,
+  "exerciseId": 152,
+  "category": "Push",
+  "element": "SPLSE5",
+  "exerciseName": "Open Planche Single Leg Extension",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE5.jpg",
+  "videos": [
+   {
+    "mediaId": "KBSe1Ovc",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the body remains stationary (no bobbing up and down) while the leg extends and retracts",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 120,
+  "exerciseId": 153,
+  "category": "Push",
+  "element": "SPLSE6",
+  "exerciseName": "Open Planche Double Leg Extension",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE6.jpg",
+  "videos": [
+   {
+    "mediaId": "AWSy0euO",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) If you are unable to completely open the hips or maintain horizontal, you are probably not leaning forward enough.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 121,
+  "exerciseId": 154,
+  "category": "Push",
+  "element": "SPLSE7",
+  "exerciseName": "Half Straddle Planche",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE7.jpg",
+  "videos": [
+   {
+    "mediaId": "FZy8woIc",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Protract and depress the scapula before beginning.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Note the degree of forward lean demonstrated.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 122,
+  "exerciseId": 192,
+  "category": "Push",
+  "element": "SPLSE8",
+  "exerciseName": "Half Straddle Planche Single Leg Extension",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE8.jpg",
+  "videos": [
+   {
+    "mediaId": "QeZj1kmN",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The hip should be completely flat at full extension.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not kick or jerk; this is a smooth movement.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 123,
+  "exerciseId": 193,
+  "category": "Push",
+  "element": "SPLSE9",
+  "exerciseName": "Half Straddle Planche Double Leg Extension",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE9.jpg",
+  "videos": [
+   {
+    "mediaId": "CfcyZHST",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) To count, each rep must begin and end in the hsPL.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The body must be horizontal at full extension.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 124,
+  "exerciseId": 194,
+  "category": "Push",
+  "element": "SPLSE10",
+  "exerciseName": "Scissoring Straddle Planche",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE10.jpg",
+  "videos": [
+   {
+    "mediaId": "nfeUiZo0",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Begin and end in the half straddle planche position.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Note that both legs are in constant motion.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 125,
+  "exerciseId": 195,
+  "category": "Push",
+  "element": "SPLSE11",
+  "exerciseName": "Straddle Planche",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE11.jpg",
+  "videos": [
+   {
+    "mediaId": "QDNPaF2B",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maximally protract and depress the scapula.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The hips must remain completely open to count the set.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 126,
+  "exerciseId": 36,
+  "category": "Pull",
+  "element": "RCPE1",
+  "exerciseName": "Incline Row",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "VwP10w94",
+    "version": "a"
+   },
+   {
+    "mediaId": "5OvSUAMY",
+    "version": "b"
+   },
+   {
+    "mediaId": "NeAdqyxk",
+    "version": "c"
+   },
+   {
+    "mediaId": "kDhZgMxG",
+    "version": "d"
+   },
+   {
+    "mediaId": "AjiT6vSp",
+    "version": "e"
+   },
+   {
+    "mediaId": "WfZH5w7Y",
+    "version": "f"
+   },
+   {
+    "mediaId": "MCvqtTzP",
+    "version": "g"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the body to sag during the row.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Lower down, do not bounce down, at the end of each rep.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 127,
+  "exerciseId": 37,
+  "category": "Pull",
+  "element": "RCPE2",
+  "exerciseName": "Ground Row",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "7quVfyFJ",
+    "version": "a"
+   },
+   {
+    "mediaId": "prSQBXwp",
+    "version": "b"
+   },
+   {
+    "mediaId": "y4x9GuyM",
+    "version": "c"
+   },
+   {
+    "mediaId": "G07ISldu",
+    "version": "d"
+   },
+   {
+    "mediaId": "VoezQIfJ",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) At full extension of the arms, the shoulders should be just off the ground.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 128,
+  "exerciseId": 38,
+  "category": "Pull",
+  "element": "RCPE3",
+  "exerciseName": "Elevated Row",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "2XJr9ERF",
+    "version": "a"
+   },
+   {
+    "mediaId": "TlJdmxx6",
+    "version": "b"
+   },
+   {
+    "mediaId": "cHNJPzUQ",
+    "version": "c"
+   },
+   {
+    "mediaId": "jQVwYhxL",
+    "version": "d"
+   },
+   {
+    "mediaId": "JCQOEL9t",
+    "version": "e"
+   },
+   {
+    "mediaId": "m95xukVA",
+    "version": "f"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Elevate the feet to approximately ring height.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the body to sag at any time.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 129,
+  "exerciseId": 39,
+  "category": "Pull",
+  "element": "RCPE4",
+  "exerciseName": "Bulgarian Row",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "3F2xu4kp",
+    "version": "a"
+   },
+   {
+    "mediaId": "uqmanBRH",
+    "version": "b"
+   },
+   {
+    "mediaId": "HZ8MHrdn",
+    "version": "c"
+   },
+   {
+    "mediaId": "VHwNkEVN",
+    "version": "d"
+   },
+   {
+    "mediaId": "DPnhdiTS",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the elbows to drift forward of the shoulders.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pull to an approximately 90 degree elbow bend.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 130,
+  "exerciseId": 40,
+  "category": "Pull",
+  "element": "RCPE5",
+  "exerciseName": "Hinge Row",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "Y2O2FIru",
+    "version": "a"
+   },
+   {
+    "mediaId": "lVz2cbEY",
+    "version": "b"
+   },
+   {
+    "mediaId": "cXSX6spq",
+    "version": "c"
+   },
+   {
+    "mediaId": "qD434WdM",
+    "version": "d"
+   },
+   {
+    "mediaId": "PinS4XhF",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Begin with the glutes and shoulders just off the ground.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 131,
+  "exerciseId": 41,
+  "category": "Pull",
+  "element": "RCPE6",
+  "exerciseName": "Bent Arm Chin Hang",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "F9zULA7H",
+    "version": "a"
+   },
+   {
+    "mediaId": "h74gS2Fw",
+    "version": "b"
+   },
+   {
+    "mediaId": "fCvHqBXE",
+    "version": "c"
+   },
+   {
+    "mediaId": "rn614owK",
+    "version": "d"
+   },
+   {
+    "mediaId": "nt2amJp8",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Chin over the bar is the minimum acceptable height.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the neck or chin to touch the bar.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 132,
+  "exerciseId": 137,
+  "category": "Pull",
+  "element": "RCPE7",
+  "exerciseName": "Negative Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "ob9rG2mc",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the chin to touch the bar at the top.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Maintain an even tempo during the entire descent.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 133,
+  "exerciseId": 138,
+  "category": "Pull",
+  "element": "RCPE8",
+  "exerciseName": "Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE8.jpg",
+  "videos": [
+   {
+    "mediaId": "i7WA9Fhp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) At minimum, the chin must clear the bar, not the nose.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) No kipping, no bounce, no seizures; use strength only.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 134,
+  "exerciseId": 139,
+  "category": "Pull",
+  "element": "RCPE9",
+  "exerciseName": "L Chin-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE9.jpg",
+  "videos": [
+   {
+    "mediaId": "RvioiR7F",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) While the athlete above demonstrates exceptional ROM by pulling to the chest, only chin high is required.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 135,
+  "exerciseId": 140,
+  "category": "Pull",
+  "element": "RCPE10",
+  "exerciseName": "L Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE10.jpg",
+  "videos": [
+   {
+    "mediaId": "Cie6AJKb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The L-sit position remains rock steady and perfectly level during the entire ROM; no bobbing, no dipping.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 136,
+  "exerciseId": 141,
+  "category": "Pull",
+  "element": "RCPE11",
+  "exerciseName": "Bulgarian Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE11.jpg",
+  "videos": [
+   {
+    "mediaId": "K1kuaFjQ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the hands apart wider than shoulder width apart at the top of each repetition.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 137,
+  "exerciseId": 142,
+  "category": "Pull",
+  "element": "RCPE12",
+  "exerciseName": "Bulgarian L Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE12.jpg",
+  "videos": [
+   {
+    "mediaId": "bo3W6CKu",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The addition of the L-sit precludes the torso from tilting forwards during the ascent.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 138,
+  "exerciseId": 143,
+  "category": "Pull",
+  "element": "RCPE13",
+  "exerciseName": "Wide Grip Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE13.jpg",
+  "videos": [
+   {
+    "mediaId": "I10cebPn",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use a 1.5x shoulder width grip at minimum.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Initiate with a smooth pull rather than a jerk.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 139,
+  "exerciseId": 144,
+  "category": "Pull",
+  "element": "RCPE14",
+  "exerciseName": "Wide Grip Behind the Neck Pull-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE14.jpg",
+  "videos": [
+   {
+    "mediaId": "zhGlm3hG",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull upward until the bar reaches the base of the neck.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The elbows pull somewhat behind the plane of the body.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 140,
+  "exerciseId": 177,
+  "category": "Pull",
+  "element": "RCPE15",
+  "exerciseName": "Wide Grip L Pull-Up",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE15.jpg",
+  "videos": [
+   {
+    "mediaId": "a9dRx2DT",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use approximately a double shoulder width grip.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Maintain a horizontal L-sit during the entire pull-up.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 141,
+  "exerciseId": 178,
+  "category": "Pull",
+  "element": "RCPE16",
+  "exerciseName": "Pullover",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE16.jpg",
+  "videos": [
+   {
+    "mediaId": "0Ec4kPem",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the chin over the bar as the toes come up and over.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Allow the legs to drop downward as you press to support.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 142,
+  "exerciseId": 179,
+  "category": "Pull",
+  "element": "RCPE17",
+  "exerciseName": "Naner",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE17.jpg",
+  "videos": [
+   {
+    "mediaId": "mtWOaNfA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The arms never straighten in the hang for this variation.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The chin will always remain above the bar.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 143,
+  "exerciseId": 180,
+  "category": "Pull",
+  "element": "RCPE18",
+  "exerciseName": "TOPS Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE18.jpg",
+  "videos": [
+   {
+    "mediaId": "mHzo8trA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Completely bend the arms at the bottom.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the body to pike at any time.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 144,
+  "exerciseId": 181,
+  "category": "Pull",
+  "element": "RCPE19",
+  "exerciseName": "Yewkis",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE19.jpg",
+  "videos": [
+   {
+    "mediaId": "tlU8OPFq",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the body up to a bent arm horizontal front lever.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The arms will bend only to approximately 90 degrees.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 145,
+  "exerciseId": 182,
+  "category": "Pull",
+  "element": "RCPE20",
+  "exerciseName": "Half Front Lever Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE20.jpg",
+  "videos": [
+   {
+    "mediaId": "Q7mDAqna",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Moving slowly and deliberately makes the potential swing that this exercise can generate easier to control.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 146,
+  "exerciseId": 183,
+  "category": "Pull",
+  "element": "RCPE21",
+  "exerciseName": "Front Lever Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE21.jpg",
+  "videos": [
+   {
+    "mediaId": "8TUFMv9b",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The body will maintain PPT and scapular protraction.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Slow and steady builds more strength; don't go too fast.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 147,
+  "exerciseId": 184,
+  "category": "Pull",
+  "element": "RCPE22",
+  "exerciseName": "Circle Front Lever Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE22.jpg",
+  "videos": [
+   {
+    "mediaId": "bELWl4ju",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Bring the chin fully above the bar in the back of each rep.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Focus on making the sides of the circle fully extended.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 148,
+  "exerciseId": 220,
+  "category": "Pull",
+  "element": "RCSE1",
+  "exerciseName": "Rope Pull-Up from Wrist",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "um5smFTZ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Grasp the bottom hand near the wrist of the top hand.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) After 5 reps, switch hands and do 5 more reps.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 149,
+  "exerciseId": 221,
+  "category": "Pull",
+  "element": "RCSE2",
+  "exerciseName": "Rope Pull-Up from Elbow",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "k7ZZwxTp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Grasp the bottom hand near the elbow of the top hand.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Pull the bottom hand down towards the hip.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 150,
+  "exerciseId": 222,
+  "category": "Pull",
+  "element": "RCSE3",
+  "exerciseName": "Rope Pull-Up from Shoulder",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "2HacakLO",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Grasp the bottom hand near the shoulder of the top hand.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) You are performing 10 reps total; 5 right and 5 left on top.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 151,
+  "exerciseId": 223,
+  "category": "Pull",
+  "element": "RCSE4",
+  "exerciseName": "Rope Pull-Up",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "qQ4LoJkp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The bottom hand will now release the rope and reach upward to full extension during each rep.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 152,
+  "exerciseId": 224,
+  "category": "Pull",
+  "element": "RCSE516",
+  "exerciseName": "Rope Climb",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE516.jpg",
+  "videos": [
+   {
+    "mediaId": "vu7OJEXl",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the top hand down to the chest on each pull.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keeping the elbows slightly bent will increase your grip.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 153,
+  "exerciseId": 25,
+  "category": "Legs",
+  "element": "SLSPE1",
+  "exerciseName": "Assisted Squat",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE1.jpg",
+  "videos": [
+   {
+    "mediaId": "q404h0Xw",
+    "version": "a"
+   },
+   {
+    "mediaId": "89ZWASw5",
+    "version": "b"
+   },
+   {
+    "mediaId": "RLivfW7U",
+    "version": "c"
+   },
+   {
+    "mediaId": "GQNmogtX",
+    "version": "d"
+   },
+   {
+    "mediaId": "cLE8fiXO",
+    "version": "e"
+   },
+   {
+    "mediaId": "CcAQ1FXM",
+    "version": "f"
+   },
+   {
+    "mediaId": "TcogyHoe",
+    "version": "g"
+   },
+   {
+    "mediaId": "MwHWEAdo",
+    "version": "h"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Sit backwards into the squat rather than allowing the knees to come forward",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 154,
+  "exerciseId": 26,
+  "category": "Legs",
+  "element": "SLSPE2",
+  "exerciseName": "Parallel Squat",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE2.jpg",
+  "videos": [
+   {
+    "mediaId": "j9joToVy",
+    "version": "a"
+   },
+   {
+    "mediaId": "0J7M3hAC",
+    "version": "b"
+   },
+   {
+    "mediaId": "ndpma1Tc",
+    "version": "c"
+   },
+   {
+    "mediaId": "gfJe8Rec",
+    "version": "d"
+   },
+   {
+    "mediaId": "gmuUYxLD",
+    "version": "e"
+   },
+   {
+    "mediaId": "0G8S7PhI",
+    "version": "f"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The arms may be used to help counter balance the squat",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 155,
+  "exerciseId": 27,
+  "category": "Legs",
+  "element": "SLSPE3",
+  "exerciseName": "Full Squat",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE3.jpg",
+  "videos": [
+   {
+    "mediaId": "Aczgz3S2",
+    "version": "a"
+   },
+   {
+    "mediaId": "Q0ciTAtr",
+    "version": "b"
+   },
+   {
+    "mediaId": "BqvBiSPa",
+    "version": "c"
+   },
+   {
+    "mediaId": "8h5K5jEO",
+    "version": "d"
+   },
+   {
+    "mediaId": "NytuOFQC",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Glutes should be close to the ground in a full squat",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 156,
+  "exerciseId": 28,
+  "category": "Legs",
+  "element": "SLSPE4",
+  "exerciseName": "Elevated Deck Squat",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE4.jpg",
+  "videos": [
+   {
+    "mediaId": "P9J5d0yk",
+    "version": "a"
+   },
+   {
+    "mediaId": "oQBqahvN",
+    "version": "b"
+   },
+   {
+    "mediaId": "oIKB8PCi",
+    "version": "c"
+   },
+   {
+    "mediaId": "hqB398Tx",
+    "version": "d"
+   },
+   {
+    "mediaId": "GBQQJs5p",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use as many mats as necessary at first and remove them over time",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 157,
+  "exerciseId": 29,
+  "category": "Legs",
+  "element": "SLSPE5",
+  "exerciseName": "Deck Squat",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE5.jpg",
+  "videos": [
+   {
+    "mediaId": "z7j1icJj",
+    "version": "a"
+   },
+   {
+    "mediaId": "qeRvUWtK",
+    "version": "b"
+   },
+   {
+    "mediaId": "r3Lpi4du",
+    "version": "c"
+   },
+   {
+    "mediaId": "mcdao15m",
+    "version": "d"
+   },
+   {
+    "mediaId": "xzgOBnMZ",
+    "version": "e"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pulling the glutes in tight to the feet smooths the roll.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Keep the back round and the chin tucked when rolling.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 158,
+  "exerciseId": 125,
+  "category": "Legs",
+  "element": "SLSPE6",
+  "exerciseName": "Cossack Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE6.jpg",
+  "videos": [
+   {
+    "mediaId": "bdIOs806",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The non-squatting leg remains straight.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Stand up fully in between repetitions.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 159,
+  "exerciseId": 126,
+  "category": "Legs",
+  "element": "SLSPE7",
+  "exerciseName": "Side to Side Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE7.jpg",
+  "videos": [
+   {
+    "mediaId": "pIXsDg8I",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the glutes as close to the ground as possible.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Fully extend the non-squatting leg.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 160,
+  "exerciseId": 127,
+  "category": "Legs",
+  "element": "SLSPE8",
+  "exerciseName": "Speed Skater Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE8.jpg",
+  "videos": [
+   {
+    "mediaId": "VGoqLVqJ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The rear knee and foot touch simultaneously.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Gently touch the ground; do not bounce off the knee.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 161,
+  "exerciseId": 128,
+  "category": "Legs",
+  "element": "SLSSE1",
+  "exerciseName": "Hawaiian Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE1.jpg",
+  "videos": [
+   {
+    "mediaId": "1Uoi0fAR",
+    "version": "a"
+   },
+   {
+    "mediaId": "5pAmp8Mg",
+    "version": "b"
+   },
+   {
+    "mediaId": "czQYZlUa",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Descend until the glutes are parallel with the knees.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Raise and press the arms forward to counter balance.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 162,
+  "exerciseId": 167,
+  "category": "Legs",
+  "element": "SLSSE2",
+  "exerciseName": "Static Single Leg Squat",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLSSE2.jpg",
+  "videos": [
+   {
+    "mediaId": "eSgNtCbV",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Depending on your individual proportions, you may find that extending a light weight greatly aids in counter balance.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 163,
+  "exerciseId": 168,
+  "category": "Legs",
+  "element": "SLSSE3",
+  "exerciseName": "Negative Single Leg Squat",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE3.jpg",
+  "videos": [
+   {
+    "mediaId": "mOnowfsb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain a slow constant tempo throughout the duration of each repetition",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 164,
+  "exerciseId": 210,
+  "category": "Legs",
+  "element": "SLSSE4",
+  "exerciseName": "Single Leg Deck Squat",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE4.jpg",
+  "videos": [
+   {
+    "mediaId": "dM8TujqY",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the foot in tightly to the glutes before attempting to roll up onto the foot.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 165,
+  "exerciseId": 211,
+  "category": "Legs",
+  "element": "SLSSE5",
+  "exerciseName": "Single Leg Squat",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE5.jpg",
+  "videos": [
+   {
+    "mediaId": "TgfbIZ9x",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the glutes back strongly while descending.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Do not allow the chest to drop forward during the ascent.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 166,
+  "exerciseId": 410,
+  "category": "Legs",
+  "element": "FLSSE6",
+  "exerciseName": "Weighted Lunge: +25% Bodyweight",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE6.jpg",
+  "videos": [
+   {
+    "mediaId": "nArlr4Ro",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The rear knee should lightly brush the ground; do not allow it to bounce off the ground.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 167,
+  "exerciseId": 411,
+  "category": "Legs",
+  "element": "FLSSE7",
+  "exerciseName": "Weighted Lunge: +50% Bodyweight",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE7.jpg",
+  "videos": [
+   {
+    "mediaId": "UXudcMSK",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) You may use whatever you like for weight; dumbbells, plates, bars or sandbox across the shoulders.",
+    "descOrder": 1,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 168,
+  "exerciseId": 412,
+  "category": "Legs",
+  "element": "FLSSE8",
+  "exerciseName": "Weighted Lunge: +75% Bodyweight",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE8.jpg",
+  "videos": [
+   {
+    "mediaId": "gwKar5mx",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain an upright torso during the step forward.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) Full depth is achieved by the rear knee lightly touching.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 169,
+  "exerciseId": 413,
+  "category": "Legs",
+  "element": "FLSSE9",
+  "exerciseName": "Weighted Lunge: +100% Bodyweight",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE9.jpg",
+  "videos": [
+   {
+    "mediaId": "nYkZ9dZJ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) It is not unusual for one leg to be stronger than the other.",
+    "descOrder": 1,
+    "type": 1
+   },
+   {
+    "description": "2) The weaker leg will decide the weight and reps used.",
+    "descOrder": 2,
+    "type": 1
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 170,
+  "exerciseId": 1,
+  "category": "Mobility",
+  "element": "FLPE1IM",
+  "exerciseName": "Cat Cow",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "D5ovGHOR",
+    "version": "a"
+   },
+   {
+    "mediaId": "PFklWuZs",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the middle of the back upward strongly during cat.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The neck's position should mimic the spine's position.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 171,
+  "exerciseId": 2,
+  "category": "Mobility",
+  "element": "FLPE2IM",
+  "exerciseName": "Table",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "lOYPi26v",
+    "version": "a"
+   },
+   {
+    "mediaId": "iLh4Ds8a",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Extend the hips upward all the way to shoulder height.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the chest to cave in during this extension.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 172,
+  "exerciseId": 3,
+  "category": "Mobility",
+  "element": "FLPE3IM",
+  "exerciseName": "Table Rock",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "MzJ3fTPy",
+    "version": "a"
+   },
+   {
+    "mediaId": "XxJPBEHY",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Descend fully in between repetitions.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) It is normal to feel stretching in the biceps at the top.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 173,
+  "exerciseId": 4,
+  "category": "Mobility",
+  "element": "FLPE4IM",
+  "exerciseName": "Table Inside Out",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "tW4zNQZ2",
+    "version": "a"
+   },
+   {
+    "mediaId": "Nk0N3Rya",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Down and back is one repetition.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the chest elevated at all times.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 174,
+  "exerciseId": 5,
+  "category": "Mobility",
+  "element": "FLPE5IM",
+  "exerciseName": "Shoulder Bridge",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "1ek8p1EW",
+    "version": "a"
+   },
+   {
+    "mediaId": "HBneVsK4",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The feet should be near the glutes and under the knees.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the shoulders, neck and head firmly on the floor.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 175,
+  "exerciseId": 6,
+  "category": "Mobility",
+  "element": "FLPE6IM",
+  "exerciseName": "Shoulder Bridge Rock",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "6l7qEhX5",
+    "version": "a"
+   },
+   {
+    "mediaId": "iJHFi87f",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not move the feet during the repetitions.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Extend the hips upward as strongly as you are able.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 176,
+  "exerciseId": 101,
+  "category": "Mobility",
+  "element": "FLPE7IM",
+  "exerciseName": "Seal Rock",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "M0dImtXI",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Allow the lower back to arch fully in the front.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Place the chest completely flat on the thighs in the rear.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 177,
+  "exerciseId": 102,
+  "category": "Mobility",
+  "element": "FLPE8IM",
+  "exerciseName": "Suspended Seal",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "9FjSutXe",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) This is one of my favorite Seal stretch variations.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Only the feet and hands may be in contact with the floor.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 178,
+  "exerciseId": 103,
+  "category": "Mobility",
+  "element": "FLPE9IM",
+  "exerciseName": "Seal Push-Up",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "uQNnk3Cs",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Only the hands and feet provide support on the floor.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The rest of the body should not touch at any time.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 179,
+  "exerciseId": 104,
+  "category": "Mobility",
+  "element": "FLPE10IM",
+  "exerciseName": "Elbow Bridge",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "hYSnL0zu",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The elbows and forearms bear the brunt of the weight.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the feet to slide during the ascent.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 180,
+  "exerciseId": 105,
+  "category": "Mobility",
+  "element": "FLPE11IM",
+  "exerciseName": "Single Leg Elbow Bridge",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "UlQgfDO7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Strive to complete all 10 repetitions before coming down out of the elbow bridge.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 181,
+  "exerciseId": 106,
+  "category": "Mobility",
+  "element": "FLPE12IM",
+  "exerciseName": "Elbow Bridge Rock",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE12IM.jpg",
+  "videos": [
+   {
+    "mediaId": "lcU2rqa7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lower down fully in between each repetition so that your back is flat on the floor.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 182,
+  "exerciseId": 107,
+  "category": "Mobility",
+  "element": "FLPE13IM",
+  "exerciseName": "Low Bridge",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLPE13IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Zss86O7T",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) To achieve the low bridge position lift yourself up until the head is an inch or two off of the ground.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 183,
+  "exerciseId": 108,
+  "category": "Mobility",
+  "element": "FLPE14IM",
+  "exerciseName": "Single Leg Low Bridge",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE14IM.jpg",
+  "videos": [
+   {
+    "mediaId": "qzn4IqXZ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the head to touch the ground while lifting the legs.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 184,
+  "exerciseId": 145,
+  "category": "Mobility",
+  "element": "FLPE15IM",
+  "exerciseName": "Low Bridge Rock",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE15IM.jpg",
+  "videos": [
+   {
+    "mediaId": "e4ipIMCU",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the feet into the glutes and the hands close into the shoulders to give the best leverage pressing off the floor.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 185,
+  "exerciseId": 146,
+  "category": "Mobility",
+  "element": "FLPE16IM",
+  "exerciseName": "Low Bridge Inside Out",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLPE16IM.jpg",
+  "videos": [
+   {
+    "mediaId": "sYlp7Wgb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Turn the fingers sideways to pivot smoothly into the turn.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Down and back constitutes one repetition.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 186,
+  "exerciseId": 147,
+  "category": "Mobility",
+  "element": "FLSE1IM",
+  "exerciseName": "Mid Bridge",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ogunLAFL",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The head should be at approximately elbow height during a mid bridge.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 187,
+  "exerciseId": 148,
+  "category": "Mobility",
+  "element": "FLSE2IM",
+  "exerciseName": "Single Leg Mid Bridge",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "o2GN21d5",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lifting a leg places more of the load on the hands and forces the shoulders to continue opening to compensate.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 188,
+  "exerciseId": 149,
+  "category": "Mobility",
+  "element": "FLSE3IM",
+  "exerciseName": "Mid Bridge Rock",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "UHUTgUkf",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Begin with the feet and hands pulled firmly into the body.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Lay down flat in between each repetition.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 189,
+  "exerciseId": 150,
+  "category": "Mobility",
+  "element": "FLSE4IM",
+  "exerciseName": "Mid Bridge Inside Out",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "aAn79P1e",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) In the bridge, fingers pointing in assists the twist.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) In the bear, fingers pointing out assists the twist.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 190,
+  "exerciseId": 185,
+  "category": "Mobility",
+  "element": "FLSE5IM",
+  "exerciseName": "Bridge",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "FLSE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "PfcuKtas",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The progression of refinement is; first arms straight, then chest pressed forward, then legs straight, then feet together.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 191,
+  "exerciseId": 186,
+  "category": "Mobility",
+  "element": "FLSE6IM",
+  "exerciseName": "Bridge Push-Up",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Curj8jj8",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Touch the top of the head at the bottom of each rep.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the feet and legs together.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 192,
+  "exerciseId": 187,
+  "category": "Mobility",
+  "element": "FLSE7IM",
+  "exerciseName": "Bridge Inside Out",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "mtx9hlsE",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The arms must remain straight at all times.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Note how the athlete pivots on his hand during the twist.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 193,
+  "exerciseId": 188,
+  "category": "Mobility",
+  "element": "FLSE8IM",
+  "exerciseName": "Single Leg Lift Bridge",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "nmMdAPWn",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note the shoulders remain nearly vertical above the hands at all times.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 194,
+  "exerciseId": 189,
+  "category": "Mobility",
+  "element": "FLSE9IM",
+  "exerciseName": "Single Arm Lift Bridge",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "AAcGV2r8",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the supporting arm completely straight.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The closer the hand is to the shoulder, the easier the support.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 195,
+  "exerciseId": 190,
+  "category": "Mobility",
+  "element": "FLSE10IM",
+  "exerciseName": "Bridge Wall Walk",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "kNY4Gq5K",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Over time, gradually reduce the pressure on your arms to prepare yourself for FL/SE11&gt;iM.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 196,
+  "exerciseId": 191,
+  "category": "Mobility",
+  "element": "FLSE11IM",
+  "exerciseName": "Half Back Limber",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "jtDNenUw",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the hips forward to help slow the descent.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Lower with control onto the hands.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 197,
+  "exerciseId": 30,
+  "category": "Mobility",
+  "element": "HBPPE1IM",
+  "exerciseName": "German Arm Swing",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "npUh5tRS",
+    "version": "a"
+   },
+   {
+    "mediaId": "sSwaZ69q",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Allow the arms to swing loosely and smoothly.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the elbow behind the ear at the top of the swing.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 198,
+  "exerciseId": 31,
+  "category": "Mobility",
+  "element": "HBPPE2IM",
+  "exerciseName": "Xiaopeng Forward",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "QT6UUPyU",
+    "version": "a"
+   },
+   {
+    "mediaId": "YG9v292Y",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Using a 5-10lb dumbbell is sufficient for most people.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Lift the weight smoothly and with control; do not swing.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 199,
+  "exerciseId": 32,
+  "category": "Mobility",
+  "element": "HBPPE3IM",
+  "exerciseName": "Xiaopeng Backward",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ShEklRnB",
+    "version": "a"
+   },
+   {
+    "mediaId": "TRS8ubT5",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the weight out to drift out to the side; rather focus on pulling it straight back and up over your torso.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 200,
+  "exerciseId": 33,
+  "category": "Mobility",
+  "element": "HBPPE4IM",
+  "exerciseName": "Backward Double Arm Circle",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "8M17jIOC",
+    "version": "a"
+   },
+   {
+    "mediaId": "77dNAhgH",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the elbows straight and extended.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The arms should come relatively close to the ears.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 201,
+  "exerciseId": 34,
+  "category": "Mobility",
+  "element": "HBPPE5IM",
+  "exerciseName": "Forward Double Arm Circle",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "pm0rMQ4t",
+    "version": "a"
+   },
+   {
+    "mediaId": "CEUef30m",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Beginning the arm circle by initially turning the little finger upward will greatly smooth out the arc of movement.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 202,
+  "exerciseId": 35,
+  "category": "Mobility",
+  "element": "HBPPE6IM",
+  "exerciseName": "Single Arm Bent Cat",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "lA1GTHNo",
+    "version": "a"
+   },
+   {
+    "mediaId": "6viXt2Lb",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keeping the back flat and the ribs pulled in will greatly increase the efficacy of this stretch.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 203,
+  "exerciseId": 129,
+  "category": "Mobility",
+  "element": "HBPPE7IM",
+  "exerciseName": "Cat",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "b9EfOeZR",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) At the bottom, the glutes should be either on top or just in front of the knees to maintain the intensity of the stretch.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 204,
+  "exerciseId": 130,
+  "category": "Mobility",
+  "element": "HBPPE8IM",
+  "exerciseName": "Rocking Cat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "YrCdLv3e",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Open fully at the bottom of each repetition.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Gentle to moderate bounces are most effective.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 205,
+  "exerciseId": 131,
+  "category": "Mobility",
+  "element": "HBPPE9IM",
+  "exerciseName": "Reach Underneath",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "QcyakCNe",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Reach between the hand and knee until the back of the shoulder blade comes firmly into contact with the ground.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 206,
+  "exerciseId": 132,
+  "category": "Mobility",
+  "element": "HBPPE10IM",
+  "exerciseName": "Reach Underneath Rep",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Q7pujDTr",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The legs remain stationary while the torso is twisting.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Attempt to reach under so far that you can see the ceiling",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 207,
+  "exerciseId": 133,
+  "category": "Mobility",
+  "element": "HBPPE11IM",
+  "exerciseName": "Letter T",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "8KvfABFX",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the shoulder pressed firmly into the floor.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Turn the hips as well as the torso into the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 208,
+  "exerciseId": 134,
+  "category": "Mobility",
+  "element": "HBPPE12IM",
+  "exerciseName": "Letter T Rep",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE12IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ZbOTDr7i",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pause briefly at the deepest point of each repetition.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the bottom shoulder to come off the ground.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 209,
+  "exerciseId": 135,
+  "category": "Mobility",
+  "element": "HBPPE13IM",
+  "exerciseName": "Prone Capsule",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE13IM.jpg",
+  "videos": [
+   {
+    "mediaId": "TrZ8qe0F",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The arm should be directly in front the chest.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Attempt to lay the chest completely flat on top of the arm.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 210,
+  "exerciseId": 136,
+  "category": "Mobility",
+  "element": "HBPPE14IM",
+  "exerciseName": "Prone Capsule Rep",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE14IM.jpg",
+  "videos": [
+   {
+    "mediaId": "g6w8b6Me",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Extend the arm directly forward; perpendicular to the torso and still in line with the shoulder.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 211,
+  "exerciseId": 169,
+  "category": "Mobility",
+  "element": "HBPPE15IM",
+  "exerciseName": "Cactus",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE15IM.jpg",
+  "videos": [
+   {
+    "mediaId": "K7dcdH4D",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note the 90 degree angles between the upper and lower arm and the upper arm and torso.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 212,
+  "exerciseId": 170,
+  "category": "Mobility",
+  "element": "HBPPE16IM",
+  "exerciseName": "Cactus Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE16IM.jpg",
+  "videos": [
+   {
+    "mediaId": "V8oBI4Ly",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the shoulder firmly into the ground before beginning and then maintain this pressure throughout.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 213,
+  "exerciseId": 171,
+  "category": "Mobility",
+  "element": "HBPPE17IM",
+  "exerciseName": "Clasped Static",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE17IM.jpg",
+  "videos": [
+   {
+    "mediaId": "46i28FOg",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the elbows as high as possible by strongly retracting the scapula.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 214,
+  "exerciseId": 172,
+  "category": "Mobility",
+  "element": "HBPPE18IM",
+  "exerciseName": "Clasped Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE18IM.jpg",
+  "videos": [
+   {
+    "mediaId": "SxnpAyXr",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the chest and forehead pressed into the ground; the movement occurs in the scapula and arms only.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 215,
+  "exerciseId": 173,
+  "category": "Mobility",
+  "element": "HBPPE19IM",
+  "exerciseName": "Chicken Wing",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE19IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Xdw8Ud64",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull the elbows towards each other by retraction.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not lift the chest off the ground to attempt more ROM.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 216,
+  "exerciseId": 174,
+  "category": "Mobility",
+  "element": "HBPPE20IM",
+  "exerciseName": "Chicken Wing Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE20IM.jpg",
+  "videos": [
+   {
+    "mediaId": "olsxnjSU",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the hands remain stationary on the lower back.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Fully retract the scapula at the top of each repetition.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 217,
+  "exerciseId": 175,
+  "category": "Mobility",
+  "element": "HBPPE21IM",
+  "exerciseName": "Vertical Chicken",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPPE21IM.jpg",
+  "videos": [
+   {
+    "mediaId": "wBmGczUW",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Move the hands as close together as possible then start.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Focus on pulling the hands apart for the duration.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 218,
+  "exerciseId": 176,
+  "category": "Mobility",
+  "element": "HBPPE22IM",
+  "exerciseName": "Prone Retraction Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPPE22IM.jpg",
+  "videos": [
+   {
+    "mediaId": "aGqfiOYD",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hands in line with the shoulders.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Focus on fully retracting the scapula.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 219,
+  "exerciseId": 212,
+  "category": "Mobility",
+  "element": "HBPSE1IM",
+  "exerciseName": "Prone Retraction",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "7VqsObVa",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Fully retract the scapula at the top of each repetition.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 220,
+  "exerciseId": 213,
+  "category": "Mobility",
+  "element": "HBPSE2IM",
+  "exerciseName": "Prone External Rotation Rep",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "6Ux42aSp",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Raise the forearms as high as possible while simultaneously pressing the shoulders downward.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 221,
+  "exerciseId": 214,
+  "category": "Mobility",
+  "element": "HBPSE3IM",
+  "exerciseName": "Prone External Rotation",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "yrVYb1rX",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The elbows remain firmly pressed into the ground as the forearms are raised.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 222,
+  "exerciseId": 215,
+  "category": "Mobility",
+  "element": "HBPSE4IM",
+  "exerciseName": "Prone Cactus Retraction Rep",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "XovY78cc",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the elbows in line with the shoulders.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The arms should lift off the ground as a single unit.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 223,
+  "exerciseId": 216,
+  "category": "Mobility",
+  "element": "HBPSE5IM",
+  "exerciseName": "Prone Cactus Retraction",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPSE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Rv0DmEd7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note the 90 degree angle between the upper and lower arms.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 224,
+  "exerciseId": 217,
+  "category": "Mobility",
+  "element": "HBPSE6IM",
+  "exerciseName": "Prone W Retraction Rep",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Ext0bK1y",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the torso to lift while raising the hands.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the chest and elbows as low as possible.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 225,
+  "exerciseId": 218,
+  "category": "Mobility",
+  "element": "HBPSE7IM",
+  "exerciseName": "Prone W Retraction",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "HBPSE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Vbs5AFFt",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the shoulders pressed down to the floor.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the elbows pressed firmly into the sides.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 226,
+  "exerciseId": 219,
+  "category": "Mobility",
+  "element": "HBPSE8IM",
+  "exerciseName": "Cuban Press",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "HBPSE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "1jhbFm4F",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the two 90 degree angles, torso/upper arm and upper arm/lower arm, are maintained at all times.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 227,
+  "exerciseId": 19,
+  "category": "Mobility",
+  "element": "MNPE1IM",
+  "exerciseName": "Stiff Leg Windmill",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "LtC8WEXn",
+    "version": "a"
+   },
+   {
+    "mediaId": "YNeaaVAB",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Both legs remain locked and straight at all times.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the dumbbell above the supporting shoulder.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 228,
+  "exerciseId": 20,
+  "category": "Mobility",
+  "element": "MNPE2IM",
+  "exerciseName": "Jefferson Curl",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "bJRairkT",
+    "version": "a"
+   },
+   {
+    "mediaId": "RBBzurr1",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Curl down one vertebrae at a time.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the hips tucked under as long as possible.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 229,
+  "exerciseId": 21,
+  "category": "Mobility",
+  "element": "MNPE3IM",
+  "exerciseName": "Pike Lean",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "DdpxHpC0",
+    "version": "a"
+   },
+   {
+    "mediaId": "IIDX927Q",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the hips back strongly into the stretch.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Allow the lats to lengthen and relax into the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 230,
+  "exerciseId": 22,
+  "category": "Mobility",
+  "element": "MNPE4IM",
+  "exerciseName": "Standing Weighted Pike Hang",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "rDVLhDuc",
+    "version": "a"
+   },
+   {
+    "mediaId": "fH0rje4J",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Make sure you are using a safe surface to stretch on.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Using 45-95lbs is sufficient load for most people.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 231,
+  "exerciseId": 23,
+  "category": "Mobility",
+  "element": "MNPE5IM",
+  "exerciseName": "Vertical Pike Walk",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "rgGcBnZ1",
+    "version": "a"
+   },
+   {
+    "mediaId": "6cDSiAsZ",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Moderate discomfort is acceptable; do not work too hard.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Allow the body to relax and lengthen into the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 232,
+  "exerciseId": 24,
+  "category": "Mobility",
+  "element": "MNPE6IM",
+  "exerciseName": "Vertical Pike Pull",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "DTIsdlNA",
+    "version": "a"
+   },
+   {
+    "mediaId": "CZJC5D9d",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the knees and elbows locked at all times.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Descend only to a depth you are comfortable with.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 233,
+  "exerciseId": 119,
+  "category": "Mobility",
+  "element": "MNPE7IM",
+  "exerciseName": "Vertical Pike Hang",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ARfS2TXw",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the shoulder girdle as well as the entire back are all in a full, complete stretch from top to bottom.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 234,
+  "exerciseId": 120,
+  "category": "Mobility",
+  "element": "MNPE8IM",
+  "exerciseName": "Bench Pike Hang",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNPE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "VpBr65rE",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The legs must completely straighten in the pike.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Generally we use 25lbs, 35lbs or 45lbs for these.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 235,
+  "exerciseId": 121,
+  "category": "Mobility",
+  "element": "MNPE9IM",
+  "exerciseName": "Bench Pike Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNPE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "0DAQlBA7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The knees must completely straighten at the top.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Nearly straight isn't almost straight",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 236,
+  "exerciseId": 122,
+  "category": "Mobility",
+  "element": "MNSE1IM",
+  "exerciseName": "Seated Pike Lift",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "b9snkt0C",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Reach your hands as far toward the ankles as you can while still maintaining your ability to lift the heels.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 237,
+  "exerciseId": 123,
+  "category": "Mobility",
+  "element": "MNSE2IM",
+  "exerciseName": "Seated Pike Pulse",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "e4Umlfhl",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hands are far towards the ankles as possible.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the torso to sit up during the pulses.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 238,
+  "exerciseId": 124,
+  "category": "Mobility",
+  "element": "MNSE3IM",
+  "exerciseName": "Straddle Jefferson Curl",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "DyFuhZhN",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use a comfortable 1.5+ shoulder width stance.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) While a plate is demonstrated a bar may also be used.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 239,
+  "exerciseId": 161,
+  "category": "Mobility",
+  "element": "MNSE4IM",
+  "exerciseName": "Standing Weighted Straddle Hang",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "FFojs3hQ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The hips press backwards slightly to maintain balance.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Don't pull against the weight, allow the shoulders to open.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 240,
+  "exerciseId": 162,
+  "category": "Mobility",
+  "element": "MNSE5IM",
+  "exerciseName": "Straddle Lean",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "6G3elJuM",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press your hips strongly back behind you.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Allow the shoulders to open and your back to straighten.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 241,
+  "exerciseId": 163,
+  "category": "Mobility",
+  "element": "MNSE6IM",
+  "exerciseName": "Vertical Straddle Walk",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "7PMR5VOE",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pause and allow the body to lengthen on each rail as you work your way up and down the stall bars.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 242,
+  "exerciseId": 164,
+  "category": "Mobility",
+  "element": "MNSE7IM",
+  "exerciseName": "Vertical Straddle Pull",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "g1NWRXl4",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Allow the body to fully lengthen into each repetition.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Pause at the point of greatest stretch before ascending.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 243,
+  "exerciseId": 165,
+  "category": "Mobility",
+  "element": "MNSE8IM",
+  "exerciseName": "Vertical Straddle Hang",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "aMVqXoRN",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Make a conscious effort to relax the lats and shoulders.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Choose a setting that allows you a comfortable challenge.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 244,
+  "exerciseId": 166,
+  "category": "Mobility",
+  "element": "MNSE9IM",
+  "exerciseName": "Seated Straddle Lift",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "iEU8JFr7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Reach as far forward as possible while still lifting the feet.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not jerk the legs up, smoothly pull them up.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 245,
+  "exerciseId": 203,
+  "category": "Mobility",
+  "element": "MNSE10IM",
+  "exerciseName": "Seated Straddle Pulse",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "87gDR9Mb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Perform the pulses for a block of time rather than for reps.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the hands at least in front of the knees if possible.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 246,
+  "exerciseId": 204,
+  "category": "Mobility",
+  "element": "MNSE11IM",
+  "exerciseName": "Shoulder Extension Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "xYV9KrvL",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the chest elevated while extending forward.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Fight to keep the hips close to shoulder high.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 247,
+  "exerciseId": 205,
+  "category": "Mobility",
+  "element": "MNSE12IM",
+  "exerciseName": "Shoulder Extension Static",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE12IM.jpg",
+  "videos": [
+   {
+    "mediaId": "NWiaRw8j",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hips at shoulder height at the bottom position.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The back should be flat with the chest high.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 248,
+  "exerciseId": 206,
+  "category": "Mobility",
+  "element": "MNSE13IM",
+  "exerciseName": "Manna Wall Slide",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE13IM.jpg",
+  "videos": [
+   {
+    "mediaId": "hmMIVe1x",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Retract the scaps and press the hips upward.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The goal is to press the hips to shoulder height.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 249,
+  "exerciseId": 207,
+  "category": "Mobility",
+  "element": "MNSE14IM",
+  "exerciseName": "Weighted Shoulder Extension Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE14IM.jpg",
+  "videos": [
+   {
+    "mediaId": "7XUO4Eoi",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the hips strongly back behind you to counter balance the torso leaning so deeply forward.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 250,
+  "exerciseId": 208,
+  "category": "Mobility",
+  "element": "MNSE15IM",
+  "exerciseName": "Weighted Shoulder Extension Hang",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "MNSE15IM.jpg",
+  "videos": [
+   {
+    "mediaId": "utSJhjxA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Build to a minimum of 25lbs here.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Breathe and allow yourself to settle deep into the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 251,
+  "exerciseId": 209,
+  "category": "Mobility",
+  "element": "MNSE16IM",
+  "exerciseName": "Manna Swing",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "MNSE16IM.jpg",
+  "videos": [
+   {
+    "mediaId": "3ZQ5NxEu",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the shoulder forward as the legs arrive in manna.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not attempt to swing overly high.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 252,
+  "exerciseId": 36,
+  "category": "Mobility",
+  "element": "RCPE1IM",
+  "exerciseName": "1 Arm Upright Lean",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "xB76qD36",
+    "version": "a"
+   },
+   {
+    "mediaId": "9a3q1BS8",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Sit back strongly while keeping the torso upright.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 253,
+  "exerciseId": 37,
+  "category": "Mobility",
+  "element": "RCPE2IM",
+  "exerciseName": "Bent Sideways Lat",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "FpWSWxDw",
+    "version": "a"
+   },
+   {
+    "mediaId": "mqspPI57",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hands and hips relatively stationary while laying the upper arm on the ear and stretching the lat sideways.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 254,
+  "exerciseId": 38,
+  "category": "Mobility",
+  "element": "RCPE3IM",
+  "exerciseName": "Bent Twisting Lat",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "vibpxgBW",
+    "version": "a"
+   },
+   {
+    "mediaId": "6yzQRctU",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Twist the torso sideways over the arm while continually pulling against the hands and pressing the hips back.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 255,
+  "exerciseId": 39,
+  "category": "Mobility",
+  "element": "RCPE4IM",
+  "exerciseName": "Bent Twisting Lat Rep",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "KMPzsJNc",
+    "version": "a"
+   },
+   {
+    "mediaId": "ZrthMS7y",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Failure to maintain constant backward pressure on the hands and hips will greatly minimize this stretch.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 256,
+  "exerciseId": 40,
+  "category": "Mobility",
+  "element": "RCPE5IM",
+  "exerciseName": "Over Grip Bent Lean",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "zCcalB7Q",
+    "version": "a"
+   },
+   {
+    "mediaId": "Wvaoy4lb",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keeping the arms by the ears, use the hips pressing backward to lengthen the lats into this stretch.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Attempt to feel the lat relax and go deeper into the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 257,
+  "exerciseId": 41,
+  "category": "Mobility",
+  "element": "RCPE6IM",
+  "exerciseName": "Over Grip Bent Rep",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "kI5S8npV",
+    "version": "a"
+   },
+   {
+    "mediaId": "VpJv4z4T",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Come to a stand by pulling down strongly on the bar.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Sink deeply into the stretch at the bottom of each rep.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 258,
+  "exerciseId": 137,
+  "category": "Mobility",
+  "element": "RCPE7IM",
+  "exerciseName": "Under Grip Bent Lean",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "hBDYw3XP",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Grasp the rail at approximately hip height.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Use the hips to pull the torso away from the hands.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 259,
+  "exerciseId": 138,
+  "category": "Mobility",
+  "element": "RCPE8IM",
+  "exerciseName": "Over Grip 1 Arm Lean",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "2g8e5z8Y",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Using a single hand grip allows the lat's ROM to be significantly increased.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 260,
+  "exerciseId": 139,
+  "category": "Mobility",
+  "element": "RCPE9IM",
+  "exerciseName": "Under Grip 1 Arm Lean",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "dnaDSKEZ",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Twisting slightly at the bottom of the iM, as the athlete above demonstrates, takes the stretch deeper into the lat.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 261,
+  "exerciseId": 140,
+  "category": "Mobility",
+  "element": "RCPE10IM",
+  "exerciseName": "Over Grip 1 Arm Pull",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "IEdZQjiv",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) To rise pull down on the bar with a locked straight arm.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The feet are to be used for secondary assistance only.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 262,
+  "exerciseId": 141,
+  "category": "Mobility",
+  "element": "RCPE11IM",
+  "exerciseName": "Perpendicular Lat",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "go27ydp0",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The athlete's hands are directly perpendicular to the torso.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The primary stretch would be felt in the lat to the front.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 263,
+  "exerciseId": 142,
+  "category": "Mobility",
+  "element": "RCPE12IM",
+  "exerciseName": "Perpendicular Lat Rep",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE12IM.jpg",
+  "videos": [
+   {
+    "mediaId": "cpvAxGJd",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The feet remain perpendicular and stationary at all times.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The hips are pulling strongly away at full stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 264,
+  "exerciseId": 143,
+  "category": "Mobility",
+  "element": "RCPE13IM",
+  "exerciseName": "Shoulder Distraction",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE13IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Ic5vDX4w",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) A bungee cord allows much better ROM than a theraband.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The arms do not bend during the distraction.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 265,
+  "exerciseId": 144,
+  "category": "Mobility",
+  "element": "RCPE14IM",
+  "exerciseName": "Cross Body Shoulder Distraction",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE14IM.jpg",
+  "videos": [
+   {
+    "mediaId": "86rwMHUM",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Shoulder distractions are a subtle movement; do not allow this to turn into a bent arm row",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 266,
+  "exerciseId": 177,
+  "category": "Mobility",
+  "element": "RCPE15IM",
+  "exerciseName": "Reverse Shoulder Distraction",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE15IM.jpg",
+  "videos": [
+   {
+    "mediaId": "wgJ8ZHcw",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Focus on circling against the resistance with the shoulder.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The hands, and the arms, are merely hooks.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 267,
+  "exerciseId": 178,
+  "category": "Mobility",
+  "element": "RCPE16IM",
+  "exerciseName": "Side Shoulder Distraction",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE16IM.jpg",
+  "videos": [
+   {
+    "mediaId": "cNQmdcXj",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Step away from the resistance band anchorage point until you feel the shoulder being pulled mildly into distraction.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 268,
+  "exerciseId": 179,
+  "category": "Mobility",
+  "element": "RCPE17IM",
+  "exerciseName": "Side Lat",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE17IM.jpg",
+  "videos": [
+   {
+    "mediaId": "5FGLn5f4",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press outward with both the forearm and the hips to create stretch in the lats.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 269,
+  "exerciseId": 180,
+  "category": "Mobility",
+  "element": "RCPE18IM",
+  "exerciseName": "Side Lat Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE18IM.jpg",
+  "videos": [
+   {
+    "mediaId": "t69SRafX",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The body will feel somewhat tilted at the start.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The top arm should be fully extended in the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 270,
+  "exerciseId": 181,
+  "category": "Mobility",
+  "element": "RCPE19IM",
+  "exerciseName": "Assisted Hanging Side Lat",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE19IM.jpg",
+  "videos": [
+   {
+    "mediaId": "92uIrgJ1",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press outward with the forearm and inside foot, while at the same time pressing the outside foot downward.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 271,
+  "exerciseId": 182,
+  "category": "Mobility",
+  "element": "RCPE20IM",
+  "exerciseName": "Assisted Hanging Side Lat Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCPE20IM.jpg",
+  "videos": [
+   {
+    "mediaId": "pyEZN9IM",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Remember to press the outside foot strongly downward.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The inside foot will remain firmly on the rail.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 272,
+  "exerciseId": 183,
+  "category": "Mobility",
+  "element": "RCPE21IM",
+  "exerciseName": "Under Grip Hang",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE21IM.jpg",
+  "videos": [
+   {
+    "mediaId": "3fK73Lap",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Allow the scapula to fully elevate during this stretch.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) A shoulder width or narrower grip is most effective.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 273,
+  "exerciseId": 184,
+  "category": "Mobility",
+  "element": "RCPE22IM",
+  "exerciseName": "1 Arm Over Grip Hang",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "RCPE22IM.jpg",
+  "videos": [
+   {
+    "mediaId": "wOCMuGlG",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Remember to completely elevate the scapula.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Let the lats disengage and sink into the stretch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 274,
+  "exerciseId": 220,
+  "category": "Mobility",
+  "element": "RCSE1IM",
+  "exerciseName": "Scap Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "iUtMujQ6",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Using the scaps, strongly retract and arch backward.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not bend the arms.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 275,
+  "exerciseId": 221,
+  "category": "Mobility",
+  "element": "RCSE2IM",
+  "exerciseName": "1 Arm Assisted Rotation",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "CgdP9uOy",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Rotate the body in as complete a circle as possible. Return to the start and then rotate in the opposite direction.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 276,
+  "exerciseId": 222,
+  "category": "Mobility",
+  "element": "RCSE3IM",
+  "exerciseName": "1 Arm Rotation",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "NjYoktoR",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) You will feel this stretch from the wrist all the way down into the upper chest and lat.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 277,
+  "exerciseId": 223,
+  "category": "Mobility",
+  "element": "RCSE4IM",
+  "exerciseName": "1 Arm Scap Pull",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "x1XJJ7rb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pull down strongly while leaning backward.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) There will be a slight tilt to the side.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 278,
+  "exerciseId": 224,
+  "category": "Mobility",
+  "element": "RCSE516IM",
+  "exerciseName": "Lat Fly",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "RCSE516IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ZEhtTCYw",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Fully protract the scapula in the rear of the movement.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Fully retract the scapula in the front of the movement.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 279,
+  "exerciseId": 13,
+  "category": "Mobility",
+  "element": "SLPE1IM",
+  "exerciseName": "Standing Hip Circle",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "RoHm6iH1",
+    "version": "a"
+   },
+   {
+    "mediaId": "D5ZEmCet",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hip circle smooth by pressing the hips out strongly to the sides.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 280,
+  "exerciseId": 14,
+  "category": "Mobility",
+  "element": "SLPE2IM",
+  "exerciseName": "Standing Trunk Circle",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ZeHTPgJE",
+    "version": "a"
+   },
+   {
+    "mediaId": "73JpCnOJ",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Arch back strongly at the top of each rep.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Focus on a smooth circular motion.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 281,
+  "exerciseId": 15,
+  "category": "Mobility",
+  "element": "SLPE3IM",
+  "exerciseName": "Elbow Bounce",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "6reyBMha",
+    "version": "a"
+   },
+   {
+    "mediaId": "vRvdotEu",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the elbows pulled back, the back flat and the ribs pulled down at all times.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 282,
+  "exerciseId": 16,
+  "category": "Mobility",
+  "element": "SLPE4IM",
+  "exerciseName": "Standing Weighted Oblique",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "eStfEJ00",
+    "version": "a"
+   },
+   {
+    "mediaId": "3L4o7xgV",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the knees straight.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Focus on moving only directly to the side.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 283,
+  "exerciseId": 17,
+  "category": "Mobility",
+  "element": "SLPE5IM",
+  "exerciseName": "Standing Weighted Oblique Rep",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "OROo1fPh",
+    "version": "a"
+   },
+   {
+    "mediaId": "rrhH4obq",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use a moderate weight; the point is to stretch the obliques, not to make a maximum effort.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 284,
+  "exerciseId": 18,
+  "category": "Mobility",
+  "element": "SLPE6IM",
+  "exerciseName": "Outside Inside Outside Back",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "XZ26XoDf",
+    "version": "a"
+   },
+   {
+    "mediaId": "QCVwS4d7",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that the feet are pointing directly square to the front.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Turn the chest 90 degrees to the leg at the bottom.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 285,
+  "exerciseId": 113,
+  "category": "Mobility",
+  "element": "SLPE7IM",
+  "exerciseName": "Around the World",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "uk03Q34U",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Using a 5-10lb plate should be sufficient for most people.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Focus on a complete full movement with straight knees.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 286,
+  "exerciseId": 114,
+  "category": "Mobility",
+  "element": "SLPE8IM",
+  "exerciseName": "Horizontal Windmill",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "HPnUslTD",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note the complete sideways twist of the torso and how far the arm drops to the rear at the top of the movement.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 287,
+  "exerciseId": 115,
+  "category": "Mobility",
+  "element": "SLPE9IM",
+  "exerciseName": "2 Forward 2 Twist",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "N9jWIyOt",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press the hips back strongly while leaning the chest forward.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The twisting movement should moderately vigorous.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 288,
+  "exerciseId": 116,
+  "category": "Mobility",
+  "element": "SLPE10IM",
+  "exerciseName": "Bent Hurdler",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "UxLp5N8J",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Bend the knee of the extended leg enough so that the stretch is primarily on the obliques and not the hamstring.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 289,
+  "exerciseId": 117,
+  "category": "Mobility",
+  "element": "SLPE11IM",
+  "exerciseName": "Bent Hurdler Rep",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "WNbqx3wY",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) When bending to the right make sure to keep the left hip pressed firmly into the ground to intensify the stretch.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 290,
+  "exerciseId": 118,
+  "category": "Mobility",
+  "element": "SLPE12IM",
+  "exerciseName": "Bent Hurdler Twist",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE12IM.jpg",
+  "videos": [
+   {
+    "mediaId": "PvnFgaJb",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Stretching the shoulder down, then chest down = 1 rep.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not sit up until all five reps have been completed.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 291,
+  "exerciseId": 155,
+  "category": "Mobility",
+  "element": "SLPE13IM",
+  "exerciseName": "Hurdler",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLPE13IM.jpg",
+  "videos": [
+   {
+    "mediaId": "UQaQw6Mx",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Feel the back of the extended knee pressing firmly into the ground as you reach out into the stretch.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 292,
+  "exerciseId": 156,
+  "category": "Mobility",
+  "element": "SLPE14IM",
+  "exerciseName": "Hurdler Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE14IM.jpg",
+  "videos": [
+   {
+    "mediaId": "OAOIRUOq",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The plate should be extended firmly overhead.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the shoulders to pike during the descent.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 293,
+  "exerciseId": 157,
+  "category": "Mobility",
+  "element": "SLPE15IM",
+  "exerciseName": "Hurdler Twist",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLPE15IM.jpg",
+  "videos": [
+   {
+    "mediaId": "TlJA6pPs",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Stretching the shoulder down, then chest down = 1 rep.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the opposite glute pressed firmly into the ground.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 294,
+  "exerciseId": 158,
+  "category": "Mobility",
+  "element": "SLSE1IM",
+  "exerciseName": "Bent Pancake",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "uG72YRkn",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Stretch upward fully before beginning the arch sideways.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Note the foot of the straight leg is partially rolled outward.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 295,
+  "exerciseId": 159,
+  "category": "Mobility",
+  "element": "SLSE2IM",
+  "exerciseName": "Bent Pancake Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "sS4fPfw4",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The movement occurs only in the upper body.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the legs and glutes pressed firmly into the ground.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 296,
+  "exerciseId": 160,
+  "category": "Mobility",
+  "element": "SLSE3IM",
+  "exerciseName": "Bent Pancake Twist",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "V0Kx54gA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Stretch long down the leg, do not merely hunch over.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) A 2.5 or 5lb plate should be sufficient for most people.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 297,
+  "exerciseId": 196,
+  "category": "Mobility",
+  "element": "SLSE4IM",
+  "exerciseName": "Side Pancake",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "InhG1Su7",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Press strongly upward before beginning to lower to the side.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 298,
+  "exerciseId": 197,
+  "category": "Mobility",
+  "element": "SLSE5IM",
+  "exerciseName": "Side Pancake Rep",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "bxOHct3m",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the weight fully extended overhead as you descend.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Sit up completely in between each repetition.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 299,
+  "exerciseId": 198,
+  "category": "Mobility",
+  "element": "SLSE6IM",
+  "exerciseName": "Side Pancake Twist",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "v3nuD1BB",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep both legs locked and tight.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Complete all five repetitions before sitting back upright.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 300,
+  "exerciseId": 199,
+  "category": "Mobility",
+  "element": "SLSE7IM",
+  "exerciseName": "Pancake Side to Side",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "QA1vpqKq",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Lower the shoulders toward the knees.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not hunch over; stretch the torso long in the descent.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 301,
+  "exerciseId": 200,
+  "category": "Mobility",
+  "element": "SLSE8IM",
+  "exerciseName": "Pancake Toe Touch",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "pMHnTqNY",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Stretch the center of the chest down the leg.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Attempt to reach the hand out past the toes.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 302,
+  "exerciseId": 201,
+  "category": "Mobility",
+  "element": "SLSE9IM",
+  "exerciseName": "Static Pancake Windmill",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SLSE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "U9laSKA1",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The goal is to touch the shoulder on the ground on the inside of the thigh.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 303,
+  "exerciseId": 202,
+  "category": "Mobility",
+  "element": "SLSE10IM",
+  "exerciseName": "Pancake Windmill",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ZS4ZGD4l",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note how the arm pivots during the ascent and descent.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep pressing the weight away from you at all times.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 304,
+  "exerciseId": 25,
+  "category": "Mobility",
+  "element": "SLSPE1IM",
+  "exerciseName": "Sideprone Lift",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "EqMaiUSk",
+    "version": "a"
+   },
+   {
+    "mediaId": "QWWVXuIt",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Toes should be pulled back and not pointed in the mobility ",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 305,
+  "exerciseId": 26,
+  "category": "Mobility",
+  "element": "SLSPE2IM",
+  "exerciseName": "Kneeling Side Lift",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Vrj0rtl5",
+    "version": "a"
+   },
+   {
+    "mediaId": "lBvDY2tU",
+    "version": "b"
+   },
+   {
+    "mediaId": "avW13hfO",
+    "version": "c"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The upper body and non-working leg should remain stationary while performing the mobility",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 306,
+  "exerciseId": 27,
+  "category": "Mobility",
+  "element": "SLSPE3IM",
+  "exerciseName": "Kneeling Circle",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "trUeH5Z6",
+    "version": "a"
+   },
+   {
+    "mediaId": "ZgwnooAj",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The working leg should be smooth and controlled",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 307,
+  "exerciseId": 28,
+  "category": "Mobility",
+  "element": "SLSPE4IM",
+  "exerciseName": "Kneeling Parallel Slide",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "gUiCjrzZ",
+    "version": "a"
+   },
+   {
+    "mediaId": "n2WCCL9D",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the knee to unlock while performing this mobility",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 308,
+  "exerciseId": 29,
+  "category": "Mobility",
+  "element": "SLSPE5IM",
+  "exerciseName": "Skier",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "CcwVqdiI",
+    "version": "a"
+   },
+   {
+    "mediaId": "oNtAHM0W",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the knees stationary and swivel the hips to the side.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The glutes should lower to approximately knee height.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 309,
+  "exerciseId": 125,
+  "category": "Mobility",
+  "element": "SLSPE6IM",
+  "exerciseName": "Twisting Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "qnXu8Mck",
+    "version": "a"
+   },
+   {
+    "mediaId": "qlYP9dfk",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Use the outside edge of the ankle to begin standing.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Note that each rep twists in the opposite direction.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 310,
+  "exerciseId": 126,
+  "category": "Mobility",
+  "element": "SLSPE7IM",
+  "exerciseName": "Inside Squat",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "VvxIBXou",
+    "version": "a"
+   },
+   {
+    "mediaId": "KnHhFlAI",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The hips and knees descend simultaneously.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Allow the ankles and shins to roll inward.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 311,
+  "exerciseId": 127,
+  "category": "Mobility",
+  "element": "SLSPE8IM",
+  "exerciseName": "Natural Leg Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSPE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "yHX3ICrl",
+    "version": "a"
+   },
+   {
+    "mediaId": "gklgKLtV",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hips flat at all times.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the back to arch.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 312,
+  "exerciseId": 128,
+  "category": "Mobility",
+  "element": "SLSSE1IM",
+  "exerciseName": "Shoulder Bridge Leg Curl",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "NiWILkHZ",
+    "version": "a"
+   },
+   {
+    "mediaId": "obghaHux",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Curl the feet all the way under the knees.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Extend out to a full shoulder bridge in between reps.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 313,
+  "exerciseId": 167,
+  "category": "Mobility",
+  "element": "SLSSE2IM",
+  "exerciseName": "Single Leg Shoulder Bridge Leg Curl",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "HraTyr2G",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) A furniture slider is employed to reduce friction.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Only the foot moves; the rest of the body should be rigid.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 314,
+  "exerciseId": 168,
+  "category": "Mobility",
+  "element": "SLSSE3IM",
+  "exerciseName": "Natural Leg Curl",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "Uvdo7Np6",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The hands should provide only the ligh assistance.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Do not allow the hips to pike during the descent.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 315,
+  "exerciseId": 210,
+  "category": "Mobility",
+  "element": "SLSSE4IM",
+  "exerciseName": "Natural Glute Ham Raise",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ZhMZvvtA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain the same degree of torso tilt throughout the set.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The hinging of the hips should be the only movement.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 316,
+  "exerciseId": 211,
+  "category": "Mobility",
+  "element": "SLSSE5IM",
+  "exerciseName": "Glute Ham Raise",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SLSSE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "wpmBfrMA",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) This exercise is a combination of arch-up and leg curl.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Initially momentum may be used to assist.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 317,
+  "exerciseId": 7,
+  "category": "Mobility",
+  "element": "SPLPE1IM",
+  "exerciseName": "Hip Swivel",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "DAaTAFO3",
+    "version": "a"
+   },
+   {
+    "mediaId": "goeXjAS2",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain a 90 degree angle in the hips and knees.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the glutes on the ground at all times.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 318,
+  "exerciseId": 8,
+  "category": "Mobility",
+  "element": "SPLPE2IM",
+  "exerciseName": "Straddle Running Man",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "MsYiM8U8",
+    "version": "a"
+   },
+   {
+    "mediaId": "LXQOsdjo",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Extend the working leg as far sideways as possible.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Expect to enjoy significant cramping of the medial glutes!",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 319,
+  "exerciseId": 9,
+  "category": "Mobility",
+  "element": "SPLPE3IM",
+  "exerciseName": "Straddle Modified Reverse Hyper",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "9qAI6BgJ",
+    "version": "a"
+   },
+   {
+    "mediaId": "AxgKivYV",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Be sure to completely elevate the feet to hip height.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Pause briefly at the top of each repetition.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 320,
+  "exerciseId": 10,
+  "category": "Mobility",
+  "element": "SPLPE4IM",
+  "exerciseName": "Straddle Donkey Kick",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "gWZvkz6n",
+    "version": "a"
+   },
+   {
+    "mediaId": "K8TXOMuI",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the non-working leg to drop below the hips.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Pause briefly at the top in between repetitions.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 321,
+  "exerciseId": 11,
+  "category": "Mobility",
+  "element": "SPLPE5IM",
+  "exerciseName": "Prone Half Straddle Planche",
+  "levelId": 1,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLPE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "QkceuRfF",
+    "version": "a"
+   },
+   {
+    "mediaId": "c0xVQasB",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain the knees elevated to hip height at all times.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) At a minimum the feet must pull in over the knees.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 322,
+  "exerciseId": 12,
+  "category": "Mobility",
+  "element": "SPLPE6IM",
+  "exerciseName": "Prone Half Straddle Planche Single Leg Extension",
+  "levelId": 1,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "VXkLi8v4",
+    "version": "a"
+   },
+   {
+    "mediaId": "fXT2PUxA",
+    "version": "b"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow either knee (both working leg and non-working leg) to drop below hip height during this exercise.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 323,
+  "exerciseId": 109,
+  "category": "Mobility",
+  "element": "SPLPE7IM",
+  "exerciseName": "Prone Half Straddle Planche Double Leg Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLPE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "9j43jx5r",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the knees to drop below the hips at any time.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The hips should remain completely open and flat.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 324,
+  "exerciseId": 110,
+  "category": "Mobility",
+  "element": "SPLSE1IM",
+  "exerciseName": "Bent Arm Half Straddle Planche",
+  "levelId": 2,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE1IM.jpg",
+  "videos": [
+   {
+    "mediaId": "ftrMcO1D",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) As with all planche work, leaning far forward is essential for maintaining balance with this exercise.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 325,
+  "exerciseId": 111,
+  "category": "Mobility",
+  "element": "SPLSE2IM",
+  "exerciseName": "Bent Arm Half Straddle Planche Single Leg Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE2IM.jpg",
+  "videos": [
+   {
+    "mediaId": "zYXHmMfK",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep the hips flat and open during the entirety of this iM.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The chest should be just above the ground; not touching.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 326,
+  "exerciseId": 112,
+  "category": "Mobility",
+  "element": "SPLSE3IM",
+  "exerciseName": "Bent Arm Half Straddle Planche Double Leg Extension",
+  "levelId": 2,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE3IM.jpg",
+  "videos": [
+   {
+    "mediaId": "GdkY7Jk5",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note that except for the movement of the lower legs, the entire body remains flat, horizontal and stable.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 327,
+  "exerciseId": 151,
+  "category": "Mobility",
+  "element": "SPLSE4IM",
+  "exerciseName": "Bent Arm Straddle Planche Single Leg Hold",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE4IM.jpg",
+  "videos": [
+   {
+    "mediaId": "61jzC7aK",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The hips must remain completely flat and open.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the chest well clear of the floor.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 328,
+  "exerciseId": 152,
+  "category": "Mobility",
+  "element": "SPLSE5IM",
+  "exerciseName": "Bent Arm Straddle Planche",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE5IM.jpg",
+  "videos": [
+   {
+    "mediaId": "n7VXCMP9",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Maintain as much protraction and depression as you can.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The hips must remain open and extended.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 329,
+  "exerciseId": 153,
+  "category": "Mobility",
+  "element": "SPLSE6IM",
+  "exerciseName": "Standing Abduction Rep",
+  "levelId": 3,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "JN1f3Sb9",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Keep constant tension on the hip by not allowing the working leg to drop down too far between reps.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 330,
+  "exerciseId": 154,
+  "category": "Mobility",
+  "element": "SPLSE7IM",
+  "exerciseName": "Standing Abduction",
+  "levelId": 3,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "vxrrUbF5",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Do not allow the working knee to drift forward of the body.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Focus on keeping the hip flat (no pike) while lifting.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 331,
+  "exerciseId": 192,
+  "category": "Mobility",
+  "element": "SPLSE8IM",
+  "exerciseName": "Standing Abduction Slide",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "9ww6LeeP",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Raise the knee upward as far as possible without tilting.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Keep the shin parallel to the floor while pressing back.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 332,
+  "exerciseId": 193,
+  "category": "Mobility",
+  "element": "SPLSE9IM",
+  "exerciseName": "Seated Abduction Rep",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "T732zX7P",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Minimize the sideways lean.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) The effort for lifting the leg must come from the hip.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 333,
+  "exerciseId": 194,
+  "category": "Mobility",
+  "element": "SPLSE10IM",
+  "exerciseName": "Seated Abduction",
+  "levelId": 4,
+  "secsOrReps": "5 Sec",
+  "imageUrl": "SPLSE10IM.jpg",
+  "videos": [
+   {
+    "mediaId": "WEgeGJOr",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) The ankle and knee raise up simultaneously and remain parallel to the ground for the duration of the set.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 334,
+  "exerciseId": 195,
+  "category": "Mobility",
+  "element": "SPLSE11IM",
+  "exerciseName": "Seated Abduction Slide",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "SPLSE11IM.jpg",
+  "videos": [
+   {
+    "mediaId": "JB0s1SMr",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) After lifting, the lower leg should directly extend backward as far as possible along a straight line.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 335,
+  "exerciseId": 410,
+  "category": "Mobility",
+  "element": "FLSSE6IM",
+  "exerciseName": "Weighted Arch-up: +10lbs",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE6IM.jpg",
+  "videos": [
+   {
+    "mediaId": "uOgTsSEf",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Note the deliberate tempo of the movement; do not swing or bounce up into the reps.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 336,
+  "exerciseId": 411,
+  "category": "Mobility",
+  "element": "FLSSE7IM",
+  "exerciseName": "Weighted Arch-Up: +25lbs",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE7IM.jpg",
+  "videos": [
+   {
+    "mediaId": "EXqvQnHx",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Set the crease of the hips on the edge of your support.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 337,
+  "exerciseId": 412,
+  "category": "Mobility",
+  "element": "FLSSE8IM",
+  "exerciseName": "Weighted Arch-Up: +35lbs",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE8IM.jpg",
+  "videos": [
+   {
+    "mediaId": "COiLCKi9",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Pause at the top of each repetition.",
+    "descOrder": 1,
+    "type": 2
+   }
+  ]
+ },
+ {
+  "autoPilotExerciseId": 338,
+  "exerciseId": 413,
+  "category": "Mobility",
+  "element": "FLSSE9IM",
+  "exerciseName": "Weighted Arch-Up: +45lbs",
+  "levelId": 4,
+  "secsOrReps": "Rep",
+  "imageUrl": "FLSSE9IM.jpg",
+  "videos": [
+   {
+    "mediaId": "MCQ6ODZf",
+    "version": "a"
+   }
+  ],
+  "focusPoints": [
+   {
+    "description": "1) Descend completely at the bottom of each repetition.",
+    "descOrder": 1,
+    "type": 2
+   },
+   {
+    "description": "2) Smooth and controlled reps; no jerking or swinging up.",
+    "descOrder": 2,
+    "type": 2
+   }
+  ]
+ }
+]

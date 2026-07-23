@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Local Dev Environment (use this — do NOT start a separate `npm run dev`)
+
+The dev server is **already running** as a **systemd `--user`** service on port **3013**,
+nginx-proxied over HTTPS. Use the `.dev` URL — do **not** run `npm run dev` yourself: a second
+process shares the same `.next` directory and the two clobber each other's build output and fight
+over the port.
+
+- **URL:** https://app.gymnasticbodies.dev
+- **Service:** `app-gymnasticbodies-dev.service`  (port 3013, Next 16)
+
+```bash
+systemctl --user is-active app-gymnasticbodies-dev.service   # already up? then just use the URL
+systemctl --user status   app-gymnasticbodies-dev.service    # status + recent logs
+systemctl --user restart  app-gymnasticbodies-dev.service    # after editing next.config.* / .env.local
+journalctl --user -u app-gymnasticbodies-dev.service -f       # live logs
+```
+
+Before starting a dev server, check `systemctl --user is-active app-gymnasticbodies-dev.service`. If
+it's up, use the `.dev` URL and only **restart** the service — never start a second copy. Restart the
+service after editing `next.config.*` or `.env.local` for changes to take effect.
+
+> **Note:** the app root (`app/page.js`) intentionally redirects to production
+> `my.gymnasticbodies.com` — that's by design, not a broken env.
+
 ## Support Email Rule
 
 **Always show the full draft message and wait for explicit user approval before sending any email** — via `reply`, `send-email`, `sendOutboundSupportEmail`, the admin UI, or any other channel. This applies even after the user requests a wording change: show the edited draft again before sending. Never send in the same turn as drafting or editing.
@@ -9,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev        # Start Next.js development server
+npm run dev        # ONLY if app-gymnasticbodies-dev.service is stopped — normally use https://app.gymnasticbodies.dev (see Local Dev Environment above)
 npm run build      # Production build
 npm run start      # Start production server
 npm run lint       # Run ESLint
@@ -56,14 +80,14 @@ STRIPE_PRICE_ID=price_...           # test price ID
 ```bash
 # Option A — pull production env (overwrites entire .env.local)
 vercel env pull .env.local --environment=production --yes
-# ⚠️  Switch back before running npm run dev
+# ⚠️  Switch back, then restart the dev service (systemctl --user restart app-gymnasticbodies-dev.service)
 
 # Option B — comment swap in .env.local manually
 # STRIPE_SECRET_KEY=sk_test_...     # ← comment out test
 # STRIPE_SECRET_KEY=sk_live_...     # ← uncomment live
 ```
 
-**After querying production Stripe, always switch back to test key before `npm run dev`.**
+**After querying production Stripe, always switch back to the test key, then restart the dev service (`systemctl --user restart app-gymnasticbodies-dev.service`) so it reloads `.env.local`.**
 
 ### Rules
 - Use **test key** for all local dev and Stripe flow testing — no real charges

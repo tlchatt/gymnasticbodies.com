@@ -1,0 +1,3426 @@
+[
+ {
+  "exerciseId": 1,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Bent Hollow Body Hold",
+  "imName": "Cat-Cow",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 2,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Bent Hollow Body Rock",
+  "imName": "Table",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 3,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Straddle Hollow Body Hold",
+  "imName": "Table Rock",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 4,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Straddle Hollow Body Rock",
+  "imName": "Table Inside Out",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 5,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Hollow Body Hold",
+  "imName": "Shoulder Bridge",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 6,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Hollow Body Rock",
+  "imName": "Shoulder Bridge Rock",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 7,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Scapular Shrugs",
+  "imName": "Swivel Hips",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 8,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Forearm Plank",
+  "imName": "Straddle Running Man",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 9,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Plank",
+  "imName": "Straddle Modified Reverse Hyper",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 10,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Single Arm Plank",
+  "imName": "Straddle Donkey Kick",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 11,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Planche Lean",
+  "imName": "Prone Half Straddle Planche Hold",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 12,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Elevated Planche Lean",
+  "imName": "Prone Half Straddle Planche Single Leg Extension",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 13,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Seated Russian Twist",
+  "imName": "Standing Hip Circle",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 14,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Elbow Side Plank Twist",
+  "imName": "Standing Trunk Circle",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 15,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Side Over Arch",
+  "imName": "Elbow Bounces",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 16,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Arch Up",
+  "imName": "Standing Weighted Oblique Stretch",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 17,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Twisting Arch Up",
+  "imName": "Standing Weighted Oblique Reps",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 18,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Circle Arch Up",
+  "imName": "Outside Inside Outside Back",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 19,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Tuck-Up",
+  "imName": "Stiff Leg Windmill",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 20,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Straddle Up",
+  "imName": "Jefferson Curl",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 21,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "V-Ups",
+  "imName": "Pike Lean",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 22,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "1/2 Tuck Hanging Leg Lift",
+  "imName": "Standing Weighted Pike Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 23,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "1/2 Hanging Leg Lift",
+  "imName": "Vertical Pike Walk",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 24,
+  "courseId": 1,
+  "groupId": 59207,
+  "exerciseName": "Negative Hanging Leg Lift ",
+  "imName": "Vertical Pike Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 25,
+  "courseId": 1,
+  "groupId": 59213,
+  "exerciseName": "Assisted Squat",
+  "imName": "Sideprone Lift",
+  "imMastery": "3r"
+ },
+ {
+  "exerciseId": 26,
+  "courseId": 1,
+  "groupId": 59213,
+  "exerciseName": "Parallel Squat",
+  "imName": "Kneeling Side Lift",
+  "imMastery": "3r"
+ },
+ {
+  "exerciseId": 27,
+  "courseId": 1,
+  "groupId": 59213,
+  "exerciseName": "Full Squat",
+  "imName": "Kneeling Circle",
+  "imMastery": "3r"
+ },
+ {
+  "exerciseId": 28,
+  "courseId": 1,
+  "groupId": 59213,
+  "exerciseName": "Elevated Deck Squat",
+  "imName": "Kneeling Parallel Slide",
+  "imMastery": "3r"
+ },
+ {
+  "exerciseId": 29,
+  "courseId": 1,
+  "groupId": 59213,
+  "exerciseName": "Deck Squat",
+  "imName": "Skiers",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 30,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Incline Pushup",
+  "imName": "German Arm Swing",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 31,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Pushup",
+  "imName": "Xiaopeng Forward",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 32,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Pseudo Planche Pushup",
+  "imName": "Xiaopeng Backward",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 33,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Bench Dip",
+  "imName": "Double Arm Circle Backward",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 34,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Negative Parallel Bar Dip",
+  "imName": "Double Arm Circle Forward",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 35,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Parallel Bar Dip",
+  "imName": "Single Arm Bent Cat",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 36,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Incline Row",
+  "imName": "One Arm Upright Lat Lean",
+  "imMastery": "15s@"
+ },
+ {
+  "exerciseId": 37,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Ground Rows",
+  "imName": "Bent Sideways Lat Stretch",
+  "imMastery": "15s@"
+ },
+ {
+  "exerciseId": 38,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Elevated Row",
+  "imName": "Bent Twisting Lat Static",
+  "imMastery": "15s@"
+ },
+ {
+  "exerciseId": 39,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Bulgarian Row",
+  "imName": "Bent Twisting Lat Reps",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 40,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Hinge Row",
+  "imName": "Overgrip Bent Lean",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 41,
+  "courseId": 1,
+  "groupId": 59219,
+  "exerciseName": "Bent Arm Chin Hang",
+  "imName": "Overgrip Bent Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 42,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wrist Stretches",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 43,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall Wrist Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 44,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow Wrist Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 45,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling Wrist Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 46,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wrist Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 47,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall Wrist Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 48,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow Wrist Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 49,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling Wrist Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 50,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wrist Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 51,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall First Knuckle Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 52,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow First Knuckle Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 53,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling First Knuckle Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 54,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "First Knuckle Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 55,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall First Knuckle Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 56,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow First Knuckle Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 57,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling First Knuckle Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 58,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "First Knuckle Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 59,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall Wrist Rock Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 60,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow Wrist Rock Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 61,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling Wrist Rock Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 62,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wrist Rock Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 63,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall Wrist Rock",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 64,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow Wrist Rock",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 65,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling Wrist Rock",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 66,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wrist Rock",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 67,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall Fingertip Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 68,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow Fingertip Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 69,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling Fingertip Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 70,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Fingertip Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 71,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wall Fingertip Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 72,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Long Hollow Fingertip Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 73,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Kneeling Fingertip Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 74,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Fingertip Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 75,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Tripod",
+  "imName": "Static Seated Shoulder Flexion with Weighted Bar",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 76,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Headstand",
+  "imName": "Static Standing Shoulder Extension with Weighted B",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 77,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Forearm Headstand",
+  "imName": "Seated Shoulder Flexion Reps with Weighted Bar",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 78,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Supine Floor Handstand Flexion with Weighted Bar",
+  "imName": "Standing Shoulder Extension with Weighted Bar",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 79,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Prone Floor Handstand Flexion with Weighted Bar",
+  "imName": "Standing Overgrip Dislocate with Weighted Bar",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 80,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Prone Floor Handstand Flexion Pulses with Weighted Bar",
+  "imName": "Standing Undergrip Dislocate with Weighted Bar",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 81,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "30 Second Wall Handstand",
+  "imName": "Prone Overgrip Dislocate with Weighted Bar",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 82,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "30 Rep Handstand Wall Run",
+  "imName": "Prone Undergrip Dislocate with Weighted Bar",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 83,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "60s Wall Handstand",
+  "imName": "Standing Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 84,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "60r Handstand Wall Run",
+  "imName": "Prone Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 85,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Wrist Wall Handstand",
+  "imName": "Bent Supine Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 86,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Forearm Supported Handstand",
+  "imName": "Supine Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 87,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Chinese Handstand",
+  "imName": "Forearm Plank Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 88,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Partial Wall Handstand Rep",
+  "imName": "Plank Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 89,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Partial Wall Handstand",
+  "imName": "Elevated Supine Posterior Pelvic Tilt",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 90,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "10 Second Free Handstand",
+  "imName": "Supine PPT Lower",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 91,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Free Handstand Straddle",
+  "imName": "Suspended Arch/Hollow Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 92,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "10 Second Parallette Handstand",
+  "imName": "Suspended Hollow Body Hold",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 93,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "30 Second Free Handstand",
+  "imName": "45 Degree Long Hollow Hold with Hands",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 94,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Free Handstand Shrug",
+  "imName": "45 Degree Long Hollow Hold with Feet",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 95,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "30 Second Parallette Handstand",
+  "imName": "Long Hollow Wall Walk",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 96,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "60 Second Free Handstand",
+  "imName": "Long Hollow Rep",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 97,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Free Handstand Single Leg Tuck",
+  "imName": "Long Hollow Hold",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 98,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "90 Second Free Handstand",
+  "imName": "Arch/Hollow Lift",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 99,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "Free Handstand Double Leg Tuck",
+  "imName": "10 Second Long Hollow Rear Support",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 100,
+  "courseId": 5,
+  "groupId": 59225,
+  "exerciseName": "120 Second Free Handstand",
+  "imName": "30 Second Long Hollow Rear Support",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 101,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Negative Body Lever Straddle",
+  "imName": "Seal Rocks",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 102,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Negative Body Lever Single Leg",
+  "imName": "Suspended Seal",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 103,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Negative Body Lever",
+  "imName": "Seal Pushup",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 104,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Body Lever",
+  "imName": "Elbow Bridge",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 105,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Negative Vertical Body Lever",
+  "imName": "Elbow Bridge Single Leg",
+  "imMastery": "10r@"
+ },
+ {
+  "exerciseId": 106,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Vertical Body Lever",
+  "imName": "Elbow Bridge Rock",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 107,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Single Bar Inverted Hang",
+  "imName": "Low Bridge",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 108,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Kip Extension",
+  "imName": "Low Bridge Single Leg",
+  "imMastery": "10r@"
+ },
+ {
+  "exerciseId": 109,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Elevated Planche Bounce",
+  "imName": "Prone Half Straddle Planche Double Leg Extension",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 110,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Frog Stand",
+  "imName": "Bent Arm Half Straddle Planche Hold",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 111,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Advanced Frog Stand",
+  "imName": "Bent Arm Half Straddle Planche Single Leg Extensio",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 112,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Tuck Planche",
+  "imName": "Bent Arm Half Straddle Planche Double Leg Extensio",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 113,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Straddle Reverse Leg Lift",
+  "imName": "Around the World",
+  "imMastery": "10r@"
+ },
+ {
+  "exerciseId": 114,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Reverse Leg Lift",
+  "imName": "Horizontal Windmill",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 115,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Stall Bar Reverse Leg Lift",
+  "imName": "2 Forward 2 Twist",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 116,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "1/2 Windshield Wiper",
+  "imName": "Bent Hurdler Hold",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 117,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Windshield Wipers",
+  "imName": "Bent Hurdler Rep",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 118,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Side Arch Body Hold",
+  "imName": "Bent Hurdler Twist",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 119,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Hanging Leg Lift ",
+  "imName": "Vertical Pike Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 120,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "Undergrip Hanging Leg Lift",
+  "imName": "Bench Pike Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 121,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "V-to-L Hanging Leg Lift",
+  "imName": "Bench Pike Squat",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 122,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "1/2 L-Sit",
+  "imName": "Seated Pike Lift",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 123,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "1/2 L-sit Single Leg Extension",
+  "imName": "Seated Pike Pulses",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 124,
+  "courseId": 2,
+  "groupId": 59207,
+  "exerciseName": "1/2 L-sit Double Leg Extension",
+  "imName": "Straddle Jefferson Curl",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 125,
+  "courseId": 2,
+  "groupId": 59213,
+  "exerciseName": "Cossack Squat",
+  "imName": "Twisting Squats",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 126,
+  "courseId": 2,
+  "groupId": 59213,
+  "exerciseName": "Side-to-Side Squat",
+  "imName": "Inside Squat",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 127,
+  "courseId": 2,
+  "groupId": 59213,
+  "exerciseName": "Speed Skater Squat ",
+  "imName": "Natural Leg Extension",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 128,
+  "courseId": 2,
+  "groupId": 59213,
+  "exerciseName": "Hawaiian Squat",
+  "imName": "Shoulder Bridge Leg Curl",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 129,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Single Bar Dip",
+  "imName": "Static Cat",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 130,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Undergrip Single Bar Dip",
+  "imName": "Rocking Cat",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 131,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Korean Dip",
+  "imName": "Reach Underneath Static",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 132,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Undergrip Korean Dip",
+  "imName": "Reach Underneath Rep",
+  "imMastery": "10r@"
+ },
+ {
+  "exerciseId": 133,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Russian Dip",
+  "imName": "Prone Side Chest Static",
+  "imMastery": "30s@"
+ },
+ {
+  "exerciseId": 134,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Russian L Dip",
+  "imName": "Prone Side Chest Rep",
+  "imMastery": "10r@"
+ },
+ {
+  "exerciseId": 135,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Ring Dip",
+  "imName": "Prone Capsule Static",
+  "imMastery": "30s@"
+ },
+ {
+  "exerciseId": 136,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Bulgarian Ring Dip",
+  "imName": "Prone Capsule Rep",
+  "imMastery": "10r@"
+ },
+ {
+  "exerciseId": 137,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Negative Pull-up",
+  "imName": "Undergrip Bent Lean",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 138,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Pull-up",
+  "imName": "Overgrip One Arm Lean",
+  "imMastery": "30s@"
+ },
+ {
+  "exerciseId": 139,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "L Chin-up",
+  "imName": "Undergrip One Arm Lean",
+  "imMastery": "30s@"
+ },
+ {
+  "exerciseId": 140,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "L Pull-up",
+  "imName": "Overgrip One Arm Pull",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 141,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Bulgarian Pull-up",
+  "imName": "Perpendicular Lat Static",
+  "imMastery": "30s@"
+ },
+ {
+  "exerciseId": 142,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Bulgarian L Pull-up",
+  "imName": "Perpendicular Lat Rep",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 143,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Wide Grip Pull-up",
+  "imName": "Shoulder Distraction One ",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 144,
+  "courseId": 2,
+  "groupId": 59219,
+  "exerciseName": "Wide Grip Behind the Neck Pull-up",
+  "imName": "Shoulder Distraction Two",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 145,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Negative Front Pull",
+  "imName": "Low Bridge Rock",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 146,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Front Pull",
+  "imName": "Low Bridge Inside Out",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 147,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Open Front Lever",
+  "imName": "Mid Bridge",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 148,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Open Front Lever Bent Single Leg",
+  "imName": "Mid Bridge Single Leg",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 149,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Open Front Lever Bent Double Leg",
+  "imName": "Mid Bridge Rock",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 150,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "1/2 Straddle Front Lever",
+  "imName": "Mid Bridge Inside Out",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 151,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Open Planche",
+  "imName": "Bent Arm Straddle Planche Single Leg Hold",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 152,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Open Planche Single Leg Extension",
+  "imName": "Bent Arm Straddle Planche",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 153,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Open Planche Double Leg Extension",
+  "imName": "SAC 1",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 154,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "1/2 Straddle Planche",
+  "imName": "SAC 2",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 155,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Side Arch Body Rock",
+  "imName": "Hurdler Static",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 156,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Arch Body Hold",
+  "imName": "Hurdler Rep",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 157,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Arch Body Rock",
+  "imName": "Hurdler Twist",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 158,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Side Lever Block",
+  "imName": "Bent Pancake Static",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 159,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Side Lever Block Twist",
+  "imName": "Bent Pancake Rep",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 160,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Side Lever Block Press",
+  "imName": "Bent Pancake Twist",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 161,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "L-sit Scissors",
+  "imName": "Standing Weighted Straddle Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 162,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "L-Sit",
+  "imName": "Straddle Lean",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 163,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "1/2 Straddle L",
+  "imName": "Vertical Straddle Walk",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 164,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "1/2 Straddle L Single Extension",
+  "imName": "Vertical Straddle Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 165,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "1/2 Straddle L Double Extension",
+  "imName": "Vertical Straddle Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 166,
+  "courseId": 3,
+  "groupId": 59207,
+  "exerciseName": "Straddle L",
+  "imName": "Seated Straddle Lift",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 167,
+  "courseId": 3,
+  "groupId": 59213,
+  "exerciseName": "Static Single Leg Squat",
+  "imName": "Single Leg Bridge Curl",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 168,
+  "courseId": 3,
+  "groupId": 59213,
+  "exerciseName": "Negative Single Leg Squat",
+  "imName": "Natural Leg Curl",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 169,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Box Headstand Pushup",
+  "imName": "Bent Arm Prone Static",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 170,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Negative Headstand Pushup",
+  "imName": "Bent Arm Prone Rep",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 171,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Free HeSPU",
+  "imName": "Clasped Static",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 172,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Elevated Headstand Pushup",
+  "imName": "Clasped Rep",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 173,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Wall Handstand Pushup",
+  "imName": "Chicken Wing Static",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 174,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Pseudo Planche Pushup +",
+  "imName": "Chicken Wing Rep",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 175,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Planche Dip",
+  "imName": "Vertical Chicken Static",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 176,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Modified Planche Pushup",
+  "imName": "Prone Retraction One",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 177,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Wide Grip L Pull-up",
+  "imName": "Shoulder Distraction Three",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 178,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Pullover",
+  "imName": "Shoulder Distraction Four",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 179,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Naners",
+  "imName": "ST Lat 1",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 180,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "TOPS Pull",
+  "imName": "ST Lat 2",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 181,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Yewkis",
+  "imName": "ST Lat 3",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 182,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "1/2 Front Lever Pull",
+  "imName": "ST Lat 4",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 183,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Front Lever Pull",
+  "imName": "Undergrip Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 184,
+  "courseId": 3,
+  "groupId": 59219,
+  "exerciseName": "Circle Front Lever Pull",
+  "imName": "One Arm Overgrip Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 185,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "1/2 Straddle Front Lever Scissor",
+  "imName": "Bridge",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 186,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "1/2 Front Lever",
+  "imName": "Bridge Pushups",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 187,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Single Leg Straddle Front Lever",
+  "imName": "Bridge Inside Out",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 188,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Straddle Front Lever",
+  "imName": "Single Leg Lift Bridge",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 189,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Single Leg Front Lever",
+  "imName": "Single Arm Lift Bridge",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 190,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "1/2 Front Pull",
+  "imName": "Bridge Wall Walk",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 191,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Front Lever",
+  "imName": "1/2 Back Limber",
+  "imMastery": "1r"
+ },
+ {
+  "exerciseId": 192,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "1/2 Straddle Planche Single Extension",
+  "imName": "SAC 3",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 193,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "1/2 Straddle Planche Double Extension",
+  "imName": "SAC 4",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 194,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Scissoring Straddle Planche",
+  "imName": "SAC 5",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 195,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Straddle Planche",
+  "imName": "SAC 6",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 196,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Side Lever Inverted Hold",
+  "imName": "Pancake Side Static",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 197,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Straddle Side Lever Pull",
+  "imName": "Pancake Side Rep",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 198,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Scissoring Side Lever Pull",
+  "imName": "Pancake Side Twist",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 199,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Closed Side Lever Pull",
+  "imName": "Pancake Side to Side Rep",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 200,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Negative Side Lever Pull",
+  "imName": "Pancake Toe Touch",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 201,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Side Lever Pull",
+  "imName": "Overhead/Weighted/Loaded Pancake Side Static",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 202,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Side Lever",
+  "imName": "Weighted Pancake Side Rep",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 203,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Elevated Reverse Plank",
+  "imName": "Seated Straddle Pulse",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 204,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "1/2 Middle Split Hold",
+  "imName": "Shoulder Extension Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 205,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "1/2 Middle Split Hold Single Extension",
+  "imName": "Shoulder Extension Static",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 206,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "1/2 Middle Split Hold Double Extension",
+  "imName": "Manna Wall Slide",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 207,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Middle Split Hold",
+  "imName": "Weighted Shoulder Extension Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 208,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Manna Press",
+  "imName": "Weighted Shoulder Extension Hang",
+  "imMastery": "10s"
+ },
+ {
+  "exerciseId": 209,
+  "courseId": 4,
+  "groupId": 59207,
+  "exerciseName": "Manna",
+  "imName": "Manna Swing",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 210,
+  "courseId": 3,
+  "groupId": 59213,
+  "exerciseName": "Rocking Single Leg Squat",
+  "imName": "Natural Glute Ham Raise",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 211,
+  "courseId": 3,
+  "groupId": 59213,
+  "exerciseName": "Single Leg Squat",
+  "imName": "Glute Ham Raise",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 212,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Chest Roll 1",
+  "imName": "Prone Retraction Two",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 213,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Chest Roll 2",
+  "imName": "Prone External Rotation One",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 214,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Chest Roll 3",
+  "imName": "Prone External Rotation Two",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 215,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Chest Roll 4",
+  "imName": "Prone Retraction Three",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 216,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Chest Roll 5",
+  "imName": "Prone Retraction Four",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 217,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Chest Roll 6",
+  "imName": "Prone External Rotation Three",
+  "imMastery": "10r"
+ },
+ {
+  "exerciseId": 218,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "1/2 Hollow Back Press",
+  "imName": "Prone External Rotation Four",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 219,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Hollow Back Press ",
+  "imName": "Cuban Press",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 220,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Czech 1",
+  "imName": "Scap Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 221,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Czech 2",
+  "imName": "One Arm Assisted Rotation",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 222,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Czech 3",
+  "imName": "One Arm Rotation",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 223,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Czech 4",
+  "imName": "One Arm Scap Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 224,
+  "courseId": 4,
+  "groupId": 59219,
+  "exerciseName": "Rope Climb",
+  "imName": "Lat Fly",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 226,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Plank Press",
+  "imName": "Inverted Pike Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 227,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Tip Toe Press",
+  "imName": "Inverted Pike Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 228,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Slide Press",
+  "imName": "Inverted Pike Extension",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 229,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Vertical Press One",
+  "imName": "Inverted Straddle Pull",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 230,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Vertical Press Two",
+  "imName": "Inverted Straddle Hang",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 231,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Vertical Press Three",
+  "imName": "Inverted Straddle Extension",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 232,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Press Walk",
+  "imName": "Pancake Arch-Up",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 233,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "1/2 Press One",
+  "imName": "Pancake",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 234,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "1/2 Press Two",
+  "imName": "Pancake Walk",
+  "imMastery": "5r (over & back)\""
+ },
+ {
+  "exerciseId": 235,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "1/2 Press Three",
+  "imName": "Pancake Bounce",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 236,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "1/2 Press Four",
+  "imName": "Pancake Circle",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 237,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "1/2 Press Five",
+  "imName": "Swing to Straddle Stand",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 238,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Sliding Tuck Press",
+  "imName": "Pull to Straddle Stand",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 239,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Partial Pike Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 240,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Negative Tuck Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 241,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Negative Straddle Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 242,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Negative Pike Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 243,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press One (tuck)",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 244,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press Two (straddle)",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 245,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press Three (pike)",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 246,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press Four",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 247,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press Five",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 248,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press Six",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 249,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Press Seven",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 250,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Straddle Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 251,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Standing Pike Press to L-sit",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 252,
+  "courseId": 6,
+  "groupId": 59225,
+  "exerciseName": "Pike Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 255,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings Warmup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 256,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "False Grip Bent Arm Hang",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 257,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "False Grip Straight Arm Hang",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 258,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "False Grip Row",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 259,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "False Grip Pull-up",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 260,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Standing Muscle Up",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 261,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Assisted Negative MU",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 262,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Negative Muscle Up",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 263,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Strap Ring Plank",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 264,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Strap Ring Plank Circle",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 265,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Strap Fly",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 266,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Strap Support Hold",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 267,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Strap Support Swings",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 268,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "45 Degree Parallete Support Hold",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 269,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings Plank",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 270,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings Support Hold",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 271,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings 1/2 L-sit",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 272,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings Lsit",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 273,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings 1/2 Straddle-L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 274,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Rings Straddle-L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 275,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Swinging Support",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 276,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Support Swing",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 277,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Assisted German Hang",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 278,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "German Hang",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 279,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "German Hang Pull",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 280,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Tuck Back Lever",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 281,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Open Tuck Back Lever",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 282,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "1/2 Straddle Back Lever",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 283,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "1/2 Back Lever",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 284,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Straddle Back Lever",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 285,
+  "courseId": 7,
+  "groupId": 60099,
+  "exerciseName": "Back Lever",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 286,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Follow Along",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 287,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Follow Along",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 288,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Follow Along",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 302,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Warmup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 303,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Sideways Arch/Hollow Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 304,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Sideways Long Hollow Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 307,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Alternating 1/2 Shoulder Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 308,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Right Kneeling Shoulder Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 309,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Left Kneeling Shoulder Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 310,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Alternating Shoulder Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 311,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Rock 'n Roll to Squat",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 312,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Assisted Forward Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 313,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Forward Tuck Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 314,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Extended Forward Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 317,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Forward Straddle Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 318,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Forward Pike Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 319,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Pressure Rock 'n Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 320,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Pressure Rock 'n Roll to Stand",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 321,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Assisted Backward Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 322,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Backward Tuck Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 323,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Backward Straddle Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 324,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Backward Pike Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 325,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Headstand Forward Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 326,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Assisted Bent Arm Handstand Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 327,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "High Planche Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 328,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Sliding Planche Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 329,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Assisted Lock Arm Handstand Forward Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 330,
+  "courseId": 11,
+  "groupId": 59228,
+  "exerciseName": "Lock Arm Handstand Forward Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 331,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Backward Roll to Front Support",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 332,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Backward Roll to Long Hollow",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 333,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Assisted Bent Arm Back Extension",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 334,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Assisted Lock Arm Backward Roll to Long Hollow",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 335,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Lock Arm Back Extension to Long Hollow",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 336,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Lock Arm Back Extension",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 337,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Cartwheel Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 338,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Right Cartwheel",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 339,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Left Cartwheel",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 340,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Right Cartwheel Series",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 341,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Left Cartwheel Series",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 342,
+  "courseId": 14,
+  "groupId": 59228,
+  "exerciseName": "Alternating Cartwheels",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 343,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Speed Cartwheels",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 344,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Near Hand Cartwheel",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 345,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Far Hand Cartwheel",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 346,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Stretch Forward Roll to Pike Jump Handstand with a Half Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 347,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Lock Arm Handstand Forward Roll to Pike Jump Handstand with a Full Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 348,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Handstand Forward Roll Series",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 349,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Back Extension Half Pirouette to Lock Arm Handstand Forward Pike Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 350,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Back Extension Full Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 351,
+  "courseId": 15,
+  "groupId": 59228,
+  "exerciseName": "Back Extension Series",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 376,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Over-grip Wall Handstand",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 377,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Under-grip Wall Handstand",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 378,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Over-grip 1 Arm Wall Handstand",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 379,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Under-grip 1 Arm Wall Handstand",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 380,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Over-grip Wall HS 1/2 Reverse Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 381,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Under-grip Wall HS 1/2 Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 382,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Over-grip Wall HS Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 383,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Under-grip Wall HS Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 384,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Over-grip Wall HS Full Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 385,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Under-grip Wall HS Full Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 386,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Over-grip Single Bar HS",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 387,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Under-grip Single Bar HS",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 388,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "HS 1/2 Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 389,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "HS Pirouette",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 390,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Straddle Run",
+  "imName": "elevated pronated wrist stretch",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 391,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "HS Flag",
+  "imName": "elevated supinated wrist stretch",
+  "imMastery": "30s"
+ },
+ {
+  "exerciseId": 392,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Tuck HS",
+  "imName": "anterior banded HS circles",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 393,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Pike HS",
+  "imName": "posterior banded HS circles",
+  "imMastery": "5r@"
+ },
+ {
+  "exerciseId": 394,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "Block Run",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 395,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "4Block Travel",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 396,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "2Block Step. Down &amp; up = 1 rep",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 397,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "2Block Step. Down &amp; up = 1 rep",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 398,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "5finger OAHS",
+  "imName": "Assisted One Arm Tuck Flag Pulses",
+  "imMastery": "5r + 10s"
+ },
+ {
+  "exerciseId": 399,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "3finger OAHS",
+  "imName": "assisted one arm tuck flag pulls",
+  "imMastery": "5r + 10s"
+ },
+ {
+  "exerciseId": 400,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "1finger OAHS",
+  "imName": "assisted one arm flag pulls",
+  "imMastery": "5r + 10s"
+ },
+ {
+  "exerciseId": 401,
+  "courseId": 12,
+  "groupId": 59225,
+  "exerciseName": "OAHS",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 410,
+  "courseId": 4,
+  "groupId": 59213,
+  "exerciseName": "Lunge with 25% Additional Bodyweight",
+  "imName": "Arch Up + 10 lbs",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 411,
+  "courseId": 4,
+  "groupId": 59213,
+  "exerciseName": "Lunge with 50% Additional Bodyweight",
+  "imName": "Arch Up + 25 lbs",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 412,
+  "courseId": 4,
+  "groupId": 59213,
+  "exerciseName": "Lunge with 75% Additional Bodyweight",
+  "imName": "Archup +35lbs",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 413,
+  "courseId": 4,
+  "groupId": 59213,
+  "exerciseName": "Lunge with 100% Additional Bodyweight",
+  "imName": "Archup +45lbs",
+  "imMastery": "5r"
+ },
+ {
+  "exerciseId": 414,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Calf Straight",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 415,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Elevated Seiza",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 416,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Calf Outward",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 417,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Squatted Seiza",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 418,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Calf inward",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 419,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Curled Seiza",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 420,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "2 Pike 2 Squat",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 421,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Standing Pike",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 423,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Kneeling Achilles R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 424,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Kneeling Achilles L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 425,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Standing Achilles on Block R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 426,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Standing Achilles on Block L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 427,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Narrow Hurdler Block R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 428,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Narrow Hurdler Block L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 429,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Wide Hurdler Block R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 430,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Wide Hurdler Block L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 431,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Standing Single Pike R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 432,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Standing Single Pike L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 433,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Vertical Lunge Bent R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 434,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Vertical Lunge Bent L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 435,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Vertical Lunge Straight R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 436,
+  "courseId": 9,
+  "groupId": 59216,
+  "exerciseName": "Vertical Lunge Straight L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 438,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Side to Side Squat",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 439,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Standing Pancake",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 441,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Vertical Frog R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 442,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Vertical Frog L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 443,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Piriformis R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 444,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Piriformis L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 445,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Diamond Frog",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 446,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Kneeling Tuck",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 447,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Frog",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 449,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Frog Rock",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 450,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Butterfly",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 451,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Pancake Shoulder R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 452,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Pancake Shoulder L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 453,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Seated Good Morning",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 454,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Pancake Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 455,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Pancake Bounce",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 456,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Pancake Circle",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 457,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Floating Pancake",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 459,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Wall Middle Split",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 460,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Weighted Wall Middle Split Pull",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 461,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Isometric Middle Split",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 462,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Supine Flair",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 463,
+  "courseId": 8,
+  "groupId": 59210,
+  "exerciseName": "Pancake Roll Through",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 464,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Rocking Table",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 465,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Twisting Bear (Alternating Sides)",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 466,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Supine Shoulder Extension",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 467,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Supine Shoulder Extension Walk",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 468,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Seal Stretch",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 469,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Reach Underneath R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 470,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Reach Underneath L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 471,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Seal Rock",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 472,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Supine Trap Stretch",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 473,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Supine Thoracic Band Pull",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 474,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Prone Thoracic Band Pull",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 475,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Elevated Cat",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 476,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Capsule Stretch R",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 477,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Capsule Stretch L",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 478,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Inverted Cat",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 479,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "HS Shoulder Flexion Press",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 480,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Elevated Thoracic Bridge",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 482,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Elevated Thoracic Bridge Pushup",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 483,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Rock n Roll",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 484,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Elevated Thoracic Bridge Hip Tap",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 486,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Bridge Wall Walk with Hands",
+  "imName": "",
+  "imMastery": ""
+ },
+ {
+  "exerciseId": 487,
+  "courseId": 10,
+  "groupId": 59222,
+  "exerciseName": "Standing Pike",
+  "imName": "",
+  "imMastery": ""
+ }
+]

@@ -1,0 +1,4690 @@
+[
+ {
+  "masterySetId": 1,
+  "masteryLevel": "5r",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "1r",
+  "default": 1
+ },
+ {
+  "masterySetId": 2,
+  "masteryLevel": "5r",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "1r",
+  "default": 1
+ },
+ {
+  "masterySetId": 3,
+  "masteryLevel": "5r",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "2r",
+  "default": 1
+ },
+ {
+  "masterySetId": 4,
+  "masteryLevel": "5r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1r",
+  "default": 1
+ },
+ {
+  "masterySetId": 5,
+  "masteryLevel": "5r",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "2r",
+  "default": 1
+ },
+ {
+  "masterySetId": 6,
+  "masteryLevel": "5r",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 7,
+  "masteryLevel": "5r",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 8,
+  "masteryLevel": "5r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "2r",
+  "default": 1
+ },
+ {
+  "masterySetId": 9,
+  "masteryLevel": "5r",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "4r",
+  "default": 1
+ },
+ {
+  "masterySetId": 10,
+  "masteryLevel": "5r",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "5r",
+  "default": 1
+ },
+ {
+  "masterySetId": 11,
+  "masteryLevel": "5r",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "5r",
+  "default": 1
+ },
+ {
+  "masterySetId": 12,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 13,
+  "masteryLevel": "10r",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "2r",
+  "default": 1
+ },
+ {
+  "masterySetId": 14,
+  "masteryLevel": "10r",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "2r",
+  "default": 1
+ },
+ {
+  "masterySetId": 15,
+  "masteryLevel": "10r",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "4r",
+  "default": 1
+ },
+ {
+  "masterySetId": 16,
+  "masteryLevel": "10r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "2r",
+  "default": 1
+ },
+ {
+  "masterySetId": 17,
+  "masteryLevel": "10r",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "4r",
+  "default": 1
+ },
+ {
+  "masterySetId": 18,
+  "masteryLevel": "10r",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 19,
+  "masteryLevel": "10r",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 20,
+  "masteryLevel": "10r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 21,
+  "masteryLevel": "10r",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "8r",
+  "default": 1
+ },
+ {
+  "masterySetId": 22,
+  "masteryLevel": "10r",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "10r",
+  "default": 1
+ },
+ {
+  "masterySetId": 23,
+  "masteryLevel": "10r",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "10r",
+  "default": 1
+ },
+ {
+  "masterySetId": 24,
+  "masteryLevel": "10r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "5r",
+  "default": 1
+ },
+ {
+  "masterySetId": 25,
+  "masteryLevel": "15r",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 26,
+  "masteryLevel": "15r",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 27,
+  "masteryLevel": "15r",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 28,
+  "masteryLevel": "15r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "3r",
+  "default": 1
+ },
+ {
+  "masterySetId": 29,
+  "masteryLevel": "15r",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 30,
+  "masteryLevel": "15r",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "9r",
+  "default": 1
+ },
+ {
+  "masterySetId": 31,
+  "masteryLevel": "15r",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "9r",
+  "default": 1
+ },
+ {
+  "masterySetId": 32,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "5r",
+  "default": 1
+ },
+ {
+  "masterySetId": 33,
+  "masteryLevel": "15r",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "12r",
+  "default": 1
+ },
+ {
+  "masterySetId": 34,
+  "masteryLevel": "15r",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "15r",
+  "default": 1
+ },
+ {
+  "masterySetId": 35,
+  "masteryLevel": "15r",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "15r",
+  "default": 1
+ },
+ {
+  "masterySetId": 36,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "8r",
+  "default": 1
+ },
+ {
+  "masterySetId": 37,
+  "masteryLevel": "30r",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 38,
+  "masteryLevel": "30r",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 39,
+  "masteryLevel": "30r",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "12r",
+  "default": 1
+ },
+ {
+  "masterySetId": 40,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "6r",
+  "default": 1
+ },
+ {
+  "masterySetId": 41,
+  "masteryLevel": "30r",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "12r",
+  "default": 1
+ },
+ {
+  "masterySetId": 42,
+  "masteryLevel": "30r",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "18r",
+  "default": 1
+ },
+ {
+  "masterySetId": 43,
+  "masteryLevel": "30r",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "18r",
+  "default": 1
+ },
+ {
+  "masterySetId": 44,
+  "masteryLevel": "30r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "9r",
+  "default": 1
+ },
+ {
+  "masterySetId": 45,
+  "masteryLevel": "30r",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "24r",
+  "default": 1
+ },
+ {
+  "masterySetId": 46,
+  "masteryLevel": "30r",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "30r",
+  "default": 1
+ },
+ {
+  "masterySetId": 47,
+  "masteryLevel": "30r",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "30r",
+  "default": 1
+ },
+ {
+  "masterySetId": 48,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "15r",
+  "default": 1
+ },
+ {
+  "masterySetId": 49,
+  "masteryLevel": "60r",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "12r",
+  "default": 1
+ },
+ {
+  "masterySetId": 50,
+  "masteryLevel": "60r",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "12r",
+  "default": 1
+ },
+ {
+  "masterySetId": 51,
+  "masteryLevel": "60r",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "24r",
+  "default": 1
+ },
+ {
+  "masterySetId": 52,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "12r",
+  "default": 1
+ },
+ {
+  "masterySetId": 53,
+  "masteryLevel": "60r",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "24r",
+  "default": 1
+ },
+ {
+  "masterySetId": 54,
+  "masteryLevel": "60r",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "36r",
+  "default": 1
+ },
+ {
+  "masterySetId": 55,
+  "masteryLevel": "60r",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "36r",
+  "default": 1
+ },
+ {
+  "masterySetId": 56,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "18r",
+  "default": 1
+ },
+ {
+  "masterySetId": 57,
+  "masteryLevel": "60r",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "48r",
+  "default": 1
+ },
+ {
+  "masterySetId": 58,
+  "masteryLevel": "60r",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "60r",
+  "default": 1
+ },
+ {
+  "masterySetId": 59,
+  "masteryLevel": "60r",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "60r",
+  "default": 1
+ },
+ {
+  "masterySetId": 60,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "30r",
+  "default": 1
+ },
+ {
+  "masterySetId": 61,
+  "masteryLevel": "10s",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "2s",
+  "default": 1
+ },
+ {
+  "masterySetId": 62,
+  "masteryLevel": "10s",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "2s",
+  "default": 1
+ },
+ {
+  "masterySetId": 63,
+  "masteryLevel": "10s",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "4s",
+  "default": 1
+ },
+ {
+  "masterySetId": 64,
+  "masteryLevel": "10s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "2s",
+  "default": 1
+ },
+ {
+  "masterySetId": 65,
+  "masteryLevel": "10s",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "4s",
+  "default": 1
+ },
+ {
+  "masterySetId": 66,
+  "masteryLevel": "10s",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "6s",
+  "default": 1
+ },
+ {
+  "masterySetId": 67,
+  "masteryLevel": "10s",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "6s",
+  "default": 1
+ },
+ {
+  "masterySetId": 68,
+  "masteryLevel": "10s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3s",
+  "default": 1
+ },
+ {
+  "masterySetId": 69,
+  "masteryLevel": "10s",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "8s",
+  "default": 1
+ },
+ {
+  "masterySetId": 70,
+  "masteryLevel": "10s",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 71,
+  "masteryLevel": "10s",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 72,
+  "masteryLevel": "10s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "5s",
+  "default": 1
+ },
+ {
+  "masterySetId": 73,
+  "masteryLevel": "30s",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "6s",
+  "default": 1
+ },
+ {
+  "masterySetId": 74,
+  "masteryLevel": "30s",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "6s",
+  "default": 1
+ },
+ {
+  "masterySetId": 75,
+  "masteryLevel": "30s",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "12s",
+  "default": 1
+ },
+ {
+  "masterySetId": 76,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "6s",
+  "default": 1
+ },
+ {
+  "masterySetId": 77,
+  "masteryLevel": "30s",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "12s",
+  "default": 1
+ },
+ {
+  "masterySetId": 78,
+  "masteryLevel": "30s",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "18s",
+  "default": 1
+ },
+ {
+  "masterySetId": 79,
+  "masteryLevel": "30s",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "18s",
+  "default": 1
+ },
+ {
+  "masterySetId": 80,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "9s",
+  "default": 1
+ },
+ {
+  "masterySetId": 81,
+  "masteryLevel": "30s",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "24s",
+  "default": 1
+ },
+ {
+  "masterySetId": 82,
+  "masteryLevel": "30s",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "30s",
+  "default": 1
+ },
+ {
+  "masterySetId": 83,
+  "masteryLevel": "30s",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "30s",
+  "default": 1
+ },
+ {
+  "masterySetId": 84,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "15s",
+  "default": 1
+ },
+ {
+  "masterySetId": 85,
+  "masteryLevel": "60s",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "12s",
+  "default": 1
+ },
+ {
+  "masterySetId": 86,
+  "masteryLevel": "60s",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "12s",
+  "default": 1
+ },
+ {
+  "masterySetId": 87,
+  "masteryLevel": "60s",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "24s",
+  "default": 1
+ },
+ {
+  "masterySetId": 88,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "12s",
+  "default": 1
+ },
+ {
+  "masterySetId": 89,
+  "masteryLevel": "60s",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "24s",
+  "default": 1
+ },
+ {
+  "masterySetId": 90,
+  "masteryLevel": "60s",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "36s",
+  "default": 1
+ },
+ {
+  "masterySetId": 91,
+  "masteryLevel": "60s",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "36s",
+  "default": 1
+ },
+ {
+  "masterySetId": 92,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "18s",
+  "default": 1
+ },
+ {
+  "masterySetId": 93,
+  "masteryLevel": "60s",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "48s",
+  "default": 1
+ },
+ {
+  "masterySetId": 94,
+  "masteryLevel": "60s",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "60s",
+  "default": 1
+ },
+ {
+  "masterySetId": 95,
+  "masteryLevel": "60s",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "60s",
+  "default": 1
+ },
+ {
+  "masterySetId": 96,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "30s",
+  "default": 1
+ },
+ {
+  "masterySetId": 97,
+  "masteryLevel": "90s",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "18s",
+  "default": 1
+ },
+ {
+  "masterySetId": 98,
+  "masteryLevel": "90s",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "18s",
+  "default": 1
+ },
+ {
+  "masterySetId": 99,
+  "masteryLevel": "90s",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "36s",
+  "default": 1
+ },
+ {
+  "masterySetId": 100,
+  "masteryLevel": "90s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "18s",
+  "default": 1
+ },
+ {
+  "masterySetId": 101,
+  "masteryLevel": "90s",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "36s",
+  "default": 1
+ },
+ {
+  "masterySetId": 102,
+  "masteryLevel": "90s",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "54s",
+  "default": 1
+ },
+ {
+  "masterySetId": 103,
+  "masteryLevel": "90s",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "54s",
+  "default": 1
+ },
+ {
+  "masterySetId": 104,
+  "masteryLevel": "90s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "27s",
+  "default": 1
+ },
+ {
+  "masterySetId": 105,
+  "masteryLevel": "90s",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "72s",
+  "default": 1
+ },
+ {
+  "masterySetId": 106,
+  "masteryLevel": "90s",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "90s",
+  "default": 1
+ },
+ {
+  "masterySetId": 107,
+  "masteryLevel": "90s",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "90s",
+  "default": 1
+ },
+ {
+  "masterySetId": 108,
+  "masteryLevel": "90s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "45s",
+  "default": 1
+ },
+ {
+  "masterySetId": 109,
+  "masteryLevel": "120s",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "24s",
+  "default": 1
+ },
+ {
+  "masterySetId": 110,
+  "masteryLevel": "120s",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "24s",
+  "default": 1
+ },
+ {
+  "masterySetId": 111,
+  "masteryLevel": "120s",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "48s",
+  "default": 1
+ },
+ {
+  "masterySetId": 112,
+  "masteryLevel": "120s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "24s",
+  "default": 1
+ },
+ {
+  "masterySetId": 113,
+  "masteryLevel": "120s",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "48s",
+  "default": 1
+ },
+ {
+  "masterySetId": 114,
+  "masteryLevel": "120s",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "72s",
+  "default": 1
+ },
+ {
+  "masterySetId": 115,
+  "masteryLevel": "120s",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "75s",
+  "default": 1
+ },
+ {
+  "masterySetId": 116,
+  "masteryLevel": "120s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "36s",
+  "default": 1
+ },
+ {
+  "masterySetId": 117,
+  "masteryLevel": "120s",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "96s",
+  "default": 1
+ },
+ {
+  "masterySetId": 118,
+  "masteryLevel": "120s",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "120s",
+  "default": 1
+ },
+ {
+  "masterySetId": 119,
+  "masteryLevel": "120s",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "120s",
+  "default": 1
+ },
+ {
+  "masterySetId": 120,
+  "masteryLevel": "120s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "60s",
+  "default": 1
+ },
+ {
+  "masterySetId": 121,
+  "masteryLevel": "10r@",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "2r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 122,
+  "masteryLevel": "10r@",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "2r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 123,
+  "masteryLevel": "10r@",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "4r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 124,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "2r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 125,
+  "masteryLevel": "10r@",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "4r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 126,
+  "masteryLevel": "10r@",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "6r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 127,
+  "masteryLevel": "10r@",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "6r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 128,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 129,
+  "masteryLevel": "10r@",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "8r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 130,
+  "masteryLevel": "10r@",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "10r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 131,
+  "masteryLevel": "10r@",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "10r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 132,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "5r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 133,
+  "masteryLevel": "5rx10s",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 134,
+  "masteryLevel": "5rx10s",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 135,
+  "masteryLevel": "5rx10s",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "2rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 136,
+  "masteryLevel": "5rx10s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 137,
+  "masteryLevel": "5rx10s",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 138,
+  "masteryLevel": "5rx10s",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "3rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 139,
+  "masteryLevel": "5rx10s",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 140,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "2rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 141,
+  "masteryLevel": "5rx10s",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "4rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 142,
+  "masteryLevel": "5rx10s",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "5rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 143,
+  "masteryLevel": "5rx10s",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "5rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 144,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s",
+  "default": 1
+ },
+ {
+  "masterySetId": 145,
+  "masteryLevel": "30s@",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "6s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 146,
+  "masteryLevel": "30s@",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "6s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 147,
+  "masteryLevel": "30s@",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "12s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 148,
+  "masteryLevel": "30s@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "6s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 149,
+  "masteryLevel": "30s@",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "12s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 150,
+  "masteryLevel": "30s@",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "18s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 151,
+  "masteryLevel": "30s@",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "18s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 152,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "9s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 153,
+  "masteryLevel": "30s@",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "24s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 154,
+  "masteryLevel": "30s@",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "30s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 155,
+  "masteryLevel": "30s@",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "30s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 156,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "15s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 157,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 158,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 159,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "2rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 160,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 161,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 162,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "3rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 163,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 164,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "2rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 165,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "4rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 166,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "5rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 167,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "5rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 168,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s@",
+  "default": 1
+ },
+ {
+  "masterySetId": 169,
+  "masteryLevel": "5r@",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "1r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 170,
+  "masteryLevel": "5r@",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "1r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 171,
+  "masteryLevel": "5r@",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "2r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 172,
+  "masteryLevel": "5r@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 173,
+  "masteryLevel": "5r@",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "2r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 174,
+  "masteryLevel": "5r@",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "3r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 175,
+  "masteryLevel": "5r@",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "3r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 176,
+  "masteryLevel": "5r@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "2r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 177,
+  "masteryLevel": "5r@",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "4r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 178,
+  "masteryLevel": "5r@",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "5r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 179,
+  "masteryLevel": "5r@",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "5r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 180,
+  "masteryLevel": "5r@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "3r@",
+  "default": 1
+ },
+ {
+  "masterySetId": 181,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "1/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 182,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "1/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 183,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "1/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 184,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 185,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "1/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 186,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "3/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 187,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "3/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 188,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 189,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "1RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 190,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "5/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 191,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "5/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 192,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "3/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 193,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "1/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 194,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "1/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 195,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "1 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 196,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 197,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "1 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 198,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "3/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 199,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "3/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 200,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 201,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 202,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "5/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 203,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "5/2 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 204,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "5/4 RC",
+  "default": 1
+ },
+ {
+  "masterySetId": 205,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "3r",
+  "default": 0
+ },
+ {
+  "masterySetId": 206,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "18s",
+  "default": 0
+ },
+ {
+  "masterySetId": 207,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 208,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "4r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 209,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 210,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "7r",
+  "default": 0
+ },
+ {
+  "masterySetId": 211,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 212,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "3r",
+  "default": 0
+ },
+ {
+  "masterySetId": 213,
+  "masteryLevel": "15r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 214,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 215,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "5s",
+  "default": 0
+ },
+ {
+  "masterySetId": 216,
+  "masteryLevel": "5r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 217,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 218,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "4r",
+  "default": 0
+ },
+ {
+  "masterySetId": 219,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 220,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 221,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3r",
+  "default": 0
+ },
+ {
+  "masterySetId": 222,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 223,
+  "masteryLevel": "10r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 224,
+  "masteryLevel": "5r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 225,
+  "masteryLevel": "5r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 226,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 227,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 228,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 229,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 230,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "24s",
+  "default": 0
+ },
+ {
+  "masterySetId": 231,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 232,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 233,
+  "masteryLevel": "10r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "4r",
+  "default": 0
+ },
+ {
+  "masterySetId": 234,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 235,
+  "masteryLevel": "10r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "5r",
+  "default": 0
+ },
+ {
+  "masterySetId": 236,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 237,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "30s",
+  "default": 0
+ },
+ {
+  "masterySetId": 238,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 239,
+  "masteryLevel": "30r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "15r",
+  "default": 0
+ },
+ {
+  "masterySetId": 240,
+  "masteryLevel": "5r@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 241,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 242,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "8s",
+  "default": 0
+ },
+ {
+  "masterySetId": 243,
+  "masteryLevel": "5r@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 244,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 245,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "4s",
+  "default": 0
+ },
+ {
+  "masterySetId": 246,
+  "masteryLevel": "10s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 247,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "28r",
+  "default": 0
+ },
+ {
+  "masterySetId": 248,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "15s",
+  "default": 0
+ },
+ {
+  "masterySetId": 249,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "7r",
+  "default": 0
+ },
+ {
+  "masterySetId": 250,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "30s",
+  "default": 0
+ },
+ {
+  "masterySetId": 251,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "5r",
+  "default": 0
+ },
+ {
+  "masterySetId": 252,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "5r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 253,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 254,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 255,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 256,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "3r",
+  "default": 0
+ },
+ {
+  "masterySetId": 257,
+  "masteryLevel": "30r",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 258,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 259,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 260,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 261,
+  "masteryLevel": "10s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 262,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 263,
+  "masteryLevel": "10s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 264,
+  "masteryLevel": "5r@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 265,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 266,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "18s",
+  "default": 0
+ },
+ {
+  "masterySetId": 267,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 268,
+  "masteryLevel": "5r",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 269,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "20s",
+  "default": 0
+ },
+ {
+  "masterySetId": 270,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "12s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 271,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "9r",
+  "default": 0
+ },
+ {
+  "masterySetId": 272,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 273,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 274,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 275,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 276,
+  "masteryLevel": "10r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "5r",
+  "default": 0
+ },
+ {
+  "masterySetId": 277,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "30r",
+  "default": 0
+ },
+ {
+  "masterySetId": 278,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "2rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 279,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "8s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 280,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 281,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 282,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 283,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "23r",
+  "default": 0
+ },
+ {
+  "masterySetId": 284,
+  "masteryLevel": "30r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "9r",
+  "default": 0
+ },
+ {
+  "masterySetId": 285,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "24r",
+  "default": 0
+ },
+ {
+  "masterySetId": 286,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "9s",
+  "default": 0
+ },
+ {
+  "masterySetId": 287,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 288,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 289,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 290,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 291,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "3r",
+  "default": 0
+ },
+ {
+  "masterySetId": 292,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "18s",
+  "default": 0
+ },
+ {
+  "masterySetId": 293,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 294,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 295,
+  "masteryLevel": "5r@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 296,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "30r",
+  "default": 0
+ },
+ {
+  "masterySetId": 297,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "18s",
+  "default": 0
+ },
+ {
+  "masterySetId": 298,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 299,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "15r",
+  "default": 0
+ },
+ {
+  "masterySetId": 300,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "8s",
+  "default": 0
+ },
+ {
+  "masterySetId": 301,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "9s",
+  "default": 0
+ },
+ {
+  "masterySetId": 302,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "15r",
+  "default": 0
+ },
+ {
+  "masterySetId": 303,
+  "masteryLevel": "30s@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "3s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 304,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 305,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 306,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 307,
+  "masteryLevel": "5rx10s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 308,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 309,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "28s",
+  "default": 0
+ },
+ {
+  "masterySetId": 310,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 311,
+  "masteryLevel": "5r",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 312,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 313,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 314,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 315,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "5s",
+  "default": 0
+ },
+ {
+  "masterySetId": 316,
+  "masteryLevel": "10s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "5s",
+  "default": 0
+ },
+ {
+  "masterySetId": 317,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "15s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 318,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "18r",
+  "default": 0
+ },
+ {
+  "masterySetId": 319,
+  "masteryLevel": "10r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "4r",
+  "default": 0
+ },
+ {
+  "masterySetId": 320,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 321,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "1rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 322,
+  "masteryLevel": "15r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 323,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 324,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "24s",
+  "default": 0
+ },
+ {
+  "masterySetId": 325,
+  "masteryLevel": "10r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "2r",
+  "default": 0
+ },
+ {
+  "masterySetId": 326,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "3r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 327,
+  "masteryLevel": "15r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "5r",
+  "default": 0
+ },
+ {
+  "masterySetId": 328,
+  "masteryLevel": "5r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "3r",
+  "default": 0
+ },
+ {
+  "masterySetId": 329,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "5/2 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 330,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "24r",
+  "default": 0
+ },
+ {
+  "masterySetId": 331,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "5s",
+  "default": 0
+ },
+ {
+  "masterySetId": 332,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "30r",
+  "default": 0
+ },
+ {
+  "masterySetId": 333,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "5r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 334,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "15s",
+  "default": 0
+ },
+ {
+  "masterySetId": 335,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "4r",
+  "default": 0
+ },
+ {
+  "masterySetId": 336,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "8s",
+  "default": 0
+ },
+ {
+  "masterySetId": 337,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "4s",
+  "default": 0
+ },
+ {
+  "masterySetId": 338,
+  "masteryLevel": "5rx10s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "3rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 339,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "9s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 340,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "29s",
+  "default": 0
+ },
+ {
+  "masterySetId": 341,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "15s",
+  "default": 0
+ },
+ {
+  "masterySetId": 342,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 343,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "11s",
+  "default": 0
+ },
+ {
+  "masterySetId": 344,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 345,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "30s",
+  "default": 0
+ },
+ {
+  "masterySetId": 346,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "15s",
+  "default": 0
+ },
+ {
+  "masterySetId": 347,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "30r",
+  "default": 0
+ },
+ {
+  "masterySetId": 348,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "6s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 349,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "15s",
+  "default": 0
+ },
+ {
+  "masterySetId": 350,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "16r",
+  "default": 0
+ },
+ {
+  "masterySetId": 351,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "22s",
+  "default": 0
+ },
+ {
+  "masterySetId": 352,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "30s",
+  "default": 0
+ },
+ {
+  "masterySetId": 353,
+  "masteryLevel": "15r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 354,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "23s",
+  "default": 0
+ },
+ {
+  "masterySetId": 355,
+  "masteryLevel": "15r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 356,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 357,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "9s",
+  "default": 0
+ },
+ {
+  "masterySetId": 358,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "27s",
+  "default": 0
+ },
+ {
+  "masterySetId": 359,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "25s",
+  "default": 0
+ },
+ {
+  "masterySetId": 360,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "4s",
+  "default": 0
+ },
+ {
+  "masterySetId": 361,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "22r",
+  "default": 0
+ },
+ {
+  "masterySetId": 362,
+  "masteryLevel": "10s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 363,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "17s",
+  "default": 0
+ },
+ {
+  "masterySetId": 364,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 365,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "9s",
+  "default": 0
+ },
+ {
+  "masterySetId": 366,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "4s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 367,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "2s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 368,
+  "masteryLevel": "15r",
+  "weekNum": "7.5",
+  "sets": 4,
+  "repsOrSecs": "11r",
+  "default": 0
+ },
+ {
+  "masterySetId": 369,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 370,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "19r",
+  "default": 0
+ },
+ {
+  "masterySetId": 371,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "2rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 372,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "20r",
+  "default": 0
+ },
+ {
+  "masterySetId": 373,
+  "masteryLevel": "5r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 374,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 375,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 376,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "3s",
+  "default": 0
+ },
+ {
+  "masterySetId": 377,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 378,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 379,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "13s",
+  "default": 0
+ },
+ {
+  "masterySetId": 380,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "15s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 381,
+  "masteryLevel": "10s",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "1s",
+  "default": 0
+ },
+ {
+  "masterySetId": 382,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "25s",
+  "default": 0
+ },
+ {
+  "masterySetId": 383,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "18s",
+  "default": 0
+ },
+ {
+  "masterySetId": 384,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "3rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 385,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "9r",
+  "default": 0
+ },
+ {
+  "masterySetId": 386,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "21s",
+  "default": 0
+ },
+ {
+  "masterySetId": 387,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 388,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "30s",
+  "default": 0
+ },
+ {
+  "masterySetId": 389,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "9s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 390,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "18r",
+  "default": 0
+ },
+ {
+  "masterySetId": 391,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "24s",
+  "default": 0
+ },
+ {
+  "masterySetId": 392,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 393,
+  "masteryLevel": "30s@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "2s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 394,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "11s",
+  "default": 0
+ },
+ {
+  "masterySetId": 395,
+  "masteryLevel": "15r",
+  "weekNum": "8.5",
+  "sets": 4,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 396,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "13s",
+  "default": 0
+ },
+ {
+  "masterySetId": 397,
+  "masteryLevel": "15r",
+  "weekNum": "9.5",
+  "sets": 4,
+  "repsOrSecs": "14r",
+  "default": 0
+ },
+ {
+  "masterySetId": 398,
+  "masteryLevel": "15r",
+  "weekNum": "5.5",
+  "sets": 4,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 399,
+  "masteryLevel": "5r",
+  "weekNum": "1.5",
+  "sets": 4,
+  "repsOrSecs": "1r",
+  "default": 0
+ },
+ {
+  "masterySetId": 400,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "17r",
+  "default": 0
+ },
+ {
+  "masterySetId": 401,
+  "masteryLevel": "60s",
+  "weekNum": "5.5",
+  "sets": 4,
+  "repsOrSecs": "30s",
+  "default": 0
+ },
+ {
+  "masterySetId": 402,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "6s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 403,
+  "masteryLevel": "30s@",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 404,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "29s",
+  "default": 0
+ },
+ {
+  "masterySetId": 405,
+  "masteryLevel": "15r",
+  "weekNum": "10.5",
+  "sets": 4,
+  "repsOrSecs": "17r",
+  "default": 0
+ },
+ {
+  "masterySetId": 406,
+  "masteryLevel": "15r",
+  "weekNum": "6.5",
+  "sets": 4,
+  "repsOrSecs": "11r",
+  "default": 0
+ },
+ {
+  "masterySetId": 407,
+  "masteryLevel": "60s",
+  "weekNum": "8.5",
+  "sets": 4,
+  "repsOrSecs": "15s",
+  "default": 0
+ },
+ {
+  "masterySetId": 408,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "26s",
+  "default": 0
+ },
+ {
+  "masterySetId": 409,
+  "masteryLevel": "60s",
+  "weekNum": "9.5",
+  "sets": 4,
+  "repsOrSecs": "54s",
+  "default": 0
+ },
+ {
+  "masterySetId": 410,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "30r",
+  "default": 0
+ },
+ {
+  "masterySetId": 411,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 412,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "21r",
+  "default": 0
+ },
+ {
+  "masterySetId": 413,
+  "masteryLevel": "30s@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "3s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 414,
+  "masteryLevel": "60s",
+  "weekNum": "10.5",
+  "sets": 4,
+  "repsOrSecs": "68s",
+  "default": 0
+ },
+ {
+  "masterySetId": 415,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 416,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "6s",
+  "default": 0
+ },
+ {
+  "masterySetId": 417,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "5s",
+  "default": 0
+ },
+ {
+  "masterySetId": 418,
+  "masteryLevel": "30r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "15r",
+  "default": 0
+ },
+ {
+  "masterySetId": 419,
+  "masteryLevel": "60s",
+  "weekNum": "6.5",
+  "sets": 4,
+  "repsOrSecs": "41s",
+  "default": 0
+ },
+ {
+  "masterySetId": 420,
+  "masteryLevel": "30s",
+  "weekNum": "10.5",
+  "sets": 4,
+  "repsOrSecs": "34s",
+  "default": 0
+ },
+ {
+  "masterySetId": 421,
+  "masteryLevel": "30s",
+  "weekNum": "7.5",
+  "sets": 4,
+  "repsOrSecs": "21s",
+  "default": 0
+ },
+ {
+  "masterySetId": 422,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "27s",
+  "default": 0
+ },
+ {
+  "masterySetId": 423,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 424,
+  "masteryLevel": "10r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "4r",
+  "default": 0
+ },
+ {
+  "masterySetId": 425,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "21r",
+  "default": 0
+ },
+ {
+  "masterySetId": 426,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 427,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 428,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 429,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "5s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 430,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 431,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "18r",
+  "default": 0
+ },
+ {
+  "masterySetId": 432,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "9s",
+  "default": 0
+ },
+ {
+  "masterySetId": 433,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "15r",
+  "default": 0
+ },
+ {
+  "masterySetId": 434,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 435,
+  "masteryLevel": "15r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "4r",
+  "default": 0
+ },
+ {
+  "masterySetId": 436,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "18r",
+  "default": 0
+ },
+ {
+  "masterySetId": 437,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "6r",
+  "default": 0
+ },
+ {
+  "masterySetId": 438,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "12s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 439,
+  "masteryLevel": "10r@",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 440,
+  "masteryLevel": "60r",
+  "weekNum": "7.5",
+  "sets": 4,
+  "repsOrSecs": "42r",
+  "default": 0
+ },
+ {
+  "masterySetId": 441,
+  "masteryLevel": "60s",
+  "weekNum": "11.5",
+  "sets": 4,
+  "repsOrSecs": "42s",
+  "default": 0
+ },
+ {
+  "masterySetId": 442,
+  "masteryLevel": "15r",
+  "weekNum": "11.5",
+  "sets": 4,
+  "repsOrSecs": "11r",
+  "default": 0
+ },
+ {
+  "masterySetId": 443,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "28s",
+  "default": 0
+ },
+ {
+  "masterySetId": 444,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "7s",
+  "default": 0
+ },
+ {
+  "masterySetId": 445,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "14r",
+  "default": 0
+ },
+ {
+  "masterySetId": 446,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "9r",
+  "default": 0
+ },
+ {
+  "masterySetId": 447,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 448,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "17r",
+  "default": 0
+ },
+ {
+  "masterySetId": 449,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 450,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "5r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 451,
+  "masteryLevel": "5rx10s",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 452,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 453,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "2r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 454,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "2 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 455,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "25r",
+  "default": 0
+ },
+ {
+  "masterySetId": 456,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "17s",
+  "default": 0
+ },
+ {
+  "masterySetId": 457,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "18r",
+  "default": 0
+ },
+ {
+  "masterySetId": 458,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "5s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 459,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "14s",
+  "default": 0
+ },
+ {
+  "masterySetId": 460,
+  "masteryLevel": "60s",
+  "weekNum": "11.5",
+  "sets": 4,
+  "repsOrSecs": "41s",
+  "default": 0
+ },
+ {
+  "masterySetId": 461,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "16r",
+  "default": 0
+ },
+ {
+  "masterySetId": 462,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "26s",
+  "default": 0
+ },
+ {
+  "masterySetId": 463,
+  "masteryLevel": "10r",
+  "weekNum": "7.5",
+  "sets": 4,
+  "repsOrSecs": "7r",
+  "default": 0
+ },
+ {
+  "masterySetId": 464,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "13s",
+  "default": 0
+ },
+ {
+  "masterySetId": 465,
+  "masteryLevel": "30s",
+  "weekNum": "3.5",
+  "sets": 3,
+  "repsOrSecs": "14s",
+  "default": 0
+ },
+ {
+  "masterySetId": 466,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "1r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 467,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "29r",
+  "default": 0
+ },
+ {
+  "masterySetId": 468,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "21s",
+  "default": 0
+ },
+ {
+  "masterySetId": 469,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "17s",
+  "default": 0
+ },
+ {
+  "masterySetId": 470,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "19s",
+  "default": 0
+ },
+ {
+  "masterySetId": 471,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "3r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 472,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "28r",
+  "default": 0
+ },
+ {
+  "masterySetId": 473,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "16s",
+  "default": 0
+ },
+ {
+  "masterySetId": 474,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "7s",
+  "default": 0
+ },
+ {
+  "masterySetId": 475,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "13r",
+  "default": 0
+ },
+ {
+  "masterySetId": 476,
+  "masteryLevel": "30s",
+  "weekNum": "9.5",
+  "sets": 4,
+  "repsOrSecs": "27s",
+  "default": 0
+ },
+ {
+  "masterySetId": 477,
+  "masteryLevel": "60r",
+  "weekNum": "9.5",
+  "sets": 4,
+  "repsOrSecs": "54r",
+  "default": 0
+ },
+ {
+  "masterySetId": 478,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "6s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 479,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "14s",
+  "default": 0
+ },
+ {
+  "masterySetId": 480,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "20s",
+  "default": 0
+ },
+ {
+  "masterySetId": 481,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "11r",
+  "default": 0
+ },
+ {
+  "masterySetId": 482,
+  "masteryLevel": "60r",
+  "weekNum": "11.5",
+  "sets": 4,
+  "repsOrSecs": "45r",
+  "default": 0
+ },
+ {
+  "masterySetId": 483,
+  "masteryLevel": "60s",
+  "weekNum": "11.5",
+  "sets": 4,
+  "repsOrSecs": "45s",
+  "default": 0
+ },
+ {
+  "masterySetId": 484,
+  "masteryLevel": "15r",
+  "weekNum": "11.5",
+  "sets": 4,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 485,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 486,
+  "masteryLevel": "5rx10s",
+  "weekNum": "7.5",
+  "sets": 4,
+  "repsOrSecs": "3rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 487,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 488,
+  "masteryLevel": "30r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "9r",
+  "default": 0
+ },
+ {
+  "masterySetId": 489,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "4r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 490,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "13s",
+  "default": 0
+ },
+ {
+  "masterySetId": 491,
+  "masteryLevel": "60s",
+  "weekNum": "11.5",
+  "sets": 5,
+  "repsOrSecs": "45s",
+  "default": 0
+ },
+ {
+  "masterySetId": 492,
+  "masteryLevel": "10r",
+  "weekNum": "11.5",
+  "sets": 5,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 493,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3/4 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 494,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "27r",
+  "default": 0
+ },
+ {
+  "masterySetId": 495,
+  "masteryLevel": "10r",
+  "weekNum": "5.5",
+  "sets": 4,
+  "repsOrSecs": "5r",
+  "default": 0
+ },
+ {
+  "masterySetId": 496,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "24s",
+  "default": 0
+ },
+ {
+  "masterySetId": 497,
+  "masteryLevel": "15r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "7r",
+  "default": 0
+ },
+ {
+  "masterySetId": 498,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "13r",
+  "default": 0
+ },
+ {
+  "masterySetId": 499,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "14s",
+  "default": 0
+ },
+ {
+  "masterySetId": 500,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "5/2 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 501,
+  "masteryLevel": "5rx10s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "1rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 502,
+  "masteryLevel": "10s",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "2s",
+  "default": 0
+ },
+ {
+  "masterySetId": 503,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 504,
+  "masteryLevel": "120s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 505,
+  "masteryLevel": "5rx10s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 506,
+  "masteryLevel": "5rx10s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "2rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 507,
+  "masteryLevel": "100r",
+  "weekNum": "1.0",
+  "sets": 3,
+  "repsOrSecs": "20r",
+  "default": 1
+ },
+ {
+  "masterySetId": 508,
+  "masteryLevel": "100r",
+  "weekNum": "2.0",
+  "sets": 5,
+  "repsOrSecs": "20r",
+  "default": 1
+ },
+ {
+  "masterySetId": 509,
+  "masteryLevel": "100r",
+  "weekNum": "3.0",
+  "sets": 3,
+  "repsOrSecs": "40",
+  "default": 1
+ },
+ {
+  "masterySetId": 510,
+  "masteryLevel": "100r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "20r",
+  "default": 1
+ },
+ {
+  "masterySetId": 511,
+  "masteryLevel": "100r",
+  "weekNum": "5.0",
+  "sets": 4,
+  "repsOrSecs": "40r",
+  "default": 1
+ },
+ {
+  "masterySetId": 512,
+  "masteryLevel": "100r",
+  "weekNum": "6.0",
+  "sets": 4,
+  "repsOrSecs": "60r",
+  "default": 1
+ },
+ {
+  "masterySetId": 513,
+  "masteryLevel": "100r",
+  "weekNum": "7.0",
+  "sets": 5,
+  "repsOrSecs": "60r",
+  "default": 1
+ },
+ {
+  "masterySetId": 514,
+  "masteryLevel": "100r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "30r",
+  "default": 1
+ },
+ {
+  "masterySetId": 515,
+  "masteryLevel": "100r",
+  "weekNum": "9.0",
+  "sets": 4,
+  "repsOrSecs": "80r",
+  "default": 1
+ },
+ {
+  "masterySetId": 516,
+  "masteryLevel": "100r",
+  "weekNum": "10.0",
+  "sets": 4,
+  "repsOrSecs": "100r",
+  "default": 1
+ },
+ {
+  "masterySetId": 517,
+  "masteryLevel": "100r",
+  "weekNum": "11.0",
+  "sets": 5,
+  "repsOrSecs": "100r",
+  "default": 1
+ },
+ {
+  "masterySetId": 518,
+  "masteryLevel": "100r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "50r",
+  "default": 1
+ },
+ {
+  "masterySetId": 519,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 3,
+  "repsOrSecs": "6s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 520,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3/4 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 521,
+  "masteryLevel": "30s@",
+  "weekNum": "12.0",
+  "sets": 3,
+  "repsOrSecs": "3s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 522,
+  "masteryLevel": "30s@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "5s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 523,
+  "masteryLevel": "10r@",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "3r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 524,
+  "masteryLevel": "10r@",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "4r@",
+  "default": 0
+ },
+ {
+  "masterySetId": 525,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "2rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 526,
+  "masteryLevel": "5rx10s",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 527,
+  "masteryLevel": "90s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "36s",
+  "default": 0
+ },
+ {
+  "masterySetId": 528,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "5/4 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 529,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "4.0",
+  "sets": 4,
+  "repsOrSecs": "2rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 530,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "3/2 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 531,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "1RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 532,
+  "masteryLevel": "5rx10s@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "3rx10s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 533,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "12s",
+  "default": 0
+ },
+ {
+  "masterySetId": 534,
+  "masteryLevel": "90s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "45s",
+  "default": 0
+ },
+ {
+  "masterySetId": 535,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 536,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "4s",
+  "default": 0
+ },
+ {
+  "masterySetId": 537,
+  "masteryLevel": "90s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "23s",
+  "default": 0
+ },
+ {
+  "masterySetId": 538,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "11s",
+  "default": 0
+ },
+ {
+  "masterySetId": 539,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "8s",
+  "default": 0
+ },
+ {
+  "masterySetId": 540,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 541,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "4s",
+  "default": 0
+ },
+ {
+  "masterySetId": 542,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "7s",
+  "default": 0
+ },
+ {
+  "masterySetId": 543,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "1/2 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 544,
+  "masteryLevel": "30s@",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "15s@",
+  "default": 0
+ },
+ {
+  "masterySetId": 545,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "7s",
+  "default": 0
+ },
+ {
+  "masterySetId": 546,
+  "masteryLevel": "30s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "7s",
+  "default": 0
+ },
+ {
+  "masterySetId": 547,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "16s",
+  "default": 0
+ },
+ {
+  "masterySetId": 548,
+  "masteryLevel": "30s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "4s",
+  "default": 0
+ },
+ {
+  "masterySetId": 549,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "25r",
+  "default": 0
+ },
+ {
+  "masterySetId": 550,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "10r",
+  "default": 0
+ },
+ {
+  "masterySetId": 551,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "3/2 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 552,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "11s",
+  "default": 0
+ },
+ {
+  "masterySetId": 553,
+  "masteryLevel": "30s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 554,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "12r",
+  "default": 0
+ },
+ {
+  "masterySetId": 555,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "21s",
+  "default": 0
+ },
+ {
+  "masterySetId": 556,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "16s",
+  "default": 0
+ },
+ {
+  "masterySetId": 557,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "11r",
+  "default": 0
+ },
+ {
+  "masterySetId": 558,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "14s",
+  "default": 0
+ },
+ {
+  "masterySetId": 559,
+  "masteryLevel": "100r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "40r",
+  "default": 0
+ },
+ {
+  "masterySetId": 560,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "14r",
+  "default": 0
+ },
+ {
+  "masterySetId": 561,
+  "masteryLevel": "90s",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "27s",
+  "default": 0
+ },
+ {
+  "masterySetId": 562,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "11s",
+  "default": 0
+ },
+ {
+  "masterySetId": 563,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "10s",
+  "default": 0
+ },
+ {
+  "masterySetId": 564,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "14r",
+  "default": 0
+ },
+ {
+  "masterySetId": 565,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "27r",
+  "default": 0
+ },
+ {
+  "masterySetId": 566,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "9s",
+  "default": 0
+ },
+ {
+  "masterySetId": 567,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "22s",
+  "default": 0
+ },
+ {
+  "masterySetId": 568,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "20s",
+  "default": 0
+ },
+ {
+  "masterySetId": 569,
+  "masteryLevel": "60s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "19s",
+  "default": 0
+ },
+ {
+  "masterySetId": 570,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "9r",
+  "default": 0
+ },
+ {
+  "masterySetId": 571,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "11r",
+  "default": 0
+ },
+ {
+  "masterySetId": 572,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "16s",
+  "default": 0
+ },
+ {
+  "masterySetId": 573,
+  "masteryLevel": "60s",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "19s",
+  "default": 0
+ },
+ {
+  "masterySetId": 574,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "7r",
+  "default": 0
+ },
+ {
+  "masterySetId": 575,
+  "masteryLevel": "30r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "7r",
+  "default": 0
+ },
+ {
+  "masterySetId": 576,
+  "masteryLevel": "5/2 RC",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "1 RC",
+  "default": 0
+ },
+ {
+  "masterySetId": 577,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "10r",
+  "default": 0
+ },
+ {
+  "masterySetId": 578,
+  "masteryLevel": "60r",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "17r",
+  "default": 0
+ },
+ {
+  "masterySetId": 579,
+  "masteryLevel": "30r",
+  "weekNum": "12.0",
+  "sets": 5,
+  "repsOrSecs": "13r",
+  "default": 0
+ },
+ {
+  "masterySetId": 580,
+  "masteryLevel": "120s",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "38s",
+  "default": 0
+ },
+ {
+  "masterySetId": 581,
+  "masteryLevel": "100r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "10r",
+  "default": 0
+ },
+ {
+  "masterySetId": 582,
+  "masteryLevel": "60r",
+  "weekNum": "8.0",
+  "sets": 5,
+  "repsOrSecs": "13r",
+  "default": 0
+ },
+ {
+  "masterySetId": 583,
+  "masteryLevel": "60r",
+  "weekNum": "4.0",
+  "sets": 3,
+  "repsOrSecs": "8r",
+  "default": 0
+ },
+ {
+  "masterySetId": 584,
+  "masteryLevel": "60s",
+  "weekNum": "4.0",
+  "sets": 5,
+  "repsOrSecs": "8s",
+  "default": 0
+ },
+ {
+  "masterySetId": 585,
+  "masteryLevel": "120s",
+  "weekNum": "12.0",
+  "sets": 4,
+  "repsOrSecs": "48s",
+  "default": 0
+ },
+ {
+  "masterySetId": 586,
+  "masteryLevel": "5/4 RC",
+  "weekNum": "8.0",
+  "sets": 4,
+  "repsOrSecs": "1/2 RC",
+  "default": 0
+ }
+]

@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index, serial, json, jsonb, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, uniqueIndex, serial, json, jsonb, integer } from "drizzle-orm/pg-core";
 
 export const app_logs = pgTable("app_logs", {
   id: serial("id").primaryKey(),
@@ -61,11 +61,17 @@ export const user_setting = pgTable("user_setting", {
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
-});
+}, (table) => [
+  index("user_setting_user_id_idx").on(table.userId),
+]);
 export const user_logs = pgTable("user_logs", {
-  id: serial("id").primaryKey(),  
+  id: serial("id").primaryKey(),
   data: json("data"),
   progressions:json("progressions"),
+  // Workout section this per-day document belongs to. 'levels' = the original
+  // guided-plan/program logs (all pre-existing rows); new sections added by the
+  // AWS->Neon workout migration: 'autopilot' | 'byo' | 'history' | 'thrive'.
+  section: text("section").notNull().default('levels'),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
@@ -75,7 +81,10 @@ export const user_logs = pgTable("user_logs", {
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
-});
+}, (table) => [
+  // Upsert conflict target + serves per-user/section/date-range reads.
+  uniqueIndex("user_logs_user_section_date_uq").on(table.userId, table.section, table.userScheduleDate),
+]);
 export const session = pgTable(
   "session",
   {

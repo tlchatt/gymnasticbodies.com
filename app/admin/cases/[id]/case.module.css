@@ -12,9 +12,16 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 480px;
+  /* Both columns fluid; the right panel carries more functional content so it
+     gets the larger share. minmax(0,…) keeps long IDs/threads from blowing out. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
   gap: 24px;
   align-items: start;
+}
+
+/* Stack the panel below the thread on smaller / portrait screens */
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -313,7 +320,7 @@
 }
 .infoRow:last-child { border-bottom: none; }
 .infoKey { color: #666; }
-.infoVal { color: #ccc; text-align: right; max-width: 260px; word-break: break-all; }
+.infoVal { color: #ccc; text-align: right; min-width: 0; word-break: break-word; }
 
 .panelSection {
   border-top: 1px solid #1e1e1e;
