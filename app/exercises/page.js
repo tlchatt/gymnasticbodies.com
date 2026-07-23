@@ -8,6 +8,7 @@ import ExercisesClient from './ExercisesClient';
 export const metadata = {
     title: 'Exercise Library',
     description: 'Browse 355 Gymnastic Bodies exercises — bodyweight, ring, and mobility movements, each with a demonstration video and coaching notes.',
+    alternates: { canonical: '/exercises' },
 };
 
 export const dynamic = 'force-dynamic';

@@ -22,6 +22,9 @@ export async function generateMetadata({ params }) {
     return {
         title: entry.title,
         description: entry.meta?.description,
+        // metadataBase (layout.js) is www — resolves to the canonical content host
+        // even when the page is reached via app./apex before the host redirect lands.
+        alternates: { canonical: `/${slug}` },
         openGraph: {
             title: entry.meta?.ogTitle || entry.title,
             description: entry.meta?.ogDescription,

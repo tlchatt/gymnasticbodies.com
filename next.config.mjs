@@ -56,6 +56,73 @@ const nextConfig = {
       // handlers (app/testimonial/[slug]/route.js, app/carousel-seat/[slug]/route.js).
       // NOTE: the /forum/* reverse-proxy rewrite is added + preview-tested separately
       // (needs the EC2 origin hostname settled at DNS-migration time).
+
+      // ---- Host canonicalization (2026-07-23): www = content, app. = application ----
+      // Permanent two-front-door model: www.gymnasticbodies.com serves all marketing/
+      // content; app.gymnasticbodies.com keeps ALL pre-WP application functionality
+      // (api incl. Stripe webhook, admin, renew, accountDetails, subscribe, offer,
+      // legacy checkout/allUsers/Media). Content lives under the root [slug] catch-all,
+      // so app routes are EXEMPTED by negative lookahead rather than enumerating
+      // content paths. These rules sit AFTER the WP path-map above so path-level
+      // redirects resolve first (fewer hops: app./shop → app./subscribe, 1 hop).
+      // `permanent: false` (307) for the initial rollout — flip to true (308) after
+      // live verification so a config mistake can't get cached by browsers.
+
+      // Apex host: serves duplicate content today (no Vercel-level redirect exists) —
+      // canonicalize everything to www; www's own rules then bounce app-routes onward.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'gymnasticbodies.com' }],
+        destination: 'https://www.gymnasticbodies.com/:path*',
+        permanent: false,
+      },
+
+      // app. host: everything not exempted 307s to the same path on www.
+      {
+        source:
+          '/:path((?!api/|admin(?:/|$)|renew$|accountDetails$|subscribe$|subscribeOld$|offer(?:/|$)|checkout$|allUsers$|Media$|_next/|images/|favicon\\.ico$|\\.well-known/).+)',
+        has: [{ type: 'host', value: 'app.gymnasticbodies.com' }],
+        destination: 'https://www.gymnasticbodies.com/:path',
+        permanent: false,
+      },
+      {
+        source: '/',
+        has: [{ type: 'host', value: 'app.gymnasticbodies.com' }],
+        destination: 'https://www.gymnasticbodies.com/',
+        permanent: false,
+      },
+
+      // www host: application routes live on app. — send them (query strings carry over).
+      {
+        source: '/renew',
+        has: [{ type: 'host', value: 'www.gymnasticbodies.com' }],
+        destination: 'https://app.gymnasticbodies.com/renew',
+        permanent: false,
+      },
+      {
+        source: '/accountDetails',
+        has: [{ type: 'host', value: 'www.gymnasticbodies.com' }],
+        destination: 'https://app.gymnasticbodies.com/accountDetails',
+        permanent: false,
+      },
+      {
+        source: '/subscribe',
+        has: [{ type: 'host', value: 'www.gymnasticbodies.com' }],
+        destination: 'https://app.gymnasticbodies.com/subscribe',
+        permanent: false,
+      },
+      {
+        source: '/offer/:path*',
+        has: [{ type: 'host', value: 'www.gymnasticbodies.com' }],
+        destination: 'https://app.gymnasticbodies.com/offer/:path*',
+        permanent: false,
+      },
+      {
+        source: '/admin/:path*',
+        has: [{ type: 'host', value: 'www.gymnasticbodies.com' }],
+        destination: 'https://app.gymnasticbodies.com/admin/:path*',
+        permanent: false,
+      },
     ];
   },
   async headers() {

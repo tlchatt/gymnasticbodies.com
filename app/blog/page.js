@@ -9,6 +9,7 @@ import { GetSettings } from '@/lib/GetSettings';
 export const metadata = {
     title: 'Blog',
     description: 'Insights on gymnastic strength training, mobility, and movement from Gymnastic Bodies.',
+    alternates: { canonical: '/blog' },
 };
 
 const PER_PAGE = 12;
