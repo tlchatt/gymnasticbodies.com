@@ -23,8 +23,38 @@ Before starting a dev server, check `systemctl --user is-active app-gymnasticbod
 it's up, use the `.dev` URL and only **restart** the service — never start a second copy. Restart the
 service after editing `next.config.*` or `.env.local` for changes to take effect.
 
-> **Note:** the app root (`app/page.js`) intentionally redirects to production
-> `my.gymnasticbodies.com` — that's by design, not a broken env.
+> **Note (updated 2026-07-23):** the app root (`app/page.js`) now **serves the marketing homepage**
+> (it re-exports `app/homepage/page.js`) — this is the post-WP-cutover state. `www.gymnasticbodies.com`
+> and `app.gymnasticbodies.com` both serve this Vercel project; the old "root redirects to `my.`" behavior
+> was retired at go-live (2026-07-22). See `sessions/WPMigrationGoLive.md`. In production, host-scoped
+> redirects (below) send the root on the `app.`/apex hosts to `www` — on the `.dev` host it renders directly.
+
+## Host Canonicalization — www = content, app. = application (2026-07-23)
+
+**This split is permanent, not transitional.** All three production hosts alias the same Vercel
+deployment; host-scoped redirects in `next.config.mjs` (`has: [{ type: 'host' }]`) give every page
+exactly one canonical home. `my.gymnasticbodies.com` will probably eventually merge INTO `app.`;
+`www` stays the marketing/content site. **Never blanket-redirect `app.` → `www`.**
+
+| Host | Serves | Redirects |
+|---|---|---|
+| `www.gymnasticbodies.com` | All content: homepage, blog, root `[slug]` pages, `/exercises/*`, program pages, `/forum/*`, legal | `/renew`, `/accountDetails`, `/subscribe`, `/offer/*`, `/admin/*` → `app.` |
+| `app.gymnasticbodies.com` | All application functionality: `/api/*` (incl. the Stripe webhook — registered in the Stripe dashboard at this host), `/admin`, `/renew`, `/accountDetails`, `/subscribe`, `/offer/*`, legacy `/checkout` `/allUsers` `/Media` | Everything else (the content) → `www` |
+| `gymnasticbodies.com` (apex) | Nothing directly | Everything → `www` |
+
+Implementation notes:
+- Content lives under the root `[slug]` catch-all, so the `app.` rule **exempts the known application
+  routes by negative lookahead** rather than enumerating content paths. Adding a new user-facing app
+  route? **Add it to the exemption regex in `next.config.mjs`** or it will bounce to `www`.
+- `/api/*` is never redirected **in either direction** — Stripe webhooks, `my.`'s CORS calls, and email
+  verify links must answer on whichever host they arrive at.
+- The WP path-map redirects sit **before** the host rules, so e.g. `app./shop → app./subscribe` resolves
+  in one host-preserving hop.
+- Redirects launched as **temporary (307)** on 2026-07-23; flip to `permanent: true` (308) after a soak
+  period. The `.dev` host and Vercel preview URLs match no host rule — everything serves directly there.
+- `sitemap.js`, `robots.js`, `metadataBase`, and per-page `alternates.canonical` all emit `www` URLs.
+- All inbound links in the wild point at the correct hosts already (emails + `my.` → `app./renew`,
+  `app./accountDetails`) — no `my.` or email-template changes were needed.
 
 ## Support Email Rule
 
@@ -766,7 +796,7 @@ Used on `/subscribe` and similar landing pages. Do not use in admin.
 app/
   globals.css           ← Design tokens + global resets (edit here for system-wide changes)
   layout.js             ← Root layout: Geist font, Nav, UserProvider, Analytics
-  page.js               ← Home — redirects to my.gymnasticbodies.com
+  page.js               ← Root — serves the marketing homepage (re-exports homepage/page.js)
   subscribe/            ← Marketing subscribe page (server component, dark/orange)
   renew/                ← Renewal portal (SSR disabled for Stripe Elements)
   admin/
