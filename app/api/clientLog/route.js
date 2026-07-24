@@ -18,6 +18,17 @@ const ALLOWED_EVENTS = new Set([
     'my.renewal.landed',
     'my.renewal.auth_success',
     'my.renewal.auth_failed',
+    // Video playback diagnostics (added 2026-07-24 — legacy/Neon merge video regression).
+    // my.video.missing_src is the highest-signal event: a playlist item resolved to an
+    // empty Blob src (undefined mediaId), which renders a blank modal with no <video> and
+    // no native error — the silent failure users report as "videos won't load".
+    'my.video.error',        // <video> element fired onError (media/network/decode/src)
+    'my.video.missing_src',  // resolved src was empty — undefined/missing mediaId
+    'my.video.stalled',      // <video> onStalled — data fetch stalled ("spinning forever")
+    'my.video.loadstart',    // <video> began loading a real src (baseline / success signal)
+    // Course / workout data-load diagnostics (content spins, never populates).
+    'my.course.error',
+    'my.course.empty',
 ]);
 
 export async function POST(request) {
