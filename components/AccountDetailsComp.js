@@ -1,34 +1,102 @@
 'use client'
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { Stack } from '@mui/material';
 import { useState } from 'react';
 
-export default function AccountDetailsComp({ data, userId, token, supportHistory, workoutLogs, emailChanged, emailError }) {
-    let titleStyle = { color: '#656464', padding: '24px 0 0' }
+import SubscriptionSection from '@/components/account/SubscriptionSection';
+import PaymentSection from '@/components/account/PaymentSection';
+import ActivitySection from '@/components/account/ActivitySection';
+import WorkoutHistorySection from '@/components/account/WorkoutHistorySection';
+import LevelsSection from '@/components/account/LevelsSection';
+import ThriveSection from '@/components/account/ThriveSection';
+import PreferencesSection from '@/components/account/PreferencesSection';
+import SupportSection from '@/components/account/SupportSection';
+import { AccountCard, Row } from '@/components/account/accountUi';
+
+/**
+ * AccountDetailsComp — modular My Account shell.
+ *
+ * Each dashboard section is fetched independently server-side (lib/accountData.js)
+ * and passed as its own prop. The local <Section> wrapper hides a section whose data
+ * prop is null/undefined, so one empty or failed source never blanks the page.
+ *
+ * Subscription "Active" is derived date-based (lib/subscription) via the server-computed
+ * impInfo.isActive flag — never the raw user_setting.status string. The interactive
+ * Cancel / Renew controls, Profile edit, and Security actions remain in this shell.
+ */
+export default function AccountDetailsComp({
+    data,
+    profile,
+    userId,
+    token,
+    subscription,
+    payment,
+    activity,
+    workoutHistory,
+    levels,
+    thrive,
+    preferences,
+    support,
+    emailChanged,
+    emailError,
+}) {
+    const titleStyle = { color: '#656464', padding: '24px 0 0' }
 
     return (
         <>
-            <Typography variant='h3' gutterBottom style={titleStyle} id='responsive-dialog-title' align='center'>
+            <h2 style={{ ...titleStyle, textAlign: 'center' }} id='responsive-dialog-title'>
                 ACCOUNT
-            </Typography>
-            <Stack direction='column' spacing={2} style={{ margin: '20px' }}>
-                <DisplaySubscription data={data} userId={userId} token={token} />
-                <DisplayOrder data={data} />
-                <DisplayProfile data={data} userId={userId} />
-                <DisplaySecurity data={data} emailChanged={emailChanged} emailError={emailError} userId={userId} />
-                <DisplaySupportHistory supportHistory={supportHistory} />
-                <DisplayActivity workoutLogs={workoutLogs} />
-            </Stack>
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '20px', maxWidth: '760px', marginLeft: 'auto', marginRight: 'auto' }}>
+                <Section data={subscription}>
+                    <SubscriptionSection {...(subscription ?? {})} />
+                </Section>
+
+                <Section data={activity}>
+                    <ActivitySection {...(activity ?? {})} />
+                </Section>
+
+                <SubscriptionActions data={data} userId={userId} token={token} />
+
+                <Section data={payment}>
+                    <PaymentSection {...(payment ?? {})} userId={userId} />
+                </Section>
+
+                <DisplayProfile profile={profile} userId={userId} />
+                <DisplaySecurity profile={profile} emailChanged={emailChanged} emailError={emailError} userId={userId} />
+
+                <Section data={workoutHistory}>
+                    <WorkoutHistorySection {...(workoutHistory ?? {})} />
+                </Section>
+                <Section data={levels}>
+                    <LevelsSection {...(levels ?? {})} />
+                </Section>
+                <Section data={thrive}>
+                    <ThriveSection {...(thrive ?? {})} />
+                </Section>
+                <Section data={preferences}>
+                    <PreferencesSection {...(preferences ?? {})} />
+                </Section>
+                <Section data={support}>
+                    <SupportSection {...(support ?? {})} userId={userId} />
+                </Section>
+            </div>
         </>
     )
 }
 
-// ─── Subscription ────────────────────────────────────────────────────────────
+// ─── Resilient section wrapper ────────────────────────────────────────────────
+// Renders nothing when its data prop is null/undefined. Fetch-level try/catch
+// already turns any failure into null, so a broken/empty section simply hides.
+function Section({ data, children }) {
+    if (data === null || data === undefined) return null
+    return children
+}
 
-function DisplaySubscription({ data, userId, token }) {
-    let { cardType, cardNumber, impInfo, migrationStatus } = data ?? {}
+// ─── Subscription actions (Cancel / Cancel-trial / Renew) ─────────────────────
+// Interactive controls only — the read-only summary lives in <SubscriptionSection>.
+// Gated on the date-based isActive flag (server-computed impInfo.isActive), with the
+// classifier's noncurrent guard kept as belt-and-suspenders.
+function SubscriptionActions({ data, userId, token }) {
+    const { impInfo, migrationStatus } = data ?? {}
 
     const [cancelConfirming, setCancelConfirming] = useState(false)
     const [cancelledUntil, setCancelledUntil] = useState('')
@@ -83,162 +151,95 @@ function DisplaySubscription({ data, userId, token }) {
         }
     }
 
-    let presentContent = [
-        { 'Status': impInfo?.status },
-        impInfo?.trial ? { 'Trial End Date': impInfo?.trialEndDate } : null,
-        { 'Plan': impInfo?.subscriptionName },
-        { 'Amount': `$${impInfo?.price}` },
-        { 'Term': impInfo?.matchedTerm },
-        { 'Next Payment': impInfo?.redableNextPaymentDate },
-        { 'Payment Method': cardType && cardType !== 'N/A' ? `${cardType} ending in ${cardNumber}` : 'No payment info on file' },
-    ]
-    let absentContent = [{ 'No Subscription': 'N/A' }]
-
-    const isActive = impInfo?.status === 'Active' && migrationStatus !== 'noncurrent'
+    // Date-based active flag (server-computed), with the classifier guard kept.
+    const isActive = (impInfo?.isActive ?? true) && migrationStatus !== 'noncurrent'
     const isTrial = !!impInfo?.trial
     const hasStripeSub = impInfo?.subscriptionId?.startsWith?.('sub_')
 
+    // getDateString returns the literal strings 'Invalid Date' / 'N/A' on junk input —
+    // never render those into the cancel-confirm copy.
+    const formattedNextPayment = impInfo?.redableNextPaymentDate
+    const accessUntilText = (formattedNextPayment && formattedNextPayment !== 'Invalid Date' && formattedNextPayment !== 'N/A')
+        ? formattedNextPayment
+        : 'the end of your current billing period'
+
+    // Nothing actionable: active membership with no Stripe sub to cancel → render nothing.
+    if (isActive && !isTrial && !hasStripeSub) return null
+
     return (
-        <GridBox>
-            <Stack direction='row' spacing={2} style={{ margin: '20px' }}>
-                <Headline data='Manage Subscription' />
-                {isActive && !isTrial && (
-                    <Stack direction='column' spacing={2} style={{ width: '100%', display: 'flex', alignItems: 'flex-end' }}>
-                        {/* placeholder — cancel UI rendered below */}
-                    </Stack>
-                )}
-                {!isActive && (
-                    <Stack direction='column' spacing={2} style={{ width: '100%', display: 'flex', alignItems: 'flex-end' }}>
-                        <a
-                            href={`/renew?email=${encodeURIComponent(impInfo?.email || '')}&token=${encodeURIComponent(token || '')}&userId=${encodeURIComponent(userId || '')}`}
-                            style={{
-                                display: 'inline-block',
-                                padding: '10px 24px',
-                                borderRadius: '8px',
-                                background: 'linear-gradient(135deg, #fcb14e 0%, #f05621 100%)',
-                                color: '#fff',
-                                fontWeight: '600',
-                                fontSize: '0.9rem',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Renew Subscription
-                        </a>
-                    </Stack>
-                )}
-            </Stack>
+        <AccountCard title='Manage Subscription'>
+            {/* Renew (expired / noncurrent) */}
+            {!isActive && (
+                <a
+                    href={`/renew?email=${encodeURIComponent(impInfo?.email || '')}&token=${encodeURIComponent(token || '')}&userId=${encodeURIComponent(userId || '')}`}
+                    style={{
+                        display: 'inline-block',
+                        padding: '10px 24px',
+                        borderRadius: '8px',
+                        background: 'linear-gradient(135deg, #fcb14e 0%, #f05621 100%)',
+                        color: '#fff',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        textDecoration: 'none',
+                    }}
+                >
+                    Renew Subscription
+                </a>
+            )}
 
-            <Stack direction='row' spacing={2} style={{ margin: '20px' }}>
-                <Stack direction='column' spacing={2} style={{ justifyContent: 'space-between', display: 'flex' }}>
-                    <Content content={impInfo?.hasSubscription ? presentContent : absentContent} />
-                </Stack>
-            </Stack>
-
-            {/* Cancel active (non-trial) subscription */}
+            {/* Cancel active (non-trial) Stripe subscription */}
             {isActive && !isTrial && hasStripeSub && (
-                <Stack direction='row' spacing={2} style={{ margin: '20px' }}>
-                    {cancelledUntil ? (
-                        <Typography variant='body1' style={{ color: '#4caf50' }}>
-                            Subscription cancelled. Access continues until {cancelledUntil}.
-                        </Typography>
-                    ) : cancelConfirming ? (
-                        <Stack direction='column' spacing={1}>
-                            <Typography variant='body2' style={{ color: '#555' }}>
-                                You'll keep access until {impInfo?.redableNextPaymentDate}. Are you sure?
-                            </Typography>
-                            <Stack direction='row' spacing={2}>
-                                <button
-                                    onClick={handleCancelSubscription}
-                                    disabled={cancelling}
-                                    style={linkBtnStyle('#d32f2f', cancelling)}
-                                >
-                                    {cancelling ? 'Cancelling…' : 'Yes, cancel subscription'}
-                                </button>
-                                <button
-                                    onClick={() => setCancelConfirming(false)}
-                                    style={linkBtnStyle('#888')}
-                                >
-                                    Keep subscription
-                                </button>
-                            </Stack>
-                        </Stack>
-                    ) : (
-                        <button onClick={() => setCancelConfirming(true)} style={linkBtnStyle('#d32f2f')}>
-                            Cancel Subscription
-                        </button>
-                    )}
-                </Stack>
+                cancelledUntil ? (
+                    <p style={{ fontSize: '0.9rem', margin: 0, color: '#4caf50' }}>
+                        Subscription cancelled. Access continues until {cancelledUntil}.
+                    </p>
+                ) : cancelConfirming ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <p style={{ fontSize: '0.9rem', margin: 0, color: '#555' }}>
+                            You&apos;ll keep access until {accessUntilText}. Are you sure?
+                        </p>
+                        <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+                            <button onClick={handleCancelSubscription} disabled={cancelling} style={linkBtnStyle('#d32f2f', cancelling)}>
+                                {cancelling ? 'Cancelling…' : 'Yes, cancel subscription'}
+                            </button>
+                            <button onClick={() => setCancelConfirming(false)} style={linkBtnStyle('#888')}>
+                                Keep subscription
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    <button onClick={() => setCancelConfirming(true)} style={linkBtnStyle('#d32f2f')}>
+                        Cancel Subscription
+                    </button>
+                )
             )}
 
             {/* Cancel trial */}
             {isTrial && hasStripeSub && (
-                <Stack direction='row' spacing={2} style={{ margin: '20px' }}>
-                    {trialCancelled ? (
-                        <Typography variant='body1' style={{ color: '#4caf50' }}>
-                            Your trial has been cancelled. You will not be charged.
-                        </Typography>
-                    ) : (
-                        <button
-                            onClick={handleCancelTrial}
-                            disabled={trialCancelling}
-                            style={linkBtnStyle('#d32f2f', trialCancelling)}
-                        >
-                            {trialCancelling ? 'Cancelling…' : 'Cancel Trial'}
-                        </button>
-                    )}
-                </Stack>
+                trialCancelled ? (
+                    <p style={{ fontSize: '0.9rem', margin: 0, color: '#4caf50' }}>
+                        Your trial has been cancelled. You will not be charged.
+                    </p>
+                ) : (
+                    <button onClick={handleCancelTrial} disabled={trialCancelling} style={linkBtnStyle('#d32f2f', trialCancelling)}>
+                        {trialCancelling ? 'Cancelling…' : 'Cancel Trial'}
+                    </button>
+                )
             )}
-        </GridBox>
-    )
-}
-
-// ─── Order ───────────────────────────────────────────────────────────────────
-
-function DisplayOrder({ data }) {
-    let { cardType, cardNumber, impInfo, lastTransactionInvoiceNumber } = data ?? {}
-
-    let presentContent = [
-        { 'Status': impInfo?.status },
-        { 'Last Order Date': impInfo?.redableRecentTransactionDate },
-        { 'Invoice': lastTransactionInvoiceNumber },
-        { 'Amount': `${impInfo?.price} ${impInfo?.matchedTerm}` },
-        { 'Next Payment Date': impInfo?.redableNextPaymentDate },
-        { 'Payment Method': cardType && cardType !== 'N/A' ? `${cardType} ending in ${cardNumber}` : 'No Payment Info Added' },
-    ]
-    let otherSourcesContent = [
-        { 'Status': impInfo?.status },
-        { 'Amount': `${impInfo?.price} ${impInfo?.matchedTerm}` },
-        { 'Plan': impInfo?.subscriptionName },
-        { 'Next Payment Date': impInfo?.redableNextPaymentDate },
-    ]
-
-    return (
-        <GridBox>
-            <Stack direction='row' spacing={2} style={{ margin: '20px' }}>
-                <Headline data='Order Information' />
-            </Stack>
-            <Stack direction='row' spacing={2} style={{ margin: '20px', display: 'grid' }}>
-                {lastTransactionInvoiceNumber && lastTransactionInvoiceNumber !== 'N/A'
-                    ? <Content content={presentContent} />
-                    : impInfo?.OtherSourcesNextImport
-                        ? <Content content={otherSourcesContent} />
-                        : <Content content={[{ 'No Order Present': 'N/A' }]} />
-                }
-            </Stack>
-        </GridBox>
+        </AccountCard>
     )
 }
 
 // ─── Profile ─────────────────────────────────────────────────────────────────
 
-function DisplayProfile({ data, userId }) {
-    let { impInfo } = data ?? {}
+function DisplayProfile({ profile, userId }) {
+    const p = profile ?? {}
     const [editing, setEditing] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saved, setSaved] = useState(false)
-    const [name, setName] = useState(impInfo?.firstName ? `${impInfo.firstName} ${impInfo.lastName}`.trim() : '')
-    const [phone, setPhone] = useState(impInfo?.phoneNumber !== 'N/A' ? impInfo?.phoneNumber ?? '' : '')
-    const [country, setCountry] = useState(impInfo?.country !== 'N/A' ? impInfo?.country ?? '' : '')
+    const [name, setName] = useState(p.name ?? '')
+    const [phone, setPhone] = useState(p.phone ?? '')
+    const [country, setCountry] = useState(p.country ?? '')
 
     const handleSave = async () => {
         setSaving(true)
@@ -273,76 +274,69 @@ function DisplayProfile({ data, userId }) {
     }
 
     return (
-        <GridBox>
-            <Stack direction='row' spacing={2} style={{ margin: '20px', alignItems: 'center' }}>
-                <Headline data='Profile' />
-                {!editing && (
-                    <button onClick={() => setEditing(true)} style={linkBtnStyle('#f05621')}>
-                        Edit
-                    </button>
-                )}
-            </Stack>
-            <Stack direction='column' spacing={2} style={{ margin: '20px' }}>
-                {editing ? (
-                    <Stack direction='column' spacing={2}>
-                        <label style={{ fontSize: '0.9rem', color: '#666' }}>
-                            Full Name
-                            <input value={name} onChange={e => setName(e.target.value)} style={{ ...inputStyle, marginTop: '4px', display: 'block' }} />
-                        </label>
-                        <label style={{ fontSize: '0.9rem', color: '#666' }}>
-                            Email (change in Security section)
-                            <input value={impInfo?.email ?? ''} disabled style={{ ...inputStyle, marginTop: '4px', display: 'block', opacity: 0.5 }} />
-                        </label>
-                        <label style={{ fontSize: '0.9rem', color: '#666' }}>
-                            Phone
-                            <input value={phone} onChange={e => setPhone(e.target.value)} style={{ ...inputStyle, marginTop: '4px', display: 'block' }} />
-                        </label>
-                        <label style={{ fontSize: '0.9rem', color: '#666' }}>
-                            Country
-                            <input value={country} onChange={e => setCountry(e.target.value)} style={{ ...inputStyle, marginTop: '4px', display: 'block' }} />
-                        </label>
-                        <Stack direction='row' spacing={2}>
-                            <button
-                                onClick={handleSave}
-                                disabled={saving}
-                                style={{
-                                    padding: '10px 24px',
-                                    borderRadius: '6px',
-                                    background: saving ? '#ccc' : 'linear-gradient(135deg, #fcb14e 0%, #f05621 100%)',
-                                    color: '#fff',
-                                    border: 'none',
-                                    cursor: saving ? 'not-allowed' : 'pointer',
-                                    fontWeight: '600',
-                                    fontSize: '0.9rem',
-                                }}
-                            >
-                                {saving ? 'Saving…' : 'Save Changes'}
-                            </button>
-                            <button onClick={() => setEditing(false)} style={linkBtnStyle('#888')}>
-                                Cancel
-                            </button>
-                        </Stack>
-                    </Stack>
-                ) : (
-                    <Content content={[
-                        { 'Name': `${impInfo?.firstName ?? ''} ${impInfo?.lastName ?? ''}`.trim() || 'N/A' },
-                        { 'Email': impInfo?.email ?? 'N/A' },
-                        { 'Phone': impInfo?.phoneNumber ?? 'N/A' },
-                        { 'Country': impInfo?.country ?? 'N/A' },
-                    ]} />
-                )}
-                {saved && (
-                    <Typography variant='body2' style={{ color: '#4caf50' }}>Profile updated successfully.</Typography>
-                )}
-            </Stack>
-        </GridBox>
+        <AccountCard
+            title='Profile'
+            action={!editing ? (
+                <button onClick={() => setEditing(true)} style={linkBtnStyle('#f05621')}>Edit</button>
+            ) : null}
+        >
+            {editing ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <label style={{ fontSize: '0.9rem', color: '#666' }}>
+                        Full Name
+                        <input value={name} onChange={e => setName(e.target.value)} style={{ ...inputStyle, marginTop: '4px', display: 'block' }} />
+                    </label>
+                    <label style={{ fontSize: '0.9rem', color: '#666' }}>
+                        Email (change in Security section)
+                        <input value={p.email ?? ''} disabled style={{ ...inputStyle, marginTop: '4px', display: 'block', opacity: 0.5 }} />
+                    </label>
+                    <label style={{ fontSize: '0.9rem', color: '#666' }}>
+                        Phone
+                        <input value={phone} onChange={e => setPhone(e.target.value)} style={{ ...inputStyle, marginTop: '4px', display: 'block' }} />
+                    </label>
+                    <label style={{ fontSize: '0.9rem', color: '#666' }}>
+                        Country
+                        <input value={country} onChange={e => setCountry(e.target.value)} style={{ ...inputStyle, marginTop: '4px', display: 'block' }} />
+                    </label>
+                    <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+                        <button
+                            onClick={handleSave}
+                            disabled={saving}
+                            style={{
+                                padding: '10px 24px',
+                                borderRadius: '6px',
+                                background: saving ? '#ccc' : 'linear-gradient(135deg, #fcb14e 0%, #f05621 100%)',
+                                color: '#fff',
+                                border: 'none',
+                                cursor: saving ? 'not-allowed' : 'pointer',
+                                fontWeight: 600,
+                                fontSize: '0.9rem',
+                            }}
+                        >
+                            {saving ? 'Saving…' : 'Save Changes'}
+                        </button>
+                        <button onClick={() => setEditing(false)} style={linkBtnStyle('#888')}>Cancel</button>
+                    </div>
+                </div>
+            ) : (
+                <>
+                    <Row label='Name' value={p.name || 'N/A'} />
+                    <Row label='Email' value={p.email || 'N/A'} />
+                    <Row label='Phone' value={p.phone || 'N/A'} />
+                    <Row label='Country' value={p.country || 'N/A'} />
+                </>
+            )}
+            {saved && (
+                <p style={{ fontSize: '0.9rem', margin: 0, color: '#4caf50', marginTop: '8px' }}>Profile updated successfully.</p>
+            )}
+        </AccountCard>
     )
 }
 
 // ─── Security ────────────────────────────────────────────────────────────────
 
-function DisplaySecurity({ data, userId, emailChanged, emailError }) {
-    let { impInfo } = data ?? {}
+function DisplaySecurity({ profile, userId, emailChanged, emailError }) {
+    const p = profile ?? {}
     const [resetSent, setResetSent] = useState(false)
     const [resetSending, setResetSending] = useState(false)
     const [newEmail, setNewEmail] = useState('')
@@ -358,13 +352,13 @@ function DisplaySecurity({ data, userId, emailChanged, emailError }) {
     const initialEmailError = emailError ? (errorMessages[emailError] ?? 'Verification failed.') : ''
 
     const handlePasswordReset = async () => {
-        if (!impInfo?.email) return
+        if (!p.email) return
         setResetSending(true)
         try {
             const res = await fetch('/api/user/resetLink', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: impInfo.email }),
+                body: JSON.stringify({ email: p.email }),
             })
             if (res.ok) {
                 setResetSent(true)
@@ -415,18 +409,14 @@ function DisplaySecurity({ data, userId, emailChanged, emailError }) {
     }
 
     return (
-        <GridBox>
-            <Stack direction='column' spacing={0} style={{ margin: '20px' }}>
-                <Headline data='Security' />
-            </Stack>
-
+        <AccountCard title='Security'>
             {/* Password reset */}
-            <Stack direction='column' spacing={1} style={{ margin: '20px' }}>
-                <Typography variant='h6' style={{ fontWeight: '600', marginBottom: '4px' }}>Password</Typography>
+            <div style={{ marginBottom: '20px' }}>
+                <h4 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '4px' }}>Password</h4>
                 {resetSent ? (
-                    <Typography variant='body2' style={{ color: '#4caf50' }}>
-                        Reset email sent to {impInfo?.email}. Check your inbox.
-                    </Typography>
+                    <p style={{ fontSize: '0.9rem', margin: 0, color: '#4caf50' }}>
+                        Reset email sent to {p.email}. Check your inbox.
+                    </p>
                 ) : (
                     <button
                         onClick={handlePasswordReset}
@@ -438,24 +428,23 @@ function DisplaySecurity({ data, userId, emailChanged, emailError }) {
                             background: '#fff',
                             cursor: resetSending ? 'not-allowed' : 'pointer',
                             fontSize: '0.9rem',
-                            alignSelf: 'flex-start',
                         }}
                     >
                         {resetSending ? 'Sending…' : 'Send Password Reset Email'}
                     </button>
                 )}
-            </Stack>
+            </div>
 
             {/* Email change */}
-            <Stack direction='column' spacing={1} style={{ margin: '20px' }}>
-                <Typography variant='h6' style={{ fontWeight: '600', marginBottom: '4px' }}>Email Address</Typography>
-                <Typography variant='body2' style={{ color: '#666', marginBottom: '8px' }}>
-                    Current: <strong>{impInfo?.email}</strong>
-                </Typography>
+            <div>
+                <h4 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '4px' }}>Email Address</h4>
+                <p style={{ fontSize: '0.9rem', margin: 0, color: '#666', marginBottom: '8px' }}>
+                    Current: <strong>{p.email}</strong>
+                </p>
                 {initialEmailError && (
-                    <Typography variant='body2' style={{ color: '#d32f2f', marginBottom: '8px' }}>{initialEmailError}</Typography>
+                    <p style={{ fontSize: '0.9rem', margin: 0, color: '#d32f2f', marginBottom: '8px' }}>{initialEmailError}</p>
                 )}
-                <Stack direction='row' spacing={1} style={{ flexWrap: 'wrap', gap: '8px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '8px', flexWrap: 'wrap' }}>
                     <input
                         type='email'
                         placeholder='New email address'
@@ -476,186 +465,23 @@ function DisplaySecurity({ data, userId, emailChanged, emailError }) {
                             border: 'none',
                             cursor: emailSending || !newEmail.includes('@') ? 'not-allowed' : 'pointer',
                             fontSize: '0.9rem',
-                            fontWeight: '600',
+                            fontWeight: 600,
                         }}
                     >
                         {emailSending ? 'Sending…' : 'Send Verification'}
                     </button>
-                </Stack>
+                </div>
                 {emailMsg && (
-                    <Typography variant='body2' style={{ color: emailMsgType === 'success' ? '#4caf50' : '#d32f2f', marginTop: '8px' }}>
+                    <p style={{ fontSize: '0.9rem', margin: 0, color: emailMsgType === 'success' ? '#4caf50' : '#d32f2f', marginTop: '8px' }}>
                         {emailMsg}
-                    </Typography>
+                    </p>
                 )}
-            </Stack>
-        </GridBox>
+            </div>
+        </AccountCard>
     )
 }
 
-// ─── Support History ──────────────────────────────────────────────────────────
-
-function DisplaySupportHistory({ supportHistory }) {
-    const [expanded, setExpanded] = useState(null)
-    const emails = supportHistory ?? []
-
-    const statusColors = { open: '#f59e0b', replied: '#3b82f6', closed: '#9ca3af' }
-
-    return (
-        <GridBox>
-            <Stack direction='column' spacing={0} style={{ margin: '20px' }}>
-                <Headline data='Support History' />
-            </Stack>
-            <Stack direction='column' spacing={0} style={{ margin: '20px' }}>
-                {emails.length === 0 ? (
-                    <Typography variant='body2' style={{ color: '#888' }}>No support history found.</Typography>
-                ) : (
-                    emails.map((email) => {
-                        const isOpen = expanded === email.id
-                        const date = email.receivedAt
-                            ? new Date(email.receivedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-                            : ''
-                        return (
-                            <div
-                                key={email.id}
-                                style={{
-                                    borderBottom: '1px solid #eee',
-                                    padding: '12px 0',
-                                    cursor: 'pointer',
-                                }}
-                                onClick={() => setExpanded(isOpen ? null : email.id)}
-                            >
-                                <Stack direction='row' spacing={2} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography variant='body1' style={{ fontWeight: isOpen ? '600' : '400', flex: 1 }}>
-                                        {email.subject}
-                                    </Typography>
-                                    <Stack direction='row' spacing={1} style={{ alignItems: 'center', flexShrink: 0 }}>
-                                        <span style={{
-                                            fontSize: '0.75rem',
-                                            padding: '2px 8px',
-                                            borderRadius: '100px',
-                                            background: statusColors[email.status] ?? '#ddd',
-                                            color: '#fff',
-                                            textTransform: 'capitalize',
-                                        }}>
-                                            {email.status}
-                                        </span>
-                                        <Typography variant='caption' style={{ color: '#999' }}>{date}</Typography>
-                                        <Typography variant='caption' style={{ color: '#ccc' }}>{isOpen ? '▲' : '▼'}</Typography>
-                                    </Stack>
-                                </Stack>
-                                {email.caseTitle && (
-                                    <Typography variant='caption' style={{ color: '#888' }}>Case: {email.caseTitle}</Typography>
-                                )}
-                                {isOpen && (
-                                    <div style={{ marginTop: '12px', padding: '12px', background: '#f9f9f9', borderRadius: '6px', fontSize: '0.9rem', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                                        {email.body}
-                                    </div>
-                                )}
-                            </div>
-                        )
-                    })
-                )}
-            </Stack>
-        </GridBox>
-    )
-}
-
-// ─── Activity ────────────────────────────────────────────────────────────────
-
-function DisplayActivity({ workoutLogs }) {
-    const logs = workoutLogs ?? []
-    const total = logs.length
-    const latest = logs[0]
-    const latestDate = latest?.userScheduleDate ?? (latest?.createdAt
-        ? new Date(latest.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-        : null)
-
-    return (
-        <GridBox>
-            <Stack direction='column' spacing={0} style={{ margin: '20px' }}>
-                <Headline data='Workout Activity' />
-            </Stack>
-            <Stack direction='column' spacing={1} style={{ margin: '20px' }}>
-                {total === 0 ? (
-                    <Typography variant='body2' style={{ color: '#888' }}>No workout logs found.</Typography>
-                ) : (
-                    <>
-                        <Content content={[
-                            { 'Total Workouts Logged': String(total) },
-                            { 'Most Recent': latestDate ?? 'N/A' },
-                        ]} />
-                        <a
-                            href='https://my.gymnasticbodies.com'
-                            style={{ color: '#f05621', textDecoration: 'none', fontSize: '0.9rem', marginTop: '8px', display: 'inline-block' }}
-                        >
-                            View your workouts →
-                        </a>
-                    </>
-                )}
-            </Stack>
-        </GridBox>
-    )
-}
-
-// ─── Shared Primitives ───────────────────────────────────────────────────────
-
-function Content({ content }) {
-    return (
-        <Stack direction='column' spacing={2}>
-            {content.map((item, index) => {
-                if (!item) return null
-                const [data] = Object.entries(item)
-                return (
-                    <div key={index}>
-                        {content.length > 1 ? (
-                            <Stack direction='row' spacing={2} style={{ display: 'grid', gridAutoFlow: 'column', justifyContent: 'start' }}>
-                                <Titles title={data[0]} />
-                                <Values value={data[1]} />
-                            </Stack>
-                        ) : (
-                            <Stack direction='row' spacing={2} style={{ display: 'grid', gridAutoFlow: 'column', justifyContent: 'start' }}>
-                                <Titles title={data[0]} />
-                            </Stack>
-                        )}
-                    </div>
-                )
-            })}
-        </Stack>
-    )
-
-    function Titles({ title }) {
-        return (
-            <Typography variant='h5' component='h2' sx={{ fontWeight: 'bold', margin: '20px', fontSize: { xs: '1.1rem', sm: '1.5rem' } }}>
-                {title}
-            </Typography>
-        )
-    }
-    function Values({ value }) {
-        return (
-            <Typography variant='h5' component='h2' sx={{ margin: '20px', fontSize: { xs: '1.1rem', sm: '1.5rem' } }}>
-                {value}
-            </Typography>
-        )
-    }
-}
-
-function Headline({ data }) {
-    return (
-        <Stack direction='column' spacing={2} style={{ width: '100%' }}>
-            <Typography id='modal-modal-title' variant='h4' component='h2'>{data}</Typography>
-        </Stack>
-    )
-}
-
-function GridBox({ children }) {
-    return (
-        <Grid size={6}>
-            <Box style={{ width: '100%', boxShadow: '0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2)', padding: '20px' }}>
-                {children}
-            </Box>
-        </Grid>
-    )
-}
+// ─── Shared ──────────────────────────────────────────────────────────────────
 
 function linkBtnStyle(color, disabled) {
     return {

@@ -8,6 +8,7 @@ import {
 } from '@/lib/userSettings';
 import { stripe } from '@/lib/stripeServerFunction';
 import { logger } from '@/lib/logger';
+import { createAdminActionCase } from '@/lib/adminSubscription';
 
 // Admin cancel. Uniform flow for every user; does only what the user's
 // gateway supports:
@@ -59,6 +60,15 @@ export async function POST(request, { params }) {
         accessUntil, adminEmail: admin?.email, adminId: admin?.id,
       });
 
+      // Auto-log a support case for this admin action (going-forward hook).
+      const untilLabel = accessUntil ? ` — access until ${new Date(accessUntil * 1000).toISOString()}` : ' — access ends immediately';
+      await createAdminActionCase({
+        userId: id,
+        title: 'Subscription cancelled by support',
+        detail: `Cancelled Stripe subscription ${setting.stripeSubscriptionId} (${method})${untilLabel}.`,
+        adminUserId: admin?.id,
+      });
+
       return NextResponse.json({ ok: true, method, cancelAtPeriodEnd: newStatus === 'pending_cancel', accessUntil });
     } catch (err) {
       logger.error('admin.cancel_subscription_failed', { userId: id, error: err?.message });
@@ -77,6 +87,14 @@ export async function POST(request, { params }) {
     userId: id, email: user.email, method: 'app',
     note: 'App-level cancel only — stop real billing in the payment gateway portal if applicable.',
     adminEmail: admin?.email, adminId: admin?.id,
+  });
+
+  // Auto-log a support case for this admin action (going-forward hook).
+  await createAdminActionCase({
+    userId: id,
+    title: 'Subscription cancelled by support',
+    detail: 'App-level cancel — access revoked (noncurrent/lapsed). Stop real billing in the payment gateway portal if applicable.',
+    adminUserId: admin?.id,
   });
 
   return NextResponse.json({ ok: true, method: 'app', cancelAtPeriodEnd: false, accessUntil: null });

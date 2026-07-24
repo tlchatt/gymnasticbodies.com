@@ -74,6 +74,12 @@ export default function SubscriptionSummary({ subscription: sub, setting, showTi
           )}
           {live?.error && <Row k="Stripe status" valStyle={{ color: '#e66' }}>could not load from Stripe</Row>}
 
+          {!sub.isStripe && sub.settingStatus && (
+            <Row k="Status" valStyle={{ color: sub.isActive ? 'var(--accent-light)' : '#e66' }}>
+              {sub.settingStatus}
+            </Row>
+          )}
+
           {!sub.isStripe && sub.renewalDate && <Row k="Renews / expires">{fmtDate(sub.renewalDate)}</Row>}
 
           {!sub.isStripe && sub.paymentMethod && sub.paymentMethod !== 'N/A' && (

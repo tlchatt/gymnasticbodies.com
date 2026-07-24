@@ -5,6 +5,7 @@ import { db } from '@/Drizzle/index.ts';
 import { user_setting } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
+import { createAdminActionCase } from '@/lib/adminSubscription';
 
 function calcExpiry(days) {
   if (days === 'indefinite') return new Date('2099-12-31');
@@ -60,6 +61,16 @@ export async function POST(request, { params }) {
     expiresAt: expiryIso,
     adminEmail: admin?.email,
     adminId: admin?.id,
+  });
+
+  // Auto-log a support case for this admin action (going-forward hook).
+  const isCredit = body.credit === true || body.type === 'credit';
+  const durationLabel = days === 'indefinite' ? 'indefinite access' : `${Number(days)} days of access`;
+  await createAdminActionCase({
+    userId: id,
+    title: isCredit ? 'Membership credit applied' : 'Access granted',
+    detail: `Granted ${durationLabel}, expires ${expiryIso}.`,
+    adminUserId: admin?.id,
   });
 
   return NextResponse.json({ ok: true, expiresAt: expiryIso });

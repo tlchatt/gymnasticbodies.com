@@ -6,6 +6,7 @@ import { db } from '@/Drizzle/index.ts';
 import { user_setting } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
+import { createAdminActionCase } from '@/lib/adminSubscription';
 
 const EXTEND_DAYS = 30;
 
@@ -47,6 +48,14 @@ export async function POST(request, { params }) {
       adminId: admin?.id,
     });
 
+    // Auto-log a support case for this admin action (going-forward hook).
+    await createAdminActionCase({
+      userId: id,
+      title: 'Access extended',
+      detail: `Extended access by ${EXTEND_DAYS} days (Stripe), through ${newPeriodEnd}.`,
+      adminUserId: admin?.id,
+    });
+
     return NextResponse.json({ ok: true, method: 'stripe', newPeriodEnd });
   }
 
@@ -79,6 +88,14 @@ export async function POST(request, { params }) {
     newRenewalDate: data.renewaldate,
     adminEmail: admin?.email,
     adminId: admin?.id,
+  });
+
+  // Auto-log a support case for this admin action (going-forward hook).
+  await createAdminActionCase({
+    userId: id,
+    title: 'Access extended',
+    detail: `Extended access by ${EXTEND_DAYS} days, through ${data.renewaldate}.`,
+    adminUserId: admin?.id,
   });
 
   return NextResponse.json({ ok: true, method: 'db', newRenewalDate: data.renewaldate });

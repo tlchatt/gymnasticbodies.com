@@ -3,6 +3,7 @@ import { requireAdmin } from '@/lib/adminAuth';
 import { getUserWithId, queryUserSetting } from '@/lib/userSettings';
 import { stripe } from '@/lib/stripeServerFunction';
 import { logger } from '@/lib/logger';
+import { createAdminActionCase } from '@/lib/adminSubscription';
 
 // Issues a Stripe refund against a specific charge that belongs to this user.
 // Full or partial. Auth.net / non-Stripe users have no refundable charges here
@@ -73,6 +74,15 @@ export async function POST(request, { params }) {
       refundId: refund.id,
       adminEmail: admin?.email,
       adminId: admin?.id,
+    });
+
+    // Auto-log a support case for this admin action (going-forward hook).
+    const refundLabel = `${(refundedAmount / 100).toFixed(2)} ${String(charge.currency ?? '').toUpperCase()}`.trim();
+    await createAdminActionCase({
+      userId: id,
+      title: 'Refund issued',
+      detail: `Refunded ${refundLabel} on charge ${chargeId} (refund ${refund.id})${reason ? ` — ${reason}` : ''}.`,
+      adminUserId: admin?.id,
     });
 
     return NextResponse.json({ ok: true, refundId: refund.id, amount: refundedAmount, currency: charge.currency });

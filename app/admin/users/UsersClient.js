@@ -281,7 +281,7 @@ export default function UsersClient() {
                 </span>
                 <span className={s.subStatus}>
                   {u.settingStatus
-                    ? <span className={u.settingStatus === 'active' ? s.subActive : s.subInactive}>{u.settingStatus}</span>
+                    ? <span className={u.settingStatus === 'Active' || u.settingStatus === 'Trial' ? s.subActive : s.subInactive}>{u.settingStatus}</span>
                     : <span className={s.subNone}>—</span>
                   }
                   {u.trial && <span className={s.trialBadge}>trial</span>}

@@ -3,6 +3,7 @@ import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index.ts';
 import { user, user_setting } from '@/Drizzle/db/schema';
 import { and, eq, ilike, or, desc } from 'drizzle-orm';
+import { subscriptionStatusLabel } from '@/lib/subscription';
 
 export async function GET(request) {
   const { error } = await requireAdmin();
@@ -26,7 +27,8 @@ export async function GET(request) {
       migrationType: user.migrationType,
       customerSegment: user.customerSegment,
       createdAt: user.createdAt,
-      settingStatus: user_setting.status,
+      settingId: user_setting.id,
+      settingData: user_setting.data,
       stripeCustomerId: user_setting.stripeCustomerId,
       stripeSubscriptionId: user_setting.stripeSubscriptionId,
       trial: user_setting.trial,
@@ -43,11 +45,31 @@ export async function GET(request) {
 
   // Deduplicate in case a user has multiple subscription settings
   const seen = new Set();
-  const users = rows.filter((r) => {
-    if (seen.has(r.id)) return false;
-    seen.add(r.id);
-    return true;
-  });
+  const users = rows
+    .filter((r) => {
+      if (seen.has(r.id)) return false;
+      seen.add(r.id);
+      return true;
+    })
+    .map((r) => {
+      const { settingId, settingData, ...rest } = r;
+      // Derive Active/Expired from the expiration date in user_setting.data
+      // (JSON TEXT column — JSON.parse it, never ->>), NOT the raw
+      // user_setting.status string, which is set unreliably by imports/grants.
+      // No live Stripe call in the list: the classifier self-heals Stripe users'
+      // renewaldate, so the future-date test is sufficient here. Users with no
+      // subscription setting row keep the '—' (null) display.
+      let settingStatus = null;
+      if (settingId != null) {
+        let renewaldate = null;
+        try {
+          const parsed = typeof settingData === 'string' ? JSON.parse(settingData || '{}') : (settingData ?? {});
+          renewaldate = parsed?.renewaldate ?? parsed?.nextPaymentDate ?? null;
+        } catch { renewaldate = null; }
+        settingStatus = subscriptionStatusLabel({ renewaldate });
+      }
+      return { ...rest, settingStatus };
+    });
 
   return NextResponse.json({ users, total: users.length });
 }
