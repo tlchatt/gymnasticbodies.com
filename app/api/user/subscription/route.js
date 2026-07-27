@@ -41,23 +41,20 @@ export async function POST(request) {//when subscription webhook is triggered ->
             let customerId, impInfo, userInNeon
             console.log("password in registerWPass:", password)
 
-            // A manually-granted future renewaldate (e.g. via admin grant-access, or a
-            // direct indefinite-access override) is an administrative decision. Without
-            // this check, every legacy-AWS login re-syncs subscription data from the
-            // user's real (possibly dead/never-paid) Authorize.net profile and silently
-            // overwrites that grant back to "N/A" on the very next login.
+            // This branch fires on EVERY legacy-AWS login (my. loginActions.js). Its
+            // only remaining job for a member who already has a Neon subscription
+            // record is returning that record — the Auth.net "resync" below is
+            // first-login SEEDING only. From 2026-03 to 2026-07-27 it also ran on
+            // every subsequent login, overwriting the row with the member's (usually
+            // long-dead) Auth.net profile: Stripe ids nulled, renewaldate reset to
+            // N/A → 22 paying Stripe renewals silently reverted, admin grants eaten.
+            // Active ARB members don't need the login-time refresh either: the daily
+            // /api/cronJobs maintains their state, and the classifier treats
+            // authorize_subscription_id as presence-only.
             let existingUser = await getUserWithEmail(username)
             let existingSetting = existingUser?.id ? await queryUserSetting(existingUser.id, "subscription") : null
-            let existingRenewalDate = null
-            try {
-                let raw = typeof existingSetting?.data === 'string' ? JSON.parse(existingSetting.data) : existingSetting?.data
-                let parsed = raw?.renewaldate && raw.renewaldate !== 'N/A' ? new Date(raw.renewaldate) : null
-                existingRenewalDate = parsed && !isNaN(parsed) ? parsed : null
-            } catch (_) {}
-            let hasManualGrant = existingRenewalDate && (existingRenewalDate.getTime() - Date.now()) > 90 * 24 * 60 * 60 * 1000
 
-            if (hasManualGrant) {
-                console.log("registerWPass: manual grant in effect through", existingRenewalDate, "— skipping Authorize.net resync for", username)
+            if (existingSetting) {
                 dbUser = existingUser
                 userSetting = existingSetting
             } else {
