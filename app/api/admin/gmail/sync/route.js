@@ -16,11 +16,22 @@ function isInternalSender(email) {
   return INTERNAL_DOMAINS.includes(domain);
 }
 
-// Allow Vercel cron to call this route with CRON_SECRET header
+// Allow Vercel cron to call this route with CRON_SECRET.
+// Vercel cron invocations send `Authorization: Bearer <CRON_SECRET>`; manual/CLI
+// callers may use the `x-cron-secret` header.
 function isCronRequest(req) {
   const secret = process.env.CRON_SECRET;
   if (!secret) return false;
-  return req.headers.get('x-cron-secret') === secret;
+  if (req.headers.get('x-cron-secret') === secret) return true;
+  return req.headers.get('authorization') === `Bearer ${secret}`;
+}
+
+// Automated non-customer mail that would otherwise become tickets now that the
+// query includes direct/spam mail: group-moderation reports, bounce daemons.
+function isAutomatedNoise(msg) {
+  if (/^moderator'?s spam report/i.test(msg.subject ?? '')) return true;
+  if (/mailer-daemon|postmaster@/i.test(msg.fromEmail ?? '')) return true;
+  return false;
 }
 
 // Check if this inbound email is a reply to an outbound email we sent.
@@ -91,7 +102,20 @@ export async function POST(request) {
     const { error } = await requireAdmin();
     if (error) return error;
   }
+  return runSync();
+}
 
+// Vercel cron jobs invoke their path with GET — the previous POST-only export meant
+// the hourly cron 405'd on every run and never reached the handler. Cron-only: no
+// admin-session fallback on GET.
+export async function GET(request) {
+  if (!isCronRequest(request)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  return runSync();
+}
+
+async function runSync() {
   try {
     const [latest] = await db
       .select({ receivedAt: support_emails.receivedAt })
@@ -108,13 +132,31 @@ export async function POST(request) {
     let inserted = 0;
     let skipped = 0;
 
+    // Google Groups delivers the same email as multiple Gmail messages (distinct
+    // gmail ids — e.g. an Inbox copy and a Spam copy). Dedup within this run by the
+    // RFC Message-ID header, which is identical across copies but distinct for
+    // genuine follow-up emails.
+    const seenRfcIds = new Set();
+
     for (const raw of rawMessages) {
       const gmailMessageId = raw.id;
+
+      const rfcId = (raw.payload?.headers ?? []).find(
+        (h) => h.name.toLowerCase() === 'message-id'
+      )?.value;
+      if (rfcId) {
+        if (seenRfcIds.has(rfcId)) { skipped++; continue; }
+        seenRfcIds.add(rfcId);
+      }
+
       const parsed = parseDigest(raw);
 
       for (const msg of parsed) {
         // Skip internal staff replies (e.g. luke@gymnasticbodies.com)
         if (isInternalSender(msg.fromEmail)) { skipped++; continue; }
+
+        // Skip automated group-moderation / bounce mail
+        if (isAutomatedNoise(msg)) { skipped++; continue; }
 
         const syntheticId = `${gmailMessageId}_${Buffer.from(msg.fromEmail).toString('base64').slice(0, 8)}`;
 
