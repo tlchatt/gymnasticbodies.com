@@ -175,7 +175,7 @@ async function runSync() {
         const isSupportReply = outboundMatch?.type === 'support';
 
         // Only auto-create a case for replies to support outbound emails
-        const caseId = isSupportReply ? await upsertCase({
+        let caseId = isSupportReply ? await upsertCase({
           userId: user?.id ?? null,
           fromEmail: msg.fromEmail,
           fromName: msg.fromName || null,
@@ -183,6 +183,34 @@ async function runSync() {
           isOutboundResponse: true,
           campaign: outboundMatch.campaign ?? null,
         }) : null;
+
+        // No outbound match: thread the message onto the sender's existing case.
+        // An open/pending/reopened case just gets the email linked; a case resolved
+        // within the last 60 days flips to 'reopened' (displayed "Reopened (replied)")
+        // — a member replying after we resolved means it isn't resolved. Older
+        // resolved/closed cases stay closed (new topic).
+        if (!caseId) {
+          const [recentCase] = await db
+            .select({ id: support_cases.id, status: support_cases.status, resolvedAt: support_cases.resolvedAt })
+            .from(support_cases)
+            .where(eq(support_cases.fromEmail, msg.fromEmail))
+            .orderBy(desc(support_cases.createdAt))
+            .limit(1);
+          if (recentCase) {
+            if (['open', 'pending', 'reopened'].includes(recentCase.status)) {
+              caseId = recentCase.id;
+            } else if (recentCase.status === 'resolved') {
+              const resolvedAt = recentCase.resolvedAt ? new Date(recentCase.resolvedAt) : null;
+              const withinWindow = resolvedAt && (Date.now() - resolvedAt.getTime()) < 60 * 24 * 60 * 60 * 1000;
+              if (withinWindow) {
+                await db.update(support_cases)
+                  .set({ status: 'reopened' })
+                  .where(eq(support_cases.id, recentCase.id));
+                caseId = recentCase.id;
+              }
+            }
+          }
+        }
 
         await db.insert(support_emails).values({
           gmailMessageId: syntheticId,

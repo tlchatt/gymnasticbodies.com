@@ -536,7 +536,7 @@ export default function SupportSection({ messages = [], cases = [], userId = nul
                             <span style={{ fontSize: '0.85rem', color: ACCENT, width: '14px' }}>{isActive ? '▾' : '▸'}</span>
                             <span style={{ flex: 1, color: '#222', fontSize: '0.95rem', fontWeight: 500 }}>{c.title}</span>
                             <Badge variant={c.priority}>{c.priority}</Badge>
-                            <Badge variant={c.status}>{c.status}</Badge>
+                            <Badge variant={c.status === 'reopened' ? 'open' : c.status}>{c.status === 'reopened' ? 'open' : c.status}</Badge>
                             <span style={{ color: '#999', fontSize: '0.78rem', whiteSpace: 'nowrap' }}>{fmtDate(c.createdAt)}</span>
                         </div>
 

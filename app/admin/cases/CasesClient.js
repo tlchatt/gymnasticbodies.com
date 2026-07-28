@@ -7,10 +7,17 @@ import s from './cases.module.css';
 const TABS = [
   { label: 'All',      value: '' },
   { label: 'Open',     value: 'open' },
+  { label: 'Reopened', value: 'reopened' },
   { label: 'Pending',  value: 'pending' },
   { label: 'Resolved', value: 'resolved' },
   { label: 'Closed',   value: 'closed' },
 ];
+
+// Display label for a case status — 'reopened' reads "Reopened (replied)":
+// the member replied after we resolved, so it needs another look.
+export function caseStatusLabel(status) {
+  return status === 'reopened' ? 'Reopened (replied)' : status;
+}
 
 function fmtDate(str) {
   if (!str) return '';
@@ -72,7 +79,7 @@ export default function CasesClient() {
               </span>
 
               <span className={s.rowDate}>{fmtDate(c.createdAt)}</span>
-              <Badge variant={c.status}>{c.status}</Badge>
+              <Badge variant={c.status}>{caseStatusLabel(c.status)}</Badge>
               <Badge variant={c.priority}>{c.priority}</Badge>
             </Link>
           ))}

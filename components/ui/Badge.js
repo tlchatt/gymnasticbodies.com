@@ -22,6 +22,7 @@ const CLASS_MAP = {
   closed:   s.closed,
   pending:  s.pending,
   resolved: s.resolved,
+  reopened: s.high,
   // Migration type (current/noncurrent)
   current:    s.current,
   noncurrent: s.noncurrent,

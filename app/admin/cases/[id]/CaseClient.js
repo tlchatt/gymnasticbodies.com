@@ -243,6 +243,7 @@ export default function CaseClient({ data: initial }) {
                   onChange={(e) => setCaseData((c) => ({ ...c, status: e.target.value }))}
                 >
                   <option value="open">Open</option>
+                  <option value="reopened">Reopened (replied)</option>
                   <option value="pending">Pending</option>
                   <option value="resolved">Resolved</option>
                   <option value="closed">Closed</option>
