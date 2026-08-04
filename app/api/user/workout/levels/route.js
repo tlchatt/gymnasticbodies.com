@@ -1,7 +1,9 @@
 /**
  * /api/user/workout/levels — Neon replacement for AWS Guided-Plans
- * (/myschedule/levels/*). Schedule from the static level_plans catalog
- * (data/workout/levelSchedules.json); Program items hydrated via the shared curriculum
+ * (/myschedule/levels/*). Schedule from the user's own stored week when they have one
+ * (user_setting levels_schedule, seeded from AWS schedule_level_plans/schedule_classes),
+ * otherwise the static levelSchedules.json catalog for their level. Program items
+ * hydrated via the shared curriculum
  * (lib/curriculum.buildCourseView); per-user logged state from user_logs section 'levels'.
  *
  * GET ?userId=&level=&weekStart=YYYY-MM-DD   -> AWS-parity day-keyed weekly view:
@@ -15,6 +17,7 @@ import {
 } from "@/lib/workout";
 import { buildCourseView, isProgramId } from "@/lib/curriculum";
 import levelSchedules from "@/data/workout/levelSchedules.json";
+import byoWorkouts from "@/data/workout/byoWorkouts.json";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -23,6 +26,44 @@ export async function OPTIONS() { return corsOptions(); }
 const schedId = (level, dayIndex, classId) => Number(level) * 10000000 + dayIndex * 100000 + Number(classId);
 
 const LEVEL_NAMES = { 0: 'Beginner', 1: 'Intermediate One', 2: 'Intermediate Two', 3: 'Advanced One', 4: 'Advanced Two' };
+
+// classId -> display metadata, gathered from every level template plus the BYO class
+// catalog. A user's stored week holds bare classIds, so it is rehydrated through this.
+const CLASS_META = new Map();
+for (const lvl of Object.keys(levelSchedules)) {
+    for (const di of Object.keys(levelSchedules[lvl])) {
+        for (const it of levelSchedules[lvl][di]) {
+            if (!CLASS_META.has(Number(it.classId))) CLASS_META.set(Number(it.classId), it);
+        }
+    }
+}
+for (const w of byoWorkouts) {
+    const id = Number(w.classId);
+    if (id && !CLASS_META.has(id)) {
+        CLASS_META.set(id, {
+            classId: id, type: 'Class', className: w.className || '',
+            trainingType: w.category || '', mediaId: w.mediaId || '',
+            image: w.image || '', description: w.description || '',
+        });
+    }
+}
+
+// The week to render. AWS stored a per-user recurring template (dayIndex -> classes) and
+// let people edit it, so that is authoritative when present; levelSchedules.json is only
+// the starting point for users who never customised theirs.
+async function scheduleForUser(userId, level) {
+    const { data } = await readWorkoutState(userId, 'levels_schedule');
+    const days = data?.days;
+    if (!days || !Object.keys(days).length) return levelSchedules[level];
+    const out = {};
+    for (const di of Object.keys(days)) {
+        out[di] = (days[di] || []).map(id => CLASS_META.get(Number(id)) || {
+            classId: Number(id), type: isProgramId(Number(id)) ? 'Program' : 'Class',
+            className: `Class ${id}`, trainingType: '', mediaId: '', image: '', description: '',
+        });
+    }
+    return out;
+}
 
 // Logged classIds for a date from the user's 'levels' day-doc (best-effort across the
 // frontend's stored shape and our own).
@@ -56,7 +97,7 @@ export async function GET(request) {
             return corsJson({ error: 'valid level and weekStart=YYYY-MM-DD required' }, 400);
         }
         const dates = weekDatesFrom(weekStart);
-        const schedule = levelSchedules[level];
+        const schedule = await scheduleForUser(userId, level);
         const out = {};
         for (let i = 0; i < 7; i++) {
             const dayIndex = i + 1;
