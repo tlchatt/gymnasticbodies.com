@@ -86,9 +86,14 @@ export async function GET(request) {
         if (!userId) return corsJson({ error: 'userId required' }, 400);
 
         if (p.get('op') === 'lastViewed') {
+            // 0 means "no level chosen yet" — the legacy contract, and the frontend still
+            // guards on `lastLoginLevel > 0` before preselecting. Do NOT default to a real
+            // level here: it used to fall back to 2, which silently put a brand-new member
+            // on Intermediate Two, and it disagreed with /standing, which reports null for
+            // the same field on the same user.
             const { data } = await readWorkoutState(userId, 'workout_level');
-            const lvl = data?.lastViewedLevel ?? data?.levelId ?? 2;
-            return corsJson({ lastLoginLevel: Number(lvl) });
+            const lvl = data?.lastViewedLevel ?? data?.levelId ?? 0;
+            return corsJson({ lastLoginLevel: Number(lvl) || 0 });
         }
 
         const level = String(p.get('level'));

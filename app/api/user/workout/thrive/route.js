@@ -12,17 +12,16 @@
  * so progression over time is data-driven, matching the legacy behavior).
  *
  * GET  ?userId=&view=tasks[&date=]   -> [{usersTaskId, taskNo, description, image, isCompleted}]
- * GET  ?userId=&view=missed          -> { "YYYY-MM-DD": wasLogged, ... } for the missed-days dialog
  * GET  ?userId=&view=lessons         -> [{taskNo, description, detailedDesc, detailsVideo, lessonName, lessonVideo, lesson}]
  * GET  ?userId=&view=profile         -> { weight, height1, height2, units, beforeImg, beforeImgDate, currentImg, currentImgDate }
- * POST { userId, op, ... }           ops: permissions | log-tasks | missed-log | profile-save (multipart) | unlock | reset | reset-permissions
+ * POST { userId, op, ... }           ops: permissions | log-tasks | profile-save (multipart) | unlock | reset | reset-permissions
  *   (profile-save arrives as multipart/form-data: beforeImg, currentImg, myProfileRequest)
  */
 import { put } from '@vercel/blob';
 import {
-    corsJson, corsOptions, isValidIsoDate, addDaysIso,
+    corsJson, corsOptions, isValidIsoDate,
     readWorkoutState, writeWorkoutState,
-    readDayDoc, writeDayDoc, readDocsInRange,
+    readDayDoc, writeDayDoc,
 } from "@/lib/workout";
 import { db } from "@/Drizzle/index.ts";
 import { user_logs } from "@/Drizzle/db/schema";
@@ -42,8 +41,6 @@ const STARTER_TASK_IDS = [
 
 const todayIso = () => new Date().toISOString().slice(0, 10);
 
-// Days shown in the missed-days dialog (legacy AWS window length unknown).
-const MISSED_WINDOW_DAYS = 7;
 
 function activeTaskIds(state, dateIso) {
     return new Set((state?.permissions || [])
@@ -78,29 +75,6 @@ export async function GET(request) {
         if (view === 'tasks') {
             const date = isValidIsoDate(p.get('date')) ? p.get('date') : todayIso();
             return corsJson(await buildTasks(userId, date));
-        }
-
-        // Missed-days dialog: the recent window of Thrive days and whether each was
-        // logged. The frontend renders the keys with moment(day, 'YYYY-MM-DD') and posts
-        // back a comma list of the ones to fill in.
-        // NOTE: the legacy AWS window length was never captured, so this uses the 7 days
-        // before today, clipped to the user's first recorded Thrive day. An empty object
-        // renders "No days have been Logged yet", matching the legacy empty state.
-        if (view === 'missed') {
-            const today = todayIso();
-            const days = Array.from({ length: MISSED_WINDOW_DAYS }, (_, i) => addDaysIso(today, -(i + 1))).reverse();
-            const rows = await readDocsInRange(userId, 'thrive', days[0], today);
-            if (!rows.length) return corsJson({});
-            const loggedOn = new Set(rows
-                .filter(r => (r.data?.tasks || []).some(t => t.complete))
-                .map(r => r.userScheduleDate));
-            const earliest = rows.map(r => r.userScheduleDate).sort()[0];
-            const out = {};
-            for (const d of days) {
-                if (d < earliest) continue;          // before they started Thrive
-                out[d] = loggedOn.has(d);
-            }
-            return corsJson(out);
         }
 
         if (view === 'lessons') {
@@ -213,25 +187,6 @@ export async function POST(request) {
                 doc.tasks = [...byId.values()];
                 await writeDayDoc(userId, 'thrive', date, doc);
                 return corsJson(await buildTasks(userId, date));
-            }
-
-            case 'missed-log': {
-                // Backfill whole days the user forgot to log: mark every task that was
-                // active on that date complete. Only fills in — never un-logs a day.
-                const dates = String(json.days || '')
-                    .split(',').map(s => s.trim()).filter(isValidIsoDate);
-                if (!dates.length) return corsJson({ error: 'days required (comma-separated YYYY-MM-DD)' }, 400);
-                const { data: state } = await readWorkoutState(userId, 'thrive_state');
-                for (const d of dates) {
-                    const active = activeTaskIds(state, d);
-                    if (!active.size) continue;
-                    const doc = (await readDayDoc(userId, 'thrive', d)) || { tasks: [] };
-                    const byId = new Map((doc.tasks || []).map(t => [Number(t.taskId), t]));
-                    for (const id of active) byId.set(id, { taskId: id, complete: 1 });
-                    doc.tasks = [...byId.values()];
-                    await writeDayDoc(userId, 'thrive', d, doc);
-                }
-                return corsJson({ status: 200 });
             }
 
             case 'unlock': {
