@@ -29,6 +29,15 @@ const ALLOWED_EVENTS = new Set([
     // Course / workout data-load diagnostics (content spins, never populates).
     'my.course.error',
     'my.course.empty',
+    // Auth events (added 2026-08-04, AWS removal). my.login.success/failed now carry
+    // data.rail = 'neon' | 'aws' so the share of members still depending on AWS is
+    // measurable — that number is what says when AWS can actually be retired.
+    'my.auth.reset_password.success',
+    'my.auth.reset_password.failed',   // token rejected, mismatch, or server error
+    'my.auth.reset_link.requested',
+    'my.auth.reset_link.failed',
+    'my.auth.signup.failed',
+    'my.auth.session_expired',         // Interceptor saw a 401 with no rail left to retry
 ]);
 
 export async function POST(request) {
