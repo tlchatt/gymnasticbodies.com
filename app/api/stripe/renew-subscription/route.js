@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
@@ -56,6 +56,18 @@ export async function POST(request) {
                 updatedAt: new Date(),
             });
             return NextResponse.json({ success: true, token, userId: user.id, email: user.email, name: user.name });
+        }
+
+        // Live-Stripe duplicate guard — the Neon idempotency check above misses subs
+        // on a second customer record (or ones Neon never linked). Block instead of
+        // creating a parallel billing life; support resolves the mismatch.
+        const liveSub = await findActiveStripeSubByEmail(email);
+        if (liveSub) {
+            logger.warn('renewal.duplicate_stripe', { email, data: { existingSubscription: liveSub.id, status: liveSub.status } });
+            return NextResponse.json({
+                success: false,
+                message: 'This email already has an active membership in our billing system. Please contact support@gymnasticbodies.com and we will sort it out — do not pay again.',
+            }, { status: 409 });
         }
 
         // Reuse existing Stripe customer or create new one

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, stripe } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, stripe } from '@/lib/stripeServerFunction';
 import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
 import { logger } from '@/lib/logger';
@@ -31,6 +31,21 @@ export async function POST(request) {
             if (existingSetting?.stripeCustomerId) {
                 existingCustomerId = existingSetting.stripeCustomerId;
             }
+        }
+
+        // Live-Stripe duplicate guard — a second signup must never start a parallel
+        // billing life on a new customer record, even when Neon has no record of the
+        // first sub (that is exactly how members got double-billed).
+        const liveSub = await findActiveStripeSubByEmail(email);
+        if (liveSub) {
+            logger.warn('signup.duplicate_stripe', { email, data: { existingSubscription: liveSub.id, status: liveSub.status } });
+            return NextResponse.json({
+                existingCustomer: true,
+                message: 'This email already has an active membership. Please sign in, or contact support@gymnasticbodies.com if you think this is wrong.',
+                transaction: false,
+                customerCreated: false,
+                subscriptionCreated: false,
+            });
         }
 
         const trialDays = (trial === 'true' || trial === true) ? 7 : 0;
