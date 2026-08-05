@@ -279,6 +279,13 @@ export async function POST(request) {
             if (!Number.isFinite(dayIndex) || !classId) {
                 return corsJson({ error: 'dayIndex and classId required' }, 400);
             }
+            // A classId the catalog has never heard of would be stored verbatim and
+            // render as a junk "Class N" card on that member's week forever (real
+            // incident: classId 1 corrupted 3 members' schedules).
+            if (!CLASS_META.has(classId) && !isProgramId(classId)) {
+                logger.warn('workout.levels.invalid_class', { userId, op, classId, dayIndex });
+                return corsJson({ error: `unknown classId ${classId}` }, 400);
+            }
             const days = await readUserWeek(userId, level);
             const key = String(dayIndex);
             days[key] = days[key] || [];
@@ -352,6 +359,10 @@ export async function POST(request) {
                 .map(n => Number(String(n).trim())).filter(n => n >= 1 && n <= 7);
             if (!classId || !list.length) {
                 return corsJson({ error: 'classId and dayIndexes required' }, 400);
+            }
+            if (!CLASS_META.has(classId) && !isProgramId(classId)) {
+                logger.warn('workout.levels.invalid_class', { userId, op, classId, dayIndexes: list });
+                return corsJson({ error: `unknown classId ${classId}` }, 400);
             }
             const days = await readUserWeek(userId, level);
             for (const di of list) {
