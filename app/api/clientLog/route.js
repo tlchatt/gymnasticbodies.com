@@ -47,7 +47,7 @@ const ALLOWED_EVENTS = new Set([
     'my.calendar.refresh_failed',
     'my.courses.load_failed',
     'my.courses.choose_failed',
-    'my.admin.moved',         // Interceptor saw a 401 with no rail left to retry
+    'my.admin.moved',                  // my. admin screens now point at the app. admin panel
 ]);
 
 export async function POST(request) {
