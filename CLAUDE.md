@@ -164,6 +164,57 @@ node claudeTools/support.js sendOutboundSupportEmail \
 - All DB queries run directly against Neon — no HTTP auth needed
 - Replies are sent via SendGrid and update ticket status to `replied`
 
+## Legacy Password Migration (2026-08-03) — how members got Neon credentials
+
+Before this, only **839** of ~16,350 users had a password in Neon; everyone else authenticated
+against the legacy AWS app, which delegates identity to **Keap**. With AWS being switched off,
+those users would have been locked out. **16,057 of 16,357 (98.2%) now have a credential.**
+
+**The rule (permanent, owner-decided):** existing Neon credential → **never touched**. No
+credential → insert one. Priority order **Neon → live Keap → other sources**. The migration is
+**insert-only**; there is deliberately no UPDATE path, because overwriting could break a password
+somebody is actually using.
+
+| Source | Users |
+|---|---|
+| Pre-existing Neon credential (left alone) | 839 |
+| Live Keap (XML-RPC `DataService.query`, `Contact.Password` is plaintext) | 13,018 |
+| WordPress Infusionsoft mirror | 1,405 |
+| No source had one — need a reset at cutover | 300 |
+
+**The mirror is the useful discovery.** The legacy WP site ran **iMember360**, which kept a local
+copy of the Infusionsoft CRM in a table `_isContact` (EAV: `Id, meta_field, meta_value`), keyed on
+the **Keap contact id — which is identical to the AWS integer userId** — and holding **plaintext
+passwords**. 34,383 contacts, 33,965 with a password, validated 99.6% against live Keap. It is
+**entirely offline, so no rate limits**; prefer it over hammering Keap. Values are as of each
+contact's last sync (≈2021 for the purged cohort), so it is correctly the *last* resort.
+
+Tooling (all in `/var/www/Work/Gymfit/claudeTools/`, run from the monorepo root):
+
+```bash
+node claudeTools/extractIsContactMirror.js          # WP dump -> isContact_mirror.jsonl
+node claudeTools/migrateKeapPasswords.js            # dry run (default)
+node claudeTools/migrateKeapPasswords.js --calibrate        # measure Keap rate limits
+node claudeTools/migrateKeapPasswords.js --confirm          # live, Keap source
+node claudeTools/migrateKeapPasswords.js --use-mirror --confirm   # fall back to the mirror
+node claudeTools/migrateKeapPasswords.js --retry-errors --confirm # re-attempt rate-limit failures
+```
+
+Durable artifacts: `claudeTools/keap_migration_ledger.jsonl` (per-user outcome **and source**,
+append-only, makes runs resumable), `claudeTools/isContact_mirror.jsonl`,
+`claudeTools/users_email_map.jsonl` (email → awsUserId, needed by the workout seeder).
+
+Gotchas worth keeping:
+- **Keap returns untyped XML-RPC values** — `<value>secret</value>` with no `<string>` wrapper. A
+  parser that requires `<string>` silently reads every password as null.
+- **Keap throttles on sustained load, not bursts.** A 30-request probe shows zero 429s at
+  concurrency 15; a real run hit 3,876 rate-limited requests. Retry with Retry-After backoff.
+- **`account` has no unique constraint on `(user_id, provider_id)`** — only a PK on `id` and a
+  non-unique index on `user_id`. Any inserter must guard with `WHERE NOT EXISTS`, or duplicates
+  are possible and better-auth would pick between them nondeterministically.
+- For a `credential` row, better-auth expects **`account_id` == `user_id`**, and `updated_at` is
+  `NOT NULL` with no DB default (Drizzle papers over this via `$onUpdate`; raw SQL must set it).
+
 ## Architecture Overview
 
 This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user accounts, subscriptions, and workout logging. It uses the App Router.
@@ -179,7 +230,7 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 - **Library**: `better-auth` v1.4.6 (configured in `lib/auth.js`)
 - Session cookies using JWE encryption, 7-day cache, stored in the `session` table
-- Custom password hashing via `lib/password.js` (bcrypt + argon2)
+- Custom password hashing via `lib/password.js` — **argon2id only** (`@node-rs/argon2`, `m=65536, t=3, p=4, outputLen=32`). `lib/auth.js` wires `emailAndPassword.password.{hash,verify}` straight to it. bcrypt is imported in `app/api/authentication/route.js` but **never called** — anything writing a credential row must use these exact argon2 params or better-auth cannot verify it.
 - Admin plugin with a hard-coded admin user ID
 - Client helper: `lib/auth-client.js` (exports `authClient`)
 - Standard auth endpoints handled by `/api/auth/[...all]/route.js`; custom sign-in at `/api/authentication/route.js`
@@ -245,6 +296,16 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 - **Stripe is the only active payment channel.** Authorize.net is legacy-only (~19 remaining ARB users); do not write new Auth.net code.
 - **Duplicate guard** in `create-subscription/route.js` blocks re-registration only when the user already has an active `stripeSubscriptionId` in their `user_setting`. This is intentional — it's the only case that would cause a true conflict.
+- **KNOWN GAP — duplicate subscriptions across Stripe customers (2026-08-05).** The guard above
+  only checks `user_setting`; it never asks Stripe. If a signup/renewal creates a NEW Stripe
+  customer for an email that already has an active subscription on ANOTHER customer, nothing
+  stops it — Neon then tracks only the newest sub and the webhook can't match the old one
+  (`webhook.unmatched`). This double-billed two real members in Aug 2026
+  (tim@par5performance.com ~$100 refunded, willy23sd@yahoo.com $75 refunded — both fixed
+  2026-08-05, see `admin.billing_fix` in app_logs). **Before creating any subscription, the
+  routes should `stripe.customers.list({ email })` and reuse/block when an active sub exists.**
+  Design the exact behavior with the owner before implementing (payment-logic rule). Until then,
+  watch `webhook.unmatched` in app_logs — it's the tell.
 - **Lapsed/noncurrent users who hit `/subscribe` instead of `/renew`** will pass the guard and get a new 7-day trial at the standard rate. This is acceptable — the only difference vs `/renew` is they get a trial and lose their grandfathered historical pricing. Not a data integrity problem.
 - **`createAndModifyUserInNeon`** detects existing users and skips account creation, updating the existing `user_setting` record instead. No duplicate user rows are created.
 
@@ -312,6 +373,8 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 | `/api/admin/cases/[id]/link-email` | Link a support_email row to a case |
 | `/api/admin/outbound` | GET — list all outbound emails (joined with user name) |
 | `/api/admin/outbound/send` | POST — send + record outbound email(s); supports `dryRun: true` for preview |
+| `/api/admin/impersonate` | POST — issue a `my.` session for any email. Admin session OR `x-impersonation-secret` (`IMPERSONATION_SECRET`). Support uses it to see what a member sees; testing uses it to assume either rail without a password. Logs every issuance to `app_logs`. See `my.gymnasticbodies.com/CLAUDE.md` → Browser testing. |
+| `/api/user/workout/courses` | GET my-courses (derived from curriculum selections + logged work); POST `op=choose-my-courses` |
 
 All user/payment API routes return CORS headers (`Access-Control-Allow-Origin: *`).
 
