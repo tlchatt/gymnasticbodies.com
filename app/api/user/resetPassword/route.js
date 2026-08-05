@@ -8,7 +8,7 @@ import { logger } from "@/lib/logger";
 const CORS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Access-Control-Allow-Origin',
 }
 
 const fail = (error, status = 400) =>
