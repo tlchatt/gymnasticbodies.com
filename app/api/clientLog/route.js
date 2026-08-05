@@ -38,6 +38,16 @@ const ALLOWED_EVENTS = new Set([
     'my.auth.reset_link.failed',
     'my.auth.signup.failed',
     'my.auth.session_expired',         // Interceptor saw a 401 with no rail left to retry
+    // Schedule + course writes (added 2026-08-04). These are background writes behind an
+    // optimistic UI, so a failure is otherwise invisible until the next reload disagrees.
+    'my.calendar.move_failed',
+    'my.calendar.delete_failed',
+    'my.calendar.choose_level_failed',
+    'my.calendar.update_schedule_failed',
+    'my.calendar.refresh_failed',
+    'my.courses.load_failed',
+    'my.courses.choose_failed',
+    'my.admin.moved',         // Interceptor saw a 401 with no rail left to retry
 ]);
 
 export async function POST(request) {

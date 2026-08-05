@@ -39,7 +39,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
             let username = json?.email?.toLowerCase()
             json.email = username //lowercase email updated in json
             let customerId, impInfo, userInNeon
-            console.log("password in registerWPass:", password)
 
             // This branch fires on EVERY legacy-AWS login (my. loginActions.js). Its
             // only remaining job for a member who already has a Neon subscription
@@ -96,7 +95,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
                         strict: true
                     });
                 }
-                console.log("password in !isExistingUser:", password)
                 dbUser = await createAccountForUser(json)
             }
             console.log("dbUser after createAccountForUser:", dbUser)

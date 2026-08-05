@@ -1,0 +1,1012 @@
+{
+ "1": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59526,
+   "className": "Fundamentals Day 1",
+   "ordering": 2
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 3
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 4
+  }
+ ],
+ "2": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59526,
+   "className": "Fundamentals Day 1",
+   "ordering": 2
+  },
+  {
+   "classId": 59528,
+   "className": "Fundamentals Day 2",
+   "ordering": 3
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 4
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 5
+  }
+ ],
+ "3": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59526,
+   "className": "Fundamentals Day 1",
+   "ordering": 2
+  },
+  {
+   "classId": 59528,
+   "className": "Fundamentals Day 2",
+   "ordering": 3
+  },
+  {
+   "classId": 59530,
+   "className": "Fundamentals Day 3",
+   "ordering": 4
+  },
+  {
+   "classId": 59873,
+   "className": "Bands Elbow & Wrist",
+   "ordering": 5
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 6
+  }
+ ],
+ "4": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59526,
+   "className": "Fundamentals Day 1",
+   "ordering": 2
+  },
+  {
+   "classId": 59528,
+   "className": "Fundamentals Day 2",
+   "ordering": 3
+  },
+  {
+   "classId": 59530,
+   "className": "Fundamentals Day 3",
+   "ordering": 4
+  },
+  {
+   "classId": 59532,
+   "className": "Fundamentals Day 4",
+   "ordering": 5
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 6
+  },
+  {
+   "classId": 59286,
+   "className": "Restore Ankle/Knee",
+   "ordering": 7
+  }
+ ],
+ "5": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59534,
+   "className": "Fundamentals Day 5",
+   "ordering": 2
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 3
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 4
+  }
+ ],
+ "6": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59536,
+   "className": "Fundamentals Day 6",
+   "ordering": 2
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 3
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 4
+  }
+ ],
+ "7": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59536,
+   "className": "Fundamentals Day 6",
+   "ordering": 2
+  },
+  {
+   "classId": 59538,
+   "className": "Fundamentals Day 7",
+   "ordering": 3
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 4
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 5
+  }
+ ],
+ "8": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59536,
+   "className": "Fundamentals Day 6",
+   "ordering": 2
+  },
+  {
+   "classId": 59538,
+   "className": "Fundamentals Day 7",
+   "ordering": 3
+  },
+  {
+   "classId": 59540,
+   "className": "Fundamentals Day 8",
+   "ordering": 4
+  },
+  {
+   "classId": 59184,
+   "className": "Bands Ankle",
+   "ordering": 5
+  },
+  {
+   "classId": 59286,
+   "className": "Restore Ankle/Knee",
+   "ordering": 6
+  }
+ ],
+ "9": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59536,
+   "className": "Fundamentals Day 6",
+   "ordering": 2
+  },
+  {
+   "classId": 59538,
+   "className": "Fundamentals Day 7",
+   "ordering": 3
+  },
+  {
+   "classId": 59540,
+   "className": "Fundamentals Day 8",
+   "ordering": 4
+  },
+  {
+   "classId": 59542,
+   "className": "Fundamentals Day 9",
+   "ordering": 5
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 6
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 7
+  }
+ ],
+ "10": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59544,
+   "className": "Fundamentals Day 10",
+   "ordering": 2
+  },
+  {
+   "classId": 59889,
+   "className": "Bands Rotator Cuff",
+   "ordering": 3
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 4
+  }
+ ],
+ "11": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59546,
+   "className": "Fundamentals Day 11",
+   "ordering": 2
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 3
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 4
+  }
+ ],
+ "12": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59546,
+   "className": "Fundamentals Day 11",
+   "ordering": 2
+  },
+  {
+   "classId": 59548,
+   "className": "Fundamentals Day 12",
+   "ordering": 3
+  },
+  {
+   "classId": 59873,
+   "className": "Bands Elbow & Wrist",
+   "ordering": 4
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 5
+  }
+ ],
+ "13": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59546,
+   "className": "Fundamentals Day 11",
+   "ordering": 2
+  },
+  {
+   "classId": 59548,
+   "className": "Fundamentals Day 12",
+   "ordering": 3
+  },
+  {
+   "classId": 59550,
+   "className": "Fundamentals Day 13",
+   "ordering": 4
+  },
+  {
+   "classId": 59870,
+   "className": "Bands Chest & Scap",
+   "ordering": 5
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 6
+  }
+ ],
+ "14": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59546,
+   "className": "Fundamentals Day 11",
+   "ordering": 2
+  },
+  {
+   "classId": 59548,
+   "className": "Fundamentals Day 12",
+   "ordering": 3
+  },
+  {
+   "classId": 59550,
+   "className": "Fundamentals Day 13",
+   "ordering": 4
+  },
+  {
+   "classId": 59552,
+   "className": "Fundamentals Day 14",
+   "ordering": 5
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 6
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 7
+  }
+ ],
+ "15": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59554,
+   "className": "Fundamentals Day 15",
+   "ordering": 2
+  },
+  {
+   "classId": 59886,
+   "className": "Bands Rings Prep",
+   "ordering": 3
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 4
+  }
+ ],
+ "16": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59556,
+   "className": "Fundamentals Day 16",
+   "ordering": 2
+  },
+  {
+   "classId": 59870,
+   "className": "Bands Chest & Scap",
+   "ordering": 3
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 4
+  }
+ ],
+ "17": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59556,
+   "className": "Fundamentals Day 16",
+   "ordering": 2
+  },
+  {
+   "classId": 59558,
+   "className": "Fundamentals Day 17",
+   "ordering": 3
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 4
+  }
+ ],
+ "18": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59556,
+   "className": "Fundamentals Day 16",
+   "ordering": 2
+  },
+  {
+   "classId": 59558,
+   "className": "Fundamentals Day 17",
+   "ordering": 3
+  },
+  {
+   "classId": 59622,
+   "className": "Fundamentals Day 18",
+   "ordering": 4
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 5
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 6
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 7
+  }
+ ],
+ "19": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59556,
+   "className": "Fundamentals Day 16",
+   "ordering": 2
+  },
+  {
+   "classId": 59558,
+   "className": "Fundamentals Day 17",
+   "ordering": 3
+  },
+  {
+   "classId": 59622,
+   "className": "Fundamentals Day 18",
+   "ordering": 4
+  },
+  {
+   "classId": 59560,
+   "className": "Fundamentals Day 19",
+   "ordering": 5
+  },
+  {
+   "classId": 59184,
+   "className": "Bands Ankle",
+   "ordering": 6
+  },
+  {
+   "classId": 59286,
+   "className": "Restore Ankle/Knee",
+   "ordering": 7
+  }
+ ],
+ "20": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59562,
+   "className": "Fundamentals Day 20",
+   "ordering": 2
+  },
+  {
+   "classId": 59873,
+   "className": "Bands Elbow & Wrist",
+   "ordering": 3
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 4
+  }
+ ],
+ "21": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59921,
+   "className": "Beginner Bodyline",
+   "ordering": 2
+  },
+  {
+   "classId": 59870,
+   "className": "Bands Chest & Scap",
+   "ordering": 3
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 4
+  }
+ ],
+ "22": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59429,
+   "className": "Elements 1 Upper Body #1",
+   "ordering": 2
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 3
+  }
+ ],
+ "23": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59542,
+   "className": "Fundamentals Day 9",
+   "ordering": 2
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 3
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 4
+  }
+ ],
+ "24": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59431,
+   "className": "Elements 1 Lower/Core #1",
+   "ordering": 2
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 3
+  },
+  {
+   "classId": 59286,
+   "className": "Restore Ankle/Knee",
+   "ordering": 4
+  }
+ ],
+ "25": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59538,
+   "className": "Fundamentals Day 7",
+   "ordering": 2
+  },
+  {
+   "classId": 59873,
+   "className": "Bands Elbow & Wrist",
+   "ordering": 3
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 4
+  }
+ ],
+ "26": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59548,
+   "className": "Fundamentals Day 12",
+   "ordering": 2
+  },
+  {
+   "classId": 59558,
+   "className": "Fundamentals Day 17",
+   "ordering": 3
+  },
+  {
+   "classId": 59542,
+   "className": "Fundamentals Day 9",
+   "ordering": 4
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 5
+  },
+  {
+   "classId": 59870,
+   "className": "Bands Chest & Scap",
+   "ordering": 6
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 7
+  }
+ ],
+ "27": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59445,
+   "className": "Elements 1 Lower/Core #2",
+   "ordering": 2
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 3
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 4
+  }
+ ],
+ "28": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59548,
+   "className": "Fundamentals Day 12",
+   "ordering": 2
+  },
+  {
+   "classId": 59558,
+   "className": "Fundamentals Day 17",
+   "ordering": 3
+  },
+  {
+   "classId": 59542,
+   "className": "Fundamentals Day 9",
+   "ordering": 4
+  },
+  {
+   "classId": 59873,
+   "className": "Bands Elbow & Wrist",
+   "ordering": 5
+  },
+  {
+   "classId": 59889,
+   "className": "Bands Rotator Cuff",
+   "ordering": 6
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 7
+  }
+ ],
+ "29": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59435,
+   "className": "Elements 1 Upper Body #2",
+   "ordering": 2
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 3
+  }
+ ],
+ "30": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59186,
+   "className": "30 Minute Legs",
+   "ordering": 2
+  },
+  {
+   "classId": 59286,
+   "className": "Restore Ankle/Knee",
+   "ordering": 3
+  }
+ ],
+ "31": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59921,
+   "className": "Beginner Bodyline",
+   "ordering": 2
+  },
+  {
+   "classId": 59889,
+   "className": "Bands Rotator Cuff",
+   "ordering": 3
+  },
+  {
+   "classId": 59886,
+   "className": "Bands Rings Prep",
+   "ordering": 4
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 5
+  }
+ ],
+ "32": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59447,
+   "className": "Elements 1 Upper Body #3",
+   "ordering": 2
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 3
+  }
+ ],
+ "33": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59184,
+   "className": "Bands Ankle",
+   "ordering": 2
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 3
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 4
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 5
+  }
+ ],
+ "34": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59449,
+   "className": "Elements 1 Lower/Core #3",
+   "ordering": 2
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 3
+  }
+ ],
+ "35": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59877,
+   "className": "Bands Shoulder & Lats",
+   "ordering": 2
+  },
+  {
+   "classId": 59870,
+   "className": "Bands Chest & Scap",
+   "ordering": 3
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 4
+  }
+ ],
+ "36": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59921,
+   "className": "Beginner Bodyline",
+   "ordering": 2
+  },
+  {
+   "classId": 59180,
+   "className": "Core Sequence",
+   "ordering": 3
+  },
+  {
+   "classId": 59251,
+   "className": "Restore Thoracic",
+   "ordering": 4
+  }
+ ],
+ "37": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59447,
+   "className": "Elements 1 Upper Body #3",
+   "ordering": 2
+  },
+  {
+   "classId": 59242,
+   "className": "Restore Shoulder",
+   "ordering": 3
+  }
+ ],
+ "38": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59180,
+   "className": "Core Sequence",
+   "ordering": 2
+  },
+  {
+   "classId": 59886,
+   "className": "Bands Rings Prep",
+   "ordering": 3
+  },
+  {
+   "classId": 59873,
+   "className": "Bands Elbow & Wrist",
+   "ordering": 4
+  },
+  {
+   "classId": 59253,
+   "className": "Restore Scapula",
+   "ordering": 5
+  }
+ ],
+ "39": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59449,
+   "className": "Elements 1 Lower/Core #3",
+   "ordering": 2
+  },
+  {
+   "classId": 59259,
+   "className": "Restore Hips",
+   "ordering": 3
+  },
+  {
+   "classId": 59261,
+   "className": "Restore Quad",
+   "ordering": 4
+  }
+ ],
+ "40": [
+  {
+   "classId": 59600,
+   "className": "7-Minute Warm-Up",
+   "ordering": 1
+  },
+  {
+   "classId": 59752,
+   "className": "Total Body Conditioning",
+   "ordering": 2
+  },
+  {
+   "classId": 59263,
+   "className": "Restore Hamstring",
+   "ordering": 3
+  }
+ ]
+}
