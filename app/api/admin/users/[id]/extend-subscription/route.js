@@ -24,18 +24,51 @@ export async function POST(request, { params }) {
 
   // ── Stripe path ───────────────────────────────────────────────────────────
   if (setting.stripeSubscriptionId) {
-    const sub = await stripe.subscriptions.retrieve(setting.stripeSubscriptionId);
+    let newTrialEnd;
+    try {
+      const sub = await stripe.subscriptions.retrieve(setting.stripeSubscriptionId);
 
-    // Extend from the later of: current period end or right now
-    const base = Math.max(sub.current_period_end, Math.floor(Date.now() / 1000));
-    const newTrialEnd = base + EXTEND_DAYS * 24 * 60 * 60;
+      // On newer Stripe API versions current_period_end lives on the
+      // subscription item, not the subscription — read both. The old
+      // sub-level-only read produced NaN and broke every extension.
+      const periodEnd = Number(sub.current_period_end ?? sub.items?.data?.[0]?.current_period_end) || 0;
 
-    await stripe.subscriptions.update(setting.stripeSubscriptionId, {
-      trial_end: newTrialEnd,
-      proration_behavior: 'none',
-    });
+      // Extend from the later of: current period end or right now
+      const base = Math.max(periodEnd, Math.floor(Date.now() / 1000));
+      newTrialEnd = base + EXTEND_DAYS * 24 * 60 * 60;
+
+      await stripe.subscriptions.update(setting.stripeSubscriptionId, {
+        trial_end: newTrialEnd,
+        proration_behavior: 'none',
+      });
+    } catch (err) {
+      logger.error('admin.extend_subscription_failed', {
+        userId: id,
+        email: user.email,
+        stripeSubscriptionId: setting.stripeSubscriptionId,
+        error: err?.message,
+        adminEmail: admin?.email,
+        adminId: admin?.id,
+      });
+      return NextResponse.json(
+        { error: `Stripe error: ${err?.message ?? 'unknown'}` },
+        { status: 502 },
+      );
+    }
 
     const newPeriodEnd = new Date(newTrialEnd * 1000).toISOString();
+
+    // Keep the cached renewal date in sync so admin/member screens show the
+    // extension immediately (the classifier also trusts a future renewaldate).
+    let stripeData = setting.data;
+    if (typeof stripeData === 'string') {
+      try { stripeData = JSON.parse(stripeData); } catch { stripeData = {}; }
+    }
+    stripeData = stripeData ?? {};
+    stripeData.renewaldate = newPeriodEnd;
+    await db.update(user_setting)
+      .set({ data: stripeData })
+      .where(eq(user_setting.id, setting.id));
 
     logger.info('admin.extend_subscription', {
       userId: id,
