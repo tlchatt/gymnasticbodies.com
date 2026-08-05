@@ -7,6 +7,7 @@
  */
 import { getUserWithEmail } from "@/lib/userSettings";
 import { corsJson, corsOptions } from "@/lib/workout";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -15,10 +16,15 @@ export async function GET(request) {
         const email = request.nextUrl.searchParams.get('email');
         if (!email) return corsJson({ error: 'email required' }, 400);
         const u = await getUserWithEmail(String(email).trim().toLowerCase());
-        if (!u) return corsJson({ error: 'not found' }, 404);
+        if (!u) {
+            // A logged-in my. session that cannot resolve a Neon id gets NO workout data
+            // anywhere — this 404 is the earliest server-side sign of that member.
+            logger.warn('user.id.not_found', { email });
+            return corsJson({ error: 'not found' }, 404);
+        }
         return corsJson({ id: u.id, name: u.name });
     } catch (error) {
-        console.log('user/id GET error:', error);
+        logger.error('user.id.error', { email: request.nextUrl.searchParams.get('email'), error });
         return corsJson({ error: error.message }, 400);
     }
 }

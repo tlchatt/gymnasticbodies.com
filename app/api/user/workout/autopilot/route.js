@@ -17,6 +17,7 @@ import {
     readDayDoc, readWeekDocs, writeDayDoc, nextSlotId,
     PREVIOUS_DAY_SENTINEL, findPreviousDayDoc,
 } from "@/lib/workout";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -86,15 +87,17 @@ export async function GET(request) {
             dayView,
         });
     } catch (error) {
-        console.log('autopilot GET error:', error);
+        logger.error('workout.autopilot.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function POST(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, op, date } = json;
+        logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);
 
         if (op === 'set-level') {
@@ -261,7 +264,7 @@ export async function POST(request) {
                 return corsJson({ error: `unknown op: ${op}` }, 400);
         }
     } catch (error) {
-        console.log('autopilot POST error:', error);
+        logger.error('workout.autopilot.error', { ...logCtx, method: 'POST', error });
         return corsJson({ error: error.message }, 400);
     }
 }

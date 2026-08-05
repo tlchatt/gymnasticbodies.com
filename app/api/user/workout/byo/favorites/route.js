@@ -15,6 +15,7 @@ import {
     readDayDoc, writeDayDoc,
 } from "@/lib/workout";
 import { hydrateDay } from "../hydrate.js";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -25,7 +26,7 @@ export async function GET(request) {
         const { data } = await readWorkoutState(userId, 'byo_favorites');
         return corsJson(data?.favorites || []);
     } catch (error) {
-        console.log('byo favorites GET error:', error);
+        logger.error('workout.byo_favorites.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
@@ -38,9 +39,11 @@ function parseWorkoutIdList(workoutIdList) {
 }
 
 export async function POST(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, op } = json;
+        logCtx = { userId, op };
         if (!userId) return corsJson({ error: 'userId required' }, 400);
         const { data } = await readWorkoutState(userId, 'byo_favorites');
         const state = data || {};
@@ -81,15 +84,17 @@ export async function POST(request) {
         }
         return corsJson(favorite);
     } catch (error) {
-        console.log('byo favorites POST error:', error);
+        logger.error('workout.byo_favorites.error', { ...logCtx, method: 'POST', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function DELETE(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, favoriteId } = json;
+        logCtx = { userId };
         if (!userId || favoriteId === undefined) return corsJson({ error: 'userId and favoriteId required' }, 400);
         const { data } = await readWorkoutState(userId, 'byo_favorites');
         const state = data || {};
@@ -97,7 +102,7 @@ export async function DELETE(request) {
         await writeWorkoutState(userId, 'byo_favorites', state);
         return corsJson({ status: 200 });
     } catch (error) {
-        console.log('byo favorites DELETE error:', error);
+        logger.error('workout.byo_favorites.error', { ...logCtx, method: 'DELETE', error });
         return corsJson({ error: error.message }, 400);
     }
 }

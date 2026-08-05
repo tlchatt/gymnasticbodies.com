@@ -16,6 +16,7 @@ import {
     readWorkoutState, writeWorkoutState, readDayDoc, writeDayDoc,
 } from "@/lib/workout";
 import { buildCourseView, isProgramId } from "@/lib/curriculum";
+import { logger } from "@/lib/logger";
 import levelSchedules from "@/data/workout/levelSchedules.json";
 import byoWorkouts from "@/data/workout/byoWorkouts.json";
 import beginnerPlans from "@/data/workout/beginnerPlans.json";
@@ -211,17 +212,25 @@ export async function GET(request) {
             }
             out[dayKey] = dayOut;
         }
+        // A week with zero items across all 7 days renders as a blank Guided-Plans screen.
+        // The level templates always have items, so this only happens when the user's own
+        // stored week (levels_schedule) exists but is empty — the seed-gap failure mode.
+        if (!Object.values(out).some(d => d.length)) {
+            logger.warn('workout.levels.empty_week', { userId, level, weekStart });
+        }
         return corsJson(out);
     } catch (error) {
-        console.log('levels GET error:', error);
+        logger.error('workout.levels.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function POST(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, op } = json;
+        logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);
 
         if (op === 'choose-level') {
@@ -390,7 +399,7 @@ export async function POST(request) {
 
         return corsJson({ error: `unknown op: ${op}` }, 400);
     } catch (error) {
-        console.log('levels POST error:', error);
+        logger.error('workout.levels.error', { ...logCtx, method: 'POST', error });
         return corsJson({ error: error.message }, 400);
     }
 }

@@ -23,6 +23,7 @@ import {
 import curricula from "@/data/workout/programCurricula.json";
 import demoVideos from "@/data/workout/demoVideos.json";
 import programExercises from "@/data/workout/programExercises.json";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -174,15 +175,17 @@ export async function GET(request) {
         const body = await buildCourseView(userId, courseId, p.get('date'), p.get('section') === 'levels' ? 'levels' : 'byo');
         return corsJson({ body });
     } catch (error) {
-        console.log('byo program GET error:', error);
+        logger.error('workout.byo_program.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function PUT(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, op } = json;
+        logCtx = { userId, op };
         const courseId = String(json.courseId ?? json.workoutType);
         if (!userId || !op || !curricula[courseId]) return corsJson({ error: 'userId, op and valid courseId required' }, 400);
         const exerciseId = Number(json.exerciseId);
@@ -236,7 +239,7 @@ export async function PUT(request) {
                 return corsJson({ error: `unknown op: ${op}` }, 400);
         }
     } catch (error) {
-        console.log('byo program PUT error:', error);
+        logger.error('workout.byo_program.error', { ...logCtx, method: 'PUT', error });
         return corsJson({ error: error.message }, 400);
     }
 }

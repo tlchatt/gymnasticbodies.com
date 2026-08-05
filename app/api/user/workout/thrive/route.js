@@ -27,6 +27,7 @@ import { db } from "@/Drizzle/index.ts";
 import { user_logs } from "@/Drizzle/db/schema";
 import { eq, and } from 'drizzle-orm';
 import thriveDefs from "@/data/workout/thriveTasks.json";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -110,7 +111,7 @@ export async function GET(request) {
 
         return corsJson({ error: `unknown view: ${view}` }, 400);
     } catch (error) {
-        console.log('thrive GET error:', error);
+        logger.error('workout.thrive.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
@@ -126,6 +127,7 @@ async function uploadThriveImage(userId, file, kind) {
 }
 
 export async function POST(request) {
+    let logCtx = {};
     try {
         const contentType = request.headers.get('content-type') || '';
 
@@ -133,6 +135,7 @@ export async function POST(request) {
         if (contentType.includes('multipart/form-data')) {
             const form = await request.formData();
             const userId = form.get('userId') || request.nextUrl.searchParams.get('userId');
+            logCtx = { userId, op: 'profile-save' };
             if (!userId) return corsJson({ error: 'userId required' }, 400);
             const profileReq = JSON.parse(form.get('myProfileRequest') || '{}');
 
@@ -158,6 +161,7 @@ export async function POST(request) {
 
         const json = await request.json();
         const { userId, op } = json;
+        logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);
         const date = isValidIsoDate(json.date) ? json.date : todayIso();
 
@@ -225,20 +229,22 @@ export async function POST(request) {
                 return corsJson({ error: `unknown op: ${op}` }, 400);
         }
     } catch (error) {
-        console.log('thrive POST error:', error);
+        logger.error('workout.thrive.error', { ...logCtx, method: 'POST', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 // The frontend's reset uses the DELETE verb (/thrive/reset/users/{id}) — mirror it.
 export async function DELETE(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
+        logCtx = { userId: json.userId };
         if (!json.userId) return corsJson({ error: 'userId required' }, 400);
         await db.delete(user_logs).where(and(eq(user_logs.userId, json.userId), eq(user_logs.section, 'thrive')));
         return corsJson({ status: 200 });
     } catch (error) {
-        console.log('thrive DELETE error:', error);
+        logger.error('workout.thrive.error', { ...logCtx, method: 'DELETE', error });
         return corsJson({ error: error.message }, 400);
     }
 }

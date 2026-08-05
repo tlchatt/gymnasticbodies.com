@@ -49,6 +49,13 @@ const ALLOWED_EVENTS = new Set([
     'my.courses.load_failed',
     'my.courses.choose_failed',
     'my.admin.moved',                  // my. admin screens now point at the app. admin panel
+    // Cutover observability (added 2026-08-04). The Neon workout reads all fail soft on
+    // my. (canned/stale fallback data or a blank section, no error UI), so these are the
+    // only way to see members hitting broken screens. data.section says which read.
+    'my.workout.fetch_error',          // a Neon workout read failed (section/status in data)
+    'my.workout.empty',                // a read succeeded but returned a blank-rendering payload
+    'my.login.renewal_check_failed',   // renewalStatus check failed at login — paywalled user walks in
+    'my.auth.neon_id_missing',         // Neon UUID could not be resolved — every workout route will miss
 ]);
 
 export async function POST(request) {

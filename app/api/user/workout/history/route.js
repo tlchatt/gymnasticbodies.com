@@ -7,6 +7,7 @@
  *   -> { "2026-07-03": [{courseName, courseIcon, type, level, progression?}], ... }
  */
 import { corsJson, corsOptions, readDocsInRange } from "@/lib/workout";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -32,7 +33,7 @@ export async function GET(request) {
         }
         return corsJson(out);
     } catch (error) {
-        console.log('history GET error:', error);
+        logger.error('workout.history.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }

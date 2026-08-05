@@ -10,6 +10,7 @@
  * PUT { userId, levelId } -> persists a user-chosen level so defaults stick.
  */
 import { corsJson, corsOptions, readWorkoutState, writeWorkoutState } from "@/lib/workout";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -38,15 +39,17 @@ export async function GET(request) {
             lastViewedLevel: level?.lastViewedLevel ?? null,
         });
     } catch (error) {
-        console.log('standing GET error:', error);
+        logger.error('workout.standing.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function PUT(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, levelId } = json;
+        logCtx = { userId };
         if (!userId || levelId === undefined) return corsJson({ error: 'userId and levelId required' }, 400);
         const { data } = await readWorkoutState(userId, 'workout_level');
         await writeWorkoutState(userId, 'workout_level', {
@@ -56,7 +59,7 @@ export async function PUT(request) {
         });
         return corsJson({ status: 200 });
     } catch (error) {
-        console.log('standing PUT error:', error);
+        logger.error('workout.standing.error', { ...logCtx, method: 'PUT', error });
         return corsJson({ error: error.message }, 400);
     }
 }

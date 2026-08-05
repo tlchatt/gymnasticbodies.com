@@ -30,6 +30,7 @@ import {
 } from "@/lib/workout";
 import { PROGRAM_IDS, CLASS_BY_ID, emptyByoDay, itemType, hydrateDay } from "./hydrate.js";
 import builderCategories from "@/data/workout/byoBuilderCategories.json";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -85,15 +86,17 @@ export async function GET(request) {
 
         return corsJson(await weeklyView(userId, weekStart));
     } catch (error) {
-        console.log('byo GET error:', error);
+        logger.error('workout.byo.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function POST(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, op, date } = json;
+        logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);
         if (op !== 'copy-last-week' && !isValidIsoDate(date)) {
             return corsJson({ error: 'date=YYYY-MM-DD required' }, 400);
@@ -270,7 +273,7 @@ export async function POST(request) {
                 return corsJson({ error: `unknown op: ${op}` }, 400);
         }
     } catch (error) {
-        console.log('byo POST error:', error);
+        logger.error('workout.byo.error', { ...logCtx, method: 'POST', error });
         return corsJson({ error: error.message }, 400);
     }
 }

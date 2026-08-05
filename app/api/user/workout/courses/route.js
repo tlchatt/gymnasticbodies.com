@@ -18,6 +18,7 @@ import {
 } from "@/lib/workout";
 import { isProgramId } from "@/lib/curriculum";
 import programExercises from "@/data/workout/programExercises.json";
+import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -80,15 +81,17 @@ export async function GET(request) {
         out.sort((a, b) => String(b.lastLoggedDate || '').localeCompare(String(a.lastLoggedDate || '')));
         return corsJson(out);
     } catch (error) {
-        console.log('courses GET error:', error);
+        logger.error('workout.courses.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
         return corsJson({ error: error.message }, 400);
     }
 }
 
 export async function POST(request) {
+    let logCtx = {};
     try {
         const json = await request.json();
         const { userId, op } = json;
+        logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);
 
         if (op === 'choose-my-courses') {
@@ -102,7 +105,7 @@ export async function POST(request) {
 
         return corsJson({ error: `unknown op: ${op}` }, 400);
     } catch (error) {
-        console.log('courses POST error:', error);
+        logger.error('workout.courses.error', { ...logCtx, method: 'POST', error });
         return corsJson({ error: error.message }, 400);
     }
 }

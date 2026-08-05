@@ -2,10 +2,13 @@ import { auth } from "@/lib/auth"; // path to your auth file
 import { headers } from "next/headers"
 import bcrypt from 'bcrypt';
 import { hashPassword } from "@/lib/password";
+import { logger } from "@/lib/logger";
 export async function POST(request) {
+    let email;
     try {
         const json = await request.json()
-        console.log('signIn json', json)
+        email = json.username;
+        console.log('signIn json', json.username) // username only — never log the password
         //let p = await hashPassword(json.password)
         //console.log("password is:", p)
 
@@ -37,7 +40,7 @@ export async function POST(request) {
             // This endpoint requires session cookies.
             headers: await headers(),
         });
-        console.log('signIn data', data)
+        console.log('signIn data', data?.user?.id, data?.user?.email) // ids only — never log the session token
         /*
         let session = await auth.api.getSession({
             headers: await headers()
@@ -52,6 +55,10 @@ export async function POST(request) {
     }
     catch (error) {
         console.log("error is:", error)
+        // Neon is my.'s ONLY sign-in rail post-cutover — a failure here is a member who
+        // cannot get in at all. better-auth throws an APIError whose status distinguishes
+        // bad credentials (UNAUTHORIZED) from server trouble.
+        logger.warn('auth.signin_failed', { email, data: { status: error?.status ?? null, message: error?.message ?? String(error) } });
         return Response.json(error)
         // return new Response(`Webhook error: ${error.message}`, {
 
