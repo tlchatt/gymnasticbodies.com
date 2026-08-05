@@ -24,6 +24,16 @@ export async function GET(request) {
         let hasValidHistoricalData = false;
 
         const setting = await queryUserSetting(user.id, 'subscription');
+
+        // Legacy members authenticated against AWS until 2026-08-04, and the AWS sign-in
+        // path never performed this check — only the Neon fallback did. Making Neon the
+        // only rail therefore exposed the paywall to a cohort that had never met it, and
+        // long-standing/lifetime members were bounced to /renew on login within hours.
+        // Reporting the AWS identity lets the client preserve the behaviour each cohort
+        // actually had. This does NOT change needsRenewal itself, so /renew and every
+        // other caller are unaffected.
+        const hasAwsIdentity = /^\d+$/.test(String(setting?.awsCustomerId ?? '').trim());
+
         if (setting?.data) {
             try {
                 const data = JSON.parse(setting.data);
@@ -36,8 +46,14 @@ export async function GET(request) {
             } catch (_) {}
         }
 
-        logger.info('renewalStatus.check', { email, needsRenewal, migrationType: user.migrationType });
-        return NextResponse.json({ needsRenewal, price, term, hasValidHistoricalData, name: user.name ?? '' });
+        logger.info('renewalStatus.check', {
+            email, needsRenewal, migrationType: user.migrationType,
+            data: { hasAwsIdentity },
+        });
+        return NextResponse.json({
+            needsRenewal, price, term, hasValidHistoricalData,
+            name: user.name ?? '', hasAwsIdentity,
+        });
     } catch (err) {
         logger.error('renewalStatus.error', { email, error: err });
         return NextResponse.json({ needsRenewal: false });

@@ -15,6 +15,7 @@ const ALLOWED_EVENTS = new Set([
     'my.login.success',
     'my.login.failed',
     'my.login.renewal_redirect',
+    'my.login.renewal_skipped_legacy',  // legacy AWS identity — paywall suppressed, as before the cutover
     'my.renewal.landed',
     'my.renewal.auth_success',
     'my.renewal.auth_failed',
