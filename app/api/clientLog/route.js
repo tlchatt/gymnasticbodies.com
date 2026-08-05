@@ -54,6 +54,7 @@ const ALLOWED_EVENTS = new Set([
     // only way to see members hitting broken screens. data.section says which read.
     'my.workout.fetch_error',          // a Neon workout read failed (section/status in data)
     'my.workout.empty',                // a read succeeded but returned a blank-rendering payload
+    'my.workout.invalid_level',        // a session reached a levels fetch with a levelId outside 1-4
     'my.login.renewal_check_failed',   // renewalStatus check failed at login — paywalled user walks in
     'my.auth.neon_id_missing',         // Neon UUID could not be resolved — every workout route will miss
 ]);

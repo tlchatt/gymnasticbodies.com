@@ -181,10 +181,24 @@ export async function GET(request) {
             return corsJson(out);
         }
 
-        const level = String(p.get('level'));
+        const rawLevel = p.get('level');
+        let level = String(rawLevel);
         const weekStart = p.get('weekStart');
-        if (!levelSchedules[level] || !isValidIsoDate(weekStart)) {
-            return corsJson({ error: 'valid level and weekStart=YYYY-MM-DD required' }, 400);
+        if (!isValidIsoDate(weekStart)) {
+            return corsJson({ error: 'weekStart=YYYY-MM-DD required' }, 400);
+        }
+        if (!levelSchedules[level]) {
+            // Sessions arrive here with level values that name no weekly template:
+            // 0 ("no level chosen yet" sentinel), 5 (White Board slider "All" — an
+            // autopilot concept), and seeded AWS ids (9/10/11/99) that the frontend
+            // forwards when its userLevel/levelId disagree. None of these should 400 —
+            // most of these users have their own stored week (levels_schedule), which
+            // scheduleForUser serves regardless of level. Normalise: the user's
+            // lastViewedLevel when it names a template, else level 1.
+            logger.warn('workout.levels.invalid_level', { userId, level: rawLevel, weekStart });
+            const { data } = await readWorkoutState(userId, 'workout_level');
+            const lastViewed = String(Number(data?.lastViewedLevel));
+            level = levelSchedules[lastViewed] ? lastViewed : '1';
         }
         const dates = weekDatesFrom(weekStart);
         const schedule = await scheduleForUser(userId, level);
