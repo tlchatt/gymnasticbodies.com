@@ -96,7 +96,7 @@ async function buildDayItems(userId, level, dayIndex, isoDate, classIds) {
         const id = Number(rawId);
         const meta = CLASS_META.get(id);
         if (meta && meta.type === 'Program' && isProgramId(id)) {
-            const workout = await buildCourseView(userId, id, isoDate, 'levels');
+            const workout = await buildCourseView(userId, id, isoDate, 'levels', level);
             out.push({ scheduleId: schedId(level, dayIndex, id), classId: id, type: 'Program', dayIndex, workout });
         } else {
             out.push({
@@ -211,7 +211,7 @@ export async function GET(request) {
             const dayOut = [];
             for (const it of items) {
                 if (it.type === 'Program' && isProgramId(it.classId)) {
-                    const workout = await buildCourseView(userId, it.classId, dates[i], 'levels');
+                    const workout = await buildCourseView(userId, it.classId, dates[i], 'levels', level);
                     dayOut.push({ scheduleId: schedId(level, dayIndex, it.classId), classId: it.classId, type: 'Program', dayIndex, workout });
                 } else {
                     dayOut.push({
