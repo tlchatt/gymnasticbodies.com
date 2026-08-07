@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { getUserWithId, queryUserSetting } from '@/lib/userSettings';
-import { stripe } from '@/lib/stripeServerFunction';
+import { stripe, findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
 import { db } from '@/Drizzle/index.ts';
 import { user_setting } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
@@ -22,11 +22,30 @@ export async function POST(request, { params }) {
   const setting = await queryUserSetting(id, 'subscription');
   if (!setting) return NextResponse.json({ error: 'No subscription record found' }, { status: 404 });
 
+  // Which kind of credit does this member need? The two are NOT interchangeable:
+  //   paywalled member  -> renewaldate is what lets them back in
+  //   paying subscriber -> only trial_end delays the next charge; renewaldate does nothing,
+  //                        because their access comes from the live subscription
+  // Branching on the stored stripeSubscriptionId alone is not enough — a member can be
+  // billing on Stripe with nothing recorded in Neon (second customer record, or a sub the
+  // webhook never linked). That member would silently take the DB path and be told they
+  // got free time while Stripe kept charging them on schedule.
+  let stripeSubId = setting.stripeSubscriptionId;
+  if (!stripeSubId) {
+    const liveSub = await findActiveStripeSubByEmail(user.email);
+    if (liveSub) {
+      stripeSubId = liveSub.id;
+      logger.warn('admin.extend_unlinked_stripe_sub', {
+        userId: id, email: user.email, stripeSubscriptionId: liveSub.id, status: liveSub.status,
+      });
+    }
+  }
+
   // ── Stripe path ───────────────────────────────────────────────────────────
-  if (setting.stripeSubscriptionId) {
+  if (stripeSubId) {
     let newTrialEnd;
     try {
-      const sub = await stripe.subscriptions.retrieve(setting.stripeSubscriptionId);
+      const sub = await stripe.subscriptions.retrieve(stripeSubId);
 
       // On newer Stripe API versions current_period_end lives on the
       // subscription item, not the subscription — read both. The old
@@ -37,7 +56,7 @@ export async function POST(request, { params }) {
       const base = Math.max(periodEnd, Math.floor(Date.now() / 1000));
       newTrialEnd = base + EXTEND_DAYS * 24 * 60 * 60;
 
-      await stripe.subscriptions.update(setting.stripeSubscriptionId, {
+      await stripe.subscriptions.update(stripeSubId, {
         trial_end: newTrialEnd,
         proration_behavior: 'none',
       });
@@ -45,7 +64,7 @@ export async function POST(request, { params }) {
       logger.error('admin.extend_subscription_failed', {
         userId: id,
         email: user.email,
-        stripeSubscriptionId: setting.stripeSubscriptionId,
+        stripeSubscriptionId: stripeSubId,
         error: err?.message,
         adminEmail: admin?.email,
         adminId: admin?.id,
@@ -75,7 +94,7 @@ export async function POST(request, { params }) {
       email: user.email,
       method: 'stripe',
       days: EXTEND_DAYS,
-      stripeSubscriptionId: setting.stripeSubscriptionId,
+      stripeSubscriptionId: stripeSubId,
       newPeriodEnd,
       adminEmail: admin?.email,
       adminId: admin?.id,

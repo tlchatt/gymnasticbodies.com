@@ -164,6 +164,45 @@ node claudeTools/support.js sendOutboundSupportEmail \
 - All DB queries run directly against Neon — no HTTP auth needed
 - Replies are sent via SendGrid and update ticket status to `replied`
 
+## Crediting a member free time (2026-08-07) — ALWAYS use `claudeTools/credit.js`
+
+"Give them a month" means two different things, and using the wrong one produces a promise
+we do not keep. **Never hand-roll a credit.**
+
+| Member | What gates their access | What to change | What the other one does |
+|---|---|---|---|
+| **Paywalled** (no live subscription) | `user_setting` type `subscription` → `data.renewaldate`, read by the classifier | push `renewaldate` forward | — |
+| **Paying subscriber** (live Stripe sub) | the live subscription itself | push the subscription's **`trial_end`** | `renewaldate` does **nothing** — Stripe bills on its own schedule regardless |
+
+Setting `trial_end` on an *active* subscription flips its status to `trialing`. In this
+system **"trialing" usually means "credited", not "on a free trial"** — do not read a
+trialing status as a signup trial.
+
+```bash
+# from /var/www/Work/Gymfit — always dry-runs unless --confirm
+node claudeTools/credit.js --email=x@y.com --days=7                              # preview
+node claudeTools/credit.js --email=x@y.com --months=1 --confirm                  # apply
+node claudeTools/credit.js --emails-file=./list.txt --days=7 --confirm           # bulk
+node claudeTools/credit.js --email=x@y.com --days=7 --reason="course access bug" # traceable
+```
+
+The tool decides which path applies by asking **live Stripe**, not by reading
+`user_setting.stripeSubscriptionId`. That column is not trustworthy on its own: a member
+can be billing on Stripe with nothing recorded in Neon (a second customer record, or a
+subscription the webhook never linked back). Branching on it alone sends a paying member
+down the paywalled path, where they are told they got free time while Stripe keeps
+charging them on schedule. `/api/admin/users/[id]/extend-subscription` had that same bug
+and now falls back to `findActiveStripeSubByEmail` for the same reason.
+
+Every credit is logged — `admin.billing_credit` for a subscriber, `admin.grant_access` for
+a paywalled member — with before/after dates, so any credit can be traced or reversed.
+
+**What went wrong on 2026-08-07:** five paying members were told in writing that a week or
+a month had been added to their subscription when only `renewaldate` had been moved. Stripe
+would have charged all five on their normal dates. Fixed the same day by pushing `trial_end`
+on each. The correct mechanism was already in use (Tim Neumann's 2-month credit on
+2026-08-05 was done properly) — it just was not written down anywhere.
+
 ## Legacy Password Migration (2026-08-03) — how members got Neon credentials
 
 Before this, only **839** of ~16,350 users had a password in Neon; everyone else authenticated
