@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer, findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
@@ -58,6 +58,22 @@ export async function POST(request) {
                 updatedAt: new Date(),
             });
             return NextResponse.json({ success: true, token, userId: user.id, email: user.email, name: user.name });
+        }
+
+        // Live-Stripe duplicate guard. The check above only sees a subscription id Neon
+        // happens to have stored, which misses any sub living on a second Stripe customer
+        // or one that was never linked back — the gap that gave 13 members parallel
+        // subscriptions and $1,475 in refunds. create-subscription and renew-subscription
+        // got this guard in 208c74a; this route did not, and it is the one an offer
+        // campaign points thousands of legacy members at.
+        const liveSub = await findActiveStripeSubByEmail(email);
+        if (liveSub) {
+            logger.warn('offer.duplicate_stripe', { email, slug, data: { existingSubscription: liveSub.id, status: liveSub.status } });
+            return NextResponse.json({
+                success: false,
+                existingCustomer: true,
+                message: 'This email already has an active membership. Please sign in, or contact support@gymnasticbodies.com if you think this is wrong.',
+            }, { status: 409 });
         }
 
         let customerId = setting?.stripeCustomerId ?? null;
