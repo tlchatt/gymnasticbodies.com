@@ -164,6 +164,52 @@ node claudeTools/support.js sendOutboundSupportEmail \
 - All DB queries run directly against Neon — no HTTP auth needed
 - Replies are sent via SendGrid and update ticket status to `replied`
 
+## OPEN BUG (2026-08-07) — paid Stripe subscriptions that never reach Neon
+
+**Symptom:** a member pays, Stripe shows a live subscription, and Neon still has them
+`noncurrent/lapsed` with `renewaldate: 'N/A'` and no `stripeSubscriptionId`. The classifier
+then does its job on bad data and the paywall blocks a paying customer. They write in saying
+"I'm being asked to renew but I already paid" — and they are exactly right.
+
+**Confirmed cases** (both fixed by hand 2026-08-07, `admin.relink_stripe_sub` in `app_logs`):
+
+| Member | Paid | Stripe | Neon said | Open since |
+|---|---|---|---|---|
+| `djcooney@hotmail.com` | $75/yr, 2026-05-22 | active to 2027-05-22 | `noncurrent/lapsed`, no sub id | case #11, **Jun 1** |
+| `martinshanks@msn.com` | $179.88/yr, 2026-07-20 | active to 2027-07-20 | `noncurrent/lapsed`, no sub id | case #455 |
+
+**Two different failure paths, both real:**
+
+1. **Write-back never happened.** Shanks logged `renew.page_view` → `renew.form_submit` on
+   2026-07-20 and Stripe created the subscription that day, but there is **no
+   `renewal.success` event** and nothing was written to `user_setting`. Cooney paid
+   2026-05-22 and was still being served the renew page on 05-23.
+2. **Paid before the Neon account existed.** Shanks' Neon user was created **2026-08-04**,
+   two weeks *after* he paid — by the provisioning waves. There was no row to attach the
+   subscription to when the payment happened, and nothing reconciles it afterwards.
+
+**The tell is already logged: `webhook.unmatched` — 81 events, 2026-05-31 → 2026-08-06.**
+`invoice.payment_failed` 32, `invoice.payment_succeeded` 26, `customer.subscription.deleted` 23.
+Each one is a Stripe lifecycle event we could not attach to a Neon user. The 26 succeeded
+payments are the worrying ones — money taken, nothing recorded. **The log rows do not carry
+the email** (`email` is null on all 81), so the affected members cannot be identified from
+`app_logs` alone; they have to be found by walking live Stripe.
+
+**To find them all:** paginate every Stripe subscription with status `active`/`trialing`,
+resolve each customer's email, and compare against `user.migration_type`. A partial scan
+(first page only) already surfaced Shanks plus 7 `past_due` members. This has not been run
+in full.
+
+**To fix properly:**
+- make the webhook log the customer email on `webhook.unmatched` so victims are identifiable
+- have the renew/create/offer routes verify the Neon write-back succeeded, not assume it
+- add a reconciliation job: live Stripe subscription vs `user.migration_type`, flag drift
+- decide what should happen when a payment arrives for an email with no Neon account
+
+**Until then:** any member complaining "I paid but I'm asked to renew" should be checked
+against live Stripe by email before being treated as lapsed. Do not trust
+`user_setting.stripeSubscriptionId` — its absence means nothing.
+
 ## Crediting a member free time (2026-08-07) — ALWAYS use `claudeTools/credit.js`
 
 "Give them a month" means two different things, and using the wrong one produces a promise
