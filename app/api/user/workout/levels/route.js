@@ -83,8 +83,28 @@ async function readUserWeek(userId, level) {
     return days;
 }
 
-async function writeUserWeek(userId, days) {
+const populatedDayCount = days => Object.values(days || {}).filter(a => (a || []).length).length;
+const dayCountMap = days => {
+    const out = {};
+    for (const k of Object.keys(days || {})) out[k] = (days[k] || []).length;
+    return out;
+};
+
+async function writeUserWeek(userId, days, meta = {}) {
     const { data } = await readWorkoutState(userId, 'levels_schedule');
+    // A single schedule edit touches ONE day. If a write collapses a populated week by two
+    // or more training days at once, that is the day-loss failure mode — capture before/after
+    // so ANY path that drops days is visible in app_logs, not only the known sentinel-level
+    // route (which invalid_level_write already logs). See the schedule-wipe investigation.
+    const prevPop = populatedDayCount(data?.days);
+    const nextPop = populatedDayCount(days);
+    if (prevPop >= 2 && nextPop <= prevPop - 2) {
+        logger.warn('workout.levels.week_shrink', {
+            userId, op: meta.op, level: meta.level,
+            prevPopulatedDays: prevPop, nextPopulatedDays: nextPop,
+            prevCounts: dayCountMap(data?.days), nextCounts: dayCountMap(days),
+        });
+    }
     await writeWorkoutState(userId, 'levels_schedule', { ...(data || {}), days });
 }
 
