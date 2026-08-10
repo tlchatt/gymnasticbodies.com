@@ -9,26 +9,21 @@ import { ConnectingAirportsOutlined } from '@mui/icons-material';
 export async function POST(request) {
     let testUrl = process.env.NEXT_PUBLIC_API_URL
     let json = await request.json()
-    console.log("json in accountInformation post is:", json)
 
     let usersettingInfo = await queryUserSetting(json.userId, json.type)//get User Setting from neon db
-    console.log("usersettingInfo:", usersettingInfo)
 
     let postAWS = usersettingInfo?.postAWS
 
-    console.log("postAWS:",postAWS)
     let userEmail = usersettingInfo ? JSON.parse(usersettingInfo?.data).email : null//has email
     let customerId = usersettingInfo?.authorizeCustomerId
 
     if (!userEmail) {//if user doesn't have email in userSetting
         let userInfo = await getUserWithId(json.userId)//to get userInfo from neon db
-        console.log("userInfo:", userInfo)
         userEmail = userInfo ? userInfo?.email : null
         if (!userInfo) {
             userEmail = json?.username
         }
     }
-    console.log("userEmail:", userEmail)
 
     if (!customerId) {
         userEmail = userEmail?.toLowerCase()
@@ -36,7 +31,6 @@ export async function POST(request) {
         customerId = customerData?.result?.profile?.customerProfileId;
     }
 
-    console.log("customerId:", customerId)
     let transactionHistory, impInfo
 
     // let authorizeData = await fetchCustomerFromAuthorize(customerId)//getting customerInfo from Authorize 
@@ -61,15 +55,12 @@ export async function POST(request) {
     console.log("authorizeData is:", authorizeData)*/
 
     let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
-    console.log("authorizeData:",authorizeData)
     impInfo = await getFlagAndSubscriptionInfo(authorizeData)
-    console.log("impInfo:", impInfo)
     impInfo.postAWS = postAWS
 
     if (authorizeData?.result) {
         let paymentProfile = authorizeData?.result?.profile?.paymentProfiles?.[0]?.payment
         let transactionProfile = authorizeData?.transactionHistory?.data?.transactions
-        console.log("paymentProfile:",paymentProfile)
         return NextResponse.json({
             cardType: paymentProfile?.creditCard?.cardType ?? "N/A",
             cardNumber: paymentProfile?.creditCard?.cardNumber ?? "N/A",
@@ -95,7 +86,6 @@ export async function POST(request) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("response:", data);
                     // Process the response
                     return data;
                 })

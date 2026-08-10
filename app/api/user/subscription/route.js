@@ -28,7 +28,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
 
     let dbUser, isExistingUser, password, userSetting
     let json = await request.json()
-    console.log("POST /api/user/subscription, JSON:", json)
 
     try {
         if (json.reason == "checkUserInNeon") {// create an account on login (old user, not in neon)
@@ -60,16 +59,12 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 let customerData = await getAllDataFromFile(username)//getting authorizeCustomerData from file
                 customerId = customerData?.result?.profile?.customerProfileId;
 
-                console.log("customerId is:", customerId)
                 if (customerId) {
                     let authorizeData = await getAllCustomerDataFromAuthorize(customerId)
-                    console.log("authorizeData:", authorizeData)
 
                     impInfo = await getFlagAndSubscriptionInfo(authorizeData)
-                    console.log("impInfo:", impInfo)
 
                     dbUser = await createAndModifyUserInNeon(json, impInfo)
-                    console.log("dbUser after createAndModifyUserInNeon:", dbUser)
                 }else{
                     console.error("customer not in authorize. email:",username)
                     //check user in neon db using the userId
@@ -81,7 +76,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
         }
         else {
             dbUser = await getUserWithEmail(json.billing.email)
-            console.log("dbUser in subscription route after getUserWithEmail:", dbUser)
             isExistingUser = dbUser?.id ? true : false
 
             if (!isExistingUser) {
@@ -97,7 +91,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
                 }
                 dbUser = await createAccountForUser(json)
             }
-            console.log("dbUser after createAccountForUser:", dbUser)
             await updateUserSubscriptionStatus()
 
             if (!json?.password) {//only send email if password is not provided by the user 
@@ -105,8 +98,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
             }
         }
 
-        console.log("dbUser:", dbUser)
-        console.log("userSetting:",userSetting)
         // return new Response('OK', { status: 200, data: dbUser });
         return new Response(JSON.stringify({ message: 'OK', data: dbUser, settings:userSetting }), {
             status: 200,
@@ -131,7 +122,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
     }*/
 
     async function updateUserSubscriptionStatus() {
-        console.log("POST /api/user/subscription, updateUserSubscriptionStatus")
         let userSetting
         let settingsRecord = {
             type: 'subscription',
@@ -155,7 +145,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
             authorizeCustomerId: json?.authorizeCustomerId,
 
         }
-        console.log("settingsRecord:", settingsRecord)
         let matching = await queryUserSetting(settingsRecord.userId, settingsRecord.type)
 
         if (matching) {
@@ -164,12 +153,9 @@ export async function POST(request) {//when subscription webhook is triggered ->
             userSetting = await insertIntoUserSetting(settingsRecord)
         }
 
-        console.log(" userSetting:", userSetting)
-
         return userSetting
     }
     async function sendEmail() {
-        console.log("POST /api/user/subscription, sendEmail")
         let data = {}
         let emailSent
 
@@ -192,7 +178,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
             }
         }
 
-        console.log("emailSent:", emailSent)
         return emailSent;
     }
 

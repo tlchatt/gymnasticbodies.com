@@ -1,14 +1,11 @@
 import { auth } from "@/lib/auth"; // path to your auth file
 import { headers } from "next/headers"
 export async function GET(request) { /**Not Working So Far */
-       let headers =  await headers() 
-        console.log('getSession json', json)
-        console.log('getSession headers', headers)
+       let headers =  await headers()
     try {
         const session = await auth.api.getSession({
             headers: headers
         })
-        console.log('session data', session)
         return Response.json(data)
     }
     catch (error) {

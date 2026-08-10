@@ -15,10 +15,6 @@ export async function POST(request) {
 
         isExistingUser = dbUser?.id ? true : false
 
-        if (!isExistingUser) {
-            console.log("NOT FOUND IN isExistingUser: ", email)
-        }
-
         await updateUserSubscriptionStatus()
 
 
@@ -46,7 +42,6 @@ export async function POST(request) {
     }*/
 
     async function updateUserSubscriptionStatus() {
-        console.log("POST /api/user/subscription, updateUserSubscriptionStatus")
         let userSetting
         let settingsRecord = {
             authorizeCustomerId: json?.authorizeCustomerId,
@@ -57,8 +52,6 @@ export async function POST(request) {
         if (matching) {
             // console.log("inside matching")
             userSetting = await updateUserSetting(matching, settingsRecord)
-        } else {
-            console.log("NOT FOUND IN usersetting, ", email)
         }
 
         // console.log(" userSetting:", userSetting)

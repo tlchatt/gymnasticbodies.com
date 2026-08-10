@@ -5,7 +5,6 @@ import { ConnectingAirportsOutlined } from "@mui/icons-material";
 export async function POST(request) {//when subscription webhook is triggered -> status : on-hold / active / cancelled
   let json = await request.json()
   let formatUrls
-  console.log("POST /api/mediaBlob, JSON:", json)
 
   try {
     const { blobs } = await list({
@@ -14,7 +13,6 @@ export async function POST(request) {//when subscription webhook is triggered ->
       mode: 'expanded'
     });
     let imageUrls = blobs.map(blob => blob.url);
-    console.log("imageUrls:", imageUrls)
 
     //get the playlist mapping file data
     let map = playlistMap[0]

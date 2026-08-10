@@ -5,7 +5,6 @@ import { upsertUserLog } from "@/lib/userSettings";
 
 export async function POST(request) {
     const json = await request.json()
-    console.log("POST /api/user/log, JSON:", json)
     // Atomic upsert keyed (userId, section, userScheduleDate). Existing guided-plan
     // clients don't send `section`, so it defaults to 'levels' — their rows and
     // behavior are unchanged. New workout sections pass it explicitly.
@@ -55,7 +54,6 @@ export async function POST(request) {
 
 export async function DELETE(request) {
     const json = await request.json()
-    console.log("DELETE /api/user/log, JSON:", json)
     //check if user with userId has same userScheduleDate log
     //if yes, merge the incoming data in that log,
     //if no, create a new log
@@ -88,19 +86,16 @@ export async function DELETE(request) {
 export async function GET(request) {
     const searchParams = request.nextUrl.searchParams;
     const userData = Object.fromEntries(searchParams);
-    console.log("userData:", userData)
     if (userData?.userId) {
         // Section-scoped (default 'levels'): after AWS-history seeding a user can have
         // thousands of autopilot/byo/history/thrive rows — returning them all here would
         // bloat every guided-plan page load.
         let queryExisting = await db.select().from(user_logs)
             .where(and(eq(user_logs.userId, userData.userId), eq(user_logs.section, userData.section ?? 'levels')));
-        console.log("GET /api/user/log rows:", queryExisting.length)
-        
+
         // let queryExisting = await db.select().from(user_logs).where(eq(user_logs.userId, userData.userId)).where(eq(user_logs.userScheduleDate, userData?.userScheduleDate));
         // console.log("queryExisting:", queryExisting[0])
         let returnData = [{ logs: queryExisting }]
-        console.log("returnData:", returnData)
         return new Response(JSON.stringify(returnData), {
             status: 200,
             headers: {

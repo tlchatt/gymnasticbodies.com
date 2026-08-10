@@ -8,7 +8,6 @@ export async function POST(request) {
     try {
         const json = await request.json()
         email = json.username;
-        console.log('signIn json', json.username) // username only — never log the password
         //let p = await hashPassword(json.password)
         //console.log("password is:", p)
 
@@ -40,7 +39,6 @@ export async function POST(request) {
             // This endpoint requires session cookies.
             headers: await headers(),
         });
-        console.log('signIn data', data?.user?.id, data?.user?.email) // ids only — never log the session token
         /*
         let session = await auth.api.getSession({
             headers: await headers()
@@ -92,9 +90,7 @@ export async function POST(request) {
 // GET just to return 200 status for preflight to work
 export async function GET(request) {
     const url = new URL(request.url);
-    console.log("uel is:", url)
     const token = url.searchParams.get("authToken");
-    console.log("token is:", token)
     const session = await auth.api.getSession({
         headers: {
             Authorization: `Bearer ${token}`
@@ -105,7 +101,6 @@ export async function GET(request) {
         return new Response("Unauthorized", { status: 401 });
     }
     // User is now authenticated for this request
-    console.log("session is:", session)
     return new Response(`Hello, ${session.user.name}`);
     // return new Response('Success!', {
     //     status: 200,

@@ -8,7 +8,6 @@ import { getFlagAndSubscriptionInfo } from '@/lib/commonFunctions';
 
 export async function POST(request) {
     let json = await request.json()
-    console.log("json is:", json)
     let result = {}, customerSubscription = {}, allIds, transactionHistory, impInfo
     if (json.singleUser) {
         result = await getCustomerFromAuthorize(json.id);
@@ -26,30 +25,21 @@ export async function POST(request) {
             transactionHistory: transactionHistory,
             customerSubscription: customerSubscription
         }
-        console.log("result is:", result.data.messages.message)
-        console.log("customerSubscription is:", customerSubscription)
-        console.log("transactionHistory is:", transactionHistory)
         impInfo = await getFlagAndSubscriptionInfo(finalObj)
-        console.log("impInfo:", impInfo)
     } else {
         allIds = await getAllCustomerIdsFromAuthorize();
-        console.log("allIds:", allIds)
 
         let finalArray = [];
         for (const id of allIds) {
             const result = await getCustomerFromAuthorize(id);
-            console.log("result:", result)
 
             let transactionHistory, customerSubscription;
-            console.log("result?.data?.profile?.customerProfileId:", result?.data?.profile?.customerProfileId)
             if (result?.data?.profile?.customerProfileId) {
                 transactionHistory = await getTransactionHistory(result);
-                console.log("transactionHistory:", transactionHistory)
             }
 
             if (result?.data?.subscriptionIds) {
                 customerSubscription = await getCustomerSubscriptionFromAuthorize(result.data.subscriptionIds[0]);
-                console.log("customerSubscription:", customerSubscription)
                 // await storeInFile(customerSubscription)
             }
 
@@ -62,7 +52,6 @@ export async function POST(request) {
         await storeInFile(finalArray)
         // await getAllCustomerSubscriptionFromAuthorize(result.data.subscriptionIds[0]);
     }
-    console.log("result is:", result)
     if (result) {
         let billTo = result?.data?.profile?.paymentProfiles?.[0]?.billTo
         let paymentProfile = result?.data?.profile?.paymentProfiles?.[0]?.payment
@@ -73,14 +62,11 @@ export async function POST(request) {
         let hasSubscription = result?.data?.subscriptionIds ? true : false
         let transactionProfile = transactionHistory?.data?.transactions
         let subscriptionProfile = customerSubscription?.data?.subscription//would be {} if not subscription info present which would be case for old customers from woo commerce.
-        console.log("subscriptionProfile:", subscriptionProfile)
-        console.log("merchantCustomerId:", merchantCustomerId)
         let subscriptionStartDate = new Date(subscriptionProfile?.paymentSchedule?.startDate) ?? "N/A"
 
         let intervalLength = subscriptionProfile?.paymentSchedule?.interval?.length ?? "N/A";
         let intervalUnit = subscriptionProfile?.paymentSchedule?.interval?.unit ?? "N/A";
         let term = "N/A"
-        console.log("data is::", subscriptionProfile?.amount)
         if (subscriptionProfile?.amount == "0.02") {//225, 75 per month billed quarterly
             term = "quarterly"
         }
@@ -95,8 +81,6 @@ export async function POST(request) {
         } else {//we set it to always be month
             endDate = new Date(subscriptionStartDate.getFullYear(), subscriptionStartDate.getMonth() + intervalLength, subscriptionStartDate.getDate());
         }
-        console.log("date of :", endDate)
-        console.log("type of :", typeof endDate)
         return NextResponse.json({
             firstName: billTo?.firstName ?? "N/A",
             lastName: billTo?.lastName ?? "N/A",
@@ -247,7 +231,6 @@ export async function POST(request) {
                 jsonData.push(customerSubscription);
 
                 await fs.writeFile(filePath, JSON.stringify(customerSubscription, null, 2));
-                console.log("written")
             })
 
             return new Response(JSON.stringify({ message: 'Data successfully written' }), {
