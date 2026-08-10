@@ -261,7 +261,23 @@ export async function POST(request) {
         // ---- schedule editing -------------------------------------------------------
         // All three write the user's own week (user_setting levels_schedule), which is the
         // same row the weekly GET reads. AWS had no level dimension here and neither do we.
-        const level = json.level !== undefined && json.level !== null ? Number(json.level) : null;
+        //
+        // The level MUST be normalised before it reaches readUserWeek. Sessions send levels
+        // that name no weekly template — 0 ("none chosen"), 5 (White Board "All"), and the
+        // seeded AWS activity sentinels 9/10/11/99 that 5,192 members legitimately carry.
+        // For those, readUserWeek's template fallback yields {} and the very next write
+        // persists an EMPTY week, destroying every other day. Switching to Build Your Own
+        // or White Board and then touching the schedule was enough to do it.
+        // The GET path has normalised this since the invalid-level fix; the write path
+        // never did, which is the more damaging side to get wrong.
+        const rawPostLevel = json.level !== undefined && json.level !== null ? Number(json.level) : null;
+        let level = rawPostLevel;
+        if (!levelSchedules[String(level)]) {
+            const { data: lvlData } = await readWorkoutState(userId, 'workout_level');
+            const lastViewed = String(Number(lvlData?.lastViewedLevel));
+            level = levelSchedules[lastViewed] ? lastViewed : '1';
+            logger.warn('workout.levels.invalid_level_write', { userId, op, level: rawPostLevel, normalisedTo: level });
+        }
         const dayIndex = Number(json.dayIndex);
 
         if (op === 'clear-day') {
