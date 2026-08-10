@@ -207,8 +207,12 @@ const nextConfig = {
             value: "GET, POST, PUT, DELETE, OPTIONS",
           },
           {
+            // The legacy my. bundle sends a stray "Access-Control-Allow-Origin" REQUEST
+            // header, so the preflight must allow it or the browser blocks the POST
+            // (the "Network Error" that broke every password reset). Keep this even after
+            // the my. bundle stops sending it — old bundles stay cached in browsers/CDN.
             key: "Access-Control-Allow-Headers",
-            value: "Content-Type, Authorization",
+            value: "Content-Type, Authorization, Access-Control-Allow-Origin",
           },
         ],
       },
@@ -224,8 +228,10 @@ const nextConfig = {
             value: "GET, POST, PUT, DELETE, OPTIONS",
           },
           {
+            // Same reason as /api/user/resetPassword above: tolerate the legacy bundle's
+            // stray Access-Control-Allow-Origin request header on the preflight.
             key: "Access-Control-Allow-Headers",
-            value: "Content-Type, Authorization",
+            value: "Content-Type, Authorization, Access-Control-Allow-Origin",
           },
         ],
       },
