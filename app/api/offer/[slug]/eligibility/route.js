@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 import { db } from '@/Drizzle/index.ts';
 import { outbound_emails, user } from '@/Drizzle/db/schema';
 import { eq, and } from 'drizzle-orm';
-import offers from '@/data/content/offers.json';
+import { getOffer } from '@/lib/pricing';
 import { logger } from '@/lib/logger';
 
 export async function GET(request, { params }) {
   const { slug } = await params;
-  const offer = offers[slug];
-  if (!offer) {
+  const offer = await getOffer(slug);
+  if (!offer || offer.active === false) {
     return NextResponse.json({ eligible: false, reason: 'not_found' }, { status: 404 });
   }
 

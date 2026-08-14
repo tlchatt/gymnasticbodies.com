@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, stripe } from '@/lib/stripeServerFunction';
 import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
+import { getSubscribePricing } from '@/lib/pricing';
 import { logger } from '@/lib/logger';
 
 export async function POST(request) {
@@ -48,8 +49,16 @@ export async function POST(request) {
             });
         }
 
-        const trialDays = (trial === 'true' || trial === true) ? 7 : 0;
-        const priceId = process.env.STRIPE_PRICE_ID;
+        // Single source of truth — the one defined Subscribe rate + its Stripe Price. The URL
+        // amount/term are ignored for billing (they always were); the config drives the charge,
+        // the trial length, and the recorded price so nothing can render a stale number.
+        const subscribePricing = await getSubscribePricing();
+        const trialDays = (trial === 'true' || trial === true) ? (subscribePricing.trialDays ?? 7) : 0;
+        const priceId = subscribePricing.stripePriceId;
+        if (!priceId) {
+            logger.error('signup.no_price_id', { email });
+            return NextResponse.json({ message: 'Subscription is temporarily unavailable. Please contact support@gymnasticbodies.com.', transaction: false }, { status: 503 });
+        }
 
         // Reuse existing customer or create new one (idempotency key prevents dupes on concurrent requests)
         const name = email.split('@')[0];
@@ -84,8 +93,8 @@ export async function POST(request) {
             lastName: 'N/A',
             nextPaymentDate: new Date(Date.now() + (trialDays + 30) * 24 * 60 * 60 * 1000),
             oldestTransactionDate: new Date(),
-            matchedTerm: term ?? 'monthly',
-            price: amount ?? '75',
+            matchedTerm: subscribePricing.term ?? 'monthly',
+            price: String(subscribePricing.amount),
             phone: phone ?? 'N/A',
             country: country ?? 'N/A',
             AuthorizeNextImport: false,

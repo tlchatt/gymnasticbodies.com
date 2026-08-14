@@ -13,30 +13,13 @@
     "headlineLine3": "built for it.",
     "subtext": "Restore mobility. Build real strength. Tens of thousands of students — every age, every level — training the gymnastic way."
   },
-  "pricing": [
-    {
-      "id": "monthly",
-      "label": "Monthly",
-      "price": "$75",
-      "unit": "/ mo",
-      "sub": "after 7-day free trial",
-      "ctaHref": "/checkout?amount=75&term=monthly&trial=true",
-      "ctaText": "Start Free Trial →",
-      "note": "Cancel anytime · No commitment"
-    },
-    {
-      "id": "annual",
-      "label": "Annual",
-      "price": "$60",
-      "unit": "/ mo",
-      "sub": "$720 billed annually · after 7-day free trial",
-      "ctaHref": "/checkout?amount=720&term=annually&trial=true",
-      "ctaText": "Start Free Trial →",
-      "note": "Save $180/year vs monthly",
-      "featured": true,
-      "badge": "Best Value"
-    }
-  ],
+  "subscribeCard": {
+    "id": "monthly",
+    "label": "Membership",
+    "ctaText": "Start Free Trial →",
+    "note": "Cancel anytime · No commitment",
+    "featured": true
+  },
   "trust": [
     "🔒 Secure checkout",
     "✓ Cancel anytime",
@@ -57,7 +40,6 @@
   "cta": {
     "overline": "Start today",
     "title": "Your first 7 days are free.",
-    "ctaHref": "/checkout?amount=75&term=monthly&trial=true",
     "ctaText": "Get Started →",
     "note": "No credit card required to start",
     "watermark": "Go"

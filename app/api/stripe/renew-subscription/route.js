@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
+import { getRenewNoHistoryPricing } from '@/lib/pricing';
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
 import { randomBytes } from 'crypto';
@@ -36,9 +37,12 @@ export async function POST(request) {
         const setting = await queryUserSetting(user.id, 'subscription');
         const currentData = JSON.parse(setting?.data ?? '{}');
 
-        // Use override from frontend if provided, otherwise fall back to DB values, then $75/month
-        const rawPrice = overridePrice ?? (currentData.price && currentData.price !== 'N/A' ? currentData.price : '75');
-        const rawTerm = overrideTerm ?? (currentData.term && currentData.term !== 'N/A' ? currentData.term : 'monthly');
+        // Everyone renews at the ONE defined renew rate (historical rates nixed 2026-08-13). The
+        // server is authoritative — it does not trust a client-supplied price, so nobody can renew
+        // at a stale or forged rate. Monthly only.
+        const renewRate = await getRenewNoHistoryPricing();
+        const rawPrice = String(renewRate.amount);
+        const rawTerm = renewRate.term ?? 'monthly';
         const amountCents = Math.round(parseFloat(rawPrice) * 100);
         const { interval, intervalCount } = getStripeInterval(rawTerm);
 

@@ -1,5 +1,6 @@
 import { barlow, dm } from '@/lib/fonts';
 import { getSiteSettings } from '@/lib/siteSettings';
+import { getSubscribePricing, formatPrice } from '@/lib/pricing';
 import Nav from '@/components/Nav';
 import MarketingFooter from '@/components/marketing/MarketingFooter';
 import SubscribeTracker from './SubscribeTracker';
@@ -27,7 +28,19 @@ export const metadata = {
 
 export default async function Subscribe() {
     const { nav, footer } = await getSiteSettings('nav', 'footer');
-    const { hero, pricing, trust, features, cta } = content;
+    const { hero, subscribeCard, trust, features, cta } = content;
+
+    // The ONE defined Subscribe rate — every number on this page comes from here, never a literal.
+    const sp = await getSubscribePricing();
+    const checkoutHref = `/checkout?amount=${sp.amount}&term=${sp.term}&trial=true`;
+    const card = {
+        ...subscribeCard,
+        price: formatPrice(sp.amount),
+        unit: sp.term === 'monthly' ? '/ mo' : `/ ${sp.term}`,
+        sub: `after ${sp.trialDays}-day free trial`,
+        ctaHref: checkoutHref,
+    };
+    const ctaBlock = { ...cta, ctaHref: checkoutHref };
 
     return (
         <div className={`${s.page} ${barlow.variable} ${dm.variable}`}>
@@ -50,7 +63,7 @@ export default async function Subscribe() {
                     <p className={s.subtext}>{hero.subtext}</p>
 
                     <div className={s.pricingGrid}>
-                        {pricing.map(p => <PricingCard key={p.id} {...p} />)}
+                        <PricingCard {...card} />
                     </div>
 
                     <div className={s.trust}>
@@ -68,7 +81,7 @@ export default async function Subscribe() {
                 items={features.items}
             />
 
-            <BottomCta {...cta} />
+            <BottomCta {...ctaBlock} />
 
             <MarketingFooter footerData={footer || []} />
         </div>

@@ -5,21 +5,20 @@ import { outbound_emails, user } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
 import sgMail from '@sendgrid/mail';
 import { logger } from '@/lib/logger';
-import offers from '@/data/content/offers.json';
+import { getOffer, formatPrice } from '@/lib/pricing';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const OFFER_SLUG = 'legacy15';
-const offer = offers[OFFER_SLUG];
-const CAMPAIGN = offer.campaign;
 const TYPE = 'marketing';
 
 const SUBJECT = 'A special offer for GymnasticBodies legacy members';
+// Prices are {{variable}}-driven from the pricing config — never literals.
 const BODY = `Hi {{name}},
 
 As a former GymnasticBodies member, we would like to extend a special offer exclusively for you.
 
-For a limited time, you may rejoin for just $15/month - a massive savings off the regular rate of $50/month. This special rate is reserved solely for Legacy Members like yourself who were a part of the original GymnasticBodies community.
+For a limited time, you may rejoin for just {{offerPrice}}/month - a massive savings off the regular rate of {{offerRegularRate}}/month. This special rate is reserved solely for Legacy Members like yourself who were a part of the original GymnasticBodies community.
 
 Your exclusive offer link: {{offerLink}}
 
@@ -36,11 +35,24 @@ function render(template, vars) {
   return template
     .replace(/\{\{name\}\}/g, vars.name || '')
     .replace(/\{\{email\}\}/g, vars.email || '')
-    .replace(/\{\{offerLink\}\}/g, vars.offerLink || '');
+    .replace(/\{\{offerLink\}\}/g, vars.offerLink || '')
+    .replace(/\{\{offerPrice\}\}/g, vars.offerPrice || '')
+    .replace(/\{\{offerRegularRate\}\}/g, vars.offerRegularRate || '');
 }
 
 export async function GET(request) {
-  if (new Date() > new Date(offer.campaignEndDate)) {
+  const offer = await getOffer(OFFER_SLUG);
+  if (!offer || offer.active === false) {
+    logger.info('marketing_drip.offer_missing', { slug: OFFER_SLUG });
+    return NextResponse.json({ ok: true, skipped: 'offer not found' });
+  }
+  const CAMPAIGN = offer.campaign;
+  const priceVars = {
+    offerPrice: formatPrice(offer.amount),
+    offerRegularRate: formatPrice(offer.regularRate),
+  };
+
+  if (new Date() > new Date(offer.endDate)) {
     logger.info('marketing_drip.campaign_ended', { campaign: CAMPAIGN });
     return NextResponse.json({ ok: true, skipped: 'campaign ended' });
   }
@@ -73,7 +85,7 @@ export async function GET(request) {
     const email = row.email.trim().toLowerCase();
     const name = firstName(row.name);
     const offerLink = `https://app.gymnasticbodies.com/offer/${OFFER_SLUG}?email=${encodeURIComponent(email)}`;
-    const renderedBody = render(BODY, { name: name || '', email, offerLink });
+    const renderedBody = render(BODY, { name: name || '', email, offerLink, ...priceVars });
 
     try {
       await sgMail.send({

@@ -5,7 +5,7 @@ import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
 import { randomBytes } from 'crypto';
 import { logger } from '@/lib/logger';
-import offers from '@/data/content/offers.json';
+import { getOffer } from '@/lib/pricing';
 
 function generateSessionToken() {
     return randomBytes(16).toString('hex');
@@ -29,8 +29,8 @@ export async function POST(request) {
         let paymentMethodId, slug;
         ({ paymentMethodId, email, slug } = await request.json());
 
-        const offer = offers[slug];
-        if (!offer) {
+        const offer = await getOffer(slug);
+        if (!offer || offer.active === false) {
             return NextResponse.json({ success: false, message: 'Offer not found.' }, { status: 404 });
         }
 

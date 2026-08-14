@@ -3,26 +3,17 @@ import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useState, useEffect, useRef } from 'react';
 import s from './RenewalPortal.module.css';
 
-const STANDARD_TERM = 'monthly';
-const GRANDFATHERED_MONTHLY_PRICE = '50';
-
+// The rate to charge (and every number shown) comes straight from /api/user/renewalStatus,
+// which is config-driven: no-history members get the ONE defined renew rate, members with a
+// stored former rate are honored exactly. No thresholds, no caps, no choice — defined rates only.
 function parseBilling(price, term) {
     const amount = parseFloat(price);
-    if (isNaN(amount)) return { display: '$50', unit: '/ mo' };
+    if (isNaN(amount)) return { display: '', unit: '' };
     const t = term?.toLowerCase();
     const fmt = n => n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`;
     if (t === 'annually') return { display: fmt(amount), unit: '/ yr' };
     if (t === 'quarterly') return { display: fmt(amount), unit: '/ qtr' };
     return { display: fmt(amount), unit: '/ mo' };
-}
-
-function formatBillingLabel(price, term) {
-    const amount = parseFloat(price);
-    if (isNaN(amount)) return '$50 / month';
-    const t = term?.toLowerCase();
-    if (t === 'annually') return `$${amount.toFixed(2)} / year`;
-    if (t === 'quarterly') return `$${amount.toFixed(2)} / quarter`;
-    return `$${amount.toFixed(2)} / month`;
 }
 
 export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
@@ -33,10 +24,8 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const [historicalPrice, setHistoricalPrice] = useState(null);
-    const [historicalTerm, setHistoricalTerm] = useState(null);
-    const [hasValidHistoricalData, setHasValidHistoricalData] = useState(false);
-    const [billingChoice, setBillingChoice] = useState('historical');
+    const [renewPrice, setRenewPrice] = useState(null);
+    const [renewTerm, setRenewTerm] = useState(null);
     const submittingRef = useRef(false);
 
     const [userName, setUserName] = useState('');
@@ -57,10 +46,8 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
         fetch(`/api/user/renewalStatus?email=${encodeURIComponent(email)}`)
             .then(r => r.json())
             .then(data => {
-                if (data.price) setHistoricalPrice(data.price);
-                if (data.term) setHistoricalTerm(data.term);
-                setHasValidHistoricalData(!!data.hasValidHistoricalData);
-                if (!data.hasValidHistoricalData) setBillingChoice('standard_monthly');
+                if (data.price) setRenewPrice(data.price);
+                if (data.term) setRenewTerm(data.term);
                 if (data.name) {
                     setUserName(data.name);
                     setSupportName(data.name);
@@ -70,34 +57,9 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
             .catch(() => {});
     }, [email]);
 
-    const isMonthlyTerm = historicalTerm?.toLowerCase() === 'monthly';
-
-    const historicalMonthlyEquivalent = (() => {
-        const amount = parseFloat(historicalPrice);
-        if (isNaN(amount)) return 0;
-        const t = historicalTerm?.toLowerCase();
-        if (t === 'annually') return amount / 12;
-        if (t === 'quarterly') return amount / 3;
-        return amount;
-    })();
-    const historicalAboveThreshold = historicalMonthlyEquivalent > parseFloat(GRANDFATHERED_MONTHLY_PRICE);
-
-    let selectedPrice, selectedTerm;
-    if (!hasValidHistoricalData) {
-        selectedPrice = GRANDFATHERED_MONTHLY_PRICE;
-        selectedTerm  = STANDARD_TERM;
-    } else if (!isMonthlyTerm) {
-        if (historicalAboveThreshold) {
-            selectedPrice = GRANDFATHERED_MONTHLY_PRICE;
-            selectedTerm  = STANDARD_TERM;
-        } else {
-            selectedPrice = billingChoice === 'grandfathered_monthly' ? GRANDFATHERED_MONTHLY_PRICE : historicalPrice;
-            selectedTerm  = billingChoice === 'grandfathered_monthly' ? STANDARD_TERM               : historicalTerm;
-        }
-    } else {
-        selectedPrice = historicalPrice;
-        selectedTerm  = historicalTerm;
-    }
+    // The rate to charge is exactly what the API returned — nothing computed here.
+    const selectedPrice = renewPrice;
+    const selectedTerm  = renewTerm;
 
     const handleSubmit = async () => {
         if (!stripe || !elements || submittingRef.current) return;
@@ -231,7 +193,6 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
         },
     };
 
-    const showChoice = hasValidHistoricalData && !isMonthlyTerm && !historicalAboveThreshold;
     const staticBilling = parseBilling(selectedPrice, selectedTerm);
 
     return (
@@ -255,30 +216,7 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
                     </p>
                 )}
 
-                {showChoice ? (
-                    <div className={s.billingChoice}>
-                        {[
-                            { value: 'historical', label: `Keep my plan — ${formatBillingLabel(historicalPrice, historicalTerm)}` },
-                            { value: 'grandfathered_monthly', label: `Switch to monthly — ${formatBillingLabel(GRANDFATHERED_MONTHLY_PRICE, STANDARD_TERM)}` },
-                        ].map(opt => {
-                            const selected = billingChoice === opt.value;
-                            return (
-                                <div
-                                    key={opt.value}
-                                    className={`${s.billingOption} ${selected ? s.billingOptionSelected : ''}`}
-                                    onClick={() => setBillingChoice(opt.value)}
-                                >
-                                    <div className={`${s.radioRing} ${selected ? s.radioRingSelected : ''}`}>
-                                        {selected && <div className={s.radioDot} />}
-                                    </div>
-                                    <span className={`${s.billingOptionLabel} ${selected ? s.billingOptionLabelSelected : ''}`}>
-                                        {opt.label}
-                                    </span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                ) : (
+                {staticBilling.display && (
                     <div className={s.billingDisplay}>
                         <p className={s.billingLabel}>You will be billed</p>
                         <div className={s.billingAmountRow}>

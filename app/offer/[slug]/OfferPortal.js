@@ -110,8 +110,8 @@ export default function OfferPortal({ email, offer, slug }) {
       <div className={s.billingDisplay}>
         <p className={s.billingLabel}>Legacy member offer</p>
         <div className={s.billingAmountRow}>
-          <span className={s.billingAmount}>${offer.price}</span>
-          <span className={s.billingUnit}>/ mo</span>
+          <span className={s.billingAmount}>{offer.priceDisplay}</span>
+          <span className={s.billingUnit}>/ {offer.term === 'monthly' ? 'mo' : offer.term}</span>
         </div>
         <span className={s.billingBadge}>Cancel anytime</span>
       </div>
