@@ -80,7 +80,7 @@ const nextConfig = {
       // app. host: everything not exempted 307s to the same path on www.
       {
         source:
-          '/:path((?!api/|admin(?:/|$)|renew$|accountDetails$|subscribe$|subscribeOld$|offer(?:/|$)|checkout$|allUsers$|Media$|_next/|images/|favicon\\.ico$|\\.well-known/).+)',
+          '/:path((?!api/|admin(?:/|$)|renew$|accountDetails$|subscribe$|offer(?:/|$)|checkout$|allUsers$|Media$|_next/|images/|favicon\\.ico$|\\.well-known/).+)',
         has: [{ type: 'host', value: 'app.gymnasticbodies.com' }],
         destination: 'https://www.gymnasticbodies.com/:path',
         permanent: false,
