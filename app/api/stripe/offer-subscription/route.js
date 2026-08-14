@@ -34,7 +34,7 @@ export async function POST(request) {
             return NextResponse.json({ success: false, message: 'Offer not found.' }, { status: 404 });
         }
 
-        logger.info('offer.attempt', { email, slug, price: offer.price, term: offer.term });
+        logger.info('offer.attempt', { email, slug, price: offer.amount, term: offer.term });
 
         const user = await getUserWithEmail(email);
         if (!user) return NextResponse.json({ success: false, message: 'Account not found.' }, { status: 404 });
@@ -42,7 +42,7 @@ export async function POST(request) {
         const setting = await queryUserSetting(user.id, 'subscription');
         const currentData = JSON.parse(setting?.data ?? '{}');
 
-        const amountCents = Math.round(parseFloat(offer.price) * 100);
+        const amountCents = Math.round(parseFloat(offer.amount) * 100);
         const { interval, intervalCount } = getStripeInterval(offer.term);
 
         if (setting?.stripeSubscriptionId && user.customerSegment === 'stripe') {
@@ -113,7 +113,7 @@ export async function POST(request) {
                 ...currentData,
                 status: 'active',
                 renewaldate,
-                price: offer.price,
+                price: offer.amount,
                 term: offer.term,
             }),
         });
@@ -134,7 +134,7 @@ export async function POST(request) {
         logger.info('offer.success', {
             email: user.email,
             slug,
-            price: offer.price,
+            price: offer.amount,
             term: offer.term,
             stripeCustomerId: customerId,
             stripeSubscriptionId: subscription.id,
