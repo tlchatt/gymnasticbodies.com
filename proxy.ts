@@ -5,6 +5,24 @@ const PUBLIC_ADMIN_PATHS = ['/admin/login'];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') ?? '';
+
+  // Legacy AWS API host (api.gymnasticbodies.com): the Spring backend was retired
+  // (2026-08-17, prod Fargate scaled to zero). Rewrite EVERY path on that host to
+  // the tombstone route, which records the hit (legacy_api.hit in app_logs) and
+  // returns 410 Gone. Handled here in middleware because a next.config `has: host`
+  // rewrite did not reliably match this host on Vercel (served a cached 404 instead).
+  if (host === 'api.gymnasticbodies.com') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/api/legacy' + (pathname === '/' ? '' : pathname);
+    return NextResponse.rewrite(url);
+  }
+
+  // Everything below is admin-only gating. The matcher is now broad (so we can see
+  // the api. host on any path), so short-circuit every non-admin path here.
+  if (!pathname.startsWith('/admin')) {
+    return NextResponse.next();
+  }
 
   // Allow login page through
   if (PUBLIC_ADMIN_PATHS.some((p) => pathname.startsWith(p))) {
@@ -52,5 +70,8 @@ function redirectToLogin(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  // Broadened so middleware can catch the api.gymnasticbodies.com host on any path.
+  // Excludes Next internals, favicon, and /api/* — the real app API routes (incl. the
+  // Stripe webhook) must not be wrapped, and legacy api. paths are all non-/api/ anyway.
+  matcher: ['/((?!api/|_next/static|_next/image|favicon.ico).*)'],
 };

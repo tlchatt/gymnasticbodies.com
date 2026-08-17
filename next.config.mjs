@@ -13,24 +13,13 @@ const nextConfig = {
     // their original www.gymnasticbodies.com paths after the domain cutover —
     // no edit to the my. app required.
     const BLOB = 'https://6z1gtynqfxcjjwix.public.blob.vercel-storage.com';
-    return {
-      beforeFiles: [
-        // Legacy AWS API tombstone (2026-08-17): api.gymnasticbodies.com now points
-        // at this Vercel deployment. Route EVERY path on that host to the catch-all
-        // handler, which logs the hit (legacy_api.hit in app_logs) and returns 410.
-        // beforeFiles so it wins over the root [slug] content catch-all. Host-scoped,
-        // so app./www./apex are unaffected.
-        {
-          source: '/:path*',
-          has: [{ type: 'host', value: 'api.gymnasticbodies.com' }],
-          destination: '/api/_legacy/:path*',
-        },
-      ],
-      afterFiles: [
-        { source: '/gymfit/wp-content/:path*', destination: `${BLOB}/legacy/gymfit/wp-content/:path*` },
-        { source: '/media/:path*', destination: `${BLOB}/legacy/media/:path*` },
-      ],
-    };
+    // NOTE: api.gymnasticbodies.com host handling (legacy API tombstone + telemetry)
+    // lives in proxy.ts (middleware) — a `has: host` rewrite here did not reliably
+    // match that host on Vercel.
+    return [
+      { source: '/gymfit/wp-content/:path*', destination: `${BLOB}/legacy/gymfit/wp-content/:path*` },
+      { source: '/media/:path*', destination: `${BLOB}/legacy/media/:path*` },
+    ];
   },
   async redirects() {
     return [
