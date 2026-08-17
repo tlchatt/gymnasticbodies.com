@@ -2,26 +2,35 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Local Dev Environment (use this — do NOT start a separate `npm run dev`)
+## Local Dev Environment (start it yourself — it is OFF by default)
 
-The dev server is **already running** as a **systemd `--user`** service on port **3013**,
-nginx-proxied over HTTPS. Use the `.dev` URL — do **not** run `npm run dev` yourself: a second
-process shares the same `.next` directory and the two clobber each other's build output and fight
-over the port.
+**The dev server does NOT start at boot.** As of 2026-08-17 it is stopped and disabled so it costs
+nothing while nobody is working on this project. **Start it when you begin, stop it when you're
+done.** It's a systemd `--user` service on port **3013**, nginx-proxied over HTTPS.
 
 - **URL:** https://app.gymnasticbodies.dev
-- **Service:** `app-gymnasticbodies-dev.service`  (port 3013, Next 16)
+- **Service:** `app-gymnasticbodies-dev.service`  (port 3013, Next 16 — ~0.6 GB sitting idle, ~2 GB once you have been browsing it)
 
 ```bash
-systemctl --user is-active app-gymnasticbodies-dev.service   # already up? then just use the URL
-systemctl --user status   app-gymnasticbodies-dev.service    # status + recent logs
-systemctl --user restart  app-gymnasticbodies-dev.service    # after editing next.config.* / .env.local
-journalctl --user -u app-gymnasticbodies-dev.service -f       # live logs
+systemctl --user start     app-gymnasticbodies-dev.service   # begin working here
+systemctl --user stop      app-gymnasticbodies-dev.service   # done — frees the RAM
+systemctl --user restart   app-gymnasticbodies-dev.service   # after editing next.config.* / .env.local
+systemctl --user is-active app-gymnasticbodies-dev.service   # is it up?
+journalctl --user -u app-gymnasticbodies-dev.service -f      # live logs
 ```
 
-Before starting a dev server, check `systemctl --user is-active app-gymnasticbodies-dev.service`. If
-it's up, use the `.dev` URL and only **restart** the service — never start a second copy. Restart the
-service after editing `next.config.*` or `.env.local` for changes to take effect.
+After `start`, give it **10–20 seconds** before the first request — Next compiles routes on demand,
+so the first hit is slow and a `curl` fired immediately can fail or hang. A `502` from nginx means
+the service isn't up yet.
+
+**Still do not run `npm run dev` yourself — start the service instead.** A hand-run second process
+shares the same `.next` directory and fights over port 3013. If the service is already active, use
+the `.dev` URL and only **restart** it; never start a second copy. Restart after editing
+`next.config.*` or `.env.local` for changes to take effect.
+
+To put it back to starting at boot: `systemctl --user enable --now app-gymnasticbodies-dev.service`
+(`disable --now` to undo). Every dev env can also be driven from the buttons at
+https://claude.tlchatt.com/dev-environments.
 
 > **Note (updated 2026-07-23):** the app root (`app/page.js`) now **serves the marketing homepage**
 > (it re-exports `app/homepage/page.js`) — this is the post-WP-cutover state. `www.gymnasticbodies.com`
