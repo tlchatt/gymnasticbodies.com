@@ -310,6 +310,28 @@ export async function POST(request) {
             return corsJson({ status: 200, dayIndex, items: [] });
         }
 
+        if (op === 'fill-day-from-template') {
+            // "Generate Workout" on an empty guided-Level day. Fills ONLY that day from the
+            // level's template (real catalog classIds) — never touches other days, so it
+            // cannot shrink the week. Replaces the old broken path where the frontend sent a
+            // positional dropdown index (1-4) as a classId, which add-workout rightly rejected
+            // as an unknown classId, leaving the day blank ("Generate Workout does nothing").
+            if (!Number.isFinite(dayIndex) || dayIndex < 1 || dayIndex > 7) {
+                return corsJson({ error: 'dayIndex 1-7 required' }, 400);
+            }
+            const tpl = levelSchedules[String(level)]?.[String(dayIndex)] || [];
+            const tplIds = tpl.map(i => Number(i.classId)).filter(Boolean);
+            const date = isValidIsoDate(json.date) ? json.date : null;
+            if (!tplIds.length) {
+                // No template classes for this day (a rest day) — nothing to generate.
+                return corsJson(await buildDayItems(userId, level, dayIndex, date, []));
+            }
+            const days = await readUserWeek(userId, level);
+            days[String(dayIndex)] = tplIds;
+            await writeUserWeek(userId, days, { op, level });
+            return corsJson(await buildDayItems(userId, level, dayIndex, date, tplIds));
+        }
+
         if (op === 'add-workout') {
             const classId = Number(json.classId ?? json.workoutId);
             if (!Number.isFinite(dayIndex) || !classId) {
