@@ -29,6 +29,7 @@ import {
     PREVIOUS_DAY_SENTINEL, findPreviousDayDoc,
 } from "@/lib/workout";
 import { PROGRAM_IDS, CLASS_BY_ID, emptyByoDay, itemType, hydrateDay } from "./hydrate.js";
+import { advanceMasteryStepOnLog } from "@/lib/curriculum";
 import builderCategories from "@/data/workout/byoBuilderCategories.json";
 import { logger } from "@/lib/logger";
 
@@ -247,6 +248,22 @@ export async function POST(request) {
                 else item.programProgress.exercises.push(entry);
                 await writeDayDoc(userId, sec, date, secDoc);
                 await upsertHistoryEntry(userId, date, historyEntryFor(courseId));
+                // AWS "autoprogress": a successful set with auto-progress on advances the
+                // member to the next mastery step. The frontend sends autoProgress=true by
+                // default (its "Stay on same step" checkbox is off); warm-ups/stretch-follows
+                // send false. Best-effort and non-fatal — a logged set must succeed even if
+                // the step advance can't be computed.
+                if (json.autoProgress) {
+                    try {
+                        const adv = await advanceMasteryStepOnLog({
+                            userId, courseId, exerciseId: exId,
+                            loggedMasterySetId: entry.masterySetId, date, section: sec,
+                        });
+                        if (adv.advanced) logger.info('workout.byo.autoprogress', { ...logCtx, exerciseId: exId, courseId, from: adv.from, to: adv.to });
+                    } catch (e) {
+                        logger.warn('workout.byo.autoprogress_failed', { ...logCtx, exerciseId: exId, courseId, error: e.message });
+                    }
+                }
                 return corsJson({ status: 200 });
             }
 
