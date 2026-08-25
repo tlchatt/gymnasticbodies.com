@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.41",
+    "@ai-sdk/google": "^4.0.50",
     "@api/jwp-platform": "file:.api/apis/jwp-platform",
     "@better-auth/utils": "^0.3.0",
     "@emotion/react": "^11.14.0",
@@ -23,6 +25,7 @@
     "@stripe/react-stripe-js": "^6.4.0",
     "@stripe/stripe-js": "^9.6.0",
     "@vercel/blob": "^2.3.1",
+    "ai": "^7.0.77",
     "authorizenet": "^1.0.10",
     "bcrypt": "^6.0.0",
     "better-auth": "^1.4.6",
@@ -46,7 +49,8 @@
     "stripe": "^22.1.1",
     "swr": "^2.4.0",
     "uuidv4": "^6.2.13",
-    "v4": "^0.0.1"
+    "v4": "^0.0.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",

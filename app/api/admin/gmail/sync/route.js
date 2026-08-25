@@ -212,6 +212,20 @@ async function runSync() {
           }
         }
 
+        // Unified inbox=case workflow: every inbound support email must be cased. If it wasn't
+        // an outbound reply and didn't thread onto an existing/recent case above, open a fresh
+        // case now — so no inbound message is ever left uncased (the gap that let /admin replies
+        // go out with no case and confused staff).
+        if (!caseId) {
+          caseId = await upsertCase({
+            userId: user?.id ?? null,
+            fromEmail: msg.fromEmail,
+            fromName: msg.fromName || null,
+            subject: msg.subject,
+            isOutboundResponse: false,
+          });
+        }
+
         await db.insert(support_emails).values({
           gmailMessageId: syntheticId,
           gmailThreadId: raw.threadId ?? null,
