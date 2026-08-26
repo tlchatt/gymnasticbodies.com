@@ -5,7 +5,7 @@
 // This route never executes account changes — that's /api/support/fire (the deterministic back layer).
 import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
-import { verifySlackSignature, slack, scheduledBlocks, doneBlocks, FIRE_MINUTES } from '@/lib/support/slack';
+import { verifySlackSignature, slack, scheduledBlocks, doneBlocks, summaryBlocks, FIRE_MINUTES } from '@/lib/support/slack';
 import { scheduleFire } from '@/lib/support/fuse';
 
 const sql = neon(process.env.DATABASE_URL);
@@ -29,10 +29,14 @@ export async function POST(request) {
       if (upd.length) {
         await scheduleFire(f.id, fireAt); // arms the durable fuse (Cloud Task) if configured
         await slack('chat.update', { channel: f.channel, ts: f.play_ts, text: 'Scheduled', blocks: scheduledBlocks(f, playFromFire(f), fireAt) });
+        if (f.thread_ts) await slack('chat.update', { channel: f.channel, ts: f.thread_ts, text: 'Scheduled', blocks: summaryBlocks({ ...f, status: 'scheduled' }) });
       }
     } else if (action.action_id === 'undo') {
       const upd = await sql`UPDATE support_fires SET status='cancelled', updated_at=now() WHERE id=${f.id} AND status='scheduled' AND fire_at > now() RETURNING id`;
-      if (upd.length) await slack('chat.update', { channel: f.channel, ts: f.play_ts, text: 'Cancelled', blocks: doneBlocks('↩️ Cancelled — nothing sent', f) });
+      if (upd.length) {
+        await slack('chat.update', { channel: f.channel, ts: f.play_ts, text: 'Cancelled', blocks: doneBlocks('↩️ Cancelled — nothing sent', f) });
+        if (f.thread_ts) await slack('chat.update', { channel: f.channel, ts: f.thread_ts, text: 'Cancelled', blocks: summaryBlocks({ ...f, status: 'cancelled' }) });
+      }
     }
     return ack();
   } catch (e) {
