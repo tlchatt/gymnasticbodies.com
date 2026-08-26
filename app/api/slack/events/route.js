@@ -5,7 +5,7 @@
 // Read-only + Slack posts only; it never touches accounts (that's /api/support/fire, behind Accept).
 import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
-import { verifySlackSignature, SUPPORT_CHANNEL } from '@/lib/support/slack';
+import { verifySlackSignature, slack, SUPPORT_CHANNEL } from '@/lib/support/slack';
 
 const sql = neon(process.env.DATABASE_URL);
 const ack = () => new NextResponse('', { status: 200 });
@@ -38,20 +38,21 @@ export async function POST(request) {
     const note = String(e.text || '').replace(/<@[^>]+>/g, '').trim(); // strip @mentions
     if (!note) return ack();
 
-    // Map the thread back to its case/member (latest fire on this thread).
-    const [f] = await sql`SELECT member_email, case_id FROM support_fires WHERE thread_ts=${e.thread_ts} ORDER BY id DESC LIMIT 1`;
+    // Only respond if this thread actually has a play (a fire).
+    const [f] = await sql`SELECT id FROM support_fires WHERE thread_ts=${e.thread_ts} ORDER BY id DESC LIMIT 1`;
     if (!f) return ack();
 
-    // Fire-and-forget the re-investigation so we ack Slack immediately; it posts the updated play
-    // back into THIS thread (threadTs) via /api/support/case.
-    fetch(`${baseUrl(request)}/api/support/case`, {
+    // Instant acknowledgement so the reviewer gets immediate feedback (the refine run takes ~30s).
+    await slack('chat.postMessage', {
+      channel: e.channel, thread_ts: e.thread_ts,
+      text: '🔍 On it — investigating your note, I’ll follow up shortly…',
+    });
+
+    // Fire-and-forget the refine so we ack Slack within its 3s window. It edits the suggested reply
+    // on the top card in place and posts a conversational reply into THIS thread.
+    fetch(`${baseUrl(request)}/api/support/refine`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: f.member_email,
-        caseId: f.case_id,
-        threadTs: e.thread_ts,
-        ask: `A GymnasticBodies support reviewer is refining the suggested reply for this member. Their note/question: "${note}". Address it and return an updated play (revise the draft reply and/or answer the question in your findings).`,
-      }),
+      body: JSON.stringify({ threadTs: e.thread_ts, note }),
     }).catch(() => {});
 
     return ack();
