@@ -16,6 +16,10 @@
       {
         "path": "/api/cronMarketingDrip",
         "schedule": "0 23 * * *"
+      },
+      {
+        "path": "/api/support/fuse-tick",
+        "schedule": "* * * * *"
       }
     ]
   }
