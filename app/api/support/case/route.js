@@ -20,9 +20,18 @@ export async function POST(request) {
     const play = extractPlay(raw);
 
     // Attach the customer's actual inbound message so it shows on the play card.
-    const [msg] = await sql`SELECT subject, body, received_at FROM support_emails WHERE lower(from_email)=${email.toLowerCase()} ORDER BY received_at DESC LIMIT 1`;
+    const [msg] = await sql`SELECT id, subject, body, received_at, case_id FROM support_emails WHERE lower(from_email)=${email.toLowerCase()} ORDER BY received_at DESC LIMIT 1`;
     if (msg) play.customer_message = { subject: msg.subject, body: msg.body, date: msg.received_at ? new Date(msg.received_at).toISOString().slice(0, 10) : null };
     else if (ask && !threadTs) play.customer_message = { subject: null, body: ask, date: null };
+
+    // Contextual admin links (customer profile / message / case).
+    const [u] = await sql`SELECT id FROM "user" WHERE lower(email)=${email.toLowerCase()} LIMIT 1`;
+    play.admin = {
+      base: process.env.SUPPORT_PUBLIC_URL || 'https://app.gymnasticbodies.com',
+      userId: u?.id || null,
+      messageId: msg?.id || null,
+      caseId: caseId || msg?.case_id || null,
+    };
 
     const [f] = await sql`
       INSERT INTO support_fires (case_id, member_email, channel, status, response, actions)
