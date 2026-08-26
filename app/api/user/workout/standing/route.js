@@ -24,10 +24,11 @@ export async function GET(request) {
         const userId = request.nextUrl.searchParams.get('userId');
         if (!userId) return corsJson({ error: 'userId required' }, 400);
 
-        const [{ data: level }, { data: thrive }, { data: ap }] = await Promise.all([
+        const [{ data: level }, { data: thrive }, { data: ap }, { data: lastLoc }] = await Promise.all([
             readWorkoutState(userId, 'workout_level'),
             readWorkoutState(userId, 'thrive_state'),
             readWorkoutState(userId, 'autopilot_state'),
+            readWorkoutState(userId, 'last_location'),
         ]);
 
         const levelId = level?.levelId !== undefined && level?.levelId !== null ? Number(level.levelId) : null;
@@ -37,6 +38,9 @@ export async function GET(request) {
             isThriveUser: !!(thrive?.permissions || []).length,
             apLevel: ap?.level !== undefined ? Number(ap.level) : null,
             lastViewedLevel: level?.lastViewedLevel ?? null,
+            // Last place in the app: { path, section }. section is the home-screen levelId
+            // when path === '/'. The frontend uses it to land the user where they left off.
+            lastLocation: (lastLoc && lastLoc.path) ? { path: lastLoc.path, section: lastLoc.section ?? null } : null,
         });
     } catch (error) {
         logger.error('workout.standing.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
