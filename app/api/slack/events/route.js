@@ -3,13 +3,17 @@
 // the agent here, which re-investigates with that note as guidance and posts an UPDATED play back
 // into the same thread. No buttons for revision — the conversation IS the revision channel.
 // Read-only + Slack posts only; it never touches accounts (that's /api/support/fire, behind Accept).
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { verifySlackSignature, slack, SUPPORT_CHANNEL } from '@/lib/support/slack';
+import { runRefine } from '@/lib/support/refine';
+
+// The refine work runs in after() (post-response), so the function must stay alive long enough to
+// finish the ~30-40s investigation — not just the 3s Slack ack window.
+export const maxDuration = 120;
 
 const sql = neon(process.env.DATABASE_URL);
 const ack = () => new NextResponse('', { status: 200 });
-const baseUrl = (request) => process.env.SUPPORT_PUBLIC_URL || new URL(request.url).origin;
 
 export async function POST(request) {
   const raw = await request.text();
@@ -48,12 +52,14 @@ export async function POST(request) {
       text: '🔍 On it — investigating your note, I’ll follow up shortly…',
     });
 
-    // Fire-and-forget the refine so we ack Slack within its 3s window. It edits the suggested reply
-    // on the top card in place and posts a conversational reply into THIS thread.
-    fetch(`${baseUrl(request)}/api/support/refine`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ threadTs: e.thread_ts, note }),
-    }).catch(() => {});
+    // Run the refine AFTER the response (Slack needs its 3s ack) — but via after(), so Vercel keeps
+    // the function alive until it completes instead of freezing mid-request like a fire-and-forget
+    // fetch would (that intermittently dropped the follow-up). It edits the suggested reply on the
+    // top card in place and posts a conversational reply into THIS thread.
+    after(async () => {
+      try { await runRefine({ threadTs: e.thread_ts, note }); }
+      catch (err) { console.error('[slack events refine]', err.message); }
+    });
 
     return ack();
   } catch (err) {
