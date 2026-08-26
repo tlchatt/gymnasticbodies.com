@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/Drizzle/index.ts';
 import { support_emails, support_cases } from '@/Drizzle/db/schema';
-import { and, eq, or } from 'drizzle-orm';
+import { and, eq, or, desc } from 'drizzle-orm';
 import { getUserWithId } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
 import { randomBytes } from 'crypto';
@@ -65,6 +65,34 @@ export async function POST(request) {
         const resolvedSubject = (subject?.trim() || (parsedCaseId ? `Reply to case #${parsedCaseId}` : 'Contact Support'))
             .slice(0, MAX_SUBJECT_LENGTH);
 
+        // Case every inbound (parity with the Gmail sync): a message with no caseId must still be
+        // cased — attach to the member's most recent open case, reopen a recently-resolved one, or
+        // open a new case. Without this, fresh in-app "Contact Support" messages landed uncased.
+        let effectiveCaseId = parsedCaseId;
+        if (effectiveCaseId == null) {
+            const [recent] = await db
+                .select({ id: support_cases.id, status: support_cases.status, resolvedAt: support_cases.resolvedAt })
+                .from(support_cases)
+                .where(user.email
+                    ? or(eq(support_cases.userId, user.id), eq(support_cases.fromEmail, user.email))
+                    : eq(support_cases.userId, user.id))
+                .orderBy(desc(support_cases.createdAt))
+                .limit(1);
+            const RESOLVED_WINDOW_MS = 60 * 24 * 60 * 60 * 1000;
+            if (recent && ['open', 'pending', 'reopened'].includes(recent.status)) {
+                effectiveCaseId = recent.id;
+            } else if (recent && recent.status === 'resolved' && recent.resolvedAt && (Date.now() - new Date(recent.resolvedAt).getTime()) < RESOLVED_WINDOW_MS) {
+                await db.update(support_cases).set({ status: 'reopened' }).where(eq(support_cases.id, recent.id));
+                effectiveCaseId = recent.id;
+            } else {
+                const [created] = await db
+                    .insert(support_cases)
+                    .values({ userId: user.id, fromEmail: user.email, fromName: user.name, title: resolvedSubject, status: 'open', priority: 'normal' })
+                    .returning({ id: support_cases.id });
+                effectiveCaseId = created.id;
+            }
+        }
+
         // Insert an INBOUND support_emails row so it lands in the admin inbox exactly
         // like a normal inbound email. Bypasses the Gmail pipeline entirely. A synthetic
         // gmailMessageId keeps the unique constraint happy and marks the in-app origin.
@@ -77,12 +105,12 @@ export async function POST(request) {
             receivedAt: new Date(),
             status: 'open',
             userId: user.id,
-            caseId: parsedCaseId,
+            caseId: effectiveCaseId,
         }).returning();
 
         const row = inserted?.[0] ?? null;
 
-        logger.info('support.message_in_app', { userId: user.id, email: user.email, caseId: parsedCaseId, emailId: row?.id });
+        logger.info('support.message_in_app', { userId: user.id, email: user.email, caseId: effectiveCaseId, emailId: row?.id });
 
         return NextResponse.json({ ok: true, message: row }, { headers: CORS });
     } catch (error) {
