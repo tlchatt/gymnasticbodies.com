@@ -50,6 +50,23 @@ for (const w of byoWorkouts) {
     }
 }
 
+// A bulk seed/repair scrambled the stored class order for ~84% of members, so Warm-Up and
+// Mobility can land after strength/skill classes (or last). Enforce the correct sequence on
+// read — Warm-Up first, then Mobility, then everything else in its existing order (stable).
+// Non-destructive: the stored levels_schedule is untouched; only display order is corrected.
+function warmupMobilityRank(item) {
+    const tt = String(item?.workout?.trainingType || '').toLowerCase();
+    if (tt === 'warm-up') return 0;
+    if (tt === 'mobility') return 1;
+    return 2;
+}
+function orderDayItems(items) {
+    return items
+        .map((it, i) => ({ it, i }))
+        .sort((a, b) => warmupMobilityRank(a.it) - warmupMobilityRank(b.it) || a.i - b.i)
+        .map(x => x.it);
+}
+
 // The week to render. AWS stored a per-user recurring template (dayIndex -> classes) and
 // let people edit it, so that is authoritative when present; levelSchedules.json is only
 // the starting point for users who never customised theirs.
@@ -131,7 +148,7 @@ async function buildDayItems(userId, level, dayIndex, isoDate, classIds) {
             });
         }
     }
-    return out;
+    return orderDayItems(out);
 }
 
 // Logged classIds for a date from the user's 'levels' day-doc (best-effort across the
@@ -244,7 +261,7 @@ export async function GET(request) {
                     });
                 }
             }
-            out[dayKey] = dayOut;
+            out[dayKey] = orderDayItems(dayOut);
         }
         // A week with zero items across all 7 days renders as a blank Guided-Plans screen.
         // The level templates always have items, so this only happens when the user's own
