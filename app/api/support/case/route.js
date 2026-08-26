@@ -19,6 +19,11 @@ export async function POST(request) {
     const raw = await investigate({ email, ask });
     const play = extractPlay(raw);
 
+    // Attach the customer's actual inbound message so it shows on the play card.
+    const [msg] = await sql`SELECT subject, body, received_at FROM support_emails WHERE lower(from_email)=${email.toLowerCase()} ORDER BY received_at DESC LIMIT 1`;
+    if (msg) play.customer_message = { subject: msg.subject, body: msg.body, date: msg.received_at ? new Date(msg.received_at).toISOString().slice(0, 10) : null };
+    else if (ask && !threadTs) play.customer_message = { subject: null, body: ask, date: null };
+
     const [f] = await sql`
       INSERT INTO support_fires (case_id, member_email, channel, status, response, actions)
       VALUES (${caseId || null}, ${email.toLowerCase()}, ${SUPPORT_CHANNEL}, 'posted', ${play.response}, ${JSON.stringify(play.actions)})
