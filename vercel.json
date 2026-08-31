@@ -20,6 +20,10 @@
       {
         "path": "/api/support/fuse-tick",
         "schedule": "* * * * *"
+      },
+      {
+        "path": "/api/gmail/watch",
+        "schedule": "0 6 * * *"
       }
     ]
   }
