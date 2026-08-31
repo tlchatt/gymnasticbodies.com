@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { fetchDigestsSince, parseDigest } from '@/lib/gmail';
 import { getUserWithEmail } from '@/lib/userSettings';
@@ -10,10 +10,26 @@ import { logger } from '@/lib/logger';
 // Internal staff domain — replies from these addresses are not customer tickets
 const INTERNAL_DOMAINS = ['gymnasticbodies.com'];
 
+export const maxDuration = 120; // after() fires the agent for each new inbound before the fn ends
+
 function isInternalSender(email) {
   if (!email) return false;
   const domain = email.split('@')[1]?.toLowerCase();
   return INTERNAL_DOMAINS.includes(domain);
+}
+
+// Auto-investigate on receipt: fire the support agent (read-only investigation -> posts a play to
+// Slack) for each newly-cased inbound email. This never sends anything to the customer — the human
+// Accept gate + 5-min fuse still control that. Deduped to one fire per case per sync run.
+async function autoFireNewCases(byCase) {
+  const base = process.env.SUPPORT_PUBLIC_URL || 'https://app.gymnasticbodies.com';
+  const entries = [...byCase.entries()]; // [caseId, email]
+  await Promise.allSettled(entries.map(([caseId, email]) =>
+    fetch(`${base}/api/support/case`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, caseId }),
+    }).catch(() => {})
+  ));
 }
 
 // Allow Vercel cron to call this route with CRON_SECRET.
@@ -131,6 +147,7 @@ async function runSync() {
 
     let inserted = 0;
     let skipped = 0;
+    const autoFire = new Map(); // caseId -> email, for the post-run agent auto-fire
 
     // Google Groups delivers the same email as multiple Gmail messages (distinct
     // gmail ids — e.g. an Inbox copy and a Spam copy). Dedup within this run by the
@@ -248,13 +265,16 @@ async function runSync() {
         }
 
         inserted++;
+        if (caseId) autoFire.set(caseId, msg.fromEmail); // one fire per case this run
       }
 
       if (parsed.length === 0) skipped++;
     }
 
-    logger.info('admin.gmail.sync', { inserted, skipped, digests: rawMessages.length });
-    return NextResponse.json({ inserted, skipped, digests: rawMessages.length });
+    logger.info('admin.gmail.sync', { inserted, skipped, digests: rawMessages.length, autoFired: autoFire.size });
+    // Auto-fire the agent for each new case AFTER the response (kept alive by after()).
+    if (autoFire.size) after(() => autoFireNewCases(autoFire).catch((e) => logger.error('support.autofire.error', { error: e.message })));
+    return NextResponse.json({ inserted, skipped, digests: rawMessages.length, autoFired: autoFire.size });
   } catch (err) {
     logger.error('admin.gmail.sync.error', { error: err.message });
     return NextResponse.json({ error: err.message }, { status: 500 });
