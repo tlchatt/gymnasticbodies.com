@@ -27,6 +27,10 @@ const ALLOWED_EVENTS = new Set([
     'my.video.missing_src',  // resolved src was empty — undefined/missing mediaId
     'my.video.stalled',      // <video> onStalled — data fetch stalled ("spinning forever")
     'my.video.loadstart',    // <video> began loading a real src (baseline / success signal)
+    'my.video.waiting',      // <video> onWaiting — buffer drained, playback paused to rebuffer
+    'my.video.playing',      // <video> onPlaying — playback (re)started; carries the real currentSrc
+    'my.video.ended',        // <video> onEnded — reached the end (position vs duration = true finish)
+    'my.video.stuck',        // watchdog: a stall/waiting that never resumed — the real "cut off"
     // Course / workout data-load diagnostics (content spins, never populates).
     'my.course.error',
     'my.course.empty',
