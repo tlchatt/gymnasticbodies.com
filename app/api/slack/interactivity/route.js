@@ -29,12 +29,13 @@ export async function POST(request) {
       if (upd.length) {
         await scheduleFire(f.id, fireAt); // arms the durable fuse (Cloud Task) if configured
         await slack('chat.update', { channel: f.channel, ts: f.play_ts, text: 'Scheduled', blocks: scheduledBlocks(f, playFromFire(f), fireAt) });
+        // (playFromFire returns the full stored play so the conversation stays visible)
         if (f.thread_ts) await slack('chat.update', { channel: f.channel, ts: f.thread_ts, text: 'Scheduled', blocks: summaryBlocks({ ...f, status: 'scheduled' }) });
       }
     } else if (action.action_id === 'undo') {
       const upd = await sql`UPDATE support_fires SET status='cancelled', updated_at=now() WHERE id=${f.id} AND status='scheduled' AND fire_at > now() RETURNING id`;
       if (upd.length) {
-        await slack('chat.update', { channel: f.channel, ts: f.play_ts, text: 'Cancelled', blocks: doneBlocks('↩️ Cancelled — nothing sent', f) });
+        await slack('chat.update', { channel: f.channel, ts: f.play_ts, text: 'Cancelled', blocks: doneBlocks('↩️ *Cancelled — nothing sent*', f, playFromFire(f)) });
         if (f.thread_ts) await slack('chat.update', { channel: f.channel, ts: f.thread_ts, text: 'Cancelled', blocks: summaryBlocks({ ...f, status: 'cancelled' }) });
       }
     }
@@ -45,7 +46,11 @@ export async function POST(request) {
   }
 }
 
-// The play for rendering: response is stored on the fire; actions come from the stored jsonb.
+// The full play for rendering — prefer the stored play (findings, customer message, admin links,
+// open questions) so the conversation stays visible through every state; fall back to what's on the
+// fire row for older fires that predate the stored play column.
 function playFromFire(f) {
-  return { response: f.response, actions: Array.isArray(f.actions) ? f.actions : (f.actions ? JSON.parse(f.actions) : []), findings: '', issue_class: '—', open_questions: [] };
+  const stored = typeof f.play === 'string' ? (() => { try { return JSON.parse(f.play); } catch { return null; } })() : f.play;
+  if (stored && typeof stored === 'object') return stored;
+  return { response: f.response, actions: Array.isArray(f.actions) ? f.actions : (f.actions ? JSON.parse(f.actions) : []), findings: '', issue_class: f.issue_class || 'other', open_questions: [] };
 }

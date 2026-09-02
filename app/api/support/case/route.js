@@ -25,8 +25,8 @@ export async function POST(request) {
     if (!play.customer_message && ask && !threadTs) play.customer_message = { subject: null, body: ask, date: null };
 
     const [f] = await sql`
-      INSERT INTO support_fires (case_id, member_email, channel, status, response, actions, issue_class)
-      VALUES (${caseId || null}, ${email.toLowerCase()}, ${SUPPORT_CHANNEL}, 'posted', ${play.response}, ${JSON.stringify(play.actions)}, ${play.issue_class || null})
+      INSERT INTO support_fires (case_id, member_email, channel, status, response, actions, issue_class, play)
+      VALUES (${caseId || null}, ${email.toLowerCase()}, ${SUPPORT_CHANNEL}, 'posted', ${play.response}, ${JSON.stringify(play.actions)}, ${play.issue_class || null}, ${JSON.stringify(play)})
       RETURNING id, case_id, run_id, member_email, response, status, issue_class`;
 
     // threadTs set = a regeneration triggered by a human reply: post the fresh play back into the
