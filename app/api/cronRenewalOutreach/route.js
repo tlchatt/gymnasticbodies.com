@@ -40,22 +40,33 @@ export async function GET(request) {
   // - never converted
   // - not in an active support conversation (no inbound support email in last 30 days)
   // - not already sent this automated email in the last 30 days
+  //
+  // All email comparisons are normalized with LOWER(TRIM(...)). app_logs stores
+  // whatever case the client submitted (e.g. iOS auto-capitalizes the email
+  // field, logging "Sumantis@mac.com"), while support_emails/outbound_emails
+  // store the lowercased address. Postgres IN is case-sensitive, so without
+  // this normalization a mixed-case log row silently dodges every suppression
+  // guard and the person gets dripped daily instead of once. Subqueries also
+  // guard IS NOT NULL because NOT IN over a NULL-containing set matches nothing.
   const candidates = await sql`
-    SELECT DISTINCT l.email
+    SELECT DISTINCT LOWER(TRIM(l.email)) AS email
     FROM app_logs l
     WHERE l.event = 'renew.page_view'
       AND l.ts > NOW() - INTERVAL '96 hours'
       AND l.ts < NOW() - INTERVAL '24 hours'
       AND l.email IS NOT NULL
-      AND l.email NOT IN (
-        SELECT email FROM app_logs WHERE event = 'renewal.success'
+      AND TRIM(l.email) <> ''
+      AND LOWER(TRIM(l.email)) NOT IN (
+        SELECT LOWER(TRIM(email)) FROM app_logs
+        WHERE event = 'renewal.success' AND email IS NOT NULL
       )
-      AND l.email NOT IN (
-        SELECT from_email FROM support_emails WHERE received_at > NOW() - INTERVAL '30 days'
+      AND LOWER(TRIM(l.email)) NOT IN (
+        SELECT LOWER(TRIM(from_email)) FROM support_emails
+        WHERE received_at > NOW() - INTERVAL '30 days' AND from_email IS NOT NULL
       )
-      AND l.email NOT IN (
-        SELECT to_email FROM outbound_emails
-        WHERE sent_at > NOW() - INTERVAL '30 days'
+      AND LOWER(TRIM(l.email)) NOT IN (
+        SELECT LOWER(TRIM(to_email)) FROM outbound_emails
+        WHERE sent_at > NOW() - INTERVAL '30 days' AND to_email IS NOT NULL
       )
   `;
 
