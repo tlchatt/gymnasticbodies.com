@@ -12,6 +12,18 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const OFFER_SLUG = 'legacy15';
 const TYPE = 'marketing';
 
+// Paced sending: the cron runs hourly (see vercel.json) and sends this many per
+// run, so the daily volume (~PER_RUN * 24) goes out spread across the day in small
+// batches rather than one large burst — better for deliverability and it keeps each
+// serverless invocation well under the function time limit. Target ~1,000/day.
+const PER_RUN = 42;            // 42 * 24 ≈ 1,008 per day
+const SEND_GAP_MS = 200;       // brief pause between sends to stay gentle on SendGrid
+
+// Give the invocation headroom for PER_RUN sequential sends.
+export const maxDuration = 60;
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 const SUBJECT = 'A special offer for GymnasticBodies legacy members';
 // Prices are {{variable}}-driven from the pricing config — never literals.
 const BODY = `Hi {{name}},
@@ -66,17 +78,17 @@ export async function GET(request) {
     WHERE u.migration_type = 'noncurrent'
       AND (
         (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NOT NULL
-         AND (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date < NOW() - INTERVAL '1 year')
+         AND (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date < NOW() - INTERVAL '4 months')
         OR
         (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NULL
-         AND u.created_at < NOW() - INTERVAL '1 year')
+         AND u.created_at < NOW() - INTERVAL '4 months')
       )
       AND u.email NOT IN (
         SELECT to_email FROM outbound_emails WHERE campaign = ${CAMPAIGN}
       )
     GROUP BY u.id, u.email, u.name, u.created_at, us.data
     ORDER BY COALESCE((NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date, u.created_at::date) ASC
-    LIMIT 250
+    LIMIT ${PER_RUN}
   `;
 
   const results = { sent: 0, errors: 0, emails: [] };
@@ -114,6 +126,8 @@ export async function GET(request) {
       results.errors++;
       results.emails.push({ email, status: 'error', error: err.message });
     }
+
+    await sleep(SEND_GAP_MS);
   }
 
   return NextResponse.json({ ok: true, ...results });
