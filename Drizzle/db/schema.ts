@@ -25,6 +25,14 @@ export const user = pgTable("user", {
   role: text("role"),
   migrationType: text("migration_type"),
   customerSegment: text("customer_segment"),
+  // Email deliverability status from SendGrid (null = OK). When set to a
+  // suppressing value (bounced / invalid / spam_report) the send crons skip
+  // this address so we stop mailing a dead/complaining inbox. Populated by the
+  // SendGrid Event Webhook (/api/sendgrid/events) in real time, plus a one-time
+  // backfill from the suppression API. The human-readable detail (bounce reason)
+  // is recorded as an `email.bounced` note in app_logs.
+  emailStatus: text("email_status"),
+  emailStatusAt: timestamp("email_status_at"),
   banned: boolean("banned"),
   banReason: text("banReason"),
   banExpires: timestamp("banExpires"),

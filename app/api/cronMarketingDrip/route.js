@@ -76,6 +76,7 @@ export async function GET(request) {
     FROM "user" u
     LEFT JOIN user_setting us ON us.user_id = u.id AND us.type = 'subscription'
     WHERE u.migration_type = 'noncurrent'
+      AND u.email_status IS NULL
       AND (
         (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NOT NULL
          AND (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date < NOW() - INTERVAL '4 months')

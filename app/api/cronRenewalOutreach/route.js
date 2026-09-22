@@ -76,10 +76,16 @@ export async function GET(request) {
     const email = row.email.trim().toLowerCase();
 
     const [u] = await db
-      .select({ id: user.id, name: user.name })
+      .select({ id: user.id, name: user.name, emailStatus: user.emailStatus })
       .from(user)
       .where(eq(user.email, email))
       .limit(1);
+
+    // Skip addresses SendGrid has flagged as bounced/invalid/spam — don't mail a dead inbox.
+    if (u?.emailStatus) {
+      results.skipped++;
+      continue;
+    }
 
     const name = firstName(u?.name);
     const renewalLink = `https://app.gymnasticbodies.com/renew?email=${encodeURIComponent(email)}`;

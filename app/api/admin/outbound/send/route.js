@@ -36,7 +36,7 @@ export async function POST(request) {
     if (!email || !email.includes('@')) continue;
 
     const [u] = await db
-      .select({ id: user.id, name: user.name })
+      .select({ id: user.id, name: user.name, emailStatus: user.emailStatus })
       .from(user)
       .where(eq(user.email, email))
       .limit(1);
@@ -44,6 +44,12 @@ export async function POST(request) {
     const name = firstName(u?.name);
     const renewalLink = `https://app.gymnasticbodies.com/renew?email=${encodeURIComponent(email)}`;
     const renderedBody = render(body, { name: name || '', email, renewalLink });
+
+    // Don't mail an address SendGrid has flagged as bounced/invalid/spam.
+    if (u?.emailStatus) {
+      results.push({ email, name, status: 'suppressed', emailStatus: u.emailStatus });
+      continue;
+    }
 
     if (dryRun) {
       results.push({ email, name, renderedBody, status: 'preview' });
@@ -79,6 +85,7 @@ export async function POST(request) {
   return NextResponse.json({
     sent: results.filter(r => r.status === 'sent').length,
     failed: results.filter(r => r.status === 'failed').length,
+    suppressed: results.filter(r => r.status === 'suppressed').length,
     dryRun,
     results,
   });
