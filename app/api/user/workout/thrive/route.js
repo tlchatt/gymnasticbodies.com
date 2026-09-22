@@ -109,6 +109,25 @@ export async function GET(request) {
             });
         }
 
+        if (view === 'missedlog') {
+            // Last 7 days' logged status (Neon replacement for AWS /thrive/tasks/missedlog).
+            // A day is "logged" when all of that day's active tasks are complete.
+            const N = 7;
+            const { data: state } = await readWorkoutState(userId, 'thrive_state');
+            const out = {};
+            const today = new Date();
+            for (let i = 0; i < N; i++) {
+                const d = new Date(today);
+                d.setUTCDate(d.getUTCDate() - i);
+                const dateIso = d.toISOString().slice(0, 10);
+                const active = activeTaskIds(state, dateIso);
+                const doc = await readDayDoc(userId, 'thrive', dateIso);
+                const completed = new Set((doc?.tasks || []).filter(t => t.complete).map(t => Number(t.taskId)));
+                out[dateIso] = active.size > 0 && [...active].every(id => completed.has(id));
+            }
+            return corsJson(out);
+        }
+
         return corsJson({ error: `unknown view: ${view}` }, 400);
     } catch (error) {
         logger.error('workout.thrive.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
@@ -222,6 +241,26 @@ export async function POST(request) {
             case 'reset-permissions': {
                 const { data: state } = await readWorkoutState(userId, 'thrive_state');
                 await writeWorkoutState(userId, 'thrive_state', { ...(state || {}), permissions: [] });
+                return corsJson({ status: 200 });
+            }
+
+            case 'log-missed': {
+                // Backfill: mark each given past day as logged by completing that day's
+                // active tasks (Neon replacement for AWS POST /thrive/tasks/missedlog?days=).
+                const days = Array.isArray(json.days)
+                    ? json.days
+                    : String(json.days || '').split(',').map(s => s.trim()).filter(Boolean);
+                const { data: state } = await readWorkoutState(userId, 'thrive_state');
+                for (const dateIso of days) {
+                    if (!isValidIsoDate(dateIso)) continue;
+                    const active = activeTaskIds(state, dateIso);
+                    if (!active.size) continue;
+                    const doc = (await readDayDoc(userId, 'thrive', dateIso)) || { tasks: [] };
+                    const byId = new Map((doc.tasks || []).map(t => [Number(t.taskId), t]));
+                    for (const id of active) byId.set(id, { taskId: id, complete: 1 });
+                    doc.tasks = [...byId.values()];
+                    await writeDayDoc(userId, 'thrive', dateIso, doc);
+                }
                 return corsJson({ status: 200 });
             }
 
