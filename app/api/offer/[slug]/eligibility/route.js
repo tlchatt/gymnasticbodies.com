@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/Drizzle/index.ts';
 import { outbound_emails, user } from '@/Drizzle/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, or, like } from 'drizzle-orm';
 import { getOffer } from '@/lib/pricing';
 import { logger } from '@/lib/logger';
 
@@ -30,13 +30,21 @@ export async function GET(request, { params }) {
     return NextResponse.json({ eligible: false, reason: 'already_subscribed' });
   }
 
+  // The legacy offer is sent under several campaign tags (the drip was split into
+  // legacy_lockin_*_engaged / _cold, and older sends used marketing_drip_legacy15).
+  // Match the whole family so any recipient is eligible — not just the one tag in
+  // the pricing config. Other offers keep the exact-campaign match.
+  const campaignMatch = slug === 'legacy15'
+    ? or(
+        like(outbound_emails.campaign, 'marketing_drip_legacy15%'),
+        like(outbound_emails.campaign, 'legacy_lockin_%')
+      )
+    : eq(outbound_emails.campaign, offer.campaign);
+
   const [row] = await db
     .select({ id: outbound_emails.id })
     .from(outbound_emails)
-    .where(and(
-      eq(outbound_emails.toEmail, email),
-      eq(outbound_emails.campaign, offer.campaign)
-    ))
+    .where(and(eq(outbound_emails.toEmail, email), campaignMatch))
     .limit(1);
 
   if (!row) {
