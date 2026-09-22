@@ -7,16 +7,15 @@ import s from './cases.module.css';
 const TABS = [
   { label: 'All',      value: '' },
   { label: 'Open',     value: 'open' },
-  { label: 'Reopened', value: 'reopened' },
   { label: 'Pending',  value: 'pending' },
   { label: 'Resolved', value: 'resolved' },
   { label: 'Closed',   value: 'closed' },
 ];
 
-// Display label for a case status — 'reopened' reads "Reopened (replied)":
-// the member replied after we resolved, so it needs another look.
+// Display label for a case status. A member replying after we resolved a case sets it
+// back to 'open' (no separate "reopened" state); any legacy 'reopened' rows read "open".
 export function caseStatusLabel(status) {
-  return status === 'reopened' ? 'Reopened (replied)' : status;
+  return status === 'reopened' ? 'open' : status;
 }
 
 function fmtDate(str) {

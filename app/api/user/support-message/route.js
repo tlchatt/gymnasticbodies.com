@@ -86,8 +86,8 @@ export async function POST(request) {
             .slice(0, MAX_SUBJECT_LENGTH);
 
         // Case every inbound (parity with the Gmail sync): a message with no caseId must still be
-        // cased — attach to the member's most recent open case, reopen a recently-resolved one, or
-        // open a new case. Without this, fresh in-app "Contact Support" messages landed uncased.
+        // cased — attach to the member's most recent open case, set a recently-resolved one back to
+        // open, or open a new case. Without this, fresh in-app "Contact Support" messages landed uncased.
         let effectiveCaseId = parsedCaseId;
         if (effectiveCaseId == null) {
             const [recent] = await db
@@ -102,7 +102,7 @@ export async function POST(request) {
             if (recent && ['open', 'pending', 'reopened'].includes(recent.status)) {
                 effectiveCaseId = recent.id;
             } else if (recent && recent.status === 'resolved' && recent.resolvedAt && (Date.now() - new Date(recent.resolvedAt).getTime()) < RESOLVED_WINDOW_MS) {
-                await db.update(support_cases).set({ status: 'reopened' }).where(eq(support_cases.id, recent.id));
+                await db.update(support_cases).set({ status: 'open' }).where(eq(support_cases.id, recent.id));
                 effectiveCaseId = recent.id;
             } else {
                 const [created] = await db

@@ -203,8 +203,8 @@ async function runSync() {
 
         // No outbound match: thread the message onto the sender's existing case.
         // An open/pending/reopened case just gets the email linked; a case resolved
-        // within the last 60 days flips to 'reopened' (displayed "Reopened (replied)")
-        // — a member replying after we resolved means it isn't resolved. Older
+        // within the last 60 days flips back to 'open' — a member replying after we
+        // resolved means it isn't resolved, so it's an open case again. Older
         // resolved/closed cases stay closed (new topic).
         if (!caseId) {
           const [recentCase] = await db
@@ -221,7 +221,7 @@ async function runSync() {
               const withinWindow = resolvedAt && (Date.now() - resolvedAt.getTime()) < 60 * 24 * 60 * 60 * 1000;
               if (withinWindow) {
                 await db.update(support_cases)
-                  .set({ status: 'reopened' })
+                  .set({ status: 'open' })
                   .where(eq(support_cases.id, recentCase.id));
                 caseId = recentCase.id;
               }
