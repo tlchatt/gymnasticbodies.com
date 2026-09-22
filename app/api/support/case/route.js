@@ -7,7 +7,7 @@ import { neon } from '@neondatabase/serverless';
 import { investigate } from '@/lib/support/investigate';
 import { extractPlay } from '@/lib/support/plays';
 import { enrichPlay } from '@/lib/support/enrich';
-import { slack, playBlocks, summaryBlocks, SUPPORT_CHANNEL } from '@/lib/support/slack';
+import { slack, playBlocks, summaryBlocks, doneBlocks, SUPPORT_CHANNEL } from '@/lib/support/slack';
 import { logger } from '@/lib/logger';
 
 export const maxDuration = 120;
@@ -29,6 +29,15 @@ async function markReopened({ caseId, newParentTs, priorFire }) {
     channel: ch, ts: priorFire.thread_ts, text: 'Superseded — reopened',
     blocks: summaryBlocks(priorFire, null, '  ·  🔒 superseded — reopened'),
   });
+  // If the old play was still awaiting review, strip its Accept button so nobody sends a stale reply
+  // (only for 'posted' — a scheduled/fired play already owns its own buttons/state, leave it be).
+  if (priorFire.status === 'posted' && priorFire.play_ts) {
+    const pp = typeof priorFire.play === 'string' ? JSON.parse(priorFire.play || '{}') : (priorFire.play || {});
+    await slack('chat.update', {
+      channel: ch, ts: priorFire.play_ts, text: 'Superseded',
+      blocks: doneBlocks(`🔒 *Superseded — the member replied; now handled in ${newLink}*`, priorFire, pp),
+    });
+  }
   await slack('chat.postMessage', {
     channel: ch, thread_ts: priorFire.thread_ts, text: 'Superseded',
     blocks: [{ type: 'context', elements: [{ type: 'mrkdwn', text: `🔒 *Closed here — superseded.* The member replied again; this case is now being handled in ${newLink}.` }] }],
@@ -71,7 +80,7 @@ export async function POST(request) {
     } else {
       // Did this case already have a Slack thread? A reply that lands now "reopens" it in a fresh thread.
       const [prior] = caseId
-        ? await sql`SELECT id, thread_ts, status, member_email, issue_class FROM support_fires
+        ? await sql`SELECT id, thread_ts, play_ts, status, member_email, issue_class, play FROM support_fires
                      WHERE case_id=${caseId} AND thread_ts IS NOT NULL AND id <> ${f.id}
                      ORDER BY id DESC LIMIT 1`
         : [];
