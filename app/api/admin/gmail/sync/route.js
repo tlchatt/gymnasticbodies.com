@@ -6,6 +6,7 @@ import { db } from '@/Drizzle/index.ts';
 import { support_emails, support_cases, outbound_emails } from '@/Drizzle/db/schema';
 import { eq, desc, and, gte, or } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
+import { fireCaseToSlack } from '@/lib/support/autofire';
 
 // Internal staff domain — replies from these addresses are not customer tickets
 const INTERNAL_DOMAINS = ['gymnasticbodies.com'];
@@ -24,12 +25,9 @@ function isInternalSender(email) {
 async function autoFireNewCases(byCase) {
   const base = process.env.SUPPORT_PUBLIC_URL || 'https://app.gymnasticbodies.com';
   const entries = [...byCase.entries()]; // [caseId, email]
-  await Promise.allSettled(entries.map(([caseId, email]) =>
-    fetch(`${base}/api/support/case`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, caseId }),
-    }).catch(() => {})
-  ));
+  // fireCaseToSlack verifies the post actually landed, retries once, and logs every outcome —
+  // so a reply that fails to reach Slack surfaces as support.autofire.failed instead of vanishing.
+  await Promise.allSettled(entries.map(([caseId, email]) => fireCaseToSlack({ email, caseId, base })));
 }
 
 // Allow Vercel cron to call this route with CRON_SECRET.

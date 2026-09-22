@@ -8,13 +8,44 @@ import { investigate } from '@/lib/support/investigate';
 import { extractPlay } from '@/lib/support/plays';
 import { enrichPlay } from '@/lib/support/enrich';
 import { slack, playBlocks, summaryBlocks, SUPPORT_CHANNEL } from '@/lib/support/slack';
+import { logger } from '@/lib/logger';
 
 export const maxDuration = 120;
 const sql = neon(process.env.DATABASE_URL);
 
+// A reply that arrives after a case already has a Slack thread gets a FRESH thread (so it can't be
+// missed at the bottom of an old one). This closes out the former thread and cross-links the two, so
+// it's obvious which thread is live: the old parent is marked superseded and both carry a pointer.
+async function markReopened({ caseId, newParentTs, priorFire }) {
+  const ch = SUPPORT_CHANNEL;
+  const [pNew, pOld] = await Promise.all([
+    slack('chat.getPermalink', { channel: ch, message_ts: newParentTs }),
+    slack('chat.getPermalink', { channel: ch, message_ts: priorFire.thread_ts }),
+  ]);
+  const newLink = pNew.ok ? `<${pNew.permalink}|the new thread>` : 'a new thread';
+  const oldLink = pOld.ok ? `<${pOld.permalink}|previous thread>` : 'the previous thread';
+  // Close the former thread: mark its parent superseded + drop a pointer inside it.
+  await slack('chat.update', {
+    channel: ch, ts: priorFire.thread_ts, text: 'Superseded — reopened',
+    blocks: summaryBlocks(priorFire, null, '  ·  🔒 superseded — reopened'),
+  });
+  await slack('chat.postMessage', {
+    channel: ch, thread_ts: priorFire.thread_ts, text: 'Superseded',
+    blocks: [{ type: 'context', elements: [{ type: 'mrkdwn', text: `🔒 *Closed here — superseded.* The member replied again; this case is now being handled in ${newLink}.` }] }],
+  });
+  // Mark the new thread as a continuation, pointing back.
+  await slack('chat.postMessage', {
+    channel: ch, thread_ts: newParentTs, text: `Follow-up on case #${caseId}`,
+    blocks: [{ type: 'context', elements: [{ type: 'mrkdwn', text: `🔁 *Reopened* — follow-up on case #${caseId}. Previous discussion: ${oldLink}.` }] }],
+  });
+}
+
 export async function POST(request) {
+  let email, caseId;
   try {
-    const { email, ask, caseId, threadTs } = await request.json();
+    const body = await request.json();
+    ({ email, caseId } = body);
+    const { ask, threadTs } = body;
     if (!email) return NextResponse.json({ error: 'email required' }, { status: 400 });
 
     const raw = await investigate({ email, ask });
@@ -38,11 +69,23 @@ export async function POST(request) {
         blocks: [{ type: 'context', elements: [{ type: 'mrkdwn', text: '🔄 Updated suggestion based on your note.' }] }],
       });
     } else {
+      // Did this case already have a Slack thread? A reply that lands now "reopens" it in a fresh thread.
+      const [prior] = caseId
+        ? await sql`SELECT id, thread_ts, status, member_email, issue_class FROM support_fires
+                     WHERE case_id=${caseId} AND thread_ts IS NOT NULL AND id <> ${f.id}
+                     ORDER BY id DESC LIMIT 1`
+        : [];
+      const reopened = !!prior?.thread_ts;
+
       const parent = await slack('chat.postMessage', {
-        channel: SUPPORT_CHANNEL, text: `Support case · ${email}`, blocks: summaryBlocks(f, play),
+        channel: SUPPORT_CHANNEL, text: `Support case · ${email}`,
+        blocks: summaryBlocks(f, play, reopened ? '  ·  🔁 reopened' : ''),
       });
       if (!parent.ok) throw new Error(`slack post failed: ${parent.error}`);
       parentTs = parent.ts;
+
+      // Close out the former thread + cross-link — best-effort, never fail the fire over it.
+      if (reopened) await markReopened({ caseId, newParentTs: parentTs, priorFire: prior }).catch(() => {});
     }
     // full play + buttons in the thread.
     const detail = await slack('chat.postMessage', {
@@ -53,6 +96,8 @@ export async function POST(request) {
 
     return NextResponse.json({ ok: true, fireId: f.id, ts: parentTs, play });
   } catch (err) {
+    // Log so a failed fire leaves a server-side trace (the caller retries once and also logs).
+    logger.error('support.case.error', { email, caseId, error: err.message });
     return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
   }
 }

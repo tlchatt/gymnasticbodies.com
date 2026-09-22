@@ -4,6 +4,7 @@ import { support_emails, support_cases } from '@/Drizzle/db/schema';
 import { and, eq, or, desc } from 'drizzle-orm';
 import { getUserWithId } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
+import { fireCaseToSlack } from '@/lib/support/autofire';
 import { randomBytes } from 'crypto';
 
 // after() fires the support agent for the new inbound before the fn ends (parity with Gmail sync).
@@ -12,23 +13,6 @@ export const maxDuration = 120;
 // Input caps — trim first, then truncate anything over these lengths.
 const MAX_SUBJECT_LENGTH = 200;
 const MAX_BODY_LENGTH = 10000;
-
-// Auto-investigate on receipt: fire the support agent (read-only investigation -> posts a play to
-// Slack behind the human Accept gate) for an in-app "Contact Support" message, exactly as the Gmail
-// sync does for emailed tickets. Without this, in-app messages landed in the admin inbox but never
-// reached Slack or the automation. Never sends anything to the customer on its own.
-async function fireSupportAgent(email, caseId) {
-    const base = process.env.SUPPORT_PUBLIC_URL || 'https://app.gymnasticbodies.com';
-    try {
-        await fetch(`${base}/api/support/case`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, caseId }),
-        });
-    } catch (e) {
-        logger.error('support.message_in_app.autofire_error', { email, caseId, error: e.message });
-    }
-}
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -133,9 +117,10 @@ export async function POST(request) {
         logger.info('support.message_in_app', { userId: user.id, email: user.email, caseId: effectiveCaseId, emailId: row?.id });
 
         // Fire the support agent -> Slack after responding to the member's browser (parity with the
-        // Gmail sync's autoFireNewCases). This is the fix for in-app messages never reaching Slack.
+        // Gmail sync's autoFireNewCases). fireCaseToSlack verifies the post landed, retries once, and
+        // logs every outcome. This is the fix for in-app messages never reaching Slack.
         if (user.email && effectiveCaseId) {
-            after(() => fireSupportAgent(user.email, effectiveCaseId));
+            after(() => fireCaseToSlack({ email: user.email, caseId: effectiveCaseId }));
         }
 
         return NextResponse.json({ ok: true, message: row }, { headers: CORS });
