@@ -14,8 +14,12 @@
         "schedule": "0 14 * * *"
       },
       {
-        "path": "/api/cronMarketingDrip",
-        "schedule": "0 * * * *"
+        "path": "/api/cronMarketingDrip?group=engaged",
+        "schedule": "*/2 * * * *"
+      },
+      {
+        "path": "/api/cronMarketingDrip?group=cold",
+        "schedule": "1-59/2 * * * *"
       },
       {
         "path": "/api/support/fuse-tick",

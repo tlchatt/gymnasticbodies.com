@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import { db } from '@/Drizzle/index.ts';
-import { outbound_emails, user } from '@/Drizzle/db/schema';
-import { eq } from 'drizzle-orm';
+import { outbound_emails } from '@/Drizzle/db/schema';
 import sgMail from '@sendgrid/mail';
 import { logger } from '@/lib/logger';
 import { getOffer, formatPrice } from '@/lib/pricing';
@@ -12,29 +11,55 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const OFFER_SLUG = 'legacy15';
 const TYPE = 'marketing';
 
-// Paced sending: the cron runs hourly (see vercel.json) and sends this many per
-// run, so the daily volume (~PER_RUN * 24) goes out spread across the day in small
-// batches rather than one large burst — better for deliverability and it keeps each
-// serverless invocation well under the function time limit. Target ~1,000/day.
-const PER_RUN = 42;            // 42 * 24 ≈ 1,008 per day
-const SEND_GAP_MS = 200;       // brief pause between sends to stay gentle on SendGrid
+// Fixed "line in the sand": eligible only if they lapsed ON OR BEFORE this date
+// (their renewaldate) OR were never active at all (blank renewaldate = never
+// subscribed, which is by definition "before the line"). A fixed date — not a
+// rolling window — so the audience is stable, self-documenting, and names the
+// campaign. 2026-05-22 is the date the new paywall/subscribe/renew system went live.
+const LAPSED_ON_OR_BEFORE = '2026-05-22';
+const CUTOFF_TAG = '20260522';
 
-// Give the invocation headroom for PER_RUN sequential sends.
-export const maxDuration = 60;
+// Two crons hit this route every 2 minutes (see vercel.json), one per group,
+// offset by a minute so combined they send ~2 emails/minute.
+const PER_RUN = 2;             // 2 per run * 720 runs/day ≈ 1,440/day per group
+const SEND_GAP_MS = 200;
+
+// Multi-touch: a person may receive the offer up to MAX_SENDS times. First-touchers
+// are always served before anyone gets a repeat (ORDER BY sent_count ASC), so the
+// list works through touch 1 across everyone, then touch 2, then touch 3.
+const MAX_SENDS = 3;
+
+// Group definitions. `engaged` = ex-members with real history (~2.8% conv);
+// `cold` = inactive accounts, never active (~0.8%). Each has its own campaign tag.
+const GROUPS = {
+  engaged: { segments: ['lapsed', 'purchased'], campaign: `legacy_lockin_${CUTOFF_TAG}_engaged` },
+  cold: { segments: ['inactive'], campaign: `legacy_lockin_${CUTOFF_TAG}_cold` },
+};
+
+export const maxDuration = 30;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const SUBJECT = 'A special offer for GymnasticBodies legacy members';
 // Prices are {{variable}}-driven from the pricing config — never literals.
+const SUBJECT = 'Lock in your {{offerPrice}} legacy rate before it’s gone';
 const BODY = `Hi {{name}},
 
-As a former GymnasticBodies member, we would like to extend a special offer exclusively for you.
+We're rebuilding GymnasticBodies from the ground up — and as a legacy member, you can come back at your original rate before new pricing takes over.
 
-For a limited time, you may rejoin for just {{offerPrice}}/month - a massive savings off the regular rate of {{offerRegularRate}}/month. This special rate is reserved solely for Legacy Members like yourself who were a part of the original GymnasticBodies community.
+What's coming:
+• A faster, better-looking app with smoother, higher-quality video
+• A more dynamic level system with clearer progress and milestone tracking
+• Targeted workouts for specific body parts, injuries, and recovery — plus workouts built around the equipment you already have
+• New Concierge coaching (personal feedback on your form videos) and live Interactive events
+• The community forum back — and a roadmap you help shape
 
-Your exclusive offer link: {{offerLink}}
+New membership tiers and pricing roll out soon. Right now, you can rejoin at the legacy rate of just {{offerPrice}}/month (instead of {{offerRegularRate}}/month) — locked in for as long as you stay.
 
-Questions? Just reply to this email and we'll be happy to help.
+Rejoin at {{offerPrice}}/month → {{offerLink}}
+
+This rate is reserved for original members like you and won't come back once the new tiers launch.
+
+Questions? Just reply — we're happy to help.
 
 The GymnasticBodies Team`;
 
@@ -53,77 +78,100 @@ function render(template, vars) {
 }
 
 export async function GET(request) {
+  const group = new URL(request.url).searchParams.get('group');
+  const cfg = GROUPS[group];
+  if (!cfg) {
+    return NextResponse.json({ error: `unknown group; expected one of ${Object.keys(GROUPS).join(', ')}` }, { status: 400 });
+  }
+  const CAMPAIGN = cfg.campaign;
+
   const offer = await getOffer(OFFER_SLUG);
   if (!offer || offer.active === false) {
-    logger.info('marketing_drip.offer_missing', { slug: OFFER_SLUG });
+    logger.info('marketing_drip.offer_missing', { slug: OFFER_SLUG, group });
     return NextResponse.json({ ok: true, skipped: 'offer not found' });
   }
-  const CAMPAIGN = offer.campaign;
+  if (new Date() > new Date(offer.endDate)) {
+    logger.info('marketing_drip.campaign_ended', { campaign: CAMPAIGN, group });
+    return NextResponse.json({ ok: true, skipped: 'campaign ended' });
+  }
   const priceVars = {
     offerPrice: formatPrice(offer.amount),
     offerRegularRate: formatPrice(offer.regularRate),
   };
 
-  if (new Date() > new Date(offer.endDate)) {
-    logger.info('marketing_drip.campaign_ended', { campaign: CAMPAIGN });
-    return NextResponse.json({ ok: true, skipped: 'campaign ended' });
-  }
-
   const sql = neon(process.env.DATABASE_URL);
 
+  // Eligible = noncurrent, this group's segment(s), a good email, lapsed on/before
+  // the cutoff (or never active), fewer than MAX_SENDS prior sends, and NOT already
+  // signed up — excluded if they converted through our flows (offer/renewal.success)
+  // or carry any linked Stripe subscription id in Neon.
   const candidates = await sql`
-    SELECT u.id, u.email, u.name
+    WITH sends AS (
+      SELECT lower(to_email) AS email, COUNT(*) AS cnt
+      FROM outbound_emails
+      WHERE campaign LIKE 'marketing_drip_legacy15%' OR campaign LIKE 'legacy_lockin_%'
+      GROUP BY lower(to_email)
+    )
+    SELECT u.id, u.email, u.name, COALESCE(s.cnt, 0) AS sent_count
     FROM "user" u
     LEFT JOIN user_setting us ON us.user_id = u.id AND us.type = 'subscription'
+    LEFT JOIN sends s ON s.email = lower(u.email)
     WHERE u.migration_type = 'noncurrent'
       AND u.email_status IS NULL
+      AND u.customer_segment = ANY(${cfg.segments})
       AND (
-        (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NOT NULL
-         AND (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date < NOW() - INTERVAL '4 months')
-        OR
-        (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NULL
-         AND u.created_at < NOW() - INTERVAL '4 months')
+        NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), '') IS NULL
+        OR (NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date <= ${LAPSED_ON_OR_BEFORE}::date
       )
-      AND u.email NOT IN (
-        SELECT to_email FROM outbound_emails WHERE campaign = ${CAMPAIGN}
+      AND COALESCE(s.cnt, 0) < ${MAX_SENDS}
+      AND NOT EXISTS (
+        SELECT 1 FROM app_logs a
+        WHERE lower(a.email) = lower(u.email)
+          AND a.event IN ('offer.success', 'renewal.success')
       )
-    GROUP BY u.id, u.email, u.name, u.created_at, us.data
-    ORDER BY COALESCE((NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date, u.created_at::date) ASC
+      AND NOT EXISTS (
+        SELECT 1 FROM user_setting us2
+        WHERE us2.user_id = u.id AND us2.stripe_subscription_id IS NOT NULL
+      )
+    GROUP BY u.id, u.email, u.name, u.created_at, us.data, s.cnt
+    ORDER BY COALESCE(s.cnt, 0) ASC,
+             COALESCE((NULLIF(NULLIF(us.data::jsonb->>'renewaldate', 'N/A'), ''))::date, u.created_at::date) ASC
     LIMIT ${PER_RUN}
   `;
 
-  const results = { sent: 0, errors: 0, emails: [] };
+  const results = { group, campaign: CAMPAIGN, sent: 0, errors: 0, emails: [] };
 
   for (const row of candidates) {
     const email = row.email.trim().toLowerCase();
     const name = firstName(row.name);
     const offerLink = `https://app.gymnasticbodies.com/offer/${OFFER_SLUG}?email=${encodeURIComponent(email)}`;
     const renderedBody = render(BODY, { name: name || '', email, offerLink, ...priceVars });
+    const renderedSubject = render(SUBJECT, { ...priceVars });
 
     try {
       await sgMail.send({
         to: email,
         from: { email: 'marketing@gymnasticbodies.com', name: 'GymnasticBodies' },
         replyTo: 'support@gymnasticbodies.com',
-        subject: SUBJECT,
+        subject: renderedSubject,
         text: renderedBody,
       });
 
       await db.insert(outbound_emails).values({
         userId: row.id ?? null,
         toEmail: email,
-        subject: SUBJECT,
+        subject: renderedSubject,
         body: renderedBody,
         campaign: CAMPAIGN,
         type: TYPE,
         sentAt: new Date(),
       });
 
-      logger.info('marketing_drip.sent', { email, userId: row.id ?? null });
+      logger.info('marketing_drip.sent', { email, userId: row.id ?? null, group, campaign: CAMPAIGN, touch: (row.sent_count ?? 0) + 1 });
       results.sent++;
-      results.emails.push({ email, status: 'sent' });
+      results.emails.push({ email, status: 'sent', touch: (row.sent_count ?? 0) + 1 });
     } catch (err) {
-      logger.error('marketing_drip.error', { email, error: err.message });
+      logger.error('marketing_drip.error', { email, error: err.message, group });
       results.errors++;
       results.emails.push({ email, status: 'error', error: err.message });
     }
