@@ -5,7 +5,6 @@ import { and, eq, or, desc } from 'drizzle-orm';
 import { getUserWithId } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
 import { fireCaseToSlack } from '@/lib/support/autofire';
-import { sendInAppSupportToInbox } from '@/lib/sendgrid';
 import { randomBytes } from 'crypto';
 
 // after() fires the support agent for the new inbound before the fn ends (parity with Gmail sync).
@@ -117,20 +116,11 @@ export async function POST(request) {
 
         logger.info('support.message_in_app', { userId: user.id, email: user.email, caseId: effectiveCaseId, emailId: row?.id });
 
-        // After responding to the member's browser: (1) fire the support agent -> Slack (parity with
-        // the Gmail sync; fireCaseToSlack verifies the post landed, retries once, logs every outcome),
-        // and (2) drop a copy of the message into the support@ Gmail inbox so the team has it in Gmail
-        // like an emailed ticket. The inbox copy is marked X-GB-Source so the sync won't re-ingest it.
+        // Fire the support agent -> Slack after responding to the member's browser (parity with the
+        // Gmail sync's autoFireNewCases). fireCaseToSlack verifies the post landed, retries once, and
+        // logs every outcome. This is the fix for in-app messages never reaching Slack.
         if (user.email && effectiveCaseId) {
-            const email = user.email, name = user.name;
-            after(() => Promise.allSettled([
-                fireCaseToSlack({ email, caseId: effectiveCaseId }),
-                sendInAppSupportToInbox({
-                    memberEmail: email, memberName: name, subject: resolvedSubject,
-                    body: trimmedBody, caseId: effectiveCaseId,
-                    adminBase: process.env.SUPPORT_PUBLIC_URL || 'https://app.gymnasticbodies.com',
-                }),
-            ]));
+            after(() => fireCaseToSlack({ email: user.email, caseId: effectiveCaseId }));
         }
 
         return NextResponse.json({ ok: true, message: row }, { headers: CORS });

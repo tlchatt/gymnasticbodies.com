@@ -48,10 +48,10 @@ function isAutomatedNoise(msg) {
   return false;
 }
 
-// In-app "Contact Support" messages are ALSO emailed into this inbox (so the team has them in Gmail),
-// but /api/user/support-message already recorded + cased + fired them directly. Skip the emailed copy
-// here — recognized by the X-GB-Source header we set on send — so we don't create a duplicate case +
-// Slack thread for the same message.
+// Guard: skip any message carrying our internal X-GB-Source header. The in-app "Contact Support"
+// form is handled directly (DB row + case + Slack fire) and no longer emails a copy here, so this
+// should match nothing in normal operation — it only skips a leftover marked test message still in
+// the inbox so it can't be ingested as a bogus ticket. Safe to remove once that message ages out.
 function isInAppEcho(raw) {
   const h = (raw.payload?.headers ?? []).find((x) => x.name.toLowerCase() === 'x-gb-source');
   return !!h && /inapp/i.test(h.value ?? '');
