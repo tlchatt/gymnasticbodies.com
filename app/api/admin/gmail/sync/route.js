@@ -48,6 +48,15 @@ function isAutomatedNoise(msg) {
   return false;
 }
 
+// In-app "Contact Support" messages are ALSO emailed into this inbox (so the team has them in Gmail),
+// but /api/user/support-message already recorded + cased + fired them directly. Skip the emailed copy
+// here — recognized by the X-GB-Source header we set on send — so we don't create a duplicate case +
+// Slack thread for the same message.
+function isInAppEcho(raw) {
+  const h = (raw.payload?.headers ?? []).find((x) => x.name.toLowerCase() === 'x-gb-source');
+  return !!h && /inapp/i.test(h.value ?? '');
+}
+
 // Check if this inbound email is a reply to an outbound email we sent.
 // Looks back 90 days. Returns the most recent matching outbound record or null.
 async function findOutboundMatch(fromEmail) {
@@ -163,6 +172,9 @@ async function runSync() {
         if (seenRfcIds.has(rfcId)) { skipped++; continue; }
         seenRfcIds.add(rfcId);
       }
+
+      // Skip the emailed copy of an in-app message — it's already recorded via the in-app route.
+      if (isInAppEcho(raw)) { skipped++; continue; }
 
       const parsed = parseDigest(raw);
 
