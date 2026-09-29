@@ -24,6 +24,7 @@ function getStripeInterval(term) {
 
 export async function POST(request) {
     let newCustomerId = null;
+    let createdSubscriptionId = null;
     let email;
     try {
         let paymentMethodId, overridePrice, overrideTerm;
@@ -90,6 +91,7 @@ export async function POST(request) {
             interval,
             intervalCount,
         });
+        createdSubscriptionId = subscription?.id ?? null;
 
         // Handle 3DS
         const paymentIntent = subscription?.latest_invoice?.payment_intent;
@@ -116,7 +118,7 @@ export async function POST(request) {
                 price: rawPrice,
                 term: rawTerm,
             }),
-        });
+        }, user.id);
 
         await updateUserClassification(user.id, 'current', 'stripe');
 
@@ -148,7 +150,12 @@ export async function POST(request) {
         });
     } catch (error) {
         logger.error('renewal.failed', { email, error });
-        if (newCustomerId) {
+        // Only roll back the new customer when no subscription was created. Once a subscription
+        // exists the card may already be charged; deleting the customer cancels the subscription but
+        // keeps the money, leaving a paying member paywalled. Log it loudly for manual repair instead.
+        if (createdSubscriptionId) {
+            logger.error('renewal.failed_after_subscription', { email, data: { stripeCustomerId: newCustomerId, stripeSubscriptionId: createdSubscriptionId, error: error?.message } });
+        } else if (newCustomerId) {
             try { await deleteStripeCustomer(newCustomerId); } catch (_) {}
         }
         return NextResponse.json({ success: false, message: error?.message ?? 'Renewal failed. Please try again.' }, { status: 500 });

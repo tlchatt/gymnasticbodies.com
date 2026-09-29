@@ -24,6 +24,7 @@ function getStripeInterval(term) {
 
 export async function POST(request) {
     let newCustomerId = null;
+    let createdSubscriptionId = null;
     let email;
     try {
         let paymentMethodId, slug;
@@ -91,6 +92,7 @@ export async function POST(request) {
             interval,
             intervalCount,
         });
+        createdSubscriptionId = subscription?.id ?? null;
 
         const paymentIntent = subscription?.latest_invoice?.payment_intent;
         if (paymentIntent?.status === 'requires_action') {
@@ -116,7 +118,7 @@ export async function POST(request) {
                 price: offer.amount,
                 term: offer.term,
             }),
-        });
+        }, user.id);
 
         await updateUserClassification(user.id, 'current', 'stripe');
 
@@ -150,7 +152,12 @@ export async function POST(request) {
         });
     } catch (error) {
         logger.error('offer.failed', { email, error: error?.message });
-        if (newCustomerId) {
+        // Only roll back the new customer when no subscription was created. Once a subscription
+        // exists the card may already be charged; deleting the customer cancels the subscription but
+        // keeps the money, leaving a paying member paywalled. Log it loudly for manual repair instead.
+        if (createdSubscriptionId) {
+            logger.error('offer.failed_after_subscription', { email, data: { stripeCustomerId: newCustomerId, stripeSubscriptionId: createdSubscriptionId, error: error?.message } });
+        } else if (newCustomerId) {
             try { await deleteStripeCustomer(newCustomerId); } catch (_) {}
         }
         return NextResponse.json({ success: false, message: error?.message ?? 'Subscription failed. Please try again.' }, { status: 500 });
