@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
-import { getRenewNoHistoryPricing, lockedRateFrom } from '@/lib/pricing';
+import { getRenewNoHistoryPricing } from '@/lib/pricing';
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
 import { randomBytes } from 'crypto';
@@ -41,8 +41,7 @@ export async function POST(request) {
         // Everyone renews at the ONE defined renew rate (historical rates nixed 2026-08-13). The
         // server is authoritative — it does not trust a client-supplied price, so nobody can renew
         // at a stale or forged rate. Monthly only.
-        // A rate locked onto this member's account (lockedRateFrom) wins over the flat rate.
-        const renewRate = lockedRateFrom(currentData) ?? await getRenewNoHistoryPricing();
+        const renewRate = await getRenewNoHistoryPricing();
         const rawPrice = String(renewRate.amount);
         const rawTerm = renewRate.term ?? 'monthly';
         const amountCents = Math.round(parseFloat(rawPrice) * 100);
