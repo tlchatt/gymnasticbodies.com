@@ -14,8 +14,9 @@
 import {
     corsJson, corsOptions, isValidIsoDate, weekDatesFrom, isoToDayKey,
     readWorkoutState, writeWorkoutState, readDayDoc, writeDayDoc, resolveWorkoutUserId,
+    upsertHistoryEntry, removeHistoryEntry,
 } from "@/lib/workout";
-import { buildCourseView, isProgramId } from "@/lib/curriculum";
+import { buildCourseView, isProgramId, PROGRAM_IDS } from "@/lib/curriculum";
 import { logger } from "@/lib/logger";
 import levelSchedules from "@/data/workout/levelSchedules.json";
 import byoWorkouts from "@/data/workout/byoWorkouts.json";
@@ -48,6 +49,26 @@ for (const w of byoWorkouts) {
             image: w.image || '', description: w.description || '',
         });
     }
+}
+const BEGINNER_CLASS_NAMES = new Map();
+for (const day of Object.values(beginnerPlans)) {
+    for (const it of (Array.isArray(day) ? day : [])) {
+        if (it?.classId && !BEGINNER_CLASS_NAMES.has(Number(it.classId))) BEGINNER_CLASS_NAMES.set(Number(it.classId), it.className || '');
+    }
+}
+
+// History entry for a class/program marked done from Guided Plans or the Beginner plan —
+// the same shape the seeded AWS history and the BYO write-through use. Keyed
+// (source 'levels-class', refId classId) so re-logging is idempotent and unlog removes it.
+function levelsHistoryEntry(id) {
+    const classId = Number(id);
+    if (isProgramId(classId)) {
+        const name = PROGRAM_IDS[classId];
+        return { courseName: name, courseIcon: name.split(' ').map(s => s[0]).join(''), type: 'Programs', level: '', source: 'levels-class', refId: classId };
+    }
+    const meta = CLASS_META.get(classId);
+    const courseName = meta?.className || BEGINNER_CLASS_NAMES.get(classId) || `Class ${classId}`;
+    return { courseName, courseIcon: meta?.image || '', type: 'Class', level: '', source: 'levels-class', refId: classId };
 }
 
 // A bulk seed/repair scrambled the stored class order for ~84% of members, so Warm-Up and
@@ -301,6 +322,39 @@ export async function POST(request) {
             return corsJson({ lastLoginLevel: level, levelId: level, userLevel: LEVEL_NAMES[level] || null });
         }
 
+        // Beginner logging shares the 'levels' day-doc, so a logged class shows as logged
+        // in whichever view surfaces it. Logging never touches the schedule, so it runs
+        // before the schedule-level normalisation below: my. sends no level with these ops,
+        // and falling through to that block logged a spurious invalid_level_write warning
+        // for every class a member marked done.
+        if (op === 'log-beginner' || op === 'unlog-beginner' || op === 'log-class' || op === 'unlog-class') {
+            // log-class/unlog-class are the calendar's names for the same operation; both
+            // write the 'levels' day-doc so a class logged anywhere reads as logged everywhere.
+            const date = isValidIsoDate(json.date) ? json.date : null;
+            if (!date) return corsJson({ error: 'date=YYYY-MM-DD required' }, 400);
+            const ids = (Array.isArray(json.classIds) ? json.classIds : String(json.classIds || '').split(','))
+                .map(n => Number(String(n).trim())).filter(Boolean);
+            if (!ids.length) return corsJson({ error: 'classIds required' }, 400);
+
+            const doc = (await readDayDoc(userId, 'levels', date)) || { items: [] };
+            const items = Array.isArray(doc) ? doc : (doc.items || []);
+            const byId = new Map(items.map(it => [Number(it.classId ?? it.id), it]));
+            for (const id of ids) {
+                const existing = byId.get(id) || { id, classId: id };
+                existing.isLogged = op === 'log-beginner' || op === 'log-class';
+                byId.set(id, existing);
+            }
+            await writeDayDoc(userId, 'levels', date, { ...(Array.isArray(doc) ? {} : doc), items: [...byId.values()] });
+            // The History screen reads only section='history' docs. This route never wrote
+            // them, so every guided/beginner class logged since the AWS cutover was saved
+            // here but never showed in History ("my workouts are not saving to history").
+            for (const id of ids) {
+                if (op === 'log-beginner' || op === 'log-class') await upsertHistoryEntry(userId, date, levelsHistoryEntry(id));
+                else await removeHistoryEntry(userId, date, 'levels-class', id);
+            }
+            return corsJson({ status: 200, date, classIds: ids, isLogged: op === 'log-beginner' || op === 'log-class' });
+        }
+
         // ---- schedule editing -------------------------------------------------------
         // All three write the user's own week (user_setting levels_schedule), which is the
         // same row the weekly GET reads. AWS had no level dimension here and neither do we.
@@ -478,29 +532,6 @@ export async function POST(request) {
             delete days[String(dayIndex)];
             await writeWorkoutState(userId, 'beginner_schedule', { ...(data || {}), days });
             return corsJson({ status: 200, dayIndex });
-        }
-
-        // Beginner logging shares the 'levels' day-doc, so a logged class shows as logged
-        // in whichever view surfaces it.
-        if (op === 'log-beginner' || op === 'unlog-beginner' || op === 'log-class' || op === 'unlog-class') {
-            // log-class/unlog-class are the calendar's names for the same operation; both
-            // write the 'levels' day-doc so a class logged anywhere reads as logged everywhere.
-            const date = isValidIsoDate(json.date) ? json.date : null;
-            if (!date) return corsJson({ error: 'date=YYYY-MM-DD required' }, 400);
-            const ids = (Array.isArray(json.classIds) ? json.classIds : String(json.classIds || '').split(','))
-                .map(n => Number(String(n).trim())).filter(Boolean);
-            if (!ids.length) return corsJson({ error: 'classIds required' }, 400);
-
-            const doc = (await readDayDoc(userId, 'levels', date)) || { items: [] };
-            const items = Array.isArray(doc) ? doc : (doc.items || []);
-            const byId = new Map(items.map(it => [Number(it.classId ?? it.id), it]));
-            for (const id of ids) {
-                const existing = byId.get(id) || { id, classId: id };
-                existing.isLogged = op === 'log-beginner' || op === 'log-class';
-                byId.set(id, existing);
-            }
-            await writeDayDoc(userId, 'levels', date, { ...(Array.isArray(doc) ? {} : doc), items: [...byId.values()] });
-            return corsJson({ status: 200, date, classIds: ids, isLogged: op === 'log-beginner' || op === 'log-class' });
         }
 
         return corsJson({ error: `unknown op: ${op}` }, 400);
