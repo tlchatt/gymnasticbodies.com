@@ -41,19 +41,29 @@ export async function POST(request, { params }) {
       let accessUntil = null;
       let newStatus;
 
-      if (cancelNow) {
+      // Stripe answers a cancel of an ALREADY-cancelled subscription with "No such
+      // subscription" (resource_missing), even though the subscription exists. That is
+      // what the three 2026-09-28 admin cancel failures were — members whose subs had
+      // ended weeks earlier. Look first; if Stripe is already done, just record it here.
+      const current = await stripe.subscriptions.retrieve(setting.stripeSubscriptionId);
+      const alreadyEnded = ['canceled', 'incomplete_expired'].includes(current.status);
+
+      if (alreadyEnded) {
+        newStatus = 'cancelled';
+      } else if (cancelNow) {
         await stripe.subscriptions.cancel(setting.stripeSubscriptionId);
         newStatus = 'cancelled';
       } else {
         const updated = await stripe.subscriptions.update(setting.stripeSubscriptionId, { cancel_at_period_end: true });
-        accessUntil = updated.current_period_end;
+        accessUntil = updated.items?.data?.[0]?.current_period_end ?? updated.current_period_end ?? null;
         newStatus = 'pending_cancel';
       }
 
       await updateUserSettingStatus(setting, newStatus, JSON.stringify({ ...data, status: newStatus }));
       await updateUserClassification(id, 'noncurrent', 'lapsed');
 
-      const method = setting.trial ? 'stripe_trial' : (immediate ? 'stripe_immediate' : 'stripe_period_end');
+      const method = alreadyEnded ? 'stripe_already_cancelled'
+        : setting.trial ? 'stripe_trial' : (immediate ? 'stripe_immediate' : 'stripe_period_end');
       logger.info('admin.cancel_subscription', {
         userId: id, email: user.email, method,
         stripeSubscriptionId: setting.stripeSubscriptionId,
