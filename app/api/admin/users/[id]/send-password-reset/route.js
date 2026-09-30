@@ -1,8 +1,5 @@
 import { NextResponse } from 'next/server';
-import { randomBytes } from 'crypto';
-import { eq } from 'drizzle-orm';
-import { db } from '@/Drizzle/index.ts';
-import { verification } from '@/Drizzle/db/schema';
+import { mintResetToken } from '@/lib/resetToken';
 import { requireAdmin } from '@/lib/adminAuth';
 import { getUserWithId } from '@/lib/userSettings';
 import { sendResetLinkEmailSG } from '@/lib/sendgrid';
@@ -21,17 +18,7 @@ export async function POST(request, { params }) {
   // Generate a single-use token and persist it, exactly like /api/user/resetLink.
   // Without this the emailed link ends in '/none' and can never validate against
   // the verification table — the reset is structurally broken.
-  const token = randomBytes(32).toString('hex');
-  const identifier = `reset-password:${user.id}`;
-  await db.delete(verification).where(eq(verification.identifier, identifier));
-  await db.insert(verification).values({
-    id: token,
-    identifier,
-    value: token,
-    expiresAt: new Date(Date.now() + 60 * 60 * 1000),
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
+  const token = await mintResetToken(user.id);
 
   const sent = await sendResetLinkEmailSG({ email: user.email, userId: user.id, token });
   if (!sent) return NextResponse.json({ error: 'Failed to send reset email' }, { status: 500 });

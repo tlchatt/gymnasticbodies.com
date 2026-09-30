@@ -1,8 +1,9 @@
 import { db } from "@/Drizzle/index.ts"; // your drizzle instance
-import { account, verification } from "@/Drizzle/db/schema"
+import { account } from "@/Drizzle/db/schema"
 import { and, eq } from 'drizzle-orm';
 import { randomBytes } from 'crypto';
-import { hashPassword } from "@/lib/password";
+import { hashPassword, verifyPassword } from "@/lib/password";
+import { checkResetToken, consumeResetToken } from "@/lib/resetToken";
 import { logger } from "@/lib/logger";
 
 const CORS = {
@@ -25,15 +26,26 @@ export async function POST(request) {
         return fail('invalid_request')
     }
 
-    // The link token from /api/user/resetLink is single-use and expires after an hour.
+    // The link token from /api/user/resetLink is single-use and expires (lib/resetToken.js).
     // Without this check, anyone who knew a userId could take over the account.
-    const identifier = `reset-password:${json.userId}`;
-    const rows = await db.select().from(verification).where(eq(verification.identifier, identifier));
-    const record = rows[0];
+    const check = await checkResetToken(json.userId, json.token)
 
-    if (!record || record.value !== json.token || new Date(record.expiresAt) < new Date()) {
-        logger.warn('auth.reset_password.invalid_token', { userId: json.userId })
-        return fail('invalid_or_expired_token')
+    if (!check.ok) {
+        // A second submit of a link that already worked (double-click, or the member coming
+        // back to the tab) with the same password is not a failure — the password is set.
+        if (check.reason === 'already_used') {
+            const cred = await db.select().from(account)
+                .where(and(eq(account.userId, json.userId), eq(account.providerId, 'credential')))
+            const same = cred[0]?.password
+                ? await verifyPassword({ password: json.confirmPassword, hash: cred[0].password }).catch(() => false)
+                : false
+            if (same) {
+                logger.info('auth.reset_password.repeat_submit', { userId: json.userId })
+                return new Response('OK', { status: 200, headers: CORS });
+            }
+        }
+        logger.warn('auth.reset_password.invalid_token', { userId: json.userId, reason: check.reason })
+        return fail(check.reason === 'already_used' ? 'token_already_used' : 'invalid_or_expired_token')
     }
 
     const password = await hashPassword(json.confirmPassword)
@@ -63,7 +75,7 @@ export async function POST(request) {
         created = true
     }
 
-    await db.delete(verification).where(eq(verification.identifier, identifier));
+    await consumeResetToken(json.userId, json.token);
 
     logger.info('auth.reset_password.success', { userId: json.userId, createdCredential: created })
     return new Response('OK', { status: 200, headers: CORS });

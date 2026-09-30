@@ -1,7 +1,4 @@
-import { verification } from "@/Drizzle/db/schema"
-import { db } from "@/Drizzle/index.ts";
-import { eq } from 'drizzle-orm';
-import { randomBytes } from 'crypto';
+import { mintResetToken } from "@/lib/resetToken";
 import { sendResetLinkEmailSG } from "@/lib/sendgrid";
 import { getUserWithEmail } from "@/lib/userSettings";
 import { logger } from "@/lib/logger";
@@ -19,7 +16,7 @@ export async function POST(request) {
 
     const json = await request.json()
 
-    json.email = json.email.toLowerCase()
+    json.email = String(json.email || '').trim().toLowerCase()
 
     const dbUser = await getUserWithEmail(json.email)
 
@@ -35,20 +32,10 @@ export async function POST(request) {
         })
     }
 
-    // Single-use token, validated by /api/user/resetPassword. Same pattern as change-email.
-    const token = randomBytes(32).toString('hex');
-    const identifier = `reset-password:${dbUser.id}`;
-
     try {
-        await db.delete(verification).where(eq(verification.identifier, identifier));
-        await db.insert(verification).values({
-            id: token,
-            identifier,
-            value: token,
-            expiresAt: new Date(Date.now() + 60 * 60 * 1000),
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        });
+        // Single-use token, validated by /api/user/resetPassword. Earlier links stay valid
+        // until they expire — see lib/resetToken.js for why.
+        const token = await mintResetToken(dbUser.id);
 
         await sendResetLinkEmailSG({
             email: json.email,

@@ -3,6 +3,17 @@ import { headers } from "next/headers"
 import bcrypt from 'bcrypt';
 import { hashPassword } from "@/lib/password";
 import { logger } from "@/lib/logger";
+
+// my.'s reset-password and create-account forms only accept A-Z a-z 0-9 ! $ # and at most
+// 20 characters, and they enforce it by silently IGNORING any other keystroke. A member who
+// types "Summer@2026!" there actually saves "Summer2026!", then types "Summer@2026!" at the
+// login form (which accepts anything) and is told the password is wrong — right after a
+// "Password Saved" message. 34 of 71 members who signed in straight after a reset in Sep
+// 2026 failed that first sign-in. Applying the same filter to a failed attempt lets the password the member
+// believes they set work. The filtered string is itself a password anyone could type, so
+// this lets in no one who could not already get in by typing it.
+const RESET_FORM_ALLOWED = /[a-zA-Z0-9!$#]/g
+const asResetFormSaved = (pw) => (String(pw).match(RESET_FORM_ALLOWED) || []).join('').slice(0, 20)
 export async function POST(request) {
     let email;
     try {
@@ -29,16 +40,24 @@ export async function POST(request) {
             },
         })
             */
-        const data = await auth.api.signInEmail({
+        const signIn = async (password) => auth.api.signInEmail({
             body: {
                 email: json.username, // required
-                password: json.password, // required
+                password, // required
                 rememberMe: true,
-                //callbackURL: "https://example.com/callback",
             },
             // This endpoint requires session cookies.
             headers: await headers(),
         });
+        let data
+        try {
+            data = await signIn(json.password)
+        } catch (err) {
+            const filtered = typeof json.password === 'string' ? asResetFormSaved(json.password) : null
+            if (err?.status !== 'UNAUTHORIZED' || !filtered || filtered === json.password) throw err
+            data = await signIn(filtered)
+            logger.info('auth.signin_reset_form_filtered', { email })
+        }
         /*
         let session = await auth.api.getSession({
             headers: await headers()
