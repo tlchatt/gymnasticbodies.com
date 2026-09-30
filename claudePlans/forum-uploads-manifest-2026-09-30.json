@@ -1,0 +1,422 @@
+{
+ "generatedAt": "2026-09-30T12:49:55.239Z",
+ "box": {
+  "instance": "cpanel-new-2026 (Lightsail us-east-1, 34.205.92.109)",
+  "uploadsPath": "/home/goatfart/public_html/forum/uploads",
+  "files": 18115,
+  "bytes": 6640805607,
+  "fileStorage": "IPS storage #1 FileSystem, url \"uploads\" under board_url https://www.gymnasticbodies.com/forum — every fileStore.* category (core_Attachment, core_Emoticons, …) maps to it",
+  "breakdown": {
+   "monthly_* (attachments)": 11367,
+   "profile": 4579,
+   "gallery": 1276,
+   "emoticons": 44,
+   "theme/css/js/other": 849
+  }
+ },
+ "localBackup": {
+  "dir": "/var/www/Work/Gymfit/forum_backup_2026-07-24",
+  "tar": "forum_uploads_2026-09-30.tar",
+  "tarBytes": 6657505280,
+  "tarFiles": 18115,
+  "matchesBoxListing": true,
+  "fileList": "uploads-box-filelist.tsv",
+  "attachmentTable": "core_attachments.jsonl (4,539 rows: id -> location)",
+  "extractedPublicSubset": "uploads/ (2,624 files)",
+  "inGitRepo": false
+ },
+ "blob": {
+  "base": "https://6z1gtynqfxcjjwix.public.blob.vercel-storage.com/forum/uploads",
+  "pathRule": "<base>/<relative path exactly as it follows the fileStore placeholder or /forum/uploads/ in the post>",
+  "access": "public",
+  "randomSuffix": false
+ },
+ "publicForums": [
+  16,
+  17,
+  19,
+  20,
+  22,
+  24,
+  26,
+  27
+ ],
+ "counts": {
+  "publicPostsScanned": 134970,
+  "publicPostsWithRefs": 23818,
+  "distinctPathRefs": 2634,
+  "filesReferencedOnBox": 2624,
+  "bytes": 671278720,
+  "uploaded": 2624,
+  "sizeVerified": 2624,
+  "failed": 0,
+  "neverUploaded": 0,
+  "attachmentIdLinks": 68,
+  "attachmentIdLinksResolved": 1
+ },
+ "missingOnBox": [
+  "monthly_01_2013/post-2239-0-40196900-1358819047.png",
+  "monthly_01_2013/post-2239-0-40196900-1358819047_thumb.png",
+  "monthly_06_2011/post-50088-13531537166085.gif",
+  "monthly_06_2011/post-50088-13531537166085_thumb.gif",
+  "monthly_2016_03/12237387_744024479035183_517219896_n.jpg.ca5a395e35b61d3dcabc353628f6e074.jpg",
+  "monthly_2016_06/5764359e5e9f8_Screenshot_20160617-1937131.png.6a11764e3ac4cde4816380ca0f28b017.png",
+  "monthly_2016_06/576435a3bbec7_Screenshot_20160617-1937131.thumb.png.fb8714b7cbf9929464308831aaa91623.png",
+  "monthly_2016_09/57e4444e62c37_GymnasticBodies3-months.png.ed9350a0de0c5749cca17d21ef64a5ed.png",
+  "monthly_2016_09/57e44451ad5f5_GymnasticBodies3-months.thumb.png.22102446be11a86050f8f6789c848584.png",
+  "monthly_2019_10/zp130-e0855277-99d4-48f7-8ebe-c5929ce5f947-v2.jpg.9e81d8a5721c325271e35b44ec83be8f.jpg",
+  "profile/photo-thumb-3819.jpg"
+ ],
+ "attachmentIdMap": {
+  "2653": {
+   "path": "monthly_02_2016/video-1455225047.mp4.79c1a76e013db2cd05d461c8dfe6c41a",
+   "name": "video-1455225047.mp4"
+  }
+ },
+ "missingAttachmentIds": [
+  {
+   "id": 388,
+   "location": "monthly_12_2012/post-1666-0-51581400-1355975587.ipb",
+   "name": "headspring.mov"
+  },
+  {
+   "id": 409,
+   "location": "monthly_01_2013/post-3444-0-96642700-1357511848.ipb",
+   "name": "handstandplanche.wmv"
+  },
+  {
+   "id": 415,
+   "location": "monthly_01_2013/post-4682-0-33758600-1358220692.ipb",
+   "name": "PLANCHE PROBLEMS.wmv"
+  },
+  {
+   "id": 443,
+   "location": "monthly_02_2013/post-2178-0-70662400-1360115234.ipb",
+   "name": "IMG_0234.MOV"
+  },
+  {
+   "id": 502,
+   "location": "monthly_03_2013/post-2882-0-09026300-1363223944.ipb",
+   "name": "handstand push ups.MOV"
+  },
+  {
+   "id": 524,
+   "location": "monthly_03_2013/post-3762-0-62745600-1363884634.ipb",
+   "name": "Iron Cross Progress.wmv"
+  },
+  {
+   "id": 525,
+   "location": "monthly_03_2013/post-5401-0-51908900-1363919383.ipb",
+   "name": "IMG_0411.MOV"
+  },
+  {
+   "id": 526,
+   "location": "monthly_03_2013/post-5401-0-38311500-1363922271.ipb",
+   "name": "Ring Swings.mov"
+  },
+  {
+   "id": 527,
+   "location": "monthly_03_2013/post-5401-0-99439000-1363975081.ipb",
+   "name": "Middle Split.mov"
+  },
+  {
+   "id": 601,
+   "location": "monthly_04_2013/post-4576-0-16870900-1366910667.ipb",
+   "name": "IMG_1216 (1).MOV"
+  },
+  {
+   "id": 602,
+   "location": "monthly_04_2013/post-4576-0-84145800-1366910676.ipb",
+   "name": "IMG_1213.MOV"
+  },
+  {
+   "id": 610,
+   "location": "monthly_04_2013/post-4576-0-83099500-1367332992.ipb",
+   "name": "Video_1.MOV"
+  },
+  {
+   "id": 611,
+   "location": "monthly_04_2013/post-4576-0-43273700-1367333003.ipb",
+   "name": "Video.MOV"
+  },
+  {
+   "id": 651,
+   "location": "monthly_05_2013/post-5293-0-58347600-1369302767.ipb",
+   "name": "Gymbod-notifications.tiff"
+  },
+  {
+   "id": 680,
+   "location": "monthly_06_2013/post-2476-0-13894900-1370624556.ipb",
+   "name": "ArcSoft_Video3.wmv"
+  },
+  {
+   "id": 715,
+   "location": "monthly_06_2013/post-4372-0-04180700-1371824469.ipb",
+   "name": "capturedvideo.MOV"
+  },
+  {
+   "id": 716,
+   "location": "monthly_06_2013/post-3762-0-16193900-1371825373.ipb",
+   "name": "Seconds Counter.mp3"
+  },
+  {
+   "id": 725,
+   "location": "monthly_06_2013/post-5659-0-48081700-1372381578.ipb",
+   "name": "IMG_2802.MOV"
+  },
+  {
+   "id": 742,
+   "location": "monthly_07_2013/post-4372-0-05054100-1373471895.ipb",
+   "name": "trim.Els4A7.MOV"
+  },
+  {
+   "id": 881,
+   "location": "monthly_10_2013/post-8229-0-76989700-1381972385.ipb",
+   "name": "Movie on 13-09-24 at 7.18 PM #2.mov"
+  },
+  {
+   "id": 932,
+   "location": "monthly_11_2013/post-7662-0-70013900-1384957683.ipb",
+   "name": "Document.rtf"
+  },
+  {
+   "id": 1038,
+   "location": "monthly_01_2014/post-6097-0-24775600-1389285833.ipb",
+   "name": "Top-Planche-on-Pedestals11.bmp"
+  },
+  {
+   "id": 1168,
+   "location": "monthly_03_2014/post-3591-0-72759400-1394034626.ipb",
+   "name": "StallBars_2.pdf"
+  },
+  {
+   "id": 1194,
+   "location": "monthly_03_2014/post-3315-0-94240100-1395280271.ipb",
+   "name": "Movie on 2014-03-19 at 4.23 PM.mov"
+  },
+  {
+   "id": 1195,
+   "location": "monthly_03_2014/post-3315-0-49878600-1395280354.ipb",
+   "name": "Movie on 2014-03-19 at 4.29 PM.mov"
+  },
+  {
+   "id": 1209,
+   "location": "monthly_04_2014/post-1330-0-71249900-1396444103.ipb",
+   "name": "ZoomFinal.v6.2.pdf"
+  },
+  {
+   "id": 1245,
+   "location": "monthly_05_2014/post-12141-0-77046300-1398944531.ipb",
+   "name": "handstand.WMV"
+  },
+  {
+   "id": 1303,
+   "location": "monthly_06_2014/post-4263-0-20512500-1401820303.ipb",
+   "name": "Untitled.mov"
+  },
+  {
+   "id": 1335,
+   "location": "monthly_06_2014/post-13913-0-20004700-1403205829.ipb",
+   "name": "pre-5k-pullupss-2.wmv"
+  },
+  {
+   "id": 1492,
+   "location": "monthly_09_2014/post-14023-0-51902900-1411330097.ipb",
+   "name": "IMG_5104.MOV"
+  },
+  {
+   "id": 1493,
+   "location": "monthly_09_2014/post-14023-0-11932500-1411385880.ipb",
+   "name": "IMG_5234.MOV"
+  },
+  {
+   "id": 1496,
+   "location": "monthly_09_2014/post-14023-0-62784100-1411491791.ipb",
+   "name": "trim.DA04D931-CB73-41A9-94D3-EEA627FE9160.MOV"
+  },
+  {
+   "id": 1575,
+   "location": "monthly_10_2014/post-14023-0-84722400-1414688628.ipb",
+   "name": "trim.C24B8384-676F-4BC9-9747-95D854A7B94D.MOV"
+  },
+  {
+   "id": 1587,
+   "location": "monthly_11_2014/post-6627-0-75410100-1415464028.ipb",
+   "name": "VID_20140110_142220.mp4"
+  },
+  {
+   "id": 1595,
+   "location": "monthly_11_2014/post-10847-0-89454500-1415789755.ipb",
+   "name": "VID_29080527_164840.mp4"
+  },
+  {
+   "id": 1596,
+   "location": "monthly_11_2014/post-10847-0-18978900-1415790431.ipb",
+   "name": "VID_26980313_162223.mp4"
+  },
+  {
+   "id": 1609,
+   "location": "monthly_11_2014/post-7794-0-58300600-1415843165.ipb",
+   "name": "Free-Standing Stall Bar Plans.pdf"
+  },
+  {
+   "id": 1610,
+   "location": "monthly_11_2014/post-10847-0-07887600-1415869925.ipb",
+   "name": "VID_29940620_190208.mp4"
+  },
+  {
+   "id": 1611,
+   "location": "monthly_11_2014/post-10847-0-64270800-1415872475.ipb",
+   "name": "vidstitch_video_1415872214176.mp4"
+  },
+  {
+   "id": 1683,
+   "location": "monthly_12_2014/post-14213-0-43718700-1418008291.ipb",
+   "name": "left oap.mp4"
+  },
+  {
+   "id": 1685,
+   "location": "monthly_12_2014/post-17195-0-58135500-1418197134.ipb",
+   "name": "trim.0871025D-8750-4E2A-B3F7-F39A1F7E3965.MOV"
+  },
+  {
+   "id": 1687,
+   "location": "monthly_12_2014/post-16521-0-85917100-1418237304.ipb",
+   "name": "Muscle-Up_DF.mp4"
+  },
+  {
+   "id": 1714,
+   "location": "monthly_12_2014/post-10847-0-15010700-1418808027.ipb",
+   "name": "TRIM_20141216_093553.mp4"
+  },
+  {
+   "id": 1753,
+   "location": "monthly_12_2014/post-17395-0-89797500-1419861466.ipb",
+   "name": "trim.2C877A1D-2FE1-4B9C-8C61-EA61B90E7E4F.MOV"
+  },
+  {
+   "id": 1776,
+   "location": "monthly_01_2015/post-16952-0-60777200-1420881569.ipb",
+   "name": "December2.MOV"
+  },
+  {
+   "id": 1782,
+   "location": "monthly_01_2015/post-16770-0-24259000-1421134486.ipb",
+   "name": "trim.A28A10AD-1E27-4B87-90EB-F8C8B3A9A2C6.MOV"
+  },
+  {
+   "id": 1793,
+   "location": "monthly_01_2015/post-15457-0-49293100-1421486673.ipb",
+   "name": "WIN_20150114_183445.MOV"
+  },
+  {
+   "id": 1804,
+   "location": "monthly_01_2015/post-16521-0-68038600-1422298566.ipb",
+   "name": "V to L Hanging Leg Lifts.MOV"
+  },
+  {
+   "id": 1812,
+   "location": "monthly_01_2015/post-16716-0-70690800-1422355275.ipb",
+   "name": "Planche Lean.MOV"
+  },
+  {
+   "id": 1813,
+   "location": "monthly_01_2015/post-16716-0-09944800-1422355422.ipb",
+   "name": "Push Up.MOV"
+  },
+  {
+   "id": 1814,
+   "location": "monthly_01_2015/post-16716-0-17828500-1422355583.ipb",
+   "name": "Arch Body Hold.MOV"
+  },
+  {
+   "id": 1817,
+   "location": "monthly_01_2015/post-16981-0-40920000-1422377894.ipb",
+   "name": "20150126_180711.mp4"
+  },
+  {
+   "id": 1879,
+   "location": "monthly_02_2015/post-18058-0-14404800-1424390242.ipb",
+   "name": "Tuck Planche February 2105.mp4"
+  },
+  {
+   "id": 1888,
+   "location": "monthly_02_2015/post-18121-0-07812700-1424870766.ipb",
+   "name": "Facebook_2.MP4"
+  },
+  {
+   "id": 1890,
+   "location": "monthly_02_2015/post-16716-0-97229900-1424967043.ipb",
+   "name": "DSCF9071.mp4"
+  },
+  {
+   "id": 1909,
+   "location": "monthly_03_2015/post-16521-0-92736400-1425405778.ipb",
+   "name": "Strict Muscle Up.MOV"
+  },
+  {
+   "id": 1915,
+   "location": "monthly_03_2015/post-15955-0-78779700-1425820868.ipb",
+   "name": "support.mp4"
+  },
+  {
+   "id": 1946,
+   "location": "monthly_03_2015/post-16716-0-20140900-1426942226.ipb",
+   "name": "trim.D766C7D4-8F86-4973-B6F1-6EB926FF03F4.MOV"
+  },
+  {
+   "id": 1948,
+   "location": "monthly_03_2015/post-16716-0-00040500-1426942627.ipb",
+   "name": "trim.5DB672FA-1ADF-4BE1-970E-9296759C80C8.MOV"
+  },
+  {
+   "id": 2133,
+   "location": "monthly_05_2015/post-1432-0-49749600-1432476840.ipb",
+   "name": "trim.3951F8BD-4164-465C-9F34-8277E502F66D.MOV"
+  },
+  {
+   "id": 2143,
+   "location": "monthly_05_2015/post-19092-0-00114600-1432861600.ipb",
+   "name": "video-1432861541.mp4.mp4"
+  },
+  {
+   "id": 2156,
+   "location": "monthly_06_2015/post-11741-0-47384000-1433416347.ipb",
+   "name": "MOV_2034.MOV.mov"
+  },
+  {
+   "id": 2225,
+   "location": "monthly_07_2015/post-4376-0-96014700-1436130807.ipb",
+   "name": "trim.E35BC0C5-7EA8-4EBA-9A2C-0E72CC9090D0.MOV"
+  },
+  {
+   "id": 2244,
+   "location": "monthly_07_2015/post-251-0-68282800-1437398891.ipb",
+   "name": "IMG_1603.mov"
+  },
+  {
+   "id": 2309,
+   "location": "monthly_09_2015/post-19942-0-02836200-1441380308.ipb",
+   "name": "VIDEO0568_02.mp4"
+  },
+  {
+   "id": 2356,
+   "location": "monthly_10_2015/post-18314-0-47338200-1444098126.ipb",
+   "name": "Tuck Planche 480.mov"
+  },
+  {
+   "id": 2508,
+   "location": "monthly_12_2015/post-19505-0-62876400-1450362668.ipb",
+   "name": "trim.0774F235-A49A-4E89-8745-6EE9A9B92317.MOV"
+  }
+ ],
+ "privateOnlyNotUploaded": {
+  "files": 4585,
+  "bytes": 2104412011,
+  "postsScanned": 134485
+ },
+ "neverReferencedByAnyPost": {
+  "files": 10906,
+  "note": "avatars, gallery, theme assets, orphaned attachments — local backup only"
+ }
+}
