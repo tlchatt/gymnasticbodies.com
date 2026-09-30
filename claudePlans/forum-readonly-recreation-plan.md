@@ -22,6 +22,13 @@ pruned. No login, no posting. Then decommission the Lightsail box.
 - **Cutover gate:** reader pages live at their final paths; `FORUM_READER_LIVE` in `next.config.mjs` keeps
   production on the Invision proxy until it is flipped. Dev and preview deploys show the reader.
 
+## Status (as of 2026-09-30)
+- Phases 1–5 DONE. Reader cut over to production 2026-09-30 (commit `3574e2d`); attachments on Blob;
+  hidden posts excluded via `data/forum/hiddenPostIds.json`.
+- REMAINING: Phase 6 — delete the Lightsail box `cpanel-new-2026` after a soak (destructive, needs the
+  owner's explicit go; it is also the only rollback path). Submit `/forum/sitemap.xml` in Search Console
+  (API not enabled on the GB GCP project, so by hand or after enabling).
+
 ## Source (frozen)
 - Full IPS4 DB dump: `forum_backup_2026-07-24/goatfart_forum40.sql.gz` (510 MB gz / 3.36 GB).
   Forum is frozen (no new posts), so this is current enough for content.
