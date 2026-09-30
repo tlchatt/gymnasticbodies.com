@@ -1,3 +1,45 @@
+import { forumReaderOn, FORUM_SPAM_TIDS } from './lib/forumConfig.mjs';
+
+// ---- Forum: read-only reader vs. legacy Invision proxy (see lib/forumConfig.mjs) ----
+// Reader on (dev, preview deploys, and production once FORUM_READER_LIVE is flipped):
+// /forum, /forum/forum/*, /forum/topic/* and /forum/sitemap.xml are real pages served
+// from Neon. Reader off (production today): those same URLs are rewritten to the
+// reverse-proxy at /forum-legacy so the old forum keeps answering exactly as before.
+// Everything else under /forum is handled by app/forum/[...path]/route.js either way.
+const FORUM_READER_ON = forumReaderOn();
+
+const forumBeforeFiles = FORUM_READER_ON
+  ? [
+      // Known bot-spam topics -> 410 Gone (a page can't return 410, a route handler can).
+      { source: `/forum/topic/:slug((?:${FORUM_SPAM_TIDS.join('|')})(?:-[^/]*)?)/:rest*`, destination: '/forum-gone' },
+    ]
+  : [
+      { source: '/forum', destination: '/forum-legacy' },
+      { source: '/forum/forum/:path*', destination: '/forum-legacy/forum/:path*' },
+      { source: '/forum/topic/:path*', destination: '/forum-legacy/topic/:path*' },
+      { source: '/forum/sitemap.xml', destination: '/forum-legacy/sitemap.xml' },
+    ];
+
+const forumRedirects = [
+  // Invision also accepted ?page=N; the reader's page URLs are /page/N.
+  ...(FORUM_READER_ON
+    ? [
+        {
+          source: '/forum/topic/:slug',
+          has: [{ type: 'query', key: 'page', value: '(?<n>\\d+)' }],
+          destination: '/forum/topic/:slug/page/:n',
+          permanent: true,
+        },
+        {
+          source: '/forum/forum/:slug',
+          has: [{ type: 'query', key: 'page', value: '(?<n>\\d+)' }],
+          destination: '/forum/forum/:slug/page/:n',
+          permanent: true,
+        },
+      ]
+    : []),
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -16,13 +58,19 @@ const nextConfig = {
     // NOTE: api.gymnasticbodies.com host handling (legacy API tombstone + telemetry)
     // lives in proxy.ts (middleware) — a `has: host` rewrite here did not reliably
     // match that host on Vercel.
-    return [
-      { source: '/gymfit/wp-content/:path*', destination: `${BLOB}/legacy/gymfit/wp-content/:path*` },
-      { source: '/media/:path*', destination: `${BLOB}/legacy/media/:path*` },
-    ];
+    return {
+      beforeFiles: forumBeforeFiles,
+      afterFiles: [
+        { source: '/gymfit/wp-content/:path*', destination: `${BLOB}/legacy/gymfit/wp-content/:path*` },
+        { source: '/media/:path*', destination: `${BLOB}/legacy/media/:path*` },
+      ],
+      fallback: [],
+    };
   },
   async redirects() {
     return [
+      ...forumRedirects,
+
       // Homepage now lives at the site root — collapse the old aliases into it.
       { source: '/homepage', destination: '/', permanent: true },
       { source: '/home', destination: '/', permanent: true },

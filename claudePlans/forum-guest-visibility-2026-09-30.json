@@ -1,0 +1,937 @@
+{
+ "generatedAt": "2026-09-30T12:13:01.185Z",
+ "note": "Guest (logged-out, browser UA) probe of the live Invision forum on 2026-09-30. is_public was true for 51/52 forums after the ETL, which did not reflect guest permissions. Corrected so only guest-readable forums are public. Forum 16 listing 404s for guests but 17/17 sampled topics return 200, so it is treated as public.",
+ "publicAfter": [
+  16,
+  17,
+  19,
+  20,
+  22,
+  24,
+  26,
+  27,
+  28
+ ],
+ "priorIsPublic": [
+  {
+   "id": 16,
+   "parent_id": 20,
+   "title": "Digital Coaching",
+   "seo_slug": "digital-coaching",
+   "is_public": true
+  },
+  {
+   "id": 17,
+   "parent_id": 28,
+   "title": "Nutrition",
+   "seo_slug": "nutrition",
+   "is_public": true
+  },
+  {
+   "id": 18,
+   "parent_id": 20,
+   "title": "Workout Logs",
+   "seo_slug": "workout-logs",
+   "is_public": true
+  },
+  {
+   "id": 19,
+   "parent_id": 28,
+   "title": "Equipment",
+   "seo_slug": "equipment",
+   "is_public": true
+  },
+  {
+   "id": 20,
+   "parent_id": 28,
+   "title": "Community",
+   "seo_slug": "community",
+   "is_public": true
+  },
+  {
+   "id": 21,
+   "parent_id": 123,
+   "title": "Workout of the Day Archive",
+   "seo_slug": "workout-of-the-day-archive",
+   "is_public": true
+  },
+  {
+   "id": 22,
+   "parent_id": 28,
+   "title": "Strength",
+   "seo_slug": "strength",
+   "is_public": true
+  },
+  {
+   "id": 24,
+   "parent_id": 28,
+   "title": "Movement",
+   "seo_slug": "movement",
+   "is_public": true
+  },
+  {
+   "id": 26,
+   "parent_id": 28,
+   "title": "Mobility",
+   "seo_slug": "mobility",
+   "is_public": true
+  },
+  {
+   "id": 27,
+   "parent_id": 28,
+   "title": "Getting Started",
+   "seo_slug": "getting-started",
+   "is_public": true
+  },
+  {
+   "id": 28,
+   "parent_id": -1,
+   "title": "GST™ Public Forums",
+   "seo_slug": "gst-public-forums",
+   "is_public": true
+  },
+  {
+   "id": 29,
+   "parent_id": 123,
+   "title": "Advanced Seminar Studies",
+   "seo_slug": "advanced-seminar-studies",
+   "is_public": true
+  },
+  {
+   "id": 36,
+   "parent_id": 67,
+   "title": "Level Tests",
+   "seo_slug": "level-tests",
+   "is_public": true
+  },
+  {
+   "id": 37,
+   "parent_id": -1,
+   "title": "GST™ Course Forums",
+   "seo_slug": "gst-course-forums",
+   "is_public": true
+  },
+  {
+   "id": 38,
+   "parent_id": 37,
+   "title": "Moderate",
+   "seo_slug": "moderate",
+   "is_public": true
+  },
+  {
+   "id": 40,
+   "parent_id": 37,
+   "title": "Intermediate",
+   "seo_slug": "intermediate",
+   "is_public": true
+  },
+  {
+   "id": 41,
+   "parent_id": 38,
+   "title": "Foundation One",
+   "seo_slug": "foundation-one",
+   "is_public": true
+  },
+  {
+   "id": 42,
+   "parent_id": 40,
+   "title": "Foundation Two",
+   "seo_slug": "foundation-two",
+   "is_public": true
+  },
+  {
+   "id": 43,
+   "parent_id": 40,
+   "title": "Foundation Three",
+   "seo_slug": "foundation-three",
+   "is_public": true
+  },
+  {
+   "id": 44,
+   "parent_id": 72,
+   "title": "Foundation Four",
+   "seo_slug": "foundation-four",
+   "is_public": true
+  },
+  {
+   "id": 45,
+   "parent_id": 38,
+   "title": "Handstand One",
+   "seo_slug": "handstand-one",
+   "is_public": true
+  },
+  {
+   "id": 46,
+   "parent_id": 40,
+   "title": "Handstand Two",
+   "seo_slug": "handstand-two",
+   "is_public": true
+  },
+  {
+   "id": 47,
+   "parent_id": 72,
+   "title": "Handstand Three",
+   "seo_slug": "handstand-three",
+   "is_public": true
+  },
+  {
+   "id": 49,
+   "parent_id": 67,
+   "title": "Brand Development",
+   "seo_slug": "brand-development",
+   "is_public": true
+  },
+  {
+   "id": 51,
+   "parent_id": 20,
+   "title": "Local Meetups & Training",
+   "seo_slug": "local-meetups-training",
+   "is_public": true
+  },
+  {
+   "id": 52,
+   "parent_id": 51,
+   "title": "North America",
+   "seo_slug": "north-america",
+   "is_public": true
+  },
+  {
+   "id": 53,
+   "parent_id": 51,
+   "title": "Europe",
+   "seo_slug": "europe",
+   "is_public": true
+  },
+  {
+   "id": 54,
+   "parent_id": 51,
+   "title": "Australia",
+   "seo_slug": "australia",
+   "is_public": true
+  },
+  {
+   "id": 55,
+   "parent_id": 51,
+   "title": "Pacific & Asia",
+   "seo_slug": "pacific-asia",
+   "is_public": true
+  },
+  {
+   "id": 57,
+   "parent_id": 51,
+   "title": "Other",
+   "seo_slug": "other",
+   "is_public": true
+  },
+  {
+   "id": 65,
+   "parent_id": 67,
+   "title": "Mod Squad",
+   "seo_slug": "mod-squad",
+   "is_public": true
+  },
+  {
+   "id": 67,
+   "parent_id": -1,
+   "title": "Admin-Only Forums",
+   "seo_slug": "admin-only-forums",
+   "is_public": true
+  },
+  {
+   "id": 70,
+   "parent_id": 72,
+   "title": "Rings One",
+   "seo_slug": "rings-one",
+   "is_public": true
+  },
+  {
+   "id": 72,
+   "parent_id": 37,
+   "title": "Advanced",
+   "seo_slug": "advanced",
+   "is_public": true
+  },
+  {
+   "id": 73,
+   "parent_id": 38,
+   "title": "Tumbling One",
+   "seo_slug": "tumbling-one",
+   "is_public": true
+  },
+  {
+   "id": 75,
+   "parent_id": 38,
+   "title": "Front Split",
+   "seo_slug": "front-split",
+   "is_public": true
+  },
+  {
+   "id": 78,
+   "parent_id": 41,
+   "title": "Form Checks",
+   "seo_slug": "form-checks",
+   "is_public": true
+  },
+  {
+   "id": 79,
+   "parent_id": 123,
+   "title": "Course Wiki & Translation",
+   "seo_slug": "course-wiki-translation",
+   "is_public": true
+  },
+  {
+   "id": 80,
+   "parent_id": 79,
+   "title": "Foundation One Wiki Project",
+   "seo_slug": "foundation-one-wiki-project",
+   "is_public": true
+  },
+  {
+   "id": 81,
+   "parent_id": 79,
+   "title": "Foundation One Translation",
+   "seo_slug": "foundation-one-translation",
+   "is_public": true
+  },
+  {
+   "id": 82,
+   "parent_id": 38,
+   "title": "Middle Split",
+   "seo_slug": "middle-split",
+   "is_public": true
+  },
+  {
+   "id": 83,
+   "parent_id": 38,
+   "title": "Thoracic Bridge",
+   "seo_slug": "thoracic-bridge",
+   "is_public": true
+  },
+  {
+   "id": 84,
+   "parent_id": 45,
+   "title": "Form Checks",
+   "seo_slug": "form-checks",
+   "is_public": true
+  },
+  {
+   "id": 85,
+   "parent_id": 67,
+   "title": "GB Affiliates",
+   "seo_slug": "gb-affiliates",
+   "is_public": true
+  },
+  {
+   "id": 88,
+   "parent_id": 37,
+   "title": "Beginner",
+   "seo_slug": "beginner",
+   "is_public": true
+  },
+  {
+   "id": 108,
+   "parent_id": 88,
+   "title": "Thrive Nutrition",
+   "seo_slug": "thrive-nutrition",
+   "is_public": true
+  },
+  {
+   "id": 111,
+   "parent_id": 88,
+   "title": "Fundamentals",
+   "seo_slug": "fundamentals",
+   "is_public": true
+  },
+  {
+   "id": 115,
+   "parent_id": 123,
+   "title": "Accelerated Rings",
+   "seo_slug": "accelerated-rings",
+   "is_public": true
+  },
+  {
+   "id": 117,
+   "parent_id": 42,
+   "title": "Form Checks",
+   "seo_slug": "form-checks",
+   "is_public": true
+  },
+  {
+   "id": 121,
+   "parent_id": 38,
+   "title": "Handstand Challenge",
+   "seo_slug": "handstand-challenge",
+   "is_public": true
+  },
+  {
+   "id": 122,
+   "parent_id": 88,
+   "title": "Restore Courses",
+   "seo_slug": "restore-courses",
+   "is_public": true
+  },
+  {
+   "id": 123,
+   "parent_id": -1,
+   "title": "Archived (Only Admin can see)",
+   "seo_slug": "archived-only-admin-can-see",
+   "is_public": false
+  }
+ ],
+ "liveProbe": [
+  {
+   "id": 16,
+   "parent_id": 20,
+   "title": "Digital Coaching",
+   "servableTopics": 1652,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 17,
+   "parent_id": 28,
+   "title": "Nutrition",
+   "servableTopics": 909,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 18,
+   "parent_id": 20,
+   "title": "Workout Logs",
+   "servableTopics": 458,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 19,
+   "parent_id": 28,
+   "title": "Equipment",
+   "servableTopics": 929,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 20,
+   "parent_id": 28,
+   "title": "Community",
+   "servableTopics": 2257,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 21,
+   "parent_id": 123,
+   "title": "Workout of the Day Archive",
+   "servableTopics": 873,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 22,
+   "parent_id": 28,
+   "title": "Strength",
+   "servableTopics": 3324,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 24,
+   "parent_id": 28,
+   "title": "Movement",
+   "servableTopics": 1019,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 26,
+   "parent_id": 28,
+   "title": "Mobility",
+   "servableTopics": 2067,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 27,
+   "parent_id": 28,
+   "title": "Getting Started",
+   "servableTopics": 2842,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "200"
+  },
+  {
+   "id": 28,
+   "parent_id": -1,
+   "title": "GST™ Public Forums",
+   "servableTopics": 0,
+   "liveForumStatus": "301",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 29,
+   "parent_id": 123,
+   "title": "Advanced Seminar Studies",
+   "servableTopics": 114,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 36,
+   "parent_id": 67,
+   "title": "Level Tests",
+   "servableTopics": 25,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 37,
+   "parent_id": -1,
+   "title": "GST™ Course Forums",
+   "servableTopics": 0,
+   "liveForumStatus": "301",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 38,
+   "parent_id": 37,
+   "title": "Moderate",
+   "servableTopics": 0,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 40,
+   "parent_id": 37,
+   "title": "Intermediate",
+   "servableTopics": 0,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 41,
+   "parent_id": 38,
+   "title": "Foundation One",
+   "servableTopics": 5308,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 42,
+   "parent_id": 40,
+   "title": "Foundation Two",
+   "servableTopics": 776,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 43,
+   "parent_id": 40,
+   "title": "Foundation Three",
+   "servableTopics": 363,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 44,
+   "parent_id": 72,
+   "title": "Foundation Four",
+   "servableTopics": 130,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 45,
+   "parent_id": 38,
+   "title": "Handstand One",
+   "servableTopics": 1380,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 46,
+   "parent_id": 40,
+   "title": "Handstand Two",
+   "servableTopics": 229,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 47,
+   "parent_id": 72,
+   "title": "Handstand Three",
+   "servableTopics": 18,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 49,
+   "parent_id": 67,
+   "title": "Brand Development",
+   "servableTopics": 170,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 51,
+   "parent_id": 20,
+   "title": "Local Meetups & Training",
+   "servableTopics": 0,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 52,
+   "parent_id": 51,
+   "title": "North America",
+   "servableTopics": 136,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 53,
+   "parent_id": 51,
+   "title": "Europe",
+   "servableTopics": 62,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 54,
+   "parent_id": 51,
+   "title": "Australia",
+   "servableTopics": 14,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 55,
+   "parent_id": 51,
+   "title": "Pacific & Asia",
+   "servableTopics": 17,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 57,
+   "parent_id": 51,
+   "title": "Other",
+   "servableTopics": 11,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 65,
+   "parent_id": 67,
+   "title": "Mod Squad",
+   "servableTopics": 98,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 67,
+   "parent_id": -1,
+   "title": "Admin-Only Forums",
+   "servableTopics": 0,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 70,
+   "parent_id": 72,
+   "title": "Rings One",
+   "servableTopics": 59,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 72,
+   "parent_id": 37,
+   "title": "Advanced",
+   "servableTopics": 0,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 73,
+   "parent_id": 38,
+   "title": "Tumbling One",
+   "servableTopics": 163,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 75,
+   "parent_id": 38,
+   "title": "Front Split",
+   "servableTopics": 481,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 78,
+   "parent_id": 41,
+   "title": "Form Checks",
+   "servableTopics": 3318,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 79,
+   "parent_id": 123,
+   "title": "Course Wiki & Translation",
+   "servableTopics": 0,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 80,
+   "parent_id": 79,
+   "title": "Foundation One Wiki Project",
+   "servableTopics": 17,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 81,
+   "parent_id": 79,
+   "title": "Foundation One Translation",
+   "servableTopics": 31,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 82,
+   "parent_id": 38,
+   "title": "Middle Split",
+   "servableTopics": 389,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 83,
+   "parent_id": 38,
+   "title": "Thoracic Bridge",
+   "servableTopics": 539,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 84,
+   "parent_id": 45,
+   "title": "Form Checks",
+   "servableTopics": 695,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 85,
+   "parent_id": 67,
+   "title": "GB Affiliates",
+   "servableTopics": 13,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 88,
+   "parent_id": 37,
+   "title": "Beginner",
+   "servableTopics": 0,
+   "liveForumStatus": "200",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 108,
+   "parent_id": 88,
+   "title": "Thrive Nutrition",
+   "servableTopics": 487,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 111,
+   "parent_id": 88,
+   "title": "Fundamentals",
+   "servableTopics": 458,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 115,
+   "parent_id": 123,
+   "title": "Accelerated Rings",
+   "servableTopics": 0,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "-"
+  },
+  {
+   "id": 117,
+   "parent_id": 42,
+   "title": "Form Checks",
+   "servableTopics": 526,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 121,
+   "parent_id": 38,
+   "title": "Handstand Challenge",
+   "servableTopics": 2,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 122,
+   "parent_id": 88,
+   "title": "Restore Courses",
+   "servableTopics": 36,
+   "liveForumStatus": "403",
+   "liveTopTopicStatus": "403"
+  },
+  {
+   "id": 123,
+   "parent_id": -1,
+   "title": "Archived (Only Admin can see)",
+   "servableTopics": 0,
+   "liveForumStatus": "404",
+   "liveTopTopicStatus": "-"
+  }
+ ],
+ "forum16TopicProbe": [
+  {
+   "tid": 18263,
+   "slug": "jefferson-curl",
+   "views": 37013,
+   "start": "2014-10-24T00:11:29.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 16631,
+   "slug": "62-learning-the-planche",
+   "views": 35800,
+   "start": "2014-06-18T10:16:11.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 10229,
+   "slug": "how-to-keep-straight-legs-in-a-cartwheel",
+   "views": 32549,
+   "start": "2013-02-16T12:44:36.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 9537,
+   "slug": "planche-training-floor-vs-parallettes",
+   "views": 31313,
+   "start": "2012-12-22T05:59:50.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 15587,
+   "slug": "backflip-abdominal-pain",
+   "views": 29741,
+   "start": "2014-03-24T15:35:55.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 37269,
+   "slug": "v-sit-press-handstands-etc",
+   "views": 47,
+   "start": "2024-07-29T15:52:58.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 36147,
+   "slug": "arms-overhead-position-back-extension",
+   "views": 732,
+   "start": "2021-01-20T10:37:41.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 35906,
+   "slug": "managing-time-appropriately",
+   "views": 256,
+   "start": "2020-09-23T02:08:35.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 35748,
+   "slug": "iron-cross-and-planche-progress-form-check-and-feedback",
+   "views": 1553,
+   "start": "2020-07-30T03:56:34.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 34506,
+   "slug": "public-forums-v-course-forums",
+   "views": 248,
+   "start": "2019-06-05T16:24:15.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 8,
+   "slug": "tuck-planche",
+   "views": 4118,
+   "start": "2008-01-14T13:23:02.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 16,
+   "slug": "crazy-idea-for-developing-a-cross-and-cross-pullout",
+   "views": 5101,
+   "start": "2008-01-18T07:29:02.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 24,
+   "slug": "developing-a-false-grip",
+   "views": 2490,
+   "start": "2008-01-21T03:56:32.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 7999,
+   "slug": "back-lever-on-rings",
+   "views": 1417,
+   "start": "2012-05-21T17:22:37.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 8075,
+   "slug": "pullup-form",
+   "views": 1243,
+   "start": "2012-05-28T16:00:14.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 8098,
+   "slug": "help-with-a-jump",
+   "views": 1593,
+   "start": "2012-05-31T14:33:30.000Z",
+   "status": 200,
+   "loc": null
+  },
+  {
+   "tid": 8102,
+   "slug": "press-to-handstand-pbars",
+   "views": 1311,
+   "start": "2012-05-31T23:30:18.000Z",
+   "status": 200,
+   "loc": null
+  }
+ ]
+}

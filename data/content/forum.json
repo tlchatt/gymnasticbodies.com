@@ -1,0 +1,19 @@
+{
+    "siteName": "GymnasticBodies",
+    "indexTitle": "Forums",
+    "labels": {
+        "forums": "Forums",
+        "subforums": "Subforums",
+        "topics": "Topics",
+        "posts": "Posts",
+        "replies": "Replies",
+        "views": "Views",
+        "startedBy": "Started by",
+        "posted": "Posted",
+        "said": "said:",
+        "page": "Page",
+        "of": "of",
+        "prev": "Prev",
+        "next": "Next"
+    }
+}
