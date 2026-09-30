@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
-import { getRenewNoHistoryPricing } from '@/lib/pricing';
+import { getRenewNoHistoryPricing, lockedRateFrom } from '@/lib/pricing';
 import { logger } from '@/lib/logger';
 
 export async function GET(request) {
@@ -16,12 +16,14 @@ export async function GET(request) {
         // Everyone renews at the ONE defined renew rate (historical rates were nixed 2026-08-13,
         // owner decision — the standard rate dropped to $50 and a flat rate never overcharges a
         // returning member vs a new one). Monthly only.
-        const renewRate = await getRenewNoHistoryPricing();
+        // Exception: a rate locked onto this member's account (lockedRateFrom).
+        const setting = await queryUserSetting(user.id, 'subscription');
+        let settingData = {};
+        try { settingData = JSON.parse(setting?.data ?? '{}'); } catch {}
+        const renewRate = lockedRateFrom(settingData) ?? await getRenewNoHistoryPricing();
         const price = String(renewRate.amount);
         const term = renewRate.term ?? 'monthly';
         const hasValidHistoricalData = false;
-
-        const setting = await queryUserSetting(user.id, 'subscription');
 
         // Legacy members authenticated against AWS until 2026-08-04, and the AWS sign-in
         // path never performed this check — only the Neon fallback did. Making Neon the
