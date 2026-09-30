@@ -139,7 +139,7 @@ export async function GET(request) {
     LIMIT ${PER_RUN}
   `;
 
-  const results = { group, campaign: CAMPAIGN, sent: 0, errors: 0, emails: [] };
+  const results = { group, campaign: CAMPAIGN, sent: 0, errors: 0, flaggedInvalid: 0, emails: [] };
 
   for (const row of candidates) {
     const email = row.email.trim().toLowerCase();
@@ -174,6 +174,25 @@ export async function GET(request) {
       logger.error('marketing_drip.error', { email, error: err.message, group });
       results.errors++;
       results.emails.push({ email, status: 'error', error: err.message });
+
+      // A 400 / "Bad Request" from SendGrid means the address itself is invalid or
+      // malformed (not a transient failure). Flag it so it drops out of every future
+      // send instead of being retried forever off the top of the oldest-first queue.
+      // Transient errors (rate limit, network) stay unflagged and get retried.
+      const httpStatus = err?.code ?? err?.response?.statusCode;
+      const isInvalidAddress = httpStatus === 400 || /bad request/i.test(err?.message || '');
+      if (isInvalidAddress && row.id) {
+        try {
+          await sql`UPDATE "user" SET email_status = 'invalid', email_status_at = now()
+                    WHERE id = ${row.id} AND email_status IS NULL`;
+          await sql`INSERT INTO app_logs (ts, level, event, email, user_id, source, data)
+            VALUES (now(), 'warn', 'email.bounced', ${email}, ${row.id}, 'marketing_drip_send_reject',
+              ${JSON.stringify({ status: 'invalid', reason: err?.message || 'rejected on send', note: 'Address rejected by SendGrid on send (invalid/malformed) — future sends suppressed.' })})`;
+          results.flaggedInvalid++;
+        } catch (e) {
+          logger.warn('marketing_drip.flag_failed', { email, error: e.message });
+        }
+      }
     }
 
     await sleep(SEND_GAP_MS);
