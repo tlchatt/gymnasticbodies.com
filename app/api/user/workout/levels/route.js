@@ -13,7 +13,7 @@
  */
 import {
     corsJson, corsOptions, isValidIsoDate, weekDatesFrom, isoToDayKey,
-    readWorkoutState, writeWorkoutState, readDayDoc, writeDayDoc,
+    readWorkoutState, writeWorkoutState, readDayDoc, writeDayDoc, resolveWorkoutUserId,
 } from "@/lib/workout";
 import { buildCourseView, isProgramId } from "@/lib/curriculum";
 import { logger } from "@/lib/logger";
@@ -70,10 +70,15 @@ function orderDayItems(items) {
 // The week to render. AWS stored a per-user recurring template (dayIndex -> classes) and
 // let people edit it, so that is authoritative when present; levelSchedules.json is only
 // the starting point for users who never customised theirs.
+// A stored week whose every day is empty (5 members in Sep 2026, e.g. {"1":[],...,"6":[]})
+// is a broken write, not a member choosing to do nothing: it rendered as a blank Guided
+// Plans screen (workout.levels.empty_week). Treat it as "never customised" -> template.
+const hasStoredWeek = days => !!days && Object.values(days).some(a => (a || []).length);
+
 async function scheduleForUser(userId, level) {
     const { data } = await readWorkoutState(userId, 'levels_schedule');
     const days = data?.days;
-    if (!days || !Object.keys(days).length) return levelSchedules[level];
+    if (!hasStoredWeek(days)) return levelSchedules[level];
     const out = {};
     for (const di of Object.keys(days)) {
         out[di] = (days[di] || []).map(id => CLASS_META.get(Number(id)) || {
@@ -89,7 +94,7 @@ async function scheduleForUser(userId, level) {
 // six days.
 async function readUserWeek(userId, level) {
     const { data } = await readWorkoutState(userId, 'levels_schedule');
-    if (data?.days && Object.keys(data.days).length) {
+    if (hasStoredWeek(data?.days)) {
         const days = {};
         for (const di of Object.keys(data.days)) days[di] = [...(data.days[di] || [])];
         return days;
@@ -168,7 +173,7 @@ async function loggedClassIds(userId, date) {
 export async function GET(request) {
     try {
         const p = request.nextUrl.searchParams;
-        const userId = p.get('userId');
+        const userId = await resolveWorkoutUserId(request, p.get('userId'));
         if (!userId) return corsJson({ error: 'userId required' }, 400);
 
         if (p.get('op') === 'lastViewed') {
@@ -280,6 +285,7 @@ export async function POST(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op } = json;
         logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);

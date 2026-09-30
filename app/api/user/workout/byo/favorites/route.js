@@ -12,7 +12,7 @@
 import {
     corsJson, corsOptions, isValidIsoDate,
     readWorkoutState, writeWorkoutState,
-    readDayDoc, writeDayDoc,
+    readDayDoc, writeDayDoc, resolveWorkoutUserId,
 } from "@/lib/workout";
 import { hydrateDay } from "../hydrate.js";
 import { logger } from "@/lib/logger";
@@ -21,7 +21,7 @@ export async function OPTIONS() { return corsOptions(); }
 
 export async function GET(request) {
     try {
-        const userId = request.nextUrl.searchParams.get('userId');
+        const userId = await resolveWorkoutUserId(request, request.nextUrl.searchParams.get('userId'));
         if (!userId) return corsJson({ error: 'userId required' }, 400);
         const { data } = await readWorkoutState(userId, 'byo_favorites');
         return corsJson(data?.favorites || []);
@@ -42,6 +42,7 @@ export async function POST(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op } = json;
         logCtx = { userId, op };
         if (!userId) return corsJson({ error: 'userId required' }, 400);
@@ -93,6 +94,7 @@ export async function DELETE(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, favoriteId } = json;
         logCtx = { userId };
         if (!userId || favoriteId === undefined) return corsJson({ error: 'userId and favoriteId required' }, 400);

@@ -21,7 +21,7 @@ import { put } from '@vercel/blob';
 import {
     corsJson, corsOptions, isValidIsoDate,
     readWorkoutState, writeWorkoutState,
-    readDayDoc, writeDayDoc,
+    readDayDoc, writeDayDoc, resolveWorkoutUserId,
 } from "@/lib/workout";
 import { db } from "@/Drizzle/index.ts";
 import { user_logs } from "@/Drizzle/db/schema";
@@ -69,7 +69,7 @@ async function buildTasks(userId, dateIso) {
 export async function GET(request) {
     try {
         const p = request.nextUrl.searchParams;
-        const userId = p.get('userId');
+        const userId = await resolveWorkoutUserId(request, p.get('userId'));
         const view = p.get('view');
         if (!userId || !view) return corsJson({ error: 'userId and view required' }, 400);
 
@@ -153,7 +153,7 @@ export async function POST(request) {
         // profile-save arrives as multipart/form-data (photos + myProfileRequest JSON)
         if (contentType.includes('multipart/form-data')) {
             const form = await request.formData();
-            const userId = form.get('userId') || request.nextUrl.searchParams.get('userId');
+            const userId = await resolveWorkoutUserId(request, form.get('userId') || request.nextUrl.searchParams.get('userId'));
             logCtx = { userId, op: 'profile-save' };
             if (!userId) return corsJson({ error: 'userId required' }, 400);
             const profileReq = JSON.parse(form.get('myProfileRequest') || '{}');
@@ -179,6 +179,7 @@ export async function POST(request) {
         }
 
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op } = json;
         logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);
@@ -278,6 +279,7 @@ export async function DELETE(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         logCtx = { userId: json.userId };
         if (!json.userId) return corsJson({ error: 'userId required' }, 400);
         await db.delete(user_logs).where(and(eq(user_logs.userId, json.userId), eq(user_logs.section, 'thrive')));

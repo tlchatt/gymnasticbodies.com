@@ -6,7 +6,7 @@
  * GET ?userId=&year=2026&month=7   (month 1-based, matches the legacy query params)
  *   -> { "2026-07-03": [{courseName, courseIcon, type, level, progression?}], ... }
  */
-import { corsJson, corsOptions, readDocsInRange } from "@/lib/workout";
+import { corsJson, corsOptions, readDocsInRange, resolveWorkoutUserId } from "@/lib/workout";
 import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
@@ -14,7 +14,7 @@ export async function OPTIONS() { return corsOptions(); }
 export async function GET(request) {
     try {
         const p = request.nextUrl.searchParams;
-        const userId = p.get('userId');
+        const userId = await resolveWorkoutUserId(request, p.get('userId'));
         const year = parseInt(p.get('year'), 10);
         const month = parseInt(p.get('month'), 10);
         if (!userId || !year || !month || month < 1 || month > 12) {

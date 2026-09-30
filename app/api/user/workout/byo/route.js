@@ -26,7 +26,7 @@ import {
     AP_BY_ID,
     readDayDoc, readWeekDocs, writeDayDoc, nextSlotId,
     upsertHistoryEntry, removeHistoryEntry,
-    PREVIOUS_DAY_SENTINEL, findPreviousDayDoc,
+    PREVIOUS_DAY_SENTINEL, findPreviousDayDoc, resolveWorkoutUserId,
 } from "@/lib/workout";
 import { PROGRAM_IDS, CLASS_BY_ID, emptyByoDay, itemType, hydrateDay } from "./hydrate.js";
 import { advanceMasteryStepOnLog } from "@/lib/curriculum";
@@ -67,7 +67,7 @@ export async function GET(request) {
             return corsJson(builderCategories[p.get('categoryId')] || {});
         }
 
-        const userId = p.get('userId');
+        const userId = await resolveWorkoutUserId(request, p.get('userId'));
         const weekStart = p.get('weekStart');
         if (!userId || !isValidIsoDate(weekStart)) {
             return corsJson({ error: 'userId and weekStart=YYYY-MM-DD required' }, 400);
@@ -96,6 +96,7 @@ export async function POST(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op, date } = json;
         logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);

@@ -20,7 +20,7 @@
  * This route held a second copy of it until 2026-08-06; the copies drifted twice (the
  * `section` threading bug, then the level default-fill bug) — do not reintroduce one.
  */
-import { corsJson, corsOptions } from "@/lib/workout";
+import { corsJson, corsOptions, resolveWorkoutUserId } from "@/lib/workout";
 import { buildCourseView, buildEditView, getDemo, applyCurriculumOp } from "@/lib/curriculum";
 import curricula from "@/data/workout/programCurricula.json";
 import { logger } from "@/lib/logger";
@@ -41,7 +41,7 @@ export async function GET(request) {
             return corsJson({ body: payload });
         }
 
-        const userId = p.get('userId');
+        const userId = await resolveWorkoutUserId(request, p.get('userId'));
         if (!userId || !curricula[courseId]) return corsJson({ error: 'userId and valid courseId required' }, 400);
 
         // All progressions with selected flags, no workoutInfo (AWS edit-workout parity).
@@ -60,6 +60,7 @@ export async function PUT(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op } = json;
         logCtx = { userId, op };
         const courseId = String(json.courseId ?? json.workoutType);

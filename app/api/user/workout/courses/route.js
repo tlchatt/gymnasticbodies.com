@@ -14,7 +14,7 @@
  */
 import {
     corsJson, corsOptions,
-    readWorkoutState, writeWorkoutState, readDocsInRange,
+    readWorkoutState, writeWorkoutState, readDocsInRange, resolveWorkoutUserId,
 } from "@/lib/workout";
 import { isProgramId } from "@/lib/curriculum";
 import programExercises from "@/data/workout/programExercises.json";
@@ -37,7 +37,7 @@ const EX_TO_COURSE = new Map(
 
 export async function GET(request) {
     try {
-        const userId = request.nextUrl.searchParams.get('userId');
+        const userId = await resolveWorkoutUserId(request, request.nextUrl.searchParams.get('userId'));
         if (!userId) return corsJson({ error: 'userId required' }, 400);
 
         const { data: settings } = await readWorkoutState(userId, 'byo_settings');
@@ -90,6 +90,7 @@ export async function POST(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op } = json;
         logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);

@@ -15,7 +15,7 @@ import {
     AP_CATEGORIES, AP_BY_ID, pickExercise, hydrateApExercise, repsOrSecsDisplay,
     getUserName, readWorkoutState, writeWorkoutState,
     readDayDoc, readWeekDocs, writeDayDoc, nextSlotId,
-    PREVIOUS_DAY_SENTINEL, findPreviousDayDoc,
+    PREVIOUS_DAY_SENTINEL, findPreviousDayDoc, resolveWorkoutUserId,
 } from "@/lib/workout";
 import { logger } from "@/lib/logger";
 
@@ -65,7 +65,7 @@ function generateDoc(level, rounds, existingDoc) {
 export async function GET(request) {
     try {
         const p = request.nextUrl.searchParams;
-        const userId = p.get('userId');
+        const userId = await resolveWorkoutUserId(request, p.get('userId'));
         const weekStart = p.get('weekStart');
         if (!userId || !isValidIsoDate(weekStart)) {
             return corsJson({ error: 'userId and weekStart=YYYY-MM-DD required' }, 400);
@@ -96,6 +96,7 @@ export async function POST(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, op, date } = json;
         logCtx = { userId, op };
         if (!userId || !op) return corsJson({ error: 'userId and op required' }, 400);

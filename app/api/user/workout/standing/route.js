@@ -9,7 +9,7 @@
  *   level" — the frontend falls back to its localStorage/default chain.
  * PUT { userId, levelId } -> persists a user-chosen level so defaults stick.
  */
-import { corsJson, corsOptions, readWorkoutState, writeWorkoutState } from "@/lib/workout";
+import { corsJson, corsOptions, readWorkoutState, writeWorkoutState, resolveWorkoutUserId } from "@/lib/workout";
 import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
@@ -21,7 +21,7 @@ const LEVEL_NAMES = {
 
 export async function GET(request) {
     try {
-        const userId = request.nextUrl.searchParams.get('userId');
+        const userId = await resolveWorkoutUserId(request, request.nextUrl.searchParams.get('userId'));
         if (!userId) return corsJson({ error: 'userId required' }, 400);
 
         const [{ data: level }, { data: thrive }, { data: ap }, { data: lastLoc }] = await Promise.all([
@@ -52,6 +52,7 @@ export async function PUT(request) {
     let logCtx = {};
     try {
         const json = await request.json();
+        json.userId = await resolveWorkoutUserId(request, json.userId);
         const { userId, levelId } = json;
         logCtx = { userId };
         if (!userId || levelId === undefined) return corsJson({ error: 'userId and levelId required' }, 400);
