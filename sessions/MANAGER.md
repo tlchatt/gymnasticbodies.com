@@ -43,6 +43,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
 - 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered. **SHIPPED 2026-10-09 15:20 (push 158af33).**
 - 2026-10-09 — **c3352df** (session 96d475f4): renewal email ("Having trouble renewing?") sends one per day during the 24–96h window after the member's LATEST /renew view, max 3 per window (replaces the 30-day repeat rule; owner-approved). Tested: dry run on live data via .dev — 184 candidates, 150 would send (skips: paid 20, current 6, open case 4, bad address 3, sent today 1); npm run build passes. Owner: "Get it done" — ship before the 2026-10-10 14:00 UTC run. **SHIPPED 2026-10-09 14:50 (push 0d77d05, prod Ready, route 403 w/o secret).**
+- 2026-10-09 — **0c38122** (session 3653640d, review item 12): /admin/support "Held" tab becomes "Held / issues" and lists all failed plays (6 "Sent (issues)" plays were only visible under All). Label + filter in data/content/adminSupport.json only. Tested: prod logged-in check of caeeb0b found the gap; this fix not re-run in a browser — check the tab shows 7 after deploy.
 
 ## Review list — needs an owner ruling
 
