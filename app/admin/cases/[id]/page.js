@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import CaseClient from './CaseClient';
+import { listFires } from '@/lib/support/fireQueue';
 
 export const metadata = { title: 'Case' };
 
@@ -17,6 +18,7 @@ export default async function CasePage({ params }) {
 
   if (!res.ok) notFound();
   const data = await res.json();
+  const fires = await listFires({ caseId: id, limit: 1 });
 
-  return <CaseClient data={data} />;
+  return <CaseClient data={data} fires={fires} />;
 }

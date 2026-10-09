@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import s from './layout.module.css';
+import supportContent from '@/data/content/adminSupport.json';
 
 const NAV_ITEMS = [
   {
@@ -26,6 +27,18 @@ const NAV_ITEMS = [
         <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>
         <line x1="12" y1="4" x2="12" y2="1"/>
         <polyline points="9 4 12 1 15 4"/>
+      </svg>
+    ),
+  },
+  {
+    href:  '/admin/support',
+    label: supportContent.nav.label,
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2a4 4 0 0 0-4 4v2a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"/>
+        <path d="M4 22a8 8 0 0 1 16 0"/>
+        <circle cx="18" cy="6" r="2" fill="currentColor"/>
       </svg>
     ),
   },

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import AccountHistory from '@/components/admin/AccountHistory';
 import SubscriptionActions from '@/components/admin/SubscriptionActions';
 import SubscriptionSummary from '@/components/admin/SubscriptionSummary';
+import SupportFireList from '@/components/admin/SupportFireList';
+import supportContent from '@/data/content/adminSupport.json';
 import s from './case.module.css';
 
 function EmailThread({ email }) {
@@ -92,7 +94,7 @@ const ACT_BTN = {
   cursor: 'pointer',
 };
 
-export default function CaseClient({ data: initial }) {
+export default function CaseClient({ data: initial, fires = [] }) {
   const [caseData, setCaseData] = useState(initial.case);
   const [notes, setNotes] = useState(initial.case.adminNotes ?? '');
   const [saving, setSaving] = useState(false);
@@ -295,6 +297,16 @@ export default function CaseClient({ data: initial }) {
                   ))}
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Support agent: this case's latest play — same card + actions as Slack */}
+          <div className={s.card} style={{ marginTop: 16 }}>
+            <div className={s.section} style={{ borderTop: 'none' }}>
+              <div className={s.sectionTitle}>
+                {supportContent.card.latestForCase} · <Link href="/admin/support" style={{ color: 'var(--accent-light)' }}>{supportContent.card.openQueue}</Link>
+              </div>
+              <SupportFireList initialFires={fires} initialStatus="" caseId={caseData.id} showTabs={false} latestOnly />
             </div>
           </div>
         </div>
