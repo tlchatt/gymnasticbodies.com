@@ -39,14 +39,15 @@ export async function POST(request) {
 
         // Active subscription: cancel at period end so user keeps access until billing date
         const updated = await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true });
-        const accessUntil = updated.current_period_end; // unix timestamp
+        const accessUntil = updated.items?.data?.[0]?.current_period_end ?? updated.current_period_end; // unix timestamp
 
+        // The member stays current until the paid period ends; the subscription.deleted webhook
+        // (and the daily classifier) lapse them then.
         await updateUserSettingStatus(
             userSetting,
             'pending_cancel',
-            JSON.stringify({ ...currentData, status: 'pending_cancel' })
+            JSON.stringify({ ...currentData, status: 'pending_cancel', ...(accessUntil ? { renewaldate: new Date(accessUntil * 1000).toISOString() } : {}) })
         );
-        await updateUserClassification(userSetting.userId, 'noncurrent', 'lapsed');
 
         logger.info('cancellation.active_cancel', { subscriptionId, userId: userSetting.userId, accessUntil });
 
