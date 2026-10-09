@@ -12,7 +12,7 @@
     { "label": "Needs review", "value": "posted" },
     { "label": "Scheduled", "value": "scheduled" },
     { "label": "Sent", "value": "fired" },
-    { "label": "Held", "value": "held" },
+    { "label": "Held / issues", "value": "failed" },
     { "label": "Cancelled", "value": "cancelled" },
     { "label": "All", "value": "" }
   ],
