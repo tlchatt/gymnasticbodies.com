@@ -7,6 +7,7 @@ Read this FIRST on startup, compaction or rotation (skill `project-review-manage
 - **Board client slug:** `gymnastic-bodies`
 - **Review baseline commit:** `12f6aee` (2026-10-08)
 - **Last check-in:** 2026-10-09 ~00:15 ET
+- **Each check-in:** flag any uncommitted work in the tree to its owning session right away — finish and commit, or discard. Nothing gets left to go stale.
 
 ## Today — 2026-10-09
 
