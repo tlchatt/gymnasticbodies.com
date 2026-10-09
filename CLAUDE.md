@@ -65,6 +65,34 @@ Implementation notes:
 - All inbound links in the wild point at the correct hosts already (emails + `my.` → `app./renew`,
   `app./accountDetails`) — no `my.` or email-template changes were needed.
 
+## Forum — read-only reader on Neon (cut over 2026-09-30)
+
+`www.gymnasticbodies.com/forum` is a **read-only, public reader rendered from Neon** — no login, no
+posting. It replaced the reverse-proxy to the Invision forum on the AWS Lightsail box. Plan + corrections:
+`claudePlans/forum-readonly-recreation-plan.md`.
+
+- **URLs (preserved from Invision):** `/forum`, `/forum/forum/{id}-{slug}` (singular `forum`),
+  `/forum/topic/{tid}-{slug}`, both with `/page/N` at 25 per page. Matched by numeric id; a wrong slug
+  redirects to the exact one. Canonical = the no-trailing-slash `www` URL. Sitemap: `/forum/sitemap.xml`.
+- **Data:** `forum_categories`, `forum_topics`, `forum_posts` (frozen import of the 2026-07-24 dump).
+- **What is public — do not widen without the owner:** only the forums guests could read on the old
+  forum (16, 17, 19, 20, 22, 24, 26, 27 → ~15,000 topics; `forum_categories.is_public`). The other
+  ~19,000 topics (course forums, Form Checks, Mod Squad, Brand Development, admin areas) are in Neon but
+  never served; they redirect to the nearest public forum. A topic is served iff
+  `approved = 1 AND NOT spam` AND its forum `is_public`.
+- **Hidden posts:** Invision's per-post hidden/deleted flag was not imported and `forum_posts` has no
+  column for it, so those 3,945 post ids are excluded via `data/forum/hiddenPostIds.json`. The one
+  post-visibility rule is `POST_VISIBLE` in `lib/forum.js`.
+- **Attachments:** Vercel Blob under `forum/uploads/` (`FORUM_UPLOADS_BASE` in `lib/forumConfig.mjs`) —
+  only files that public posts reference. Old `/forum/uploads/*` URLs 301 there. The full uploads tree
+  (18,115 files) is backed up at `/var/www/Work/Gymfit/forum_backup_2026-07-24/forum_uploads_2026-09-30.tar`.
+- **Code:** `lib/forum.js` (queries), `lib/forumHtml.js` (sanitize + rewrite post HTML), `lib/forumView.js`,
+  `components/forum/*`, `app/forum/**`, labels in `data/content/forum.json`. `app/forum/[...path]/route.js`
+  redirects every other old forum URL (profiles, search, `index.php?/topic/...`); spam topics return 410.
+- **Rollback switch:** `FORUM_READER_LIVE` in `lib/forumConfig.mjs`. `false` puts production back on the
+  Invision proxy (`lib/forumProxy.js`, `app/forum-legacy`) — only possible while the Lightsail box
+  `cpanel-new-2026` (34.205.92.109) still exists.
+
 ## Chargebacks = permanent ban (owner rule, 2026-10-08)
 
 A member who files a chargeback is banned for good. `banMember()` in `lib/blocklist.js` does it, and
@@ -77,6 +105,10 @@ mirrored to Stripe Radar's default block lists. Signup, renew, offer and card-up
 change in seconds. No refunds are issued by the ban; it never deletes a Stripe customer. All 10 past
 disputes (7 people) were backfilled 2026-10-08. To ban someone by hand, call `banMember` — don't
 hand-roll it.
+
+## Support Email Rule
+
+**Always show the full draft message and wait for explicit user approval before sending any email** — via `reply`, `send-email`, `sendOutboundSupportEmail`, the admin UI, or any other channel. This applies even after the user requests a wording change: show the edited draft again before sending. Never send in the same turn as drafting or editing.
 
 ## Cloud Support Agent — every billing/account fix must ALSO be checked here (2026-10-08)
 
@@ -104,10 +136,6 @@ issued, 7 "permanently deleted" accounts never deleted, and 2 chargebacks (Dean 
   the member they have no plan or weren't billed.
 - After changing any executor, verify a real fire's `support_fires.result` steps — not just the
   Slack banner.
-
-## Support Email Rule
-
-**Always show the full draft message and wait for explicit user approval before sending any email** — via `reply`, `send-email`, `sendOutboundSupportEmail`, the admin UI, or any other channel. This applies even after the user requests a wording change: show the edited draft again before sending. Never send in the same turn as drafting or editing.
 
 ## Commands
 
@@ -394,6 +422,69 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 - **Vercel Blob** (`@vercel/blob`) — file/media uploads via `/api/mediaBlob/route.js`
 - S3 images served from `gymfit-images.s3.amazonaws.com` (allowed in `next.config.js`)
 
+### Video optimization — VP9 renditions in Blob (`claudeTools/videoOptimize/`)
+
+Member workout videos are served from Vercel Blob (`https://6z1gtynqfxcjjwix.public.blob.vercel-storage.com`).
+`my.gymnasticbodies.com/src/lib/video.js` prefers optimized VP9 `_1080/_720/_480.webm` renditions
+over the source `{id}.mp4`, picking the tier by screen size. Which ids/tiers exist is listed in
+`optimized-manifest.json` (bundled in `my./src/data/optimized-manifest.json` **and** served from Blob;
+the app reads the bundled copy synchronously, then refreshes from the Blob copy — **both must agree**).
+`claudeTools/videoOptimize/optimize.mjs` is the batch encoder that produced the ~537 renditions
+(single-pass CRF VP9; recipe in the `TIERS` table). **This bulk encode ran ~2026-08-10→08-13** — a
+prior session, NOT the Aug-25→Sep-1 Tim/guided session.
+
+**⚠ ROOT CAUSE (corrected 2026-09-02) — the SOURCE `.mp4` files are corrupt, not the encode.**
+The truncation is NOT an encoder bug and CANNOT be fixed by re-encoding. Two source videos in Blob
+are internally truncated: **Front Split `UwSbT4bF.mp4`** and **Thoracic Bridge `2yO4CxF4.mp4`**. Their
+mp4 container headers *claim* full length — `ffprobe format=duration` reports 2723s (45 min) and
+2430s (40 min) — but the H.264 video stream only decodes to ~20 min / ~14.7 min, then throws
+`stream N: partial file` / `Invalid NAL unit size` / `Error splitting the input into NAL units`.
+Verified 2026-09-02: the download is byte-complete (373,445,087 == Blob content-length), yet a full
+decode scan dies at the same point, and a fresh re-encode stopped at the **identical** 1211s. So the
+truncated `.webm` renditions are a faithful copy of the only real video that exists in the source.
+
+**⚠ `ffprobe format=duration` is UNRELIABLE for these files** — it reads the moov header, not real
+decodable content. To detect this class of corruption, decode-scan and compare to the header:
+`ffmpeg -v error -i <src> -map 0:v:0 -f null -` (errors = truncated) — do NOT trust the header duration.
+
+**✅ Front Split RESOLVED 2026-09-02 (full-length source found in Blob). ⚠ Thoracic Bridge NOT resolved — see correction below.**
+JW is dead (`cdn.jwplayer.com` 404s all ids) and no local video library exists on this machine — but
+intact sources were recovered from Blob itself:
+- **Front Split:** the intact 45-min master is **`aH1k32u9.mp4`** (818 MB — the blob an earlier session
+  wrongly flagged as a "wrong oversized container"; it is actually the real full video, decode-verified
+  clean to 2723s). Fix: server-side `copy()` `aH1k32u9.mp4` → `UwSbT4bF.mp4` (the id the app serves)
+  and drop `UwSbT4bF` from the manifest so the app plays the full mp4. No encode needed.
+- **Thoracic Bridge:** `2yO4CxF4` is served as a single video, but it's genuinely a **playlist of 17
+  intact clips** (`data/thoracicBridgePlaylistData.json`, whose 18th entry is the corrupt `2yO4CxF4`
+  itself — exclude it). Fix: normalize the 17 clips to 1080p30 and concat → one clean **27.7-min**
+  `2yO4CxF4.mp4` (`claudeTools/videoOptimize/buildThoracicMaster.mjs`), upload, drop from manifest.
+  **⚠ CORRECTION (owner, 2026-10-08): this rebuild was WRONG and Thoracic Bridge is NOT fixed.** The
+  original file was damaged ("like a scratched DVD" — that is the cut-off). The 27.7-min rebuild from
+  clips put the exercises in the wrong order and dropped Thoracic Bridge out of the Intermediate 1
+  stretch rotation (member George Belanger reported both, Aug–Oct). An older, COMPLETE copy of the
+  original has since been found and is waiting to be uploaded — that upload is the fix. Do not treat
+  the clip rebuild as a source of truth, and do not claim "27.7 min is all the footage that exists".
+
+**The fix pattern (fast, no code deploy needed for playback):** make the served `.mp4` full-length, then
+remove the id from the Blob `optimized-manifest.json` so `getVideoSources` returns `[mp4]` only. A
+*truncated* webm plays-then-ends, so the browser never falls back to the mp4 on its own — removing it
+from the manifest is what forces the full mp4 to serve. Tool: `claudeTools/videoOptimize/mp4Fix.mjs`
+(copies Front Split, uploads the Thoracic master, drops both from the blob + bundled manifest). The
+bundled-manifest change was shipped via a `my.` deploy to close the first-paint race.
+**Deferred (optional):** VP9 `.webm` size-optimization of these two — genuinely slow (~70 min each)
+ONLY because they are 45/68-min videos, not the short clips the batch handled; serving the mp4 is fine.
+
+**Secondary weakness worth fixing anyway:** `optimize.mjs` resume trusts existence, not integrity — it
+skips any id marked `done` in `ledger.jsonl` and any tier whose `.webm` already exists in Blob
+(`blobHas()`), with no output-duration check. That's why the bad renditions were marked `done` and
+never revisited. `reencode2.mjs` adds a duration-verify (±3s) guard before upload; fold that check
+into `optimize.mjs` itself so a short/bad encode can never be recorded as `done`.
+
+**Diagnosis lesson:** the old `my.` telemetry logged `current.src` (hardcoded to the mp4 *fallback*
+URL), never the `<source>` the browser actually played — so "0 webm in logs" was a false read that hid
+this for weeks. Trust `currentSrc` / a hands-on browser play, not stall counts. Full write-up:
+`sessions/VideoWebmTruncation-followup.md`.
+
 ### Cron Jobs
 
 - Vercel cron jobs are defined in `vercel.json` and run on a schedule:
@@ -430,7 +521,7 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 
 - **Stripe is the only active payment channel.** Authorize.net is legacy-only (~19 remaining ARB users); do not write new Auth.net code.
 - **Duplicate guard** in `create-subscription/route.js` blocks re-registration only when the user already has an active `stripeSubscriptionId` in their `user_setting`. This is intentional — it's the only case that would cause a true conflict.
-- **KNOWN GAP — duplicate subscriptions across Stripe customers (2026-08-05).** The guard above
+- **CLOSED 2026-08-07 (`bd84542`).** `findActiveStripeSubByEmail` now guards all THREE subscription-creating routes — create-subscription, renew-subscription AND offer-subscription. The offer route was missed by `208c74a` and is the one an offer campaign points thousands of legacy members at; it still trusted `user_setting.stripeSubscriptionId` alone. Historical note on the gap: the guard above
   only checks `user_setting`; it never asks Stripe. If a signup/renewal creates a NEW Stripe
   customer for an email that already has an active subscription on ANOTHER customer, nothing
   stops it — Neon then tracks only the newest sub and the webhook can't match the old one
@@ -627,6 +718,18 @@ A full support ticketing system built into `/admin`. Accessible only to users wi
 4. Emails are deduplicated by a synthetic ID: `{gmailMessageId}_{base64(fromEmail).slice(0,8)}`.
 5. The sync cursor advances automatically — it uses `MAX(receivedAt)` from `support_emails` minus a 2-minute overlap. On first run (empty table) it starts from the current moment, so no historical backfill occurs.
 
+> **⚠️ The Gmail keys are marked "Sensitive" in Vercel — they pull down EMPTY (2026-08-14).**
+> A `vercel env pull` returns `GMAIL_REFRESH_TOKEN=""`, `GMAIL_AUTH_USER=""`, `GMAIL_SEND_AS=""`, so a pull over a
+> populated `.env.local` **wipes the working local Gmail token**. Production keeps the real values (send/receive
+> works in prod all day); they just cannot be retrieved by pulling. Keep the real `GMAIL_REFRESH_TOKEN` as a plain
+> value in local, pull to a temp file and merge, and **re-add these in Vercel as NON-Sensitive** so pulls stop
+> blanking them. If local ever authenticates as the wrong mailbox, this is why — the correct token got pull-wiped.
+>
+> **Mailbox account — verify before trusting:** the local token has been observed authenticating as
+> `admin@gymnasticbodies.com` while the project mailbox is meant to be `support@gymnasticbodies.com` (in + out via
+> the Gmail API). Confirm `gmail.users.getProfile({userId:'me'})` returns `support@` after restoring the key; if it
+> returns `admin@`, the local token is the wrong account and inbound spam-checks on support@ cannot be done from it.
+
 ### Email parsing (`lib/gmail.js`)
 
 Three parsing paths:
@@ -681,7 +784,11 @@ Both must be set for full access. Current admin IDs in `lib/auth.js`: `Tufkirhwr
 ```
 GMAIL_CLIENT_ID         # Google OAuth2 client ID
 GMAIL_CLIENT_SECRET     # Google OAuth2 client secret
-GMAIL_REFRESH_TOKEN     # Refresh token for admin@gymnasticbodies.com
+GMAIL_REFRESH_TOKEN     # Refresh token for the support@ project mailbox (in + out via Gmail API).
+                        #   ⚠️ Marked Sensitive in Vercel → pulls EMPTY → keep the real value in local as plain
+                        #   text; a pull will wipe it. Should authenticate as support@, NOT admin@ — verify with
+                        #   getProfile after restoring. See the ⚠️ note under "How it works" above.
+GMAIL_AUTH_USER         # The mailbox the token authenticates as (should be support@gymnasticbodies.com)
 GMAIL_SEND_AS           # support@gymnasticbodies.com (Send As alias)
 CRON_SECRET             # Shared secret — Vercel cron passes as x-cron-secret header
 BETTER_AUTH_URL         # https://app.gymnasticbodies.com (prod) / http://localhost:3000 (dev)
@@ -774,14 +881,14 @@ The reply-detection window is **90 days** from `sent_at`. `findOutboundMatch()` 
 
 ---
 
-Two columns on the `user` table drive access and segmentation (last updated 2026-07-01):
+Two columns on the `user` table drive access and segmentation (counts last updated 2026-08-10, after the 36,754-account Phase 2 backfill took the base from ~17k to 53,808):
 
 ### `user.migration_type` — binary, drives the paywall
 
 | Value | Count | Meaning |
 |---|---|---|
-| `current` | 950 | Has active subscription (verified) or future renewal date — **no paywall** |
-| `noncurrent` | 15,362 | No active subscription, no future renewal date — **redirect to `/renew`** |
+| `current` | 967 | Has active subscription (verified) or future renewal date — **no paywall** |
+| `noncurrent` | 52,839 | No active subscription, no future renewal date — **redirect to `/renew`** |
 
 `renewalStatus` API returns `needsRenewal: true` when `migration_type = 'noncurrent'`. Classification is date/subscription based, with a live Stripe recheck once a Stripe user's cached date goes stale (see waterfall below) — not purely a cached-field read for Stripe users anymore.
 
@@ -789,12 +896,12 @@ Two columns on the `user` table drive access and segmentation (last updated 2026
 
 | Value | Count | Meaning |
 |---|---|---|
-| `stripe` | 43 | Active Stripe subscriber |
+| `stripe` | 154 | Active Stripe subscriber |
 | `auth_net` | 20 | Active Auth.net ARB subscriber |
-| `subscriber` | 887 | Current — future renewal date set (manually granted or imported) |
-| `purchased` | 334 | One-time WooCommerce product buyer — noncurrent, paywalled for now |
-| `lapsed` | 552 | Had a subscription, now expired — offered `/renew` |
-| `inactive` | 14,476 | No meaningful signals |
+| `subscriber` | 793 | Current — future renewal date set (manually granted or imported) |
+| `purchased` | 325 | One-time WooCommerce product buyer — noncurrent, paywalled for now |
+| `lapsed` | 47,336 | Had a subscription, now expired — offered `/renew` |
+| `inactive` | 5,178 | No meaningful signals |
 
 ### Classification waterfall (`/api/classifyUsers`)
 
