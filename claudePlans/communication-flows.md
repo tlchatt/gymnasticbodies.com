@@ -52,8 +52,8 @@ three **categories**, and each flow has its own rules.
 | **A reply** to one of our Support emails | ✅ **Reopen that case** | ✅ **New case**, linked back to the old one |
 | **A fresh message** (not a reply) | ✅ **New case**, linked back to their last case | ✅ **New case**, linked back |
 
-- ⚑ **Fresh message while the member's previous case is still OPEN:** (a) add it to the open case
-  (today's behaviour), or (b) new case linked back. Recommendation: (a).
+- ✅ **Fresh message while the member's previous case is still OPEN:** add it to the open case
+  (today's behaviour) — one open case per member.
 - "Is it a reply, and to which case?" — decided from the email headers: we stamp our case id into the
   Message-ID of every Support email we send, and read it back from the member's In-Reply-To /
   References. Fallback: the case of an earlier message in the same Gmail thread.
@@ -86,7 +86,6 @@ three **categories**, and each flow has its own rules.
 | **M2 Lock-in campaign — engaged** (`legacy_lockin_20260522_engaged`, segments lapsed + purchased) | Cron; ~23.2k sends. | Same questions. |
 | **M3 Lock-in campaign — cold** (`legacy_lockin_20260522_cold`, segment inactive) | Cron; ~19.5k sends. | Same questions. |
 | **M4 One-off campaigns** (`email-group`, compose page with type marketing) — `claudeTools/support.js email-group` | `email-group` creates a case per recipient but never links it, and sends with **no reply-to**. | ⚑ Should bulk sends ever create cases? (Per this spec: no.) Fix reply-to. Owner approves copy. |
-| **M5 "Having trouble renewing?" drip** (`renewal_auto_drip`) — `app/api/cronRenewalOutreach/route.js` | Cron, ~12/day; recorded as type `support`, no case. Has gone to members who were already paying or on a trial, and to "Hi undefined". | ⚑ **Marketing or Administrative?** Suppress already-paying/trialing members; fix missing names. |
 
 ---
 
@@ -104,6 +103,7 @@ three **categories**, and each flow has its own rules.
 | | **A6 Email-change verification** — `/api/user/change-email` | **Not recorded.** | Same as A5. |
 | **Membership** | **A7 Subscription cancelled** — webhook `customer.subscription.deleted`, `app/api/user/subscription/route.js` | **Not recorded**; skipped when the account is already marked cancelled (so admin cancels send nothing). | ⚑ Should every cancel (member, admin, agent) send one? Record it. |
 | | **A8 Chargeback / ban notice** | None automatic (Dean + FOMANYIf were emailed by hand 2026-10-09). | ⚑ Tied to S8 decision. |
+| **Membership timeline** | **A10 "Having trouble renewing?"** (`renewal_auto_drip`) — `app/api/cronRenewalOutreach/route.js`, daily 14:00 UTC | ✅ **Administrative** (owner 2026-10-09: account notices around a member's timeline are administrative). Today: recorded as type `support`, no case. Sends to anyone who viewed /renew 24–96h ago and never logged `renewal.success`, unless they wrote to support or got ANY email in the last 30 days. Gaps (audit 2026-10-09): only `renewal.success` counts as paying — **26 of 349 sends since Sep 3 went to people who had already paid via signup or the offer page**; no check of current membership/trial; a marketing email in the last 30 days silently suppresses it (cross-flow coupling); blank names render "Hi ,"; banned members not excluded. | ⚑ Suppress anyone current/trialing/paid by any route; exclude banned; decouple from marketing sends; fix greeting; record as `administrative`. |
 | **Internal** | **A9 Internal alerts** (chargeback filed, EFW, errors) — `sendInternalAlertEmail` | To staff, not members. | Out of scope for member rules; listed for completeness. |
 
 ---
