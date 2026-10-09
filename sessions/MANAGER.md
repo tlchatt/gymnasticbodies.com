@@ -45,6 +45,16 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
+| 25 | Slack: admin "generate legacy offer link" for members with NO Slack thread — Luke asked ~8×; Greggory Aug 23 "good idea… at least add it as an option" (partly c4fd5f91) | Slack sweep | none | — | 🔴 ruling |
+| 26 | Slack: support@ to accept forwarded member emails (Greggory Sep 14 to Luke; waiting on where they arrive) | Slack sweep | none | — | 🔴 ruling |
+| 27 | Slack: connect Instagram DMs to support (Greggory Aug 28 "working on getting the API key") | Slack sweep | none | — | 🔴 ruling |
+| 28 | Slack: ask the AI about a member from inside Slack without a case (Luke Sep 4, no reply) | Slack sweep | none | — | 🔴 ruling |
+| 29 | Slack: member promises pending owner OK — Jason Camara #549 ($15 rate + $70 refund); George Belange #655 (Aug goodwill credit never applied); Faiz #712 (progress reset) | Slack sweep | none | — | 🔴 ruling |
+| 30 | Slack: open escalations with no update since Sep 30 — schedule repair #734/744/757/774/779/792; BYO edit #755; course errors #771; Thrive after $15 #786; Upper Body edit #799; BYO missing exercises #808; video stalls #750; Thrive photos #668 (partly task 35ee9965) | Slack sweep | none | — | 🔴 ruling |
+| 31 | Slack: Coach Aug 27 — remove "free membership", open blogs/articles; whiteboard/Intro paying-members only | Slack sweep | none | — | 🔴 ruling |
+| 32 | Slack: Aug 17 roadmap commitments to Luke/Coach still open — mobile-responsive /admin; Social Road Map; my. into app.; 3 tiers $25/$50/$75; level/progress restructure; video taxonomy (Sep 4) | Slack sweep | none | — | 🔴 ruling |
+| 33 | Slack: unclear/unclosed — Sumant no app access (Sep 22 "working on this"); long-video refresh drag (Aug 29 "next week"); support form error (Sep 14); meet Luke re Slack agent (Aug 28); Coach Oct 8 "why cancel requests?" (bot-only reply); small member promises Aug 8–19 (Cesta, Ayeisha, M. Walker Thrive flag, Peter Carey, J. Vega) | Slack sweep | none | — | 🔴 ruling |
+| 34 | Main-site sitemap never submitted to Google Search Console (from forum session) | from `1c711620` | none | — | 🔴 ruling |
 
 ## Past days
 
@@ -119,3 +129,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Item 11 session (16b20339) reviewed COMPLETE; owner sign-off; hours closed, task 5e179359 done, session closed. Open from it: apology to the 16 not addressed by owner (read as no).
 - 2026-10-09 ~12:56 — SHIPPED app. (owner: ship both): forum 483728b (whole forum public archive) + comms-flows 7669ab2, 23b2875, 961d56d, 695b31c, a84bc7f. Prod Ready; forum 41 → 200, sitemap 32,443 URLs, 4 headings live; admin/renewalStatus healthy. Search Console verified + forum sitemap submitted (forum session); main-site sitemap never submitted. Owner rules: close hours with each session close; Slack sweep for owner promises/suggestions running.
 - 2026-10-09 — Forum session (1c711620) reviewed: 3 of 4 ordered items done + live; NOT done: plaintext gbforumimages S3 key still in the Lightsail forum MySQL + July dump + new backups; key is not in account 390008123206 so it can't be deactivated by us. Awaiting owner: accept-and-close or remove.
+- 2026-10-09 — Slack sweep (#gymnstic-bodies-support 486 msgs, #gymnastic-bodies-appdevelopment 64; NOT readable: #03-gymnasticbodies, #gymnasticbodies, #gymnasticbodiesluke, DMs): ~16 done, duplicates matched, new/unclear → review 25–33. Raw dumps in manager scratchpad/slack/. Review 34 main-site sitemap.
