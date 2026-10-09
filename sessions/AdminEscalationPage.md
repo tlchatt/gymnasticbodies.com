@@ -79,3 +79,8 @@ Manager's prod smoke after the push (MANAGER.md): `/api/support/fires` returns 4
 Session file: `app.gymnasticbodies.com/sessions/AdminEscalationPage.md`.
 As of this time, the /admin support review flow is built and live: `caeeb0b` was pushed by the manager at 11:35 together with `99736d2`, which supplies the admin-session access that Note and Re-investigate need. Accept/Undo share `acceptFire`/`undoFire` with Slack, tested on .dev including a held reply. The old poller is retired to `claudeTools/supportAgent/_retired-2026-10-09/`.
 Next: (1) log in as admin on prod and check `/admin/support` and a case page's card; (2) get the owner's yes/no on one test each of Note and Re-investigate (posts in the Slack support channel) and on handing the two .dev setup bugs to the manager; (3) then close item 12 / task `90b3a025`.
+
+## Close-out — 2026-10-09 ~16:10 (manager)
+- Logged-in production check passed (/admin/support all tabs, case card on /admin/cases/845, 403 logged out, temp admin deleted). 0c38122 (Held / issues tab) shipped 15:26.
+- Out-of-scope findings (old play keeps a live Accept after Re-investigate — RISK; "based on your note" text with no note; case-page hydration error + "Invalid Date") → follow-up task 6731479d, raised to high.
+- Task 90b3a025 done; hours 915f678b were already closed at 13:00. Session closed by the manager.

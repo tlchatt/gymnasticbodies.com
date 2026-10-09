@@ -29,7 +29,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
 | 3 | 8 offer-crash members (09-30 apology) promised a $15 continue link before access ends ~Nov 20-28 — owner: keep → send by Nov 13 | `20126359` (closed) | `37a064be` | — | ⏸ board, due 2026-11-13 |
 | 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` closed | ✅ done — owner signed off, no repair needed; session closed |
-| 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟢 batch ready caeeb0b — waiting on app. push (held for item 8); Note/Re-investigate need item 8 uncommitted requireAdminOrCronSecret |
+| 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` closed | ✅ done — live + logged-in check passed; session closed |
 | 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. | — | `2f5084d4` | — | ⏸ on the task list; its decisions get asked when it is picked up |
 | 22 | Support "view as member" (impersonate) + claudeTools/testSession.js broken since the 11:35 login-security push: they mint tokens with no session row → 401. Fix: impersonate creates a real short-lived session (needs owner OK on approach) | — | `929b8e2d` | — | ⏸ todo (high) — not dispatched |
 | 23 | URGENT: owner cannot sign in to /admin as admin@gymnasticbodies.com ("Invalid email or password", ~12:15) — check today's auth pushes | `e7368a61-cf9e-4262-ad89-03f9d9da2290` | `16dc2fdb` | `601328ae` closed | ✅ resolved (no fault found; owner confirmed); session closed |
@@ -37,7 +37,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 11f | Create-subscription route missing current classification — follow-up concerns: 3DS payments unrecorded; payment_succeeded webhook never sets current; app_logs ts ~4h off | from `16b20339` | `9466faea` | — | ⏸ todo (high) |
 | 18–21 | Support-message endpoint auth fix — follow-up concerns: renew/offer account takeover (LIVE), crons w/o CRON_SECRET, sendgrid.js logs API key, broken test scripts | `070445b0-9e33-400a-af2f-9b272ddc7e88` | `2810c30e` | `5f58099f` open | 🟡 dispatched — renew/offer login hole first, plan to owner before code |
 | 16 | Mobile button white screen — follow-up concerns: poster 404, getclicky 403s, 84 days no video id | from `cc26628b` | `c01ea88c` | — | ⏸ todo (low) |
-| 12f | Admin escalation page for Slack support agent — follow-up concerns (.dev only): admin login loop (BETTER_AUTH_URL empty in .env.local); admin page self-fetch fails on .dev | from `3653640d` | `6731479d` | — | ⏸ todo (medium) |
+| 12f | Admin escalation page for Slack support agent — follow-up concerns: RISK old play keeps live Accept after Re-investigate; note text; case-page hydration + Invalid Date; .dev login loop + self-fetch | from `3653640d` | `6731479d` | — | ⏸ todo (high) |
 
 ## Ready to ship
 
@@ -150,3 +150,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 ~16:00 — Owner: dispatch the live renew/offer login hole → session 070445b0 ("Renew and offer subscription session minting"), task 2810c30e, hours 5f58099f. Review #35 (secrets in Slack #03, posted 2025-12-16) → owner: low priority → board task 4680fd07.
 - 2026-10-09 ~16:05 — OWNER ORDER (in manager): AWS shutdown may proceed with deletions once each resource has confirmed local + private-Blob copies, without waiting for him. KEEP DNS: no Route 53 zone/record/domain deletions; session to list Route 53 zones + which domains still use them. Sent to 41dadbf1 (message may be held — this line is the record).
 - 2026-10-09 ~16:08 — Owner: "AWS should be fully backed up already for what matters" → AWS session told to proceed now with everything already backed up; only sources still mid-download wait for their own copy to finish. DNS kept.
+- 2026-10-09 ~16:10 — Item 12 session (3653640d) closed: findings → 6731479d (high, incl. stale-Accept risk); task 90b3a025 done.
