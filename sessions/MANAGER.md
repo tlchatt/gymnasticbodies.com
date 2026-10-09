@@ -19,6 +19,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 2 | October chargeback users → support-agent real cancel/refund/delete | `96d475f4-f803-4e81-9ce1-375faef72746` | none (candidate `35ee9965`) | none matched | 🟡 carried |
 | 4 | Matthew Walker (mwalker2k9@gmail.com): chargeback ban came from OUR bug (Jul 9) — keep ban + explain, or reinstate through 2026-12-23; email owed either way. Also: Luke cancelled his sub Sep 28 with no note (ask Luke). Lower: Carlos Areces (rhinopc60@hotmail.com) same backfill | `96d475f4` (passed from) | none | — | 🔴 owner: keep ban / reinstate |
 | 5 | Banned-member policy + exact reply for the support agent. Agent improvised for Dean Torcasio (case 818 / ticket 1055, play 283): falsely said we refund on chargebacks; lookupMember does not return banned/banReason; Dean got 2 same-day emails. Impl after decision: lookupMember returns banned, BANNED rule + template in lib/support/investigate.js, test on ticket 1055 | `96d475f4` (passed from) | `b7ac6d8c` | — | ⏸ parked for later (board task) |
+| 6 | Meet the GB team on how to implement the chargeback Ban / Block policy (items 4 and 5 hang on it) | — | `78840146` | — | ⏸ meeting to schedule |
 | 3 | 8 members from 09-30 offer-crash apology hold an unretracted "we will email you a link" promise | `20126359` (closed) | none | — | 🔴 owner: walk-back / keep / leave |
 
 ## Past days
@@ -49,3 +50,4 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 - 2026-10-09 — Deleted untracked `_next.mjs` (Aug 11 one-off support-case query script), owner ordered. Item 2 complete.
 - 2026-10-09 — Chargeback session (96d475f4) handed over Matthew Walker ban decision as item 4. Support Ops review verdict: discard (orphaned Aug design; old poller.js + Aug execute.js copy are a hazard if started; not running). Awaiting owner: 1 / 1+2 / 1+2+3; stashes awaiting drop.
 - 2026-10-09 — Chargeback session handed over item 5: banned-member policy + reply wording for the support agent.
+- 2026-10-09 — Owner: meet with the GB team on implementing the chargeback ban/block policy. Board task 78840146. Items 4 (Matthew Walker) and 5 (banned-member reply) wait on it.
