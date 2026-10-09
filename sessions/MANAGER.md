@@ -92,3 +92,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Review #13 ruled: dropped both old stashes (Dec 23 sendgrid→tlchatt sender; Jan 9 commented curl edit).
 - 2026-10-09 — Review #14 ruled: keep on the task list (board task created); column + drip-pause decisions still open; drip NOT paused.
 - 2026-10-09 — Review #15 ruled: logs are private; just remove the token from the logs. Redacted KEAP_PAT value in place (same length, no file rewrite) in 6 transcript files: 5ca21ad3, cf10dd5a, e096772e, f7d71aa1 and 2 cc26628b subagent logs — 22 occurrences, 0 remaining. Token itself not rotated; env files unchanged.
+- 2026-10-09 — Shipped my. (manager): d1b2d0f (class lists [] on logout — fixes white screen Courses→Classes) + 289626a (Stretch Series cards open their video). Live chunk c108f827 == build; GitHub synced. Asked cc26628b to re-verify live.
