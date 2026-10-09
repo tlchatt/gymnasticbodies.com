@@ -29,7 +29,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 3 | 8 offer-crash members (09-30 apology) promised a $15 continue link before access ends ~Nov 20-28 — owner: keep → send by Nov 13 | `20126359` (closed) | `37a064be` | — | ⏸ board, due 2026-11-13 |
 | 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` open | 🟡 dispatched 2026-10-09 |
 | 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟡 dispatched 2026-10-09 |
-| 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. Still open: OK new column user.marketing_unsubscribed_at? pause lock-in drip (~2,880/day) until shipped? | — | `2f5084d4` | — | ⏸ on the task list, not dispatched |
+| 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. | — | `2f5084d4` | — | ⏸ on the task list; its decisions get asked when it is picked up |
 
 ## Review list — needs an owner ruling
 
