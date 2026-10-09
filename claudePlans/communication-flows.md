@@ -21,6 +21,8 @@ three **categories**, and each flow has its own rules.
 | **Administrative** | us → member (automated) | Messages about the member's account, billing or membership. |
 
 **Terms (✅ decided):**
+- **The core rule (✅ owner 2026-10-09): if we receive a message from a customer, it is a case. If we reply,
+  that reply is a communication on that case.** Everything below follows from this.
 - A **case** is the official log of our communication with a customer **outside of automated
   communication** (✅ owner 2026-10-09). Automated sends (marketing, administrative) are recorded but are
   not cases; the moment a customer writes to us, or replies to anything, it is a conversation and lives in a case.
