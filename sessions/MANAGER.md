@@ -38,6 +38,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 | 12 | Support Ops cleanup (from review item 2): 1 = delete the 5 uncommitted Aug-13 support-ops files + AdminNav link; 2 = retire claudeTools/supportAgent/poller.js + its Aug execute.js copy; 3 = drop dead tables support_runs/support_actions (destructive) | — | none | — | 🔴 owner: 1 / 1+2 / 1+2+3 |
 | 13 | Two old git stashes (from review item 3): stash@{0} Jan 9 test-command leftover; stash@{1} Dec 23 sendgrid → tlchatt.com sender (harmful if applied) | — | none | — | 🔴 owner: drop both |
 | 14 | Marketing unsubscribe: none exists (no SendGrid group, footer off, no opt-out record) while the lock-in drip sends ~2,880 marketing emails/day (~39k cold + ~550 engaged queued). CAN-SPAM requires a working opt-out. Design agreed in principle (SendGrid unsubscribe group + webhook → app). Open: new column user.marketing_unsubscribed_at (DB rule); pause the drip until shipped? From 96d475f4 | — | none | — | 🔴 owner: column OK? pause drip? dispatch/board |
+| 15 | KEAP_PAT (live Keap personal access token, can read member plaintext passwords) was printed into the Luke session (cc26628b) transcript by a subagent — rotate it in Keap and update .env files. Found by manager completeness check | — | none | — | 🔴 owner: rotate now / board / leave |
 
 ## Past days
 
@@ -88,3 +89,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Owner rulings: #1 ship both (my. deploy running); #3 keep → board task 37a064be due Nov 13 (was NOT on the board before); #11 dispatched 16b20339, task 5e179359, hours 55331709.
 - 2026-10-09 — Shipped my. (manager): built Node 16 / deployed Node 22 with e21c3f8 (/create-account removed) + a16b159 (Bearer token on member calls); live main chunk 1485a0b0 == build; build/vercel.json,.vercel,.gitignore restored; GitHub synced. Headless: /create-account → / with login form.
 - 2026-10-09 10:40 — AWS shutdown worker `41dadbf1`: owner rule = local + Blob copy before any delete. 6 CloudFront distros disabled; final backups downloading to `/mnt/data/work-backup/gymfit-aws-final-2026-10-09/`; nothing deleted yet. `api.` DNS swap to Vercel blocked by classifier. Note: `sessions/AWSShutdown.md`.
+- 2026-10-09 — Item 1 hours 67ede9d8 closed (14h13m incl. overnight idle — offered trim). Luke session note committed; completeness: NOT complete — its live-verification subagent has not reported; keep session open. Review #15 added (KEAP_PAT exposed in transcript).
