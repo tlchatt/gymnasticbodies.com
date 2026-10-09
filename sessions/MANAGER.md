@@ -26,14 +26,15 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 9 | AWS shutdown: back up then turn off Lightsail forum/WP boxes, courses RDS, idle ALBs/Fargate/CloudFront/S3, support plan (~$1,000/mo; Oct 1-8 = $272). Owner ordered. | `41dadbf1-ad9a-4e49-884d-056e98d46760` | `264fa864` | `37247c62` open | 🟡 dispatched 2026-10-09 |
 | 10 | Forum: make whole forum public as an Archive (owner confirms forum list + wording), remove plaintext gbforumimages S3 key, fix redirect/link rough edges, submit sitemap to Search Console | `1c711620-c82d-4d1f-90e2-514bbb860e30` | `241b5f8b` | `67dba7c2` open | 🟡 dispatched 2026-10-09 |
 
+| 3 | 8 offer-crash members (09-30 apology) promised a $15 continue link before access ends ~Nov 20-28 — owner: keep → send by Nov 13 | `20126359` (closed) | `37a064be` | — | ⏸ board, due 2026-11-13 |
+| 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` open | 🟡 dispatched 2026-10-09 |
+
 ## Review list — needs an owner ruling
 
 Items waiting for a decision. A ruling turns each into a Technologic task (handled now → also on Today; saved for later → board only) or drops it (logged).
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 3 | 8 members from 09-30 offer-crash apology hold an unretracted "we will email you a link" promise | `20126359` (closed) | none | — | 🔴 owner: walk-back / keep / leave |
-| 11 | BUG: new /subscribe trial signups on existing accounts stay noncurrent until the 11:00 UTC cron → my. sends them to /renew mid-trial + renewal drip. create-subscription/route.js never calls updateUserClassification (offer/renew do). 16 of 61 signups since Sep 1 hit it (sebagomis ×8, volkertc ×7, matt@mammoth.design ×6…). From 96d475f4 | — | none | — | 🔴 owner: dispatch fix? |
 | 12 | Support Ops cleanup (from review item 2): 1 = delete the 5 uncommitted Aug-13 support-ops files + AdminNav link; 2 = retire claudeTools/supportAgent/poller.js + its Aug execute.js copy; 3 = drop dead tables support_runs/support_actions (destructive) | — | none | — | 🔴 owner: 1 / 1+2 / 1+2+3 |
 | 13 | Two old git stashes (from review item 3): stash@{0} Jan 9 test-command leftover; stash@{1} Dec 23 sendgrid → tlchatt.com sender (harmful if applied) | — | none | — | 🔴 owner: drop both |
 | 14 | Marketing unsubscribe: none exists (no SendGrid group, footer off, no opt-out record) while the lock-in drip sends ~2,880 marketing emails/day (~39k cold + ~550 engaged queued). CAN-SPAM requires a working opt-out. Design agreed in principle (SendGrid unsubscribe group + webhook → app). Open: new column user.marketing_unsubscribed_at (DB rule); pause the drip until shipped? From 96d475f4 | — | none | — | 🔴 owner: column OK? pause drip? dispatch/board |
@@ -84,3 +85,5 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Luke session (cc26628b) batch recorded: app. ad9fc3a, 087800e live; my. 53ad01d live; my. d0214f4 + a5b008b live via vercel, manager pushed them to GitHub (sync only, my. Vercel not git-linked). Blob +-name copies (76) + Courses.png. my. working tree has 6 more uncommitted files (in-flight). Open: my. /create-account remove/repoint. Skill: added step 0b (spot-check previous sessions for uncommitted/undeployed/unfinished work + unanswered user requests).
 - 2026-10-09 — Item 11 logged (trial signups paywalled mid-trial), verified in code. 96d475f4 docs-only commits waiting to ship: 94a8f39, c22ee44, ad3658e, 1b72556.
 - 2026-10-09 — Owner rule: manager-launched sessions stay on task; out-of-scope findings → ask owner → hand to manager. Added to the skill kickoff only (owner: skill update, not CLAUDE.md).
+- 2026-10-09 — Owner rulings: #1 ship both (my. deploy running); #3 keep → board task 37a064be due Nov 13 (was NOT on the board before); #11 dispatched 16b20339, task 5e179359, hours 55331709.
+- 2026-10-09 — Shipped my. (manager): built Node 16 / deployed Node 22 with e21c3f8 (/create-account removed) + a16b159 (Bearer token on member calls); live main chunk 1485a0b0 == build; build/vercel.json,.vercel,.gitignore restored; GitHub synced. Headless: /create-account → / with login form.
