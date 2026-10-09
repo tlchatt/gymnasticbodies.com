@@ -34,6 +34,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 22 | Support "view as member" (impersonate) + claudeTools/testSession.js broken since the 11:35 login-security push: they mint tokens with no session row → 401. Fix: impersonate creates a real short-lived session (needs owner OK on approach) | — | `929b8e2d` | — | ⏸ todo (high) — not dispatched |
 | 18–21 | Support-message endpoint auth fix — follow-up concerns: renew/offer account takeover (LIVE), crons w/o CRON_SECRET, sendgrid.js logs API key, broken test scripts | from `071bee16` | `2810c30e` | — | ⏸ todo (high) |
 | 16 | Mobile button white screen — follow-up concerns: poster 404, getclicky 403s, 84 days no video id | from `cc26628b` | `c01ea88c` | — | ⏸ todo (low) |
+| 12f | Admin escalation page for Slack support agent — follow-up concerns (.dev only): admin login loop (BETTER_AUTH_URL empty in .env.local); admin page self-fetch fails on .dev | from `3653640d` | `6731479d` | — | ⏸ todo (medium) |
 
 ## Review list — needs an owner ruling
 
@@ -108,3 +109,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Owner: review items 16 and 18–21 become follow-up tasks named after their sessions → 2810c30e (071bee16, high) and c01ea88c (cc26628b, low). Review list empty.
 - 2026-10-09 12:00 — AWS shutdown worker: courses RDS deleted (final snapshot + local/private-Blob dumps). Owner keeps the gymnasticbodies-cpanel Aug-17 snapshot.
 - 2026-10-09 — Item 12 session (3653640d) reviewed: shipped; NOT complete — needs logged-in prod check of /admin/support + case card; owner yes/no on one test of Note + Re-investigate (posts to support Slack); owner yes/no on routing 2 .dev bugs (BETTER_AUTH_URL empty breaks admin login; case pages' server fetch fails) to the manager.
+- 2026-10-09 — 3653640d passed 2 .dev-only findings → follow-up task 6731479d.
