@@ -9,6 +9,8 @@
  * GET ?userId=&level=&weekStart=YYYY-MM-DD   -> AWS-parity day-keyed weekly view:
  *     { "MONDAY,JULY 20": [ {scheduleId, classId, type, dayIndex, workout:{...}} ], ... }
  * GET ?op=lastViewed&userId=                 -> { lastLoginLevel }
+ * GET ?op=schedule-days&userId=              -> { days } the member's own stored week
+ *     (levels_schedule data.days, {} when none) — read-only; Class Finder's "My Schedule"
  * POST { userId, op:'choose-level', level }  -> persists chosen level; { lastLoginLevel }
  */
 import {
@@ -196,6 +198,13 @@ export async function GET(request) {
         const p = request.nextUrl.searchParams;
         const userId = await resolveWorkoutUserId(request, p.get('userId'));
         if (!userId) return corsJson({ error: 'userId required' }, 400);
+
+        if (p.get('op') === 'schedule-days') {
+            // Raw stored week only — no level-template fallback: a class is "on my schedule"
+            // only when the member's own week holds it.
+            const { data } = await readWorkoutState(userId, 'levels_schedule');
+            return corsJson({ days: data?.days || {} });
+        }
 
         if (p.get('op') === 'lastViewed') {
             // 0 means "no level chosen yet" — the legacy contract, and the frontend still

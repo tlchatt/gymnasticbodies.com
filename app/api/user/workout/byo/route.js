@@ -14,6 +14,7 @@
  *
  * GET  ?userId=&weekStart=            -> day-keyed weekly view (AWS shape)
  * GET  ?userId=&op=program-status&courseId=&weekStart=
+ * GET  ?op=class-finder                -> Class Finder course catalog (no userId)
  * POST { userId, op, ... } ops: builder-save | builder-delete | log-class | unlog-class |
  *       log-exercises | unlog-exercise | copy-previous | copy-last-week |
  *       program-log | program-notes
@@ -31,6 +32,7 @@ import {
 import { PROGRAM_IDS, CLASS_BY_ID, emptyByoDay, itemType, hydrateDay } from "./hydrate.js";
 import { advanceMasteryStepOnLog } from "@/lib/curriculum";
 import builderCategories from "@/data/workout/byoBuilderCategories.json";
+import classFinderCourses from "@/data/workout/classFinderCourses.json";
 import { logger } from "@/lib/logger";
 
 export async function OPTIONS() { return corsOptions(); }
@@ -65,6 +67,12 @@ export async function GET(request) {
         // (user-independent, so no userId/weekStart required).
         if (p.get('op') === 'builder-category') {
             return corsJson(builderCategories[p.get('categoryId')] || {});
+        }
+
+        // Class Finder course catalog (my. /class-finder) — static, user-independent.
+        // Built by scripts/buildClassFinderCatalog.js in the old AWS myCourses shape.
+        if (p.get('op') === 'class-finder') {
+            return corsJson(classFinderCourses);
         }
 
         const userId = await resolveWorkoutUserId(request, p.get('userId'));
