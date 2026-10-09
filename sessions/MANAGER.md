@@ -30,7 +30,6 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` open | 🟡 dispatched 2026-10-09 |
 | 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟢 batch ready caeeb0b — waiting on app. push (held for item 8); Note/Re-investigate need item 8 uncommitted requireAdminOrCronSecret |
 | 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. | — | `2f5084d4` | — | ⏸ on the task list; its decisions get asked when it is picked up |
-| 17 | Communication-flows spec (claudePlans/communication-flows.md, f2edfc6): manager walks the owner through 8 open ⚑ decisions one at a time (today vs proposed): 1 label sends by category; 2 one-off campaign rules; 3 renewal reminder invoice.upcoming on/off; 4 refund/credit confirmations category; 5 reset/email-change: record body or fact; 6 cancel email on every path; 7 admin wording Ticket→Message, Communications view; 8 cleanup ~10 test messages + 28 empty cases, backfill 272. (9 chargeback wording = #5/#6.) Then a worker builds the audit plan | `96d475f4` (handed over) | `310d8d10` | — | 🟡 manager walkthrough, not started |
 
 ## Review list — needs an owner ruling
 
@@ -99,3 +98,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Item 1 complete: live re-verify passed (my. c108f827). Note close-out appended; session cc26628b closed (owner had ordered close-if-complete). Leftovers → review #16.
 - 2026-10-09 — 96d475f4 handed the communication-flows spec review to the manager as a long-running item (#17, task 310d8d10).
 - 2026-10-09 11:45 — AWS shutdown worker: private Blob store `gymnasticbodies-private` created (owner) + connected as `PRIVATE_BLOB_READ_WRITE_TOKEN`; local backups uploading. NEW ITEM for manager: members-only media sits in the public Blob store (short guessable ids) — owner wants it private, without a costly mass move; needs a plan.
+- 2026-10-09 — #17 removed: comms-flows spec stays with session 96d475f4 (owner: the manager does not handle work that belongs to a session). Board task 310d8d10 deleted.
