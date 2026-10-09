@@ -37,7 +37,6 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 15 | KEAP_PAT (live Keap personal access token, can read member plaintext passwords) was printed into the Luke session (cc26628b) transcript by a subagent — rotate it in Keap and update .env files. Found by manager completeness check | — | none | — | 🔴 owner: rotate now / board / leave |
 
 ## Past days
 
@@ -92,3 +91,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Review #12 ruled: redo entirely in a new session — /admin escalation flow using the same endpoints as Slack. Dispatched 3653640d, task 90b3a025, hours 915f678b. Kickoff includes shipping + scope rules.
 - 2026-10-09 — Review #13 ruled: dropped both old stashes (Dec 23 sendgrid→tlchatt sender; Jan 9 commented curl edit).
 - 2026-10-09 — Review #14 ruled: keep on the task list (board task created); column + drip-pause decisions still open; drip NOT paused.
+- 2026-10-09 — Review #15 ruled: logs are private; just remove the token from the logs. Redacted KEAP_PAT value in place (same length, no file rewrite) in 6 transcript files: 5ca21ad3, cf10dd5a, e096772e, f7d71aa1 and 2 cc26628b subagent logs — 22 occurrences, 0 remaining. Token itself not rotated; env files unchanged.
