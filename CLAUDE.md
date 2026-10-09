@@ -65,6 +65,19 @@ Implementation notes:
 - All inbound links in the wild point at the correct hosts already (emails + `my.` → `app./renew`,
   `app./accountDetails`) — no `my.` or email-template changes were needed.
 
+## Chargebacks = permanent ban (owner rule, 2026-10-08)
+
+A member who files a chargeback is banned for good. `banMember()` in `lib/blocklist.js` does it, and
+the `charge.dispute.created` webhook calls it automatically: every live subscription cancelled now,
+every Neon account banned (`user.banned`, better-auth refuses sign-in) and signed out, and every card
+fingerprint / email / Stripe customer they ever used added to **our** table
+`blocked_payment_identities` (DDL in `Drizzle/raw/`, raw SQL — not in the drizzle-kit chain) and
+mirrored to Stripe Radar's default block lists. Signup, renew, offer and card-update all call
+`blockedPaymentReason()` before charging. **The card fingerprint is the block that matters** — emails
+change in seconds. No refunds are issued by the ban; it never deletes a Stripe customer. All 10 past
+disputes (7 people) were backfilled 2026-10-08. To ban someone by hand, call `banMember` — don't
+hand-roll it.
+
 ## Cloud Support Agent — every billing/account fix must ALSO be checked here (2026-10-08)
 
 The Slack support agent (`lib/support/*`) acts on members **through its own code paths**, separate
