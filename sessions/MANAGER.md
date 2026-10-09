@@ -30,6 +30,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` open | 🟡 dispatched 2026-10-09 |
 | 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟢 batch ready caeeb0b — waiting on app. push (held for item 8); Note/Re-investigate need item 8 uncommitted requireAdminOrCronSecret |
 | 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. | — | `2f5084d4` | — | ⏸ on the task list; its decisions get asked when it is picked up |
+| 22 | Support "view as member" (impersonate) + claudeTools/testSession.js broken since the 11:35 login-security push: they mint tokens with no session row → 401. Fix: impersonate creates a real short-lived session (needs owner OK on approach) | — | `929b8e2d` | — | ⏸ todo (high) — not dispatched |
 
 ## Review list — needs an owner ruling
 
@@ -104,3 +105,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 11:45 — AWS shutdown worker: private Blob store `gymnasticbodies-private` created (owner) + connected as `PRIVATE_BLOB_READ_WRITE_TOKEN`; local backups uploading. NEW ITEM for manager: members-only media sits in the public Blob store (short guessable ids) — owner wants it private, without a costly mass move; needs a plan.
 - 2026-10-09 — #17 removed: comms-flows spec stays with session 96d475f4 (owner: the manager does not handle work that belongs to a session). Board task 310d8d10 deleted.
 - 2026-10-09 11:35 — SHIPPED app. (manager push 650523b; Vercel prod Ready): item 8 c1921c1+b665440+99736d2, item 12 caeeb0b, forum 06725cf+ddb1434, AWS notes, docs. Prod smoke: userStatus/log/support-message 401 w/o token; deleted routes 404; /api/support/fires 403; renewalStatus 200; /admin/support → login; forum archive notice live. Review items 18–21 added from item 8's out-of-scope findings (renew/offer account takeover; crons w/o CRON_SECRET; sendgrid.js:255 logs API key; test tooling). Item 8 session review running before close.
+- 2026-10-09 — Owner: make a todo for the broken "view as member" tool → today #22, existing board task 929b8e2d (todo, high).
