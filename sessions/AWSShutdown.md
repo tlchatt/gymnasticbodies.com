@@ -41,3 +41,4 @@ and 3 EBS snapshots from 2017–2018 (~$5/mo total).
 - 2026-10-09 ~10:30 — **Disabled 6 CloudFront distributions** (E2TAHYRIUSC1ZN, E1KQMIVMY2A66G, E3UE9WPBMR7MYL, E259IITKJAJJ64, E2NDG89QP09SYX, E19ULFELANCZSE). Reversible; original configs saved in the session scratchpad.
 - 2026-10-09 — Swapping `api.` CNAME → Vercel was **blocked by the auto-mode classifier** (DNS change). ALB deletion held until it is done.
 - 2026-10-09 10:35 — server5 file tar (`/home/goatfart /etc /var/cpanel /var/named /usr/local/apache/conf /root`) restarted after the Lightsail SSH cert expired between steps.
+- 2026-10-09 ~10:50 — Forum session asked to deactivate old forum S3 key `AKIAJRIRUKHT743MGZZA`: not in this account (AccessDenied on last-used; absent from all 12 IAM users), bucket `gbforumimages` has no policy and owner-only ACL. Nothing to deactivate; no IAM change. Replied to the forum session.
