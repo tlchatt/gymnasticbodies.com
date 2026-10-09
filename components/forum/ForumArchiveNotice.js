@@ -8,10 +8,11 @@ export default function ForumArchiveNotice({ text }) {
     const noticeStyle = {
         ...cardStyle,
         borderLeft: '3px solid var(--accent)',
-        padding: '0.75rem 1rem',
-        marginBottom: '1.5rem',
+        display: 'inline-block',
+        padding: '0.4rem 0.75rem',
+        marginBottom: '1.25rem',
         color: 'var(--text-dim)',
-        fontSize: '0.9375rem',
+        fontSize: '0.875rem',
         fontFamily: 'var(--font-body)',
         lineHeight: 1.5,
     };
