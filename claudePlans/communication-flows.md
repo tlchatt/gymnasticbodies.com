@@ -80,6 +80,20 @@ three **categories**, and each flow has its own rules.
 
 ✅ No cases. A member reply → Support (case rules).
 
+**Rule structure (✅ owner 2026-10-09):** every marketing campaign = a shared **baseline** + its own
+**campaign rules** (audience, date ranges, exclusions, touches). Past payers are the target audience —
+the baseline only excludes people who are **active right now**.
+
+**Baseline (DRAFT — ⚑ pending owner OK):**
+- Skip anyone **active right now**: Neon current, or live Stripe active/trialing. (Past payment is NOT an exclusion.)
+- Skip banned members / payment block list.
+- Skip unsubscribed (⚑ needs an unsubscribe link + record — none exists today).
+- Skip anyone with an open support case.
+- Skip bounced / invalid / spam-flagged addresses.
+- Greeting "Hi {first name}," / "Hi there,"; from marketing@, reply-to support@; record type `marketing`, no case.
+
+**Campaign rules** live with each campaign below (audience, lapse window, max touches, spacing, end date).
+
 | Flow | Today | ⚑ Rules to set |
 |---|---|---|
 | **M1 Legacy $15 offer drip** (`marketing_drip_legacy15`) — `app/api/cronMarketingDrip/route.js` | Cron; recorded in `outbound_emails` type `marketing`. ~18.3k sends. | Suppress: banned members, current payers, opted out? Frequency cap? |
