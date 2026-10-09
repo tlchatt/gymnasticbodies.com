@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Shipping — workers commit, the manager deploys (2026-10-09)
+
+Worker sessions commit by explicit path and **never `git push` or deploy** — `main` is shared, so one push ships every session's unfinished commits. When a batch is ready, message the manager session (state + ID in `sessions/MANAGER.md`); it pushes (= Vercel production deploy) and verifies.
+
 ## Local Dev Environment (start it yourself — it is OFF by default)
 
 **The dev server does NOT start at boot.** As of 2026-08-17 it is stopped and disabled so it costs
