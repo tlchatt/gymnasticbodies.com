@@ -8,7 +8,7 @@ import {
     getUserWithEmail,
     getUserWithId,
 } from '@/lib/userSettings';
-import { sendSubsCancelledEmailSG } from '@/lib/sendgrid';
+import { notifySubscriptionCancelled } from '@/lib/cancellationNotice';
 import {
     sendPaymentFailedEmail,
     sendRenewalReminderEmail,
@@ -95,9 +95,11 @@ export async function POST(request) {
                         ...currentData,
                         status: 'cancelled',
                     }));
-                    const email = currentData?.email;
-                    if (email) await sendSubsCancelledEmailSG(email);
                 }
+                // Every cancel gets the member email exactly once (lib/cancellationNotice.js dedupes
+                // per subscription, skips banned members and ban-suppressed subscriptions). Sent here
+                // even when the row was already marked cancelled, so admin/agent cancels are covered.
+                await notifySubscriptionCancelled({ subscriptionId, email: currentData?.email || null, userId: userSetting.userId, source: 'stripe_webhook' });
                 await updateUserClassification(userSetting.userId, 'noncurrent', 'lapsed');
                 logger.info('webhook.processed', { eventType: event.type, subscriptionId, settingId: userSetting.id });
                 break;

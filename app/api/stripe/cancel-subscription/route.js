@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripeServerFunction';
 import { getUserSettingByStripeSubscriptionId, updateUserSettingStatus, updateUserClassification } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
 import { getSessionUserId } from '@/lib/sessionUser';
+import { notifySubscriptionCancelled } from '@/lib/cancellationNotice';
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -42,6 +43,7 @@ export async function POST(request) {
             await updateUserSettingStatus(userSetting, 'cancelled', JSON.stringify({ ...currentData, status: 'cancelled' }));
             await updateUserClassification(userSetting.userId, 'noncurrent', 'lapsed');
             logger.info('cancellation.trial_cancel', { subscriptionId, userId: userSetting.userId });
+            await notifySubscriptionCancelled({ subscriptionId, userId: userSetting.userId, source: 'member' });
             return NextResponse.json({ success: true, cancelAtPeriodEnd: false }, { headers: CORS });
         }
 
@@ -58,6 +60,7 @@ export async function POST(request) {
         );
 
         logger.info('cancellation.active_cancel', { subscriptionId, userId: userSetting.userId, accessUntil });
+        await notifySubscriptionCancelled({ subscriptionId, userId: userSetting.userId, accessUntil, source: 'member' });
 
         return NextResponse.json({ success: true, cancelAtPeriodEnd: true, accessUntil }, { headers: CORS });
     } catch (error) {

@@ -57,7 +57,7 @@ export async function PUT(request) {
         const appUrl = process.env.BETTER_AUTH_URL ?? 'https://app.gymnasticbodies.com';
         const verificationLink = `${appUrl}/api/user/verify-email?token=${token}&userId=${encodeURIComponent(userId)}`;
 
-        const sent = await sendEmailChangeSG(normalizedEmail, verificationLink);
+        const sent = await sendEmailChangeSG(normalizedEmail, verificationLink, { userId });
         if (!sent) {
             return NextResponse.json({ success: false, message: 'Failed to send verification email. Please try again.' }, { status: 500, headers: CORS });
         }

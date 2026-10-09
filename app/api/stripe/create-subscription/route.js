@@ -126,7 +126,7 @@ export async function POST(request) {
         // paywalled mid-trial until the daily classifier ran. Matches renew/offer.
         await updateUserClassification(dbUser?.user?.id ?? dbUser?.id, 'current', 'stripe');
 
-        await sendCredentialsEmailSG({ email, password });
+        await sendCredentialsEmailSG({ email, password, userId: dbUser?.user?.id ?? null });
 
         logger.info('signup.success', {
             email,
