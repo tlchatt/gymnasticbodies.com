@@ -38,6 +38,10 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
 | 16 | my. leftovers from the mobile/Class Finder session: Thrive poster bKU9pRIU.jpeg 404; getclicky analytics 403s; 84 course days with no video id | from `cc26628b` | none | — | 🔴 owner: dispatch / board / drop |
+| 18 | SECURITY (live): renew-subscription and offer-subscription hand a 7-day login to anyone who posts an already-subscribed member email — account takeover. From item 8 (071bee16) | from `071bee16` | none | — | 🔴 owner: dispatch / board |
+| 19 | Crons classifyUsers, cronMarketingDrip, cronRenewalOutreach have no CRON_SECRET check (anyone can trigger them). From item 8 | from `071bee16` | none | — | 🔴 owner: dispatch / board |
+| 20 | lib/sendgrid.js:255 console.logs the SendGrid API key (goes to Vercel logs). From item 8 | from `071bee16` | none | — | 🔴 owner: dispatch / board |
+| 21 | Test tooling broken by item 8: claudeTools/testAccountDetails.js must sign accounts in; migration.js at repo root posts to a deleted route | from `071bee16` | none | — | 🔴 owner: dispatch / board / drop |
 
 ## Past days
 
@@ -99,3 +103,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — 96d475f4 handed the communication-flows spec review to the manager as a long-running item (#17, task 310d8d10).
 - 2026-10-09 11:45 — AWS shutdown worker: private Blob store `gymnasticbodies-private` created (owner) + connected as `PRIVATE_BLOB_READ_WRITE_TOKEN`; local backups uploading. NEW ITEM for manager: members-only media sits in the public Blob store (short guessable ids) — owner wants it private, without a costly mass move; needs a plan.
 - 2026-10-09 — #17 removed: comms-flows spec stays with session 96d475f4 (owner: the manager does not handle work that belongs to a session). Board task 310d8d10 deleted.
+- 2026-10-09 11:35 — SHIPPED app. (manager push 650523b; Vercel prod Ready): item 8 c1921c1+b665440+99736d2, item 12 caeeb0b, forum 06725cf+ddb1434, AWS notes, docs. Prod smoke: userStatus/log/support-message 401 w/o token; deleted routes 404; /api/support/fires 403; renewalStatus 200; /admin/support → login; forum archive notice live. Review items 18–21 added from item 8's out-of-scope findings (renew/offer account takeover; crons w/o CRON_SECRET; sendgrid.js:255 logs API key; test tooling). Item 8 session review running before close.
