@@ -105,3 +105,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Owner: make a todo for the broken "view as member" tool → today #22, existing board task 929b8e2d (todo, high).
 - 2026-10-09 — Item 8 session (071bee16) reviewed: code shipped; NOT complete — (1) 10 deleted .playwright-mcp files in my. uncommitted, (2) expired-sign-in logout on live my. untested, (3) first prod autofire not yet confirmed (no autofire events since 15:30 UTC), (4) owner sign-off. Sent back to the session; not closed.
 - 2026-10-09 — Owner: review items 16 and 18–21 become follow-up tasks named after their sessions → 2810c30e (071bee16, high) and c01ea88c (cc26628b, low). Review list empty.
+- 2026-10-09 12:00 — AWS shutdown worker: courses RDS deleted (final snapshot + local/private-Blob dumps). Owner keeps the gymnasticbodies-cpanel Aug-17 snapshot.
