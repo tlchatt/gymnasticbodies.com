@@ -57,3 +57,7 @@
 ## Note for Next Session (snapshot as of 2026-10-09 13:15 EDT)
 Session file: `app.gymnasticbodies.com/sessions/ForumPublicArchive.md`.
 As of this time the whole forum (~32,400 topics) is live on www as a public archive with the owner's banner, renamed headings and fixed old links (`06725cf`, `ddb1434`, `483728b`, all live); the forum sitemap is submitted to Search Console (pending); Technologic calendar fix `26b2e6e` is live. Not done: the plaintext gbforumimages S3 secret was not removed from the forum DB (the session judged it moot because the key is dead and the box is being deleted) — ask the owner whether that is acceptable. Next: owner decision on the S3 row, submit the main site sitemap, recheck Search Console status.
+
+## Close-out — 2026-10-09 ~15:30 (manager)
+- Owner rulings: gbforumimages S3 key ACCEPTED as is (key is dead; box being deleted). Main-site sitemap https://www.gymnasticbodies.com/sitemap.xml submitted to sc-domain:gymnasticbodies.com (204, 610 URLs, pending, 0/0). Optional, not done: two stale WP-era http:// sitemaps still listed in Search Console.
+- Hours 67dba7c2 closed, task 241b5f8b done, session closed by the manager.
