@@ -28,6 +28,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
 | 3 | 8 offer-crash members (09-30 apology) promised a $15 continue link before access ends ~Nov 20-28 — owner: keep → send by Nov 13 | `20126359` (closed) | `37a064be` | — | ⏸ board, due 2026-11-13 |
 | 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` open | 🟡 dispatched 2026-10-09 |
+| 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟡 dispatched 2026-10-09 |
 
 ## Review list — needs an owner ruling
 
@@ -35,7 +36,6 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 12 | Support Ops cleanup (from review item 2): 1 = delete the 5 uncommitted Aug-13 support-ops files + AdminNav link; 2 = retire claudeTools/supportAgent/poller.js + its Aug execute.js copy; 3 = drop dead tables support_runs/support_actions (destructive) | — | none | — | 🔴 owner: 1 / 1+2 / 1+2+3 |
 | 13 | Two old git stashes (from review item 3): stash@{0} Jan 9 test-command leftover; stash@{1} Dec 23 sendgrid → tlchatt.com sender (harmful if applied) | — | none | — | 🔴 owner: drop both |
 | 14 | Marketing unsubscribe: none exists (no SendGrid group, footer off, no opt-out record) while the lock-in drip sends ~2,880 marketing emails/day (~39k cold + ~550 engaged queued). CAN-SPAM requires a working opt-out. Design agreed in principle (SendGrid unsubscribe group + webhook → app). Open: new column user.marketing_unsubscribed_at (DB rule); pause the drip until shipped? From 96d475f4 | — | none | — | 🔴 owner: column OK? pause drip? dispatch/board |
 | 15 | KEAP_PAT (live Keap personal access token, can read member plaintext passwords) was printed into the Luke session (cc26628b) transcript by a subagent — rotate it in Keap and update .env files. Found by manager completeness check | — | none | — | 🔴 owner: rotate now / board / leave |
@@ -90,3 +90,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Shipped my. (manager): built Node 16 / deployed Node 22 with e21c3f8 (/create-account removed) + a16b159 (Bearer token on member calls); live main chunk 1485a0b0 == build; build/vercel.json,.vercel,.gitignore restored; GitHub synced. Headless: /create-account → / with login form.
 - 2026-10-09 10:40 — AWS shutdown worker `41dadbf1`: owner rule = local + Blob copy before any delete. 6 CloudFront distros disabled; final backups downloading to `/mnt/data/work-backup/gymfit-aws-final-2026-10-09/`; nothing deleted yet. `api.` DNS swap to Vercel blocked by classifier. Note: `sessions/AWSShutdown.md`.
 - 2026-10-09 — Item 1 hours 67ede9d8 closed (14h13m incl. overnight idle — offered trim). Luke session note committed; completeness: NOT complete — its live-verification subagent has not reported; keep session open. Review #15 added (KEAP_PAT exposed in transcript).
+- 2026-10-09 — Review #12 ruled: redo entirely in a new session — /admin escalation flow using the same endpoints as Slack. Dispatched 3653640d, task 90b3a025, hours 915f678b. Kickoff includes shipping + scope rules.
