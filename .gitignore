@@ -40,3 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# Neon database dumps — large, contain member data. Never commit.
+neon_backups/*.sql
+
+# claudePlans data exports — member data (backups, credit lists, forensics). Plans (.md) are committed; data stays local.
+claudePlans/*.json
+claudePlans/*.jsonl
+claudePlans/*/
