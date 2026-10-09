@@ -41,7 +41,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
 ## Ready to ship
 
-- 2026-10-09 — **c3352df** (session 96d475f4): renewal email ("Having trouble renewing?") sends one per day during the 24–96h window after the member's LATEST /renew view, max 3 per window (replaces the 30-day repeat rule; owner-approved). Tested: dry run on live data via .dev — 184 candidates, 150 would send (skips: paid 20, current 6, open case 4, bad address 3, sent today 1); npm run build passes. Owner: "Get it done" — ship before the 2026-10-10 14:00 UTC run.
+- 2026-10-09 — **c3352df** (session 96d475f4): renewal email ("Having trouble renewing?") sends one per day during the 24–96h window after the member's LATEST /renew view, max 3 per window (replaces the 30-day repeat rule; owner-approved). Tested: dry run on live data via .dev — 184 candidates, 150 would send (skips: paid 20, current 6, open case 4, bad address 3, sent today 1); npm run build passes. Owner: "Get it done" — ship before the 2026-10-10 14:00 UTC run. **SHIPPED 2026-10-09 14:50 (push 0d77d05, prod Ready, route 403 w/o secret).**
 
 ## Review list — needs an owner ruling
 
@@ -139,3 +139,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Owner (in 96d475f4): members SHOULD see their own account emails incl. login-details email — 'that's desirable'. 2caa496 reverted on main; no exposure fix needed. Still open: ship db68c78 (alerts/refund watch/cronPromiseCheck)? renewal drip ~134 first run 2026-10-10 14:00 UTC: OK/cap/pause?
 - 2026-10-09 14:21 — SHIPPED db68c78 (Slack alerts, refund watch, cronPromiseCheck 15:30 UTC) + AWS notes 95981bf (api. DNS → Vercel, ALBs deleted) + 2caa496/revert. Prod Ready; cronPromiseCheck 401 w/o secret. Stripe webhook: refund.updated + refund.failed enabled. Memory: honor worker-relayed owner orders.
 - 2026-10-09 14:50 — SHIPPED c3352df (renewal email one/day in the 24–96h window after latest /renew view, max 3; dry run 150) on 96d475f4's relayed owner order, before tomorrow's 14:00 UTC run.
+- 2026-10-09 ~15:20 — Sessions crashed and were relaunched (new pids 6328/6780/7372/7961/8443, all idle). Manager sent each a resume nudge.
