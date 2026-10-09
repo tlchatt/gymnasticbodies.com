@@ -8,6 +8,7 @@ Read this FIRST on startup, compaction or rotation (skill `project-review-manage
 - **Review baseline commit:** `12f6aee` (2026-10-08)
 - **Last check-in:** 2026-10-09 ~00:15 ET
 - **Each check-in:** flag any uncommitted work in the tree to its owning session right away — finish and commit, or discard. Nothing gets left to go stale.
+- **Shipping:** workers commit, the manager pushes + verifies (owner rule relayed by worker 071bee16, 2026-10-09). HOLD: do not push while item 8 (member-auth sweep) is incomplete — 7-day sign-in task 745b5dd7 must be lined up before or with that push.
 
 ## Today — 2026-10-09
 
@@ -67,3 +68,4 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 - 2026-10-09 — Forum audit: redirects/sitemap/robots OK; api. CNAME → AWS prod ALB (503) and gear. → dead 35.169.12.160 passed to AWS session 41dadbf1. Owner: whole forum public as archive + fix leftovers → dispatched 1c711620, task 241b5f8b, hours 67dba7c2.
 - 2026-10-09 — DNS note to AWS session 41dadbf1 was HELD by that session (not delivered); same facts put in task 264fa864 description instead.
 - 2026-10-09 — Item 8 worker: c1921c1 (support-message uses session token, lib/sessionUser.js) + b665440 (accountDetails/profile/change-email/cancel-subscription session-gated). Unpushed — classifier blocked push. Open risk: better-auth sessions 7 days vs my. login length → members could get 'sign in again' on account page. Scope widened to all member routes.
+- 2026-10-09 — Item 8 worker: pushing is the manager's job; sweep of all member routes still running; 7-day sign-in risk = task 745b5dd7. Told forum session 1c711620 not to push (manager ships).
