@@ -26,6 +26,9 @@ three **categories**, and each flow has its own rules.
   not cases; the moment a customer writes to us, or replies to anything, it is a conversation and lives in a case.
 - AI-assisted support (the support agent's replies, escalation notices) is **human-handled with AI
   assistance** — a person approves it — so it is support communication and is logged in the case (✅ owner 2026-10-09).
+  Even if AI is later allowed to auto-reply on some topics with no human approval, those replies are still
+  part of a customer conversation, so **still a case**. "Automated" in the case definition means automated
+  marketing/administrative sends — not replies to a customer who wrote to us (✅ owner 2026-10-09).
 - A **communication** is a thread of messages back and forth. ("Ticket" today = one message; the
   word goes away — see Admin wording below.)
 - **Every Support communication is always tied to a case.** Marketing and Administrative messages
