@@ -36,7 +36,6 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 13 | Two old git stashes (from review item 3): stash@{0} Jan 9 test-command leftover; stash@{1} Dec 23 sendgrid → tlchatt.com sender (harmful if applied) | — | none | — | 🔴 owner: drop both |
 | 14 | Marketing unsubscribe: none exists (no SendGrid group, footer off, no opt-out record) while the lock-in drip sends ~2,880 marketing emails/day (~39k cold + ~550 engaged queued). CAN-SPAM requires a working opt-out. Design agreed in principle (SendGrid unsubscribe group + webhook → app). Open: new column user.marketing_unsubscribed_at (DB rule); pause the drip until shipped? From 96d475f4 | — | none | — | 🔴 owner: column OK? pause drip? dispatch/board |
 | 15 | KEAP_PAT (live Keap personal access token, can read member plaintext passwords) was printed into the Luke session (cc26628b) transcript by a subagent — rotate it in Keap and update .env files. Found by manager completeness check | — | none | — | 🔴 owner: rotate now / board / leave |
 
@@ -91,3 +90,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 10:40 — AWS shutdown worker `41dadbf1`: owner rule = local + Blob copy before any delete. 6 CloudFront distros disabled; final backups downloading to `/mnt/data/work-backup/gymfit-aws-final-2026-10-09/`; nothing deleted yet. `api.` DNS swap to Vercel blocked by classifier. Note: `sessions/AWSShutdown.md`.
 - 2026-10-09 — Item 1 hours 67ede9d8 closed (14h13m incl. overnight idle — offered trim). Luke session note committed; completeness: NOT complete — its live-verification subagent has not reported; keep session open. Review #15 added (KEAP_PAT exposed in transcript).
 - 2026-10-09 — Review #12 ruled: redo entirely in a new session — /admin escalation flow using the same endpoints as Slack. Dispatched 3653640d, task 90b3a025, hours 915f678b. Kickoff includes shipping + scope rules.
+- 2026-10-09 — Review #13 ruled: dropped both old stashes (Dec 23 sendgrid→tlchatt sender; Jan 9 commented curl edit).
