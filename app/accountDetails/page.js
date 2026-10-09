@@ -1,5 +1,6 @@
 import AccountDetailsComp from '@/components/AccountDetailsComp';
 import { getAccountInformation } from '@/lib/commonFunctions';
+import { getUserIdForToken } from '@/lib/sessionUser';
 import {
     getProfileSection,
     getSubscriptionSection,
@@ -18,9 +19,28 @@ const settled = (r) => (r.status === 'fulfilled' ? r.value : null);
 export default async function page({ searchParams }) {
     const params = await searchParams
     const token = params.token
-    const userId = params.userId
     const emailChanged = params.emailChanged === '1'
     const emailError = params.emailError ?? null
+
+    // The account shown is the owner of the live session behind the token — a userId in the
+    // URL alone must not open someone's account. No live session (or a userId that isn't the
+    // session's) → ask the member to sign in again. The email-verify link lands here without
+    // a token, so it still reports its result.
+    const userId = await getUserIdForToken(token)
+    if (!userId || (params.userId && params.userId !== userId)) {
+        return (
+            <div style={{ padding: '40px', textAlign: 'center' }}>
+                {emailChanged && <p>Your email address was updated.</p>}
+                {emailError && <p>That email verification link did not work. Please request a new one.</p>}
+                <h2>Please sign in again.</h2>
+                <p>
+                    Your sign-in has expired. Sign in at{' '}
+                    <a href="https://my.gymnasticbodies.com">my.gymnasticbodies.com</a>{' '}
+                    and open Manage Subscription to see your account.
+                </p>
+            </div>
+        )
+    }
 
     // Every source is fetched independently and resilient (each fetcher returns null
     // on failure). allSettled guarantees one broken source can never blank the page.

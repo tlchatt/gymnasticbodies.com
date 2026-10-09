@@ -3,6 +3,7 @@ import { db } from '@/Drizzle/index.ts';
 import { user, user_setting } from '@/Drizzle/db/schema';
 import { eq } from 'drizzle-orm';
 import { queryUserSetting } from '@/lib/userSettings';
+import { getSessionUserId } from '@/lib/sessionUser';
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -16,10 +17,12 @@ export async function OPTIONS() {
 
 export async function PUT(request) {
     try {
-        const { userId, name, phone, country } = await request.json();
+        // Edit the signed-in member's profile — never a userId from the body.
+        const userId = await getSessionUserId(request);
         if (!userId) {
-            return NextResponse.json({ success: false, message: 'userId required.' }, { status: 400, headers: CORS });
+            return NextResponse.json({ success: false, message: 'Your sign-in has expired. Please sign in again.' }, { status: 401, headers: CORS });
         }
+        const { name, phone, country } = await request.json();
 
         // Update display name on the user record
         if (name?.trim()) {

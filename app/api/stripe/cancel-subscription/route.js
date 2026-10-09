@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripeServerFunction';
 import { getUserSettingByStripeSubscriptionId, updateUserSettingStatus, updateUserClassification } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
+import { getSessionUserId } from '@/lib/sessionUser';
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -16,13 +17,20 @@ export async function OPTIONS() {
 export async function POST(request) {
     let subscriptionId;
     try {
+        // Only the signed-in member can cancel, and only their own subscription.
+        const sessionUserId = await getSessionUserId(request);
+        if (!sessionUserId) {
+            return NextResponse.json({ success: false, message: 'Your sign-in has expired. Please sign in again.' }, { status: 401, headers: CORS });
+        }
+
         ({ subscriptionId } = await request.json());
         if (!subscriptionId) {
             return NextResponse.json({ success: false, message: 'subscriptionId required.' }, { status: 400, headers: CORS });
         }
 
         const userSetting = await getUserSettingByStripeSubscriptionId(subscriptionId);
-        if (!userSetting) {
+        if (!userSetting || userSetting.userId !== sessionUserId) {
+            if (userSetting) logger.warn('cancellation.not_owner', { userId: sessionUserId, subscriptionId });
             return NextResponse.json({ success: false, message: 'Subscription not found.' }, { status: 404, headers: CORS });
         }
 

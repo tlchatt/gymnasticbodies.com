@@ -60,8 +60,8 @@ export default function AccountDetailsComp({
                     <PaymentSection {...(payment ?? {})} userId={userId} />
                 </Section>
 
-                <DisplayProfile profile={profile} userId={userId} />
-                <DisplaySecurity profile={profile} emailChanged={emailChanged} emailError={emailError} userId={userId} />
+                <DisplayProfile profile={profile} token={token} />
+                <DisplaySecurity profile={profile} emailChanged={emailChanged} emailError={emailError} token={token} />
 
                 <Section data={workoutHistory}>
                     <WorkoutHistorySection {...(workoutHistory ?? {})} />
@@ -110,7 +110,7 @@ function SubscriptionActions({ data, userId, token }) {
         try {
             const res = await fetch('/api/stripe/cancel-subscription', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ subscriptionId: impInfo.subscriptionId }),
             })
             const result = await res.json()
@@ -131,7 +131,7 @@ function SubscriptionActions({ data, userId, token }) {
         try {
             const res = await fetch('/api/stripe/cancel-subscription', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ subscriptionId: impInfo.subscriptionId }),
             })
             const result = await res.json()
@@ -232,7 +232,7 @@ function SubscriptionActions({ data, userId, token }) {
 
 // ─── Profile ─────────────────────────────────────────────────────────────────
 
-function DisplayProfile({ profile, userId }) {
+function DisplayProfile({ profile, token }) {
     const p = profile ?? {}
     const [editing, setEditing] = useState(false)
     const [saving, setSaving] = useState(false)
@@ -247,8 +247,8 @@ function DisplayProfile({ profile, userId }) {
         try {
             const res = await fetch('/api/user/profile', {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, name, phone, country }),
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ name, phone, country }),
             })
             const result = await res.json()
             if (result.success) {
@@ -335,7 +335,7 @@ function DisplayProfile({ profile, userId }) {
 
 // ─── Security ────────────────────────────────────────────────────────────────
 
-function DisplaySecurity({ profile, userId, emailChanged, emailError }) {
+function DisplaySecurity({ profile, token, emailChanged, emailError }) {
     const p = profile ?? {}
     const [resetSent, setResetSent] = useState(false)
     const [resetSending, setResetSending] = useState(false)
@@ -379,8 +379,8 @@ function DisplaySecurity({ profile, userId, emailChanged, emailError }) {
         try {
             const res = await fetch('/api/user/change-email', {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, newEmail: newEmail.trim().toLowerCase() }),
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ newEmail: newEmail.trim().toLowerCase() }),
             })
             const result = await res.json()
             if (result.success) {

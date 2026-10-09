@@ -4,6 +4,7 @@ import { user, user_setting, verification } from '@/Drizzle/db/schema';
 import { eq, and } from 'drizzle-orm';
 import { randomBytes } from 'crypto';
 import { sendEmailChangeSG } from '@/lib/sendgrid';
+import { getSessionUserId } from '@/lib/sessionUser';
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -17,9 +18,15 @@ export async function OPTIONS() {
 
 export async function PUT(request) {
     try {
-        const { userId, newEmail } = await request.json();
-        if (!userId || !newEmail?.includes('@')) {
-            return NextResponse.json({ success: false, message: 'userId and valid newEmail required.' }, { status: 400, headers: CORS });
+        // Change the signed-in member's email — never a userId from the body (that let anyone
+        // point a member's account at their own inbox and take it over).
+        const userId = await getSessionUserId(request);
+        if (!userId) {
+            return NextResponse.json({ success: false, message: 'Your sign-in has expired. Please sign in again.' }, { status: 401, headers: CORS });
+        }
+        const { newEmail } = await request.json();
+        if (!newEmail?.includes('@')) {
+            return NextResponse.json({ success: false, message: 'A valid newEmail is required.' }, { status: 400, headers: CORS });
         }
 
         const normalizedEmail = newEmail.trim().toLowerCase();
