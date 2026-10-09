@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ForumBreadcrumbs from './ForumBreadcrumbs';
+import ForumArchiveNotice from './ForumArchiveNotice';
 import ForumPagination from './ForumPagination';
 import { ForumRow } from './ForumIndexView';
 import {
@@ -7,7 +8,7 @@ import {
 } from './forumShared';
 
 // topics: [{ tid, title, href, starter, startDate, replies, views }]
-export default function ForumTopicListView({ title, crumbs, subforums, topics, page, pages, hrefFor, labels }) {
+export default function ForumTopicListView({ notice, title, crumbs, subforums, topics, page, pages, hrefFor, labels }) {
     const listStyle = { listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' };
     const subforumListStyle = { ...listStyle, marginBottom: '1.75rem' };
     const rowStyle = {
@@ -26,6 +27,7 @@ export default function ForumTopicListView({ title, crumbs, subforums, topics, p
     return (
         <section style={sectionStyle}>
             <div style={innerStyle}>
+                <ForumArchiveNotice text={notice} />
                 <ForumBreadcrumbs crumbs={crumbs} />
                 <h1 style={h1Style}>{title}</h1>
 

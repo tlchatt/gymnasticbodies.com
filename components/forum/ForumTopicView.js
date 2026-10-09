@@ -1,11 +1,12 @@
 import ForumBreadcrumbs from './ForumBreadcrumbs';
+import ForumArchiveNotice from './ForumArchiveNotice';
 import ForumPagination from './ForumPagination';
 import {
     sectionStyle, innerStyle, h1Style, cardStyle, metaStyle, formatCount, formatForumDate,
 } from './forumShared';
 
 // posts: [{ pid, author, date, html }] — html is already sanitized (lib/forumHtml.js).
-export default function ForumTopicView({ title, crumbs, starter, startDate, replies, views, posts, page, pages, hrefFor, labels }) {
+export default function ForumTopicView({ notice, title, crumbs, starter, startDate, replies, views, posts, page, pages, hrefFor, labels }) {
     const topicTitleStyle = { ...h1Style, fontSize: 'clamp(1.7rem, 4.2vw, 2.6rem)', marginBottom: '0.75rem' };
     const summaryStyle = { ...metaStyle, marginBottom: '1.5rem' };
     const listStyle = { display: 'flex', flexDirection: 'column', gap: '0.75rem' };
@@ -33,6 +34,7 @@ export default function ForumTopicView({ title, crumbs, starter, startDate, repl
     return (
         <section style={sectionStyle}>
             <div style={innerStyle}>
+                <ForumArchiveNotice text={notice} />
                 <ForumBreadcrumbs crumbs={crumbs} />
                 <h1 style={topicTitleStyle}>{title}</h1>
                 <p style={summaryStyle}>

@@ -8,10 +8,23 @@ import { forumReaderOn, FORUM_SPAM_TIDS } from './lib/forumConfig.mjs';
 // Everything else under /forum is handled by app/forum/[...path]/route.js either way.
 const FORUM_READER_ON = forumReaderOn();
 
+// Old query-string forms of reader URLs. Rewritten (not redirected) to route handlers that
+// answer with a clean 301: a next.config redirect always carries the query string along,
+// which turned ?page=2 into /page/2?page=2.
+const forumQueryForms = [
+  // Invision's ?page=N -> /page/N
+  { source: '/forum/topic/:slug', has: [{ type: 'query', key: 'page', value: '(?<n>\\d+)' }], destination: '/forum-paged/topic/:slug/:n' },
+  { source: '/forum/forum/:slug', has: [{ type: 'query', key: 'page', value: '(?<n>\\d+)' }], destination: '/forum-paged/forum/:slug/:n' },
+  // Bare /forum?showtopic=N / ?showforum=N -> the legacy-URL handler (app/forum/[...path]).
+  { source: '/forum', has: [{ type: 'query', key: 'showtopic' }], destination: '/forum/index.php' },
+  { source: '/forum', has: [{ type: 'query', key: 'showforum' }], destination: '/forum/index.php' },
+];
+
 const forumBeforeFiles = FORUM_READER_ON
   ? [
       // Known bot-spam topics -> 410 Gone (a page can't return 410, a route handler can).
       { source: `/forum/topic/:slug((?:${FORUM_SPAM_TIDS.join('|')})(?:-[^/]*)?)/:rest*`, destination: '/forum-gone' },
+      ...forumQueryForms,
     ]
   : [
       { source: '/forum', destination: '/forum-legacy' },
@@ -19,26 +32,6 @@ const forumBeforeFiles = FORUM_READER_ON
       { source: '/forum/topic/:path*', destination: '/forum-legacy/topic/:path*' },
       { source: '/forum/sitemap.xml', destination: '/forum-legacy/sitemap.xml' },
     ];
-
-const forumRedirects = [
-  // Invision also accepted ?page=N; the reader's page URLs are /page/N.
-  ...(FORUM_READER_ON
-    ? [
-        {
-          source: '/forum/topic/:slug',
-          has: [{ type: 'query', key: 'page', value: '(?<n>\\d+)' }],
-          destination: '/forum/topic/:slug/page/:n',
-          permanent: true,
-        },
-        {
-          source: '/forum/forum/:slug',
-          has: [{ type: 'query', key: 'page', value: '(?<n>\\d+)' }],
-          destination: '/forum/forum/:slug/page/:n',
-          permanent: true,
-        },
-      ]
-    : []),
-];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -69,8 +62,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      ...forumRedirects,
-
       // Homepage now lives at the site root — collapse the old aliases into it.
       { source: '/homepage', destination: '/', permanent: true },
       { source: '/home', destination: '/', permanent: true },

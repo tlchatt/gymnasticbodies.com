@@ -1,5 +1,6 @@
 import { forumProxy } from '@/lib/forumProxy';
 import { forumReaderOn, FORUM_UPLOADS_BASE } from '@/lib/forumConfig.mjs';
+import { phpbbTopicId, attachmentUrl } from '@/lib/forumLegacy';
 import { getForumTree, getTopic, parseIdSlug, isSpamTopicId, isCategory, forumPath, topicPath, nearestPublicPath } from '@/lib/forum';
 
 // Everything under /forum that is not one of the reader's own pages (index, a forum,
@@ -9,6 +10,8 @@ import { getForumTree, getTopic, parseIdSlug, isSpamTopicId, isCategory, forumPa
 // Reader live: nothing on the old forum 404s — every old URL is sent somewhere real.
 //   spam topics                       -> 410 Gone
 //   legacy index.php?/topic/... forms -> 301 to the clean URL
+//   phpBB viewtopic.php?t=N / ?p=N     -> 301 to the converted topic
+//   attachment.php?id=N                -> 301 to the mirrored file
 //   /forum/uploads/*                  -> 301 to the mirrored file (or proxied until mirrored)
 //   profiles, search, login, etc.     -> 301 to the forum index
 
@@ -54,13 +57,24 @@ async function readerRedirect(request, ctx) {
 
     if (!['GET', 'HEAD'].includes(request.method)) return gone();
 
+    const query = new URL(request.url).search;
+    const last = path[path.length - 1] || '';
+    if (/^viewtopic\.php$/i.test(last)) {
+        const tid = phpbbTopicId(query);
+        return tid ? topicResponse(tid) : moved('/forum');
+    }
+    if (/^attachment\.php$/i.test(last)) {
+        const url = attachmentUrl(query);
+        if (url) return moved(url);
+    }
+
     // Deeper paths under a topic/forum (e.g. /topic/123-x/unread) -> the page itself.
     if (path[0] === 'topic' && parseIdSlug(path[1]) !== null) return topicResponse(parseIdSlug(path[1]));
     if (path[0] === 'forum' && parseIdSlug(path[1]) !== null) return forumResponse(parseIdSlug(path[1]));
 
     // Legacy query-string forms: index.php?/topic/123-slug/, index.php?showtopic=123,
     // index.php?/forum/22-slug/, index.php?showforum=22.
-    let search = new URL(request.url).search;
+    let search = query;
     try { search = decodeURIComponent(search); } catch { /* keep the raw string */ }
     const topic = search.match(/\/topic\/(\d{1,9})(?:-|\/|&|$)/) || search.match(/[?&]showtopic=(\d{1,9})/);
     if (topic) return topicResponse(parseInt(topic[1], 10));

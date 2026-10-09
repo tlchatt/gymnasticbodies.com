@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ForumArchiveNotice from './ForumArchiveNotice';
 import {
     sectionStyle, innerStyle, h1Style, cardStyle, metaStyle, titleLinkStyle, accentLinkStyle, formatCount,
 } from './forumShared';
@@ -38,7 +39,7 @@ export function ForumRow({ forum, labels }) {
 }
 
 // categories: [{ id, title, forums: [{ id, title, href, topics, posts, subforums: [{ id, title, href }] }] }]
-export default function ForumIndexView({ title, categories, labels }) {
+export default function ForumIndexView({ title, notice, categories, labels }) {
     const categoryStyle = { marginBottom: '2.25rem' };
     const categoryTitleStyle = {
         color: 'var(--accent-light)',
@@ -54,6 +55,7 @@ export default function ForumIndexView({ title, categories, labels }) {
     return (
         <section style={sectionStyle}>
             <div style={innerStyle}>
+                <ForumArchiveNotice text={notice} />
                 <h1 style={h1Style}>{title}</h1>
                 {categories.map((category) => (
                     <div key={category.id} style={categoryStyle}>
