@@ -8,7 +8,16 @@ import { fireOne, sweepAndTick } from '@/lib/support/fire';
 export const maxDuration = 120;
 const sql = neon(process.env.DATABASE_URL);
 
+// Fires real cancels/refunds/deletes, so it is never open: same secret as the cron fuse-tick route.
+function isAuthorized(req) {
+  const secret = process.env.CRON_SECRET;
+  if (!secret) return false;
+  if (req.headers.get('x-cron-secret') === secret) return true;
+  return req.headers.get('authorization') === `Bearer ${secret}`;
+}
+
 export async function POST(request) {
+  if (!isAuthorized(request)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   try {
     const { fireId } = await request.json().catch(() => ({}));
     if (fireId) {
