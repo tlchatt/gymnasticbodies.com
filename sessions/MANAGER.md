@@ -36,6 +36,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 | 11 | BUG: new /subscribe trial signups on existing accounts stay noncurrent until the 11:00 UTC cron → my. sends them to /renew mid-trial + renewal drip. create-subscription/route.js never calls updateUserClassification (offer/renew do). 16 of 61 signups since Sep 1 hit it (sebagomis ×8, volkertc ×7, matt@mammoth.design ×6…). From 96d475f4 | — | none | — | 🔴 owner: dispatch fix? |
 | 12 | Support Ops cleanup (from review item 2): 1 = delete the 5 uncommitted Aug-13 support-ops files + AdminNav link; 2 = retire claudeTools/supportAgent/poller.js + its Aug execute.js copy; 3 = drop dead tables support_runs/support_actions (destructive) | — | none | — | 🔴 owner: 1 / 1+2 / 1+2+3 |
 | 13 | Two old git stashes (from review item 3): stash@{0} Jan 9 test-command leftover; stash@{1} Dec 23 sendgrid → tlchatt.com sender (harmful if applied) | — | none | — | 🔴 owner: drop both |
+| 14 | Marketing unsubscribe: none exists (no SendGrid group, footer off, no opt-out record) while the lock-in drip sends ~2,880 marketing emails/day (~39k cold + ~550 engaged queued). CAN-SPAM requires a working opt-out. Design agreed in principle (SendGrid unsubscribe group + webhook → app). Open: new column user.marketing_unsubscribed_at (DB rule); pause the drip until shipped? From 96d475f4 | — | none | — | 🔴 owner: column OK? pause drip? dispatch/board |
 
 ## Past days
 
