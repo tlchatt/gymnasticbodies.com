@@ -35,7 +35,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 23 | URGENT: owner cannot sign in to /admin as admin@gymnasticbodies.com ("Invalid email or password", ~12:15) — check today's auth pushes | `e7368a61-cf9e-4262-ad89-03f9d9da2290` | `16dc2fdb` | `601328ae` closed | ✅ resolved (no fault found; owner confirmed); session closed |
 | 24 | Support sending + case creation from /admin and from a Slack thread (owner request) | — | `c4fd5f91` | — | ⏸ todo |
 | 11f | Create-subscription route missing current classification — follow-up concerns: 3DS payments unrecorded; payment_succeeded webhook never sets current; app_logs ts ~4h off | from `16b20339` | `9466faea` | — | ⏸ todo (high) |
-| 18–21 | Support-message endpoint auth fix — follow-up concerns: renew/offer account takeover (LIVE), crons w/o CRON_SECRET, sendgrid.js logs API key, broken test scripts | from `071bee16` | `2810c30e` | — | ⏸ todo (high) |
+| 18–21 | Support-message endpoint auth fix — follow-up concerns: renew/offer account takeover (LIVE), crons w/o CRON_SECRET, sendgrid.js logs API key, broken test scripts | `070445b0-9e33-400a-af2f-9b272ddc7e88` | `2810c30e` | `5f58099f` open | 🟡 dispatched — renew/offer login hole first, plan to owner before code |
 | 16 | Mobile button white screen — follow-up concerns: poster 404, getclicky 403s, 84 days no video id | from `cc26628b` | `c01ea88c` | — | ⏸ todo (low) |
 | 12f | Admin escalation page for Slack support agent — follow-up concerns (.dev only): admin login loop (BETTER_AUTH_URL empty in .env.local); admin page self-fetch fails on .dev | from `3653640d` | `6731479d` | — | ⏸ todo (medium) |
 
@@ -51,7 +51,6 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 35 | SECURITY: #03-gymnasticbodies (Dec 16 2025, ts 1765898021.314229) has the production Neon DATABASE_URL (with password) and BETTER_AUTH_SECRET in plain text — values still match .env.local; same channel holds SendGrid, forum admin, Braintree, admin@/coach.sommer@ logins (Dec–May) | Slack sweep 2 | none | — | 🔴 ruling: rotate / delete messages / leave |
 | 36 | Slack sweep 2 small items: Restore + Band series missing content (Luke, Apr 2); signup "account exists → reset password" path (Mar 11, maybe 02d9f813/7f159301); placement quiz idea (Dec canvas); forum archive analytics (Jan 29) | Slack sweep 2 | none | — | 🔴 ruling |
 | 25 | Slack: admin "generate legacy offer link" for members with NO Slack thread — Luke asked ~8×; Greggory Aug 23 "good idea… at least add it as an option" (partly c4fd5f91) | Slack sweep | none | — | 🔴 ruling |
 | 26 | Slack: support@ to accept forwarded member emails (Greggory Sep 14 to Luke; waiting on where they arrive) | Slack sweep | none | — | 🔴 ruling |
@@ -148,3 +147,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 ~15:30 — Closed forum (1c711620) + admin-login (e7368a61) sessions, hours + tasks. Hours opened for 96d475f4 on 35ee9965 from 14:48 (owner input 14:48–15:06). Admin password redacted in 3 transcripts (27 hits). Slack sweep 2 (3 channels, no human msgs since Aug 10) → review 35 (secrets posted in #03) + 36.
 - 2026-10-09 15:26 — Item 12 logged-in prod check PASSED (3653640d: /admin/support all tabs, case card on /admin/cases/845, 403 logged out, temp admin deleted). Shipped 0c38122 (Held tab → Held / issues) + AWS notes ea7dcb0, push eeb0a01.
 - 2026-10-09 ~15:45 — Owner gave the complete Thoracic Bridge in 2 Drive parts → dispatched 987aa382 on task e17309bc, hours ab477709.
+- 2026-10-09 ~16:00 — Owner: dispatch the live renew/offer login hole → session 070445b0 ("Renew and offer subscription session minting"), task 2810c30e, hours 5f58099f. Review #35 (secrets in Slack #03, posted 2025-12-16) → owner: low priority → board task 4680fd07.
