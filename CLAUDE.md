@@ -542,7 +542,7 @@ const hasStripeSub = impInfo?.subscriptionId?.startsWith?.('sub_')
 ### Cancel subscription (`app/api/stripe/cancel-subscription/route.js`)
 
 - **Trial** → `stripe.subscriptions.cancel()` → DB status `'cancelled'` → classifies as `noncurrent/lapsed`
-- **Active** → `stripe.subscriptions.update(id, { cancel_at_period_end: true })` → DB status `'pending_cancel'` → classifies as `noncurrent/lapsed`
+- **Active** → `stripe.subscriptions.update(id, { cancel_at_period_end: true })` → DB status `'pending_cancel'`, `renewaldate` = period end → **stays `current` until the paid period ends** (owner rule 2026-10-08, applies to every cancel path: member button, admin button, support agent). The `customer.subscription.deleted` webhook / daily classifier lapse them then.
 - Returns `{ success, cancelAtPeriodEnd, accessUntil }` (accessUntil is epoch seconds from Stripe)
 
 ### Email change verification flow
