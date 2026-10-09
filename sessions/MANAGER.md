@@ -39,6 +39,10 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 16 | Mobile button white screen — follow-up concerns: poster 404, getclicky 403s, 84 days no video id | from `cc26628b` | `c01ea88c` | — | ⏸ todo (low) |
 | 12f | Admin escalation page for Slack support agent — follow-up concerns (.dev only): admin login loop (BETTER_AUTH_URL empty in .env.local); admin page self-fetch fails on .dev | from `3653640d` | `6731479d` | — | ⏸ todo (medium) |
 
+## Ready to ship
+
+- 2026-10-09 — **c3352df** (session 96d475f4): renewal email ("Having trouble renewing?") sends one per day during the 24–96h window after the member's LATEST /renew view, max 3 per window (replaces the 30-day repeat rule; owner-approved). Tested: dry run on live data via .dev — 184 candidates, 150 would send (skips: paid 20, current 6, open case 4, bad address 3, sent today 1); npm run build passes. Owner: "Get it done" — ship before the 2026-10-10 14:00 UTC run.
+
 ## Review list — needs an owner ruling
 
 Items waiting for a decision. A ruling turns each into a Technologic task (handled now → also on Today; saved for later → board only) or drops it (logged).
