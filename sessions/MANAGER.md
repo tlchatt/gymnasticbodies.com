@@ -41,6 +41,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
 ## Ready to ship
 
+- 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered.
 - 2026-10-09 — **c3352df** (session 96d475f4): renewal email ("Having trouble renewing?") sends one per day during the 24–96h window after the member's LATEST /renew view, max 3 per window (replaces the 30-day repeat rule; owner-approved). Tested: dry run on live data via .dev — 184 candidates, 150 would send (skips: paid 20, current 6, open case 4, bad address 3, sent today 1); npm run build passes. Owner: "Get it done" — ship before the 2026-10-10 14:00 UTC run. **SHIPPED 2026-10-09 14:50 (push 0d77d05, prod Ready, route 403 w/o secret).**
 
 ## Review list — needs an owner ruling
