@@ -84,15 +84,18 @@ three **categories**, and each flow has its own rules.
 **campaign rules** (audience, date ranges, exclusions, touches). Past payers are the target audience —
 the baseline only excludes people who are **active right now**.
 
-**Baseline (DRAFT — ⚑ pending owner OK):**
-- Skip anyone **active right now**: Neon current, or live Stripe active/trialing. (Past payment is NOT an exclusion.)
-- Skip banned members / payment block list.
-- Skip unsubscribed (⚑ needs an unsubscribe link + record — none exists today).
-- Skip anyone with an open support case.
-- Skip bounced / invalid / spam-flagged addresses.
-- Greeting "Hi {first name}," / "Hi there,"; from marketing@, reply-to support@; record type `marketing`, no case.
+**Baseline — applies to EVERY marketing email (DRAFT, ⚑ owner to approve as a set):**
+1. No banned members (banned account, or card/email on the payment block list).
+2. No unsubscribed members. ✅ Use SendGrid's built-in unsubscribe (a "Marketing" unsubscribe group)
+   and connect it to the app. **Not built — none exists today (no link, no record, footer off).**
+   Handed to the manager as its own task 2026-10-09 (needs a DB column + a pause decision).
+3. No bounced / invalid / spam-complaint addresses.
+4. Sent from marketing@, reply-to support@; a reply becomes a Support case.
+5. Recorded in `outbound_emails` as type `marketing` with its campaign name; never a case.
 
-**Campaign rules** live with each campaign below (audience, lapse window, max touches, spacing, end date).
+Greeting "Hi {first name}," / "Hi there," is a standard for every email in every category (not a marketing rule).
+
+**Campaign rules** (audience, date ranges, whether to skip active members or open cases, max touches, spacing, pace, end date) live with each campaign below (audience, lapse window, max touches, spacing, end date).
 
 | Flow | Today | ⚑ Rules to set |
 |---|---|---|
