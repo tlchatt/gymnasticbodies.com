@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer, findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer, findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
 import { session } from '@/Drizzle/db/schema';
@@ -67,6 +67,13 @@ export async function POST(request) {
         // subscriptions and $1,475 in refunds. create-subscription and renew-subscription
         // got this guard in 208c74a; this route did not, and it is the one an offer
         // campaign points thousands of legacy members at.
+        // Banned member (card or email on the Stripe block list) — refuse before anything is created.
+        const blocked = await blockedPaymentReason({ paymentMethodId, email });
+        if (blocked) {
+            logger.warn('offer.blocked_payment', { email, data: { blocked } });
+            return NextResponse.json({ success: false, message: BLOCKED_PAYMENT_MESSAGE }, { status: 403 });
+        }
+
         const liveSub = await findActiveStripeSubByEmail(email);
         if (liveSub) {
             logger.warn('offer.duplicate_stripe', { email, slug, data: { existingSubscription: liveSub.id, status: liveSub.status } });

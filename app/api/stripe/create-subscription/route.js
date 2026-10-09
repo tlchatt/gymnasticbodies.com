@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, stripe } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE, stripe } from '@/lib/stripeServerFunction';
 import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
 import { getSubscribePricing } from '@/lib/pricing';
@@ -37,6 +37,13 @@ export async function POST(request) {
         // Live-Stripe duplicate guard — a second signup must never start a parallel
         // billing life on a new customer record, even when Neon has no record of the
         // first sub (that is exactly how members got double-billed).
+        // Banned member (card or email on the Stripe block list) — refuse before anything is created.
+        const blocked = await blockedPaymentReason({ paymentMethodId, email });
+        if (blocked) {
+            logger.warn('signup.blocked_payment', { email, data: { blocked } });
+            return NextResponse.json({ message: BLOCKED_PAYMENT_MESSAGE, transaction: false, customerCreated: false, subscriptionCreated: false }, { status: 403 });
+        }
+
         const liveSub = await findActiveStripeSubByEmail(email);
         if (liveSub) {
             logger.warn('signup.duplicate_stripe', { email, data: { existingSubscription: liveSub.id, status: liveSub.status } });

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
 import { getRenewNoHistoryPricing } from '@/lib/pricing';
 import { db } from '@/Drizzle/index.ts';
@@ -66,6 +66,13 @@ export async function POST(request) {
         // Live-Stripe duplicate guard — the Neon idempotency check above misses subs
         // on a second customer record (or ones Neon never linked). Block instead of
         // creating a parallel billing life; support resolves the mismatch.
+        // Banned member (card or email on the Stripe block list) — refuse before anything is created.
+        const blocked = await blockedPaymentReason({ paymentMethodId, email });
+        if (blocked) {
+            logger.warn('renewal.blocked_payment', { email, data: { blocked } });
+            return NextResponse.json({ success: false, message: BLOCKED_PAYMENT_MESSAGE }, { status: 403 });
+        }
+
         const liveSub = await findActiveStripeSubByEmail(email);
         if (liveSub) {
             logger.warn('renewal.duplicate_stripe', { email, data: { existingSubscription: liveSub.id, status: liveSub.status } });

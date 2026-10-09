@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { stripe, getOrCreateStripeCustomer, attachPaymentMethod } from '@/lib/stripeServerFunction';
+import { stripe, getOrCreateStripeCustomer, attachPaymentMethod, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE } from '@/lib/stripeServerFunction';
 import { getUserWithId, updateUserSettingPaymentMethod } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
 
@@ -23,6 +23,10 @@ export async function POST(request) {
         const user = await getUserWithId(userId);
         if (!user) {
             return NextResponse.json({ error: 'Account not found.' }, { status: 404, headers: CORS });
+        }
+
+        if (await blockedPaymentReason({ paymentMethodId, email: user.email })) {
+            return NextResponse.json({ error: BLOCKED_PAYMENT_MESSAGE }, { status: 403, headers: CORS });
         }
 
         // Derive the customer from the PaymentMethod itself — confirmCardSetup on the
