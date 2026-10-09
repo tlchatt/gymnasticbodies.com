@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE, stripe } from '@/lib/stripeServerFunction';
-import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting } from '@/lib/userSettings';
+import { createAndModifyUserInNeon, getUserWithEmail } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
 import { getSubscribePricing } from '@/lib/pricing';
 import { logger } from '@/lib/logger';
@@ -13,25 +13,19 @@ export async function POST(request) {
 
         logger.info('signup.attempt', { email, trial: trial === 'true' || trial === true, term, amount });
 
-        // Check for existing active Stripe subscriber
+        // Signup only creates NEW accounts. An existing account (lapsed or active) must sign in;
+        // my. then routes a lapsed member to /renew, which classifies them current on payment.
+        // Letting an existing noncurrent account take a trial here left them paywalled mid-trial.
         const existingUser = await getUserWithEmail(email);
-        let existingCustomerId = null;
         if (existingUser) {
-            const existingSetting = await queryUserSetting(existingUser.id, 'subscription');
-            if (existingSetting?.stripeSubscriptionId) {
-                logger.warn('signup.duplicate', { email });
-                return NextResponse.json({
-                    existingCustomer: true,
-                    message: 'An account with this email already exists.',
-                    transaction: false,
-                    customerCreated: false,
-                    subscriptionCreated: false,
-                });
-            }
-            // Reuse existing Stripe customer if one was already created (e.g. prior failed attempt)
-            if (existingSetting?.stripeCustomerId) {
-                existingCustomerId = existingSetting.stripeCustomerId;
-            }
+            logger.warn('signup.duplicate', { email });
+            return NextResponse.json({
+                existingCustomer: true,
+                message: 'An account with this email already exists. Please sign in to continue your membership.',
+                transaction: false,
+                customerCreated: false,
+                subscriptionCreated: false,
+            });
         }
 
         // Live-Stripe duplicate guard — a second signup must never start a parallel
@@ -67,16 +61,12 @@ export async function POST(request) {
             return NextResponse.json({ message: 'Subscription is temporarily unavailable. Please contact support@gymnasticbodies.com.', transaction: false }, { status: 503 });
         }
 
-        // Reuse existing customer or create new one (idempotency key prevents dupes on concurrent requests)
+        // Create the customer (idempotency key prevents dupes on concurrent requests)
         const name = email.split('@')[0];
-        if (existingCustomerId) {
-            customer = await stripe.customers.retrieve(existingCustomerId);
-        } else {
-            customer = await stripe.customers.create(
-                { email, name, phone, metadata: { country } },
-                { idempotencyKey: `customer-${email}` }
-            );
-        }
+        customer = await stripe.customers.create(
+            { email, name, phone, metadata: { country } },
+            { idempotencyKey: `customer-${email}` }
+        );
 
         // Attach payment method
         await attachPaymentMethod(paymentMethodId, customer.id);

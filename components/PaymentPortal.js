@@ -84,7 +84,7 @@ export function PaymentPortal(props) {
 
             if (result.existingCustomer) {
                 setError(true);
-                setMessage('An account with this email already exists. Please log in.');
+                setMessage(result.message || 'An account with this email already exists. Please log in.');
                 setLoading(false);
                 return;
             }
