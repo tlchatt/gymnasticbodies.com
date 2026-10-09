@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { db } from '@/Drizzle/index';
 import { outbound_emails, user } from '@/Drizzle/db/schema';
-import { eq } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 import sgMail from '@sendgrid/mail';
+import { caseForOutbound } from '@/lib/support/caseFor';
+import { sendCaseEmail } from '@/lib/support/sendSupport';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -38,7 +40,7 @@ export async function POST(request) {
     const [u] = await db
       .select({ id: user.id, name: user.name, emailStatus: user.emailStatus })
       .from(user)
-      .where(eq(user.email, email))
+      .where(sql`lower(${user.email}) = ${email}`)
       .limit(1);
 
     const name = firstName(u?.name);
@@ -53,6 +55,19 @@ export async function POST(request) {
 
     if (dryRun) {
       results.push({ email, name, renderedBody, status: 'preview' });
+      continue;
+    }
+
+    // A support email is a communication on the member's case (their open case, or a new one
+    // linked back to their last case) and carries the case id in its Message-ID.
+    if (type === 'support') {
+      try {
+        const { caseId } = await caseForOutbound({ email, userId: u?.id ?? null, name: u?.name ?? null, title: subject });
+        const r = await sendCaseEmail({ to: email, subject, text: renderedBody, caseId, userId: u?.id ?? null, campaign: campaign || null });
+        results.push({ email, name, status: 'sent', caseId, ...(r.recorded === true ? {} : { recordError: r.recorded }) });
+      } catch (err) {
+        results.push({ email, status: 'failed', error: err.message });
+      }
       continue;
     }
 

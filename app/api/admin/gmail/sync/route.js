@@ -3,10 +3,11 @@ import { requireAdmin } from '@/lib/adminAuth';
 import { fetchDigestsSince, parseDigest } from '@/lib/gmail';
 import { getUserWithEmail } from '@/lib/userSettings';
 import { db } from '@/Drizzle/index.ts';
-import { support_emails, support_cases, outbound_emails } from '@/Drizzle/db/schema';
-import { eq, desc, and, gte, or } from 'drizzle-orm';
+import { support_emails, outbound_emails } from '@/Drizzle/db/schema';
+import { eq, desc, and, gte, sql } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
 import { fireCaseToSlack } from '@/lib/support/autofire';
+import { caseForInbound } from '@/lib/support/caseFor';
 
 // Internal staff domain — replies from these addresses are not customer tickets
 const INTERNAL_DOMAINS = ['gymnasticbodies.com'];
@@ -57,67 +58,21 @@ function isInAppEcho(raw) {
   return !!h && /inapp/i.test(h.value ?? '');
 }
 
-// Check if this inbound email is a reply to an outbound email we sent.
-// Looks back 90 days. Returns the most recent matching outbound record or null.
+// The latest outbound email we sent this address in the last 90 days (case-insensitive). Used only to
+// link that send to the case its reply landed on (Outbound tab "Case" badge) — the case itself is
+// picked by lib/support/caseFor.js: every inbound message is a case, whatever it replies to.
 async function findOutboundMatch(fromEmail) {
   const since = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
   const rows = await db
-    .select({
-      id: outbound_emails.id,
-      subject: outbound_emails.subject,
-      campaign: outbound_emails.campaign,
-      type: outbound_emails.type,
-      sentAt: outbound_emails.sentAt,
-    })
+    .select({ id: outbound_emails.id, caseId: outbound_emails.caseId })
     .from(outbound_emails)
-    .where(and(eq(outbound_emails.toEmail, fromEmail), gte(outbound_emails.sentAt, since)))
+    .where(and(sql`lower(${outbound_emails.toEmail}) = ${String(fromEmail).toLowerCase()}`, gte(outbound_emails.sentAt, since)))
     .orderBy(desc(outbound_emails.sentAt))
     .limit(1);
-
   return rows[0] ?? null;
 }
 
-// Find or create a support case for an incoming email.
-// If user has an open/pending case in the last 30 days, link to it.
-// Otherwise create a new case.
-async function upsertCase({ userId, fromEmail, fromName, subject, isOutboundResponse, campaign }) {
-  if (userId) {
-    const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-    const existing = await db
-      .select({ id: support_cases.id })
-      .from(support_cases)
-      .where(
-        and(
-          eq(support_cases.userId, userId),
-          or(eq(support_cases.status, 'open'), eq(support_cases.status, 'pending')),
-          gte(support_cases.createdAt, since)
-        )
-      )
-      .orderBy(desc(support_cases.createdAt))
-      .limit(1);
-
-    if (existing.length > 0) return existing[0].id;
-  }
-
-  // Title hints when it's a reply to our outreach
-  const title = isOutboundResponse
-    ? `[Response${campaign ? `: ${campaign}` : ''}] ${subject || '(no subject)'}`
-    : subject || '(no subject)';
-
-  const [newCase] = await db
-    .insert(support_cases)
-    .values({
-      userId: userId ?? null,
-      fromEmail,
-      fromName: fromName ?? null,
-      title,
-      status: 'open',
-      priority: isOutboundResponse ? 'high' : 'normal',
-    })
-    .returning({ id: support_cases.id });
-
-  return newCase.id;
-}
+const header = (raw, name) => (raw.payload?.headers ?? []).find((h) => h.name.toLowerCase() === name)?.value ?? null;
 
 export async function POST(request) {
   const isCron = isCronRequest(request);
@@ -197,61 +152,22 @@ async function runSync() {
         // Link to user account
         const user = await getUserWithEmail(msg.fromEmail);
 
-        // Check if this is a reply to an outbound email we sent
-        const outboundMatch = await findOutboundMatch(msg.fromEmail);
-        const isSupportReply = outboundMatch?.type === 'support';
-
-        // Only auto-create a case for replies to support outbound emails
-        let caseId = isSupportReply ? await upsertCase({
+        // Pick the case by the shared rules (reply -> its case, reopened < 60 days / new + linked
+        // after; fresh -> the member's open case or a new one). Gmail-forwarded contact-form mail
+        // carries no member headers, so it falls through to the fresh-message rule.
+        const inReplyTo = header(raw, 'in-reply-to');
+        const references = header(raw, 'references');
+        const picked = await caseForInbound({
+          email: msg.fromEmail,
           userId: user?.id ?? null,
-          fromEmail: msg.fromEmail,
-          fromName: msg.fromName || null,
+          name: msg.fromName || null,
           subject: msg.subject,
-          isOutboundResponse: true,
-          campaign: outboundMatch.campaign ?? null,
-        }) : null;
-
-        // No outbound match: thread the message onto the sender's existing case.
-        // An open/pending/reopened case just gets the email linked; a case resolved
-        // within the last 60 days flips back to 'open' — a member replying after we
-        // resolved means it isn't resolved, so it's an open case again. Older
-        // resolved/closed cases stay closed (new topic).
-        if (!caseId) {
-          const [recentCase] = await db
-            .select({ id: support_cases.id, status: support_cases.status, resolvedAt: support_cases.resolvedAt })
-            .from(support_cases)
-            .where(eq(support_cases.fromEmail, msg.fromEmail))
-            .orderBy(desc(support_cases.createdAt))
-            .limit(1);
-          if (recentCase) {
-            if (['open', 'pending', 'reopened'].includes(recentCase.status)) {
-              caseId = recentCase.id;
-            } else if (recentCase.status === 'resolved') {
-              const resolvedAt = recentCase.resolvedAt ? new Date(recentCase.resolvedAt) : null;
-              const withinWindow = resolvedAt && (Date.now() - resolvedAt.getTime()) < 60 * 24 * 60 * 60 * 1000;
-              if (withinWindow) {
-                await db.update(support_cases)
-                  .set({ status: 'open' })
-                  .where(eq(support_cases.id, recentCase.id));
-                caseId = recentCase.id;
-              }
-            }
-          }
-        }
-
-        // Unified inbox=case workflow: every inbound support email must be cased. If it wasn't
-        // an outbound reply and didn't thread onto an existing/recent case above, open a fresh
-        // case now — so no inbound message is ever left uncased (the gap that let /admin replies
-        // go out with no case and confused staff).
-        if (!caseId) {
-          caseId = await upsertCase({
-            userId: user?.id ?? null,
-            fromEmail: msg.fromEmail,
-            fromName: msg.fromName || null,
-            subject: msg.subject,
-            isOutboundResponse: false,
-          });
-        }
+          inReplyTo,
+          references,
+          threadId: raw.threadId ?? null,
+        });
+        const caseId = picked.caseId;
+        const outboundMatch = (inReplyTo || references) ? await findOutboundMatch(msg.fromEmail) : null;
 
         await db.insert(support_emails).values({
           gmailMessageId: syntheticId,
@@ -266,13 +182,14 @@ async function runSync() {
           caseId,
         });
 
-        // If this was a reply to outbound, update outbound record with the case
-        if (outboundMatch) {
+        // A reply to one of our automated (case-less) sends: point that send at the case it opened.
+        if (outboundMatch && !outboundMatch.caseId) {
           await db
             .update(outbound_emails)
             .set({ caseId })
             .where(eq(outbound_emails.id, outboundMatch.id));
         }
+        if (picked.action !== 'attached') logger.info('support.case_picked', { email: msg.fromEmail, caseId, action: picked.action, via: picked.via, linkedFrom: picked.linkedFrom ?? null });
 
         inserted++;
         if (caseId) autoFire.set(caseId, msg.fromEmail); // one fire per case this run

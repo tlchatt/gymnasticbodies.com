@@ -1,11 +1,12 @@
 import { NextResponse, after } from 'next/server';
 import { db } from '@/Drizzle/index.ts';
 import { support_emails, support_cases } from '@/Drizzle/db/schema';
-import { and, eq, or, desc } from 'drizzle-orm';
+import { and, eq, or, sql } from 'drizzle-orm';
 import { getUserWithId } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
 import { getSessionUserId } from '@/lib/sessionUser';
 import { fireCaseToSlack } from '@/lib/support/autofire';
+import { caseForInbound } from '@/lib/support/caseFor';
 import { randomBytes } from 'crypto';
 
 // after() fires the support agent for the new inbound before the fn ends (parity with Gmail sync).
@@ -68,7 +69,7 @@ export async function POST(request) {
                 .where(and(
                     eq(support_cases.id, parsedCaseId),
                     user.email
-                        ? or(eq(support_cases.userId, user.id), eq(support_cases.fromEmail, user.email))
+                        ? or(eq(support_cases.userId, user.id), sql`lower(${support_cases.fromEmail}) = ${user.email.toLowerCase()}`)
                         : eq(support_cases.userId, user.id),
                 ))
                 .limit(1);
@@ -81,33 +82,17 @@ export async function POST(request) {
         const resolvedSubject = (subject?.trim() || (parsedCaseId ? `Reply to case #${parsedCaseId}` : 'Contact Support'))
             .slice(0, MAX_SUBJECT_LENGTH);
 
-        // Case every inbound (parity with the Gmail sync): a message with no caseId must still be
-        // cased — attach to the member's most recent open case, set a recently-resolved one back to
-        // open, or open a new case. Without this, fresh in-app "Contact Support" messages landed uncased.
-        let effectiveCaseId = parsedCaseId;
-        if (effectiveCaseId == null) {
-            const [recent] = await db
-                .select({ id: support_cases.id, status: support_cases.status, resolvedAt: support_cases.resolvedAt })
-                .from(support_cases)
-                .where(user.email
-                    ? or(eq(support_cases.userId, user.id), eq(support_cases.fromEmail, user.email))
-                    : eq(support_cases.userId, user.id))
-                .orderBy(desc(support_cases.createdAt))
-                .limit(1);
-            const RESOLVED_WINDOW_MS = 60 * 24 * 60 * 60 * 1000;
-            if (recent && ['open', 'pending', 'reopened'].includes(recent.status)) {
-                effectiveCaseId = recent.id;
-            } else if (recent && recent.status === 'resolved' && recent.resolvedAt && (Date.now() - new Date(recent.resolvedAt).getTime()) < RESOLVED_WINDOW_MS) {
-                await db.update(support_cases).set({ status: 'open' }).where(eq(support_cases.id, recent.id));
-                effectiveCaseId = recent.id;
-            } else {
-                const [created] = await db
-                    .insert(support_cases)
-                    .values({ userId: user.id, fromEmail: user.email, fromName: user.name, title: resolvedSubject, status: 'open', priority: 'normal' })
-                    .returning({ id: support_cases.id });
-                effectiveCaseId = created.id;
-            }
-        }
+        // Case every inbound by the shared rules (lib/support/caseFor.js — same picker as the Gmail
+        // sync): a reply on a case reopens it (< 60 days) or opens a linked new case; a fresh message
+        // goes on the member's open case or a new case linked back to their last one.
+        const picked = await caseForInbound({
+            email: user.email,
+            userId: user.id,
+            name: user.name,
+            subject: resolvedSubject,
+            replyToCaseId: parsedCaseId,
+        });
+        const effectiveCaseId = picked.caseId;
 
         // Insert an INBOUND support_emails row so it lands in the admin inbox exactly
         // like a normal inbound email. Bypasses the Gmail pipeline entirely. A synthetic

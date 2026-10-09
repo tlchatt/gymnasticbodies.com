@@ -10,6 +10,7 @@ import { extractPlay } from '@/lib/support/plays';
 import { enrichPlay } from '@/lib/support/enrich';
 import { slack, playBlocks, summaryBlocks, doneBlocks, SUPPORT_CHANNEL } from '@/lib/support/slack';
 import { logger } from '@/lib/logger';
+import { findOpenCase } from '@/lib/support/caseFor';
 
 export const maxDuration = 120;
 const sql = neon(process.env.DATABASE_URL);
@@ -61,6 +62,10 @@ export async function POST(request) {
     ({ email, caseId } = body);
     const { ask, threadTs } = body;
     if (!email) return NextResponse.json({ error: 'email required' }, { status: 400 });
+    // Every play is tied to a case (claudePlans/communication-flows.md). No caseId given -> the
+    // member's open case; none open -> refuse (a play with no case would reply with nothing to attach to).
+    if (!caseId) caseId = (await findOpenCase({ email }))?.id ?? null;
+    if (!caseId) return NextResponse.json({ ok: false, error: 'caseId required — this member has no open case; a play must be tied to a case' }, { status: 400 });
 
     const raw = await investigate({ email, ask });
     const play = extractPlay(raw);
@@ -71,7 +76,7 @@ export async function POST(request) {
 
     const [f] = await sql`
       INSERT INTO support_fires (case_id, member_email, channel, status, response, actions, issue_class, play)
-      VALUES (${caseId || null}, ${email.toLowerCase()}, ${SUPPORT_CHANNEL}, 'posted', ${play.response}, ${JSON.stringify(play.actions)}, ${play.issue_class || null}, ${JSON.stringify(play)})
+      VALUES (${caseId}, ${email.toLowerCase()}, ${SUPPORT_CHANNEL}, 'posted', ${play.response}, ${JSON.stringify(play.actions)}, ${play.issue_class || null}, ${JSON.stringify(play)})
       RETURNING id, case_id, run_id, member_email, response, status, issue_class`;
 
     // threadTs set = a regeneration triggered by a human reply: post the fresh play back into the
