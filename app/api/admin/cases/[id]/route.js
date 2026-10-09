@@ -65,7 +65,6 @@ export async function GET(request, { params }) {
   let lastSession = null;
   let recentLogs = [];
   let adminActions = [];
-  let outbound = [];
   let pastCases = [];
 
   if (caseRow.userId) {
@@ -93,21 +92,6 @@ export async function GET(request, { params }) {
         .orderBy(desc(app_logs.ts))
         .limit(20);
 
-      // Outbound emails sent to this user (marketing offers + support)
-      outbound = await db
-        .select({
-          id: outbound_emails.id,
-          subject: outbound_emails.subject,
-          campaign: outbound_emails.campaign,
-          type: outbound_emails.type,
-          sentAt: outbound_emails.sentAt,
-          caseId: outbound_emails.caseId,
-        })
-        .from(outbound_emails)
-        .where(eq(outbound_emails.userId, caseRow.userId))
-        .orderBy(desc(outbound_emails.sentAt))
-        .limit(20);
-
       const sessions = await db
         .select({ createdAt: session.createdAt })
         .from(session)
@@ -130,6 +114,23 @@ export async function GET(request, { params }) {
     }
   }
 
+  // Support emails we sent ON THIS CASE that are not replies to a specific message (agent replies,
+  // escalation notices, proactive support emails) — the case shows only its own communication, not
+  // the member's whole send history (that lives on the user page).
+  const caseOutbound = await db
+    .select({
+      id: outbound_emails.id,
+      toEmail: outbound_emails.toEmail,
+      subject: outbound_emails.subject,
+      body: outbound_emails.body,
+      campaign: outbound_emails.campaign,
+      type: outbound_emails.type,
+      sentAt: outbound_emails.sentAt,
+    })
+    .from(outbound_emails)
+    .where(eq(outbound_emails.caseId, caseId))
+    .orderBy(desc(outbound_emails.sentAt));
+
   const subscription = matchedUser ? await buildSubscriptionSummary(setting, caseRow.userId) : null;
 
   return NextResponse.json({
@@ -150,7 +151,7 @@ export async function GET(request, { params }) {
     lastSession,
     recentLogs,
     adminActions,
-    outbound,
+    caseOutbound,
     pastCases,
     linkedEmails: linkedEmailsWithReplies,
   });

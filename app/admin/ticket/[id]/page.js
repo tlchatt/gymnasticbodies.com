@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import TicketClient from './TicketClient';
 
-export const metadata = { title: 'Ticket' };
+export const metadata = { title: 'Message' };
 
 export default async function TicketPage({ params }) {
   const { id } = await params;

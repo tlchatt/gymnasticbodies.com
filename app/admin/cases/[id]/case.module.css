@@ -421,3 +421,64 @@
   transition: border-color 0.15s;
 }
 .notesSmall:focus { border-color: #f05621; }
+
+/* --- Reply composer (case page) — text colours meet 6:1 on #151515 --- */
+.composer {
+  padding: 16px 20px;
+  border-top: 1px solid #1e1e1e;
+}
+
+.composerLabel {
+  font-size: 0.75rem;
+  color: #a3a3a3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+.composerTextarea {
+  width: 100%;
+  min-height: 120px;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 0.875rem;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+.composerTextarea:focus { border-color: #f05621; }
+
+.composerActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sendBtn {
+  padding: 9px 20px;
+  background: linear-gradient(135deg, #fcb14e 0%, #f05621 100%);
+  color: #fff;
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.sendBtn:hover { opacity: 0.88; }
+.sendBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.composerMsg {
+  font-size: 0.78rem;
+  color: #a3a3a3;
+}

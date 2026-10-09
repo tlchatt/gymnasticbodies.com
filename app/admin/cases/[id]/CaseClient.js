@@ -8,8 +8,10 @@ import SupportFireList from '@/components/admin/SupportFireList';
 import supportContent from '@/data/content/adminSupport.json';
 import s from './case.module.css';
 
-function EmailThread({ email }) {
-  const [open, setOpen] = useState(false);
+const conv = supportContent.caseConversation;
+
+function EmailThread({ email, defaultOpen = false }) {
+  const [open, setOpen] = useState(defaultOpen);
   const hasReplies = email.replies?.length > 0;
 
   return (
@@ -35,12 +37,34 @@ function EmailThread({ email }) {
             <div className={s.replyThread}>
               {email.replies.map(r => (
                 <div key={r.id} className={s.replyItem}>
-                  <div className={s.replyMeta}>↩ Admin reply · {fmtDateTime(r.sentAt)}</div>
+                  <div className={s.replyMeta}>↩ {conv.adminReply} · {fmtDateTime(r.sentAt)}</div>
                   <pre className={s.replyText}>{r.body}</pre>
                 </div>
               ))}
             </div>
           )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// A support email we sent on this case that isn't a reply to one message (agent reply, escalation
+// notice, proactive support email) — or the automated send the member replied to.
+function SentItem({ item }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`${s.emailItem} ${open ? s.emailItemOpen : ''}`}>
+      <button className={s.emailHeader} onClick={() => setOpen(o => !o)}>
+        <span className={s.emailChevron}>{open ? '▾' : '▸'}</span>
+        <span className={s.emailSubject}>↪ {item.subject}</span>
+        <span className={s.emailDate}>{fmtDate(item.sentAt)}</span>
+        <span className={`${s.emailStatus} ${s.emailStatusReplied}`}>{item.type === 'support' ? 'sent' : item.type}</span>
+      </button>
+      {open && (
+        <div className={s.emailBody}>
+          <div className={s.emailMeta}>{conv.sentByUs} → {item.toEmail}{item.campaign ? ` · ${item.campaign}` : ''}</div>
+          <pre className={s.replyText}>{item.body || '(no body)'}</pre>
         </div>
       )}
     </div>
@@ -114,9 +138,50 @@ export default function CaseClient({ data: initial, fires = [] }) {
   const subscription = initial.subscription ?? null;
   const recentLogs = initial.recentLogs ?? [];
   const adminActions = initial.adminActions ?? [];
-  const outbound = initial.outbound ?? [];
   const pastCases = initial.pastCases ?? [];
-  const linkedEmails = initial.linkedEmails ?? [];
+  const [linkedEmails, setLinkedEmails] = useState(initial.linkedEmails ?? []);
+  const [sentItems, setSentItems] = useState(initial.caseOutbound ?? []);
+  const [reply, setReply] = useState('');
+  const [sending, setSending] = useState(false);
+  const [sendMsg, setSendMsg] = useState('');
+  const replyTo = linkedEmails[0]?.fromEmail || caseData.fromEmail;
+
+  // The case's whole conversation, newest first: inbound messages (with their replies) and the
+  // support emails we sent on the case.
+  const conversation = [
+    ...linkedEmails.map((e) => ({ kind: 'in', at: e.receivedAt, key: `in-${e.id}`, e })),
+    ...sentItems.map((o) => ({ kind: 'out', at: o.sentAt, key: `out-${o.id}`, o })),
+  ].sort((a, b) => new Date(b.at) - new Date(a.at));
+
+  // Admin reply on this case — the admin typing it and clicking Send is the approval.
+  async function sendReply() {
+    if (!reply.trim() || sending) return;
+    setSending(true);
+    setSendMsg('');
+    try {
+      const res = await fetch(`/api/admin/cases/${caseData.id}/reply`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ body: reply }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setSendMsg(data.error ?? 'Send failed'); return; }
+      const it = data.item;
+      if (it.kind === 'reply') {
+        setLinkedEmails((list) => list.map((e) => (e.id === it.emailId
+          ? { ...e, status: 'replied', replies: [...(e.replies ?? []), { id: it.id, body: it.body, sentAt: it.at }] }
+          : e)));
+      } else {
+        setSentItems((list) => [{ id: it.id, toEmail: replyTo, subject: '', body: it.body, type: 'support', sentAt: it.at }, ...list]);
+      }
+      setReply('');
+      setSendMsg(conv.sent);
+    } catch {
+      setSendMsg(conv.networkError);
+    } finally {
+      setSending(false);
+    }
+  }
 
   async function handleSetTempPassword() {
     if (!user?.id || tempPwState === 'loading') return;
@@ -282,21 +347,36 @@ export default function CaseClient({ data: initial, fires = [] }) {
             </div>
           </div>
 
-          {/* Linked emails */}
+          {/* This case's conversation + reply box */}
           <div className={s.card}>
             <div className={s.section} style={{ borderTop: 'none' }}>
               <div className={s.sectionTitle}>
-                Linked Emails ({linkedEmails.length})
+                {conv.title} ({conversation.length})
               </div>
-              {linkedEmails.length === 0 ? (
-                <div className={s.noEmails}>No emails linked to this case.</div>
+              {conversation.length === 0 ? (
+                <div className={s.noEmails}>{conv.empty}</div>
               ) : (
                 <div className={s.emailList}>
-                  {linkedEmails.map((e) => (
-                    <EmailThread key={e.id} email={e} />
-                  ))}
+                  {conversation.map((c, i) => (c.kind === 'in'
+                    ? <EmailThread key={c.key} email={c.e} defaultOpen={i === 0} />
+                    : <SentItem key={c.key} item={c.o} />))}
                 </div>
               )}
+            </div>
+            <div className={s.composer}>
+              <div className={s.composerLabel}>{conv.replyLabel} · {conv.replyTo} {replyTo}</div>
+              <textarea
+                className={s.composerTextarea}
+                value={reply}
+                onChange={(e) => setReply(e.target.value)}
+                placeholder={conv.placeholder}
+              />
+              <div className={s.composerActions}>
+                <button className={s.sendBtn} onClick={sendReply} disabled={sending || !reply.trim()}>
+                  {sending ? conv.sending : conv.send}
+                </button>
+                {sendMsg && <span className={s.composerMsg}>{sendMsg}</span>}
+              </div>
             </div>
           </div>
 
@@ -415,7 +495,7 @@ export default function CaseClient({ data: initial, fires = [] }) {
 
                 {/* Admin actions + outreach history (subscription grants, resets, marketing offers) */}
                 <div className={s.panelSection}>
-                  <AccountHistory adminActions={adminActions} outbound={outbound} />
+                  <AccountHistory adminActions={adminActions} />
                 </div>
 
                 {/* Recent app activity (logins, renewal checks) */}

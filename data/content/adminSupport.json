@@ -61,5 +61,18 @@
     "noFireForCase": "The support agent has no play for this case yet.",
     "openQueue": "Open the support queue",
     "error": "Something went wrong"
+  },
+  "caseConversation": {
+    "title": "Conversation",
+    "empty": "No messages on this case yet.",
+    "replyLabel": "Reply on this case as support@gymnasticbodies.com",
+    "replyTo": "To",
+    "placeholder": "Type your reply…",
+    "send": "Send reply",
+    "sending": "Sending…",
+    "sent": "Reply sent and recorded on this case.",
+    "networkError": "Network error — try again",
+    "sentByUs": "Sent by support",
+    "adminReply": "Admin reply"
   }
 }

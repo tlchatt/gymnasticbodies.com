@@ -68,7 +68,7 @@ export default function InboxClient() {
       {loading ? (
         <div className={s.empty}>Loading…</div>
       ) : tickets.length === 0 ? (
-        <div className={s.empty}>No tickets{tab ? ` with status "${tab}"` : ''}.</div>
+        <div className={s.empty}>No messages{tab ? ` with status "${tab}"` : ''}.</div>
       ) : (
         <div className={s.list}>
           {tickets.map((t) => (

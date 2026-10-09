@@ -201,7 +201,7 @@ export default function UserDetailClient({ params }) {
           {/* Support tickets */}
           {tickets.length > 0 && (
             <div className={s.card}>
-              <div className={s.cardTitle}>Support Tickets ({tickets.length})</div>
+              <div className={s.cardTitle}>Support Messages ({tickets.length})</div>
               <div className={s.linkList}>
                 {tickets.map((t) => (
                   <Link key={t.id} href={`/admin/ticket/${t.id}`} className={s.linkItem}>
@@ -237,7 +237,7 @@ export default function UserDetailClient({ params }) {
           {tickets.length === 0 && cases.length === 0 && (
             <div className={s.card}>
               <div className={s.cardTitle}>Support History</div>
-              <div className={s.empty}>No tickets or cases for this user.</div>
+              <div className={s.empty}>No messages or cases for this user.</div>
             </div>
           )}
 

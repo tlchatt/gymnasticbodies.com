@@ -69,6 +69,7 @@ export default function TicketClient({ ticket: initial }) {
       setTicket((t) => ({
         ...t,
         status: 'replied',
+        caseId: data.caseId ?? t.caseId,
         replies: [...(t.replies ?? []), data.reply],
       }));
     } catch {
