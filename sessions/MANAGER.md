@@ -29,6 +29,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 3 | 8 offer-crash members (09-30 apology) promised a $15 continue link before access ends ~Nov 20-28 — owner: keep → send by Nov 13 | `20126359` (closed) | `37a064be` | — | ⏸ board, due 2026-11-13 |
 | 11 | Trial signups paywalled mid-trial (create-subscription never classifies current/stripe; 16 of 61 since Sep 1) | `16b20339-a263-4518-88e0-0580f300665f` | `5e179359` | `55331709` open | 🟡 dispatched 2026-10-09 |
 | 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟡 dispatched 2026-10-09 |
+| 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. Still open: OK new column user.marketing_unsubscribed_at? pause lock-in drip (~2,880/day) until shipped? | — | `2f5084d4` | — | ⏸ on the task list, not dispatched |
 
 ## Review list — needs an owner ruling
 
@@ -36,7 +37,6 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 14 | Marketing unsubscribe: none exists (no SendGrid group, footer off, no opt-out record) while the lock-in drip sends ~2,880 marketing emails/day (~39k cold + ~550 engaged queued). CAN-SPAM requires a working opt-out. Design agreed in principle (SendGrid unsubscribe group + webhook → app). Open: new column user.marketing_unsubscribed_at (DB rule); pause the drip until shipped? From 96d475f4 | — | none | — | 🔴 owner: column OK? pause drip? dispatch/board |
 | 15 | KEAP_PAT (live Keap personal access token, can read member plaintext passwords) was printed into the Luke session (cc26628b) transcript by a subagent — rotate it in Keap and update .env files. Found by manager completeness check | — | none | — | 🔴 owner: rotate now / board / leave |
 
 ## Past days
@@ -91,3 +91,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Item 1 hours 67ede9d8 closed (14h13m incl. overnight idle — offered trim). Luke session note committed; completeness: NOT complete — its live-verification subagent has not reported; keep session open. Review #15 added (KEAP_PAT exposed in transcript).
 - 2026-10-09 — Review #12 ruled: redo entirely in a new session — /admin escalation flow using the same endpoints as Slack. Dispatched 3653640d, task 90b3a025, hours 915f678b. Kickoff includes shipping + scope rules.
 - 2026-10-09 — Review #13 ruled: dropped both old stashes (Dec 23 sendgrid→tlchatt sender; Jan 9 commented curl edit).
+- 2026-10-09 — Review #14 ruled: keep on the task list (board task created); column + drip-pause decisions still open; drip NOT paused.
