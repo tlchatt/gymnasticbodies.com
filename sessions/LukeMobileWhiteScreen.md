@@ -61,3 +61,7 @@ Current live my. bundle: main chunk `1485a0b0` (checked by curl at note time; it
 Session file: `app.gymnasticbodies.com/sessions/LukeMobileWhiteScreen.md`.
 As of this time, all of Luke's reported issues are fixed and live: Thrive access (app. `ad9fc3a`), the rebuilt Class Finder (app. `087800e`, my. `53ad01d`), new Courses icon and phone labels, 76 "+" Blob image copies, popup/gates removed (`d0214f4`), membership code stripped plus enforced renew redirect (`a5b008b`), and `/create-account` removed (`e21c3f8`, deployed by the manager). Both repos are pushed.
 Next: read the live-verification subagent's report (`a5addad6ff9adea47`). If anything fails, fix it as a worker commit and hand it to the manager. Then decide on the minor items above and the Keap token rotation.
+
+## Close-out — 2026-10-09 (manager)
+- Manager shipped my. twice on 2026-10-09 (chunks 1485a0b0, then c108f827 with d1b2d0f + 289626a). This session re-verified live at phone + desktop: Classes 55/55 no errors, Stretch cards play, /create-account gone, no regressions. Batch reported COMPLETE; session closed by the manager on the owner's instruction.
+- Leftovers moved to the manager's review list: bKU9pRIU.jpeg poster 404, getclicky 403s, 84 course days with no video id.

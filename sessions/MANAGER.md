@@ -16,7 +16,7 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 1 | Luke: mobile white screen + subscribe warning → Thrive access, Class Finder rebuild, icon labels, my. membership-code removal (all live; my. d0214f4+a5b008b pushed to GitHub by manager 2026-10-09). Owner: remove /create-account → e21c3f8 committed, my. deploy pending (bundles item-8 my. commit a16b159 — owner: ship both / wait) | `cc26628b-4f8f-4876-9691-e177603f1efe` | none | `67ede9d8` open | 🟡 carried |
+| 1 | Luke: mobile white screen + subscribe warning → Thrive access, Class Finder rebuild, icon labels, my. membership-code removal (all live; my. d0214f4+a5b008b pushed to GitHub by manager 2026-10-09). Owner: remove /create-account → e21c3f8 committed, my. deploy pending (bundles item-8 my. commit a16b159 — owner: ship both / wait) | `cc26628b-4f8f-4876-9691-e177603f1efe` | none | `67ede9d8` open | ✅ done — live re-verify passed 2026-10-09; session closed |
 | 2 | October chargeback users → support-agent real cancel/refund/delete | `96d475f4-f803-4e81-9ce1-375faef72746` | none (candidate `35ee9965`) | none matched | 🟡 carried |
 | 4 | Matthew Walker (mwalker2k9@gmail.com, Neon alias +10): Stripe = 1 charge $50 Jul 9, returned via lost dispute; legacy Woo/Auth.net $179.88/yr last charged 2023-10-02 (card 9244, profile 567122056) — live Auth.net check FAILED (local creds inactive). Luke cancelled him + Carlos Areces 1 min apart Sep 28 (likely never-rebill-disputers). chargeback ban came from OUR bug (Jul 9) — keep ban + explain, or reinstate through 2026-12-23; email owed either way. Also: Luke cancelled his sub Sep 28 with no note (ask Luke). Lower: Carlos Areces (rhinopc60@hotmail.com) same backfill | `96d475f4` (passed from) | none | — | 🔴 owner: keep ban / reinstate |
 | 5 | Banned-member policy + exact reply for the support agent. Agent improvised for Dean Torcasio (case 818 / ticket 1055, play 283): falsely said we refund on chargebacks; lookupMember does not return banned/banReason; Dean got 2 same-day emails. Impl after decision: lookupMember returns banned, BANNED rule + template in lib/support/investigate.js, test on ticket 1055 | `96d475f4` (passed from) | `b7ac6d8c` | — | ⏸ parked for later (board task) |
@@ -37,6 +37,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
+| 16 | my. leftovers from the mobile/Class Finder session: Thrive poster bKU9pRIU.jpeg 404; getclicky analytics 403s; 84 course days with no video id | from `cc26628b` | none | — | 🔴 owner: dispatch / board / drop |
 
 ## Past days
 
@@ -94,3 +95,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 — Review #15 ruled: logs are private; just remove the token from the logs. Redacted KEAP_PAT value in place (same length, no file rewrite) in 6 transcript files: 5ca21ad3, cf10dd5a, e096772e, f7d71aa1 and 2 cc26628b subagent logs — 22 occurrences, 0 remaining. Token itself not rotated; env files unchanged.
 - 2026-10-09 — Shipped my. (manager): d1b2d0f (class lists [] on logout — fixes white screen Courses→Classes) + 289626a (Stretch Series cards open their video). Live chunk c108f827 == build; GitHub synced. Asked cc26628b to re-verify live.
 - 2026-10-09 — Item 12 worker batch ready: caeeb0b (/admin/support + case card on shared acceptFire/undoFire; poller.js retired to _retired-2026-10-09/). Depends on item 8 uncommitted requireAdminOrCronSecret for Note/Re-investigate. app. push still HELD: item 8 sweep has ~28 uncommitted files. Queue on main: c1921c1, b665440 (item 8), caeeb0b (item 12), 06725cf + ddb1434 (forum, not yet reported ready), 363017b + d79e962 (AWS notes).
+- 2026-10-09 — Item 1 complete: live re-verify passed (my. c108f827). Note close-out appended; session cc26628b closed (owner had ordered close-if-complete). Leftovers → review #16.
