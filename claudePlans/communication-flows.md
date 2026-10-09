@@ -24,6 +24,8 @@ three **categories**, and each flow has its own rules.
 - A **case** is the official log of our communication with a customer **outside of automated
   communication** (✅ owner 2026-10-09). Automated sends (marketing, administrative) are recorded but are
   not cases; the moment a customer writes to us, or replies to anything, it is a conversation and lives in a case.
+- AI-assisted support (the support agent's replies, escalation notices) is **human-handled with AI
+  assistance** — a person approves it — so it is support communication and is logged in the case (✅ owner 2026-10-09).
 - A **communication** is a thread of messages back and forth. ("Ticket" today = one message; the
   word goes away — see Admin wording below.)
 - **Every Support communication is always tied to a case.** Marketing and Administrative messages
