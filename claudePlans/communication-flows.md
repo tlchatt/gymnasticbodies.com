@@ -21,6 +21,9 @@ three **categories**, and each flow has its own rules.
 | **Administrative** | us → member (automated) | Messages about the member's account, billing or membership. |
 
 **Terms (✅ decided):**
+- A **case** is the official log of our communication with a customer **outside of automated
+  communication** (✅ owner 2026-10-09). Automated sends (marketing, administrative) are recorded but are
+  not cases; the moment a customer writes to us, or replies to anything, it is a conversation and lives in a case.
 - A **communication** is a thread of messages back and forth. ("Ticket" today = one message; the
   word goes away — see Admin wording below.)
 - **Every Support communication is always tied to a case.** Marketing and Administrative messages
