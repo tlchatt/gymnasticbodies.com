@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/adminAuth';
 import { getUserWithId, queryUserSetting } from '@/lib/userSettings';
-import { stripe } from '@/lib/stripeServerFunction';
 import { logger } from '@/lib/logger';
-import { createAdminActionCase } from '@/lib/adminSubscription';
+import { refundStripeCharge, RefundError } from '@/lib/adminSubscription';
 
 // Issues a Stripe refund against a specific charge that belongs to this user.
 // Full or partial. Auth.net / non-Stripe users have no refundable charges here
@@ -30,63 +29,15 @@ export async function POST(request, { params }) {
   }
 
   try {
-    // Verify the charge actually belongs to this user before refunding anything.
-    const charge = await stripe.charges.retrieve(chargeId);
-    if (charge.customer !== customerId) {
-      return NextResponse.json({ error: 'Charge does not belong to this user.' }, { status: 403 });
-    }
-
-    const refundable = charge.amount - charge.amount_refunded;
-    if (refundable <= 0) {
-      return NextResponse.json({ error: 'This charge is already fully refunded.' }, { status: 400 });
-    }
-
-    let amount; // omit for full remaining refund
-    if (amountCents != null) {
-      amount = Math.round(Number(amountCents));
-      if (!Number.isFinite(amount) || amount <= 0) {
-        return NextResponse.json({ error: 'Invalid refund amount.' }, { status: 400 });
-      }
-      if (amount > refundable) {
-        return NextResponse.json({ error: `Amount exceeds refundable balance (${refundable}).` }, { status: 400 });
-      }
-    }
-
-    const refund = await stripe.refunds.create({
-      charge: chargeId,
-      ...(amount != null ? { amount } : {}),
-      metadata: {
-        adminEmail: admin?.email ?? '',
-        adminId: admin?.id ?? '',
-        userId: id,
-        note: reason ?? '',
-      },
+    // Shared core (also used by the support agent's executor): verifies the charge is this
+    // user's, refuses disputed / already-refunded charges, refunds, logs, notes the case.
+    const r = await refundStripeCharge({
+      chargeId, amountCents, reason, allowedCustomerIds: [customerId],
+      userId: id, email: user.email, actor: { adminEmail: admin?.email, adminId: admin?.id },
     });
-
-    const refundedAmount = amount ?? refundable;
-    logger.info('admin.refund', {
-      userId: id,
-      email: user.email,
-      chargeId,
-      amount: refundedAmount,
-      currency: charge.currency,
-      reason: reason ?? null,
-      refundId: refund.id,
-      adminEmail: admin?.email,
-      adminId: admin?.id,
-    });
-
-    // Auto-log a support case for this admin action (going-forward hook).
-    const refundLabel = `${(refundedAmount / 100).toFixed(2)} ${String(charge.currency ?? '').toUpperCase()}`.trim();
-    await createAdminActionCase({
-      userId: id,
-      title: 'Refund issued',
-      detail: `Refunded ${refundLabel} on charge ${chargeId} (refund ${refund.id})${reason ? ` — ${reason}` : ''}.`,
-      adminUserId: admin?.id,
-    });
-
-    return NextResponse.json({ ok: true, refundId: refund.id, amount: refundedAmount, currency: charge.currency });
+    return NextResponse.json({ ok: true, refundId: r.refundId, amount: r.amount, currency: r.currency });
   } catch (err) {
+    if (err instanceof RefundError) return NextResponse.json({ error: err.message }, { status: err.status });
     logger.error('admin.refund_failed', { userId: id, chargeId, error: err?.message });
     return NextResponse.json({ error: err?.message ?? 'Refund failed' }, { status: 500 });
   }

@@ -6,9 +6,8 @@ import {
   updateUserSettingStatus,
   updateUserClassification,
 } from '@/lib/userSettings';
-import { stripe } from '@/lib/stripeServerFunction';
 import { logger } from '@/lib/logger';
-import { createAdminActionCase } from '@/lib/adminSubscription';
+import { createAdminActionCase, cancelStripeSubscription } from '@/lib/adminSubscription';
 
 // Admin cancel. Uniform flow for every user; does only what the user's
 // gateway supports:
@@ -37,49 +36,16 @@ export async function POST(request, { params }) {
   // ── Stripe path ────────────────────────────────────────────────────────────
   if (setting?.stripeSubscriptionId) {
     try {
-      const cancelNow = immediate || setting.trial;
-      let accessUntil = null;
-      let newStatus;
-
-      // Stripe answers a cancel of an ALREADY-cancelled subscription with "No such
-      // subscription" (resource_missing), even though the subscription exists. That is
-      // what the three 2026-09-28 admin cancel failures were — members whose subs had
-      // ended weeks earlier. Look first; if Stripe is already done, just record it here.
-      const current = await stripe.subscriptions.retrieve(setting.stripeSubscriptionId);
-      const alreadyEnded = ['canceled', 'incomplete_expired'].includes(current.status);
-
-      if (alreadyEnded) {
-        newStatus = 'cancelled';
-      } else if (cancelNow) {
-        await stripe.subscriptions.cancel(setting.stripeSubscriptionId);
-        newStatus = 'cancelled';
-      } else {
-        const updated = await stripe.subscriptions.update(setting.stripeSubscriptionId, { cancel_at_period_end: true });
-        accessUntil = updated.items?.data?.[0]?.current_period_end ?? updated.current_period_end ?? null;
-        newStatus = 'pending_cancel';
-      }
-
-      await updateUserSettingStatus(setting, newStatus, JSON.stringify({ ...data, status: newStatus }));
-      await updateUserClassification(id, 'noncurrent', 'lapsed');
-
-      const method = alreadyEnded ? 'stripe_already_cancelled'
-        : setting.trial ? 'stripe_trial' : (immediate ? 'stripe_immediate' : 'stripe_period_end');
-      logger.info('admin.cancel_subscription', {
-        userId: id, email: user.email, method,
-        stripeSubscriptionId: setting.stripeSubscriptionId,
-        accessUntil, adminEmail: admin?.email, adminId: admin?.id,
+      // Shared core (also used by the support agent's executor): retrieve first — an already-
+      // ended sub is just recorded (Stripe answers a re-cancel with resource_missing, which is
+      // what the three 2026-09-28 admin cancel failures were); else cancel now / at period end.
+      const r = await cancelStripeSubscription({
+        userId: id, email: user.email, setting,
+        subscriptionId: setting.stripeSubscriptionId,
+        cancelNow: immediate || setting.trial, trial: !!setting.trial, immediate,
+        actor: { adminEmail: admin?.email, adminId: admin?.id },
       });
-
-      // Auto-log a support case for this admin action (going-forward hook).
-      const untilLabel = accessUntil ? ` — access until ${new Date(accessUntil * 1000).toISOString()}` : ' — access ends immediately';
-      await createAdminActionCase({
-        userId: id,
-        title: 'Subscription cancelled by support',
-        detail: `Cancelled Stripe subscription ${setting.stripeSubscriptionId} (${method})${untilLabel}.`,
-        adminUserId: admin?.id,
-      });
-
-      return NextResponse.json({ ok: true, method, cancelAtPeriodEnd: newStatus === 'pending_cancel', accessUntil });
+      return NextResponse.json({ ok: true, method: r.method, cancelAtPeriodEnd: r.cancelAtPeriodEnd, accessUntil: r.accessUntil });
     } catch (err) {
       logger.error('admin.cancel_subscription_failed', { userId: id, error: err?.message });
       return NextResponse.json({ error: err?.message ?? 'Cancel failed' }, { status: 500 });
