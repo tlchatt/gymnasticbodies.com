@@ -31,6 +31,8 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 12 | Admin: support escalation flow in /admin, same endpoints/code paths as Slack (lib/support, support_fires, /api/support); replaces the Aug-13 Support Ops page; retire old poller.js to a backup folder | `3653640d-f2e4-4c83-bc44-9d9ba72dec32` | `90b3a025` | `915f678b` open | 🟢 batch ready caeeb0b — waiting on app. push (held for item 8); Note/Re-investigate need item 8 uncommitted requireAdminOrCronSecret |
 | 14 | Marketing unsubscribe (CAN-SPAM): SendGrid group + webhook → app; senders skip opted-out; admin shows date. | — | `2f5084d4` | — | ⏸ on the task list; its decisions get asked when it is picked up |
 | 22 | Support "view as member" (impersonate) + claudeTools/testSession.js broken since the 11:35 login-security push: they mint tokens with no session row → 401. Fix: impersonate creates a real short-lived session (needs owner OK on approach) | — | `929b8e2d` | — | ⏸ todo (high) — not dispatched |
+| 18–21 | Support-message endpoint auth fix — follow-up concerns: renew/offer account takeover (LIVE), crons w/o CRON_SECRET, sendgrid.js logs API key, broken test scripts | from `071bee16` | `2810c30e` | — | ⏸ todo (high) |
+| 16 | Mobile button white screen — follow-up concerns: poster 404, getclicky 403s, 84 days no video id | from `cc26628b` | `c01ea88c` | — | ⏸ todo (low) |
 
 ## Review list — needs an owner ruling
 
@@ -38,11 +40,6 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 16 | my. leftovers from the mobile/Class Finder session: Thrive poster bKU9pRIU.jpeg 404; getclicky analytics 403s; 84 course days with no video id | from `cc26628b` | none | — | 🔴 owner: dispatch / board / drop |
-| 18 | SECURITY (live): renew-subscription and offer-subscription hand a 7-day login to anyone who posts an already-subscribed member email — account takeover. From item 8 (071bee16) | from `071bee16` | none | — | 🔴 owner: dispatch / board |
-| 19 | Crons classifyUsers, cronMarketingDrip, cronRenewalOutreach have no CRON_SECRET check (anyone can trigger them). From item 8 | from `071bee16` | none | — | 🔴 owner: dispatch / board |
-| 20 | lib/sendgrid.js:255 console.logs the SendGrid API key (goes to Vercel logs). From item 8 | from `071bee16` | none | — | 🔴 owner: dispatch / board |
-| 21 | Test tooling broken by item 8: claudeTools/testAccountDetails.js must sign accounts in; migration.js at repo root posts to a deleted route | from `071bee16` | none | — | 🔴 owner: dispatch / board / drop |
 
 ## Past days
 
@@ -107,3 +104,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 11:35 — SHIPPED app. (manager push 650523b; Vercel prod Ready): item 8 c1921c1+b665440+99736d2, item 12 caeeb0b, forum 06725cf+ddb1434, AWS notes, docs. Prod smoke: userStatus/log/support-message 401 w/o token; deleted routes 404; /api/support/fires 403; renewalStatus 200; /admin/support → login; forum archive notice live. Review items 18–21 added from item 8's out-of-scope findings (renew/offer account takeover; crons w/o CRON_SECRET; sendgrid.js:255 logs API key; test tooling). Item 8 session review running before close.
 - 2026-10-09 — Owner: make a todo for the broken "view as member" tool → today #22, existing board task 929b8e2d (todo, high).
 - 2026-10-09 — Item 8 session (071bee16) reviewed: code shipped; NOT complete — (1) 10 deleted .playwright-mcp files in my. uncommitted, (2) expired-sign-in logout on live my. untested, (3) first prod autofire not yet confirmed (no autofire events since 15:30 UTC), (4) owner sign-off. Sent back to the session; not closed.
+- 2026-10-09 — Owner: review items 16 and 18–21 become follow-up tasks named after their sessions → 2810c30e (071bee16, high) and c01ea88c (cc26628b, low). Review list empty.
