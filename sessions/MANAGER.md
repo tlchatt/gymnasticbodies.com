@@ -25,10 +25,17 @@ _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 | 8 | SECURITY: app/api/user/support-message/route.js:29-35 has no login check — trusts body userId; anyone with a member id can post support messages as that member, which the support agent may act on (cancel/refund/delete). Found by 96d475f4 audit, verified by manager | `071bee16-bc45-46cd-b697-ce6609c932c6` | `1dca034a` | `53c5fdde` open | 🟡 fixed + committed (c1921c1, b665440), unpushed (push blocked by permission check); scope widened to all member routes |
 | 9 | AWS shutdown: back up then turn off Lightsail forum/WP boxes, courses RDS, idle ALBs/Fargate/CloudFront/S3, support plan (~$1,000/mo; Oct 1-8 = $272). Owner ordered. | `41dadbf1-ad9a-4e49-884d-056e98d46760` | `264fa864` | `37247c62` open | 🟡 dispatched 2026-10-09 |
 | 10 | Forum: make whole forum public as an Archive (owner confirms forum list + wording), remove plaintext gbforumimages S3 key, fix redirect/link rough edges, submit sitemap to Search Console | `1c711620-c82d-4d1f-90e2-514bbb860e30` | `241b5f8b` | `67dba7c2` open | 🟡 dispatched 2026-10-09 |
+
+## Review list — needs an owner ruling
+
+Items waiting for a decision. A ruling turns each into a Technologic task (handled now → also on Today; saved for later → board only) or drops it (logged).
+
+| # | Item | Session | Task | Hours | Status |
+|---|---|---|---|---|---|
+| 3 | 8 members from 09-30 offer-crash apology hold an unretracted "we will email you a link" promise | `20126359` (closed) | none | — | 🔴 owner: walk-back / keep / leave |
 | 11 | BUG: new /subscribe trial signups on existing accounts stay noncurrent until the 11:00 UTC cron → my. sends them to /renew mid-trial + renewal drip. create-subscription/route.js never calls updateUserClassification (offer/renew do). 16 of 61 signups since Sep 1 hit it (sebagomis ×8, volkertc ×7, matt@mammoth.design ×6…). From 96d475f4 | — | none | — | 🔴 owner: dispatch fix? |
 | 12 | Support Ops cleanup (from review item 2): 1 = delete the 5 uncommitted Aug-13 support-ops files + AdminNav link; 2 = retire claudeTools/supportAgent/poller.js + its Aug execute.js copy; 3 = drop dead tables support_runs/support_actions (destructive) | — | none | — | 🔴 owner: 1 / 1+2 / 1+2+3 |
 | 13 | Two old git stashes (from review item 3): stash@{0} Jan 9 test-command leftover; stash@{1} Dec 23 sendgrid → tlchatt.com sender (harmful if applied) | — | none | — | 🔴 owner: drop both |
-| 3 | 8 members from 09-30 offer-crash apology hold an unretracted "we will email you a link" promise | `20126359` (closed) | none | — | 🔴 owner: walk-back / keep / leave |
 
 ## Past days
 
