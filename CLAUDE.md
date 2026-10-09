@@ -65,6 +65,33 @@ Implementation notes:
 - All inbound links in the wild point at the correct hosts already (emails + `my.` → `app./renew`,
   `app./accountDetails`) — no `my.` or email-template changes were needed.
 
+## Cloud Support Agent — every billing/account fix must ALSO be checked here (2026-10-08)
+
+The Slack support agent (`lib/support/*`) acts on members **through its own code paths**, separate
+from checkout and the admin routes: `tools.js` (what the AI is told: `memberBilling`, `lookupMember`)
+and `execute.js` / `execute.money.js` (what actually runs on Accept: credit, cancel, refund, delete).
+**A fix to Stripe lookup, cancel, refund, credit or account logic anywhere in the app is NOT done
+until `lib/support/` has been checked for its own copy and switched to the shared function.**
+
+**Why:** commit `9855379` (2026-09-30) fixed the case-sensitive Stripe email lookup
+(`findStripeCustomersByEmail` in `lib/stripeServerFunction.js`) for checkout only. The support agent
+kept its own lowercase `customers.list({ email })` lookups, so it kept telling paying members "you
+have no subscription / have not been billed", credited the wrong place, and couldn't find subs to
+cancel. Combined with cancel/refund being stubs and `delete` having no handler (all reported as ✅),
+by 2026-10-08 that left 11 members billed after being told "cancelled", a promised $75 refund never
+issued, 7 "permanently deleted" accounts never deleted, and 2 chargebacks (Dean Torcasio, FOMANYIf).
+
+**Rules:**
+- The agent must use the shared helpers (`findStripeCustomersByEmail` + the Neon `stripe_customer_id`
+  path) — never its own Stripe search. When you touch a shared helper, `grep -rn` for duplicates in
+  `lib/support/` and `claudeTools/supportAgent/`.
+- An action the executor cannot really perform must FAIL the play and HOLD the reply — never return
+  a "note" that counts as success. The Slack card must never say ✅ Sent for an action that didn't run.
+- When Neon and Stripe disagree about a member's plan or billing, the agent escalates; it never tells
+  the member they have no plan or weren't billed.
+- After changing any executor, verify a real fire's `support_fires.result` steps — not just the
+  Slack banner.
+
 ## Support Email Rule
 
 **Always show the full draft message and wait for explicit user approval before sending any email** — via `reply`, `send-email`, `sendOutboundSupportEmail`, the admin UI, or any other channel. This applies even after the user requests a wording change: show the edited draft again before sending. Never send in the same turn as drafting or editing.
