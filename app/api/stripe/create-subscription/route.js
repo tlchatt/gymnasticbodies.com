@@ -1,31 +1,38 @@
 import { NextResponse } from 'next/server';
 import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE, stripe } from '@/lib/stripeServerFunction';
-import { createAndModifyUserInNeon, getUserWithEmail } from '@/lib/userSettings';
+import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting, updateUserClassification } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
 import { getSubscribePricing } from '@/lib/pricing';
 import { logger } from '@/lib/logger';
 
 export async function POST(request) {
     let customer = null;
+    let customerIsNew = false;
+    let json = null; // outside try so the catch can log the email
     try {
-        const json = await request.json();
+        json = await request.json();
         const { paymentMethodId, email, phone, country, password, amount, term, trial } = json;
 
         logger.info('signup.attempt', { email, trial: trial === 'true' || trial === true, term, amount });
 
-        // Signup only creates NEW accounts. An existing account (lapsed or active) must sign in;
-        // my. then routes a lapsed member to /renew, which classifies them current on payment.
-        // Letting an existing noncurrent account take a trial here left them paywalled mid-trial.
+        // Only an ACTIVE, paid member is refused here. A lapsed account may sign back up
+        // (the live-Stripe guard below catches a paying sub that Neon has lost track of).
         const existingUser = await getUserWithEmail(email);
+        let existingCustomerId = null;
         if (existingUser) {
-            logger.warn('signup.duplicate', { email });
-            return NextResponse.json({
-                existingCustomer: true,
-                message: 'An account with this email already exists. Please sign in to continue your membership.',
-                transaction: false,
-                customerCreated: false,
-                subscriptionCreated: false,
-            });
+            if (existingUser.migrationType === 'current') {
+                logger.warn('signup.duplicate', { email });
+                return NextResponse.json({
+                    existingCustomer: true,
+                    message: 'This email already has an active membership. Please sign in, or contact support@gymnasticbodies.com if you think this is wrong.',
+                    transaction: false,
+                    customerCreated: false,
+                    subscriptionCreated: false,
+                });
+            }
+            // Reuse the lapsed member's Stripe customer rather than starting a second one
+            const existingSetting = await queryUserSetting(existingUser.id, 'subscription');
+            existingCustomerId = existingSetting?.stripeCustomerId ?? null;
         }
 
         // Live-Stripe duplicate guard — a second signup must never start a parallel
@@ -61,12 +68,17 @@ export async function POST(request) {
             return NextResponse.json({ message: 'Subscription is temporarily unavailable. Please contact support@gymnasticbodies.com.', transaction: false }, { status: 503 });
         }
 
-        // Create the customer (idempotency key prevents dupes on concurrent requests)
+        // Reuse existing customer or create new one (idempotency key prevents dupes on concurrent requests)
         const name = email.split('@')[0];
-        customer = await stripe.customers.create(
-            { email, name, phone, metadata: { country } },
-            { idempotencyKey: `customer-${email}` }
-        );
+        if (existingCustomerId) {
+            customer = await stripe.customers.retrieve(existingCustomerId);
+        } else {
+            customer = await stripe.customers.create(
+                { email, name, phone, metadata: { country } },
+                { idempotencyKey: `customer-${email}` }
+            );
+            customerIsNew = true;
+        }
 
         // Attach payment method
         await attachPaymentMethod(paymentMethodId, customer.id);
@@ -110,6 +122,10 @@ export async function POST(request) {
             stripeData
         );
 
+        // Mark them paying now — a returning (noncurrent) account would otherwise stay
+        // paywalled mid-trial until the daily classifier ran. Matches renew/offer.
+        await updateUserClassification(dbUser?.user?.id ?? dbUser?.id, 'current', 'stripe');
+
         await sendCredentialsEmailSG({ email, password });
 
         logger.info('signup.success', {
@@ -136,7 +152,8 @@ export async function POST(request) {
         });
     } catch (error) {
         logger.error('signup.failed', { email: json?.email, error });
-        if (customer?.id) {
+        // Only undo a customer this request created — never delete a returning member's record
+        if (customer?.id && customerIsNew) {
             try { await deleteStripeCustomer(customer.id); } catch (_) {}
         }
         return NextResponse.json({
