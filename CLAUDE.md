@@ -69,33 +69,42 @@ Implementation notes:
 - All inbound links in the wild point at the correct hosts already (emails + `my.` → `app./renew`,
   `app./accountDetails`) — no `my.` or email-template changes were needed.
 
-## Forum — read-only reader on Neon (cut over 2026-09-30)
+## Forum — read-only public archive on Neon (cut over 2026-09-30; whole forum public 2026-10-09)
 
-`www.gymnasticbodies.com/forum` is a **read-only, public reader rendered from Neon** — no login, no
-posting. It replaced the reverse-proxy to the Invision forum on the AWS Lightsail box. Plan + corrections:
+`www.gymnasticbodies.com/forum` is a **read-only, public archive rendered from Neon** — no login, no
+posting. Its purpose is SEO. A small banner on every page says it is archived (`archiveNotice`). It replaced the reverse-proxy to the Invision forum on the AWS Lightsail box. Plan + corrections:
 `claudePlans/forum-readonly-recreation-plan.md`.
 
 - **URLs (preserved from Invision):** `/forum`, `/forum/forum/{id}-{slug}` (singular `forum`),
   `/forum/topic/{tid}-{slug}`, both with `/page/N` at 25 per page. Matched by numeric id; a wrong slug
   redirects to the exact one. Canonical = the no-trailing-slash `www` URL. Sitemap: `/forum/sitemap.xml`.
 - **Data:** `forum_categories`, `forum_topics`, `forum_posts` (frozen import of the 2026-07-24 dump).
-- **What is public — do not widen without the owner:** only the forums guests could read on the old
-  forum (16, 17, 19, 20, 22, 24, 26, 27 → ~15,000 topics; `forum_categories.is_public`). The other
-  ~19,000 topics (course forums, Form Checks, Mod Squad, Brand Development, admin areas) are in Neon but
-  never served; they redirect to the nearest public forum. A topic is served iff
-  `approved = 1 AND NOT spam` AND its forum `is_public`.
+- **What is public — the WHOLE forum (owner, 2026-10-09):** every forum, including course forums, Form
+  Checks, Workout Logs, Mod Squad, Brand Development and the admin-archived areas (~32,400 topics). A topic
+  is served iff `approved = 1 AND NOT spam` and it has a visible post. `forum_categories.is_public` only
+  records what guests could read on the old forum (8 forums) and is no longer read by the code. The four
+  top-level section headings and their order come from `data/content/forum.json` (`categories`), not
+  the Invision names ("Admin-Only Forums" etc.).
 - **Hidden posts:** Invision's per-post hidden/deleted flag was not imported and `forum_posts` has no
   column for it, so those 3,945 post ids are excluded via `data/forum/hiddenPostIds.json`. The one
   post-visibility rule is `POST_VISIBLE` in `lib/forum.js`.
 - **Attachments:** Vercel Blob under `forum/uploads/` (`FORUM_UPLOADS_BASE` in `lib/forumConfig.mjs`) —
-  only files that public posts reference. Old `/forum/uploads/*` URLs 301 there. The full uploads tree
+  every file a served post references (7,209, all size-verified 2026-10-09). Old `/forum/uploads/*` URLs
+  301 there. `attachment.php?id=N` resolves via `data/forum/attachmentFiles.json` (most such ids point to
+  files that were already missing on the box). The full uploads tree
   (18,115 files) is backed up at `/var/www/Work/Gymfit/forum_backup_2026-07-24/forum_uploads_2026-09-30.tar`.
 - **Code:** `lib/forum.js` (queries), `lib/forumHtml.js` (sanitize + rewrite post HTML), `lib/forumView.js`,
   `components/forum/*`, `app/forum/**`, labels in `data/content/forum.json`. `app/forum/[...path]/route.js`
-  redirects every other old forum URL (profiles, search, `index.php?/topic/...`); spam topics return 410.
+  redirects every other old forum URL (profiles, search, `index.php?/topic/...`, bare `/forum?showtopic=N`);
+  spam topics return 410. `?page=N` is rewritten to `app/forum-paged`, which 301s to `/page/N` with the
+  query dropped (a next.config redirect would keep it). Pre-2013 phpBB links (`viewtopic.php?t=N` / `?p=N`)
+  resolve through `data/forum/phpbbLinks.json` (`lib/forumLegacy.js`, built by `claudeTools/forumPhpbbLinks.mjs`).
+- **Search Console:** `sc-domain:gymnasticbodies.com` (owner greggorywiley@tlchatt.com, so the global
+  Technologic service account reaches it). `/forum/sitemap.xml` submitted 2026-10-09.
 - **Rollback switch:** `FORUM_READER_LIVE` in `lib/forumConfig.mjs`. `false` puts production back on the
   Invision proxy (`lib/forumProxy.js`, `app/forum-legacy`) — only possible while the Lightsail box
-  `cpanel-new-2026` (34.205.92.109) still exists.
+  `cpanel-new-2026` (34.205.92.109) still exists, and it is being deleted (AWS shutdown, 2026-10). Treat
+  the reader as the only forum.
 
 ## Chargebacks = permanent ban (owner rule, 2026-10-08)
 

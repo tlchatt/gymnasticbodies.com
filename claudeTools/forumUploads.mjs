@@ -4,8 +4,9 @@
 // stores them through one "FileSystem" storage whose URL is {board_url}/uploads, so BOTH
 // <fileStore.core_Attachment>/X and <fileStore.core_Emoticons>/X resolve to /forum/uploads/X.
 //
-// Only files referenced by posts the public reader serves are published. Everything else
-// (member form-check media, admin forums, avatars, theme files) stays in the local backup.
+// Only files referenced by posts the public reader serves are published — since 2026-10-09
+// that is every forum (the whole forum is a public archive). Files no post references
+// (avatars, theme files, orphans) stay in the local backup.
 //
 //   node --env-file=.env.local claudeTools/forumUploads.mjs refs      # scan Neon -> refs json
 //   node --env-file=.env.local claudeTools/forumUploads.mjs upload    # put referenced files (resumable)
@@ -30,8 +31,7 @@ const REFS_FILE = path.join(WORK, 'refs.json');
 const LEDGER = path.join(WORK, 'upload-ledger.jsonl');
 const BLOB_PREFIX = 'forum/uploads/';
 
-// Forums a guest can read on the live forum (probed 2026-09-30).
-const PUBLIC_FORUMS = [16, 17, 19, 20, 22, 24, 26, 27];
+const ATTACHMENT_FILES = path.resolve(HERE, '../data/forum/attachmentFiles.json');
 
 const MIME = {
     jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp',
@@ -143,7 +143,8 @@ async function cmdRefs() {
     fs.mkdirSync(WORK, { recursive: true });
 
     const allForums = (await sql`SELECT id FROM forum_categories`).map((r) => r.id);
-    const privateForums = allForums.filter((id) => !PUBLIC_FORUMS.includes(id));
+    const PUBLIC_FORUMS = allForums;
+    const privateForums = [];
 
     const collect = async (forumIds) => {
         const paths = new Map(), ids = new Map(); // ref -> post count
@@ -200,6 +201,9 @@ async function cmdRefs() {
     };
     out.bytes = out.files.reduce((a, f) => a + f.size, 0);
     fs.writeFileSync(REFS_FILE, JSON.stringify(out, null, 1));
+    // attachment.php?id=N -> file, for the reader (lib/forumLegacy.js).
+    const idFiles = Object.fromEntries(Object.entries(out.attachmentIdMap).sort((a, b) => a[0] - b[0]).map(([id, v]) => [id, v.path]));
+    fs.writeFileSync(ATTACHMENT_FILES, JSON.stringify(idFiles) + '\n');
 
     console.log('public posts scanned     :', out.postsScanned, '(with refs:', out.postsWithRefs + ')');
     console.log('distinct path refs       :', out.distinctPathRefs, '| attachment.php ids:', out.distinctAttachmentIdRefs);

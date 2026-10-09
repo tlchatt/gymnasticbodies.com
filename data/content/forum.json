@@ -2,6 +2,24 @@
     "siteName": "GymnasticBodies",
     "indexTitle": "Forums",
     "archiveNotice": "This forum is archived information and is no longer active.",
+    "categories": [
+        {
+            "id": 28,
+            "title": "General"
+        },
+        {
+            "id": 37,
+            "title": "Courses"
+        },
+        {
+            "id": 67,
+            "title": "Staff & Affiliates"
+        },
+        {
+            "id": 123,
+            "title": "Older Archives"
+        }
+    ],
     "labels": {
         "forums": "Forums",
         "subforums": "Subforums",

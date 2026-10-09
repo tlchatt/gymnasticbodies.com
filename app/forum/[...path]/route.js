@@ -33,7 +33,7 @@ async function topicResponse(tid) {
     const [tree, topic] = await Promise.all([getForumTree(), getTopic(tid)]);
     if (!topic) return new Response('Not found', { status: 404 });
     if (topic.spam) return gone();
-    const servable = topic.approved === 1 && tree.byId.get(topic.forum_id)?.is_public && topic.posts > 0;
+    const servable = topic.approved === 1 && tree.byId.has(topic.forum_id) && topic.posts > 0;
     return moved(servable ? topicPath(topic) : nearestPublicPath(tree, topic.forum_id));
 }
 
