@@ -1,6 +1,6 @@
 # Communication Flows — DRAFT spec (for owner review)
 
-**Status:** DRAFT 2026-10-09. Nothing here is built yet. Items marked **⚑** are open owner decisions;
+**Status:** AGREED 2026-10-09 (Support + Marketing baseline + A10). Build in progress (support-communication rules first). Remaining ⚑ are administrative details that do not block the build. Items marked **⚑** are open owner decisions;
 items marked **✅ decided** were ruled by the owner in the 2026-10-08/09 support-agent session
 (`96d475f4`). Code changes follow from this spec once it is agreed.
 
@@ -49,7 +49,7 @@ three **categories**, and each flow has its own rules.
 
 **Proposed:** label every recorded send with its category in `outbound_emails.type`
 (`support` / `marketing` / `administrative`) and its flow in `campaign`. No schema change needed —
-`type` is free text today. ⚑ confirm.
+`type` is free text today. ✅ follows from the three categories.
 
 ---
 
@@ -124,8 +124,8 @@ Greeting "Hi {first name}," / "Hi there," is a standard for every email in every
 | Sub-category | Flow | Today | ⚑ Rules to set |
 |---|---|---|---|
 | **Billing** | **A1 Payment failed** — `lib/preventionEmails.js` (webhook `invoice.payment_failed`) | Recorded as `system_billing_notice`, no case. | Recorded ✅. |
-| | **A2 Renewal reminder** (`invoice.upcoming`) — `lib/preventionEmails.js` | Webhook event currently **off** (manager, 2026-10-08). | ⚑ Turn on? Which members? |
-| | **A3 Refund / credit confirmations** | Sent by hand as Support (S4/S7). | ⚑ Stay Support, or become Administrative? |
+| | **A2 Renewal reminder** (`invoice.upcoming`) — `lib/preventionEmails.js` | Webhook event currently **off** (manager, 2026-10-08). | ✅ Stays OFF (owner 2026-10-08: only members we promised a reminder; none outstanding). |
+| | **A3 Refund / credit confirmations** | Sent by hand as Support (S4/S7). | ✅ Support — a person writing to a customer is a communication on their case. |
 | **Account** | **A4 Login details at signup** — `app/api/stripe/create-subscription/route.js`, `app/api/user/subscription/route.js` | **Not recorded.** | Record as `administrative` (proposed). |
 | | **A5 Password reset link** — `/api/user/resetLink`, `/api/admin/users/[id]/send-password-reset`, `/api/admin/users/create-free` | **Not recorded.** | Record as `administrative` (proposed). ⚑ Contains a live link — store the body or only the fact it was sent? |
 | | **A6 Email-change verification** — `/api/user/change-email` | **Not recorded.** | Same as A5. |
@@ -160,7 +160,7 @@ Daily cron, 14:00 UTC:
 - Rename **"Ticket" → "Message"**. The inbox becomes a **Communications** view grouped by case.
 - **Reply from the case page** (today you can only reply from the single-message page).
 - The case page shows only that case's messages (today it shows the member's whole send history).
-- ⚑ confirm.
+- ✅ follows from "a ticket is a communication on a case".
 
 ## Cleanup / backfill (Support only)
 
