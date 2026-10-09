@@ -52,7 +52,7 @@ export async function GET(request) {
         return corsJson({ body });
     } catch (error) {
         logger.error('workout.byo_program.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -78,6 +78,6 @@ export async function PUT(request) {
         return corsJson({ body, message });
     } catch (error) {
         logger.error('workout.byo_program.error', { ...logCtx, method: 'PUT', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

@@ -4,12 +4,17 @@
 // Slack with the Accept/Edit/Regenerate/Reject buttons. Standalone here so we can verify the
 // agent works the moment ANTHROPIC_API_KEY is set (locally or on Vercel).
 import { NextResponse } from 'next/server';
+import { requireAdminOrCronSecret } from '@/lib/adminAuth';
 import { investigate } from '@/lib/support/investigate';
 import { extractPlay } from '@/lib/support/plays';
 
 export const maxDuration = 120; // tool loop + model can take a while
 
 export async function POST(request) {
+  // Runs paid AI calls on any member's data and posts to the support Slack — admin or the
+  // server's CRON_SECRET only (lib/support/autofire.js sends it).
+  const denied = await requireAdminOrCronSecret(request);
+  if (denied) return denied;
   try {
     const { email, ask } = await request.json();
     if (!email) return NextResponse.json({ error: 'email required' }, { status: 400 });

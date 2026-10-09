@@ -2,9 +2,21 @@ import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user_logs, user_setting } from "@/Drizzle/db/schema"
 import { eq, and } from 'drizzle-orm';
 import { queryUserSetting } from "@/lib/userSettings";
+import { getSessionUserId, unauthorized } from "@/lib/sessionUser";
+
+const WRITABLE_TYPES = ['current_location'];
 
 export async function POST(request) {
-    const json = await request.json()
+    // The member is the owner of the live session behind the Bearer token, never the
+    // userId in the request.
+    const sessionUserId = await getSessionUserId(request);
+    if (!sessionUserId) return unauthorized();
+    const json = { ...(await request.json()), userId: sessionUserId }
+    // Members may only write their own app-state rows here — never subscription/billing rows
+    // (those drive the paywall). my. writes only 'current_location'.
+    if (!WRITABLE_TYPES.includes(json.type)) {
+        return Response.json({ error: 'That setting cannot be changed here.' }, { status: 400 })
+    }
     try {
         let userSetting
         let matching = await queryUserSetting(json.userId, json.type)
@@ -59,8 +71,12 @@ export async function POST(request) {
 }
 // GET just to return 200 status for preflight to work
 export async function GET(request) {
+    // The member is the owner of the live session behind the Bearer token, never the
+    // userId in the request.
+    const sessionUserId = await getSessionUserId(request);
+    if (!sessionUserId) return unauthorized();
     const searchParams = request.nextUrl.searchParams;
-    const userData = Object.fromEntries(searchParams);
+    const userData = { ...Object.fromEntries(searchParams), userId: sessionUserId };
 
     if (userData?.userId) {
         // and() — chained .where().where() silently REPLACES the first condition in this

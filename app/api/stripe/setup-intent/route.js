@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getOrCreateStripeCustomer, createSetupIntent } from '@/lib/stripeServerFunction';
 import { getUserWithId, updateUserSettingPaymentMethod } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
+import { getSessionUserId } from '@/lib/sessionUser';
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -15,9 +16,10 @@ export async function OPTIONS() {
 
 export async function POST(request) {
     try {
-        const { userId } = await request.json();
+        // The signed-in member's card — never a userId from the body.
+        const userId = await getSessionUserId(request);
         if (!userId) {
-            return NextResponse.json({ error: 'userId required.' }, { status: 400, headers: CORS });
+            return NextResponse.json({ error: 'Your sign-in has expired. Please sign in again.' }, { status: 401, headers: CORS });
         }
 
         const user = await getUserWithId(userId);

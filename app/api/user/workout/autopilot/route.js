@@ -88,7 +88,7 @@ export async function GET(request) {
         });
     } catch (error) {
         logger.error('workout.autopilot.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -266,6 +266,6 @@ export async function POST(request) {
         }
     } catch (error) {
         logger.error('workout.autopilot.error', { ...logCtx, method: 'POST', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

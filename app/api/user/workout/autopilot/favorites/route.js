@@ -23,7 +23,7 @@ export async function GET(request) {
         return corsJson(data?.favorites || []);
     } catch (error) {
         console.log('autopilot favorites GET error:', error);
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -53,7 +53,7 @@ export async function POST(request) {
         return corsJson(favorite);
     } catch (error) {
         console.log('autopilot favorites POST error:', error);
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -70,6 +70,6 @@ export async function DELETE(request) {
         return corsJson({ status: 200 });
     } catch (error) {
         console.log('autopilot favorites DELETE error:', error);
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

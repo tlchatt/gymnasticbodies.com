@@ -131,7 +131,7 @@ export async function GET(request) {
         return corsJson({ error: `unknown view: ${view}` }, 400);
     } catch (error) {
         logger.error('workout.thrive.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -270,7 +270,7 @@ export async function POST(request) {
         }
     } catch (error) {
         logger.error('workout.thrive.error', { ...logCtx, method: 'POST', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -286,6 +286,6 @@ export async function DELETE(request) {
         return corsJson({ status: 200 });
     } catch (error) {
         logger.error('workout.thrive.error', { ...logCtx, method: 'DELETE', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

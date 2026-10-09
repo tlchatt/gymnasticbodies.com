@@ -3,6 +3,7 @@
 // Accept/Edit/Regenerate/Reject buttons. This is the trigger the Gmail-push handler will call;
 // exposed directly so we can drive an end-to-end test.
 import { NextResponse } from 'next/server';
+import { requireAdminOrCronSecret } from '@/lib/adminAuth';
 import { neon } from '@neondatabase/serverless';
 import { investigate } from '@/lib/support/investigate';
 import { extractPlay } from '@/lib/support/plays';
@@ -51,6 +52,10 @@ async function markReopened({ caseId, newParentTs, priorFire }) {
 
 export async function POST(request) {
   let email, caseId;
+  // Runs paid AI calls on any member's data and posts to the support Slack — admin or the
+  // server's CRON_SECRET only (lib/support/autofire.js sends it).
+  const denied = await requireAdminOrCronSecret(request);
+  if (denied) return denied;
   try {
     const body = await request.json();
     ({ email, caseId } = body);

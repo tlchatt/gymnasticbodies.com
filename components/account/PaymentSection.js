@@ -22,7 +22,7 @@ function titleCase(s) {
     return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-export default function PaymentSection({ hasCard, cardBrand, cardLast4, userId }) {
+export default function PaymentSection({ hasCard, cardBrand, cardLast4, userId, token }) {
     const [savedCard, setSavedCard] = useState(
         hasCard ? { cardBrand, cardLast4 } : null
     );
@@ -43,6 +43,7 @@ export default function PaymentSection({ hasCard, cardBrand, cardLast4, userId }
                     </p>
                     <AddPaymentMethod
                         userId={userId}
+                        token={token}
                         onSaved={(saved) => setSavedCard(saved)}
                     />
                 </div>

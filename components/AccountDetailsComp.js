@@ -57,7 +57,7 @@ export default function AccountDetailsComp({
                 <SubscriptionActions data={data} userId={userId} token={token} />
 
                 <Section data={payment}>
-                    <PaymentSection {...(payment ?? {})} userId={userId} />
+                    <PaymentSection {...(payment ?? {})} userId={userId} token={token} />
                 </Section>
 
                 <DisplayProfile profile={profile} token={token} />

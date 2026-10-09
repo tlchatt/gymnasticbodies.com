@@ -2,15 +2,20 @@ import { db } from "@/Drizzle/index.ts"; // your drizzle instance
 import { user_setting, user_logs } from "@/Drizzle/db/schema"
 import { eq, and } from 'drizzle-orm';
 import { upsertUserLog } from "@/lib/userSettings";
+import { getSessionUserId, unauthorized } from "@/lib/sessionUser";
 
 export async function POST(request) {
+    // The member is the owner of the live session behind the Bearer token, never the
+    // userId in the request.
+    const sessionUserId = await getSessionUserId(request);
+    if (!sessionUserId) return unauthorized();
     const json = await request.json()
     // Atomic upsert keyed (userId, section, userScheduleDate). Existing guided-plan
     // clients don't send `section`, so it defaults to 'levels' — their rows and
     // behavior are unchanged. New workout sections pass it explicitly.
     try {
         await upsertUserLog({
-            userId: json.userId,
+            userId: sessionUserId,
             section: json.section ?? 'levels',
             userScheduleDate: json.userScheduleDate,
             data: json.updatedData,
@@ -53,6 +58,10 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
+    // The member is the owner of the live session behind the Bearer token, never the
+    // userId in the request.
+    const sessionUserId = await getSessionUserId(request);
+    if (!sessionUserId) return unauthorized();
     const json = await request.json()
     //check if user with userId has same userScheduleDate log
     //if yes, merge the incoming data in that log,
@@ -61,7 +70,7 @@ export async function DELETE(request) {
         // NOTE: despite the DELETE verb this has always been an overwrite — the client
         // sends the pruned document as updatedData. Progressions intentionally untouched.
         await upsertUserLog({
-            userId: json.userId,
+            userId: sessionUserId,
             section: json.section ?? 'levels',
             userScheduleDate: json.userScheduleDate,
             data: json.updatedData,
@@ -84,8 +93,12 @@ export async function DELETE(request) {
 }
 // GET just to return 200 status for preflight to work
 export async function GET(request) {
+    // The member is the owner of the live session behind the Bearer token, never the
+    // userId in the request.
+    const sessionUserId = await getSessionUserId(request);
+    if (!sessionUserId) return unauthorized();
     const searchParams = request.nextUrl.searchParams;
-    const userData = Object.fromEntries(searchParams);
+    const userData = { ...Object.fromEntries(searchParams), userId: sessionUserId };
     if (userData?.userId) {
         // Section-scoped (default 'levels'): after AWS-history seeding a user can have
         // thousands of autopilot/byo/history/thrive rows — returning them all here would

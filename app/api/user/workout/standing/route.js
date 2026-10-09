@@ -51,7 +51,7 @@ export async function GET(request) {
         });
     } catch (error) {
         logger.error('workout.standing.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -72,6 +72,6 @@ export async function PUT(request) {
         return corsJson({ status: 200 });
     } catch (error) {
         logger.error('workout.standing.error', { ...logCtx, method: 'PUT', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

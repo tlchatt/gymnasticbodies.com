@@ -34,6 +34,6 @@ export async function GET(request) {
         return corsJson(out);
     } catch (error) {
         logger.error('workout.history.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

@@ -27,7 +27,7 @@ export async function GET(request) {
         return corsJson(data?.favorites || []);
     } catch (error) {
         logger.error('workout.byo_favorites.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -86,7 +86,7 @@ export async function POST(request) {
         return corsJson(favorite);
     } catch (error) {
         logger.error('workout.byo_favorites.error', { ...logCtx, method: 'POST', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -105,6 +105,6 @@ export async function DELETE(request) {
         return corsJson({ status: 200 });
     } catch (error) {
         logger.error('workout.byo_favorites.error', { ...logCtx, method: 'DELETE', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

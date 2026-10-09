@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { stripe, getOrCreateStripeCustomer, attachPaymentMethod, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE } from '@/lib/stripeServerFunction';
-import { getUserWithId, updateUserSettingPaymentMethod } from '@/lib/userSettings';
+import { getUserWithId, updateUserSettingPaymentMethod, queryUserSetting } from '@/lib/userSettings';
+import { getSessionUserId } from '@/lib/sessionUser';
 import { logger } from '@/lib/logger';
 
 const CORS = {
@@ -15,9 +16,14 @@ export async function OPTIONS() {
 
 export async function POST(request) {
     try {
-        const { userId, paymentMethodId } = await request.json();
-        if (!userId || !paymentMethodId) {
-            return NextResponse.json({ error: 'userId and paymentMethodId are required.' }, { status: 400, headers: CORS });
+        // The signed-in member's card — never a userId from the body.
+        const userId = await getSessionUserId(request);
+        if (!userId) {
+            return NextResponse.json({ error: 'Your sign-in has expired. Please sign in again.' }, { status: 401, headers: CORS });
+        }
+        const { paymentMethodId } = await request.json();
+        if (!paymentMethodId) {
+            return NextResponse.json({ error: 'paymentMethodId is required.' }, { status: 400, headers: CORS });
         }
 
         const user = await getUserWithId(userId);
@@ -39,6 +45,18 @@ export async function POST(request) {
 
         let customerId = typeof pm?.customer === 'string' ? pm.customer : pm?.customer?.id ?? null;
         if (customerId) {
+            // The card must sit on THIS member's Stripe customer — never change the default card
+            // of a customer someone else owns because they sent its payment method id.
+            const [cust, setting] = await Promise.all([
+                stripe.customers.retrieve(customerId),
+                queryUserSetting(user.id, 'subscription'),
+            ]);
+            const owned = setting?.stripeCustomerId === customerId
+                || (cust?.email && user.email && cust.email.toLowerCase() === user.email.toLowerCase());
+            if (!owned) {
+                logger.warn('payment_method.not_owner', { userId: user.id, email: user.email, customerId });
+                return NextResponse.json({ error: 'That card could not be saved to your account.' }, { status: 403, headers: CORS });
+            }
             // Already attached — just make it the customer's default payment method.
             await stripe.customers.update(customerId, {
                 invoice_settings: { default_payment_method: paymentMethodId },

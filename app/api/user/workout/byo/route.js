@@ -96,7 +96,7 @@ export async function GET(request) {
         return corsJson(await weeklyView(userId, weekStart));
     } catch (error) {
         logger.error('workout.byo.error', { userId: request.nextUrl.searchParams.get('userId'), method: 'GET', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }
 
@@ -300,6 +300,6 @@ export async function POST(request) {
         }
     } catch (error) {
         logger.error('workout.byo.error', { ...logCtx, method: 'POST', error });
-        return corsJson({ error: error.message }, 400);
+        return corsJson({ error: error.message }, error.status || 400);
     }
 }

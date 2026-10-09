@@ -109,7 +109,7 @@ function formatBrand(brand) {
 }
 
 // ── Inner form (must live inside <Elements> to use the Stripe hooks) ──
-function AddCardForm({ userId, onSaved }) {
+function AddCardForm({ userId, token, onSaved }) {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -131,8 +131,8 @@ function AddCardForm({ userId, onSaved }) {
         let cancelled = false;
         fetch('/api/stripe/setup-intent', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId }),
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+            body: JSON.stringify({}),
         })
             .then(r => r.json())
             .then(data => {
@@ -147,7 +147,7 @@ function AddCardForm({ userId, onSaved }) {
                 if (!cancelled) setInitError('Could not initialize the payment form. Please try again.');
             });
         return () => { cancelled = true; };
-    }, [userId]);
+    }, [userId, token]);
 
     const handleSubmit = async () => {
         // useRef guard against double-submit — setState is async and won't block a fast re-click.
@@ -182,8 +182,8 @@ function AddCardForm({ userId, onSaved }) {
 
             const result = await fetch('/api/stripe/save-payment-method', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, paymentMethodId }),
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ paymentMethodId }),
             }).then(r => r.json());
 
             if (!result.success) {
@@ -265,10 +265,10 @@ function AddCardForm({ userId, onSaved }) {
 
 // ── Default export — wraps the form in its own <Elements> provider so it is
 // safe to mount standalone via next/dynamic({ ssr: false }). ──
-export default function AddPaymentMethod({ userId, onSaved }) {
+export default function AddPaymentMethod({ userId, token, onSaved }) {
     return (
         <Elements stripe={stripePromise}>
-            <AddCardForm userId={userId} onSaved={onSaved} />
+            <AddCardForm userId={userId} token={token} onSaved={onSaved} />
         </Elements>
     );
 }
