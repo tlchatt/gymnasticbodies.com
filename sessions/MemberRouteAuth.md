@@ -77,3 +77,9 @@ Session itself tried `git push origin main` once (before the owner's "manager pu
 Session file: `app.gymnasticbodies.com/sessions/MemberRouteAuth.md`.
 As of this time, every member-facing app. route takes the member from the Bearer session token instead of the request (`c1921c1`, `b665440`, `99736d2`), unused legacy routes and `/allUsers` are deleted, and my. sends the token on all calls (`a16b159`). The manager pushed/deployed both; its smoke checks passed. Owner has not signed off.
 Next: (1) re-check expired-session logout on live my.; (2) confirm the first prod autofire is not a 403; (3) decide on the 10 deleted tracked `.playwright-mcp` files in my.; (4) manager routes the out-of-scope items above (renew/offer login handout is the most serious) and tasks 929b8e2d / 745b5dd7.
+
+## Close-out — 2026-10-09 ~11:50 (manager)
+- my. e46e775 (old .playwright-mcp logs removed) pushed by the manager.
+- Expired-sign-in check on live my.: server returns 401; axios calls sign the member out correctly. Caveat: home-screen fetch calls don't sign out on 401 (cosmetic) — added to follow-up task 2810c30e.
+- First production autofire NOT yet confirmable (no new inbound case since the 11:35 deploy). Manager watches for the first support_fires row; a `support.autofire.failed` "http 403" would mean prod CRON_SECRET mismatch.
+- Hours 53c5fdde closed; session closed by the manager on the owner's instruction.
