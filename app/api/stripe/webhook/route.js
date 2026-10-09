@@ -16,9 +16,11 @@ import {
 } from '@/lib/preventionEmails';
 import { logger } from '@/lib/logger';
 import { banMember } from '@/lib/blocklist';
+import { alert, claimOnce } from '@/lib/alerts';
+import { reopenLatestCase } from '@/lib/support/caseFor';
 import { db } from '@/Drizzle/index.ts';
 import { app_logs, support_cases, user_setting } from '@/Drizzle/db/schema';
-import { and, eq, desc } from 'drizzle-orm';
+import { and, eq, desc, sql as dsql } from 'drizzle-orm';
 
 export async function POST(request) {
     const sig = request.headers.get('stripe-signature');
@@ -44,6 +46,12 @@ export async function POST(request) {
         'charge.dispute.created': handleDisputeCreated,
         'radar.early_fraud_warning.created': handleEarlyFraudWarning,
         'invoice.upcoming': handleInvoiceUpcoming,
+        // Refund watch (2026-10-09): a refund can flip to failed/canceled days after it was
+        // created "succeeded" (e.g. the charge gets disputed). Any of the three refund events
+        // works; handling is deduped per refund + status.
+        'charge.refund.updated': handleRefundUpdated,
+        'refund.updated': handleRefundUpdated,
+        'refund.failed': handleRefundUpdated,
     };
     if (preventionHandlers[event.type]) {
         try {
@@ -365,6 +373,25 @@ async function handleDisputeCreated(dispute) {
         ],
     });
 
+    // (c2) Slack alert (lib/alerts.js — never throws).
+    await alert({
+        kind: 'chargeback',
+        severity: 'critical',
+        title: `Chargeback filed — $${amountUsd ?? '?'} (${reason})`,
+        email: member.email ?? chargeEmail ?? 'unknown',
+        userId: member.userId,
+        caseId,
+        lines: [
+            member.name ? `Name: ${member.name}` : null,
+            `Amount: $${amountUsd ?? 'unknown'} · reason: ${reason}`,
+            `Evidence due: ${evidenceDueBy} — respond in Stripe or it is lost by default`,
+            banLine,
+            `Cards detached: ${cardsDetached}${detachError ? ` — DETACH FAILED: ${detachError}` : ''}`,
+            caseId ? null : 'Support case creation FAILED — open one by hand.',
+        ],
+        stripe: { dispute: disputeId, charge: chargeId, customer: customerId },
+    });
+
     // (d) Telemetry.
     await logDurable('dispute.created', {
         email: member.email,
@@ -448,6 +475,22 @@ async function handleEarlyFraudWarning(efw) {
         ],
     });
 
+    await alert({
+        kind: 'early_fraud_warning',
+        severity: 'critical',
+        title: `Early fraud warning — $${amountUsd ?? '?'} (${fraudType})`,
+        email: member.email ?? chargeEmail ?? 'unknown',
+        userId: member.userId,
+        caseId,
+        lines: [
+            member.name ? `Name: ${member.name}` : null,
+            `Already refunded: ${alreadyRefunded ? 'yes' : 'no'} · actionable: ${efw.actionable === false ? 'no' : 'yes'}`,
+            `No auto-refund was taken — owner decides. A refund before a dispute lands keeps it off the dispute count.`,
+            caseId ? null : 'Support case creation FAILED — open one by hand.',
+        ],
+        stripe: { efw: efwId, charge: chargeId, customer: customerId },
+    });
+
     await logDurable('efw.created', {
         email: member.email,
         userId: member.userId,
@@ -458,6 +501,92 @@ async function handleEarlyFraudWarning(efw) {
         actionable: efw.actionable ?? null,
         alreadyRefunded,
         caseId,
+    });
+}
+
+// Refund watch — charge.refund.updated / refund.updated / refund.failed (2026-10-09).
+// A refund can be created "succeeded" and later flip to failed or canceled (Kyle Consolie's $50
+// refund failed 15h later with charge_for_pending_refund_disputed when his chargeback landed) —
+// and nobody was told. When a refund ends up failed/canceled: alert Slack with the reason and
+// reopen the member's latest case (or open one) with an admin note. Once per refund + status.
+// NOTE (Stripe dashboard): one of these events must be enabled on the webhook endpoint.
+const REFUND_FAILURE_TEXT = {
+    charge_for_pending_refund_disputed: 'the charge was disputed (chargeback) while the refund was pending — the money goes back through the dispute instead',
+    declined: 'the card issuer declined the refund',
+    expired_or_canceled_card: 'the card is expired or cancelled',
+    insufficient_funds: 'insufficient funds on our Stripe balance',
+    lost_or_stolen_card: 'the card was reported lost or stolen',
+    merchant_request: 'the refund was cancelled on our side',
+    unknown: 'Stripe gave no reason',
+};
+async function handleRefundUpdated(refund) {
+    const status = refund?.status;
+    if (!refund?.id || !['failed', 'canceled'].includes(status)) return;
+
+    // Claim first, so a second delivery (or a second refund event type) does nothing.
+    const claimed = await claimOnce('refund.failure_alerted', `${refund.id}:${status}`, { refundId: refund.id, status });
+    if (!claimed) return;
+
+    const chargeId = typeof refund.charge === 'string' ? refund.charge : refund.charge?.id ?? null;
+    let charge = null;
+    try {
+        if (chargeId) charge = await stripe.charges.retrieve(chargeId);
+    } catch (err) {
+        logger.error('refund_watch.charge_lookup_failed', { refundId: refund.id, chargeId, error: err });
+    }
+    const customerId = typeof charge?.customer === 'string' ? charge.customer : charge?.customer?.id ?? null;
+
+    // Who issued it, and to whom: the admin.refund ledger row for this refund id.
+    let promised = null;
+    try {
+        const { rows } = await db.execute(dsql`SELECT email, user_id, source, data FROM app_logs
+            WHERE event = 'admin.refund' AND (data::jsonb->>'refundId') = ${refund.id} ORDER BY ts DESC LIMIT 1`);
+        promised = rows[0] ?? null;
+    } catch (err) {
+        logger.error('refund_watch.ledger_lookup_failed', { refundId: refund.id, error: err });
+    }
+    const member = await resolveMember({
+        customerId,
+        email: promised?.email ?? charge?.billing_details?.email ?? charge?.receipt_email ?? null,
+    });
+    if (!member.userId && promised?.user_id) member.userId = promised.user_id;
+
+    const amountUsd = formatUsd(refund.amount);
+    const reasonCode = refund.failure_reason ?? 'unknown';
+    const why = REFUND_FAILURE_TEXT[reasonCode] ?? reasonCode;
+    const issuedBy = promised?.source ?? refund.metadata?.source ?? null;
+    const note = `REFUND ${status.toUpperCase()}: $${amountUsd ?? '?'} refund ${refund.id} on charge ${chargeId ?? '?'} — ${reasonCode} (${why}).`
+        + `${charge?.disputed ? ' The charge is disputed.' : ''} If the member was told they were refunded, that is no longer true — follow up.`;
+
+    let caseId = null;
+    let caseAction = null;
+    if (member.email || member.userId) {
+        try {
+            const c = await reopenLatestCase({ email: member.email, userId: member.userId, name: member.name, title: `Refund ${status} — $${amountUsd ?? '?'}`, note });
+            caseId = c.caseId;
+            caseAction = c.action;
+        } catch (err) {
+            logger.error('refund_watch.case_failed', { refundId: refund.id, error: err });
+        }
+    }
+
+    await alert({
+        kind: 'refund_failed',
+        severity: 'critical',
+        title: `Refund ${status} — $${amountUsd ?? '?'}${member.email ? '' : ' (member not found)'}`,
+        email: member.email ?? 'unknown',
+        userId: member.userId,
+        caseId,
+        lines: [
+            `Reason: ${reasonCode} — ${why}`,
+            charge?.disputed ? 'The charge is disputed — see the chargeback.' : null,
+            refund.metadata?.note ? `Refund note: ${refund.metadata.note}` : null,
+            issuedBy ? `Issued by: ${issuedBy}` : null,
+            caseId ? `Case ${caseAction} with an admin note.` : 'No case could be opened — open one by hand.',
+            'If the member was told they were refunded, that is no longer true.',
+        ],
+        stripe: { refund: refund.id, charge: chargeId, customer: customerId },
+        data: { refundStatus: status, failureReason: reasonCode },
     });
 }
 

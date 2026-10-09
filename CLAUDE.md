@@ -150,6 +150,29 @@ issued, 7 "permanently deleted" accounts never deleted, and 2 chargebacks (Dean 
 - After changing any executor, verify a real fire's `support_fires.result` steps — not just the
   Slack banner.
 
+## Alerts + promise check (2026-10-09)
+
+**Why:** things failed silently — Kyle Consolie's $50 refund was created "succeeded", flipped to
+failed 15h later when his chargeback landed, and nobody was told.
+
+- **One alerts path:** `alert({ kind, title, lines, email, caseId, severity, stripe, once })` in
+  `lib/alerts.js` posts ONE top-level message (never a thread reply) to `SLACK_ALERTS_CHANNEL_ID`,
+  falling back to `SLACK_SUPPORT_CHANNEL_ID` / `C0B745W8BHN`, and logs `alert.<kind>` to app_logs.
+  It never throws. `once: { event, key }` claims the key atomically in app_logs so it alerts once.
+  Wired in: chargeback + early fraud warning (webhook), refund failed/canceled (webhook), failed or
+  held support plays (`lib/support/fire.js`), escalations (`execute.js` — dev-channel post kept).
+  **New "something must not be silent" code calls `alert()` — don't add another Slack/email path.**
+- **Refund watch:** the webhook handles `charge.refund.updated` / `refund.updated` / `refund.failed`.
+  A refund that turns failed/canceled alerts with the reason and reopens the member's latest case
+  (`reopenLatestCase` in `lib/support/caseFor.js`) with an admin note. Once per refund + status
+  (`refund.failure_alerted`). The event must be enabled on Stripe endpoint `we_1TYcT9AhvJ5jyCLHVUtQydHK`.
+- **Daily promise check:** `/api/cronPromiseCheck` (15:30 UTC, `lib/promiseCheck.js`) re-checks 14
+  days of `admin.refund`, `admin.cancel_subscription`, `admin.billing_credit`, `admin.grant_access`,
+  `admin.account_deleted`, `admin.member_banned` (+ support-agent fire refunds) against live Stripe
+  + Neon. One alert per mismatch, once (`promise_check.flagged`, key `app_logs:<id>`).
+  `?dryRun=1` returns findings without posting or logging. **Any new action that promises a member
+  something must log an app_logs event the check can verify** (ids + promised date), and add a check.
+
 ## Commands
 
 ```bash
