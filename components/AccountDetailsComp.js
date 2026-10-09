@@ -76,7 +76,7 @@ export default function AccountDetailsComp({
                     <PreferencesSection {...(preferences ?? {})} />
                 </Section>
                 <Section data={support}>
-                    <SupportSection {...(support ?? {})} userId={userId} />
+                    <SupportSection {...(support ?? {})} userId={userId} token={token} />
                 </Section>
             </div>
         </>

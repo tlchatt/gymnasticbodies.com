@@ -27,6 +27,9 @@
  *   }>
  *   userId : string                      — required for the send actions. If missing,
  *                                          reply / contact-support degrade gracefully.
+ *   token  : string                      — the member's session token (from the page URL).
+ *                                          Sent as the Bearer token; the endpoint takes the
+ *                                          sender from it, not from userId.
  *
  * Interactions (both POST /api/user/support-message):
  *   • Contact Support (Messages card) → { userId, subject, body }  (optimistic append)
@@ -281,8 +284,8 @@ function MessageBubble({ m }) {
 }
 
 // ─── component ────────────────────────────────────────────────────────────────
-export default function SupportSection({ messages = [], cases = [], userId = null }) {
-    const canSend = !!userId;
+export default function SupportSection({ messages = [], cases = [], userId = null, token = null }) {
+    const canSend = !!userId && !!token;
 
     const [msgs, setMsgs] = useState(() => messages);
     const [showAllMessages, setShowAllMessages] = useState(false);
@@ -318,7 +321,7 @@ export default function SupportSection({ messages = [], cases = [], userId = nul
     async function postMessage(payload) {
         const res = await fetch('/api/user/support-message', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
             body: JSON.stringify(payload),
         });
         const data = await res.json().catch(() => ({}));

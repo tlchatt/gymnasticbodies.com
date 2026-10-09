@@ -4,6 +4,7 @@ import { support_emails, support_cases } from '@/Drizzle/db/schema';
 import { and, eq, or, desc } from 'drizzle-orm';
 import { getUserWithId } from '@/lib/userSettings';
 import { logger } from '@/lib/logger';
+import { getSessionUserId } from '@/lib/sessionUser';
 import { fireCaseToSlack } from '@/lib/support/autofire';
 import { randomBytes } from 'crypto';
 
@@ -26,10 +27,21 @@ export async function OPTIONS() {
 
 export async function POST(request) {
     try {
-        const { userId, caseId, subject, body } = await request.json();
+        // The sender is whoever owns the live session behind the Bearer token — never the
+        // userId in the body. The support agent acts on these messages (cancel, refund,
+        // delete), so a body userId alone must not be able to speak for a member.
+        const userId = await getSessionUserId(request);
+        if (!userId) {
+            return NextResponse.json({ error: 'Your sign-in has expired. Please sign in again at my.gymnasticbodies.com to send a message.' }, { status: 401, headers: CORS });
+        }
+
+        const { userId: bodyUserId, caseId, subject, body } = await request.json();
+        if (bodyUserId && bodyUserId !== userId) {
+            logger.warn('support.message_userid_mismatch', { userId, bodyUserId });
+        }
         const trimmedBody = typeof body === 'string' ? body.trim().slice(0, MAX_BODY_LENGTH) : '';
-        if (!userId || !trimmedBody) {
-            return NextResponse.json({ error: 'userId and body are required.' }, { status: 400, headers: CORS });
+        if (!trimmedBody) {
+            return NextResponse.json({ error: 'body is required.' }, { status: 400, headers: CORS });
         }
 
         const user = await getUserWithId(userId);
