@@ -419,7 +419,7 @@ This is a **Next.js 15 fitness platform** (Gymnastic Bodies) providing user acco
 - **SendGrid** (`@sendgrid/mail`) — configured in `lib/sendgrid.js`
 - Used for: credential emails, subscription cancellation notices, error alerts, contact form, outbound support/marketing sends
 - All outbound mail sets `replyTo: support@gymnasticbodies.com` so replies route through the support Google Group and are picked up by Gmail sync
-- **Do not send outbound email without recording it in `outbound_emails`** — use `sendOutboundSupportEmail` CLI or `POST /api/admin/outbound/send` so replies auto-case correctly
+- **Do not send outbound email without recording it in `outbound_emails`** — use `sendOutboundSupportEmail` CLI or `POST /api/admin/outbound/send`; support sends must go on a case (`lib/support/sendSupport.js`)
 
 ### Storage
 
@@ -860,20 +860,36 @@ Defined in `Drizzle/db/schema.ts`. One row per recipient per send.
 | `sent_at` | timestamp | When it was sent (defaults to `NOW()`) |
 | `case_id` | integer | Set by Gmail sync when a reply creates a case |
 
-### Auto-case creation rules (Gmail sync)
+### Case rules — every inbound message is a case (2026-10-09)
 
-Every time Gmail syncs (`/api/admin/gmail/sync`), each inbound email is evaluated against `outbound_emails`:
+Owner's core rule (`claudePlans/communication-flows.md`): **a message from a customer IS a case; our reply is a
+communication on that case.** Marketing and administrative automated sends are not cases — but a member's reply to
+ANY of them is inbound support and gets a case. One picker decides the case for every inbound path (Gmail sync,
+in-app message): **`lib/support/caseFor.js` → `caseForInbound`**. Never re-implement these rules in a route.
 
-| Inbound email is... | What happens |
+| Member sends… | What happens |
 |---|---|
-| Reply to a `support` outbound (within 90 days) | Case auto-created: title `[Response: <campaign>]`, priority `high`. `outbound_emails.case_id` is set. Case badge appears in Outbound tab. |
-| Reply to a `marketing` outbound | **No case.** Lands as a plain ticket in the inbox only. |
-| No match (cold inbound — contact form, etc.) | **No case.** Lands as a plain ticket in the inbox only. |
-| From `@gymnasticbodies.com` internal sender | Skipped entirely — not inserted. |
+| A **reply** to our support email, case still open | Added to that case |
+| A **reply**, case closed/resolved **< 60 days** ago | That case is **reopened** (status `open`) |
+| A **reply**, case closed **≥ 60 days** ago | **New case**, `admin_notes` "Continues case #N" |
+| A **fresh** message, member has an OPEN case (open/pending/reopened/escalated) | Added to the open case |
+| A **fresh** message, no open case | **New case**, linked back to their last case ("Continues case #N") |
+| From an `@gymnasticbodies.com` sender | Skipped by the sync — not inserted |
 
-Cases are only auto-created for replies to `support` outbound emails. Everything else stays as a plain ticket until manually promoted.
-
-The reply-detection window is **90 days** from `sent_at`. `findOutboundMatch()` in `app/api/admin/gmail/sync/route.js` does the lookup.
+- **"Is it a reply, and to which case?"** Every support email we send carries the case id in its Message-ID
+  (`<case-123.<random>@gymnasticbodies.com>`, plus `X-GB-Case`); the sync reads it back from In-Reply-To /
+  References. Fallback: the case of an earlier message in the same `gmail_thread_id`. A header/thread match is only
+  trusted when that case belongs to the same sender. Then: the member's open case by email (case-insensitive) / user id.
+- **Every support send goes through `lib/support/sendSupport.js` → `sendCaseEmail`** (admin message reply, case-page
+  reply, support agent reply + escalation notice, `/api/admin/outbound/send` type support, `support.js reply /
+  send-email / sendOutboundSupportEmail`). It refuses a send with no case, stamps the Message-ID, and always records:
+  `support_replies` when replying to a specific message as a person, otherwise `outbound_emails` (type `support`, `case_id`).
+- A support-agent play (`support_fires`) must have a `case_id` — `/api/support/case` uses the member's open case or refuses.
+- `outbound_emails.type`: `support` (on a case) · `marketing` · `administrative` (automated account/billing/membership
+  notices — `renewal_auto_drip`, `system_billing_notice`, login details, password reset, email change, subscription
+  cancelled; full body recorded via `lib/recordOutbound.js`, no case).
+- When a reply arrives to one of our case-less automated sends, the sync points that `outbound_emails` row at the new
+  case (`case_id`) so the Outbound tab shows a Case badge.
 
 ### Outbound tab in the inbox
 
