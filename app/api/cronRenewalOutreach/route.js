@@ -3,7 +3,7 @@
 // 'administrative', no case. A member reply becomes a support case through the Gmail sync.
 //
 // Agreed rules (owner 2026-10-09), applied in this order:
-//   1. candidates: viewed /renew 24–96 hours ago
+//   1. candidates: their LATEST /renew view was 24–96 hours ago (a new view starts a new window)
 //   2. drop anyone who has since paid by ANY route (renewal.success / signup.success /
 //      offer.success after their page view)
 //   3. drop anyone active right now — Neon migration_type 'current', or a live Stripe subscription
@@ -11,7 +11,8 @@
 //      Stripe is checked last, only for the few candidates every other rule let through.
 //   4. drop banned members (user.banned) and anyone on the payment block list
 //   5. drop anyone with an OPEN support case (closed cases don't block)
-//   6. drop anyone sent THIS email in the last 30 days (other emails don't block it)
+//   6. one per day while in the window: drop anyone sent THIS email in the last 20 hours, or already
+//      sent it 3 times since their latest view (day 1 / day 2 / day 3). Other emails don't block it.
 //   7. drop bounced / invalid / spam addresses (user.email_status)
 //   8. send "Hi {first name}," / "Hi there," from + reply-to support@
 //
@@ -64,14 +65,15 @@ export async function GET(request) {
   // 1. Candidates + every per-member fact the DB rules need, in one query. All email comparisons
   // are lower(trim()) — app_logs keeps whatever case the browser sent.
   const rows = await sql`
-    WITH c AS (
-      SELECT LOWER(TRIM(email)) AS email, MIN(ts) AS first_view
+    WITH v AS (
+      SELECT LOWER(TRIM(email)) AS email, MAX(ts) AS last_view, MIN(ts) AS first_view
       FROM app_logs
-      WHERE event = 'renew.page_view'
-        AND ts > NOW() - INTERVAL '96 hours' AND ts < NOW() - INTERVAL '24 hours'
+      WHERE event = 'renew.page_view' AND ts > NOW() - INTERVAL '96 hours'
         AND email IS NOT NULL AND TRIM(email) <> ''
       GROUP BY 1
     ),
+    -- the window runs from the member's latest view: 24–96 hours after it
+    c AS (SELECT email, first_view, last_view FROM v WHERE last_view < NOW() - INTERVAL '24 hours'),
     -- one Neon user per candidate email (prefer a 'current' row if an address has two)
     uu AS (
       SELECT DISTINCT ON (LOWER(email)) LOWER(email) AS email, id, name, migration_type, banned, email_status
@@ -85,7 +87,9 @@ export async function GET(request) {
            EXISTS (SELECT 1 FROM support_cases sc WHERE sc.status = ANY(${OPEN_CASE_STATUSES})
                      AND (LOWER(sc.from_email) = c.email OR (u.id IS NOT NULL AND sc.user_id = u.id))) AS open_case,
            EXISTS (SELECT 1 FROM outbound_emails o WHERE o.campaign = ${CAMPAIGN}
-                     AND LOWER(TRIM(o.to_email)) = c.email AND o.sent_at > NOW() - INTERVAL '30 days') AS sent_recently
+                     AND LOWER(TRIM(o.to_email)) = c.email AND o.sent_at > NOW() - INTERVAL '20 hours') AS sent_today,
+           (SELECT COUNT(*)::int FROM outbound_emails o WHERE o.campaign = ${CAMPAIGN}
+                     AND LOWER(TRIM(o.to_email)) = c.email AND o.sent_at >= c.last_view) AS sent_this_window
     FROM c
     LEFT JOIN uu u ON u.email = c.email
     ORDER BY c.email`;
@@ -98,7 +102,8 @@ export async function GET(request) {
     if (r.migration_type === 'current') { skip('current_in_neon', r.email); continue; }
     if (r.banned) { skip('banned', r.email); continue; }
     if (r.open_case) { skip('open_support_case', r.email); continue; }
-    if (r.sent_recently) { skip('sent_this_email_last_30d', r.email); continue; }
+    if (r.sent_today) { skip('sent_this_email_today', r.email); continue; }
+    if (r.sent_this_window >= 3) { skip('sent_3_this_window', r.email); continue; }
     if (r.email_status) { skip('email_status_flagged', r.email); continue; }
     survivors.push(r);
   }
