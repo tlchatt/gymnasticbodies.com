@@ -15,6 +15,7 @@ import {
     sendInternalAlertEmail,
 } from '@/lib/preventionEmails';
 import { logger } from '@/lib/logger';
+import { banMember } from '@/lib/blocklist';
 import { db } from '@/Drizzle/index.ts';
 import { app_logs, support_cases, user_setting } from '@/Drizzle/db/schema';
 import { and, eq, desc } from 'drizzle-orm';
@@ -294,6 +295,26 @@ async function handleDisputeCreated(dispute) {
 
     const member = await resolveMember({ customerId, email: chargeEmail });
 
+    // (a2) Ban the member everywhere (owner rule 2026-10-08): cancel every subscription, ban + sign
+    // out every account, and block every card/email/customer they used so checkout refuses them.
+    let ban = null;
+    let banError = null;
+    try {
+        ban = await banMember({
+            customerIds: [customerId],
+            emails: [chargeEmail, member.email],
+            cardFingerprints: [charge?.payment_method_details?.card?.fingerprint],
+            reason: `Chargeback ${disputeId} (${reason}, ${amountUsd ?? '?'})`,
+            actor: 'stripe-webhook',
+        });
+    } catch (err) {
+        banError = err?.message ?? String(err);
+        logger.error('dispute.ban_failed', { disputeId, customerId, error: err });
+    }
+    const banLine = ban
+        ? `Banned (chargeback policy): accounts ${ban.accounts.join(', ') || 'none found'}; subscriptions cancelled ${ban.cancelled.length}; blocked ${ban.cards.length} card(s), ${ban.emails.length} email(s), ${ban.customers.length} Stripe customer(s).`
+        : `BAN FAILED: ${banError} — ban this member by hand.`;
+
     // (b) Support case.
     const title = `CHARGEBACK — ${reason} — $${amountUsd ?? '?'}`;
     const adminNotes = [
@@ -304,6 +325,7 @@ async function handleDisputeCreated(dispute) {
         `Evidence due: ${evidenceDueBy}`,
         `Customer: ${member.email ?? 'unknown'} (Stripe ${customerId ?? 'unknown'})`,
         `Policy: all card payment methods were detached and the default payment method cleared (never-rebill a disputing cardholder). Cards detached: ${cardsDetached}${detachError ? ` — DETACH FAILED: ${detachError} (detach manually in Stripe)` : ''}.`,
+        banLine,
         `Action needed: submit evidence in Stripe before the deadline, or accept the dispute — do not leave it to expire by default.`,
     ].join('\n');
     let caseId = null;
@@ -334,6 +356,7 @@ async function handleDisputeCreated(dispute) {
             `Stripe customer: ${customerId ?? 'unknown'}`,
             ``,
             `Cards detached (never-rebill policy): ${cardsDetached}${detachError ? ` — DETACH FAILED: ${detachError}` : ''}`,
+            banLine,
             caseId ? `Support case: #${caseId} (https://app.gymnasticbodies.com/admin/cases/${caseId})` : `Support case: creation FAILED — open one manually.`,
             ``,
             `Respond in Stripe before the evidence deadline — disputes left alone are lost by default.`,
@@ -351,6 +374,7 @@ async function handleDisputeCreated(dispute) {
         evidenceDueBy,
         cardsDetached,
         ...(detachError && { detachError }),
+        ban: ban ?? { error: banError },
         caseId,
     });
 }
