@@ -11,6 +11,9 @@
  */
 import { corsJson, corsOptions, readWorkoutState, writeWorkoutState, resolveWorkoutUserId } from "@/lib/workout";
 import { logger } from "@/lib/logger";
+import { db } from "@/Drizzle/index.ts";
+import { user } from "@/Drizzle/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function OPTIONS() { return corsOptions(); }
 
@@ -24,18 +27,22 @@ export async function GET(request) {
         const userId = await resolveWorkoutUserId(request, request.nextUrl.searchParams.get('userId'));
         if (!userId) return corsJson({ error: 'userId required' }, 400);
 
-        const [{ data: level }, { data: thrive }, { data: ap }, { data: lastLoc }] = await Promise.all([
+        const [{ data: level }, { data: thrive }, { data: ap }, { data: lastLoc }, [member]] = await Promise.all([
             readWorkoutState(userId, 'workout_level'),
             readWorkoutState(userId, 'thrive_state'),
             readWorkoutState(userId, 'autopilot_state'),
             readWorkoutState(userId, 'current_location'),
+            db.select({ migrationType: user.migrationType }).from(user).where(eq(user.id, userId)),
         ]);
 
         const levelId = level?.levelId !== undefined && level?.levelId !== null ? Number(level.levelId) : null;
         return corsJson({
             levelId,
             userLevel: levelId !== null ? (LEVEL_NAMES[levelId] || null) : null,
-            isThriveUser: !!(thrive?.permissions || []).length,
+            // Any current member may open Thrive. The thrive_state record only exists for members
+            // who used Thrive on AWS; the Thrive screen creates it on first open, so gating on it
+            // alone walled out every member who joined (or was granted access) after the move.
+            isThriveUser: member?.migrationType === 'current' || !!(thrive?.permissions || []).length,
             apLevel: ap?.level !== undefined ? Number(ap.level) : null,
             lastViewedLevel: level?.lastViewedLevel ?? null,
             // Current place in the app: { path, section }. section is the home-screen levelId
