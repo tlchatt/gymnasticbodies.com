@@ -84,14 +84,15 @@ three **categories**, and each flow has its own rules.
 **campaign rules** (audience, date ranges, exclusions, touches). Past payers are the target audience —
 the baseline only excludes people who are **active right now**.
 
-**Baseline — applies to EVERY marketing email (DRAFT, ⚑ owner to approve as a set):**
+**Baseline — applies to EVERY marketing email (four rules):**
 1. No banned members (banned account, or card/email on the payment block list).
 2. No unsubscribed members. ✅ Use SendGrid's built-in unsubscribe (a "Marketing" unsubscribe group)
    and connect it to the app. **Not built — none exists today (no link, no record, footer off).**
    Handed to the manager as its own task 2026-10-09 (needs a DB column + a pause decision).
 3. No bounced / invalid / spam-complaint addresses.
-4. Sent from marketing@, reply-to support@; a reply becomes a Support case.
-5. Recorded in `outbound_emails` as type `marketing` with its campaign name; never a case.
+4. Sent from marketing@, reply-to support@; recorded in `outbound_emails` as type `marketing` with its
+   campaign name. The send itself is not a conversation, so not a case — once the member replies we are
+   talking to them, and that IS a Support case (✅ owner 2026-10-09).
 
 Greeting "Hi {first name}," / "Hi there," is a standard for every email in every category (not a marketing rule).
 
