@@ -12,7 +12,6 @@ import { notifySubscriptionCancelled } from '@/lib/cancellationNotice';
 import {
     sendPaymentFailedEmail,
     sendRenewalReminderEmail,
-    sendInternalAlertEmail,
 } from '@/lib/preventionEmails';
 import { logger } from '@/lib/logger';
 import { banMember } from '@/lib/blocklist';
@@ -351,28 +350,8 @@ async function handleDisputeCreated(dispute) {
         logger.error('dispute.case_create_failed', { disputeId, error: err });
     }
 
-    // (c) Internal alert.
-    await sendInternalAlertEmail({
-        subject: `Chargeback filed: $${amountUsd ?? '?'} ${reason} ${member.email ?? 'unknown'}`,
-        lines: [
-            `A chargeback was filed against Gymnastic Bodies.`,
-            ``,
-            `Member: ${member.email ?? 'unknown'}${member.name ? ` (${member.name})` : ''}`,
-            `Amount: $${amountUsd ?? 'unknown'}`,
-            `Reason: ${reason}`,
-            `Evidence due: ${evidenceDueBy}`,
-            `Dispute: ${disputeId}`,
-            `Charge: ${chargeId ?? 'unknown'}`,
-            `Stripe customer: ${customerId ?? 'unknown'}`,
-            ``,
-            `Cards detached (never-rebill policy): ${cardsDetached}${detachError ? ` — DETACH FAILED: ${detachError}` : ''}`,
-            banLine,
-            caseId ? `Support case: #${caseId} (https://app.gymnasticbodies.com/admin/cases/${caseId})` : `Support case: creation FAILED — open one manually.`,
-            ``,
-            `Respond in Stripe before the evidence deadline — disputes left alone are lost by default.`,
-        ],
-    });
-
+    // (c) No email to support@ — it would only come back in as a duplicate message. The Slack alert
+    // below is the notice; the ban is recorded as an action on each banned account (admin.member_banned).
     // (c2) Slack alert (lib/alerts.js — never throws).
     await alert({
         kind: 'chargeback',
@@ -457,24 +436,7 @@ async function handleEarlyFraudWarning(efw) {
         logger.error('efw.case_create_failed', { efwId, error: err });
     }
 
-    await sendInternalAlertEmail({
-        subject: `Early fraud warning: $${amountUsd ?? '?'} ${fraudType} ${member.email ?? 'unknown'}`,
-        lines: [
-            `Stripe Radar flagged a charge as likely fraud (early fraud warning).`,
-            ``,
-            `Member: ${member.email ?? 'unknown'}${member.name ? ` (${member.name})` : ''}`,
-            `Amount: $${amountUsd ?? 'unknown'}`,
-            `Fraud type: ${fraudType}`,
-            `EFW: ${efwId}`,
-            `Charge: ${chargeId ?? 'unknown'}`,
-            `Stripe customer: ${customerId ?? 'unknown'}`,
-            `Already refunded: ${alreadyRefunded ? 'yes' : 'no'}`,
-            ``,
-            `No auto-refund was taken — your call. If you refund, refund fast: a refund issued before the dispute arrives prevents the chargeback from counting.`,
-            caseId ? `Support case: #${caseId} (https://app.gymnasticbodies.com/admin/cases/${caseId})` : `Support case: creation FAILED — open one manually.`,
-        ],
-    });
-
+    // No email to support@ (it would come back in as a duplicate) — the Slack alert below is the notice.
     await alert({
         kind: 'early_fraud_warning',
         severity: 'critical',

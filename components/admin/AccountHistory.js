@@ -34,6 +34,8 @@ function actionLabel(event, data = {}) {
           : 'Cancelled subscription (immediate)';
     case 'admin.refund':
       return `Refunded ${data.amount != null ? `$${(Number(data.amount) / 100).toFixed(2)}` : 'a payment'}${data.reason ? ` — ${data.reason}` : ''}`;
+    case 'admin.member_banned':
+      return `Banned — ${data.reason || 'chargeback'}${data.cancelled?.length ? ` · ${data.cancelled.length} subscription(s) cancelled` : ''}${data.cards?.length ? ` · ${data.cards.length} card(s) blocked` : ''}`;
     default:
       return event.replace(/^admin\./, '').replace(/_/g, ' ');
   }
