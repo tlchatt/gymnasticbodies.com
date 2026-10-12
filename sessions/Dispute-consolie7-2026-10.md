@@ -100,3 +100,30 @@ The promise check is unaffected by case status (still claimed, row 538996).
 
 - 2026-10-12: Slack thread reply DROPPED (manager: Greggory answered Luke himself). Correction email still held for his ruling.
 - 2026-10-12: Correction email SENT as drafted (Greggory approved via manager 97dab3f3, "Correciton eamil is fine", verified with owner-said.js) — outbound_emails #68516 on case #830, Message-ID <case-830.03bfdc399a26e03b@gymnasticbodies.com>. Case #830 re-closed with a dated note.
+
+## 2026-10-12 — Phone as a ban identity (exploratory, read-only; manager request)
+
+Greggory: "Adding a number if we have on might be a good idea." Nothing changed.
+
+1. **Kyle:** phone `3155755638`. It's in Neon `user_setting` (subscription).data.phone and on his Oct 6 charge's
+   `billing_details.phone`. Stripe `customer.phone` is null. There's no phone in his support emails, and Neon has no
+   column named *phone* anywhere: it lives only in `user_setting.data`.
+2. **Collection:** only new signups collect one. `/subscribe` uses `components/PaymentPortal.js`, where phone is a
+   required free-text field. It goes to `create-subscription`, then onto the Stripe customer and the card's billing details.
+   Renew (`RenewalPortal.js` sends `'N/A'`) and offer reuse whatever `user_setting.data.phone` already holds.
+   It's never validated or normalized.
+   **Banned accounts (10):** 5 have a real number: consolie7, fomanyif, thedean777777 (Neon only; Stripe says N/A),
+   steven.r.michael.jr, bettspr (+44…). The other 5 have `N/A`.
+3. **Radar:** there's no default phone list. Defaults are card BIN/country/fingerprint, charge description,
+   client IP country/address, customer ID, email, email domain (docs.stripe.com/radar/lists). There's also no
+   built-in phone rule attribute (docs.stripe.com/radar/rules/supported-attributes). A phone block in Stripe would
+   need a custom *string* list plus a custom rule on metadata (`::customer:phone::`,
+   docs.stripe.com/radar/rules/reference#metadata-attributes). Custom lists and rules need **Radar Plus or Pro**
+   (docs.stripe.com/radar/how-radar-works). The account has only the 9 default lists today.
+
+Sketch: add `'phone'` to the `blocked_payment_identities.type` CHECK (raw SQL), stored digits-only.
+`banMember` collects phones from `user_setting.data.phone`, Stripe `customer.phone` and charge
+`billing_details.phone`, skipping N/A. `blockedPaymentReason` gains `phone`: the form value in create-subscription,
+the stored phone in renew/offer, plus `pm.billing_details.phone`. Our table is enough because every checkout goes
+through our routes, so the Radar mirror is optional and needs Radar Plus. Caveat: phone is unverified free text,
+so it's a weak signal (like email). The card fingerprint stays the block that matters.
