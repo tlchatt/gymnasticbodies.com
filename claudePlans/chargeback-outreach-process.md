@@ -35,9 +35,9 @@ a CHARGEBACK section in the investigate prompt (playbook: outreach first, refund
 never refund the disputed charge, ban only per rules); `ban_member` added to actions, params and
 labels.
 
-**Reminders (automatic, in the existing daily /api/cronPromiseCheck):**
-- open chargeback case, no member reply after **7 days** → Slack alert "no response: ban? / file evidence"
-  (Q2);
+**Reminders (automatic, in the existing daily /api/cronPromiseCheck). Keep these two only if Greggory confirms:**
+- ~~7-day no-reply nudge~~ dropped. A separate daily Slack digest (its own task) will group stale cases by
+  type and age, chargebacks included (Greggory, Q2).
 - **5 days before** the evidence due date → Slack alert with the deadline;
 - dispute closed **won** → alert "refund the disputed charge now as promised"
   (needs `charge.dispute.closed` enabled on the webhook).
@@ -53,5 +53,6 @@ No schema change.
 
 ## Open questions for Greggory
 1. ~~Fraud-coded disputes: auto-ban?~~ **Answered: no.** No automatic ban for any dispute (Slack, 2026-10-12).
-2. No reply after 7 days: Slack nudge, or automatic ban? Recommend **nudge**.
+2. ~~No reply after 7 days?~~ **Answered: Slack nudge, built separately** as a daily stale-case digest (not in this build).
+4. Keep the two dispute reminders (evidence due in 5 days; dispute won → refund it)? Recommend **yes**.
 3. Access: keep until the paid period ends (cancel at period end)? Or end now? Recommend **period end**.
