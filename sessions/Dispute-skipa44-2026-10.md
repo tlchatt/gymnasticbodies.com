@@ -200,3 +200,4 @@ Accordingly." The ban stays.
   August 24." The Slack quote was updated. Not sent.
 - **Reordered (15:32 UTC, per Greggory):** the chargeback offer and steps come first, then a separate "Your support messages" apology, then the reference notes. Slack quote updated. Not sent.
 - **Fix line reworded (15:34 UTC, per Greggory):** "The problems you described were real. Other members ran into them too, and we shipped fixes for building a day's workout (August 19) and for progressions (August 24), right around when you were running into them." Slack quote updated. Not sent.
+- **Reframed around the dispute (15:36 UTC, per Greggory):** it opens with "we received your dispute … want to make it right", then the offer, steps and cell. Support is cut to 3 sentences, and the activity timeline is one reference line. New subject: "Your August 25 charge: we'd like to make it right". Slack quote updated. Not sent.
