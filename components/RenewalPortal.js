@@ -107,7 +107,7 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
                 return;
             }
 
-            const result = await fetch('/api/stripe/renew-subscription', {
+            let result = await fetch('/api/stripe/renew-subscription', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -126,6 +126,12 @@ export default function RenewalPortal({ email, token, userId, onNameLoaded }) {
                     setLoading(false);
                     return;
                 }
+                // Payment confirmed with the bank — ask the server to verify it and finish.
+                result = await fetch('/api/stripe/renew-subscription', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, subscriptionId: result.subscriptionId }),
+                }).then(r => r.json());
             }
 
             if (!result.success) {

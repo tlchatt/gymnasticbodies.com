@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE, stripe } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscription, deleteStripeCustomer, findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE, isPaidSubscription, cancelUnpaidSubscription, stripe } from '@/lib/stripeServerFunction';
 import { createAndModifyUserInNeon, getUserWithEmail, queryUserSetting, updateUserClassification } from '@/lib/userSettings';
 import { sendCredentialsEmailSG } from '@/lib/sendgrid';
 import { getSubscribePricing } from '@/lib/pricing';
@@ -94,6 +94,19 @@ export async function POST(request) {
                 clientSecret: paymentIntent.client_secret,
                 subscriptionId: subscription.id,
             });
+        }
+
+        // Declined (Stripe returns an 'incomplete' subscription rather than throwing): cancel it and
+        // create no account and no sign-in — nothing is granted until the payment is complete
+        // (owner rule 2026-10-12). A trial counts once the card is on file ('trialing').
+        if (subscription.status !== 'trialing' && !isPaidSubscription(subscription)) {
+            await cancelUnpaidSubscription(subscription.id);
+            logger.warn('signup.payment_declined', { email, data: { subscriptionId: subscription.id, status: subscription.status, paymentIntentStatus: paymentIntent?.status } });
+            return NextResponse.json({
+                message: paymentIntent?.last_payment_error?.message ?? 'Your card was declined. Please try another card.',
+                transaction: false,
+                subscriptionCreated: false,
+            }, { status: 402 });
         }
 
         const impInfo = {

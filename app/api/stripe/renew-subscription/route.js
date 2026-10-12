@@ -1,15 +1,9 @@
 import { NextResponse } from 'next/server';
-import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE } from '@/lib/stripeServerFunction';
+import { createStripeCustomer, attachPaymentMethod, createStripeSubscriptionWithPriceData, deleteStripeCustomer , findActiveStripeSubByEmail, blockedPaymentReason, BLOCKED_PAYMENT_MESSAGE, isPaidSubscription, cancelUnpaidSubscription, retrieveConfirmedSubscription } from '@/lib/stripeServerFunction';
 import { getUserWithEmail, queryUserSetting, updateUserSettingRenewal, updateUserClassification } from '@/lib/userSettings';
 import { getRenewNoHistoryPricing } from '@/lib/pricing';
-import { db } from '@/Drizzle/index.ts';
-import { session } from '@/Drizzle/db/schema';
-import { randomBytes } from 'crypto';
+import { createMemberSession } from '@/lib/sessionUser';
 import { logger } from '@/lib/logger';
-
-function generateSessionToken() {
-    return randomBytes(16).toString('hex'); // 32-char hex string matching better-auth format
-}
 
 function getStripeInterval(term) {
     const t = term?.toLowerCase();
@@ -22,15 +16,55 @@ function getStripeInterval(term) {
     return { interval: 'month', intervalCount: 1 };
 }
 
+// The payment is complete: record it on the member and sign them in. This is the ONLY place
+// this route issues a session (owner rule 2026-10-12: no sign-in on a payment page until the
+// transaction is complete) — never for an email alone, never for an unpaid subscription.
+async function completeRenewal({ user, setting, currentData, customerId, subscription, rawPrice, rawTerm }) {
+    const periodEnd = subscription.items?.data?.[0]?.current_period_end ?? subscription.current_period_end;
+    const renewaldate = new Date(periodEnd * 1000).toISOString();
+
+    await updateUserSettingRenewal(setting, {
+        stripeCustomerId: customerId,
+        stripeSubscriptionId: subscription.id,
+        status: 'active',
+        data: JSON.stringify({
+            ...currentData,
+            status: 'active',
+            renewaldate,
+            price: rawPrice,
+            term: rawTerm,
+        }),
+    }, user.id);
+
+    await updateUserClassification(user.id, 'current', 'stripe');
+
+    const token = await createMemberSession(user.id);
+
+    logger.info('renewal.success', {
+        email: user.email,
+        stripeCustomerId: customerId,
+        stripeSubscriptionId: subscription.id,
+        userId: user.id,
+    });
+
+    return NextResponse.json({
+        success: true,
+        token,
+        userId: user.id,
+        email: user.email,
+        name: user.name,
+    });
+}
+
 export async function POST(request) {
     let newCustomerId = null;
     let createdSubscriptionId = null;
     let email;
     try {
-        let paymentMethodId, overridePrice, overrideTerm;
-        ({ paymentMethodId, email, price: overridePrice, term: overrideTerm } = await request.json());
+        let paymentMethodId, overridePrice, overrideTerm, subscriptionId;
+        ({ paymentMethodId, email, price: overridePrice, term: overrideTerm, subscriptionId } = await request.json());
 
-        logger.info('renewal.attempt', { email, price: overridePrice, term: overrideTerm });
+        logger.info('renewal.attempt', { email, price: overridePrice, term: overrideTerm, data: subscriptionId ? { confirm: subscriptionId } : undefined });
 
         const user = await getUserWithEmail(email);
         if (!user) return NextResponse.json({ success: false, message: 'Account not found.' }, { status: 404 });
@@ -47,20 +81,25 @@ export async function POST(request) {
         const amountCents = Math.round(parseFloat(rawPrice) * 100);
         const { interval, intervalCount } = getStripeInterval(rawTerm);
 
-        // Idempotency: if already subscribed, return success without creating a duplicate
+        // Second step after 3D Secure: the browser confirmed the payment with Stripe. Finish only
+        // if Stripe says that subscription is paid and belongs to this member.
+        if (subscriptionId) {
+            const confirmed = await retrieveConfirmedSubscription(subscriptionId, { email, customerId: setting?.stripeCustomerId });
+            if (!confirmed) {
+                logger.warn('renewal.confirm_rejected', { email, data: { subscriptionId } });
+                return NextResponse.json({ success: false, message: 'We could not confirm that payment. If you were charged, contact support@gymnasticbodies.com.' }, { status: 402 });
+            }
+            return completeRenewal({ user, setting, currentData, customerId: confirmed.customer.id, subscription: confirmed, rawPrice, rawTerm });
+        }
+
+        // Already subscribed: nothing to buy, and no sign-in — they sign in on my. like anyone else.
         if (setting?.stripeSubscriptionId && user.customerSegment === 'stripe') {
             logger.info('renewal.already_active', { email, stripeSubscriptionId: setting.stripeSubscriptionId });
-            const token = generateSessionToken();
-            const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-            await db.insert(session).values({
-                id: randomBytes(16).toString('hex'),
-                token,
-                userId: user.id,
-                expiresAt,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-            });
-            return NextResponse.json({ success: true, token, userId: user.id, email: user.email, name: user.name });
+            return NextResponse.json({
+                success: false,
+                alreadyActive: true,
+                message: 'You already have an active membership — please sign in at my.gymnasticbodies.com.',
+            }, { status: 409 });
         }
 
         // Live-Stripe duplicate guard — the Neon idempotency check above misses subs
@@ -100,7 +139,7 @@ export async function POST(request) {
         });
         createdSubscriptionId = subscription?.id ?? null;
 
-        // Handle 3DS
+        // Handle 3DS — the browser confirms, then calls back with subscriptionId
         const paymentIntent = subscription?.latest_invoice?.payment_intent;
         if (paymentIntent?.status === 'requires_action') {
             logger.info('renewal.3ds_required', { email, subscriptionId: subscription.id });
@@ -111,50 +150,18 @@ export async function POST(request) {
             });
         }
 
-        const periodEnd = subscription.items?.data?.[0]?.current_period_end ?? subscription.current_period_end;
-        const renewaldate = new Date(periodEnd * 1000).toISOString();
+        // Declined (Stripe returns an 'incomplete' subscription rather than throwing): cancel it,
+        // record nothing, sign no one in.
+        if (!isPaidSubscription(subscription)) {
+            await cancelUnpaidSubscription(subscription.id);
+            logger.warn('renewal.payment_declined', { email, data: { subscriptionId: subscription.id, status: subscription.status, paymentIntentStatus: paymentIntent?.status } });
+            return NextResponse.json({
+                success: false,
+                message: paymentIntent?.last_payment_error?.message ?? 'Your card was declined. Please try another card.',
+            }, { status: 402 });
+        }
 
-        await updateUserSettingRenewal(setting, {
-            stripeCustomerId: customerId,
-            stripeSubscriptionId: subscription.id,
-            status: 'active',
-            data: JSON.stringify({
-                ...currentData,
-                status: 'active',
-                renewaldate,
-                price: rawPrice,
-                term: rawTerm,
-            }),
-        }, user.id);
-
-        await updateUserClassification(user.id, 'current', 'stripe');
-
-        // Create a better-auth session directly — auth.api.createSession doesn't exist in v1.5.x
-        const token = generateSessionToken();
-        const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-        await db.insert(session).values({
-            id: randomBytes(16).toString('hex'),
-            token,
-            userId: user.id,
-            expiresAt,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        });
-
-        logger.info('renewal.success', {
-            email: user.email,
-            stripeCustomerId: customerId,
-            stripeSubscriptionId: subscription.id,
-            userId: user.id,
-        });
-
-        return NextResponse.json({
-            success: true,
-            token,
-            userId: user.id,
-            email: user.email,
-            name: user.name,
-        });
+        return await completeRenewal({ user, setting, currentData, customerId, subscription, rawPrice, rawTerm });
     } catch (error) {
         logger.error('renewal.failed', { email, error });
         // Only roll back the new customer when no subscription was created. Once a subscription
