@@ -20,7 +20,7 @@ _Carried over from 2026-10-09 (numbers kept). See Past days for the full 10-09 l
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| 45 | Handoff email to GB: simplified payment timeline (sheet tab 1; 2 outstanding incl. closing period) + transition commitments, all within paid hours; Greggory approves → Gmail draft | `503f1a77-1fc6-47ab-aee0-8877521060fd` | `8073623f` | `9d3ca52d` open | 🟡 dispatched |
+| 45 | Handoff email to GB: simplified payment timeline (sheet tab 1; 2 outstanding incl. closing period) + transition commitments, all within paid hours; Greggory approves → Gmail draft | `503f1a77-1fc6-47ab-aee0-8877521060fd` | `8073623f` | `9d3ca52d` closed | ✅ Gmail DRAFT created r5530409451747818562 (not sent; Greggory pastes wire + sends) |
 | 42 | Promise not kept: Kyle Consolie (consolie7@gmail.com, case #830) told he was refunded $50 on 10-09; refund failed (charge disputed) — correct the record, new reach-out-first process, clear the flag | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | `586270ef` | `9db19a9b` closed | ✅ correction email sent (#68516), cases closed, ban verified, promise-check fix LIVE (b233068); phone → #41 plan; task in review |
 | 41 | Chargeback PROCESS change: reach out + offer refund + manual handling first, instead of today's automatic ban; plan to owner first, then code + CLAUDE.md + Slack alert | `5515a2a6-c824-4c33-8976-50ef6fa480aa` | `6be8fd18` | (with a3eeed47) | 🟡 next for the skipa44 session, after the email |
 | 40 | Support backlog triage: 81 cases waiting on us (25 >30d), 77 unaccepted Slack suggestions, 26 escalations — escalation acks, resolved-issue replies + credits, categorize rest; owner approves each batch | `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c` | `3e08fb83` | `f27d8460` open | 🟡 dispatched |
@@ -239,3 +239,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Greggory: outstanding invoice lines numbered MBBY9YFI-0014/0015/0016 (same series) → relayed to 503f1a77 (email text only; read-only check that 0014 is next).
 - 2026-10-12 — Greggory: "(hours complete)" label on the 0014/0015 lines → relayed to 503f1a77.
 - 2026-10-12 — Greggory APPROVED the handoff email ("…leave a blank. Approved"): Amex letter as is; his pasted "We're going to hand…" paragraph restored as first paragraph (kept "Per your request…" after it; flagged to him); wire = blank. 503f1a77 creating the Gmail draft (not sent).
+- 2026-10-12 — Handoff email draft in Greggory's Gmail (r5530409451747818562), both attachments verified, not sent. Hours 9d3ca52d closed; task 8073623f → review.
