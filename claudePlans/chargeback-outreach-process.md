@@ -89,3 +89,19 @@ Subject: Your {charge_date} charge: we'd like to make it right
 >
 > ---
 > For reference, your account activity (Eastern time): {short factual usage summary since the charge}.
+
+## Administrative escalation (added 2026-10-12, Greggory)
+"Lets make these also become an "administartive escalation" and make a new channel for that. Suggested
+action "Admintratively escalate case for focused manaul handling.""
+
+- New action **`admin_escalate`**, labelled "Administratively escalate case for focused manual handling".
+  It's separate from `escalate` (engineering). On Accept it marks the case as an administrative
+  escalation (case status `escalated` + an `admin_escalation` note/flag; no schema change if a status +
+  admin_notes line is enough) and posts the case to a NEW Slack channel. That channel's id goes in env
+  `SLACK_ADMIN_ESCALATIONS_CHANNEL_ID` (set non-Sensitive, like SLACK_ALERTS_CHANNEL_ID). Fail-and-hold
+  if the post fails.
+- Every chargeback play includes it. The agent may also propose it on other cases needing focused human
+  handling (billing disputes, legal or threat language).
+- Channel (pending Greggory's confirmation): **#gymnasticbodies-admin-escalations**. Invite Greggory
+  Wiley, Luke, Chris, and the GB Support Agent bot. Coach Sommer is not in the Technologic workspace, and
+  the bot can't add new workspace members (that's a Slack admin UI step).
