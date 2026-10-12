@@ -483,7 +483,7 @@ truncated `.webm` renditions are a faithful copy of the only real video that exi
 decodable content. To detect this class of corruption, decode-scan and compare to the header:
 `ffmpeg -v error -i <src> -map 0:v:0 -f null -` (errors = truncated) — do NOT trust the header duration.
 
-**✅ Front Split RESOLVED 2026-09-02 (full-length source found in Blob). ⚠ Thoracic Bridge NOT resolved — see correction below.**
+**✅ Front Split RESOLVED 2026-09-02 (full-length source found in Blob). ✅ Thoracic Bridge replaced 2026-10-12 with the complete original — see below.**
 JW is dead (`cdn.jwplayer.com` 404s all ids) and no local video library exists on this machine — but
 intact sources were recovered from Blob itself:
 - **Front Split:** the intact 45-min master is **`aH1k32u9.mp4`** (818 MB — the blob an earlier session
@@ -498,8 +498,18 @@ intact sources were recovered from Blob itself:
   original file was damaged ("like a scratched DVD" — that is the cut-off). The 27.7-min rebuild from
   clips put the exercises in the wrong order and dropped Thoracic Bridge out of the Intermediate 1
   stretch rotation (member George Belanger reported both, Aug–Oct). An older, COMPLETE copy of the
-  original has since been found and is waiting to be uploaded — that upload is the fix. Do not treat
-  the clip rebuild as a source of truth, and do not claim "27.7 min is all the footage that exists".
+  original was found. Do not treat the clip rebuild as a source of truth.
+  **✅ REPLACED 2026-10-12:** the complete original came from Greggory as two Drive files ("BRs - Group
+  Follow Along Video PART ONE/TWO.mp4", ids `1BruxAPSVRMIrVh3zscZajIdW43e6mqRQ` / `1Q5Gez-wgCBbmWrwcmggJIldbkP4389O8`,
+  1003.7s + 1426.4s). Both decode clean; joined losslessly (concat demuxer, same h264/aac 1080p29.97) →
+  **2430.3s (40:30)**, decode-clean, 72,827 frames — matching the old corrupt header length (2430s) and
+  `my./src/data/videoDurations.json` (2430.43). Web encode: H.264 CRF 22 slow, maxrate 3M, AAC 128k,
+  faststart → 748 MB, uploaded over `2yO4CxF4.mp4`. Still kept OUT of `optimized-manifest.json` (both
+  copies) so the mp4 serves; no VP9 renditions. Prior blob (the 27.7-min rebuild) backed up locally at
+  `/mnt/data/work-backup/gb-thoracic-2026-10-09/` and in the private store at
+  `backups/videos/thoracic-bridge-2026-10-09/2yO4CxF4.prev-2026-10-09.mp4`; the source parts + lossless
+  master are in that local folder (`drive/`). Blob serves `cache-control: max-age=31536000`, so a
+  browser that cached the old file may keep it until its cache drops it.
 
 **The fix pattern (fast, no code deploy needed for playback):** make the served `.mp4` full-length, then
 remove the id from the Blob `optimized-manifest.json` so `getVideoSources` returns `[mp4]` only. A
