@@ -236,3 +236,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — 503f1a77: handoff email draft ready for Greggory review in its window (To c.sommerother@gmail.com + c.sommer@gymfit.tv; Stripe CSV 10 paid invoices $45,000; Amex ownership letter; wire placeholder). Flagged: Stripe 0005 + 0011 open, 0012 paid+refunded.
 - 2026-10-12 — Greggory: "Also include replace AI Gateway keys." → added to handoff commitments (503f1a77).
 - 2026-10-12 — Greggory (reviewing in manager window): reframe opening "Per your request we are going to facilitate the transition of ownership of your assets and … development work … pending the catch up of pyament (coming curront…)" → relayed to 503f1a77; full revised text to come back to manager to show Greggory.
+- 2026-10-12 — Greggory: outstanding invoice lines numbered MBBY9YFI-0014/0015/0016 (same series) → relayed to 503f1a77 (email text only; read-only check that 0014 is next).
