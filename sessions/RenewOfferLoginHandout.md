@@ -78,3 +78,46 @@ Manager relayed owner go-ahead (OWNER VOICE confirmed with owner-said.js). As of
 - `/var/www/Work/Gymfit/claudeTools/testAccountDetails.js` (not in git): signs test accounts in, passes `?token=`. Result 34/40; the 6 failures are stale expectations ("Support History", "Workout Activity", authNet "No Renew button") from the c600523 My Account rebuild — not updated (outside this task).
 - my. `cb096d8`: 401 → sign-out on the two home-screen fetch paths. Lint only; not built.
 - Not done: deploys (manager). Open: .dev service can't start until inotify watches free up (pid 1643 claude.tlchatt.com server + wbw sync-worker hold ~523k of 524,288).
+
+## Session record (written by manager, 2026-10-12)
+
+- **Session ID:** `070445b0-9e33-400a-af2f-9b272ddc7e88` (window "Renew and offer subscription session minting"), worker for board task `2810c30e`, dispatched by manager `987aa382`
+- **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (also changed `/var/www/Work/Gymfit/my.gymnasticbodies.com` and `/var/www/Work/Gymfit/claudeTools/testAccountDetails.js`)
+- **Date:** 2026-10-09 17:09 EDT → 2026-10-12 10:34 EDT (idle over the weekend, waiting on the owner)
+- **Transcript:** `~/.claude/projects/-var-www-Work-Gymfit-app-gymnasticbodies-com/070445b0-9e33-400a-af2f-9b272ddc7e88.jsonl`
+- **Written by:** the manager from the transcript + git, 2026-10-12 ~10:40 EDT. The sections above are the session's own.
+
+### First inputs
+1. Manager dispatch (2026-10-09 17:09): fix item (1) first, it is live: renew/offer routes hand a 7-day login to anyone who posts a subscribed member's email; then items (2)–(5) if the owner agrees.
+2. Owner (2026-10-12 10:05): "No sign in should ever occur on renew / offer or any other payment page, until the transaction is complete."
+3. Manager relay (2026-10-12 10:30, owner voice confirmed): c58c296 is live; go ahead with items 2–5; test with a local production build, no sudo.
+
+### Accomplishments + live status
+| # | Item | Commit | Live |
+|---|---|---|---|
+| 1 | No sign-in on renew/offer/signup until payment completes: already-active → 409 no token; declined → sub cancelled, 402, nothing recorded; 3DS → confirm call checked by `retrieveConfirmedSubscription`; one session minter `createMemberSession`. Also fixes "Renewal failed" after a good 3DS. | app. `c58c296` | LIVE 2026-10-12 (manager, Vercel API `dpl_48wbd8KzY5Dz1FEwoi9w4VCyTuCh`; prod check 409, no token) |
+| 2–4 | classifyUsers + cronMarketingDrip require CRON_SECRET or admin; SendGrid key no longer logged; `migration.js` retired | app. `b87b8e6` | LIVE (manager verified 403 without secret) |
+| 5 | Home-screen fetch calls sign the member out on 401 | my. `cb096d8` | LIVE (main chunk `f3b99186`) |
+| — | `claudeTools/testAccountDetails.js` signs test accounts in, passes `?token=` (not in git) | — | 34/40 pass; 6 are stale checks from the `c600523` My Account rebuild |
+
+### Past use of the hole (as the session found)
+Only 3 `already_active` hits ever: eric.m.k.brown 2026-07-01, jackdendy 2026-08-20, amonaghan 2026-10-02. Each got a session; all look like real members returning, no sign of abuse.
+
+### Owner rule
+"No sign in should ever occur on renew / offer or any other payment page, until the transaction is complete." (2026-10-12)
+
+### NOT tested
+- Paid, declined and 3DS paths: code reading only (no live-key checkout tests, per the standing rule). Only already-active (409) and a bogus confirm id (402) were run.
+- `.dev` would not start: the inotify file-watch limit was used up (claude.tlchatt.com server pid 1643 + wbw sync-worker hold ~523k of 524,288). Everything was tested on a local production build on :3014 instead.
+- my. `cb096d8`: lint only, not built or browser-tested by the session (the manager built and shipped it).
+
+### Open items (as of 2026-10-12 10:40 EDT)
+- Confirm the first cronMarketingDrip run (every 2 min) and the 11:00 UTC classifyUsers run after `b87b8e6` complete normally rather than being refused.
+- 6 stale checks in `testAccountDetails.js` need updating to the new My Account page (out of this task's scope).
+- inotify limit still blocks the `.dev` service.
+- First real paid, declined and 3DS renewals on production should be watched in app_logs.
+
+## Note for Next Session (snapshot as of 2026-10-12 10:40 EDT)
+Session file: `app.gymnasticbodies.com/sessions/RenewOfferLoginHandout.md`.
+As of this time, all five items of task `2810c30e` are committed and live: the payment-page login hole is closed (`c58c296`), the two crons need the cron password, the SendGrid key is out of the logs and `migration.js` is retired (`b87b8e6`), and my. signs out on a 401 from the home screen (`cb096d8`). Nothing is uncommitted or unpushed from this session.
+Next: check the cron runs after `b87b8e6`; watch the first real paid/declined/3DS renewals; update the 6 stale test checks if wanted; free inotify watches so `.dev` can run again.
