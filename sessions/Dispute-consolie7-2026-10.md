@@ -82,3 +82,18 @@ runs counted it (`mismatches: 1, alerted: 0`) and did not re-post. It drops out 
 - `promiseCheck` treats a refund that failed because a dispute was lost as a broken promise forever (within
   the window). It could count `charge_for_pending_refund_disputed` + dispute `lost` as "money returned".
   Ask Greggory whether to send to the manager.
+
+## 2026-10-12 — ban/block verified, cases closed (manager order, task 586270ef)
+
+Order relayed by manager `97dab3f3` (Greggory, 17:37 UTC, confirmed with owner-said.js: "On Kyles case we need to close his case, he has all the propper ban / block proceedure etc right?").
+
+Ban/block check (read-only), all in place:
+- Neon: one account only (no other "consolie" user), `banned = true`, no expiry, 0 live sessions.
+- `blocked_payment_identities`: card fingerprint `bfG7yME0jJChktnR`, email, `cus_VLjINrLPu3AEGG` (all 2026-10-09).
+- Stripe Radar: each value present in `card_fingerprint_blocklist`, `email_blocklist`, `customer_id_blocklist`.
+- Stripe: one customer only (search on email/name), sub canceled, no cards attached. Full scan of all 1,769
+  charges: that card fingerprint appears on no other customer.
+
+Cases: #754 and #830 were already `closed` (10-09); appended the dated note to both
+(refund failed → dispute lost → $50 returned via dispute; ban/block verified; closed per Greggory). No email sent.
+The promise check is unaffected by case status (still claimed, row 538996).
