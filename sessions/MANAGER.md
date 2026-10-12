@@ -5,6 +5,7 @@ Read this FIRST on startup, compaction or rotation (skill `project-review-manage
 - **Manager session ID:** `987aa382-2760-494d-94a5-e595dda95c78` — resume: `tclauder 987aa382-2760-494d-94a5-e595dda95c78`
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
 - **Board client slug:** `gymnastic-bodies`
+- **Project workspace:** `L5` (label "GymnasticBodies" in ~/.config/waybar/workspace-labels.json). Launch every worker with `hyprctl dispatch exec "[workspace name:L5 silent] xdg-terminal-exec …"` and confirm it landed on L5 — never the active workspace.
 - **Review baseline commit:** `12f6aee` (2026-10-08)
 - **Last check-in:** 2026-10-12 ~10:00 ET
 - **WATCH:** first cronMarketingDrip + 11:00 UTC classifyUsers runs after b87b8e6 — must NOT be 403 (CRON_SECRET via Vercel cron Bearer).
