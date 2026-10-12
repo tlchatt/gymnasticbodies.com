@@ -99,3 +99,4 @@ Cases: #754 and #830 were already `closed` (10-09); appended the dated note to b
 The promise check is unaffected by case status (still claimed, row 538996).
 
 - 2026-10-12: Slack thread reply DROPPED (manager: Greggory answered Luke himself). Correction email still held for his ruling.
+- 2026-10-12: Correction email SENT as drafted (Greggory approved via manager 97dab3f3, "Correciton eamil is fine", verified with owner-said.js) — outbound_emails #68516 on case #830, Message-ID <case-830.03bfdc399a26e03b@gymnasticbodies.com>. Case #830 re-closed with a dated note.
