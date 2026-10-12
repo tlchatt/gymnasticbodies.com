@@ -7,7 +7,7 @@ Read this FIRST on startup, compaction or rotation (skill `project-review-manage
 - **Board client slug:** `gymnastic-bodies`
 - **Project workspace:** `L5` (label "GymnasticBodies" in ~/.config/waybar/workspace-labels.json). Launch every worker with `hyprctl dispatch exec "[workspace name:L5 silent] xdg-terminal-exec …"` and confirm it landed on L5 — never the active workspace.
 - **Review baseline commit:** `12f6aee` (2026-10-08)
-- **Last check-in:** 2026-10-12 ~10:00 ET
+- **Last check-in:** 2026-10-12 afternoon (rotation)
 - **WATCH:** first cronMarketingDrip + 11:00 UTC classifyUsers runs after b87b8e6 — must NOT be 403 (CRON_SECRET via Vercel cron Bearer).
 - **WATCH:** server3 226 GB private-Blob upload — /tmp/server3-pass.log + logs/server3-blob-upload.log, pid of scripts/upload-server3-blob.sh; expect SUMMARY … COMPLETE.
 - **WATCH:** first production support autofire after the 2026-10-09 11:35 deploy — expect a support_fires row, NOT support.autofire.failed "http 403" (CRON_SECRET). app_logs ts read 4h ahead in the node driver.
@@ -206,3 +206,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Hub job 1859324a: Greggory — no chargeback 7-day nudge; separate daily Slack support digest (cases by type + age) → new board task created (not dispatched). Relayed to 5515a2a6.
 - 2026-10-12 — Hub job 8164c903: Greggory Q3 — suggested action = cancel access immediately (behind Accept). Relayed to 5515a2a6; Slack reply sent.
 - 2026-10-12 — Hub job d2d3b03b: Greggory — new suggested action 'Administratively escalate case for focused manual handling' + new Slack channel for administrative escalations. Relayed to 5515a2a6; Slack reply sent.
+- 2026-10-12 — ROTATION: manager 987aa382 at ~85% context. Session note sessions/Manager-2026-10-08.md. Waiting on Greggory: chargeback plan/template/channel (5515a2a6), billing reminder test→go live by Oct 14 (48d314cf), Consolie correction (5d20c098), triage batch 1 (6e51a0f5), digest dispatch (f022eeac). New manager launched on L5.
