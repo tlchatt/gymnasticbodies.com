@@ -6,12 +6,24 @@ Read this FIRST on startup, compaction or rotation (skill `project-review-manage
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
 - **Board client slug:** `gymnastic-bodies`
 - **Review baseline commit:** `12f6aee` (2026-10-08)
-- **Last check-in:** 2026-10-09 ~00:15 ET
+- **Last check-in:** 2026-10-12 ~10:00 ET
 - **WATCH:** first production support autofire after the 2026-10-09 11:35 deploy — expect a support_fires row, NOT support.autofire.failed "http 403" (CRON_SECRET). app_logs ts read 4h ahead in the node driver.
 - **Each check-in:** flag any uncommitted work in the tree to its owning session right away — finish and commit, or discard. Nothing gets left to go stale.
 - **Shipping:** workers commit, the manager pushes + verifies (owner rule relayed by worker 071bee16, 2026-10-09). HOLD: do not push while item 8 (member-auth sweep) is incomplete — 7-day sign-in task 745b5dd7 must be lined up before or with that push.
 
-## Today — 2026-10-09
+## Today — 2026-10-12
+
+_Carried over from 2026-10-09 (numbers kept). See Past days for the full 10-09 list._
+
+| # | Item | Session | Task | Hours | Status |
+|---|---|---|---|---|---|
+| 7 | Thoracic Bridge: combine owner's 2 Drive parts, optimize, replace 2yO4CxF4 on prod; then live-now email to the 23 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | `e17309bc` | `ab477709` open since 10-09 17:01 | 🔴 BLOCKED: service account cannot see either Drive file — owner must share them with greggorywiley@tlchatt.com |
+| 9 | AWS shutdown | `41dadbf1-ad9a-4e49-884d-056e98d46760` | `264fa864` | — (37247c62 closed 10-09 13:50) | 🔴 STUCK: local copies done (server3 226 GB + server5 348/348), but the server3 226 GB upload to the private Blob store never finished (blob server3 0); watcher finish-shutdown.sh has waited since 10-09, so cpanel-new-2026 + S3 still billing. Owner to-do: cancel AWS Developer support plan |
+| 18–21 | Renew/offer login hole (LIVE) + crons/sendgrid key/test scripts | `070445b0-9e33-400a-af2f-9b272ddc7e88` | `2810c30e` | `5f58099f` open since 10-09 17:09 | 🔴 waiting on owner since 10-09: plan option a or b (sessions/RenewOfferLoginHandout.md) |
+
+## Past days
+
+### 2026-10-09 (Today list as it stood)
 
 _Carried over from 2026-10-08: items 1–3 (numbers kept)._
 
@@ -153,3 +165,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-09 ~16:10 — Item 12 session (3653640d) closed: findings → 6731479d (high, incl. stale-Accept risk); task 90b3a025 done.
 - 2026-10-09 ~16:20 — October chargeback users (96d475f4) reviewed COMPLETE and closed; hours eca06569 closed 15:25; follow-up task 8d86fe82 (dispute rule, Stripe dispute prevention cost, refunds Joseph $50 / Hollis $75, emails to James Lord + Per Nyberg, Iris). Note: it published a public Blob PDF of the rules at the owner's request.
 - 2026-10-09 17:20 — AWS shutdown worker: deleted stopped Lightsail `cPanel_WHM_for_Linux-1` (snapshot kept). Route 53 kept, none in use by any domain. Last server `cpanel-new-2026` + S3 archive step run automatically once local + private-Blob copies confirm (watcher log `/mnt/data/work-backup/gymfit-aws-final-2026-10-09/logs/finish.log`). Nothing to ship.
+- 2026-10-12 ~10:00 — Monday rollover. Unpushed: b60627f (AWS notes), f077147 (login-hole plan note) — notes only. Blocked/stuck: Thoracic (Drive access), AWS (server3 Blob upload never finished; watcher waiting), login hole (owner a/b since 10-09). Two hours entries open over the weekend (5f58099f, ab477709).
