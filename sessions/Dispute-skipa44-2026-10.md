@@ -189,3 +189,12 @@ Accordingly." The ban stays.
   him to withdraw the dispute.** Added to the Slack plan. The only phone on file is from his second account
   skipa44@gmail.com (user_setting phone 757-641-8891). The email is unchanged unless Greggory wants it to
   mention the call.
+- **Fix-timing sentence (15:30 UTC):** Greggory asked to say the issues were resolved "within 24 hours"
+  of his report. Git (both repos) shows no fix for what he reported shipped within 24h AFTER his message
+  (Aug 25 14:42 ET). Relevant fixes all came BEFORE it: Generate Workout fills an empty day (app bc3d531 +
+  my. 499a36d, Aug 19 10:39 ET) and mastery-step auto-advance (eef6eed, Aug 23 21:06 ET, live Aug 24). After
+  his message: my. 338d48a (Aug 26 15:53 ET, home-screen section vs level, no switch-confirm modals) and
+  my. 7c90f4f (Sep 30, weekly view Play Workout for every guided level). Neither is a progression fix, and
+  neither is verified for him. The draft uses: "Other members had reported similar problems, and we shipped
+  fixes shortly before you wrote: one for building a day's workout on August 19 and one for progressions on
+  August 24." The Slack quote was updated. Not sent.
