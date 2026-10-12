@@ -202,3 +202,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Hub job a6bae56d (Greggory via Slack): sent the chargeback-process plan + 3 questions; billing reminder → told 48d314cf to BUILD with member sends OFF, deploy via manager, then send one test of each email to his test account.
 - 2026-10-12 — Shipped billing reminders 650e07d with member sends OFF (BILLING_REMINDERS_LIVE unset). Smoke: cron 403 w/o secret, magic-link verify 302, renewalStatus 200. Told 48d314cf to send Greggory the 2 test emails at gwtest@tlchatt.com.
 - 2026-10-12 — Hub job 97ec1c8e: Greggory — chargeback steps become support-agent suggested actions (Accept flow). Relayed to 5515a2a6; replied on Slack with the 3 open questions + test-email note.
+- 2026-10-12 — Hub job d6dd831a: Greggory — no auto-ban for any dispute (fraud incl.); only payment removal + case automatic. Relayed to 5515a2a6; Slack reply sent. Q2/Q3 open.
