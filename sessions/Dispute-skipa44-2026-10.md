@@ -147,3 +147,21 @@ purchase IP 98.97.61.133, product description.
   [June 2025 dispute pricing](https://support.stripe.com/questions/june-2025-pricing-updates-for-disputes)
   (US: $15 received + $15 countered).
 - Scripts + raw JSON: session scratchpad only (not committed).
+
+## Outreach — owner decision 2026-10-12 (as of ~15:30 UTC)
+
+Owner (relayed by the manager, confirmed with owner-said.js, session 987aa382, 2026-10-12 15:13 UTC):
+"lets reach out to the custoemr and offer to refudn both charges, kindly ask him to cancel the dispute. Also
+applogize for missing his support thread." + "Tell him he can call me driectly on my cell phone … Upate Slack
+Accordingly." The ban stays.
+
+- **Slack:** posted in the chargeback alert's thread (C0B745W8BHN, thread 1791781593.598729, reply
+  1791818062.524079). Status: draft awaiting owner approval, no refunds issued.
+- **Email:** drafted (subject "Your GymnasticBodies support messages, and a refund"), to go on case #1055
+  via `support.js send-email --case-id=1055`. **NOT sent. Waiting on owner approval of the full text.**
+- **Refunds:** none issued. The owner must name the timing. The Sep 25 charge (`ch_3UJegHAhvJ5jyCLH0MfTBBGi`)
+  can be refunded any time. The Aug 25 charge can't be refunded while it's disputed (Stripe: "You can't
+  issue a refund on a disputed charge until your customer's card issuer decides in your favor").
+- **Still required even if he withdraws:** submit evidence by 2026-11-04, adding his withdrawal confirmation
+  if he sends one. Stripe: "you can still lose the dispute if you don't submit evidence, even if the
+  customer withdrew the dispute."
