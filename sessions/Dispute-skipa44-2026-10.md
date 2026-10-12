@@ -185,3 +185,7 @@ Accordingly." The ban stays.
   fixed), and his account activity. The Slack quote was updated to match. Not sent.
   Note: his messages were stored (support_emails 753/754) but never answered. Why they were missed is not
   confirmed. They were logged with caseId null before the case-picker existed.
+- **Plan step added (15:26 UTC, per Greggory): Greggory will also call him personally to apologise and ask
+  him to withdraw the dispute.** Added to the Slack plan. The only phone on file is from his second account
+  skipa44@gmail.com (user_setting phone 757-641-8891). The email is unchanged unless Greggory wants it to
+  mention the call.
