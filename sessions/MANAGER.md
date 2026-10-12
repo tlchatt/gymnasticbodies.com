@@ -232,3 +232,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Greggory corrected the framing: "Upon paying the folloiwng invoice we agree to ..." (our commitments, not theirs) → relayed to 503f1a77.
 - 2026-10-12 — Greggory: opening = "UPon cusotmer paying the foloowign invoice we agree to ..." → relayed to 503f1a77 as "Upon the customer paying the following invoice, we agree to:".
 - 2026-10-12 — Greggory: "I'll paste teh wire instructions so keep a spot for it." → 503f1a77 adds a Wire instructions placeholder (no invented bank details).
+- 2026-10-12 — Greggory: "Also attach just downloaded ownership letter." → 503f1a77 attaches ~/Downloads/89baf9af-…pdf (Amex National Bank ownership letter, Oct 12; newest of two near-identical downloads).
