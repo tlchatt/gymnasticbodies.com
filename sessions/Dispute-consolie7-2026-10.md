@@ -97,3 +97,5 @@ Ban/block check (read-only), all in place:
 Cases: #754 and #830 were already `closed` (10-09); appended the dated note to both
 (refund failed → dispute lost → $50 returned via dispute; ban/block verified; closed per Greggory). No email sent.
 The promise check is unaffected by case status (still claimed, row 538996).
+
+- 2026-10-12: Slack thread reply DROPPED (manager: Greggory answered Luke himself). Correction email still held for his ruling.
