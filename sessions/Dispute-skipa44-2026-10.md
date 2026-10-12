@@ -168,3 +168,13 @@ Accordingly." The ban stays.
 - **Correction (owner, 15:15 UTC): "Right we ask him to close and then refund."** He withdraws first, then we
   refund: Sep 25 once he confirms the withdrawal, Aug 25 once Amex closes the dispute. The draft and Slack
   were updated (Slack replies 1791818115.818759 and 1791818133.474419). Still not sent, no refunds issued.
+- **Draft revised (15:20 UTC, per Greggory):** it now quotes his two support messages, adds "We pushed a fix
+  for the progression issue on August 24", and lists his usage timeline ("here's what our records show").
+  The Slack reply 1791818062.524079 was rebuilt as the plan, his timeline, his support messages and the
+  quoted draft. Still not sent.
+- **Caution on the Aug 24 line (checked read-only):** "Core B3 → B4" means moving to the next *exercise*
+  (B3 Side Over Arch, ex 15 → B4 Arch Up, ex 16). His B3 has sat at its top mastery step (9, set 131) since
+  2026-07-30. The Aug 24 fix (eef6eed) only advances mastery steps *within* an exercise and stops at the top.
+  "Increase difficulty" also caps at step 9. Moving to B4 needs a manual "select" in the edit screen, which
+  he said he couldn't reach on his phone. So that fix doesn't cover what he reported, and Neon shows he
+  never moved past B3. Whether the edit screen works for him was not tested.
