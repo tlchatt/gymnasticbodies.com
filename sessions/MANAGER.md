@@ -238,3 +238,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Greggory (reviewing in manager window): reframe opening "Per your request we are going to facilitate the transition of ownership of your assets and … development work … pending the catch up of pyament (coming curront…)" → relayed to 503f1a77; full revised text to come back to manager to show Greggory.
 - 2026-10-12 — Greggory: outstanding invoice lines numbered MBBY9YFI-0014/0015/0016 (same series) → relayed to 503f1a77 (email text only; read-only check that 0014 is next).
 - 2026-10-12 — Greggory: "(hours complete)" label on the 0014/0015 lines → relayed to 503f1a77.
+- 2026-10-12 — Greggory APPROVED the handoff email ("…leave a blank. Approved"): Amex letter as is; his pasted "We're going to hand…" paragraph restored as first paragraph (kept "Per your request…" after it; flagged to him); wire = blank. 503f1a77 creating the Gmail draft (not sent).
