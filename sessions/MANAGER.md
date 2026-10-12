@@ -2,7 +2,7 @@
 
 Read this FIRST on startup, compaction or rotation (skill `project-review-manage`).
 
-- **Manager session ID:** `987aa382-2760-494d-94a5-e595dda95c78` — resume: `tclauder 987aa382-2760-494d-94a5-e595dda95c78`
+- **Manager session ID:** `97dab3f3-139d-4c56-b41e-ee6e128dd91a` — resume: `tclauder 97dab3f3-139d-4c56-b41e-ee6e128dd91a` (window "Gymnastic Bodies manager takeover", L5; took over from 987aa382 on 2026-10-12)
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
 - **Board client slug:** `gymnastic-bodies`
 - **Project workspace:** `L5` (label "GymnasticBodies" in ~/.config/waybar/workspace-labels.json). Launch every worker with `hyprctl dispatch exec "[workspace name:L5 silent] xdg-terminal-exec …"` and confirm it landed on L5 — never the active workspace.
@@ -27,7 +27,7 @@ _Carried over from 2026-10-09 (numbers kept). See Past days for the full 10-09 l
 | 39 | Billing reminder before charges (trial/credit end, monthly, yearly) — owner approved; ~22 credited resume Oct 28; owner approves wording + Stripe setting changes | `48d314cf-223f-4e4c-9dea-7e0cf096139f` | `e19a9766` | `b0b3db55` open | 🟡 dispatched |
 | 37 | Review: GB dispute rate vs Visa VAMP / Mastercard ECP thresholds (read-only Stripe analysis + recommendation) | `b49d223a-5791-4217-a21b-be9f3b0e35d8` | `a3f984c2` | `f0de0a4a` closed | ✅ report done (90d 0.72%, 30d 0.55%, WATCH vs Stripe 0.75%); task in review; session closed |
 | 7 | Thoracic Bridge: combine owner's 2 Drive parts, optimize, replace 2yO4CxF4 on prod; then live-now email to the 23 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | `e17309bc` | `ab477709` open since 10-09 17:01 | ⏸ session closed until the owner shares the 2 Drive files with greggorywiley@tlchatt.com; task todo |
-| 9 | AWS shutdown | `41dadbf1-ad9a-4e49-884d-056e98d46760` | `264fa864` | — (37247c62 closed 10-09 13:50) | ✅ shutdown done 10-12; session closed. WATCH: server3 226 GB → private Blob upload (detached, ETA ~5 PM). Owner: cancel Developer support plan; 3 Lightsail snapshots ~| 9 | AWS shutdown | `41dadbf1-ad9a-4e49-884d-056e98d46760` | `264fa864` | — (37247c62 closed 10-09 13:50) |00–150/mo kept |
+| 9 | AWS shutdown | `41dadbf1-ad9a-4e49-884d-056e98d46760` | `264fa864` | — (37247c62 closed 10-09 13:50) | ✅ shutdown done 10-12; session closed. WATCH: server3 226 GB → private Blob upload (detached, ETA ~5 PM). Greggory: cancel Developer support plan; 3 Lightsail snapshots ~$100–150/mo kept |
 | 18–21 | Renew/offer login hole (LIVE) + crons/sendgrid key/test scripts | `070445b0-9e33-400a-af2f-9b272ddc7e88` | `2810c30e` | `5f58099f`+`8e0da0b7` closed | ✅ all 5 items live + verified; session closed 10-12 |
 
 ## Past days
