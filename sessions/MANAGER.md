@@ -205,3 +205,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Hub job d6dd831a: Greggory — no auto-ban for any dispute (fraud incl.); only payment removal + case automatic. Relayed to 5515a2a6; Slack reply sent. Q2/Q3 open.
 - 2026-10-12 — Hub job 1859324a: Greggory — no chargeback 7-day nudge; separate daily Slack support digest (cases by type + age) → new board task created (not dispatched). Relayed to 5515a2a6.
 - 2026-10-12 — Hub job 8164c903: Greggory Q3 — suggested action = cancel access immediately (behind Accept). Relayed to 5515a2a6; Slack reply sent.
+- 2026-10-12 — Hub job d2d3b03b: Greggory — new suggested action 'Administratively escalate case for focused manual handling' + new Slack channel for administrative escalations. Relayed to 5515a2a6; Slack reply sent.
