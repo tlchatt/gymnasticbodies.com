@@ -196,3 +196,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — OWNER: Slack thread updated with corrected refund handling (Sep 25 now; Aug 25 when dispute closes); change the chargeback process to reach out + offer refund + manual handling first → task 6be8fd18 on session 5515a2a6 (plan first).
 - 2026-10-12 — OWNER: "Right we ask him to close and then refund." → refunds only after he withdraws the dispute; relayed to 5515a2a6.
 - 2026-10-12 — skipa44 email SENT 11:33 ET (approved by Greggory). Promise-check alert for Kyle Consolie → task 586270ef, session 5d20c098 (L5), hours 9db19a9b. Chargeback-process task 6be8fd18 waits on Greggory's 3 answers in the skipa44 window.
+- 2026-10-12 — Greggory called Robert Ander (no answer) and texted him. Waiting on his reply/withdrawal.
