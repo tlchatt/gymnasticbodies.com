@@ -199,3 +199,4 @@ Accordingly." The ban stays.
   fixes shortly before you wrote: one for building a day's workout on August 19 and one for progressions on
   August 24." The Slack quote was updated. Not sent.
 - **Reordered (15:32 UTC, per Greggory):** the chargeback offer and steps come first, then a separate "Your support messages" apology, then the reference notes. Slack quote updated. Not sent.
+- **Fix line reworded (15:34 UTC, per Greggory):** "The problems you described were real. Other members ran into them too, and we shipped fixes for building a day's workout (August 19) and for progressions (August 24), right around when you were running into them." Slack quote updated. Not sent.
