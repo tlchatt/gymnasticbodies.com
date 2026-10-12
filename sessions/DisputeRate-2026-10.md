@@ -82,3 +82,6 @@ Also worth a plain rule: a member who asks to cancel or for a refund within a fe
 
 - Today's open Amex dispute (skipa44@icloud.com, $50, response due 2026-11-04) is the same kind of case the "accept unless we have real evidence" question (task 8d86fe82) covers.
 - Script + raw pull: session scratchpad only (not committed). The pull is read-only: charges since 2026-03-01, all disputes, all early fraud warnings.
+
+## Close-out — 2026-10-12 (manager)
+- Report shipped (ba98869). Task a3f984c2 → review for the owner's decisions (pre-charge reminder, statement descriptor, Visa RDR). Hours f0de0a4a closed; session closed by the manager.

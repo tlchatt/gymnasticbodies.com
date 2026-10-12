@@ -74,3 +74,6 @@ and 3 EBS snapshots from 2017–2018 (~$5/mo total).
   - Route 53 5 zones ≈ $2.50/mo (kept by owner order).
   - RDS manual snapshots (7, ~290 GB) ≈ $1/mo; us-east-2 RDS + EBS / ap-south-1 EBS snapshots ≈ $5.50/mo.
   - Disabled CloudFront, empty Fargate clusters, VPC: ~$0.
+
+## Close-out — 2026-10-12 ~10:35 (manager)
+- Shutdown complete; session closed by the manager on the owner's instruction. The server3 226 GB private-Blob upload keeps running detached (scripts/upload-server3-blob.sh; reading ~7.7 MB/s at 10:29) — the manager watches it. Task 264fa864 → review (owner cancels the Developer support plan; decide on keeping 3 Lightsail snapshots ~$100–150/mo).
