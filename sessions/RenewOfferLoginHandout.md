@@ -69,3 +69,12 @@ As of 2026-10-12:
 - Test: prod build on localhost:3014 (the .dev service would not start — "OS file watch limit reached"; two other node processes, the claude.tlchatt.com server pid 1643 and the wbw sync-worker, hold ~523k of the 524,288 inotify watches). Already-active renew + offer → 409, no token, session count 5→5; bogus confirm id → 402.
 - History: only 3 `already_active` hits ever (eric.m.k.brown 2026-07-01, jackdendy 2026-08-20, amonaghan 2026-10-02) — each got a session from the hole; all look like real members returning, no sign of abuse.
 - Not done: deploy (manager). Items (2)–(5) still waiting for the owner's OK.
+
+## Update 2026-10-12 (later) — items 2–5 done, handed to the manager
+
+Manager relayed owner go-ahead (OWNER VOICE confirmed with owner-said.js). As of 2026-10-12:
+- `c58c296` is LIVE (manager deployed via Vercel API, dpl_48wbd8KzY5Dz1FEwoi9w4VCyTuCh; prod check 409 alreadyActive, no token).
+- app. `b87b8e6`: CRON_SECRET gate on classifyUsers + cronMarketingDrip; SendGrid key log removed; migration.js retired. Tested on local prod build :3014 (403 without secret ×3; Bearer passes).
+- `/var/www/Work/Gymfit/claudeTools/testAccountDetails.js` (not in git): signs test accounts in, passes `?token=`. Result 34/40; the 6 failures are stale expectations ("Support History", "Workout Activity", authNet "No Renew button") from the c600523 My Account rebuild — not updated (outside this task).
+- my. `cb096d8`: 401 → sign-out on the two home-screen fetch paths. Lint only; not built.
+- Not done: deploys (manager). Open: .dev service can't start until inotify watches free up (pid 1643 claude.tlchatt.com server + wbw sync-worker hold ~523k of 524,288).
