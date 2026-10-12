@@ -57,3 +57,15 @@ Test on .dev with requests that stop before Stripe: already-active email → no 
 - (3) `lib/sendgrid.js:271` logs the SendGrid API key (moved from :255).
 - (4) `migration.js` posts to `localhost:3001/api/migration` — route no longer exists; `testAccountDetails.js` sign-in TBD.
 - (5) my. home-screen fetches not signing out on 401 — not yet inspected.
+
+## Update 2026-10-12 — fix committed (`c58c296`), handed to the manager
+
+Owner ruling (2026-10-12): "No sign in should ever occur on renew / offer or any other payment page, until the transaction is complete."
+
+As of 2026-10-12:
+- Sessions are now minted in one place, `createMemberSession` (`lib/sessionUser.js`), called only after a confirmed payment.
+- renew/offer: already-active → 409 `alreadyActive`, no token. Declined ('incomplete') → sub cancelled, 402, nothing recorded. 3DS → page calls back with `subscriptionId`; `retrieveConfirmedSubscription` (`lib/stripeServerFunction.js`) checks active + created < 1h + member's customer/email, then records + signs in. This also fixes the old "Renewal failed" after a successful 3DS.
+- create-subscription (signup): declined → sub cancelled, no account, no sign-in. Trial ('trialing') still counts as complete.
+- Test: prod build on localhost:3014 (the .dev service would not start — "OS file watch limit reached"; two other node processes, the claude.tlchatt.com server pid 1643 and the wbw sync-worker, hold ~523k of the 524,288 inotify watches). Already-active renew + offer → 409, no token, session count 5→5; bogus confirm id → 402.
+- History: only 3 `already_active` hits ever (eric.m.k.brown 2026-07-01, jackdendy 2026-08-20, amonaghan 2026-10-02) — each got a session from the hole; all look like real members returning, no sign of abuse.
+- Not done: deploy (manager). Items (2)–(5) still waiting for the owner's OK.
