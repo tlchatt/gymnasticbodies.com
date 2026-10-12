@@ -231,3 +231,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Greggory: handoff email To = both of Coach Sommer's emails; no Stripe links beyond the paid invoices; attach the Stripe transaction export matching the 10 payments → relayed to 503f1a77.
 - 2026-10-12 — Greggory corrected the framing: "Upon paying the folloiwng invoice we agree to ..." (our commitments, not theirs) → relayed to 503f1a77.
 - 2026-10-12 — Greggory: opening = "UPon cusotmer paying the foloowign invoice we agree to ..." → relayed to 503f1a77 as "Upon the customer paying the following invoice, we agree to:".
+- 2026-10-12 — Greggory: "I'll paste teh wire instructions so keep a spot for it." → 503f1a77 adds a Wire instructions placeholder (no invented bank details).
