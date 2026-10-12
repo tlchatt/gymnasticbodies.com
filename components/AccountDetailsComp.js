@@ -167,7 +167,7 @@ function SubscriptionActions({ data, userId, token }) {
     if (isActive && !isTrial && !hasStripeSub) return null
 
     return (
-        <AccountCard title='Manage Subscription'>
+        <AccountCard id='manage-subscription' title='Manage Subscription'>
             {/* Renew (expired / noncurrent) */}
             {!isActive && (
                 <a

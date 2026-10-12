@@ -32,6 +32,14 @@
       {
         "path": "/api/cronPromiseCheck",
         "schedule": "30 15 * * *"
+      },
+      {
+        "path": "/api/cronBillingReminders?run=trial",
+        "schedule": "15 * * * *"
+      },
+      {
+        "path": "/api/cronBillingReminders?run=billing",
+        "schedule": "0 13 * * *"
       }
     ]
   }

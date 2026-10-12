@@ -1,5 +1,8 @@
 import AccountDetailsComp from '@/components/AccountDetailsComp';
 import { getAccountInformation } from '@/lib/commonFunctions';
+import { headers } from 'next/headers';
+import { auth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
 import { getUserIdForToken } from '@/lib/sessionUser';
 import {
     getProfileSection,
@@ -18,7 +21,17 @@ const settled = (r) => (r.status === 'fulfilled' ? r.value : null);
 
 export default async function page({ searchParams }) {
     const params = await searchParams
-    const token = params.token
+    // A sign-in link from a billing reminder email (lib/memberSignInLink.js) arrives with no
+    // ?token — the magic-link plugin set a normal better-auth session cookie instead. Use that
+    // session's token the same way, so the page and its Bearer calls work unchanged.
+    let token = params.token
+    if (!token) {
+        const cookieSession = await auth.api.getSession({ headers: await headers() }).catch(() => null)
+        token = cookieSession?.session?.token
+        if (token && params.via === 'email_link') {
+            logger.info('member.email_link_signin', { userId: cookieSession.user?.id, email: cookieSession.user?.email })
+        }
+    }
     const emailChanged = params.emailChanged === '1'
     const emailError = params.emailError ?? null
 
@@ -32,6 +45,7 @@ export default async function page({ searchParams }) {
             <div style={{ padding: '40px', textAlign: 'center' }}>
                 {emailChanged && <p>Your email address was updated.</p>}
                 {emailError && <p>That email verification link did not work. Please request a new one.</p>}
+                {params.signInLink && <p>That sign-in link has expired or was already used.</p>}
                 <h2>Please sign in again.</h2>
                 <p>
                     Your sign-in has expired. Sign in at{' '}

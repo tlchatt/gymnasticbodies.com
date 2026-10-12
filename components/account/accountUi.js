@@ -48,9 +48,9 @@ const rowStyle = {
 const rowLabelStyle = { color: '#666', fontSize: '0.95rem' };
 const rowValueStyle = { color: '#222', fontSize: '0.95rem', fontWeight: 500, textAlign: 'right' };
 
-export function AccountCard({ title, action, children }) {
+export function AccountCard({ id, title, action, children }) {
     return (
-        <div style={cardStyle}>
+        <div id={id} style={cardStyle}>
             <div style={headerStyle}>
                 <h3 style={titleStyle}>{title}</h3>
                 {action ?? null}
