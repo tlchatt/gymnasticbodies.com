@@ -127,3 +127,4 @@ Sketch: add `'phone'` to the `blocked_payment_identities.type` CHECK (raw SQL), 
 the stored phone in renew/offer, plus `pm.billing_details.phone`. Our table is enough because every checkout goes
 through our routes, so the Radar mirror is optional and needs Radar Plus. Caveat: phone is unverified free text,
 so it's a weak signal (like email). The card fingerprint stays the block that matters.
+- 2026-10-12: Promise-check change built (Greggory "2. y es") — b233068, lib/promiseCheck.js. Dry run on a local production build: mismatches 1 → 0 (Kyle now ok), all else identical. Ready to ship line added to MANAGER.md.
