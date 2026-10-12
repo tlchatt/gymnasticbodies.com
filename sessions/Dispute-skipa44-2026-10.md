@@ -165,3 +165,6 @@ Accordingly." The ban stays.
 - **Still required even if he withdraws:** submit evidence by 2026-11-04, adding his withdrawal confirmation
   if he sends one. Stripe: "you can still lose the dispute if you don't submit evidence, even if the
   customer withdrew the dispute."
+- **Correction (owner, 15:15 UTC): "Right we ask him to close and then refund."** He withdraws first, then we
+  refund: Sep 25 once he confirms the withdrawal, Aug 25 once Amex closes the dispute. The draft and Slack
+  were updated (Slack replies 1791818115.818759 and 1791818133.474419). Still not sent, no refunds issued.
