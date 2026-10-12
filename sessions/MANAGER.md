@@ -20,6 +20,7 @@ _Carried over from 2026-10-09 (numbers kept). See Past days for the full 10-09 l
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
+| 45 | Handoff email to GB: simplified payment timeline (sheet tab 1; 2 outstanding incl. closing period) + transition commitments, all within paid hours; Greggory approves → Gmail draft | `503f1a77-1fc6-47ab-aee0-8877521060fd` | `8073623f` | `9d3ca52d` open | 🟡 dispatched |
 | 42 | Promise not kept: Kyle Consolie (consolie7@gmail.com, case #830) told he was refunded $50 on 10-09; refund failed (charge disputed) — correct the record, new reach-out-first process, clear the flag | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | `586270ef` | `9db19a9b` closed | ✅ correction email sent (#68516), cases closed, ban verified, promise-check fix LIVE (b233068); phone → #41 plan; task in review |
 | 41 | Chargeback PROCESS change: reach out + offer refund + manual handling first, instead of today's automatic ban; plan to owner first, then code + CLAUDE.md + Slack alert | `5515a2a6-c824-4c33-8976-50ef6fa480aa` | `6be8fd18` | (with a3eeed47) | 🟡 next for the skipa44 session, after the email |
 | 40 | Support backlog triage: 81 cases waiting on us (25 >30d), 77 unaccepted Slack suggestions, 26 escalations — escalation acks, resolved-issue replies + credits, categorize rest; owner approves each batch | `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c` | `3e08fb83` | `f27d8460` open | 🟡 dispatched |
@@ -225,3 +226,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — b233068 LIVE: git push triggered Vercel normally this time (deploy 2obvnfq6h Ready). Prod cronPromiseCheck?dryRun=1 → 0 mismatches; cron 401 without secret.
 - 2026-10-12 — #42 Kyle complete: hours 9db19a9b closed, task 586270ef → review. Session 5d20c098 idle; can be closed.
 - 2026-10-12 16:49 — Greggory gave the Thoracic Bridge Drive links (PART ONE 1BruxAPSVRMIrVh3zscZajIdW43e6mqRQ, PART TWO 1Q5Gez-wgCBbmWrwcmggJIldbkP4389O8). Resumed c61d4184 on L5 (window "Thoracic Bridge follow-along replacement", pid 2837391, transcript saving on); task e17309bc → in_progress; hours f5c15705 open.
+- 2026-10-12 — Greggory: handoff email ("Okay were goign to hand off this project…" + "All within the bounds of paid horus.") → new worker 503f1a77 "Gymnastic Bodies handoff payment timeline" on L5 (transcript saving on), task 8073623f, hours 9d3ca52d. Reads sheet tab 1 read-only, drafts, asks recipients, full draft to Greggory before Gmail draft.
