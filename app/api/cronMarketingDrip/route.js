@@ -5,6 +5,7 @@ import { outbound_emails } from '@/Drizzle/db/schema';
 import sgMail from '@sendgrid/mail';
 import { logger } from '@/lib/logger';
 import { getOffer, formatPrice } from '@/lib/pricing';
+import { requireAdminOrCronSecret } from '@/lib/adminAuth';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -78,6 +79,8 @@ function render(template, vars) {
 }
 
 export async function GET(request) {
+  const denied = await requireAdminOrCronSecret(request);
+  if (denied) return denied;
   const group = new URL(request.url).searchParams.get('group');
   const cfg = GROUPS[group];
   if (!cfg) {

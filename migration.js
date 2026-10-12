@@ -1,3 +1,8 @@
+// RETIRED (2026-10-12): the one-time Authorize.net/WooCommerce user import this drove is finished,
+// and the route it posted to, /api/migration, was deleted in 87c4e2c. Kept for reference only.
+console.error('migration.js is retired: /api/migration no longer exists (removed in 87c4e2c).')
+process.exit(1)
+
 
 import csv from 'csv-parser';
 import path from 'path';

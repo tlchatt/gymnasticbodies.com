@@ -5,6 +5,7 @@ import { inArray } from 'drizzle-orm';
 import { logger } from '@/lib/logger';
 import { stripe } from '@/lib/stripeServerFunction';
 import { updateUserSettingStatus } from '@/lib/userSettings';
+import { requireAdminOrCronSecret } from '@/lib/adminAuth';
 
 function parseRenewalDate(rawData) {
     try {
@@ -50,6 +51,8 @@ async function mapWithConcurrency(items, limit, fn) {
 }
 
 export async function GET(request) {
+    const denied = await requireAdminOrCronSecret(request);
+    if (denied) return denied;
     const start = Date.now();
     const sql = neon(process.env.DATABASE_URL);
     const dryRun = new URL(request.url).searchParams.get('dryRun') === 'true';

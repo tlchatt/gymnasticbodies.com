@@ -187,7 +187,7 @@ npx drizzle-kit migrate   # Apply migrations to database
 npx drizzle-kit studio    # Open Drizzle Studio (DB GUI)
 
 # One-off scripts (run with node directly)
-node migration.js          # Migrate user data from JSON/CSV files into Neon
+# node migration.js        # RETIRED 2026-10-12 — /api/migration was deleted (87c4e2c); the import is finished
 node authUserCron.js       # Auth user cron helper
 node updateAuthorizeData.js
 ```
@@ -532,7 +532,7 @@ this for weeks. Trust `currentSrc` / a hands-on browser play, not stall counts. 
 ### Data Migration
 
 - Legacy data lives in `data/` (CSV/JSON from Authorize.net and WooCommerce)
-- `migration.js` reads these files and calls `POST /api/migration` to bulk-import users into Neon
+- `migration.js` (retired 2026-10-12) used to read these files and call `POST /api/migration` (deleted in 87c4e2c) to bulk-import users into Neon
 
 ### Logging
 
@@ -622,7 +622,6 @@ this for weeks. Trust `currentSrc` / a hands-on browser play, not stall counts. 
 | `/api/stripe/cancel-subscription` | POST — cancel Stripe subscription (trial → immediate; active → `cancel_at_period_end: true`) |
 | `/api/cronJobs` | Renewal checks & subscription updates (daily cron) |
 | `/api/classifyUsers` | Re-classifies all users, setting `migration_type` + `customer_segment` (daily cron) |
-| `/api/migration` | Bulk user import from legacy data |
 | `/api/admin/gmail/sync` | Pull new support emails from Gmail (POST; admin or cron) |
 | `/api/admin/tickets` | List support tickets with optional `?status=` filter |
 | `/api/admin/tickets/[id]` | Single ticket + joined user context + reply thread |
