@@ -20,6 +20,7 @@ _Carried over from 2026-10-09 (numbers kept). See Past days for the full 10-09 l
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
+| 41 | Chargeback PROCESS change: reach out + offer refund + manual handling first, instead of today's automatic ban; plan to owner first, then code + CLAUDE.md + Slack alert | `5515a2a6-c824-4c33-8976-50ef6fa480aa` | `6be8fd18` | (with a3eeed47) | 🟡 next for the skipa44 session, after the email |
 | 40 | Support backlog triage: 81 cases waiting on us (25 >30d), 77 unaccepted Slack suggestions, 26 escalations — escalation acks, resolved-issue replies + credits, categorize rest; owner approves each batch | `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c` | `3e08fb83` | `f27d8460` open | 🟡 dispatched |
 | 38 | Dispute skipa44@icloud.com $50 Amex (opened 10-12, due 11-04): review + accept/contest recommendation; nothing submitted without owner | `5515a2a6-c824-4c33-8976-50ef6fa480aa` | `bcdfcfbf` | `a3eeed47` open | 🟡 owner: reach out — offer to refund BOTH charges, ask him to withdraw the dispute, apologize for the unanswered support message; draft to owner first |
 | 39 | Billing reminder before charges (trial/credit end, monthly, yearly) — owner approved; ~22 credited resume Oct 28; owner approves wording + Stripe setting changes | `48d314cf-223f-4e4c-9dea-7e0cf096139f` | `e19a9766` | `b0b3db55` open | 🟡 dispatched |
@@ -191,3 +192,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Dispute review (5515a2a6): recommends CONTEST (paid Aug 25 18:19, in app 17s later, workouts/plan/schedule edits after; weak spot: unanswered Aug 25 in-app support message). Gaps: second account skipa44@gmail.com with same Amex not banned (banMember doesn't expand card→other customers); undisputed Sep 25 $50.
 - 2026-10-12 — Owner: one task to triage the support backlog → 3e08fb83, session 6e51a0f5 (L5), hours f27d8460. Correction logged: in-app messages got cases from a605cce (Aug 26), Slack firing from ~Aug 31 / da92bd5 (Sep 22) — not Oct 9; skipa44 wrote Aug 25, one day before.
 - 2026-10-12 — OWNER: skipa44 — reach out, offer to refund both charges, kindly ask to cancel the dispute, apologize for the missed support thread. Sent to 5515a2a6 (draft → owner approval; no refund before owner names timing).
+- 2026-10-12 — OWNER: Slack thread updated with corrected refund handling (Sep 25 now; Aug 25 when dispute closes); change the chargeback process to reach out + offer refund + manual handling first → task 6be8fd18 on session 5515a2a6 (plan first).
