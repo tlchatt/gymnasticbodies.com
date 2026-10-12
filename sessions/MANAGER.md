@@ -198,3 +198,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — skipa44 email SENT 11:33 ET (approved by Greggory). Promise-check alert for Kyle Consolie → task 586270ef, session 5d20c098 (L5), hours 9db19a9b. Chargeback-process task 6be8fd18 waits on Greggory's 3 answers in the skipa44 window.
 - 2026-10-12 — Greggory called Robert Ander (no answer) and texted him. Waiting on his reply/withdrawal.
 - 2026-10-12 — Hub job a7a4c4b0 (Greggory via Slack): sent him the billing-reminder plan + 3 approval questions and the list of items waiting on him (wbw reply, delivered to Slack). Note: wbw CLI lives at /var/www/Work/WoodBetweenWorlds/node_modules/.bin/wbw (not on PATH).
+- 2026-10-12 — Hub job a6bae56d (Greggory via Slack): sent the chargeback-process plan + 3 questions; billing reminder → told 48d314cf to BUILD with member sends OFF, deploy via manager, then send one test of each email to his test account.
