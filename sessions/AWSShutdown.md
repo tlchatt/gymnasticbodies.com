@@ -59,3 +59,18 @@ and 3 EBS snapshots from 2017–2018 (~$5/mo total).
 - 2026-10-09 ~17:00 — Route 53 (all KEPT): public zones `gymnasticbodies.com` (61 records, live NS = Vercel), `app.gymnasticbodies.com` (4), `gymfit-membersite-test.com` (2, domain doesn't resolve); private zones `config-server.vpc`, `eureka-test.com`. **No domain's registrar nameservers point at Route 53**; no domains are registered in Route 53 Domains. Owner can decide later whether to drop the zones (~$0.50/zone/mo).
 - 2026-10-09 ~17:10 — Home upload to Blob is ~3 MB/s, so uploads now run ON the Lightsail box (Node 20 + @vercel/blob 2.3.1 installed in `/home/blobup`; box egress ~19 MB/s/stream): (a) 348 per-folder tars → `backups/aws-final-2026-10-09/server5-cpanel-new-2026/parts/`, 4 at a time; (b) S3 `server3/2026-08-17/*` streamed via 7-day presigned URLs → `backups/aws-final-2026-10-09/server3-s3-2026-08-17/`. Local downloads continue in parallel (local copy). DB dump uploaded from local.
 - 2026-10-09 17:19 — Detached watcher `scripts/finish-shutdown.sh` (log `logs/finish.log`, checks every 15 min): when server5 348/348 + server3 goatfart.tar are complete locally AND in private Blob (sizes checked), it deletes Lightsail `cpanel-new-2026` (snapshot `cpanel-new-2026-final-20261009` kept) and sets an S3 lifecycle rule moving all of `gb-cpanel-backups` to Glacier Deep Archive (no objects deleted).
+
+## 2026-10-12 — finish
+- Owner voice via manager, verified with `owner-said.js` (987aa382, 2026-10-12T14:09:01Z "AWS can still be shut down becuase we have the full backups allready"; 14:09:11Z "The backup uplaod is still needed but we don't need new AWS backups."). Local copies verified complete: server3 `goatfart.tar` 226,491,603,456 B; server5 348/348 folders; server5 parts + DB dump also in private Blob (from the box upload, size-checked). The box's own S3→Blob stream of goatfart.tar had stalled (never landed).
+- Stopped the waiting watcher. **DELETED Lightsail `cpanel-new-2026`** with `--force-delete-add-ons` (its AutoSnapshot add-on blocked a plain delete; this removed 7 daily auto snapshots Oct 6–12). Manual snapshot `cpanel-new-2026-final-20261009` KEPT. Lightsail now has 0 instances.
+- **S3 `gb-cpanel-backups`: lifecycle rule `deep-archive-all` → all objects to GLACIER DEEP_ARCHIVE** (no objects deleted; transition runs within ~1–2 days).
+- server3 → private Blob from the LOCAL copy, as 4 GB resumable pieces (`claudeTools/privateBlobChunked.mjs`, detached `scripts/upload-server3-blob.sh`, log `logs/server3-blob-upload.log`) → `backups/aws-final-2026-10-09/server3-s3-2026-08-17/accounts/goatfart.tar.parts/part-NNN` + `MANIFEST.json`. ~9 MB/s → **expected finish ~17:00 ET 2026-10-12**.
+- Still billing (rates from the 2026-10-11 Cost Explorer day, ×30; Lightsail servers now gone):
+  - Lightsail snapshots ×3 (640 GB each: gymnasticbodies-cpanel, cPanel-WHM-Linux-1, cpanel-new-2026) ≈ $100–150/mo — biggest remaining line; owner chose to keep them.
+  - AWS Support Developer $29/mo — owner cancels in the console.
+  - S3 ≈ $81/mo now → ≈ $4/mo once Deep Archive applies.
+  - ECR 57 repos, 65 GB ≈ $6.50/mo (left; old app images).
+  - CloudWatch alarms ≈ $4.50/mo (left; not on the list).
+  - Route 53 5 zones ≈ $2.50/mo (kept by owner order).
+  - RDS manual snapshots (7, ~290 GB) ≈ $1/mo; us-east-2 RDS + EBS / ap-south-1 EBS snapshots ≈ $5.50/mo.
+  - Disabled CloudFront, empty Fargate clusters, VPC: ~$0.
