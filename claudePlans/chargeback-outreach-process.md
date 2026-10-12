@@ -105,3 +105,24 @@ action "Admintratively escalate case for focused manaul handling.""
 - Channel (pending Greggory's confirmation): **#gymnasticbodies-admin-escalations**. Invite Greggory
   Wiley, Luke, Chris, and the GB Support Agent bot. Coach Sommer is not in the Technologic workspace, and
   the bot can't add new workspace members (that's a Slack admin UI step).
+
+## Phone-number blocking (added 2026-10-12; Greggory: "1. yes" to adding it to this plan)
+Findings from session 5d20c098 (commit 0b8d958, sessions/Dispute-consolie7-2026-10.md), read-only:
+- The phone lives only in `user_setting.data.phone` (Neon has no phone column) and in a charge's
+  `billing_details.phone`. Stripe `customer.phone` is usually null.
+- Only /subscribe collects a phone (PaymentPortal.js, required free text, never validated). Renew sends
+  'N/A'; offer reuses the stored value.
+- 5 of the 10 banned accounts have a real number.
+- Radar has no default phone list (a custom list + rule needs Radar Plus). Our own table covers every
+  checkout without it.
+
+Proposal (table change + code need Greggory's OK after discussion):
+- Add `'phone'` to the `blocked_payment_identities.type` CHECK (raw SQL in `Drizzle/raw/`, value stored
+  digits-only, normalized to the last 10 digits for US numbers).
+- `banMember()` gathers phones from user_setting, the Stripe customer and charge billing_details, and
+  skips 'N/A'/empty/too-short values.
+- `blockedPaymentReason()` also checks the form phone (create-subscription), the stored phone
+  (renew/offer) and the payment method's `billing_details.phone`.
+- Backfill the 5 existing banned numbers (one-off, logged, reversible).
+- Caveat: a free-text phone is weak identity (anyone can type a number), so treat it as a
+  supplementary block. The card fingerprint stays the primary one.
