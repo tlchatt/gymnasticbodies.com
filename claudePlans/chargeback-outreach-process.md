@@ -10,8 +10,9 @@ first." and "These would all be part of the suggested "actions" from the Suport 
 
 ## Proposed
 **Stays automatic in the webhook:** detach cards (never re-bill a disputing card), open the high-priority
-case, Slack alert, `dispute.created` log. **Removed from the webhook:** the ban (except possibly
-fraud-coded disputes, see Q1).
+case, Slack alert, `dispute.created` log. **Removed from the webhook:** the ban, for every dispute type
+including fraud (Greggory, Q1: "nothing but payment removal and case really happen automatically any more").
+The Slack alert and logging stay, because they are notices, not actions (to confirm with Greggory).
 
 **New, automatic:** the webhook hands the case to the support agent (`fireCaseToSlack`, the same path an
 inbound email uses). The agent investigates it like any case and posts a play card to Slack and
@@ -22,8 +23,8 @@ inbound email uses). The agent investigates it like any case and posts a play ca
   received your dispute, we'd like to make it right, withdraw it and we refund, how each refund comes
   back, Greggory's cell, plus a line on any unanswered support it finds.
 - **cancel** (existing action, period-end by default) so the next cycle never bills them.
-- **ban_member** (NEW action → `banMember()`): proposed only when the dispute is fraud-coded or the
-  member has refused/ignored outreach. The reviewer can add or remove it on the card.
+- **ban_member** (NEW action → `banMember()`): never automatic. Proposed when the dispute is
+  fraud-coded or the member has refused/ignored outreach. The reviewer can add or remove it on the card.
 - **refund** (existing; already refuses disputed charges): proposed later, when the member replies
   that they've withdrawn. Their reply re-opens the case, the agent re-runs and proposes refunds of the
   *undisputed* charges. The disputed charge is refunded after the dispute closes in our favour (a
@@ -51,6 +52,6 @@ labels.
 No schema change.
 
 ## Open questions for Greggory
-1. Fraud-coded disputes (stolen card): still ban automatically? Recommend **yes**.
+1. ~~Fraud-coded disputes: auto-ban?~~ **Answered: no.** No automatic ban for any dispute (Slack, 2026-10-12).
 2. No reply after 7 days: Slack nudge, or automatic ban? Recommend **nudge**.
 3. Access: keep until the paid period ends (cancel at period end)? Or end now? Recommend **period end**.
