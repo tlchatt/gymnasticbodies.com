@@ -178,3 +178,10 @@ Accordingly." The ban stays.
   "Increase difficulty" also caps at step 9. Moving to B4 needs a manual "select" in the edit screen, which
   he said he couldn't reach on his phone. So that fix doesn't cover what he reported, and Neon shows he
   never moved past B3. Whether the edit screen works for him was not tested.
+- **Draft restructured (15:25 UTC, per Greggory: "Business up top, facts about the user below"):** the top
+  now has the apology ("a bug in our support system … lost track of a few support messages"), the refund
+  offer, the withdraw-first ask, the refund steps and Greggory's cell. Below, under "For your reference":
+  his quoted messages, "we shipped a fix for workout progressions on August 24" (no claim that his B3→B4 is
+  fixed), and his account activity. The Slack quote was updated to match. Not sent.
+  Note: his messages were stored (support_emails 753/754) but never answered. Why they were missed is not
+  confirmed. They were logged with caseId null before the case-picker existed.
