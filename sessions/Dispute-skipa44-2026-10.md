@@ -204,3 +204,14 @@ Accordingly." The ban stays.
 - **Business-impact sentence added (15:38 UTC, per Greggory):** "We're a small business, and disputes genuinely hurt us with our payment processor and the card networks, so we'd much rather settle this with you directly." It deliberately doesn't say withdrawing removes the dispute from our rate (Stripe: a withdrawn dispute still counts). Slack quote updated. Not sent.
 - **Reworded as an appeal for cooperation (15:39 UTC, per Greggory):** "We're a small business, and disputes genuinely hurt us with our card processor, so we'd be really grateful if you'd work with us on this directly." Slack quote updated. Not sent.
 - **Signed by Greggory (15:41 UTC):** "Greggory Wiley (App Development Lead)", and the cell line reads "call me directly on my cell". Slack quote updated. Not sent.
+- **SENT 2026-10-12 11:33 am ET (15:33 UTC).** Greggory approved: "Okay go ahead and send the message"
+  (session 987aa382, 15:33:18 UTC, confirmed with owner-said.js). Sent via `support.js send-email
+  --case-id=1055 --campaign=dispute_outreach_skipa44`, subject "Your August 25 charge: we'd like to make it
+  right", signed Greggory Wiley (App Development Lead). Recorded as outbound_emails #68318 (type support,
+  case 1055); the stored body matches the approved text exactly. Message-ID
+  `<case-1055.caea9ee1cb314c18@gymnasticbodies.com>`. SendGrid accepted the send (no error). Its activity
+  search showed nothing yet right after sending. The Slack plan says "email sent 11:33 am ET".
+- **No refunds issued.** Next: when he replies that he's withdrawn, refund `ch_3UJegHAhvJ5jyCLH0MfTBBGi`
+  (Sep 25) right away. Refund the Aug 25 charge once the dispute closes in our favour. Submit evidence
+  (with his withdrawal confirmation) by 2026-11-04 either way. A reply re-opens case #1055 via the case
+  picker. Greggory will also call him.
