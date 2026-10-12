@@ -204,3 +204,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Hub job 97ec1c8e: Greggory — chargeback steps become support-agent suggested actions (Accept flow). Relayed to 5515a2a6; replied on Slack with the 3 open questions + test-email note.
 - 2026-10-12 — Hub job d6dd831a: Greggory — no auto-ban for any dispute (fraud incl.); only payment removal + case automatic. Relayed to 5515a2a6; Slack reply sent. Q2/Q3 open.
 - 2026-10-12 — Hub job 1859324a: Greggory — no chargeback 7-day nudge; separate daily Slack support digest (cases by type + age) → new board task created (not dispatched). Relayed to 5515a2a6.
+- 2026-10-12 — Hub job 8164c903: Greggory Q3 — suggested action = cancel access immediately (behind Accept). Relayed to 5515a2a6; Slack reply sent.
