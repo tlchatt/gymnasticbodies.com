@@ -215,3 +215,4 @@ Accordingly." The ban stays.
   (Sep 25) right away. Refund the Aug 25 charge once the dispute closes in our favour. Submit evidence
   (with his withdrawal confirmation) by 2026-11-04 either way. A reply re-opens case #1055 via the case
   picker. Greggory will also call him.
+- **Oct 12: Greggory called him (no answer) and texted him** (his own words: "I texted him he didt answer the call", relayed by the manager). Added to the Slack plan. Now waiting for his reply or withdrawal.
