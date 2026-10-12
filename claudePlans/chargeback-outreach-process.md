@@ -22,7 +22,8 @@ inbound email uses). The agent investigates it like any case and posts a play ca
 - **reply** = the outreach email (template Greggory approves once; based on the skipa44 email): we
   received your dispute, we'd like to make it right, withdraw it and we refund, how each refund comes
   back, Greggory's cell, plus a line on any unanswered support it finds.
-- **cancel** (existing action, period-end by default) so the next cycle never bills them.
+- **cancel** (existing action) with `immediate: true`: subscription cancelled and access ended now
+  (Greggory, Q3: "cancel the access ASAP as the suggested action"). Still behind Accept.
 - **ban_member** (NEW action → `banMember()`): never automatic. Proposed when the dispute is
   fraud-coded or the member has refused/ignored outreach. The reviewer can add or remove it on the card.
 - **refund** (existing; already refuses disputed charges): proposed later, when the member replies
@@ -55,4 +56,36 @@ No schema change.
 1. ~~Fraud-coded disputes: auto-ban?~~ **Answered: no.** No automatic ban for any dispute (Slack, 2026-10-12).
 2. ~~No reply after 7 days?~~ **Answered: Slack nudge, built separately** as a daily stale-case digest (not in this build).
 4. Keep the two dispute reminders (evidence due in 5 days; dispute won → refund it)? Recommend **yes**.
-3. Access: keep until the paid period ends (cancel at period end)? Or end now? Recommend **period end**.
+3. ~~Access?~~ **Answered: end it immediately**, as a suggested cancel action (Accept), not automatic.
+5. Which charges does the refund offer cover? Proposed: the disputed charge + any other charge in the last 60 days.
+
+## Outreach email template (for Greggory's approval)
+The agent fills the {braces} from Stripe and the case. It adds the support paragraph only when it finds
+unanswered member messages. Sent from support@ on the chargeback case, signed by Greggory.
+
+Subject: Your {charge_date} charge: we'd like to make it right
+
+> Hi {first_name},
+>
+> We received your {card_issuer} dispute for your {charge_date} charge of ${amount}, and we want to make it
+> right. We're a small business, and disputes genuinely hurt us with our card processor, so we'd be really
+> grateful if you'd work with us on this directly. If you'll withdraw the dispute with {card_issuer}, we'll
+> refund {refund_scope}:
+>
+> - {charge_date}, ${amount}: {card_issuer} has already credited this back to you while the dispute is open.
+>   When you withdraw it, {card_issuer} puts the original charge back, and once the dispute closes we refund
+>   that ${amount} to you directly. That last step can take a few weeks.
+> - {other_date}, ${other_amount} (one line per other charge offered): as soon as you let us know you've
+>   withdrawn the dispute, we'll refund it to your card ending {last4} (usually 5-10 business days to show).
+>
+> Just reply to this email once you've contacted {card_issuer}. If you'd like to talk it through, you're
+> welcome to call me directly on my cell: +1 (423) 377-6111.
+>
+> {only if unanswered support messages exist:} We're also sorry your {dates} support messages went
+> unanswered. {one honest sentence about cause/fix — only what the agent can verify}
+>
+> Thank you,
+> Greggory Wiley (App Development Lead)
+>
+> ---
+> For reference, your account activity (Eastern time): {short factual usage summary since the charge}.
