@@ -193,3 +193,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Owner: one task to triage the support backlog → 3e08fb83, session 6e51a0f5 (L5), hours f27d8460. Correction logged: in-app messages got cases from a605cce (Aug 26), Slack firing from ~Aug 31 / da92bd5 (Sep 22) — not Oct 9; skipa44 wrote Aug 25, one day before.
 - 2026-10-12 — OWNER: skipa44 — reach out, offer to refund both charges, kindly ask to cancel the dispute, apologize for the missed support thread. Sent to 5515a2a6 (draft → owner approval; no refund before owner names timing).
 - 2026-10-12 — OWNER: Slack thread updated with corrected refund handling (Sep 25 now; Aug 25 when dispute closes); change the chargeback process to reach out + offer refund + manual handling first → task 6be8fd18 on session 5515a2a6 (plan first).
+- 2026-10-12 — OWNER: "Right we ask him to close and then refund." → refunds only after he withdraws the dispute; relayed to 5515a2a6.
