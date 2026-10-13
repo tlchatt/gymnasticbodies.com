@@ -26,6 +26,7 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 | 5 | Gymnastic Bodies · Thoracic Bridge replacement · c61d4184 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | e17309bc | live |
 | 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review), 419db13e | closed 2026-10-13 |
 | 4 | Gymnastic Bodies · Chris account setup email · f6a9d3c8 | `f6a9d3c8-ff00-4065-8a50-46f51334ea22` | de562e6f | closed 2026-10-13 |
+| 4 | Gymnastic Bodies · Job listing Gmail draft · e7d2afe5 | `e7d2afe5-793d-4195-8dd0-3bb9984f6830` | 419db13e | live |
 
 ## Ready to ship
 - 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered. **SHIPPED 2026-10-09 15:20 (push 158af33).**
@@ -220,6 +221,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Greggory pasted the full Chris text thread: "put it in more neatly witten instructions in the recent gmail thread as as draft, links to each service. Clear instrutiosn for account creation and delegation." → launched #4 f6a9d3c8 on L5 (task de562e6f); draft text comes back for review before the Gmail draft.
 - 2026-10-13 — Correction: Greggory meant 60–120 HOURS ("No quote that many hours is what I was asking dont change your researched salary range") → contract row back to $80–$125/hr + 60–120 h/month ($4,800–$15,000/mo); queued to #4 after its Chris draft. #4 found the handoff email was SENT 10-12; Chris agreed + wired; Greggory replied "Payment received" 10-13 12:12. Thread "Access / Account Ownership Transition" not found — asked Greggory.
 - 2026-10-13 — Wrapped up #4 Chris account setup email (note db7eace): Gmail draft r6107514046101080057 to c.sommer@gymfit.tv; window closed; hours f4022adb → 15:21–15:47; pay-note owner inputs logged on 419db13e 15:23–15:43; tasks de562e6f + 419db13e done; INDEX + CLAUDE.md updated; #4 freed. Open for the migration: Neon org Launch+; Blob stores need a Transfer Store step.
+- 2026-10-13 — Greggory: "dont see the job listing draft." → launched #4 e7d2afe5 to put the listing + separate pay-range section in a Gmail draft reply to Chris (c.sommer@gymfit.tv) on the transition thread. 419db13e back to in_progress.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
