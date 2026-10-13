@@ -1,6 +1,6 @@
 # Manager — Gymnastic Bodies
 
-Read this FIRST on startup, compaction or rotation (skill `project-review-manage`).
+Read this FIRST on startup, compaction or rotation (skill `project-manager`).
 
 - **Manager session ID:** `97dab3f3-139d-4c56-b41e-ee6e128dd91a` — resume: `tclauder 97dab3f3-139d-4c56-b41e-ee6e128dd91a` (window "Gymnastic Bodies manager takeover", L5; took over from 987aa382 on 2026-10-12)
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
