@@ -14,7 +14,7 @@ no team to lean on.
 |---|---|---|
 | Full-time, if hiring in the Denver area | **$125K – $155K / year** | Brackets the BLS Denver software-developer middle (25th pct $123.6K, median $137.6K) and matches Glassdoor/Indeed Denver full-stack figures. A solo owner with billing responsibility sits above the median. |
 | Full-time, remote (US) | **$120K – $150K / year** | Matches the "mid-senior at a mid-market company" bands (DailyRemote senior $120–150K, Kore1 $118–148K). Big-tech-skewed sources run higher. |
-| Contract / freelance (US) | **$60 – $120 / hour** | Spans marketplace-level rates up through the US full-stack band (~$75–$150/hr, US-remote React/Next.js median ~$90/hr). Owning Stripe billing points toward the upper half. |
+| Contract / freelance (US) | **$80 – $125 / hour**, est. **60 – 120 hours / month** = **$4,800 – $15,000 / month** (60h × $80 to 120h × $125) | US React/Next.js freelance median ~$90/hr; full-stack $75–$150/hr. Owning Stripe billing points toward the upper half. |
 
 ## Where sources disagree
 
