@@ -227,6 +227,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Greggory: "#2 billing reminder emails look good. Can you forward copies to coach." → #2 forwards both test emails to c.sommer@gymfit.tv from greggorywiley@ (sign-in links neutralised). Member sends NOT switched on — asked Greggory separately.
 - 2026-10-13 — #2 forwarded both test reminders to c.sommer@gymfit.tv (msgs 1a136e9c84223285, 1a136e9cdf718ecc), sign-in links replaced with /accountDetails. BILLING_REMINDERS_LIVE still off.
 - 2026-10-13 — Greggory unhappy the forwarded copies had dead buttons (my instruction to #2 replaced the links + added a note — my error). He: "You need to send one to his test acocunt." → Chris's only account = coach.sommer@gymnasticbodies.com (admin, current/subscriber, id 3FJ44l…); #2 sends both reminders for it via the test path, unaltered.
+- 2026-10-13 — #2 STOPPED before sending to coach.sommer@ (admin account; a magic link would grant admin access). Greggory: "Never send an email without approval." → #2 on HOLD; memory feedback_approval_before_send updated (a send/forward request is not approval of content).
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
