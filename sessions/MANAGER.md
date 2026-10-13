@@ -215,6 +215,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Greggory on pay note: drop part-time retainer; contract/freelance $60–$120/hr → #6. Thoracic views checked (app_logs my.video.*): 4 members played new 2yO4CxF4 since swap — melancon.john reached 40:30 (ended), rossdicko 25:12+, 2 brief.
 - 2026-10-13 — Pay note final e7d536d (no retainer; contract $60–120/hr). Job listing + pay note done → task 419db13e review; hours 1919bdba → 14:36–14:57 (owner inputs). Logged e17309bc 14:55–15:15 (Thoracic Qs) + manager 14:53–15:13. Wrap-up started for #4 and #6 (session notes requested).
 - 2026-10-13 — Wrapped up #4 (note bccb37e) and #6 (note 2705e1a): windows closed, tasks 586270ef/8073623f/419db13e done, INDEX rows + CLAUDE.md lines added; numbers 4 and 6 freed.
+- 2026-10-13 — Greggory pasted the migration-setup text he sent Chris (GitHub/Vercel/Neon org accounts, base plans, delegate access, calendar link) and asked for a reply on the email thread. Board task de562e6f created; then "HOld on" → worker NOT launched (reserved id f6a9d3c8 unused). Paused.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
