@@ -3,7 +3,7 @@
 Not sent and not yet a Gmail draft. It becomes a draft only after Greggory approves it through the manager.
 
 - **Thread:** "Gymnastic Bodies: transition of ownership and payment timeline" (thread `1a13207561fdd21c`), as a reply to Greggory's 10/13 12:12 "Payment received" message. No thread named "Access / Account Ownership Transition" exists in greggorywiley@tlchatt.com, admin@ or support@gymnasticbodies.com.
-- **To:** Christopher Sommer <c.sommerother@gmail.com>, Chris Sommer <c.sommer@gymfit.tv>
+- **To:** Chris Sommer <c.sommer@gymfit.tv> (the address he replies from; owner ruling 2026-10-13)
 - **Subject:** Re: Gymnastic Bodies: transition of ownership and payment timeline
 
 Facts checked against the live docs and accounts on 2026-10-13:
