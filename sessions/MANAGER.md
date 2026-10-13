@@ -211,6 +211,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Spot check from Technologic PM: fafa32a8 (10-12 12:11) kept — Slack hub job a7a4c4b0 at 12:11:52 is owner input. Re-ran hours-periods.js for 5515a2a6 + 48d314cf (--launch): a3eeed47 → 10:36–11:37 (deleted overlapping 931bff54, 62deb712); b0b3db55 → 10:37–10:57.
 - 2026-10-13 — Greggory: "we need to create a Job description for this project." → task 419db13e, routed to #6 (handoff session, same topic); draft comes back to the manager window.
 - 2026-10-13 — Greggory: "Job listing looks good, can you include a not on researched suggested salary ranges." → #6 adds a cited pay-range note (outside the listing). Logged 20m 98cd4134 "Texting Chris about migrating the site" (no task) at his request.
+- 2026-10-13 — Greggory: pay note "Seperte from teh listing." + "I think Chris Sommers lives in Denver" → #6: separate file claudePlans/gb-developer-pay-ranges.md, add Denver-area figures (worded as if hiring locally).
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
