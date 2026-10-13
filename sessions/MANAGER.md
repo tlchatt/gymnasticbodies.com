@@ -224,6 +224,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Greggory: "dont see the job listing draft." → launched #4 e7d2afe5 to put the listing + separate pay-range section in a Gmail draft reply to Chris (c.sommer@gymfit.tv) on the transition thread. 419db13e back to in_progress.
 - 2026-10-13 — Wrapped up #4 job listing Gmail draft (note 1283380): draft r-7831231625808885854 to c.sommer@gymfit.tv; window closed; hours 904be35d 16:02–16:22; task 419db13e done; INDEX + CLAUDE.md updated; #4 freed. Account-setup email appears SENT by Greggory 16:02.
 - 2026-10-13 — skipa44 check (#1, read-only): no reply (case #1055, support@ sync, Slack); SendGrid delivered, 0 opens; dispute du_1UParNAhvJ5jyCLHa6STvPZT still needs_response, evidence due 11-04; nothing new on skipa44@gmail.com.
+- 2026-10-13 — Greggory: "#2 billing reminder emails look good. Can you forward copies to coach." → #2 forwards both test emails to c.sommer@gymfit.tv from greggorywiley@ (sign-in links neutralised). Member sends NOT switched on — asked Greggory separately.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
