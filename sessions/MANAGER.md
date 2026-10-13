@@ -212,6 +212,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Greggory: "we need to create a Job description for this project." → task 419db13e, routed to #6 (handoff session, same topic); draft comes back to the manager window.
 - 2026-10-13 — Greggory: "Job listing looks good, can you include a not on researched suggested salary ranges." → #6 adds a cited pay-range note (outside the listing). Logged 20m 98cd4134 "Texting Chris about migrating the site" (no task) at his request.
 - 2026-10-13 — Greggory: pay note "Seperte from teh listing." + "I think Chris Sommers lives in Denver" → #6: separate file claudePlans/gb-developer-pay-ranges.md, add Denver-area figures (worded as if hiring locally).
+- 2026-10-13 — Greggory on pay note: drop part-time retainer; contract/freelance $60–$120/hr → #6. Thoracic views checked (app_logs my.video.*): 4 members played new 2yO4CxF4 since swap — melancon.john reached 40:30 (ended), rossdicko 25:12+, 2 brief.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
