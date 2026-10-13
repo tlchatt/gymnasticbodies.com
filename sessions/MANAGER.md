@@ -25,6 +25,7 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 | 4 | Gymnastic Bodies · Kyle Consolie promise check · 5d20c098 | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | 586270ef (review) | closed 2026-10-13 |
 | 5 | Gymnastic Bodies · Thoracic Bridge replacement · c61d4184 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | e17309bc | live |
 | 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review), 419db13e | closed 2026-10-13 |
+| 4 | Gymnastic Bodies · Chris account setup email · f6a9d3c8 | `f6a9d3c8-ff00-4065-8a50-46f51334ea22` | de562e6f | live |
 
 ## Ready to ship
 - 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered. **SHIPPED 2026-10-09 15:20 (push 158af33).**
@@ -216,6 +217,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Pay note final e7d536d (no retainer; contract $60–120/hr). Job listing + pay note done → task 419db13e review; hours 1919bdba → 14:36–14:57 (owner inputs). Logged e17309bc 14:55–15:15 (Thoracic Qs) + manager 14:53–15:13. Wrap-up started for #4 and #6 (session notes requested).
 - 2026-10-13 — Wrapped up #4 (note bccb37e) and #6 (note 2705e1a): windows closed, tasks 586270ef/8073623f/419db13e done, INDEX rows + CLAUDE.md lines added; numbers 4 and 6 freed.
 - 2026-10-13 — Greggory pasted the migration-setup text he sent Chris (GitHub/Vercel/Neon org accounts, base plans, delegate access, calendar link) and asked for a reply on the email thread. Board task de562e6f created; then "HOld on" → worker NOT launched (reserved id f6a9d3c8 unused). Paused.
+- 2026-10-13 — Greggory pasted the full Chris text thread: "put it in more neatly witten instructions in the recent gmail thread as as draft, links to each service. Clear instrutiosn for account creation and delegation." → launched #4 f6a9d3c8 on L5 (task de562e6f); draft text comes back for review before the Gmail draft.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
