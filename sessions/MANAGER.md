@@ -24,7 +24,7 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 | 3 | Gymnastic Bodies · Support backlog triage · 6e51a0f5 | `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c` | 3e08fb83 | live |
 | 4 | Gymnastic Bodies · Kyle Consolie promise check · 5d20c098 | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | 586270ef (review) | live |
 | 5 | Gymnastic Bodies · Thoracic Bridge replacement · c61d4184 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | e17309bc | live |
-| 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review) | live |
+| 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review), 419db13e | live |
 
 ## Ready to ship
 - 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered. **SHIPPED 2026-10-09 15:20 (push 158af33).**
@@ -209,6 +209,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 11:35 — Manager hours re-logged by active periods (applied directly per Technologic PM, owner voice "Didnt we clarify how to log hours?"): Fri 4 new entries 6h25m; Mon 3 new + 14199d88 shrunk → 2h07m; today 7014f312 → 08:05–08:25 (20m). Total 8h52m (was 4h37m + open 7014f312 ~3h25m). 84c84243 (Fri, not created by either manager — likely Greggory by hand) left untouched; it overlaps the Fri 14:29–17:21 periods. Worker-message shipping stretches + Technologic relay excluded (not owner input in this session).
 - 2026-10-13 — MANAGER.md reshaped to the project-manager template (backup in manager scratchpad). Hours re-checked on OWNER INPUT ONLY (201 inputs extracted from 987aa382 + 97dab3f3; 96 manager, 105 worker): manager periods 14 → Fri 4h31m, Mon 1h40m, Tue 20m = 6h31m (was 8h52m after first re-log; 8h02m originally); 0 periods had no input (several shrank/split). Worker-attributed inputs not already covered → 13 new entries on 264fa864×2, 6be8fd18×5, a3f984c2, bcdfcfbf, e17309bc×2, e19a9766×2 (4h24m) + 9d3ca52d → 17:20–17:40. 84c84243 left (not a manager entry).
 - 2026-10-13 — Spot check from Technologic PM: fafa32a8 (10-12 12:11) kept — Slack hub job a7a4c4b0 at 12:11:52 is owner input. Re-ran hours-periods.js for 5515a2a6 + 48d314cf (--launch): a3eeed47 → 10:36–11:37 (deleted overlapping 931bff54, 62deb712); b0b3db55 → 10:37–10:57.
+- 2026-10-13 — Greggory: "we need to create a Job description for this project." → task 419db13e, routed to #6 (handoff session, same topic); draft comes back to the manager window.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
