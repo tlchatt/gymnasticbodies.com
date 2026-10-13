@@ -1,10 +1,10 @@
 # Gymnastic Bodies Project Manager
 
-- **Manager:** Gymnastic Bodies Project Manager 97dab3f3 (`97dab3f3-139d-4c56-b41e-ee6e128dd91a`), started 2026-10-12 (window on L5)
-- **Resume:** `cd /var/www/Work/Gymfit/app.gymnasticbodies.com && tclauder 97dab3f3-139d-4c56-b41e-ee6e128dd91a`
-- **Predecessors:** 987aa382 → 97dab3f3 (2026-10-12)
+- **Manager:** Gymnastic Bodies Project Manager ee0671c3 (`ee0671c3-1f10-42b9-b2ea-631b8a6d95a5`), started 2026-10-13 — Claude Code BACKGROUND session (owner ruling 2026-10-13)
+- **Attach:** `claude attach ee0671c3` · **Wake:** `claude --bg --resume ee0671c3-1f10-42b9-b2ea-631b8a6d95a5`
+- **Predecessors:** 987aa382 → 97dab3f3 (2026-10-12); 97dab3f3-139d-4c56-b41e-ee6e128dd91a → ee0671c3-1f10-42b9-b2ea-631b8a6d95a5 (2026-10-13, rotation ordered by owner via WBW PM 1670667d)
 - **Board client slug(s):** `gymnastic-bodies` · **Review baseline:** `12f6aee` (2026-10-08)
-- **Last check-in:** 2026-10-13 11:45 ET · **Last rules review:** none since 2026-10-12
+- **Last check-in:** 2026-10-13 ~21:00 ET · **Last rules review:** none since 2026-10-12
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
 - **Project workspace:** `L5` (label "GymnasticBodies" in ~/.config/waybar/workspace-labels.json). Launch every worker with `hyprctl dispatch exec "[workspace name:L5 silent] xdg-terminal-exec …"` and confirm it landed on L5 — never the active workspace.
 - **WATCH:** first cronMarketingDrip + 11:00 UTC classifyUsers runs after b87b8e6 — must NOT be 403 (CRON_SECRET via Vercel cron Bearer).
@@ -14,7 +14,7 @@
 
 **Rules:** workers commit by explicit path and never push/deploy; they add a line under Ready to
 ship and commit this file by path; the manager pushes and verifies. Hours = active periods built
-from the owner's input only (see the project-manager skill). Relays start "From: Gymnastic Bodies Project Manager · 97dab3f3"; Owner's voice line only when his permission is needed.
+from the owner's input only (see the project-manager skill). Relays start "From: Gymnastic Bodies Project Manager · ee0671c3"; Owner's voice line only when his permission is needed.
 
 ## Workers
 | # | Name | Session ID | Task | Status |
@@ -228,6 +228,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — #2 STOPPED before sending to coach.sommer@ (admin account; a magic link would grant admin access). Greggory: "Never send an email without approval." → #2 on HOLD; memory feedback_approval_before_send updated (a send/forward request is not approval of content).
 - 2026-10-13 — Greggory on Thoracic email: "Perffect. If it sin resoliution to an escalation it probably needs to be worded slightly differently." → #5 classifies the 23 (escalation vs normal) + drafts an escalation variant; nothing sent; audience A/B still unpicked. #2 reported the 2 reminders to coach.sommer@ WERE sent 00:20 UTC (outbound 70278/70279) before the hold landed — told Greggory; disable/leave links pending.
 - 2026-10-13 ~20:45 — ROTATION ordered (WBW PM 1670667d, owner voice verified "rotaet teh manager sessions now"): background-manager model; successor launched by WBW. No monitors running. 39 unpushed commits = docs only (claudePlans + sessions notes, no code). Uncommitted leftovers (review #43) unchanged.
+- 2026-10-13 ~21:00 — Manager ee0671c3 took over (background session). No Monitors to re-arm (none were running; WATCH lines are check-in items). Workers #1 5515a2a6, #2 48d314cf, #3 6e51a0f5, #5 c61d4184 told the new name. Old manager 97dab3f3 pids 2605177 + 2592918 (dup) still open, idle.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
