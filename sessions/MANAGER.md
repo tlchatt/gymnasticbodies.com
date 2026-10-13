@@ -22,9 +22,9 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 | 1 | Gymnastic Bodies · Chargeback process + skipa44 dispute · 5515a2a6 | `5515a2a6-c824-4c33-8976-50ef6fa480aa` | 6be8fd18, bcdfcfbf | live |
 | 2 | Gymnastic Bodies · Billing reminder emails · 48d314cf | `48d314cf-223f-4e4c-9dea-7e0cf096139f` | e19a9766 | live |
 | 3 | Gymnastic Bodies · Support backlog triage · 6e51a0f5 | `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c` | 3e08fb83 | live |
-| 4 | Gymnastic Bodies · Kyle Consolie promise check · 5d20c098 | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | 586270ef (review) | live |
+| 4 | Gymnastic Bodies · Kyle Consolie promise check · 5d20c098 | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | 586270ef (review) | closed 2026-10-13 |
 | 5 | Gymnastic Bodies · Thoracic Bridge replacement · c61d4184 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | e17309bc | live |
-| 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review), 419db13e | live |
+| 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review), 419db13e | closed 2026-10-13 |
 
 ## Ready to ship
 - 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered. **SHIPPED 2026-10-09 15:20 (push 158af33).**
@@ -214,6 +214,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Greggory: pay note "Seperte from teh listing." + "I think Chris Sommers lives in Denver" → #6: separate file claudePlans/gb-developer-pay-ranges.md, add Denver-area figures (worded as if hiring locally).
 - 2026-10-13 — Greggory on pay note: drop part-time retainer; contract/freelance $60–$120/hr → #6. Thoracic views checked (app_logs my.video.*): 4 members played new 2yO4CxF4 since swap — melancon.john reached 40:30 (ended), rossdicko 25:12+, 2 brief.
 - 2026-10-13 — Pay note final e7d536d (no retainer; contract $60–120/hr). Job listing + pay note done → task 419db13e review; hours 1919bdba → 14:36–14:57 (owner inputs). Logged e17309bc 14:55–15:15 (Thoracic Qs) + manager 14:53–15:13. Wrap-up started for #4 and #6 (session notes requested).
+- 2026-10-13 — Wrapped up #4 (note bccb37e) and #6 (note 2705e1a): windows closed, tasks 586270ef/8073623f/419db13e done, INDEX rows + CLAUDE.md lines added; numbers 4 and 6 freed.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
