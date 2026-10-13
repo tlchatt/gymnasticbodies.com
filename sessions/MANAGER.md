@@ -218,6 +218,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — Wrapped up #4 (note bccb37e) and #6 (note 2705e1a): windows closed, tasks 586270ef/8073623f/419db13e done, INDEX rows + CLAUDE.md lines added; numbers 4 and 6 freed.
 - 2026-10-13 — Greggory pasted the migration-setup text he sent Chris (GitHub/Vercel/Neon org accounts, base plans, delegate access, calendar link) and asked for a reply on the email thread. Board task de562e6f created; then "HOld on" → worker NOT launched (reserved id f6a9d3c8 unused). Paused.
 - 2026-10-13 — Greggory pasted the full Chris text thread: "put it in more neatly witten instructions in the recent gmail thread as as draft, links to each service. Clear instrutiosn for account creation and delegation." → launched #4 f6a9d3c8 on L5 (task de562e6f); draft text comes back for review before the Gmail draft.
+- 2026-10-13 — Correction: Greggory meant 60–120 HOURS ("No quote that many hours is what I was asking dont change your researched salary range") → contract row back to $80–$125/hr + 60–120 h/month ($4,800–$15,000/mo); queued to #4 after its Chris draft. #4 found the handoff email was SENT 10-12; Chris agreed + wired; Greggory replied "Payment received" 10-13 12:12. Thread "Access / Account Ownership Transition" not found — asked Greggory.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
