@@ -14,8 +14,7 @@ no team to lean on.
 |---|---|---|
 | Full-time, if hiring in the Denver area | **$125K – $155K / year** | Brackets the BLS Denver software-developer middle (25th pct $123.6K, median $137.6K) and matches Glassdoor/Indeed Denver full-stack figures. A solo owner with billing responsibility sits above the median. |
 | Full-time, remote (US) | **$120K – $150K / year** | Matches the "mid-senior at a mid-market company" bands (DailyRemote senior $120–150K, Kore1 $118–148K). Big-tech-skewed sources run higher. |
-| Contract / freelance (US) | **$80 – $125 / hour** | Around the US-remote React/Next.js freelance median (~$90) up to the senior full-stack band. Billing/Stripe ownership justifies the upper half. |
-| Part-time retainer | **$2,000 – $4,500 / month** for ~20–40 hours | Small-app "maintenance" retainers ($500–$1,500 for 5–15 hrs) are too thin for billing ops plus member support. 20–40 hrs at the contract rate above, with the usual 10–15% retainer discount. |
+| Contract / freelance (US) | **$60 – $120 / hour** | Spans marketplace-level rates up through the US full-stack band (~$75–$150/hr, US-remote React/Next.js median ~$90/hr). Owning Stripe billing points toward the upper half. |
 
 ## Where sources disagree
 
@@ -25,9 +24,8 @@ no team to lean on.
 - **Senior medians:** CV-by-JD puts the senior median at $195K, which skews toward Bay Area / big tech
   and doesn't fit a small company.
 - **Freelance rates:** marketplace averages (~$51–$75/hr, median ~$63) are well under US-based
-  rates ($90–$150/hr). Most freelance and retainer pages are vendor or agency content with
+  rates ($90–$150/hr). Most freelance-rate pages are vendor or agency content with
   undisclosed methods.
-- **Part-time retainers:** estimates run from $500/month (basic upkeep) to $3K–$8K/month.
 
 ## Sources (checked 2026-10-13)
 
@@ -56,11 +54,6 @@ no team to lean on.
 - [SoloHourly](https://solohourly.com/guides/freelance-web-developer-rates) (2026): full-stack $75–$150/hr; React/Next.js $75–$140/hr
 - [WhatShouldICharge](https://whatshouldicharge.io/web-developer) (2026): web developers $65–$175/hr, median $105
 - [GoLance, React rates](https://golance.com/hiring/best-freelance-react-js-developers-hourly-rate) (2026): marketplace averages ~$51–$75/hr
-
-**Retainer / part-time:**
-- [Toolvader retainer guide](https://toolvader.com/guides/freelance-retainer-guide-2026/) (2026): 10 hrs $500–$1,500; 30–40 hrs $2,000–$5,000; 15–20 hrs/month suits most small-to-mid apps
-- [FreelanceDesk](https://freelancedesk.online/blog/average-freelance-web-developer-rates-2026) (2026): maintenance retainers from ~$500–$1,500/month
-- [DataEnriche, web app maintenance](https://www.dataenriche.com/web-app-maintenance-costs/) (2026): small-app retainer ~$500/month for 5–10 hrs
 
 Method note: the BLS figures were pulled directly from the BLS API. The other figures come from web
 search summaries of each page. Their page dates are as shown in search, and I didn't open every page
