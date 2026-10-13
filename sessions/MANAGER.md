@@ -210,6 +210,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — MANAGER.md reshaped to the project-manager template (backup in manager scratchpad). Hours re-checked on OWNER INPUT ONLY (201 inputs extracted from 987aa382 + 97dab3f3; 96 manager, 105 worker): manager periods 14 → Fri 4h31m, Mon 1h40m, Tue 20m = 6h31m (was 8h52m after first re-log; 8h02m originally); 0 periods had no input (several shrank/split). Worker-attributed inputs not already covered → 13 new entries on 264fa864×2, 6be8fd18×5, a3f984c2, bcdfcfbf, e17309bc×2, e19a9766×2 (4h24m) + 9d3ca52d → 17:20–17:40. 84c84243 left (not a manager entry).
 - 2026-10-13 — Spot check from Technologic PM: fafa32a8 (10-12 12:11) kept — Slack hub job a7a4c4b0 at 12:11:52 is owner input. Re-ran hours-periods.js for 5515a2a6 + 48d314cf (--launch): a3eeed47 → 10:36–11:37 (deleted overlapping 931bff54, 62deb712); b0b3db55 → 10:37–10:57.
 - 2026-10-13 — Greggory: "we need to create a Job description for this project." → task 419db13e, routed to #6 (handoff session, same topic); draft comes back to the manager window.
+- 2026-10-13 — Greggory: "Job listing looks good, can you include a not on researched suggested salary ranges." → #6 adds a cited pay-range note (outside the listing). Logged 20m 98cd4134 "Texting Chris about migrating the site" (no task) at his request.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
