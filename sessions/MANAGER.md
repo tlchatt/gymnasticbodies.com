@@ -2,6 +2,7 @@
 
 Read this FIRST on startup, compaction or rotation (skill `project-manager`).
 
+- **Manager name:** `Gymnastic Bodies Project Manager 97dab3f3` (skill `project-manager`; window should be /renamed to this — currently "Project Manager Gymnastic Bodies")
 - **Manager session ID:** `97dab3f3-139d-4c56-b41e-ee6e128dd91a` — resume: `tclauder 97dab3f3-139d-4c56-b41e-ee6e128dd91a` (window "Gymnastic Bodies manager takeover", L5; took over from 987aa382 on 2026-10-12)
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
 - **Board client slug:** `gymnastic-bodies`
@@ -13,6 +14,19 @@ Read this FIRST on startup, compaction or rotation (skill `project-manager`).
 - **WATCH:** first production support autofire after the 2026-10-09 11:35 deploy — expect a support_fires row, NOT support.autofire.failed "http 403" (CRON_SECRET). app_logs ts read 4h ahead in the node driver.
 - **Each check-in:** flag any uncommitted work in the tree to its owning session right away — finish and commit, or discard. Nothing gets left to go stale.
 - **Shipping:** workers commit, the manager pushes + verifies (owner rule relayed by worker 071bee16, 2026-10-09). HOLD: do not push while item 8 (member-auth sweep) is incomplete — 7-day sign-in task 745b5dd7 must be lined up before or with that push.
+
+## Live workers — fixed numbers (skill rule 2026-10-13: lowest free #, kept for life, freed on close)
+
+| # | Name | Session ID | Task |
+|---|---|---|---|
+| #1 | Gymnastic Bodies · Chargeback process + skipa44 dispute · 5515a2a6 | `5515a2a6-c824-4c33-8976-50ef6fa480aa` | 6be8fd18, bcdfcfbf |
+| #2 | Gymnastic Bodies · Billing reminder emails · 48d314cf | `48d314cf-223f-4e4c-9dea-7e0cf096139f` | e19a9766 |
+| #3 | Gymnastic Bodies · Support backlog triage · 6e51a0f5 | `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c` | 3e08fb83 |
+| #4 | Gymnastic Bodies · Kyle Consolie promise check · 5d20c098 | `5d20c098-5b0c-44e8-869d-ec048f0ba34a` | 586270ef (review) |
+| #5 | Gymnastic Bodies · Thoracic Bridge replacement · c61d4184 | `c61d4184-88cb-4084-bd76-1f65fedc4ab5` | e17309bc |
+| #6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review) |
+
+Hours = active periods (skill rule 2026-10-13, replaces the 30-minute rule). Relays to workers start "From: Gymnastic Bodies Project Manager · 97dab3f3"; Owner's voice line only when his permission is needed.
 
 ## Today — 2026-10-13
 
@@ -263,3 +277,4 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-12 — Handoff email draft in Greggory's Gmail (r5530409451747818562), both attachments verified, not sent. Hours 9d3ca52d closed; task 8073623f → review.
 - 2026-10-13 08:10 — Rollover. Yesterday's GB hours were already all closed (none open from 10-12); 11 stale GB entries open since Jan–Sep remain (Greggory's call). Pushed 7e721cd + 4039294 + manager notes (docs/CLAUDE.md only; origin 4039294). Thoracic verified: blob 2yO4CxF4.mp4 747,758,302 B, last-modified 10-12 21:32Z. c61d4184's 2 messages to e9 failed — manager address is now "Project Manager Gymnastic Bodies" [559d71]; e9 (pid 2592918) is a dead duplicate.
 - 2026-10-13 — technologic-43 (client task review, owner voice c29b4445 "Yes all six"): 2f5084d4 marketing unsubscribe → URGENT; ee4a6177 filed new (= Kyle Consolie refund, already confirmed — review #44); my. failing git builds → review #46; Sep 21 tasks 68096274 + 35ee9965 → review #47.
+- 2026-10-13 — Skill renamed project-manager + new rules (from Technologic PM c29b4445, owner voice verified): name, fixed #N per worker (#1–#6 assigned), 💬/ℹ️ message blocks, number-only session answers, From-line relays, hours = active periods. Workers told.
