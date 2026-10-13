@@ -1,6 +1,6 @@
 # Support backlog triage — October 2026
 
-Worker session `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c`, dispatched by the manager (`987aa382`) on 2026-10-12. Manager from 2026-10-13: "Project Manager Gymnastic Bodies" [559d71] (app-gymnasticbodies-com-e9 is a dead duplicate).
+Worker session `6e51a0f5-4053-4ca2-9fcb-77a26fb5df6c`, dispatched by the manager (`987aa382`) on 2026-10-12. Manager from 2026-10-13: "Gymnastic Bodies Project Manager ee0671c3" (took over from 97dab3f3).
 Running tally. Every number below is a snapshot as of the date on its line.
 
 ## Snapshot — 2026-10-12 (read-only, nothing sent or changed yet)
