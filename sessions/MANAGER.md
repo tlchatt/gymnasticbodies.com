@@ -228,6 +228,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — #2 forwarded both test reminders to c.sommer@gymfit.tv (msgs 1a136e9c84223285, 1a136e9cdf718ecc), sign-in links replaced with /accountDetails. BILLING_REMINDERS_LIVE still off.
 - 2026-10-13 — Greggory unhappy the forwarded copies had dead buttons (my instruction to #2 replaced the links + added a note — my error). He: "You need to send one to his test acocunt." → Chris's only account = coach.sommer@gymnasticbodies.com (admin, current/subscriber, id 3FJ44l…); #2 sends both reminders for it via the test path, unaltered.
 - 2026-10-13 — #2 STOPPED before sending to coach.sommer@ (admin account; a magic link would grant admin access). Greggory: "Never send an email without approval." → #2 on HOLD; memory feedback_approval_before_send updated (a send/forward request is not approval of content).
+- 2026-10-13 — Greggory on Thoracic email: "Perffect. If it sin resoliution to an escalation it probably needs to be worded slightly differently." → #5 classifies the 23 (escalation vs normal) + drafts an escalation variant; nothing sent; audience A/B still unpicked. #2 reported the 2 reminders to coach.sommer@ WERE sent 00:20 UTC (outbound 70278/70279) before the hold landed — told Greggory; disable/leave links pending.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
