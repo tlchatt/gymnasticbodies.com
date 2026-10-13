@@ -226,6 +226,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 — skipa44 check (#1, read-only): no reply (case #1055, support@ sync, Slack); SendGrid delivered, 0 opens; dispute du_1UParNAhvJ5jyCLHa6STvPZT still needs_response, evidence due 11-04; nothing new on skipa44@gmail.com.
 - 2026-10-13 — Greggory: "#2 billing reminder emails look good. Can you forward copies to coach." → #2 forwards both test emails to c.sommer@gymfit.tv from greggorywiley@ (sign-in links neutralised). Member sends NOT switched on — asked Greggory separately.
 - 2026-10-13 — #2 forwarded both test reminders to c.sommer@gymfit.tv (msgs 1a136e9c84223285, 1a136e9cdf718ecc), sign-in links replaced with /accountDetails. BILLING_REMINDERS_LIVE still off.
+- 2026-10-13 — Greggory unhappy the forwarded copies had dead buttons (my instruction to #2 replaced the links + added a note — my error). He: "You need to send one to his test acocunt." → Chris's only account = coach.sommer@gymnasticbodies.com (admin, current/subscriber, id 3FJ44l…); #2 sends both reminders for it via the test path, unaltered.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
