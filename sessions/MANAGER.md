@@ -73,7 +73,8 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 | 34 | Main-site sitemap never submitted to Google Search Console (from forum session) | from `1c711620` | none | — | 🔴 ruling |
 | 48 | Hours rule gap: sessions with no board task (96d475f4, cc26628b) → applied "task the work concerns" (35ee9965, c01ea88c) | hours fix | — | — | logged |
 | 49 | Hours rule gap: one owner message earlier split across two sessions (10-09 10:32, 10-09 17:08, 10-12 10:37, 10-12 16:23) → applied "each input counts once", on the main session | hours fix | — | — | logged |
-| 50 | Hours rule gap: "FSure." 10-12 13:12 approved a manager rotation → applied "rotations start nothing" (ac32fad8 deleted) | hours fix | — | — | logged |
+| 50 | Hours rule gap: "FSure." 10-12 13:12 (approved a rotation) → per audit, a typed message is 1a wherever it is; the restart adds nothing → manager review entry e3271618 13:12–13:32 | hours fix | — | — | logged |
+| 54 | Hours rule gap: 10-14 13:33 status question about two workers (#3, #5), no decision → applied rule 8 "session status = manager review" (entry 3197243a) | hours fix | — | — | logged |
 | 51 | Hours rule gap: support-channel Slack replies with no session (10-10 11:47, 10-12 20:35–37) → applied "task they concern" (3e08fb83); 10-12 13:22 → 586270ef | hours fix | — | — | logged |
 | 52 | Hours rule gap: 98cd4134 "Texting Chris" (no task, Greggory ordered it 10-13 14:53) is neither task nor review entry → kept | hours fix | — | — | logged |
 | 53 | Hours rule gap: worker 5515a2a6 on two tasks → one entry per period, on the task with the most inputs | hours fix | — | — | logged |
@@ -237,6 +238,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-13 ~21:00 — Manager ee0671c3 took over (background session). No Monitors to re-arm (none were running; WATCH lines are check-in items). Workers #1 5515a2a6, #2 48d314cf, #3 6e51a0f5, #5 c61d4184 told the new name. Old manager 97dab3f3 pids 2605177 + 2592918 (dup) still open, idle.
 - 2026-10-14 — Technologic PM ce35ce9b (owner voice verified "allt eh way to when managers started") ordered GB hours rebuilt back to 10-08 per fix-gb.txt; then PAUSED it (owner has not confirmed rules). 0 writes made. Plan in sessions/hours-fix-2026-10-14.md (all changes planned, none applied); before-snapshot in manager scratchpad gb-hours-before-2026-10-14.json (62 entries, 64h51m). Waiting on ce35ce9b go.
 - 2026-10-14 — ROUND 2 APPLIED (ce35ce9b, owner voice verified "we get all the managers to back up date their hours"; rules final). GB-only entries 10-08→10-14: 54 / 60h02m → 78 / 33h08m; 18 changed, 32 added, 8 deleted (84c84243, 9b8d98df, 756a09a9, 16630d86, ac32fad8, 4531b091, 75a1e99b, 6589b2f7). 8 multi-client entries untouched. Report sessions/hours-fix-2026-10-14-round2.md; snapshots + apply.log in manager scratchpad. Gaps → review 48–53.
+- 2026-10-14 — Audit fixes (ce35ce9b): deleted 4622db31 (Kyle inputs) and moved 51bd7af6 to 14:41–15:02; added review entries e3271618 (10-12 13:12 "FSure.") and 3197243a (10-14 13:33 status question); 907c22ac kept; named the session on the 7 remaining "relayed via GB manager" entries (only 8 existed, incl. the deleted one). Hand entry 767ca7e9 untouched.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
