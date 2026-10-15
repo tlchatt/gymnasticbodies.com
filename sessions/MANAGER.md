@@ -1,8 +1,9 @@
 # Gymnastic Bodies Project Manager
 
-- **Manager:** Gymnastic Bodies Project Manager ee0671c3 (`ee0671c3-1f10-42b9-b2ea-631b8a6d95a5`), started 2026-10-13 — Claude Code BACKGROUND session (owner ruling 2026-10-13)
-- **Attach:** `claude attach ee0671c3` · **Wake:** `claude --bg --resume ee0671c3-1f10-42b9-b2ea-631b8a6d95a5`
-- **Predecessors:** 987aa382 → 97dab3f3 (2026-10-12); 97dab3f3-139d-4c56-b41e-ee6e128dd91a → ee0671c3-1f10-42b9-b2ea-631b8a6d95a5 (2026-10-13, rotation ordered by owner via WBW PM 1670667d)
+- **Manager:** Gymnastic Bodies Project Manager 22d528f0 (`22d528f0-f807-4ad0-925d-41194d6db66f`), started 2026-10-15 — Claude Code BACKGROUND session running on the **always-on cloud machine** (DigitalOcean, host `wbw-cloud`), not the desktop
+- **Attach:** `claude attach 22d528f0` · **Wake:** `claude --bg --resume 22d528f0-f807-4ad0-925d-41194d6db66f` (both on the cloud machine)
+- **Cloud machine limits (as of 2026-10-16):** no Hyprland/waybar/tclaude, so the L5 launch line below is desktop-only — launch workers here as `claude --bg` sessions. No `~/.config/technologic` operator creds → board (tasks.js/hours), Slack CLI, Google tools don't work here; hand those to the laptop's manager. `vercel` CLI present. `/var/www/Work/Gymfit/sessions/INDEX.md` absent here. Skill + global CLAUDE.md + `worktree.bgIsolation none` fixed 2026-10-16.
+- **Predecessors:** 987aa382 → 97dab3f3 (2026-10-12); 97dab3f3-139d-4c56-b41e-ee6e128dd91a → ee0671c3-1f10-42b9-b2ea-631b8a6d95a5 (2026-10-13, rotation ordered by owner via WBW PM 1670667d); ee0671c3 → 22d528f0 (2026-10-15, manager moved to the cloud machine)
 - **Board client slug(s):** `gymnastic-bodies` · **Review baseline:** `12f6aee` (2026-10-08)
 - **Last check-in:** 2026-10-13 ~21:00 ET · **Last rules review:** none since 2026-10-12
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
@@ -14,7 +15,7 @@
 
 **Rules:** workers commit by explicit path and never push/deploy; they add a line under Ready to
 ship and commit this file by path; the manager pushes and verifies. Hours = active periods built
-from the owner's input only (see the project-manager skill). Relays start "From: Gymnastic Bodies Project Manager · ee0671c3"; Owner's voice line only when his permission is needed.
+from the owner's input only (see the project-manager skill). Relays start "From: Gymnastic Bodies Project Manager · 22d528f0"; Owner's voice line only when his permission is needed.
 
 ## Workers
 | # | Name | Session ID | Task | Status |
@@ -239,6 +240,9 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-14 — Technologic PM ce35ce9b (owner voice verified "allt eh way to when managers started") ordered GB hours rebuilt back to 10-08 per fix-gb.txt; then PAUSED it (owner has not confirmed rules). 0 writes made. Plan in sessions/hours-fix-2026-10-14.md (all changes planned, none applied); before-snapshot in manager scratchpad gb-hours-before-2026-10-14.json (62 entries, 64h51m). Waiting on ce35ce9b go.
 - 2026-10-14 — ROUND 2 APPLIED (ce35ce9b, owner voice verified "we get all the managers to back up date their hours"; rules final). GB-only entries 10-08→10-14: 54 / 60h02m → 78 / 33h08m; 18 changed, 32 added, 8 deleted (84c84243, 9b8d98df, 756a09a9, 16630d86, ac32fad8, 4531b091, 75a1e99b, 6589b2f7). 8 multi-client entries untouched. Report sessions/hours-fix-2026-10-14-round2.md; snapshots + apply.log in manager scratchpad. Gaps → review 48–53.
 - 2026-10-14 — Audit fixes (ce35ce9b): deleted 4622db31 (Kyle inputs) and moved 51bd7af6 to 14:41–15:02; added review entries e3271618 (10-12 13:12 "FSure.") and 3197243a (10-14 13:33 status question); 907c22ac kept; named the session on the 7 remaining "relayed via GB manager" entries (only 8 existed, incl. the deleted one). Hand entry 767ca7e9 untouched.
+
+- 2026-10-15 — Manager 22d528f0 took over on the always-on cloud machine (owner instruction at launch). Found: local main 45 commits ahead of origin/main (4039294), all docs/session notes, NOT pushed; shared tree has uncommitted InboxClient.js + VideoWebmTruncation-followup.md and 6 untracked claudeTools scripts + neon_backups/ (owners unknown, to flag).
+- 2026-10-16 — Technical restart (no hours) per Jeanne PM 1401e920 relay (owner: "fix all the managers on the cloud machine"). Loaded project-manager skill; header commit brought from worktree branch onto main and AI trailer removed; registered in hub.
 
 ## Past days
 ### 2026-10-12 (Today list as it stood)
