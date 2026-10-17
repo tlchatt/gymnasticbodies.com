@@ -5,7 +5,7 @@
 - **Cloud machine limits (as of 2026-10-16):** no Hyprland/waybar/tclaude, so the L5 launch line below is desktop-only — launch workers here as `claude --bg` sessions. No `~/.config/technologic` operator creds → board (tasks.js/hours), Slack CLI, Google tools don't work here; hand those to the laptop's manager. `vercel` CLI present. `/var/www/Work/Gymfit/sessions/INDEX.md` absent here. Skill + global CLAUDE.md + `worktree.bgIsolation none` fixed 2026-10-16.
 - **Predecessors:** 987aa382 → 97dab3f3 (2026-10-12); 97dab3f3-139d-4c56-b41e-ee6e128dd91a → ee0671c3-1f10-42b9-b2ea-631b8a6d95a5 (2026-10-13, rotation ordered by owner via WBW PM 1670667d); ee0671c3 → 22d528f0 (2026-10-15, manager moved to the cloud machine)
 - **Board client slug(s):** `gymnastic-bodies` · **Review baseline:** `12f6aee` (2026-10-08)
-- **Last check-in:** 2026-10-13 ~21:00 ET · **Last rules review:** none since 2026-10-12
+- **Last check-in:** 2026-10-17 15:30 ET · **Last rules review:** none since 2026-10-12
 - **Working dir:** `/var/www/Work/Gymfit/app.gymnasticbodies.com` (git root; `sessions/INDEX.md` lives one level up at `/var/www/Work/Gymfit/sessions/INDEX.md`, outside the repo)
 - **Project workspace:** `L5` (label "GymnasticBodies" in ~/.config/waybar/workspace-labels.json). Launch every worker with `hyprctl dispatch exec "[workspace name:L5 silent] xdg-terminal-exec …"` and confirm it landed on L5 — never the active workspace.
 - **WATCH:** first cronMarketingDrip + 11:00 UTC classifyUsers runs after b87b8e6 — must NOT be 403 (CRON_SECRET via Vercel cron Bearer).
@@ -28,6 +28,7 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 | 6 | Gymnastic Bodies · Handoff email to Coach Sommer · 503f1a77 | `503f1a77-1fc6-47ab-aee0-8877521060fd` | 8073623f (review), 419db13e | closed 2026-10-13 |
 | 4 | Gymnastic Bodies · Chris account setup email · f6a9d3c8 | `f6a9d3c8-ff00-4065-8a50-46f51334ea22` | de562e6f | closed 2026-10-13 |
 | 4 | Gymnastic Bodies · Job listing Gmail draft · e7d2afe5 | `e7d2afe5-793d-4195-8dd0-3bb9984f6830` | 419db13e | closed 2026-10-13 |
+| 4 | Gymnastic Bodies · Engineering escalations · bfb798bd | `bfb798bd-92c4-4bd2-bce9-b4ff8b77a913` | 35ee9965 | live (cloud bg) |
 
 ## Ready to ship
 - 2026-10-09 — **3954213** (session 96d475f4): chargeback + early-fraud-warning webhook no longer emails support@ (owner: it only comes back in as a duplicate of the Slack alert); banMember logs admin.member_banned on EACH banned account so it shows in the admin account history (label "Banned — reason · N subscriptions cancelled · N cards blocked"). Tested: npm run build passes; no member-facing change. Owner-ordered. **SHIPPED 2026-10-09 15:20 (push 158af33).**
@@ -42,9 +43,11 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 - 2026-10-12 — **b233068** (session 5d20c098, task 586270ef, Kyle Consolie): lib/promiseCheck.js only — a refund that failed with `charge_for_pending_refund_disputed` counts as KEPT when the charge's dispute is `lost` ("money returned via lost dispute"); while that dispute is still open it is held as a skip ("pending until it closes", no alert); a won dispute or any other failed/canceled refund is still a mismatch. Same path for admin.refund and support-agent refunds (checkRefundId). Greggory: "2. y es" (owner-said.js verified, 20:23 UTC). Tested: local production build (worktree, `next build --webpack`, :3091) `/api/cronPromiseCheck?dryRun=1` on live data — before: checked 59 / ok 53 / skipped 5 / mismatches 1 (app_logs:523000 consolie7); after: checked 59 / ok 54 / skipped 5 / mismatches 0; the 5 skips identical. After deploy: next 15:30 UTC run should log `promise_check.run` with mismatches 0. **SHIPPED 2026-10-12 (push ec7948a, deploy 2obvnfq6h Ready; prod dryRun: 59 checked / 54 ok / 5 skipped / 0 mismatches).**
 - 2026-10-12 — **7e721cd** (session c61d4184, task e17309bc, Thoracic Bridge): docs only — CLAUDE.md video section records the replacement; email draft in claudePlans/thoracic-bridge-live-email-draft-2026-10-12.md (NOT sent; Greggory picks audience 11 vs 23 + approves wording). The VIDEO itself is already LIVE on Blob (no push needed): complete original from Greggory's 2 Drive parts (md5 match), both decode-clean, joined losslessly → 40:30 (2430.3s, 72,827 frames, decode-clean), H.264 web encode 748 MB uploaded over 2yO4CxF4.mp4 at 21:32 UTC; kept out of both manifests so the mp4 serves; no my. change (videoDurations already 2430.43). Prior blob backed up local + private store. Tested: headless Chrome from my.gymnasticbodies.com origin played the live URL — duration 2430.26, played through the part join (1000→1004s), past the old 20-min cut-off and at 30 min, then ended naturally at 2430.26. NOT tested: the in-app path (Course Library → Thoracic Bridge, Intermediate 1 rotation) — signing in needs a member session (impersonate/testSession broken, item 22). After push: nothing to verify for the docs. **SHIPPED 2026-10-13 (push 4039294).**
 
-## Today's list — 2026-10-13 (handoff state at rotation, ~20:45 ET)
+## Today's list — 2026-10-17 (items without a new note carried from 10-13)
 
 | # | Item | Session | Task | Hours | Status |
+|---|---|---|---|---|---|
+| #4 | Engineering escalations (from review #30 + #47): inventory open escalated cases, verify vs code, owner picks order, fix | bfb798bd (cloud) | 35ee9965 | ⏱ 511915c0 | 🟡 launched 15:28 ET; will show one-screen triage then wait for owner |
 |---|---|---|---|---|---|
 | #5 | Thoracic Bridge live-now email (video LIVE since 10-12 21:32Z; 5 members played full 2430s file) | c61d4184 | e17309bc | — | 🔴 Greggory owes 5 answers (asked 10-13 evening): audience A(11)/B(23); approve escalation variant (9aa0adf, 7 escalation recipients); cancel support fire #285 for patriothb first (it promises 1-month credit); keep/drop "Intermediate 1 rotation" sentence (unverified); make VP9 480/720/1080 renditions yes/not now. NOTHING SENT. Cases kept open after send: georgebelange #681, shearonlevi #750, ibarak545 #700/#779 |
 | #2 | Billing reminder emails | 48d314cf | e19a9766 | — | 🔴 Greggory: "look good". Copies forwarded to c.sommer@gymfit.tv with links REPLACED (my error, he was unhappy). Then 2 unaltered test reminders SENT to coach.sommer@gymnasticbodies.com (ADMIN account) 00:20Z (outbound 70278/70279) before my hold landed — he was told. Open: disable those 2 admin magic links (delete 2 verification rows) or leave (expire 10-17 00:20Z); turn member sends on (BILLING_REMINDERS_LIVE) yes/not yet. RULE: "Never send an email without approval." |
@@ -65,12 +68,10 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 | 27 | Slack: connect Instagram DMs to support (Greggory Aug 28 "working on getting the API key") | Slack sweep | none | — | 🔴 ruling |
 | 28 | Slack: ask the AI about a member from inside Slack without a case (Luke Sep 4, no reply) | Slack sweep | none | — | 🔴 ruling |
 | 29 | Slack: member promises pending owner OK — Jason Camara #549 ($15 rate + $70 refund); George Belange #655 (Aug goodwill credit never applied); Faiz #712 (progress reset) | Slack sweep | none | — | 🔴 ruling |
-| 30 | Slack: open escalations with no update since Sep 30 — schedule repair #734/744/757/774/779/792; BYO edit #755; course errors #771; Thrive after $15 #786; Upper Body edit #799; BYO missing exercises #808; video stalls #750; Thrive photos #668 (partly task 35ee9965) | Slack sweep | none | — | 🔴 ruling |
 | 31 | Slack: Coach Aug 27 — remove "free membership", open blogs/articles; whiteboard/Intro paying-members only | Slack sweep | none | — | 🔴 ruling |
 | 32 | Slack: Aug 17 roadmap commitments to Luke/Coach still open — mobile-responsive /admin; Social Road Map; my. into app.; 3 tiers $25/$50/$75; level/progress restructure; video taxonomy (Sep 4) | Slack sweep | none | — | 🔴 ruling |
 | 33 | Slack: unclear/unclosed — Sumant no app access (Sep 22 "working on this"); long-video refresh drag (Aug 29 "next week"); support form error (Sep 14); meet Luke re Slack agent (Aug 28); Coach Oct 8 "why cancel requests?" (bot-only reply); small member promises Aug 8–19 (Cesta, Ayeisha, M. Walker Thrive flag, Peter Carey, J. Vega) | Slack sweep | none | — | 🔴 ruling |
 | 46 | my-gymnasticbodies Vercel project IS git-triggered (CLAUDE.md says not git-linked): every my. push starts a build that fails on node-sass → failure email each push (5 on Oct 9). Live my. = manual prebuilt deploy Oct 9 11:18. Disconnect git / fix build / leave? (from technologic-43) | Technologic review | none | — | 🔴 ruling |
-| 47 | Sep 21 bare tasks 68096274 (un-closed back cases mass email) + 35ee9965 (Engineering Escalations) — Greggory thinks resolved; review together | Technologic review | 68096274, 35ee9965 | — | 🔴 ruling |
 | 34 | Main-site sitemap never submitted to Google Search Console (from forum session) | from `1c711620` | none | — | 🔴 ruling |
 | 48 | Hours rule gap: sessions with no board task (96d475f4, cc26628b) → applied "task the work concerns" (35ee9965, c01ea88c) | hours fix | — | — | logged |
 | 49 | Hours rule gap: one owner message earlier split across two sessions (10-09 10:32, 10-09 17:08, 10-12 10:37, 10-12 16:23) → applied "each input counts once", on the main session | hours fix | — | — | logged |
@@ -243,8 +244,22 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 
 - 2026-10-15 — Manager 22d528f0 took over on the always-on cloud machine (owner instruction at launch). Found: local main 45 commits ahead of origin/main (4039294), all docs/session notes, NOT pushed; shared tree has uncommitted InboxClient.js + VideoWebmTruncation-followup.md and 6 untracked claudeTools scripts + neon_backups/ (owners unknown, to flag).
 - 2026-10-16 — Technical restart (no hours) per Jeanne PM 1401e920 relay (owner: "fix all the managers on the cloud machine"). Loaded project-manager skill; header commit brought from worktree branch onto main and AI trailer removed; registered in hub.
+- 2026-10-17 15:28 — Greggory (Slack, 15:26): "Let's start addressing the engineering escalations" → review #30 + #47(35ee9965 half) ruled handle-now. Launched #4 Engineering escalations bfb798bd as cloud bg session; task 35ee9965 → in_progress (title typo fixed, desc added); task entry 511915c0 opened 15:26. 68096274 (un-closed cases mass email) still unruled — carried. Board tasks.js works on cloud now (creds added 10-16).
 
 ## Past days
+
+### Today's list — 2026-10-13 (handoff state at rotation, ~20:45 ET)
+
+| # | Item | Session | Task | Hours | Status |
+|---|---|---|---|---|---|
+| #5 | Thoracic Bridge live-now email (video LIVE since 10-12 21:32Z; 5 members played full 2430s file) | c61d4184 | e17309bc | — | 🔴 Greggory owes 5 answers (asked 10-13 evening): audience A(11)/B(23); approve escalation variant (9aa0adf, 7 escalation recipients); cancel support fire #285 for patriothb first (it promises 1-month credit); keep/drop "Intermediate 1 rotation" sentence (unverified); make VP9 480/720/1080 renditions yes/not now. NOTHING SENT. Cases kept open after send: georgebelange #681, shearonlevi #750, ibarak545 #700/#779 |
+| #2 | Billing reminder emails | 48d314cf | e19a9766 | — | 🔴 Greggory: "look good". Copies forwarded to c.sommer@gymfit.tv with links REPLACED (my error, he was unhappy). Then 2 unaltered test reminders SENT to coach.sommer@gymnasticbodies.com (ADMIN account) 00:20Z (outbound 70278/70279) before my hold landed — he was told. Open: disable those 2 admin magic links (delete 2 verification rows) or leave (expire 10-17 00:20Z); turn member sends on (BILLING_REMINDERS_LIVE) yes/not yet. RULE: "Never send an email without approval." |
+| #1 | Chargeback process (outreach-first, no auto-ban, phone blocking) + skipa44 dispute | 5515a2a6 | 6be8fd18, bcdfcfbf | — | 🔴 5 plan answers owed (plan+template, refund scope, 2 reminders, #gymnasticbodies-admin-escalations channel, phone blocking). skipa44: no reply as of 10-13 16:15; dispute needs_response, evidence due 11-04 |
+| #3 | Support backlog triage | 6e51a0f5 | 3e08fb83 | — | 🔴 Batch 1 "go ahead" owed — Tricia Sambrano credit must land before her Oct 15 charge |
+| — | Handoff to Chris (transition) | closed workers | 8073623f, de562e6f, 419db13e | — | ✅ handoff email SENT by Greggory 10-12; Chris agreed + wired, "Payment received" 10-13; account-setup email SENT by Greggory ~16:02 10-13; job listing + pay note = Gmail draft r-7831231625808885854 (unsent). Migration open items: Neon org Launch+, Blob Transfer Store step; Stripe draft 0014 at $0; invoices 0005/0011 open |
+| — | Marketing unsubscribe (CAN-SPAM) | none | 2f5084d4 URGENT | — | ⏸ not dispatched — asked Greggory whether to start |
+| 42 | Kyle Consolie | closed | 586270ef | — | ✅ done 10-13 (b233068 live) |
+
 ### 2026-10-12 (Today list as it stood)
 
 _Carried over from 2026-10-09 (numbers kept). See Past days for the full 10-09 list._
