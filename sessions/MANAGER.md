@@ -248,6 +248,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-16 — Technical restart (no hours) per Jeanne PM 1401e920 relay (owner: "fix all the managers on the cloud machine"). Loaded project-manager skill; header commit brought from worktree branch onto main and AI trailer removed; registered in hub.
 - 2026-10-17 15:28 — Greggory (Slack, 15:26): "Let's start addressing the engineering escalations" → review #30 + #47(35ee9965 half) ruled handle-now. Launched #4 Engineering escalations bfb798bd as cloud bg session; task 35ee9965 → in_progress (title typo fixed, desc added); task entry 511915c0 opened 15:26. 68096274 (un-closed cases mass email) still unruled — carried. Board tasks.js works on cloud now (creds added 10-16).
 - 2026-10-17 16:20 — Greggory (Slack 16:17): "Thoracic bridge should be resolved and emailed already. Lets put in fixes one by one on each subsequent group and test them" → relayed to #4 with Owner's voice (order B+C, A, D; E + member drafts back to owner). Checked live Neon: NO Thoracic email in outbound_emails/support_replies since 10-09 (video is live) → asked owner. Cloud machine has no node_modules in app. (worker installs). Hours: 511915c0 closed 15:46; 3682f074 opened 16:17.
+- 2026-10-17 — #4 group B+C ready (4009d3d, Ready line 314d86b). Manager reviewed diff (lib/curriculum.js only; writers preserve `removed`; no AI trailers in the 51 unpushed commits). Local `npm run build` KILLED by Claude Code for low memory (7.8 GB box, several sessions) — NOT pushed; asked owner.
 
 ## Past days
 
