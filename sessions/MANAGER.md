@@ -264,6 +264,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 ~17:52 — G1 DONE (#4): credits 712/786/668 trial_end +1mo (Stripe), 664 renewaldate +1mo; emails outbound_emails 77018–77021 (campaign escalation_fixed_2026-10-17); cases 664/668/712/786 closed; Slack dev + support edited, thread replies posted. Manager verified emails + case status in Neon. G2 shown to owner, awaiting approval.
 - 2026-10-17 — Owner: "Show.me the next group credit and email" → G2 shown; "Looks good send it" → relayed G2 execution to #4 (Kelly, Ilan first; cancel fire #206 before James Lord; Cornel case closed).
 - 2026-10-17 ~18:20 — G2 DONE (#4): 7 credited (6 Stripe trial_end +1mo, Woong renewaldate), emails outbound_emails 77051–77056, 77059; cases 755,799,744,752,757,774,785,808,728,792 closed; fire #206 cancelled first; Slack edited + replies. Manager verified in Neon. G3 shown, awaiting approval (+ Carlos repair go).
+- 2026-10-17 — Owner: "Looks good send group three" → relayed G3 to #4 (Uroš first, cancel fire #175; cases stay open). Carlos Mon–Wed repair NOT named → held, asked owner separately.
 
 ## Past days
 
