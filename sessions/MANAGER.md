@@ -255,6 +255,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 16:55 — Owner (Slack): "Resolve this install and build the two apps. My. And app." → node_modules both repos (app. by #4; my. yarn on Node 16), app. build ✅ 2m11s, my. build ✅ 3m57s. Shipped app. b9ffcf8 (B+C 4009d3d + A 45a52e3; redeploy evgv4lap7 after a font-fetch build error) and my. 1d8551e (D) live f30f0d68.
 - 2026-10-17 ~17:00 — #4 post-deploy checks PASS (origin/main lib/curriculum.js == 45a52e3, run against live prod data read-only): Cody warm-ups first, James Core 3, Woong Core Kip Ext/Windshield Wipers/L-Sit. No curriculum errors in prod app_logs (3h). Flagged review #55 (invalid_level_write). D browser check owed on laptop.
 - 2026-10-17 16:50 — Owner caught my "3 hours since deploy" error: app. went live ~16:37 ET, #4's log window included pre-deploy time. Checked prod app_logs since 20:37Z: zero workout events at all (no member has opened a card yet) — so no evidence either way. Hours 82148a08 opened 16:49.
+- 2026-10-17 ~17:00 — Owner: "Okay send the it's fixed emails plus credit, show me each group and credit and email here first." → relayed to #4: G1 (664/668/786/712) + G2 (799, 744/752, 757, 774/785, 755, 808, 728/792); credit.js dry-runs per member; full drafts back to owner before any send/credit. Carlos/Uros/Iris/Vigilio excluded (not fixed).
 
 ## Past days
 
