@@ -257,6 +257,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 16:50 — Owner caught my "3 hours since deploy" error: app. went live ~16:37 ET, #4's log window included pre-deploy time. Checked prod app_logs since 20:37Z: zero workout events at all (no member has opened a card yet) — so no evidence either way. Hours 82148a08 opened 16:49.
 - 2026-10-17 ~17:00 — Owner: "Okay send the it's fixed emails plus credit, show me each group and credit and email here first." → relayed to #4: G1 (664/668/786/712) + G2 (799, 744/752, 757, 774/785, 755, 808, 728/792); credit.js dry-runs per member; full drafts back to owner before any send/credit. Carlos/Uros/Iris/Vigilio excluded (not fixed).
 - 2026-10-17 17:13 — Owner: "Then update the slack items on both channels for each" → relayed to #4: per G1/G2 case, find support-channel card + dev/escalation post, draft the update (edit vs thread reply), include in the review package; post only after approval + after that case's email/credit.
+- 2026-10-17 — Owner: "For the left out for other issues send them an email about what fixes are in and credit. Just don't close the escalation." → relayed to #4 as G3 (Carlos 680, Uros 710, Iris 700/779, Vigilio 685): partial-fix email + credit, cases/escalations stay open; in same review package.
 
 ## Past days
 
