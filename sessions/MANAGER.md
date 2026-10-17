@@ -50,7 +50,7 @@ from the owner's input only (see the project-manager skill). Relays start "From:
 
 | # | Item | Session | Task | Hours | Status |
 |---|---|---|---|---|---|
-| #4 | Engineering escalations (from review #30 + #47): inventory, fix group by group, test | bfb798bd (cloud) | 35ee9965 | 511915c0 (15:26–15:46), 3682f074 (16:17–16:37), ⏱ 82148a08 | 🟡 B+C, A, D ✅ LIVE 10-17; open: Carlos #680 repair (live write, owner go), E Sunday decision, 5 member drafts (claudePlans/escalation-drafts-2026-10-17.md) for owner approval, D laptop browser check |
+| #4 | Engineering escalations (from review #30 + #47) | bfb798bd (cloud) | 35ee9965 | 511915c0, 3682f074, ⏱ 82148a08 | 🟡 B+C, A, D ✅ LIVE; G1/G2/G3 emails + 1-mo credits ✅ SENT 10-17 (19 cases: 14 closed, 5 kept escalated). Open: 🔴 Carlos Mon–Wed repair go; Sunday (E) decision; Vigilio L2+ follow-alongs (Coach); credit.js 3 fixes (owner); D laptop browser check |
 |---|---|---|---|---|---|
 | #5 | Thoracic Bridge live-now email (video LIVE since 10-12 21:32Z; 5 members played full 2430s file) | c61d4184 | e17309bc | — | 🔴 Greggory owes 5 answers (asked 10-13 evening): audience A(11)/B(23); approve escalation variant (9aa0adf, 7 escalation recipients); cancel support fire #285 for patriothb first (it promises 1-month credit); keep/drop "Intermediate 1 rotation" sentence (unverified); make VP9 480/720/1080 renditions yes/not now. NOTHING SENT. Cases kept open after send: georgebelange #681, shearonlevi #750, ibarak545 #700/#779 |
 | #2 | Billing reminder emails | 48d314cf | e19a9766 | — | 🔴 Greggory: "look good". Copies forwarded to c.sommer@gymfit.tv with links REPLACED (my error, he was unhappy). Then 2 unaltered test reminders SENT to coach.sommer@gymnasticbodies.com (ADMIN account) 00:20Z (outbound 70278/70279) before my hold landed — he was told. Open: disable those 2 admin magic links (delete 2 verification rows) or leave (expire 10-17 00:20Z); turn member sends on (BILLING_REMINDERS_LIVE) yes/not yet. RULE: "Never send an email without approval." |
@@ -265,6 +265,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 — Owner: "Show.me the next group credit and email" → G2 shown; "Looks good send it" → relayed G2 execution to #4 (Kelly, Ilan first; cancel fire #206 before James Lord; Cornel case closed).
 - 2026-10-17 ~18:20 — G2 DONE (#4): 7 credited (6 Stripe trial_end +1mo, Woong renewaldate), emails outbound_emails 77051–77056, 77059; cases 755,799,744,752,757,774,785,808,728,792 closed; fire #206 cancelled first; Slack edited + replies. Manager verified in Neon. G3 shown, awaiting approval (+ Carlos repair go).
 - 2026-10-17 — Owner: "Looks good send group three" → relayed G3 to #4 (Uroš first, cancel fire #175; cases stay open). Carlos Mon–Wed repair NOT named → held, asked owner separately.
+- 2026-10-17 ~18:25 — G3 DONE (#4): 4 credited (Uroš, Carlos Stripe; Iris, Vigilio renewaldate), emails 77064–77067, cases 710/680/700/779/685 stay escalated w/ admin notes; fire #175 cancelled first; Slack 🟡. Manager verified. Open: Carlos repair go, Sunday (E), Vigilio content (Coach), credit.js fixes, D laptop browser check, review #55.
 
 ## Past days
 
