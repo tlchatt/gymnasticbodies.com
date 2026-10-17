@@ -338,12 +338,15 @@ system **"trialing" usually means "credited", not "on a free trial"** — do not
 trialing status as a signup trial.
 
 ```bash
-# from /var/www/Work/Gymfit — always dry-runs unless --confirm
+# from the app.gymnasticbodies.com repo root — always dry-runs unless --confirm
 node claudeTools/credit.js --email=x@y.com --days=7                              # preview
 node claudeTools/credit.js --email=x@y.com --months=1 --confirm                  # apply
 node claudeTools/credit.js --emails-file=./list.txt --days=7 --confirm           # bulk
 node claudeTools/credit.js --email=x@y.com --days=7 --reason="course access bug" # traceable
 ```
+
+The tool lives in this repo (`claudeTools/credit.js`, since 2026-10-17, be74aad). It loads `.env.local` if
+present, else `.env`. The old `/var/www/Work/Gymfit/claudeTools/credit.js` (outside git, laptop only) is superseded.
 
 The tool decides which path applies by asking **live Stripe**, not by reading
 `user_setting.stripeSubscriptionId`. That column is not trustworthy on its own: a member
