@@ -266,6 +266,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 ~18:20 — G2 DONE (#4): 7 credited (6 Stripe trial_end +1mo, Woong renewaldate), emails outbound_emails 77051–77056, 77059; cases 755,799,744,752,757,774,785,808,728,792 closed; fire #206 cancelled first; Slack edited + replies. Manager verified in Neon. G3 shown, awaiting approval (+ Carlos repair go).
 - 2026-10-17 — Owner: "Looks good send group three" → relayed G3 to #4 (Uroš first, cancel fire #175; cases stay open). Carlos Mon–Wed repair NOT named → held, asked owner separately.
 - 2026-10-17 ~18:25 — G3 DONE (#4): 4 credited (Uroš, Carlos Stripe; Iris, Vigilio renewaldate), emails 77064–77067, cases 710/680/700/779/685 stay escalated w/ admin notes; fire #175 cancelled first; Slack 🟡. Manager verified. Open: Carlos repair go, Sunday (E), Vigilio content (Coach), credit.js fixes, D laptop browser check, review #55.
+- 2026-10-17 — Owner asked "engineering escalations from today updated in slack closed where applicable?" → manager checked all 15 members' Slack items live: every dev post + support header edited (✅ closed / 🟡 partly), each support thread has 1 reply; Neon: 14 closed, 5 escalated. Owner: "Users who were emailed but still have issues can we fix those next?" → #4: Carlos Mon–Wed repair GO (backup first, draft restored email); Sunday asked of owner; Vigilio fix options note.
 
 ## Past days
 
