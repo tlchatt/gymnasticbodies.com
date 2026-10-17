@@ -267,6 +267,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 — Owner: "Looks good send group three" → relayed G3 to #4 (Uroš first, cancel fire #175; cases stay open). Carlos Mon–Wed repair NOT named → held, asked owner separately.
 - 2026-10-17 ~18:25 — G3 DONE (#4): 4 credited (Uroš, Carlos Stripe; Iris, Vigilio renewaldate), emails 77064–77067, cases 710/680/700/779/685 stay escalated w/ admin notes; fire #175 cancelled first; Slack 🟡. Manager verified. Open: Carlos repair go, Sunday (E), Vigilio content (Coach), credit.js fixes, D laptop browser check, review #55.
 - 2026-10-17 — Owner asked "engineering escalations from today updated in slack closed where applicable?" → manager checked all 15 members' Slack items live: every dev post + support header edited (✅ closed / 🟡 partly), each support thread has 1 reply; Neon: 14 closed, 5 escalated. Owner: "Users who were emailed but still have issues can we fix those next?" → #4: Carlos Mon–Wed repair GO (backup first, draft restored email); Sunday asked of owner; Vigilio fix options note.
+- 2026-10-17 ~18:40 — #4: Carlos Mon–Wed restored [0,0,0,3,4,1,0]→[3,4,1,3,4,1,0] from Level 1 plan (backup claudePlans/carlos-herrera-guided-week-BACKUP-2026-10-17.json, app_logs admin.guided_week_repair); restored-email draft in package 8d70957 (unsent). Owner: "Don't modify functionality what was the user complaint?" → no Sunday/Vigilio builds; #4 checking read-only whether old AWS app allowed Sunday (regression vs new feature).
 
 ## Past days
 
