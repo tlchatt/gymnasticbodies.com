@@ -285,3 +285,126 @@ If someone presses it after our email, James gets a stale second reply. Recommen
 before the email goes out.
 
 The Thoracic Bridge posts and the posts for Carlos, Uros, Iris and Vigilio are left untouched.
+
+## G3 — partly fixed: email what's in, credit, keep the escalation OPEN (added 2026-10-17)
+
+Owner (via manager): "For the left out for other issues send them an email about what fixes are in
+and credit. Just don't close the escalation."
+
+**After sending:** cases and escalations stay **open** (status `escalated`). No case gets closed.
+
+**Credit: 1 month each**, the same amount as G1/G2. They've waited longest, and part of their
+problem is still open. If more is owed when the rest is fixed, that can be decided then. Dry run
+(read-only): nobody is banned, lapsed or missing an account. Each has one live sub or none.
+
+| Case | Member | Credit path | Before → after |
+|---|---|---|---|
+| 680 | Carlos Herrera (carlos.herrera1131@gmail.com) | Stripe sub_1U2FnQ… trialing (earlier credits), **$179.88/yr** → trial_end | next bill 2027-08-15 → **2027-09-15** |
+| 710 | Uroš Trujkic (uros.trujkic@gmail.com) | Stripe sub_1UIkOy… active, $15/mo → trial_end | next bill **2026-10-23** → **2026-11-23** ⚠ bills in 6 days |
+| 700/779 | Iris Barak (ibarak545@gmail.com) | no live sub → renewaldate (manual-grant subscriber) | access until 2027-08-21 → **2027-09-21** |
+| 685 | Vigilio Gheser (vigiflyer@hotmail.com) | no live sub → renewaldate (manual-grant subscriber) | access until 2026-12-20 → **2027-01-20** |
+
+**What is and isn't fixed (checked against the live code and data):**
+
+| Case | Fixed now | Still open (why) |
+|---|---|---|
+| 680 | Swaps and Remove now stick (C 4009d3d, A 45a52e3, D my. 1d8551e) | Mon–Wed empty since the August schedule wipe. The repair isn't authorized yet, so no date is promised. His September Hawaiian Squat swap never saved, so he picks it once more |
+| 710 | Exercise changes now show on the workout (A, D). The follow-along video follows the member's step (772c6e5, 09-30) | Sunday (cause E, owner decision). If a video still doesn't match his reps, we need to know which one |
+| 700/779 | Edit lists everything and changes stick (C, D). "Play Workout" plays the day in sequence (my. 7c90f4f, 09-30) | Sunday (cause E). **Thoracic Bridge is NOT mentioned:** it belongs to worker #5 / the manager (separate email) |
+| 685 | His Core card shows his own Level 2 Front Lever, Side Lever and Manna picks (A) | Core follow-along videos exist for **Level 1 only**. Level 2+ plays each exercise's own demo. That's a content question for Coach, with no promise |
+
+**680 — Carlos Herrera** · Subject: Re: Guided plan edits
+> Hi Carlos,
+>
+> Thank you for sticking with us. Here's where things stand with your guided plan.
+>
+> Fixed now: changes you make in Edit stick. When you swap an exercise, the new one is
+> the one that shows, and Remove no longer brings the old exercise back. Your swap to
+> Hawaiian Squats from September didn't save at the time, so please make that change once
+> more. It will stay this time.
+>
+> Still being worked on: your Monday to Wednesday workouts were emptied by a problem with
+> our schedule data in August. We're restoring them from your plan and will email you as
+> soon as that's done.
+>
+> To thank you for your patience, we've added a free month to your membership. Your next
+> payment moves from August 15, 2027 to September 15, 2027.
+>
+> Best,
+> GymnasticBodies Support
+
+**710 — Uroš Trujkic** · Subject: Re: Buggy interface
+> Hi Uroš,
+>
+> Thanks for your patience, and you were right that the site overhaul caused this. Here's
+> where things stand.
+>
+> Fixed now: when you change an exercise (for example, incline pushup to regular pushup),
+> the change now shows on your workout after you close the window. We've also updated the
+> follow-along videos so they follow the step you're on. If a video still doesn't match
+> the reps you're asked to do, reply with the exercise name and we'll check it.
+>
+> Still being worked on: adding a workout on Sunday. Plans currently run Monday to
+> Saturday, and we're deciding how Sunday should work. We'll let you know when it changes.
+>
+> To make up for the trouble, we've added a free month to your membership. Your next
+> payment moves from October 23 to November 23.
+>
+> Best,
+> GymnasticBodies Support
+
+**700/779 — Iris Barak** · Subject: Re: Guided plan issues
+> Hi Iris,
+>
+> Thank you for your patience, and sorry this has taken so long. Here's where things stand
+> with your guided plan.
+>
+> Fixed now: the Edit button works. It lists every exercise at every level, the changes
+> you make stick, and Remove no longer brings back an old exercise. "Play Workout" now
+> plays the day's activities one after another.
+>
+> Still being worked on: generating a workout on Sunday. Plans currently run Monday to
+> Saturday, and we're deciding how Sunday should work. We'll let you know when it changes.
+>
+> To thank you for bearing with us, we've added a free month to your membership. It now
+> runs until September 21, 2027.
+>
+> Best,
+> GymnasticBodies Support
+
+**685 — Vigilio Gheser** · Subject: Re: Account issue
+> Hi Vigilio,
+>
+> Thank you for the clear description. It helped. Here's where things stand.
+>
+> Fixed now: your Core workout shows your own Intermediate 2 progressions for Front Lever,
+> Side Lever and Manna. Before, some of your progressions were hidden behind others.
+>
+> Still open: the "follow along" video. Follow-along videos currently exist for Level 1
+> only. At Intermediate 2 and above, each exercise plays its own demonstration video
+> instead. We're reviewing this and will let you know if it changes.
+>
+> To make up for the trouble, we've added a free month to your membership. It now runs
+> until January 20, 2027.
+>
+> Best,
+> GymnasticBodies Support
+
+### G3 Slack updates (after each member's credit + email), wording "partly fixed", NOT resolved
+
+Same bot (B0BS9JE1A1Y), so every item is an edit.
+- **Dev post → EDIT:** `:warning: *Engineering escalation*` becomes `:large_yellow_circle: *Partly fixed — 2026-10-<dd>* (still escalated)`, plus the line:
+  `_Partly fixed <date>: <what> (<commits>). Member emailed + credited 1 month (<path>: <before> → <after>). Still open for: <X>._`
+- **Support thread → EDIT header + one thread reply:** the header gets
+  `· :large_yellow_circle: Partly fixed — emailed + credited <date>, still open for <X>`.
+
+| Case | Dev post ts (edit) | Support thread ts (header edit + reply) | "Still open for" |
+|---|---|---|---|
+| 680 | 1789777641.616169 | 1789755998.798869 | Mon–Wed schedule repair (needs go-ahead) |
+| 710 | 1790284522.181249 | 1790276937.084919, 1790665289.854069 | Sunday workouts (owner decision) |
+| 700/779 | 1790211381.457929 (700), 1791164482.866429 (779) | 1790174187.175989 (700), 1791151796.134419 (779) | Sunday workouts (owner decision); Thoracic handled separately (#5) |
+| 685 | 1790127261.936909 | 1790087555.240369 | Level 2+ follow-along videos (content question for Coach) |
+
+**⚠ Clean-up before emailing Uroš:** support fire **#175** (case 710, thread 1790665289.854069) is
+still `posted`. It's an unsent draft with a live Accept button. Cancel it first, like #206 for
+James Lord.
