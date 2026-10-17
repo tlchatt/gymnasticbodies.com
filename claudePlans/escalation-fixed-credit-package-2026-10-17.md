@@ -408,3 +408,42 @@ Same bot (B0BS9JE1A1Y), so every item is an edit.
 **⚠ Clean-up before emailing Uroš:** support fire **#175** (case 710, thread 1790665289.854069) is
 still `posted`. It's an unsent draft with a live Accept button. Cancel it first, like #206 for
 James Lord.
+
+## Follow-ups after G3 (2026-10-17)
+
+### Carlos #680 — Monday–Wednesday restored (done 22:36 UTC). Email DRAFT, NOT sent
+
+What was done:
+- He is on Level 1 (`workout_level.levelId` 1 since 09-18), and his Thu–Sat already matched the Level 1 plan class for class.
+- So Mon–Wed were filled from the same Level 1 plan (`data/workout/levelSchedules.json`). Week went 0,0,0,3,4,1,0 → 3,4,1,3,4,1,0. Sunday stays empty (cause E).
+- Backup: `claudePlans/carlos-herrera-guided-week-BACKUP-2026-10-17.json` (local, gitignored). The previous days are also in app_logs `admin.guided_week_repair`.
+- His old 7-day AWS week (from his earlier, different plan) isn't on this machine, and the AWS database was deleted on 10-09. It was NOT used.
+- Case #680 stays escalated until this email is approved and sent. Sunday is still open.
+
+Subject: Re: Guided plan edits
+> Hi Carlos,
+>
+> Good news: your Monday, Tuesday and Wednesday workouts are back. Monday is Upper Body
+> with the 7 Minute Warm-Up and Weighted Mobility, Tuesday is Core and Lower Body with the
+> warm-up and Knee Series, and Wednesday is Front Split, the same Level 1 plan as the rest
+> of your week.
+>
+> If you'd like a different class on any of those days, you can change it from your
+> weekly view and it will stay. Sunday is still a rest day while we finish deciding how
+> Sunday should work. We'll let you know when that changes.
+>
+> Thanks again for your patience.
+>
+> Best,
+> GymnasticBodies Support
+
+### Vigilio #685 — what an engineering fix for Level 2+ follow-along could look like (not built)
+
+- **Cause:** my. `src/Components/LegacyWorkoutModal/index.jsx` builds the follow-along playlist only from items with
+  `levelKey === 'LEVEL 1'`, taking each one's first Strength video. Level 2+ exercises DO have a Strength video
+  (e.g. L2 Front Lever `a7RyMr8T`, L3 `WqjC0k0Q`), but they're short technique demos, not timed follow-along sets.
+- **Fix:** drop the Level-1-only filter so "Follow along" plays every exercise on the card in order (optionally its
+  Mobility video too). That's a my.-only change (~10 lines, size **S**), plus a my. deploy and a laptop browser check.
+- **Needs Coach?** Yes, for the decision, not to build it. A playlist of short demos isn't a real follow-along
+  (no timing, sets or rests). Coach decides whether demos-in-sequence is acceptable for Level 2+, or whether real
+  follow-along videos need filming. Only filming is content work.
