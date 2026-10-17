@@ -260,6 +260,7 @@ Items waiting for a decision. A ruling turns each into a Technologic task (handl
 - 2026-10-17 — Owner: "For the left out for other issues send them an email about what fixes are in and credit. Just don't close the escalation." → relayed to #4 as G3 (Carlos 680, Uros 710, Iris 700/779, Vigilio 685): partial-fix email + credit, cases/escalations stay open; in same review package.
 - 2026-10-17 ~17:25 — G1/G2 + G3 packages shown to owner (claudePlans/escalation-fixed-credit-package-2026-10-17.md, 0b30b1f/75fc7ce), awaiting approval. Owner: credit tool "belongs here… make a local to the project version" + "Make sure you can issue the promised credit". credit.js not on cloud: recovered from laptop session 5ca21ad3 transcript via `wbw transcript` (single Write 2026-08-07, no later edits in 7 GB sessions checked) → handed to #4 to port into app. + dry-run all 15. .env has sk_live. Deadlines: Kelly/Uroš 10-23, Faiz/Ilan 10-24.
 - 2026-10-17 ~17:40 — #4 ported credit tool → app. be74aad `claudeTools/credit.js` (logic identical, paths only); dry run all 15 matches preview. Manager updated CLAUDE.md crediting section (233c541). #4 flags: trial_end||period_end base bug (execute.js:67 has the fix; safe for these 11), exact-match email lookup, grant_access log from==to → asked owner. Not pushed (tooling/docs only).
+- 2026-10-17 — Owner: "Okay now show me each group email and action and I'll approve them 1 by 1" → G1 shown. Owner: "Approve." → relayed G1 execution to #4 (Faiz first; credit → email → close → Slack; stop on any mismatch).
 
 ## Past days
 
