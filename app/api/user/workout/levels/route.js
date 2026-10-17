@@ -19,6 +19,7 @@ import {
     upsertHistoryEntry, removeHistoryEntry,
 } from "@/lib/workout";
 import { buildCourseView, isProgramId, PROGRAM_IDS } from "@/lib/curriculum";
+import { restDayClassIds } from "@/lib/restDay";
 import { logger } from "@/lib/logger";
 import levelSchedules from "@/data/workout/levelSchedules.json";
 import byoWorkouts from "@/data/workout/byoWorkouts.json";
@@ -408,14 +409,16 @@ export async function POST(request) {
             const tpl = levelSchedules[String(level)]?.[String(dayIndex)] || [];
             const tplIds = tpl.map(i => Number(i.classId)).filter(Boolean);
             const date = isValidIsoDate(json.date) ? json.date : null;
-            if (!tplIds.length) {
-                // No template classes for this day (a rest day) — nothing to generate.
+            // A rest day (Sunday — no template classes): the member picked what to add from the
+            // rest-day picker (lib/restDay.js). Without a pick there is still nothing to generate.
+            const ids = tplIds.length ? tplIds : restDayClassIds(levelSchedules[String(level)], json.option);
+            if (!ids.length) {
                 return corsJson(await buildDayItems(userId, level, dayIndex, date, []));
             }
             const days = await readUserWeek(userId, level);
-            days[String(dayIndex)] = tplIds;
+            days[String(dayIndex)] = ids;
             await writeUserWeek(userId, days, { op, level });
-            return corsJson(await buildDayItems(userId, level, dayIndex, date, tplIds));
+            return corsJson(await buildDayItems(userId, level, dayIndex, date, ids));
         }
 
         if (op === 'add-workout') {
